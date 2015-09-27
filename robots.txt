@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /temp/
+Disallow: /old/
+Disallow: /manual/
+Disallow: /software/
+Disallow: /header.html
+Disallow: /footer.html
+Sitemap: http://tnuatiming.com/sitemap.xml
+
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+  {% include head.html %}
+
+  <body id=race>
+
+    {% include header.html %}
+
+  <h2> {{ page.tag }} {{ page.type }}</h2>
+  <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%d-%m-%Y" }}</h2>
+  
+        {{ content }}
+  
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

@@ -1,0 +1,126 @@
+
+body#home-english{
+    direction:ltr;
+}
+p, h1, h2 {    
+  text-align: left;
+}
+[data-icon]:before {
+  margin-right:5px;
+}
+.main {
+text-align: left;
+}
+
+.right{
+    float: left;
+    width: 40%;
+}
+
+.left{
+   float: right; 
+   width: 55%;
+   margin: 20px 0;
+}
+
+.next-race {
+  float:left; 
+  text-align:left;
+}
+  
+.next {
+  margin-left:10px;
+}
+
+.contact {
+  float:left; 
+  text-align:left;
+}
+
+.head {    
+      float:left;
+}
+.copyright {    
+    direction: ltr;
+}
+.navigation {
+   margin-top: 0;
+}
+.navigation ul {
+   float:right; 
+   margin-right: 150px;
+}
+.navigation li {
+   float:left; 
+}
+.language, .language a:link, .language a:visited{
+  float:right;
+}
+.logotop {
+    float:left;   
+}
+li {
+   text-align:left;   
+}
+    @media screen and (max-width: 60em) {
+        
+	
+        .related_content{
+	  float:right;
+	}
+        .image-side {
+	  float: left;  
+	}
+	
+	#img1, #img2, #img3, #img4, #img5 {
+    float:left;
+  }
+        .language a:hover{
+	  /*display:none;*/
+	}
+        .span_12,
+	 .navigation,
+	.header,
+	.main_content,
+	.related_content,
+        .footer,  .related_table, .main_table {
+	     float:left;
+            margin-right:0;
+        }
+    }
+
+
+    @media screen and (min-width: 60em) {
+ 
+	.logotop{float:left}
+	.head{float:left} 
+        .span_2,
+	 .related_content{     
+	    float:left;
+        }
+       .span_6,
+	 .navigation,
+	.header {
+            margin-right:0;
+	    float:left;
+        }
+        .span_10,
+	.main_content{    
+	    float:left;
+        }
+  
+        .span_12,	
+        .footer,  .related_table, .main_table{
+            margin-right:0;
+	    float:left;
+        }
+    }
+
+@media all and (max-width: 42em)
+	{
+	 .left, .right{
+    float: left;
+    width: 100%;
+}
+	}
+	

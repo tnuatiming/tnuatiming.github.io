@@ -1,0 +1,123 @@
+---
+layout: races
+place: תוצאות מרוצים
+---
+{% for post in site.posts %}
+  {% capture year %}{{post.date | date: "%Y"}}{% endcapture %}
+  {% if year == "2014" %}
+  <li>{{post.date | date: "%Y"}}
+{% for category in site.categories %}
+{% capture category %}{{site.categories}}{% endcapture %}
+{% if category == "results" %}
+  <li><a name="{{ category | first }}">{{ category | first }}</a>
+    <ul>
+    {% for posts in category %}
+      {% for post in posts %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    {% endfor %}
+    </ul>
+  </li>
+  {% endif %}
+  </li>
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+
+
+{% for post in site.posts %}
+  {% capture year %}{{post.date | date: "%Y"}}{% endcapture %}
+  {% if year == "2014" %}
+   <li>{{post.date | date: "%Y"}}
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+<!-- site_tags: {{ site_tags }} -->
+{% assign tag_words = site_tags | split:',' | sort %}
+<!-- tag_words: {{ tag_words }} -->
+
+<div id="tags">
+
+
+  {% for item in (0..site.tags.size) %}{% unless forloop.last %}
+    {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
+  <h2 id="{{ this_word | cgi_escape }}">{{ this_word }}</h2>
+  <ul class="posts">
+    {% for post in site.tags[this_word] %}{% if post.title != null %}
+    <li itemscope><span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time></span> &raquo; {% if post.category == "speaking" %}<i class="fa fa-microphone"></i> {% endif %}<a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endif %}{% endfor %}
+  </ul>
+  {% endunless %}{% endfor %}
+</div>
+</li>
+ {% endif %}
+{% endfor %}
+
+
+
+
+{% for tag in site.tags %}
+  {% assign t = tag | first %}
+  {% assign posts = tag | last %}
+
+{{ t | downcase }}
+<ul>
+{% for post in posts %}
+  {% if post.tags contains t %}
+  <li>
+    <a href="{{ post.url }}">{{ post.tag }} : {{ post.round }} - {{ post.place }}</a>
+    <span class="date">{{ post.date | date: "%B %-d, %Y"  }}</span>
+  </li>
+  {% endif %}
+{% endfor %}
+</ul>
+{% endfor %}
+
+
+
+
+<section id="archive">
+  <h3>This year's posts</h3>
+  {%for post in site.posts %}
+    {% unless post.next %}
+      <ul class="this">
+    {% else %}
+      {% capture year %}{{ post.season }}{% endcapture %}
+      {% capture nyear %}{{ post.next.season }}{% endcapture %}
+      {% if year != nyear %}
+        </ul>
+        <h3>{{ post.season }}</h3>
+        <ul class="past">
+      {% endif %}
+    {% endunless %}
+      <li><a href="{{ post.url }}">{{ post.tag }} : {{ post.round }} - {{ post.place }}</a></li>
+  {% endfor %}
+  </ul>
+</section>
+
+<section id="archive">
+  <h3>This year's posts</h3>
+  {%for post in site.posts %}
+    {% unless post.next %}
+      <ul class="this">
+    {% else %}
+      {% capture tt %}{{ post.tag }}{% endcapture %}
+      {% capture ntt %}{{ post.next.tag }}{% endcapture %}
+      {% if tt != ntt %}
+        </ul>
+        <h3>{{ post.tag }}</h3>
+        <ul class="past">
+      {% endif %}
+    {% endunless %}
+      <li><time>{{ post.date | date:"%d %b" }}</time><a href="{{ post.url }}">{{ post.tag }} : {{ post.round }} - {{ post.place }}</a></li>
+  {% endfor %}
+  </ul>
+</section>
+
+<h3>2013</h3>
+<ul class="this">
+{% for post in site.posts %}
+  {% capture year %}{{post.season}}{% endcapture %}
+  {% if year == "2013" %}
+<li><a href="{{ post.url }}">{{ post.tag }} : {{ post.round }} - {{ post.place }}</a></li>
+  {% endif %}
+{% endfor %}</ul>

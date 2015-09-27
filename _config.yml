@@ -1,0 +1,6 @@
+title: tnua timing
+email: your-email@domain.com
+url: "http://tnuatiming.com"
+encoding:     "utf-8"
+markdown: rdiscount
+permalink: /:categories/:year/:title.html
