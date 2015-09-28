@@ -1,0 +1,25 @@
+---
+layout: races
+place: תוצאות מרוצים
+---
+
+{% assign ee = site.posts | where: "season" , "2014" %}
+{% assign et = site.tags | where: "season" , "2014" %}
+{% assign article_tags =  ee | map: 'tags' | join: ',' | join: ',' | downcase | split: ',' %}
+{% for tag in et %}
+  {% assign t = tag | first %}
+  {% assign posts = tag | last %}
+
+<h2>{{ t | downcase }}{{ tag | last | size }}</h2>
+<ul>
+{% for post in ee %}
+  {% if post.tags contains t  %}
+  <li>
+    <a href="{{ post.url }}">{{ post.round }} עונת {{ post.season }} : {{ post.place }}</a>
+  </li>
+  {% endif %}
+{% endfor %}
+</ul>
+{% endfor %}
+
+
