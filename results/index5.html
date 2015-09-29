@@ -2,21 +2,21 @@
 layout: races
 place: תוצאות מרוצים
 ---
-{% assign 2015_posts = site.posts | where: "season", "2015" | sort: "last" %}
-
+{% assign year = "2015" %}
+<h3>{{ year }}</h3>
+{% assign posts_year = site.posts | where: "season", year | sort: "last" %}
 
 <!-- Create empty arrays -->
 {% assign tags = '' | split: ',' %}
 {% assign unique_tags = '' | split: ',' %}
 
 <!-- Map and flatten -->
-{% assign article_tags =  2015_posts | map: 'tags' | join: ',' | join: ',' | split: ',' %}
+{% assign article_tags =  posts_year | map: 'tags' | join: ',' | join: ',' | split: ',' %}
 
 <!-- Push to tags -->
 {% for tag in article_tags '%}
   {% assign tags = tags | push: tag %}
 {% endfor %}
-
 
 <!-- Uniq -->
 {% assign tags = tags | sort %}
@@ -32,19 +32,120 @@ place: תוצאות מרוצים
   {% assign previous = tag %}
 {% endfor %}
 
-{{ unique_tags }}
+<!-- unique_tags_number gets the number of tags that relevant to the specific year -->
+{% assign unique_tags_number = unique_tags | last | size %}
+    <!-- loop and show the tag from only the relevant tag list-->
+{% for x in (0..unique_tags_number) %}
+<h2>{{ unique_tags[x] }}</h2>
+<ul>
+<!-- assign posts_year_tag is all posts with the 2 variables -->
+{% assign posts_year_tag = site.posts | where: "tag", unique_tags[x] | where: "season", year | sort: "last" %}
 
-{% for post in 2015_posts %}
-
-
-
-<li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }}</a></li>    
-
-
-
-
-
+{% for post in posts_year_tag %}	
+<li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }}</a></li>    			
 {% endfor %}
+</ul>
+{% endfor %}
+
+
+{% assign year = "2014" %}
+<h3>{{ year }}</h3>
+{% assign posts_year = site.posts | where: "season", year | sort: "last" %}
+
+<!-- Create empty arrays -->
+{% assign tags = '' | split: ',' %}
+{% assign unique_tags = '' | split: ',' %}
+
+<!-- Map and flatten -->
+{% assign article_tags =  posts_year | map: 'tags' | join: ',' | join: ',' | split: ',' %}
+
+<!-- Push to tags -->
+{% for tag in article_tags '%}
+  {% assign tags = tags | push: tag %}
+{% endfor %}
+
+<!-- Uniq -->
+{% assign tags = tags | sort %}
+{% for tag in tags %}
+
+  <!-- If not equal to previous then it must be unique as sorted -->
+  {% unless tag == previous %}
+
+    <!-- Push to unique_tags -->
+    {% assign unique_tags = unique_tags | push: tag %}
+  {% endunless %}
+
+  {% assign previous = tag %}
+{% endfor %}
+
+<!-- unique_tags_number gets the number of tags that relevant to the specific year -->
+{% assign unique_tags_number = unique_tags | last | size %}
+    <!-- loop and show the tag from only the relevant tag list-->
+{% for x in (0..unique_tags_number) %}
+<h2>{{ unique_tags[x] }}</h2>
+<ul>
+<!-- assign posts_year_tag is all posts with the 2 variables -->
+{% assign posts_year_tag = site.posts | where: "tag", unique_tags[x] | where: "season", year | sort: "last" %}
+
+{% for post in posts_year_tag %}	
+<li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }}</a></li>    			
+{% endfor %}
+</ul>
+{% endfor %}
+
+
+
+
+
+
+
+{% assign year = "2013" %}
+<h3>{{ year }}</h3>
+{% assign posts_year = site.posts | where: "season", year | sort: "last" %}
+
+<!-- Create empty arrays -->
+{% assign tags = '' | split: ',' %}
+{% assign unique_tags = '' | split: ',' %}
+
+<!-- Map and flatten -->
+{% assign article_tags =  posts_year | map: 'tags' | join: ',' | join: ',' | split: ',' %}
+
+<!-- Push to tags -->
+{% for tag in article_tags '%}
+  {% assign tags = tags | push: tag %}
+{% endfor %}
+
+<!-- Uniq -->
+{% assign tags = tags | sort %}
+{% for tag in tags %}
+
+  <!-- If not equal to previous then it must be unique as sorted -->
+  {% unless tag == previous %}
+
+    <!-- Push to unique_tags -->
+    {% assign unique_tags = unique_tags | push: tag %}
+  {% endunless %}
+
+  {% assign previous = tag %}
+{% endfor %}
+
+<!-- unique_tags_number gets the number of tags that relevant to the specific year -->
+{% assign unique_tags_number = unique_tags | last | size %}
+    <!-- loop and show the tag from only the relevant tag list-->
+{% for x in (0..unique_tags_number) %}
+<h2>{{ unique_tags[x] }}</h2>
+<ul>
+<!-- assign posts_year_tag is all posts with the 2 variables -->
+{% assign posts_year_tag = site.posts | where: "tag", unique_tags[x] | where: "season", year | sort: "last" %}
+
+{% for post in posts_year_tag %}	
+<li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }}</a></li>    			
+{% endfor %}
+</ul>
+{% endfor %}
+
+
+
 
 
 

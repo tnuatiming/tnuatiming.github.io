@@ -353,6 +353,10 @@ a.head_test {
   text-align: center;
 }
 
+#races .main {
+  margin-right: 10%;
+}
+
 .main_table {
   margin: 0 auto 50px;
   width: 100%;
