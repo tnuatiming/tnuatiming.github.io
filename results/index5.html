@@ -2,11 +2,50 @@
 layout: races
 place: תוצאות מרוצים
 ---
-<ul>
-  {% for post in site.related_posts limit:3 %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      <time>{{ post.date | date: "%B %-d, %Y" }}</time>
-    </li>
-  {% endfor %}
-</ul>
+{% assign 2015_posts = site.posts | where: "season", "2015" | sort: "last" %}
+
+
+<!-- Create empty arrays -->
+{% assign tags = '' | split: ',' %}
+{% assign unique_tags = '' | split: ',' %}
+
+<!-- Map and flatten -->
+{% assign article_tags =  2015_posts | map: 'tags' | join: ',' | join: ',' | split: ',' %}
+
+<!-- Push to tags -->
+{% for tag in article_tags '%}
+  {% assign tags = tags | push: tag %}
+{% endfor %}
+
+
+<!-- Uniq -->
+{% assign tags = tags | sort %}
+{% for tag in tags %}
+
+  <!-- If not equal to previous then it must be unique as sorted -->
+  {% unless tag == previous %}
+
+    <!-- Push to unique_tags -->
+    {% assign unique_tags = unique_tags | push: tag %}
+  {% endunless %}
+
+  {% assign previous = tag %}
+{% endfor %}
+
+{{ unique_tags }}
+
+{% for post in 2015_posts %}
+
+
+
+<li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }}</a></li>    
+
+
+
+
+
+{% endfor %}
+
+
+
+
