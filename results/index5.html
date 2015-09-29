@@ -1,45 +1,12 @@
-
-{% assign tags = '' | split: ',' %}
-{% assign unique_tags = '' | split: ',' %}
-
-<!-- Grab all tags in articles, join them with a comma, then split them into a comma-delimited array; use the downcase filter so that you don't end up with non-unique values in the final unique_tags array (eg, GitHub and github) -->
-{% assign article_tags =  site.posts | map: 'tags' | join: ',' | join: ',' | downcase | split: ',' %}
-{% assign tutorial_tags =  site.posts | map: 'season' | join: ',' | join: ',' | downcase | split: ',' %}
-
-<!-- Pull each item in the article tags array and add it to the full tags array -->
-{% for tag in article_tags %}
-  {% assign tags = tags | push: tag %}
-{% endfor %}
-<!-- Add each item from the tutorial tags array and add it to the ful tags array (which now already holds all the articles tags) -->
-{% for season in tutorial_tags %}
-  {% assign tags = tags | push: season %}
-{% endfor %}
-<!-- Sort the full list of article/tutorial tags alphabetically -->
-{% assign tags = tags | sort %}
-<!-- Iterate through full of site tags  -->
-{% for tag in tags %}
-	<!-- For the first iteration, you can't check against the previous item (ie, since index 0 has no preceding/-1 index), so we will create an exception for the first tag in the tags array by using the 'or' logical liquid operator to check for an empty string -->
-	{% unless tag == previous or tag == '' %}
-		{% assign unique_tags = unique_tags | push: tag %}
-	{% endunless %}
-	<!-- Reassign the current tag to the "previous" variable in each iteration; eg, on the first iteration in the array ['hello','hello','world'], the first loop assigns previous to 'hello' at the *end* of the loop. That way during the iteration over the second item (ie, index 1, which is also 'hello'), you can compare the current item (index 1, 'hello') with the previous item (index 0, 'hello') in the array. This is why all items need to be set using the downcase filter in the original mapping (above) and also sorted alphabetically so that we can draw just the UNIQUE tags from the full list of site tags. -->
-	{% assign previous = tag %}
-{% endfor %}
-
-<article>
-<header class="tagpage-header">
-<!-- 	Although the tag page layout inherits from 'default', the list of tags required some new styling--hence the addition of the 'tag-page' class to the page header's h1 -->
-	<h1 class="tag-page">{{page.title}} <em id="selected-tag"></em></h1>
-	<ul class="site-tags">
-	<!-- Now we can iterate through the list of unique tags for the site -->
-	{% for tag in unique_tags %}
-		<!-- You need to use liquid's native "slugify" tag to account for tags that may contain special characters or spaces (eg, "prose.io" or "command line") The data attribute allows another attribute for us to target with javascrtipt, making it easier to create filters with the tags.json data-->
-		<li class="site-tag"><a href="#{{tag | slugify}}" id="{{tag | slugify }}" data-tagstring="{{tag}}" class="tag-ajax">{{ tag }}</a></li>
-	{% endfor %}
-	</ul>
-</header>
-	<!-- This empty unordered list will contain matching tags/entries as list items that pull their information from tags.json -->
-	<ul class="matching-items">
-		
-	</ul>
-</article>
+---
+layout: races
+place: תוצאות מרוצים
+---
+<ul>
+  {% for post in site.related_posts limit:3 %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <time>{{ post.date | date: "%B %-d, %Y" }}</time>
+    </li>
+  {% endfor %}
+</ul>
