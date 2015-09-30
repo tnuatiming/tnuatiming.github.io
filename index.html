@@ -9,7 +9,7 @@ place: עמוד הבית
 
     <body id=home>
   
-                        <!--  <span class="css3-blink"> <a  href=#><marquee>המרוץ הבא: מוטוקרוס - 25-5-2013 - בית שאן</marquee></a></span>-->
+                        {% comment %}{% comment %}<!--  <span class="css3-blink"> <a  href=#><marquee>המרוץ הבא: מוטוקרוס - 25-5-2013 - בית שאן</marquee></a></span>-->{% endcomment %}{% endcomment %}
                             <p><a href=/>תנועה מדידת זמנים</a> פועלת תחת <a href="http://www.north.co.il">חברת תנועה מערכות מחשוב וניווט בע"מ </a>ועוסקת במדידת זמנים בארועי ספורט מוטוריים בעיקר.
 הפעילות שהחלה בשנת 2009 במתן שרותי מדידת זמנים לליגת האנדורו בישראל התרחבה לענפים נוספים, בינהם<a style= "border-bottom: none;" href="//tnuatiming.com/manual/">:</a>
 <p>
@@ -33,7 +33,7 @@ place: עמוד הבית
                         <div class=right>
                             <div class=next-race>
                                 <h2>תוצאות אחרונות:</h2>
-                                                <!--עדכן מרוץ הבא כאן-->
+                                                {% comment %}{% comment %}<!--עדכן מרוץ הבא כאן-->{% endcomment %}{% endcomment %}
                         <ul>
     {% for post in site.posts limit:4 %}
       <li>
@@ -41,16 +41,16 @@ place: עמוד הבית
       </li>
     {% endfor %}
   </ul>
-                                <!--<a class=next href="http://dirtrider.co.il/next-race-information/">(פרטים נוספים) </a> -->
+                                {% comment %}{% comment %}<!--<a class=next href="http://dirtrider.co.il/next-race-information/">(פרטים נוספים) </a> -->{% endcomment %}{% endcomment %}
                             </div>
                             <div class=contact>
                                 <h2>יצירת קשר:</h2>
                                 <p>רז הימן</p>
                                 <a href="mailto:119raz@walla.com">מייל: 119raz&#64;walla.com</a><br>
-                                <!---  <a href="tel:+972505562519">טלפון: 972-505-562519+</a>-->
+                                {% comment %}{% comment %}<!---  <a href="tel:+972505562519">טלפון: 972-505-562519+</a>-->{% endcomment %}{% endcomment %}
                             </div>
-                            </div><!-- end right -->
+                            </div>{% comment %}{% comment %}<!-- end right -->{% endcomment %}{% endcomment %}
                             <div class=left>
                             <img src="/images/095334.jpg" alt="אוהל מדידת זמנים" width=854 height=640 title="תנועה מדידת זמנים">
 
-                            </div><!-- end left -->
+                            </div>{% comment %}{% comment %}<!-- end left -->{% endcomment %}{% endcomment %}
