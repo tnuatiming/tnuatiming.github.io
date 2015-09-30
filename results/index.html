@@ -39,7 +39,7 @@ sitemap:
 {% endfor %}
 
 {% comment %}<!-- unique_tags_number gets the number of tags that relevant to the specific year -->{% endcomment %}
-{% assign unique_tags_number = unique_tags | size %}
+{% assign unique_tags_number = unique_tags | size | minus: 1 %}
     {% comment %}<!-- loop and show the tag from only the relevant tag list-->{% endcomment %}
 {% for x in (0..unique_tags_number) %}
 <h2>{{ unique_tags[x] }}</h2>
@@ -91,7 +91,7 @@ sitemap:
 {% endfor %}
 
 {% comment %}<!-- unique_tags_number gets the number of tags that relevant to the specific year -->{% endcomment %}
-{% assign unique_tags_number = unique_tags | size %}
+{% assign unique_tags_number = unique_tags | size | minus: 1 %}
     {% comment %}<!-- loop and show the tag from only the relevant tag list-->{% endcomment %}
 {% for x in (0..unique_tags_number) %}
 <h2>{{ unique_tags[x] }}</h2>
@@ -148,7 +148,7 @@ sitemap:
 {% endfor %}
 
 {% comment %}<!-- unique_tags_number gets the number of tags that relevant to the specific year -->{% endcomment %}
-{% assign unique_tags_number = unique_tags | size %}
+{% assign unique_tags_number = unique_tags | size | minus: 1 %}
     {% comment %}<!-- loop and show the tag from only the relevant tag list-->{% endcomment %}
 {% for x in (0..unique_tags_number) %}
 <h2>{{ unique_tags[x] }}</h2>
