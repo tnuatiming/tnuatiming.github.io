@@ -130,6 +130,10 @@ ul,li {
   list-style-type: none;
 }
 
+#races .main ul {
+  margin-right: 30px;
+}
+
 li {
   color: #777;
   text-align: right;

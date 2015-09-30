@@ -4,3 +4,5 @@ url: "http://tnuatiming.com"
 encoding:     "utf-8"
 markdown: rdiscount
 permalink: /:categories/:year/:title.html
+exclude: [feed.xml, about]
+include: [english/index.html, live/index.html,]
