@@ -4,5 +4,25 @@ url: "http://tnuatiming.com"
 encoding:     "utf-8"
 markdown: rdiscount
 permalink: /:categories/:year/:title.html
-exclude: [feed.xml, about]
-include: [english/index.html, live/index.html,]
+include: [
+    english/index.html,
+    live/index.html
+]
+exclude: [
+  feed.xml, 
+  about,
+  .git,
+  .gitignore,
+  .directory,
+  CNAME,
+  svg-icons,
+  svg-decorations,
+  scss,
+  .sass-cache,
+  package.json, 
+  Gruntfile.js, 
+  node_modules, 
+  readme.md
+]
+
+excerpt_separator: <!--more-->
