@@ -272,6 +272,10 @@ td, th {
    margin-bottom: 15px;
    z-index: 1000;
 }
+a.main_logo 
+{
+   border-bottom: none;
+}
 
 .navigation {
   float: left;
