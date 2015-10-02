@@ -1,47 +1,17 @@
 ---
 layout: races
 place: תוצאות מרוצים
+season:
+    - "2015"
+    - "2014"
+    - "2013"
 sitemap:
   lastmod: 2015-09-23
   priority: 0.7
   changefreq: 'monthly'
-  exclude: 'yes'
+  exclude: 'no'
 ---
-{% assign seasons = '' | split: ',' %}
-{% assign unique_seasons = '' | split: ',' %}
-
-{% comment %}<!-- Map and flatten -->{% endcomment %}
-{% assign article_seasons =  site.posts | map: 'season' | join: ',' | join: ',' | downcase | split: ',' %}
-
-{% comment %}<!-- Push to tags -->{% endcomment %}
-{% for season_tag in article_seasons '%}
-  {% assign seasons = seasons | push: season_tag %}
-{% endfor %}
-
-{% comment %}<!-- Uniq -->{% endcomment %}
-{% assign seasons = seasons | sort | reverse%}
-{% for season_tag in seasons %}
-
-  {% comment %}<!-- If not equal to previous then it must be unique as sorted -->{% endcomment %}
-  {% unless season_tag == previous %}
-
-    {% comment %}<!-- Push to unique_tags -->{% endcomment %}
-    {% assign unique_seasons = unique_seasons | push: season_tag %}
-  {% endunless %}
-
-  {% assign previous = season_tag %}
-{% endfor %}
-
-{% comment %}<!-- unique_tags_number gets the number of tags that relevant to the specific year -->{% endcomment %}
-{% assign unique_tags_numberx = unique_seasons | size | minus: 1 %}
-    {% comment %}<!-- loop and show the tag from only the relevant tag list-->{% endcomment %}
-{% for x in (0..unique_tags_numberx) %}
-
-
-
-
-{% assign year = unique_seasons[x] %}
-
+{% for year in page.season '%}
 <h3>{{ year }}</h3>
 {% assign posts_year = site.posts | where: "season", year | sort: "last" %}
 
