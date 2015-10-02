@@ -10,9 +10,6 @@
       },
       jekyllBuild: {
         command: "bundle exec jekyll build"
-      },
-      guard: {
-        command: " bundle exec guard"
       }
 },
                  
@@ -84,10 +81,25 @@
 //        files: ["svg/*.svg"],
 //        tasks: ["svgstore", "shell:jekyllBuild"]
 //      }
-    }
-
+    },
+    
+ftpush: {
+  build: {
+    auth: {
+      host: 'tnuatiming.com',
+      port: 21,
+      authKey: 'key1'
+    },
+    src: '_site',
+    dest: 'public_html',
+    simple: true
+ //   exclusions: ['_site/images', '_site/software/**/*', '_site/manual/**/*', '_site/live', '_site/*.ico', '_site/*.png'],
+ //   keep: ['/public_html/images/**/*', '/public_html/manual/**/*', '/public_html/software/**/*',]
+  }
+}
   
-  });
+      
+});
 
   
   require('load-grunt-tasks')(grunt);
@@ -96,12 +108,14 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-htmlmin');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-connect');
+grunt.loadNpmTasks('grunt-contrib-ftpush');
+
 // Default task(s).
   grunt.registerTask('default', ["shell:jekyllBuild", "connect", "watch"]);
   grunt.registerTask('html', ['htmlmin']);
   grunt.registerTask('css', ['cssmin']);
   grunt.registerTask("serve", ["shell:jekyllServe"]);
   grunt.registerTask("build", ["shell:jekyllBuild"]);
-  grunt.registerTask("guard", ["shell:guard"]);
+  grunt.registerTask("ftp", ["ftpush"]);
 
 };
