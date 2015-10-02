@@ -10,8 +10,10 @@
       },
       jekyllBuild: {
         command: "bundle exec jekyll build"
-      }
-},
+      },
+      gitUpdate: {
+        command: "$HOME/amirsher.github.io/gitup.sh"
+      }},
                  
  cssmin: {
   target: {
@@ -130,5 +132,6 @@ grunt.loadNpmTasks('grunt-text-replace');
   grunt.registerTask("serve", ["shell:jekyllServe"]);
   grunt.registerTask("build", ["shell:jekyllBuild"]);
   grunt.registerTask("ftp", ["shell:jekyllBuild", "replace", "ftpush"]);
+  grunt.registerTask("git", ["shell:gitUpdate"]);
 
 };
