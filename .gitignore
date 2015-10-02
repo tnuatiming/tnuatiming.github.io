@@ -4,3 +4,8 @@ Gemfile.lock
 node_modules
 .ftpauth
 .ftppass
+readme.md
+.grunt
+.directory
+password_protect.php
+
