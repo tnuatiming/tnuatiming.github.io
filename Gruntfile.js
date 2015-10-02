@@ -82,7 +82,18 @@
 //        tasks: ["svgstore", "shell:jekyllBuild"]
 //      }
     },
-    
+   
+    replace: {
+  results: {
+    src: ['_site/results/**/*.html'],
+    overwrite: true,                 // overwrite matched source files
+    replacements: [{
+      from: /\n/g,
+      to: " "
+    }]
+  }
+},
+
 ftpush: {
   build: {
     auth: {
@@ -109,9 +120,11 @@ grunt.loadNpmTasks('grunt-contrib-htmlmin');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-connect');
 grunt.loadNpmTasks('grunt-contrib-ftpush');
+grunt.loadNpmTasks('grunt-text-replace');
+
 
 // Default task(s).
-  grunt.registerTask('default', ["shell:jekyllBuild", "connect", "watch"]);
+  grunt.registerTask('default', ["shell:jekyllBuild", "replace", "connect", "watch"]);
   grunt.registerTask('html', ['htmlmin']);
   grunt.registerTask('css', ['cssmin']);
   grunt.registerTask("serve", ["shell:jekyllServe"]);
