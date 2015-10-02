@@ -12,6 +12,7 @@ include: [
 exclude: [
   images/temp,
   images/original,
+  results/index_*.html,
   feed.xml, 
   about,
   .git,
