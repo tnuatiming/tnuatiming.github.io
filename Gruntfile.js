@@ -66,7 +66,7 @@
         livereload: true
       },
       site: {
-        files: ["index.html", "_layouts/*.html", "_posts/*.html", "results/*.html", "style/*.css", "_includes/*.html", "live/*.html", "english/*.html"],
+        files: ["index.html", "_layouts/*.html", "_posts/*.html", "results/*.html", "style/*", "_includes/*.html", "live/*.html", "english/*.html"],
         tasks: ["shell:jekyllBuild"]
       },
 //      js: {
@@ -83,9 +83,9 @@
 //      }
     },
    
-    replace: {
+replace: {
   results: {
-    src: ['_site/results/**/*.html'],
+    src: ['_site/results/**/*.html', '_site/style/*.css'],
     overwrite: true,                 // overwrite matched source files
     replacements: [{
       from: /\n/g,
@@ -129,6 +129,6 @@ grunt.loadNpmTasks('grunt-text-replace');
   grunt.registerTask('css', ['cssmin']);
   grunt.registerTask("serve", ["shell:jekyllServe"]);
   grunt.registerTask("build", ["shell:jekyllBuild"]);
-  grunt.registerTask("ftp", ["ftpush"]);
+  grunt.registerTask("ftp", ["shell:jekyllBuild", "replace", "ftpush"]);
 
 };
