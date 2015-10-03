@@ -46,7 +46,7 @@ a {
    border-bottom: 1px dotted #333;
 }
 
-#races .main_content a:hover {  
+#races .main a:hover {  
    background-color: rgba(255,255,255,0.7);
 }
 
