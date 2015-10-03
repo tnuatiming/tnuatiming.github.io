@@ -12,6 +12,7 @@ include: [
 exclude: [
   images/temp,
   images/original,
+  images/old,
   results/index_*.html,
   feed.xml, 
   about,
@@ -32,6 +33,8 @@ exclude: [
   sitemap.xml.old,
   .ftpauth,
   .ftppass,
+  .grunt,
+  gitup.sh,
   readme.md
 ]
 

@@ -13,7 +13,8 @@
       },
       gitUpdate: {
         command: "./gitup.sh"
-      }},
+      }
+},
                  
  cssmin: {
   target: {
@@ -68,7 +69,7 @@
         livereload: true
       },
       site: {
-        files: ["index.html", "_layouts/*.html", "_posts/*.html", "results/*.html", "style/*", "_includes/*.html", "live/*.html", "english/*.html"],
+        files: ["index.html", "terms.html", "_layouts/*.html", "_posts/*.html", "results/*.html", "style/*", "_includes/*.html", "live/*.html", "english/*.html"],
         tasks: ["shell:jekyllBuild"]
       },
 //      js: {
@@ -111,12 +112,10 @@ ftpush: {
   }
 }
   
-      
 });
 
-  
-  require('load-grunt-tasks')(grunt);
-  // Load the plugin that provides the "uglify" task.
+require('load-grunt-tasks')(grunt);
+// Load the plugin that provides the "uglify" task.
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-htmlmin');
 grunt.loadNpmTasks('grunt-contrib-watch');
