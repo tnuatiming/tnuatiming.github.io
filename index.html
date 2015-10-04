@@ -24,7 +24,7 @@ place: עמוד הבית
                             <div class=next-race>
                                 <h2>תוצאות אחרונות:</h2>
                                                 {% comment %}{% comment %}<!--עדכן מרוץ הבא כאן-->{% endcomment %}{% endcomment %}
-                        <ul>
+   <ul>
     {% for post in site.posts limit:4 %}
       <li>
         <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>

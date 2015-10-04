@@ -1,8 +1,8 @@
 title: tnua timing
-email: tnuatiming@domain.com
+email: ""
 url: http://tnuatiming.com
 domain: tnuatiming.com
-encoding:     "utf-8"
+encoding: "utf-8"
 timezone: Asia/Jerusalem
 markdown: rdiscount
 permalink: /:categories/:year/:title.html
