@@ -6,6 +6,7 @@ node_modules
 .ftppass
 .grunt
 .directory
+password_protect.php
 
 
 
