@@ -1,9 +1,12 @@
 title: tnua timing
 email: tnuatiming@domain.com
-url: "http://tnuatiming.com"
+url: http://tnuatiming.com
+domain: tnuatiming.com
 encoding:     "utf-8"
+timezone: Asia/Jerusalem
 markdown: rdiscount
 permalink: /:categories/:year/:title.html
+excerpt_separator: <!--more-->
 include: [
     english/index.html,
     live/index.html,
@@ -31,11 +34,8 @@ exclude: [
   Gemfile.lock,
   node_modules,
   sitemap.xml.old,
-  .ftpauth,
-  .ftppass,
   .grunt,
   gitup.sh,
   readme.md
 ]
 
-excerpt_separator: <!--more-->

@@ -210,13 +210,13 @@ td, th {
   zoom: 1;
 }
 
-.content:before,.content:after {
+.content:before,.content:after,.row:before,.row:after {
   display: table;
   content: "";
   line-height: 0;
 }
 
-.content:after {
+.content:after,.row:after {
   clear: both;
 }
 
@@ -260,7 +260,6 @@ td, th {
   min-height: 100%;
   overflow: hidden;
 }
-
 
 .header {
   float: right;
@@ -725,10 +724,6 @@ body, p, a {
 
 .navigation ul {
  float: right;
-}
-
-#races h2, #races h3, #races p{
-  text-align: center;
 }
 
 #races .right{

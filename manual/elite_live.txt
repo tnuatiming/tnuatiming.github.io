@@ -4,7 +4,7 @@
     <head>
         <!-- META -->
        <meta charset="utf-8">
-	<title>live  &middot; תנועה מדידת זמנים</title>
+	<title>live timing  &middot; תנועה מדידת זמנים</title>
 	<meta name="description" content="מדידה בזמן אמת - live timing -  כפי שמתקבלות ממערכת מדידת הזמנים" />
 
         <meta name="keywords" content="מדידת זמנים, תנועה, רז הימן, זמן אמת, raz heymann, live timing, time keep, israel">
