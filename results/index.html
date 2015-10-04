@@ -43,7 +43,7 @@ sitemap:
 
 {% assign year = unique_seasons[x] %}
 
-<h3>עונת {{ year }}</h3>
+<h1>עונת {{ year }}</h1>
 {% assign posts_year = site.posts | where: "season", year | sort: "last" %}
 
 {% comment %}<!-- Create empty arrays -->{% endcomment %}

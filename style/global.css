@@ -62,7 +62,9 @@ a:active,a:hover {
 
 h1 {
   letter-spacing: 1px;
-  font-size: 32px;
+  font-size: 32px;  
+  color: #fc3;
+  text-shadow: 0 2px 3px #333;
 }
 
 h2 {
