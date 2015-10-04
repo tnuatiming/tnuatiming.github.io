@@ -36,6 +36,7 @@ exclude: [
   sitemap.xml.old,
   .grunt,
   gitup.sh,
+  gitup_descr.sh,
   readme.md
 ]
 
