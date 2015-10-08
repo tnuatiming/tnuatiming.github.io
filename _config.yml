@@ -17,6 +17,8 @@ exclude: [
   images/original,
   images/old,
   results/index_*.html,
+  _includes/*_old*, 
+  style/*_old*,
   feed.xml, 
   about,
   .git,

@@ -3,10 +3,9 @@
  yellow #ffcc33
  red #cc3333
  base gray #58585A
-#8f8f8f
+ light gray #8f8f8f
 */
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
-
 
 html {
   font-size: 16px;
@@ -38,26 +37,26 @@ body {
 }
 
 a {
-  color: #333;
+  color: #58585A;
   text-decoration: none;
 }
 
 a:active,a:hover,a:focus {
   outline: 0;
-  color: #333;
+  color: #8f8f8f;
   border-bottom: 1px dotted;
 }
 
 h1 {
-  letter-spacing: 1px;
   font-size: 32px;  
-  color: #fc3;
-  text-shadow: 0 2px 3px #333;
+  color: #58585A;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 3px #fff;
 }
 
 h2 {
   font-size: 24px;
-  color: #777;
+  color: #8f8f8f;
   text-shadow: 0 2px 3px #fff;
   text-decoration: none;
   font-weight: 700;
@@ -72,7 +71,7 @@ h2 {
 h3 {
   font-size: 24px;
   color: #fc3;
-  text-shadow: 0 2px 3px #333;
+  text-shadow: 0 2px 3px #58585A;
   text-decoration: none;
   font-weight: 700;
   text-align: right;
@@ -103,7 +102,7 @@ ul {
 }
 
 li {
-  color: #777;
+  color: #58585A;
   text-align: right;
   margin: 10px;
   text-shadow: 0px 2px 3px #FFF;
@@ -175,25 +174,6 @@ td, th {
   border-collapse: collapse;
 }
 
-.row {
-    width: 100%; 
-}
-
-/* Clearfix after every .row */
-.content {
-  zoom: 1;
-}
-
-.row:before,.row:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-
-.row:after {
-  clear: both;
-}
-
 .full-bg {
   background: rgba(240,240,240,0.90);
   min-height: 100%;
@@ -209,6 +189,16 @@ td, th {
   display: block;
   position: relative;
   padding-bottom: 10px; /* height of your footer */
+}
+
+.row {
+    width: 100%; 
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /*language*/
@@ -461,7 +451,7 @@ a.logo_text{
 }
 
 .contact a {
-color: #777;
+color: #58585A;
     
 }
 
@@ -477,7 +467,7 @@ color: #777;
   margin: 20px auto 0;
   width: 100%;
   height: 30px;
-  border-top: 2px #B1B3B4 solid;
+  border-top: 2px #8f8f8f solid;
 }
 
 .mail, .copyright {
@@ -576,7 +566,7 @@ body, p, a {
     font-size: 20px;
 }
 
-.mail p, .mail a, p.copyright {
+.mail , .copyright {
     font-size: 12px;
 }
 
@@ -671,7 +661,7 @@ table {
     width: 100%;
 }
 .navigation ul {
-   margin: 0 50px 10px 0;
+   margin: 0 10px 10px 0;
    float: right;
 }
 .navigation li {
@@ -683,5 +673,3 @@ table {
 @-moz-document url-prefix() {
 
 }
-
-

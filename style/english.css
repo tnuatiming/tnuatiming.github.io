@@ -62,55 +62,34 @@ text-align: left;
 li {
    text-align:left;   
 }
-    @media screen and (max-width: 60em) {
+@media screen and (max-width: 60em) {
         
-	
-        .related_content{
-	  float:right;
-	}
-        .image-side {
+.image-side {
 	  float: left;  
 	}
-	
-	#img1, #img2, #img3, #img4, #img5 {
-    float:left;
-  }
-        .language a:hover{
-	  /*display:none;*/
-	}
-        .span_12,
-	 .navigation,
-	.header,
-	.main_content,
-	.related_content,
-        .footer,  .related_table, .main_table {
+
+
+.navigation, .header, .main_content, .footer {
 	     float:left;
             margin-right:0;
         }
     }
 
-
-    @media screen and (min-width: 60em) {
+@media screen and (min-width: 60em) {
  
-	.logotop{float:left}
-	.head{float:left} 
-        .span_2,
-	 .related_content{     
-	    float:left;
-        }
-       .span_6,
-	 .navigation,
-	.header {
+.logotop{float:left}
+.head{float:left} 
+	  
+.navigation, .header {
             margin-right:0;
 	    float:left;
         }
-        .span_10,
-	.main_content{    
+ 
+.main_content{    
 	    float:left;
         }
   
-        .span_12,	
-        .footer,  .related_table, .main_table{
+.footer {
             margin-right:0;
 	    float:left;
         }
@@ -118,7 +97,7 @@ li {
 
 @media all and (max-width: 42em)
 	{
-	 .left, .right{
+.left, .right{
     float: left;
     width: 100%;
 }

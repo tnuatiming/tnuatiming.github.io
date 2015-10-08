@@ -8,10 +8,8 @@ sitemap:
   changefreq: 'monthly'
   exclude: 'no'
 ---
-                            <p><a href=/>תנועה מדידת זמנים</a> פועלת תחת <a href="http://www.north.co.il">חברת תנועה מערכות מחשוב וניווט בע"מ </a>ועוסקת במדידת זמנים בארועי ספורט מוטוריים בעיקר.
-הפעילות שהחלה בשנת 2009 במתן שרותי מדידת זמנים לליגת האנדורו בישראל התרחבה לענפים נוספים, בינהם<a style= "border-bottom: none;" href="//tnuatiming.com/manual/">:</a>
-<p>
-    <ul>
+        <p><a href=/>תנועה מדידת זמנים</a> פועלת תחת <a href="http://www.north.co.il">חברת תנועה מערכות מחשוב וניווט בע"מ </a>ועוסקת במדידת זמנים בארועי ספורט מוטוריים בעיקר. הפעילות שהחלה בשנת 2009 במתן שרותי מדידת זמנים לליגת האנדורו בישראל התרחבה לענפים נוספים, בינהם<a style= "border-bottom: none;" href="//tnuatiming.com/manual/">:</a></p>
+        <ul>
             <li>ליגת באחה ישראל  -  מרוצים הקפיים במדבר (צאלים, אשלים, ירוחם ועוד)</li>
             <li>מבחני מיון לפורמולה ישראל 2012  -  רכבים פרטיים על משטח אספלט במתכונת ג'ימקאנה</li>
             <li>ליגת ראלי של חברת קרוס קאנטרי  -  קטעי ספיישל לרכבי שטח (שדה תימן)</li>
@@ -21,32 +19,28 @@ sitemap:
             <li>ליגת הסופרבייק הישראלית</li>
             <li>ליגת המוטוקרוס הישראלית</li>
             <li>ליגת הקארטינג הישראלית</li>
-    </ul>
-<p>כמו כן מציעה החברה את שירותיה במבחני דרכים לרכבים ואופנועים עבור אמצעי התקשורת השונים ולגופים המקיימים הדרכות והתנסויות בנהיגה, במסגרת ימי עיון או ימי כיף לעובדים.</p>
-                        <div class=right>
-                            <div class=next-race>
-                                <h2>תוצאות אחרונות:</h2>
-   <ul>
-    {% for post in site.posts limit:4 %}
-      <li>
-        <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-                            </div>
-                            <div class=contact>
-                                <h2>יצירת קשר:</h2>
-                                <ul>
-                                  <li>רז הימן
-                                  </li>
-                                  <li><a href="mailto:119raz@walla.com">מייל: 119raz&#64;walla.com</a>
-                                  </li>
-                                </ul>
-                                
-                               {% comment %}<!---  <a href="tel:+972505562519">טלפון: 972-505-562519+</a>-->{% endcomment %}
-                            </div>
-                            </div>{% comment %}<!-- end right -->{% endcomment %}
-                            <div class=left>
-                            <img src="/images/095334.jpg" alt="אוהל מדידת זמנים" width=854 height=640 title="תנועה מדידת זמנים">
-
-                            </div>{% comment %}<!-- end left -->{% endcomment %}
+        </ul>
+        <p>כמו כן מציעה החברה את שירותיה במבחני דרכים לרכבים ואופנועים עבור אמצעי התקשורת השונים ולגופים המקיימים הדרכות והתנסויות בנהיגה, במסגרת ימי עיון או ימי כיף לעובדים.</p>
+          <div class=right>
+            <div class=next-race>
+              <h2>תוצאות אחרונות:</h2>
+              <ul>
+                {% for post in site.posts limit:4 %}
+                <li>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>{% comment %}<!-- end next-race -->{% endcomment %}
+            <div class=contact>
+              <h2>יצירת קשר:</h2>
+              <ul>
+                <li>רז הימן</li>
+                <li><a href="mailto:119raz@walla.com">מייל: 119raz&#64;walla.com</a></li>
+              </ul>
+                {% comment %}<!---  <li><a href="tel:+972505562519">טלפון: 972-505-562519+</a></li>-->{% endcomment %}
+            </div>{% comment %}<!-- end contact -->{% endcomment %}
+          </div>{% comment %}<!-- end right -->{% endcomment %}
+          <div class=left>
+            <img src="/images/095334.jpg" alt="אוהל מדידת זמנים" width=854 height=640 title="תנועה מדידת זמנים">
+          </div>{% comment %}<!-- end left -->{% endcomment %}
