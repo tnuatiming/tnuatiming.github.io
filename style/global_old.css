@@ -4,10 +4,13 @@
  red #cc3333
  base gray #58585A
 #8f8f8f
-*/
+@import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);        'Alef Hebrew',
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanshebrew.css);    'Open Sans Hebrew',
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);    'Open Sans Hebrew',
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanshebrew.css);*/
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
-
-
 html {
   font-size: 16px;
   -webkit-box-sizing: border-box;
@@ -16,9 +19,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  margin: 0;
-  padding: 0;
-  position: relative;
 }
 
 body {
@@ -31,7 +31,7 @@ body {
   direction: rtl;
   line-height: 1.5;
   text-align: center;
-  font-family: 'Open Sans Hebrew', sans-serif;
+  font-family: 'Open Sans Hebrew', sans-serif; /*Alef, "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   vertical-align: baseline;
   border: 0;
   min-width:468px;
@@ -42,9 +42,21 @@ a {
   text-decoration: none;
 }
 
-a:active,a:hover,a:focus {
+#home p a {  
+   border-bottom: 1px dotted #333;
+}
+
+#races .main a:hover {  
+   background-color: rgba(255,255,255,0.7);
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:active,a:hover {
   outline: 0;
-  color: #333;
+  color: #999;
   border-bottom: 1px dotted;
 }
 
@@ -84,6 +96,8 @@ p {
   color: #58585A;
   text-align: right;
   font-size: 24px;
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -95,10 +109,12 @@ img {
 ul {
   color: #58585A;
   text-align: right;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 
-#races .main_content ul {
+#races .main ul {
   margin-right: 30px;
 }
 
@@ -106,14 +122,23 @@ li {
   color: #777;
   text-align: right;
   margin: 10px;
+  padding: 0;
   text-shadow: 0px 2px 3px #FFF;
   list-style-type: none;
 }
 
+iframe {
+  width: 100%;
+  margin: 0;
+  border: none;
+  direction: rtl;
+}
+
+/*table*/
 table {
   font-size: 16px;
   line-height: 2em;
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   margin-top: 20px;
   width: 100%;
   border-collapse: collapse;
@@ -175,7 +200,8 @@ td, th {
   border-collapse: collapse;
 }
 
-.row {
+.row 
+{
     width: 100%; 
 }
 
@@ -184,31 +210,240 @@ td, th {
   zoom: 1;
 }
 
-.row:before,.row:after {
+.content:before,.content:after,.row:before,.row:after {
   display: table;
   content: "";
   line-height: 0;
 }
 
-.row:after {
+.content:after,.row:after {
   clear: both;
+}
+
+#img1,#img2,#img3,#img4,#img5 {
+  background-size: cover;
+  height: 0;
+  margin: 20px 0;
+  padding-bottom: 56.25%;
+/* 16:9 */
+}
+
+#live #img1,#live #img2,#live #img3,#live #img4,#live #img5 {
+  background-size: cover;
+  height: 135px;
+  width: 240px;
+  float: right;
+  padding-bottom: 0;
+/* 16:9 */
+  margin: 20px 0 40px;
+}
+
+#race #img1,#race #img2,#race #img3,#race #img4,#race #img5 {
+  background-size: cover;
+  height: 135px;
+  width: 240px;
+  float: right;
+  padding-bottom: 0;
+/* 16:9 */
+  margin: 20px 0 40px;
 }
 
 .full-bg {
   background: rgba(240,240,240,0.90);
   min-height: 100%;
-  position: relative;
 }
 
 .page {
   max-width: 1200px;
   margin: 0 auto;
-  overflow: hidden;
-  width: 90%;
-  min-height: 100vh; /* will cover the 100% of viewport */
-  display: block;
   position: relative;
-  padding-bottom: 10px; /* height of your footer */
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.header {
+  float: right;
+}
+
+.main_logo {
+   float: right;
+   width: 40%;
+   max-width: 200px;
+   text-align: right;
+   margin-bottom: 15px;
+   z-index: 1000;
+}
+a.main_logo 
+{
+   border-bottom: none;
+}
+
+.navigation {
+  float: left;
+  text-align: left;
+  margin-top: -100px;
+  margin-left: 50px;
+  width: 50%;
+}
+.home-icon, .race-icon, .live-icon{
+   max-width: 18px;
+   max-height: 18px;
+   padding: 0 4px;
+}
+
+.main_content {
+  margin-bottom: 50px;
+}
+
+#live .main {
+  text-align: center;
+}
+
+#races .main {
+  margin-right: 10%;
+}
+
+#auto {
+  min-width: 100%;
+}
+
+.clear {
+  clear: both;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.content {
+  padding: 0 5px;
+}
+
+.main {
+  margin: 10px 0 20px;
+  text-align: right;
+  width: 100%;
+}
+
+#home .right {
+  float: right;
+  width: 40%;
+}
+
+#home .left {
+  float: left;
+  width: 55%;
+  margin: 20px 0;
+}
+
+.next-race {
+  float: right;
+  text-align: right;
+  width: 100%;
+  clear: both;
+}
+
+.next {
+  margin-right: 10px;
+}
+
+.contact {
+  float: right;
+  text-align: right;
+  width: 100%;
+  margin: 20px;
+}
+
+#races .right {
+  float: right;
+  width: 45%;
+}
+
+#races .left {
+  float: left;
+  width: 50%;
+}
+
+.race h2 {
+  margin: 0;
+}
+
+.race p {
+  margin: 5px 30px 5px 10px;
+}
+
+.footer {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.footer .content {
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+  left: 5px;
+  right: 5px;
+  border-top: 2px #B1B3B4 solid;
+}
+
+.mail, .copyright {
+  color: #58585A;
+  text-shadow: 0 1px 1px #fff;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  float: right;
+  text-align: right;
+}
+
+.copyright {
+  text-align: left;
+  float: left;
+}
+
+.head {
+  float: right;
+  margin: 0;
+}
+
+.navigation ul {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+  vertical-align: middle;  
+  float: left;
+}
+
+.navigation li {
+  float: right;
+  margin: 10px 0;
+  padding: 0 ;
+}
+
+#home a.home,#live a.live,#races a.races,#race a.races {
+  border-bottom: 6px #757575 solid;
+}
+
+.navigation a:link,.navigation a:visited {
+  font-weight: normal;
+  color: #58585A;
+  display: block;
+  width: auto;
+  overflow: hidden;
+  padding: 4px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.navigation a:hover,.navigation a:active {
+  color: #58585A;
+  background-color: rgba(255,255,255,0.8);
+  border-bottom: 6px #ffcc33 solid;
 }
 
 /*language*/
@@ -231,13 +466,22 @@ td, th {
   border: none;
 }
 
-/*logo*/
-
-.logo_main,.logo_image {
-  float: right;
+.image-side {
+  padding: 5px 0;
 }
 
-.logo_image {
+/* Reusable column setup */
+.col {
+  border: 0 solid rgba(0,0,0,0);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box !important;
+  background-clip: padding-box !important;
+}
+
+/* logo */
+.logotop {
+  float: right;
   margin: 10px;
 }
 
@@ -335,169 +579,12 @@ td, th {
    0% {opacity: 1;}
    50% {opacity: 1;}
   100% {opacity: 0;}
-}
+ }
  @keyframes blink {
      0% {opacity: 1;}
    50% {opacity: 1;}
   100% {opacity: 0;}
-}
- 
-.logo_text {
-   float: right;
-   width: 40%;
-   max-width: 200px;
-   text-align: right;
-   margin-bottom: 15px;
-   z-index: 1000;
-}
-
-a.logo_text{
-   border-bottom: none;
-}
-
-/*navigation*/
-
-.navigation {
-  float: left;
-  text-align: left;
-  margin-top: -100px;
-  margin-left: 50px;
-  width: 50%;
-}
-
-.navigation ul {
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  list-style-type: none;
-  vertical-align: middle;  
-  float: left;
-}
-
-.navigation li {
-  float: right;
-  margin: 10px 0;
-  padding: 0 ;
-}
-
-#home a.home,#live a.live,#races a.races,#race a.races {
-  border-bottom: 6px #757575 solid;
-}
-
-.navigation a:link,.navigation a:visited {
-  font-weight: normal;
-  color: #58585A;
-  display: block;
-  width: auto;
-  overflow: hidden;
-  padding: 4px 10px;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 18px;
-  vertical-align: middle;
-}
-
-.navigation a:hover,.navigation a:active {
-  color: #58585A;
-  background-color: rgba(255,255,255,0.8);
-  border-bottom: 6px #ffcc33 solid;
-}
-
-.home-icon, .race-icon, .live-icon{
-  max-width: 18px;
-  max-height: 18px;
-  padding: 0 4px;
-}
-
-.main_content {
-  float: right;
-  margin-bottom: 50px;
-  text-align: right;
-  width: 100%;
-}
-
-#live .main_content {
-  text-align: center;
-}
-
-#races .main_content {
-  padding-right: 10%;
-}
-
-#auto {
-  min-width: 100%;
-}
-
-.clear {
-  clear: both;
-}
-
-.group:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.content {
-  padding: 0 5px;
-}
-
-#home .right {
-  float: right;
-  width: 45%;
-}
-
-#home .left {
-  float: left;
-  width: 50%;
-  margin: 20px 0;
-}
-
-.next-race {
-  float: right;
-  text-align: right;
-  width: 100%;
-  clear: both;
-}
-
-.contact a {
-color: #777;
-    
-}
-
-.race h2 {
-  margin: 0;
-}
-
-.race p {
-  margin: 5px 30px 5px 10px;
-}
-
-.footer {
-  margin: 20px auto 0;
-  width: 100%;
-  height: 30px;
-  border-top: 2px #B1B3B4 solid;
-}
-
-.mail, .copyright {
-  color: #58585A;
-  text-shadow: 0 1px 1px #fff;
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-  float: right;
-  text-align: right;
-}
-
-.copyright {
-  text-align: left;
-  float: left;
-}
-
-.logo_tiny {
-      border-bottom: none;
-} 
+ }
  
 .animated {
   -webkit-animation-fill-mode: both;
@@ -547,9 +634,50 @@ color: #777;
   animation-name: fadeIn;
 }
 
+    /* 1. 12 Column Grid 0px - 979px
+    -----------------------------------------------------------------------------
+
+    Span 1:    6.5%
+    Span 2:    15.0%
+    Span 3:    23.5%
+    Span 4:    32.0%
+    Span 5:    40.5%
+    Span 6:    49.0%
+    Span 7:    57.5%
+    Span 8:    66.0%
+    Span 9:    74.5%
+    Span 10:    83.0%
+    Span 11:    91.5%
+    Span 12:    100%
+
+    ----------------------------------------------------------------------------- */
+    /* 2. 12 Column Grid 980px - Infinity
+    -----------------------------------------------------------------------------
+
+    Span 1:    6.5%
+    Span 2:    15.0%
+    Span 3:    23.5%
+    Span 4:    32.0%
+    Span 5:    40.5%
+    Span 6:    49.0%
+    Span 7:    57.5%
+    Span 8:    66.0%
+    Span 9:    74.5%
+    Span 10:    83.0%
+    Span 11:    91.5%
+    Span 12:    100%
+
+    ----------------------------------------------------------------------------- */
+
 @media (max-width: 999px) {
 .page {
-  width: 95%;
+  width: 98%;
+}
+
+.span_12, .main_content, {
+     float:right;
+     margin-left:0;
+     width:100%;
 }
 
 #home .left {
@@ -564,6 +692,15 @@ color: #777;
     }
 
 @media (min-width: 1000px) {
+
+.page{
+     width: 90%;
+}
+
+.span_10, .main_content{
+    width:100%;
+    float:right;
+}
 
 .navigation {
   margin-left: 150px;
@@ -588,6 +725,16 @@ body, p, a {
  float: right;
 }
 
+#races .right{
+  float: right;
+  width: 100%;
+}
+
+#races .left{
+  float: right;
+  width: 100%;
+}
+
 #race h2{
   font-size: 18px;
 }
@@ -609,10 +756,11 @@ table {
 }
 
 #race table, th, td{
+    border-collapse:collapse;
     font-size: 10px;
 }
 
-body, .full-bg{
+body,  .full-bg{
    background: #f0f0f0;
 }
 
@@ -661,9 +809,19 @@ table {
 .title_font {
       font-size: 16px;
 }
+
+#img1, #img2, #img3, #img4, #img5 {
+    -webkit-background-size:cover;
+    background-size: cover;
+    height: 102px;
+    width:180px;
+    float:right;
+    padding-bottom: 0; /* 16:9 */
+    margin:10px 0;
+}
     }
 
-@media (max-width: 900px)  {
+@media (max-width: 880px)  {
 
 .navigation {
     margin-top: 0;
@@ -671,7 +829,7 @@ table {
     width: 100%;
 }
 .navigation ul {
-   margin: 0 50px 10px 0;
+   margin: 0 0 10px 0;
    float: right;
 }
 .navigation li {

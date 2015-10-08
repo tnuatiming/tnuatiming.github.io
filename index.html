@@ -8,7 +8,6 @@ sitemap:
   changefreq: 'monthly'
   exclude: 'no'
 ---
-                        {% comment %}{% comment %}<!--  <span class="css3-blink"> <a  href=#><marquee>המרוץ הבא: מוטוקרוס - 25-5-2013 - בית שאן</marquee></a></span>-->{% endcomment %}{% endcomment %}
                             <p><a href=/>תנועה מדידת זמנים</a> פועלת תחת <a href="http://www.north.co.il">חברת תנועה מערכות מחשוב וניווט בע"מ </a>ועוסקת במדידת זמנים בארועי ספורט מוטוריים בעיקר.
 הפעילות שהחלה בשנת 2009 במתן שרותי מדידת זמנים לליגת האנדורו בישראל התרחבה לענפים נוספים, בינהם<a style= "border-bottom: none;" href="//tnuatiming.com/manual/">:</a>
 <p>
@@ -24,11 +23,9 @@ sitemap:
             <li>ליגת הקארטינג הישראלית</li>
     </ul>
 <p>כמו כן מציעה החברה את שירותיה במבחני דרכים לרכבים ואופנועים עבור אמצעי התקשורת השונים ולגופים המקיימים הדרכות והתנסויות בנהיגה, במסגרת ימי עיון או ימי כיף לעובדים.</p>
-                            </div>
                         <div class=right>
                             <div class=next-race>
                                 <h2>תוצאות אחרונות:</h2>
-                                                {% comment %}{% comment %}<!--עדכן מרוץ הבא כאן-->{% endcomment %}{% endcomment %}
    <ul>
     {% for post in site.posts limit:4 %}
       <li>
@@ -36,16 +33,20 @@ sitemap:
       </li>
     {% endfor %}
   </ul>
-                                {% comment %}{% comment %}<!--<a class=next href="http://dirtrider.co.il/next-race-information/">(פרטים נוספים) </a> -->{% endcomment %}{% endcomment %}
                             </div>
                             <div class=contact>
                                 <h2>יצירת קשר:</h2>
-                                <p>רז הימן</p>
-                                <a href="mailto:119raz@walla.com">מייל: 119raz&#64;walla.com</a><br>
-                                {% comment %}{% comment %}<!---  <a href="tel:+972505562519">טלפון: 972-505-562519+</a>-->{% endcomment %}{% endcomment %}
+                                <ul>
+                                  <li>רז הימן
+                                  </li>
+                                  <li><a href="mailto:119raz@walla.com">מייל: 119raz&#64;walla.com</a>
+                                  </li>
+                                </ul>
+                                
+                               {% comment %}<!---  <a href="tel:+972505562519">טלפון: 972-505-562519+</a>-->{% endcomment %}
                             </div>
-                            </div>{% comment %}{% comment %}<!-- end right -->{% endcomment %}{% endcomment %}
+                            </div>{% comment %}<!-- end right -->{% endcomment %}
                             <div class=left>
                             <img src="/images/095334.jpg" alt="אוהל מדידת זמנים" width=854 height=640 title="תנועה מדידת זמנים">
 
-                            </div>{% comment %}{% comment %}<!-- end left -->{% endcomment %}{% endcomment %}
+                            </div>{% comment %}<!-- end left -->{% endcomment %}
