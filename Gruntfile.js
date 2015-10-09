@@ -87,7 +87,7 @@
     },
    
 replace: {
-  results: {
+  minify: {
     src: ['_site/results/**/*.html', '_site/style/*.css'],
     overwrite: true,                 // overwrite matched source files
     replacements: [{

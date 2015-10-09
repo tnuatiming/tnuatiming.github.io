@@ -345,6 +345,11 @@ a.logo_text{
    border-bottom: none;
 }
 
+.logo_tiny svg{
+   width: 16px;
+   height: 16px;
+}
+
 .logo_tiny, .logo_main a:hover {
       border-bottom: none;
 } 
