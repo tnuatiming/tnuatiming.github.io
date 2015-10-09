@@ -335,7 +335,7 @@ td, th {
 .logo_text {
    float: right;
    width: 40%;
-   max-width: 200px;
+   max-width: 220px;
    text-align: right;
    margin-bottom: 15px;
    z-index: 1000;
@@ -345,6 +345,10 @@ a.logo_text{
    border-bottom: none;
 }
 
+.logo_tiny, .logo_main a:hover {
+      border-bottom: none;
+} 
+ 
 /*navigation*/
 
 .navigation {
@@ -370,8 +374,8 @@ a.logo_text{
   padding: 0 ;
 }
 
-#home a.home,#live a.live,#races a.races,#race a.races {
-  border-bottom: 6px #757575 solid;
+#home a.home,#live a.live,#races a.races,#race a.races,#terms a.home,#home-english a.live {
+  border-bottom: 6px #58585A solid;
 }
 
 .navigation a:link,.navigation a:visited {
@@ -402,6 +406,7 @@ a.logo_text{
 .main_content {
   float: right;
   margin-bottom: 50px;
+  margin-top: 10px;
   text-align: right;
   width: 100%;
 }
@@ -487,10 +492,6 @@ color: #58585A;
   float: left;
 }
 
-.logo_tiny, .logo_main a:hover {
-      border-bottom: none;
-} 
- 
 .animated {
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;

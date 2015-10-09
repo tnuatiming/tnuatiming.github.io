@@ -9,7 +9,6 @@ permalink: /:categories/:year/:title.html
 excerpt_separator: <!--more-->
 include: [
     english/index.html,
-    "live/index.html",
     .htaccess
 ]
 exclude: [
