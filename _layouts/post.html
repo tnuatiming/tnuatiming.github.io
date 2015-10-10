@@ -7,8 +7,12 @@
 
     {% include header.html %}
 
-  <h2> {{ page.tag }} {{ page.type }}</h2>
-  <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+{% if page.type == "" or page.type == nil or page.type == blank %}
+    <h2> {{ page.tag }} </h2>
+  {% else %}
+    <h2> {{ page.tag }} - {{ page.type }}</h2>  
+{% endif %}
+<h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
   
         {{ content }}
 
@@ -16,3 +20,6 @@
 
 </body>
 </html>
+
+
+

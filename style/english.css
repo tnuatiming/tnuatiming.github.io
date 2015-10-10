@@ -44,6 +44,7 @@ text-align: left;
 .contact {
   float:left; 
   text-align:left;
+  margin-top: 30px;
 }
 
 .head {    
@@ -106,9 +107,12 @@ li {
 
 @media all and (max-width: 42em)
 	{
-.left, .right{
+ .right{
     float: left;
     width: 100%;
+}
+.left{
+  display: none;
 }
 	}
 	
