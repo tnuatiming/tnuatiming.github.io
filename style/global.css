@@ -379,7 +379,7 @@ a.logo_text{
   padding: 0 ;
 }
 
-#home a.home,#live a.live,#races a.races,#race a.races,#terms a.home,#home-english a.live {
+#home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
   border-bottom: 6px #58585A solid;
 }
 
