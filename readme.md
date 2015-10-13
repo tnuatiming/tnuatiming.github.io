@@ -63,7 +63,7 @@ git push -u origin master
 
 npm update npm
 
-npm install grunt-cli
+npm install -g grunt-cli //the -g is to get grunt in the path
 
 npm install grunt --save-dev
 
