@@ -20,10 +20,10 @@
   target: {
     files: [{
       expand: true,
-      cwd: 'style',
+      cwd: '_site/style',
       src: ['*.css', '!*.min.css'],
-      dest: 'release/css',
-      ext: '.min.css'
+      dest: '_site/style',
+ //     ext: '.min.css'
     }]
   }
 },
@@ -36,12 +36,12 @@
         
       },
       files: [{                                   // Dictionary of files 
-        cwd: '_site/results',
+        cwd: '_site',
         src: '**/*.html',
-        dest: '_site/results/views',
+        dest: '_site',
        expand: true    // 'destination': 'source' 
       }]
-    },
+    }
  //   dev: {                                       // Another target 
   //    options: {                                 // Target options 
  //       removeComments: true,
@@ -130,8 +130,10 @@ grunt.loadNpmTasks('grunt-text-replace');
   grunt.registerTask('css', ['cssmin']);
   grunt.registerTask("serve", ["shell:jekyllServe"]);
   grunt.registerTask("build", ["shell:jekyllBuild"]);
-  grunt.registerTask("ftp", ["shell:jekyllBuild", "replace", "ftpush"]);
+//  grunt.registerTask("ftp", ["shell:jekyllBuild", "replace", "ftpush"]);
+  grunt.registerTask("ftp", ["shell:jekyllBuild", "html", "css", "ftpush"]);
   grunt.registerTask("git", ["shell:gitUpdate"]);
-  grunt.registerTask("upload", ["shell:jekyllBuild", "replace", "ftpush", "shell:gitUpdate"]);
+//  grunt.registerTask("upload", ["shell:jekyllBuild", "replace", "ftpush", "shell:gitUpdate"]);
+  grunt.registerTask("upload", ["shell:jekyllBuild", "html", "css", "ftpush", "shell:gitUpdate"]);
 
 };

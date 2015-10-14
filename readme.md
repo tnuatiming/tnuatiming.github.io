@@ -85,6 +85,10 @@ npm install grunt-text-replace --save-dev
 
 // update Gruntfile.js and package.json
 
+## install script (run in tne root dir of the project)
+
+npm update npm && npm install -g grunt-cli && npm install grunt --save-dev && npm install grunt-contrib-cssmin --save-dev &&  npm install grunt-contrib-htmlmin --save-dev && npm install grunt-shell --save-dev && npm install load-grunt-tasks --save-dev && npm install grunt-contrib-watch --save-dev && npm install grunt-contrib-connect --save-dev && npm install grunt-contrib-ftpush --save-dev && npm install grunt-text-replace --save-dev
+
 ### running grunt tasks
 
 grunt //normal jekyell server with live update
