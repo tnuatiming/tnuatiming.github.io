@@ -115,7 +115,7 @@ ftpush: {
 });
 
 require('load-grunt-tasks')(grunt);
-// Load the plugin that provides the "uglify" task.
+
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-htmlmin');
 grunt.loadNpmTasks('grunt-contrib-watch');
