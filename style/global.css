@@ -118,12 +118,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
+#race td.rnk_font {color: #58585A;font-weight: bold; text-shadow: 0 1px 2px white;}
 #race tr.rnk_bkcolor:nth-child(even) {background: rgba(224,224,224,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd) {background: rgba(208,208,208,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {background: #ffcc33;}
 #race .subtitle_font { font-weight: bold;}
-#race td:first-child + td { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; }/*number column*/
+#race td:first-child + td { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none;}/*number column*/
 #race .no_num_color td:first-child + td { font-weight: normal; background-color: rgba(0, 0, 0, 0); color:#000; }/*undo number column*/
 #race tr.bkcolor td.title_font {color:#333; text-shadow: 0 1px 2px #ffcc33; font-weight: bold;} /*category     background-color: rgba(245,245,245,0.5);*/
 .rnkh_bkcolor {color:#eee; background: rgba(0,0,0,0.5); font-weight: bold;} /*table header*/
@@ -163,9 +163,10 @@ tr.OddRow:hover, tr.EvenRow:hover {background: #ccc;}
 #ImageZoom { position:absolute; visibility:hidden; width:auto; height:auto; max-width:100%; max-height:100%; }
 #Message {color: #FFFF00; font-size: 1.1em; }
 
-.title_font {
+.title_font, td.subtitle_font {
   font-size: 18px;
   font-weight: bold;
+  text-shadow: 0 1px 2px white;
 }
 
 td, th {
@@ -384,7 +385,7 @@ a.logo_text{
 }
 
 .navigation a:link,.navigation a:visited {
-  font-weight: normal;
+  font-weight: bold;
   color: #58585A;
   display: block;
   width: auto;
@@ -392,7 +393,7 @@ a.logo_text{
   padding: 4px 10px;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 16px;
   vertical-align: middle;
 }
 
@@ -604,6 +605,9 @@ table {
 
 .rnk_font, .rnkh_font, .rnk_bkcolor{
     font-size: 10px;
+}
+#race td.rnk_font {
+    font-weight: normal;
 }
 
 #race table, th, td{
