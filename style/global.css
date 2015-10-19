@@ -608,6 +608,8 @@ table {
 }
 #race td.rnk_font {
     font-weight: normal;
+    text-shadow: none;
+    color: #333;
 }
 
 #race table, th, td{
