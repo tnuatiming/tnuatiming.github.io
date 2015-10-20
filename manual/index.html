@@ -210,20 +210,27 @@ direction: ltr;
         </li>
         <li>במידה וחסר <pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
         <pre><code>
-           sed -i '/&lt;td/s/$/&lt;\/td&gt;/g' file.html
+           sed -i '/&lt;td class="rnk_font"/s/$/&lt;\/td&gt;/g' file.html
         </code></pre>
       או
       
         <pre><code>
-           awk '/&lt;td/ { gsub(/$/, "&lt;/td&gt;") }; { print }' file.html &gt; file.html
+           awk '/&lt;td class="rnk_font"/ { gsub(/$/, "&lt;/td&gt;") }; { print }' file.html &gt; file.html
+        </code></pre>
+        </li>
+        <li>בנוסף במידה וחסר בכותרת<pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
+        <pre><code>
+           sed -i '/&lt;tr&gt;&lt;td/s/&lt;\/tr&gt;/&lt;\/td&gt;&lt;\/tr&gt;/g' file.html
         </code></pre>
       </li>
+      
+      
     </ol>
     </p>
     
     <h3 class="c7">חצי אוטומטי</h3>
     
-    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a>עבור 1-3, את סעיפים 4,5 יש לבצע ידנית.</span></p>
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a>עבור 1-3, את סעיפים 4,5,6 יש לבצע ידנית.</span></p>
     
     <h3 class="c7">שעון תצוגה</h3>
 
