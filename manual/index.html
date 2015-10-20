@@ -208,17 +208,22 @@ direction: ltr;
         &lt;/tr&gt;
         </code></pre>
         </li>
-        <li>במידה וחסר <pre><code>&lt;/td&gt;</pre></code> יש להריץ:
+        <li>במידה וחסר <pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
         <pre><code>
            sed -i '/&lt;td/s/$/&lt;\/td&gt;/g' file.html
         </code></pre>
-        </li>
+      או
+      
+        <pre><code>
+           awk '/&lt;td/ { gsub(/$/, "&lt;/td&gt;") }; { print }' file.html &gt; file.html
+        </code></pre>
+      </li>
     </ol>
     </p>
     
     <h3 class="c7">חצי אוטומטי</h3>
     
-    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a>עבור 1-3, את סעיף 4 יש לבצע ידנית.</span></p>
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a>עבור 1-3, את סעיפים 4,5 יש לבצע ידנית.</span></p>
     
     <h3 class="c7">שעון תצוגה</h3>
 
