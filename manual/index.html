@@ -189,7 +189,7 @@ direction: ltr;
     <p class="c0">
     <ol>
         <li>שימוש באתר <a class="c2" href="http://area23.brightbyte.de/csv2wp.php">http://area23.brightbyte.de/csv2wp.php</a> או <a class="c2" href="http://tnuatiming.com/manual/csv2wp.php">http://tnuatiming.com/manual/csv2wp.php</a> להפוך את ה-csv לטבלת html. יש להוסיף for each cell:  class="rnk_font"
-</li>
+        </li>
         <li>להפוך את כל ה- &lt;tr&gt; ל- &lt;tr class="rnk_bkcolor"&gt;</li>
         <li>להפוך את rnk ל- rnkh בשורה הראשונה(header) של הטבלה</li>
         <li>לשנות את תצוגת הקטגוריה ל-
@@ -206,6 +206,11 @@ direction: ltr;
             &lt;th class="rnkh_font"&gt;פער&lt;/th&gt;          
             &lt;th class="rnkh_font"&gt;עונשין&lt;/th&gt;       
         &lt;/tr&gt;
+        </code></pre>
+        </li>
+        <li>במידה וחסר טאג סגירה ל-td יש להריץ:
+        <pre><code>
+           sed -i '/<td/s/$/<\/td>/g' file.html
         </code></pre>
         </li>
     </ol>
