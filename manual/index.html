@@ -186,7 +186,7 @@ direction: ltr;
     
     <h3 class="c7">ידני</h3>
 
-    <p class="c0">
+    <p class="c0">יש לבצע את הפעולות לפי הסדר המופיע להלן:
     <ol>
         <li>שימוש באתר <a class="c2" href="http://area23.brightbyte.de/csv2wp.php">http://area23.brightbyte.de/csv2wp.php</a> או <a class="c2" href="http://tnuatiming.com/manual/csv2wp.php">http://tnuatiming.com/manual/csv2wp.php</a> להפוך את ה-csv לטבלת html. יש להוסיף for each cell:  class="rnk_font"
         </li>
@@ -194,7 +194,7 @@ direction: ltr;
         <li>להפוך את rnk ל- rnkh בשורה הראשונה(header) של הטבלה</li>
         <li>לשנות את תצוגת הקטגוריה ל-
         <pre><code>
-            &lt;tr&gt;&lt;td colspan=99 class="title_font"&gt;  אופנועים  &lt;/tr&gt;
+            &lt;tr&gt;&lt;td colspan=99 class="title_font"&gt;  אופנועים  &lt;/td&gt;&lt;/tr&gt;
         &lt;tr class="rnkh_bkcolor"&gt;
             &lt;th class="rnkh_font"&gt;מקום&lt;/th&gt;
             &lt;th class="rnkh_font"&gt;מספר&lt;/th&gt;
@@ -208,7 +208,7 @@ direction: ltr;
         &lt;/tr&gt;
         </code></pre>
         </li>
-        <li>במידה וחסר <pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
+        <li>במידה וחסרים <pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
         <pre><code>
            sed -i '/&lt;td class="rnk_font"/s/$/&lt;\/td&gt;/g' file.html
         </code></pre>
@@ -218,7 +218,7 @@ direction: ltr;
            awk '/&lt;td class="rnk_font"/ { gsub(/$/, "&lt;/td&gt;") }; { print }' file.html &gt; file.html
         </code></pre>
         </li>
-        <li>בנוסף במידה וחסר בכותרת<pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
+        <li>בנוסף במידה וחסר בכותרות<pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
         <pre><code>
            sed -i '/&lt;tr&gt;&lt;td/s/&lt;\/tr&gt;/&lt;\/td&gt;&lt;\/tr&gt;/g' file.html
         </code></pre>
