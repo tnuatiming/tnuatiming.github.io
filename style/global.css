@@ -69,14 +69,14 @@ h2 {
 }
 
 h3 {
-  font-size: 24px;
-  color: #fc3;
-  text-shadow: 0 2px 3px #58585A;
+  font-size: 20px;
+  color: #58585A;
+  text-shadow: 0 1px 2px #fc3;
   text-decoration: none;
   font-weight: 700;
-  text-align: right;
-  margin: 10px 20px;  
-  padding: 0 10px;
+  text-align: center;
+  margin: 10px 0 0;  
+  padding: 0;
 }
 
 p {
@@ -113,7 +113,6 @@ table {
   font-size: 16px;
   line-height: 2em;
   margin: 0 auto;
-  margin-top: 20px;
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
@@ -122,7 +121,7 @@ table {
 #race tr.rnk_bkcolor:nth-child(even) {background: rgba(224,224,224,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd) {background: rgba(208,208,208,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {background: #ffcc33;}
-#race .subtitle_font { font-weight: bold;}
+#race tr td.subtitle_font { font-weight: bold;background: rgba(208,208,208,0.5);}
 #race td:first-child + td { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none;}/*number column*/
 #race .no_num_color td:first-child + td { font-weight: normal; background-color: rgba(0, 0, 0, 0); color:#000; }/*undo number column*/
 #race tr.bkcolor td.title_font {color:#333; text-shadow: 0 1px 2px #ffcc33; font-weight: bold;} /*category     background-color: rgba(245,245,245,0.5);*/
@@ -163,7 +162,7 @@ tr.OddRow:hover, tr.EvenRow:hover {background: #ccc;}
 #ImageZoom { position:absolute; visibility:hidden; width:auto; height:auto; max-width:100%; max-height:100%; }
 #Message {color: #FFFF00; font-size: 1.1em; }
 
-.title_font, td.subtitle_font {
+td.title_font, td.subtitle_font {
   font-size: 18px;
   font-weight: bold;
   text-shadow: 0 1px 2px white;
@@ -625,36 +624,59 @@ body, .full-bg{
 @media (min-width: 721px)        {
 
 body#home{
-     background: #fff url(../images/4752751.jpg) center center no-repeat fixed;
+     background: #fff url(/images/4752751.jpg) center center no-repeat fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }
 
 body#home-english{
-     background: #fff url(../images/4752751.jpg) center center no-repeat fixed;
+     background: #fff url(/images/4752751.jpg) center center no-repeat fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }
 
 body#races{
-     background: #fff url(../images/478466.jpg) center center no-repeat fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-}
-
-body#race{
-     background: #fff url(../images/4074271.jpg) center center no-repeat fixed;
+     background: #fff url(/images/478466.jpg) center center no-repeat fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }
 
 body#live{
-     background: #fff url(../images/10854828.jpg) center center no-repeat fixed;
+     background: #fff url(/images/10854828.jpg) center center no-repeat fixed;
     -webkit-background-size: cover;
     background-size: cover;
 }
 
-    }
+body#race{
+     background: #fff url(/images/4074271.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+body#race.enduro{
+     background: #fff url(/images/enduro.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+body#race.allmountain{
+     background: #fff url(/images/allmountain.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+body#race.gymkhana{
+     background: #fff url(/images/gymkhana.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+body#race.rally{
+     background: #fff url(/images/rally.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+   }
 
 @media (min-width: 601px) and (max-width: 999px)  {
 

@@ -210,7 +210,7 @@ direction: ltr;
         </li>
         <li>במידה וחסרים <pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
         <pre><code>
-           sed -i '/&lt;td class="rnk_font"/s/$/&lt;\/td&gt;/g' file.html
+           sed -i '/&lt;[tT][dD] class="rnk_font"/s/$/&lt;\/td&gt;/g' file.html
         </code></pre>
       או
       
