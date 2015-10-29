@@ -671,7 +671,7 @@ body#race.gymkhana{
     background-size: cover;
 }
 
-body#race.rally{
+body#race.rally, body#race.baja{
      background: #fff url(/images/rally.jpg) center center no-repeat fixed;
     -webkit-background-size: cover;
     background-size: cover;
