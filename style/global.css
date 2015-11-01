@@ -8,7 +8,6 @@
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
 html {
-  font-size: 16px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: 100%;
@@ -25,7 +24,7 @@ body {
   display: block;
   padding: 0;
   margin: 0;
-  font-size: 24px;
+  font-size: 110%;
   position: relative;
   direction: rtl;
   line-height: 1.5;
@@ -48,14 +47,14 @@ a:active,a:hover,a:focus {
 }
 
 h1 {
-  font-size: 32px;  
+  font-size: 2em;  
   color: #58585A;
   letter-spacing: 1px;
   text-shadow: 0 2px 3px #fff;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 1.5em;
   color: #8f8f8f;
   text-shadow: 0 2px 3px #fff;
   text-decoration: none;
@@ -69,7 +68,7 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 1.2em;
   color: #58585A;
   text-shadow: 0 1px 2px #fc3;
   text-decoration: none;
@@ -82,7 +81,7 @@ h3 {
 p {
   color: #58585A;
   text-align: right;
-  font-size: 24px;
+  font-size: 1.2em;
 }
 
 img {
@@ -107,10 +106,11 @@ li {
   margin: 10px;
   text-shadow: 0px 2px 3px #FFF;
   list-style-type: none;
+  font-size: 1.2em;
 }
 
 table {
-  font-size: 16px;
+  font-size: 1em;
   line-height: 2em;
   margin: 0 auto;
   width: 100%;
@@ -121,7 +121,7 @@ table {
 #race tr.rnk_bkcolor:nth-child(even) {background: rgba(224,224,224,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd) {background: rgba(208,208,208,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {background: #ffcc33;}
-#race tr td.subtitle_font { font-weight: bold;background: rgba(208,208,208,0.5);}
+#race td.subtitle_font {background: rgba(208,208,208,0.5);}
 #race td:first-child + td { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none;}/*number column*/
 #race .no_num_color td:first-child + td { font-weight: normal; background-color: rgba(0, 0, 0, 0); color:#000; }/*undo number column*/
 #race tr.bkcolor td.title_font {color:#333; text-shadow: 0 1px 2px #ffcc33; font-weight: bold;} /*category     background-color: rgba(245,245,245,0.5);*/
@@ -130,12 +130,12 @@ table {
 /*elite v3 table*/
 .main_table a{display:none;}
 td img {height: 1.5em;}
-#Menu a{margin: 0 10px; font-size: 16px; color: #CCC;}
-#Title {font-weight: bold; font-size: 24px; color: rgba(0,0,0,0.5); margin: 0 0 0 0;display:none;}
+#Menu a{margin: 0 10px; font-size: 1em; color: #CCC;}
+#Title {font-weight: bold; font-size: 1.5em; color: rgba(0,0,0,0.5); margin: 0 0 0 0;display:none;}
 #Title img {height: 20px; vertical-align: center; margin: 0 16px 0 16px;}
 #ImageHeader {margin: 0 auto 16px auto;}
 #ImageFooter {margin: 16px auto 0 auto;}
-#Time {margin: 0 auto 8px auto; font-size: 16px; font-weight: bold; text-align: right;}
+#Time {margin: 0 auto 8px auto; font-size: 1em; font-weight: bold; text-align: right;}
 #DayTime {color: #333; float: left;}
 #ElapsedTime {color: #333; margin-right: 16px;}
 RemainingTime {color: #00FF00;}
@@ -163,7 +163,7 @@ tr.OddRow:hover, tr.EvenRow:hover {background: #ccc;}
 #Message {color: #FFFF00; font-size: 1.1em; }
 
 td.title_font, td.subtitle_font {
-  font-size: 18px;
+  font-size: 1.2em;
   font-weight: bold;
   text-shadow: 0 1px 2px white;
 }
@@ -172,6 +172,7 @@ td, th {
   text-align: center;
   vertical-align: middle;
   border-collapse: collapse;
+  font-size: 1em;
 }
 
 .full-bg {
@@ -212,7 +213,7 @@ td, th {
   font-weight: 700;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 1em;
   border: none;
 }
 
@@ -361,7 +362,7 @@ a.logo_text{
   text-align: left;
   margin-top: -100px;
   margin-left: 50px;
-  width: 50%;
+  width: 62%;
 }
 
 .navigation ul {
@@ -392,7 +393,7 @@ a.logo_text{
   padding: 4px 10px;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 1em;
   vertical-align: middle;
 }
 
@@ -485,7 +486,7 @@ color: #58585A;
 .mail, .copyright {
   color: #58585A;
   text-shadow: 0 1px 1px #fff;
-  font-size: 16px;
+  font-size: 1em;
   margin: 0;
   padding: 0;
   float: right;
@@ -546,6 +547,10 @@ color: #58585A;
 }
 
 @media (max-width: 999px) {
+body {
+    font-size: 100%;
+}
+
 .page {
   width: 95%;
 }
@@ -564,18 +569,14 @@ color: #58585A;
 @media (min-width: 1000px) {
 
 .navigation {
-  margin-left: 150px;
+  margin-left: 60px;
 }
     }
 
 @media (max-width: 600px)        {
 
-body, p, a {
-    font-size: 20px;
-}
-
-.mail , .copyright {
-    font-size: 12px;
+body {
+    font-size: 80%;
 }
 
 .logo {
@@ -586,12 +587,8 @@ body, p, a {
  float: right;
 }
 
-#race h2{
-  font-size: 18px;
-}
-
-table {
-  font-size: 12px;
+td.rnk_font, th.rnkh_font {
+  border: 1px solid black;
 }
 
 #race tr.rnk_bkcolor:nth-child(odd){
@@ -602,17 +599,10 @@ table {
     background:#ccc;
 }
 
-.rnk_font, .rnkh_font, .rnk_bkcolor{
-    font-size: 10px;
-}
 #race td.rnk_font {
     font-weight: normal;
     text-shadow: none;
     color: #333;
-}
-
-#race table, th, td{
-    font-size: 10px;
 }
 
 body, .full-bg{
@@ -680,13 +670,7 @@ body#race.rally, body#race.baja{
 
 @media (min-width: 601px) and (max-width: 999px)  {
 
-table {
-    font-size: 16px;
-}
 
-.title_font {
-      font-size: 16px;
-}
     }
 
 @media (max-width: 900px)  {
@@ -703,7 +687,11 @@ table {
 .navigation li {
   margin: 0;
 }
-
+#race td.rnk_font {
+    font-weight: normal;
+    text-shadow: none;
+    color: #333;
+}
     } 
  
 @-moz-document url-prefix() {
