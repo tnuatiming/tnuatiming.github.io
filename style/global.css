@@ -379,6 +379,11 @@ a.logo_text{
   margin: 10px 0;
   padding: 0;
   background: rgba(255,255,255,0.4);
+  border-right: 1px solid #ccc;
+}
+
+.navigation li:first-child {
+  border-right: none;
 }
 
 #home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
