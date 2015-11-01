@@ -377,7 +377,7 @@ a.logo_text{
 .navigation li {
   float: right;
   margin: 10px 0;
-  padding: 0 ;
+  padding: 0 ; background: rgba(255,255,255,0.4);
 }
 
 #home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
