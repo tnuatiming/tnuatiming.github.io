@@ -594,7 +594,7 @@ body {
 }
 
 td.rnk_font, th.rnkh_font {
-  border: 1px solid black;
+  border-left: 1px solid #58585A;
 }
 
 #race tr.rnk_bkcolor:nth-child(odd){
