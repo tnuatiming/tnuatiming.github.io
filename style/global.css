@@ -109,6 +109,10 @@ li {
   font-size: 1.2em;
 }
 
+ul.history li {
+  list-style-type: disc;
+}
+
 table {
   font-size: 1em;
   line-height: 2em;
