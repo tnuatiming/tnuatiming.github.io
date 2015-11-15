@@ -690,13 +690,15 @@ body#race.rally, body#race.baja{
     margin-top: 0;
     margin-left: 0;
     width: 100%;
+    background: rgba(255,255,255,0.6);
 }
 .navigation ul {
-   margin: 0 10px 10px 0;
+/*   margin: 0 10px 10px 0;*/
    float: right;
 }
 .navigation li {
   margin: 0;
+  background: none;
 }
 #race td.rnk_font {
     font-weight: normal;
