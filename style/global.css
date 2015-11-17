@@ -255,15 +255,15 @@ td, th {
 
 .logo li {
   position: absolute;
-  width: .2em;
-  height: .2em;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
 }
 
 .logo li:nth-child(1) {
   left: 50%;
   top: 0;
-  margin: 0 0 0 -.1em;
+  margin: 0 0 0 -5px;
   background: #F60;
 /*ktm*/
   -webkit-transform-origin: 50% 250%;
@@ -275,7 +275,7 @@ td, th {
 .logo li:nth-child(2) {
   top: 50%;
   right: 0;
-  margin: -.1em 0 0;
+  margin: -5px 0 0;
   background: #039;
 /*yamaha*/
   -webkit-transform-origin: -150% 50%;
@@ -287,7 +287,7 @@ td, th {
 .logo li:nth-child(3) {
   left: 50%;
   bottom: 0;
-  margin: 0 0 0 -.1em;
+  margin: 0 0 0 -5px;
   background: #6c3;
 /*kawasaki*/
   -webkit-transform-origin: 50% -150%;
@@ -299,7 +299,7 @@ td, th {
 .logo li:nth-child(4) {
   top: 50%;
   left: 0;
-  margin: -.1em 0 0;
+  margin: -5px 0 0;
   background: #c00;
 /*honda*/
   -webkit-transform-origin: 250% 50%;
@@ -354,10 +354,11 @@ a.logo_text{
 .logo_tiny svg{
    width: 16px;
    height: 16px;
+   margin-top: 3px;
 }
 
 .logo_tiny, .logo_main a:hover {
-      border-bottom: none;
+   border-bottom: none;
 } 
  
 /*navigation*/
@@ -592,7 +593,6 @@ body {
 }
 
 .logo {
-   font-size: 40px;
 }
 
 .navigation ul {
