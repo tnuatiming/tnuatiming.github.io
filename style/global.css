@@ -233,6 +233,10 @@ td, th {
   float: right;
 }
 
+a.main_logo {
+  display: block;
+}
+
 .logo_image {
   margin: 10px;
 }
@@ -365,6 +369,7 @@ a.logo_text{
 
 .navigation {
   float: left;
+  max-width: 65%;
   text-align: left;
   margin-top: -100px;
 }
@@ -559,6 +564,13 @@ color: #58585A;
   animation-name: fadeIn;
 }
 
+@media (min-width: 1100px) {
+
+.navigation {
+  margin-left: 60px;
+}
+    }
+    
 @media (max-width: 999px) {
 body {
     font-size: 100%;
@@ -579,49 +591,28 @@ body {
 
     }
 
-@media (min-width: 1100px) {
+@media (max-width: 900px)  {
 
 .navigation {
-  margin-left: 60px;
+    margin-top: 0;
+    margin-left: 0;
+    max-width: 100%;
+    background: rgba(255,255,255,0.6);
 }
-    }
-
-@media (max-width: 600px)        {
-
-body {
-    font-size: 80%;
-}
-
-.logo {
-}
-
 .navigation ul {
- float: right;
+/*   margin: 0 10px 10px 0;*/
+   float: right;
 }
-
-td.rnk_font, th.rnkh_font {
-  border-left: 1px solid #58585A;
+.navigation li {
+  margin: 0;
+  background: none;
 }
-
-#race tr.rnk_bkcolor:nth-child(odd){
-    background:#f0f0f0;
-}
-
-#race tr.rnk_bkcolor:nth-child(even){
-    background:#ccc;
-}
-
 #race td.rnk_font {
     font-weight: normal;
     text-shadow: none;
     color: #333;
 }
-
-body, .full-bg{
-   background: #f0f0f0;
-}
-
-    }
+    } 
     
 @media (min-width: 721px)        {
 
@@ -680,33 +671,42 @@ body#race.rally, body#race.baja{
 }
    }
 
-@media (min-width: 601px) and (max-width: 999px)  {
+@media (max-width: 600px)        {
 
-
-    }
-
-@media (max-width: 900px)  {
-
-.navigation {
-    margin-top: 0;
-    margin-left: 0;
-    width: 100%;
-    background: rgba(255,255,255,0.6);
+body {
+    font-size: 80%;
 }
+
+.logo {
+}
+
 .navigation ul {
-/*   margin: 0 10px 10px 0;*/
-   float: right;
+ float: right;
 }
-.navigation li {
-  margin: 0;
-  background: none;
+
+td.rnk_font, th.rnkh_font {
+  border-left: 1px solid #58585A;
 }
+
+#race tr.rnk_bkcolor:nth-child(odd){
+    background:#f0f0f0;
+}
+
+#race tr.rnk_bkcolor:nth-child(even){
+    background:#ccc;
+}
+
 #race td.rnk_font {
     font-weight: normal;
     text-shadow: none;
     color: #333;
 }
-    } 
+
+body, .full-bg{
+   background: #f0f0f0;
+}
+
+    }
  
 @-moz-document url-prefix() {
 
