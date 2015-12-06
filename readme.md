@@ -87,6 +87,12 @@ npm install grunt-text-replace --save-dev
 
 ## install script (run in the root dir of the project)
 
+instal/update nodejs:
+1. Unpack the official pre-built binaries into ~/.node (.e.g https://nodejs.org/dist/v0.12.7/node-v0 … x64.tar.gz would be unpacked in ~/.node/node-v0.12.7-linux-x64
+2. Add a symlink called current to your wanted node version (e.g. ln -s ~/.node/node-v0.12.7-linux-x64 ~/.node/current)
+3. Add ~/.node/current/bin to your path (e.g echo export PATH=$HOME/.node/current/bin:$PATH >> ~/.bashrc)
+
+
 npm update npm && npm install -g grunt-cli && npm install grunt --save-dev && npm install grunt-contrib-cssmin --save-dev &&  npm install grunt-contrib-htmlmin --save-dev && npm install grunt-shell --save-dev && npm install load-grunt-tasks --save-dev && npm install grunt-contrib-watch --save-dev && npm install grunt-contrib-connect --save-dev && npm install grunt-contrib-ftpush --save-dev && npm install grunt-text-replace --save-dev
 
 ### running grunt tasks
