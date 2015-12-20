@@ -669,7 +669,13 @@ body#race.rally, body#race.baja{
     -webkit-background-size: cover;
     background-size: cover;
 }
-   }
+
+    body#race.karting{
+     background: #fff url(/images/kart.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+}
 
 @media (max-width: 600px)        {
 
