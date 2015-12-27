@@ -129,6 +129,7 @@ table {
 #race td.subtitle_font {background: rgba(208,208,208,1);}
 #race td:first-child + td { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none;}/*number column*/
 #race .no_num_color td:first-child + td { font-weight: normal; background-color: rgba(0, 0, 0, 0); color:#000; }/*undo number column*/
+#race .no_num_color td:first-child { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none; }/*place column*/
 #race tr.bkcolor td.title_font {color:#333; text-shadow: 0 1px 2px #ffcc33; font-weight: bold;} /*category     background-color: rgba(245,245,245,0.5);*/
 .rnkh_bkcolor {color:#eee; background: rgba(0,0,0,0.5); font-weight: bold;} /*table header*/
 
