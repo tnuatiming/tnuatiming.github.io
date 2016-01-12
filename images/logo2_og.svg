@@ -7,13 +7,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   viewBox="0 0 200 200"
+   viewBox="0 0 600 315"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="logo2_fb.svg"
-   width="200"
-   height="200"
+   sodipodi:docname="logo2_og.svg"
+   width="600"
+   height="315"
    inkscape:export-filename="/home/amir/amirsher.github.io/images/logo2_og.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -44,8 +44,8 @@
      inkscape:window-height="1104"
      id="namedview14"
      showgrid="false"
-     inkscape:zoom="1.7276596"
-     inkscape:cx="117.5"
+     inkscape:zoom="1.1398303"
+     inkscape:cx="303.4553"
      inkscape:cy="45"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -55,7 +55,7 @@
      letter-spacing="0"
      id="g4"
      style="font-family:'Noto Sans Hebrew';letter-spacing:0;fill:#58585a"
-     transform="matrix(0.77122805,0,0,0.77122805,9.3807041,35.35839)">
+     transform="matrix(1.5424561,0,0,1.5424561,36.761408,88.087162)">
     <g
        style="font-weight:bold;font-size:90px;line-height:125%;word-spacing:0"
        font-size="90"
@@ -83,7 +83,7 @@
   <g
      id="g4148"
      style="fill-opacity:1;stroke:none"
-     transform="translate(76,126.08621)">
+     transform="matrix(2.6666666,0,0,2.6666666,446,93.500001)">
     <circle
        id="circle4150"
        cy="-5.9378204"
