@@ -88,8 +88,8 @@ npm install grunt-text-replace --save-dev
 ## install script (run in the root dir of the project)
 
 instal/update nodejs:
-1. Unpack the official pre-built binaries into ~/.node (.e.g https://nodejs.org/dist/v0.12.7/node-v0 … x64.tar.gz would be unpacked in ~/.node/node-v0.12.7-linux-x64
-2. Add a symlink called current to your wanted node version (e.g. ln -s ~/.node/node-v0.12.7-linux-x64 ~/.node/current)
+1. Unpack the official pre-built binaries into ~/.node (.e.g https://nodejs.org/dist/v5.5.0/node-v0 … x64.tar.gz would be unpacked in ~/.node/node-v5.5.0-linux-x64
+2. Add a symlink called current to your wanted node version (e.g. ln -s ~/.node/node-v5.5.0-linux-x64 ~/.node/current)
 3. Add ~/.node/current/bin to your path (e.g echo export PATH=$HOME/.node/current/bin:$PATH >> ~/.bashrc)
 
 
