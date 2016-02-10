@@ -1,5 +1,5 @@
 <head>
-  <title>תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}{% endif %} {% if page.round %} &ndash; {{ page.round }}{% endif %}{% if page.season %} עונת {{ page.season }}{% endif %}{% if page.place %} &ndash; {{ page.place }}{% endif %}</title>
+  <title>תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}{% endif %}{% if page.round %}&#58; {{ page.round }}{% endif %}{% if page.season %} עונת {{ page.season }}{% endif %}{% if page.place %} &ndash; {{ page.place }}{% endif %}</title>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo" />
@@ -10,7 +10,7 @@
   
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים"/>
-  <meta property="og:title" content="תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}{% endif %} {% if page.round %} &ndash; {{ page.round }}{% endif %}{% if page.season %} עונת {{ page.season }}{% endif %}{% if page.place %} &ndash; {{ page.place }}{% endif %}"/>
+  <meta property="og:title" content="תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}{% endif %}{% if page.round %}&#58; {{ page.round }}{% endif %}{% if page.season %} עונת {{ page.season }}{% endif %}{% if page.place %} &ndash; {{ page.place }}{% endif %}"/>
   {% if page.tag %}<meta property="og:description" content="תוצאות"/>{% else if page.place %}<meta property="og:description" content="{{ page.place }}"/>{% endif %}  
   {% if page.tag %}<meta property="og:type" content="article"/>{% endif %}
   {% if page.tag %}<meta property="article:tag" content="{{ page.categories[1] }}"/>{% endif %}
