@@ -95,6 +95,16 @@ instal/update nodejs:
 
 npm update npm && npm install -g grunt-cli && npm install grunt --save-dev && npm install grunt-contrib-cssmin --save-dev &&  npm install grunt-contrib-htmlmin --save-dev && npm install grunt-shell --save-dev && npm install load-grunt-tasks --save-dev && npm install grunt-contrib-watch --save-dev && npm install grunt-contrib-connect --save-dev && npm install grunt-contrib-ftpush --save-dev && npm install grunt-text-replace --save-dev
 
+Add this line to your application's Gemfile:
+
+gem 'html-proofer'
+And then execute:
+
+$ bundle
+Or install it yourself as:
+
+$ gem install html-proofer
+
 ### running grunt tasks
 
 grunt //normal jekyell server with live update
