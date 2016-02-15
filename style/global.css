@@ -657,6 +657,12 @@ body#race.enduro{
     background-size: cover;
 }
 
+body#race.motocross{
+     background: #fff url(/images/motocross.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 body#race.allmountain{
      background: #fff url(/images/allmountain.jpg) center center no-repeat fixed;
     -webkit-background-size: cover;
