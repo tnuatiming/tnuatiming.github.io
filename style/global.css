@@ -663,6 +663,12 @@ body#race.motocross{
     background-size: cover;
 }
 
+body#race.supermoto{
+     background: #fff url(/images/supermoto.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 body#race.allmountain{
      background: #fff url(/images/allmountain.jpg) center center no-repeat fixed;
     -webkit-background-size: cover;
