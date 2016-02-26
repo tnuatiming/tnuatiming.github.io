@@ -6,16 +6,16 @@
     
  shell: {
       jekyllServe: {
-        command: "bundle exec jekyll serve"
+        command: "jekyll serve"
       },
       jekyllBuild: {
-        command: "bundle exec jekyll build"
+        command: "jekyll build"
       },
       gitUpdate: {
         command: "./gitup.sh"
       },
       htmlproof: {
-        command: "bundle exec htmlproof ./_site --disable-external"
+        command: "htmlproof ./_site --disable-external"
       }
 },
                  
@@ -123,7 +123,7 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-htmlmin');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-connect');
-grunt.loadNpmTasks('grunt-contrib-ftpush');
+grunt.loadNpmTasks('grunt-ftpush');
 grunt.loadNpmTasks('grunt-text-replace');
 
 
