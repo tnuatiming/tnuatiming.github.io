@@ -602,11 +602,11 @@ a.logo_text{
     margin-top: 0;
     margin-left: 0;
     max-width: 100%;
-    background: rgba(255,255,255,0.6);
   }
   .navigation ul {
     /*   margin: 0 10px 10px 0;*/
     float: right;
+    background: rgba(255,255,255,0.6);
   }
   .navigation li {
     margin: 0;
@@ -714,7 +714,7 @@ a.logo_text{
   }
 
   td.rnk_font, th.rnkh_font {
-    border-left: 1px solid #58585A;
+    border: 1px solid #fff;
   }
 
   #race tr.rnk_bkcolor:nth-child(odd){
@@ -722,7 +722,7 @@ a.logo_text{
   }
 
   #race tr.rnk_bkcolor:nth-child(even){
-    background:#ccc;
+    background:#f0f0f0;
   }
 
   #race td.rnk_font {
