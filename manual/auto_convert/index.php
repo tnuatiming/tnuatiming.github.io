@@ -1,13 +1,15 @@
  <?php include("/home/raz/public_html/password_protect.php"); ?>
- <html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
 <head>
 <title>Convert CSV to HTML Table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta charset="utf-8"/>
 
 </head>
 <body>
 <div  style="font-size: 1.2em; margin: 40px auto 0 auto; width:400px;">
 <h3>Convert CSV to HTML Table</h3><br/>
-<form action="converted.php" method="post" enctype="multipart/form-data">
+<form accept-charset="utf-8" action="converted.php" method="post" enctype="multipart/form-data">
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
 
 <b>Separator Character: </b><br/><br/><div style="padding-left:2em;" >

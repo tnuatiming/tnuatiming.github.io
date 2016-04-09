@@ -102,7 +102,9 @@ direction: ltr;
   
     <h2 class="c4">יבוא מתחרים</h2>
  
-    <p class="c0"><span> מקובץ csv או xls. צריך לכלול לפחות: שם מלא בעמודה יחידה (לא כמו בצילום מתחת, אפשר להשתמש בנוסחה לאיחוד תאים: = B1 & " " & C1), מספר מתחרה(לוודא שאין כפילויות!) וקטגוריה.  יש לשמור את הקובץ כ- encoding utf-8.</span></p>
+    <p class="c0"> מקובץ csv או xls. צריך לכלול לפחות: שם מלא בעמודה יחידה (לא כמו בצילום מתחת) אפשר להשתמש בנוסחה לאיחוד תאים:</p>
+    <pre><code> &#61; B1 &#38; &#34; &#34; &#38; C1</code></pre>
+    <p> מספר מתחרה(לוודא שאין כפילויות!) וקטגוריה.  יש לשמור את הקובץ כ- encoding utf-8.</p>
   
     <p class="c1"><span><img alt="image02.png" src="/manual/images/image02.png"></span></p>
     
@@ -186,7 +188,7 @@ direction: ltr;
     
     <h3 class="c7">ידני</h3>
 
-    <p class="c0">יש לבצע את הפעולות לפי הסדר המופיע להלן:
+    <p class="c0">יש לבצע את הפעולות לפי הסדר המופיע להלן:</p>
     <ol>
         <li>שימוש באתר <a class="c2" href="http://area23.brightbyte.de/csv2wp.php">http://area23.brightbyte.de/csv2wp.php</a> או <a class="c2" href="http://tnuatiming.com/manual/csv2wp.php">http://tnuatiming.com/manual/csv2wp.php</a> להפוך את ה-csv לטבלת html. יש להוסיף for each cell:  class="rnk_font"
         </li>
@@ -208,7 +210,7 @@ direction: ltr;
         &lt;/tr&gt;
         </code></pre>
         </li>
-        <li>במידה וחסרים <pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
+        <li>במידה וחסרים <pre style="width:50px;"><code>&lt;/td&gt;</code></pre> יש להריץ:
         <pre><code>
            sed -i '/&lt;[tT][dD] class="rnk_font"/s/$/&lt;\/td&gt;/g' file.html
         </code></pre>
@@ -218,7 +220,7 @@ direction: ltr;
            awk '/&lt;td class="rnk_font"/ { gsub(/$/, "&lt;/td&gt;") }; { print }' file.html &gt; file.html
         </code></pre>
         </li>
-        <li>בנוסף במידה וחסר בכותרות<pre style="width:50px;"><code>&lt;/td&gt;</pre></code> יש להריץ:
+        <li>בנוסף במידה וחסר בכותרות<pre style="width:50px;"><code>&lt;/td&gt;</code></pre> יש להריץ:
         <pre><code>
            sed -i '/&lt;tr&gt;&lt;td/s/&lt;\/tr&gt;/&lt;\/td&gt;&lt;\/tr&gt;/g' file.html
         </code></pre>
@@ -227,8 +229,6 @@ direction: ltr;
       
     </ol>
     במקום סעיפים 5,6 ניתן להשתמש ב-tidy-html5 ולהריץ את הפקודה:  tidy -f error.html -o output.html  -i input.html
-    
-    </p>
     
     <h3 class="c7">חצי אוטומטי</h3>
     
