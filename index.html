@@ -26,9 +26,21 @@ sitemap:
               <h2>תוצאות אחרונות:</h2>
               <ul>
                 {% for post in site.posts limit:4 %}
-                <li>
-                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>
+                
+                
+{% if post.noseason == "true" %}
+               <li>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} {{ post.place }}</a>
                 </li>
+                {% else %}
+               <li>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>
+                </li>{% endif %}
+
+                
+                
+                
+                
                 {% endfor %}
               </ul>
             </div>{% comment %}<!-- end next-race -->{% endcomment %}

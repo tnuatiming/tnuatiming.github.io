@@ -698,6 +698,12 @@ a.logo_text{
     -webkit-background-size: cover;
     background-size: cover;
   }
+
+  body#race.running{
+    background: #fff url(/images/running.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
 }
 
 @media (max-width: 600px)        {

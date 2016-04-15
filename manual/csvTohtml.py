@@ -26,6 +26,8 @@ if not os.path.exists(sys.argv[ 1 ]):
     sys.exit()
 # delete empty lines
 input = open(sys.argv[ 1 ], 'rb')
+#input = [x.replace(" \r\n","\r\n") for x in input]
+#print input
 output = open('temp223344.csv', 'wb')
 writer = csv.writer(output)
 for row in csv.reader(input):

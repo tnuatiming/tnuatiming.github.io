@@ -12,14 +12,21 @@
   {% else %}
     <h2> {{ page.tag }} - {{ page.type }}</h2>  
 {% endif %}
-<h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
-  
+
+
+{% if page.noseason == "true" %}
+        <h2>{{ page.round }} {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+{% else %}
+        <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+{% endif %}
+
         {{ content }}
 
     {% include footer.html %}
 
 </body>
 </html>
+
 
 
 
