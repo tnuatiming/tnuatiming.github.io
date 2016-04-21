@@ -1,5 +1,5 @@
 <head>
-  <title>תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}{% endif %}{% if page.round %}&#58; {{ page.round }}{% endif %}{% if page.noseason == "true" %}{% else %}{% if page.season %} עונת {{ page.season }}{% endif %}{% endif %}{% if page.place %} &ndash; {{ page.place }}{% endif %}</title>
+  <title>תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}&#58; {% endif %}{% if page.noseason == "true" %}{% if page.round == empty %}{% else %} {{ page.round }} &ndash;{% endif %}{% else %}{% if page.round == empty %} עונת {{ page.season }} &ndash;{% else %} עונת {{ page.season }} {{ page.round }} &ndash;{% endif %}{% endif %}{% if page.place %} {{ page.place }}{% endif %}</title>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width"/>
   <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo" />
@@ -20,6 +20,8 @@
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffcc33">
+  <meta name="apple-mobile-web-app-title" content="תנועה מדדית זמנים">
+  <meta name="application-name" content="תנועה מדדית זמנים">
   <meta name="msapplication-TileColor" content="#ffcc33">
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
   <meta name="theme-color" content="#ffcc33">

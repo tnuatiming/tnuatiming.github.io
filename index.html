@@ -29,17 +29,26 @@ sitemap:
                 
                 
 {% if post.noseason == "true" %}
-               <li>
+    {% if post.round != null %}
+                <li>
                   <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} {{ post.place }}</a>
                 </li>
-                {% else %}
-               <li>
+    {% else %}
+                <li>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.place }}</a>
+                </li>
+    {% endif %}                
+{% else %}
+    {% if post.round != null %}
+                <li>
                   <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>
-                </li>{% endif %}
-
-                
-                
-                
+                </li>
+    {% else %}
+                <li>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: עונת {{ post.season }} - {{ post.place }}</a>
+                </li>
+    {% endif %}                
+{% endif %}
                 
                 {% endfor %}
               </ul>

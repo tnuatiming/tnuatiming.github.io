@@ -15,9 +15,16 @@
 
 
 {% if page.noseason == "true" %}
-        <h2>{{ page.round }} {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+        {% if page.round == empty %}
+            <h2>{{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+        {% else %}
+            <h2>{{ page.round }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+        {% endif %}
 {% else %}
-        <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+        {% if page.round == empty %}
+            <h2>עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+        {% else %}
+           <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>        {% endif %}
 {% endif %}
 
         {{ content }}
