@@ -16,6 +16,8 @@
     "watch": "^0.17.1"
   },
   "dependencies": {
-    "lodash": "^4.8.2"
+    "grunt-contrib-htmlmin": "^1.5.0",
+    "lodash": "^4.8.2",
+    "watch": "^0.17.1"
   }
 }

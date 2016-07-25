@@ -1,4 +1,4 @@
-<?php include("/home/raz/public_html/password_protect.php"); ?><!--  http://www.zubrag.com/scripts/password-protect.php -->
+<?php include("../password_protect.php"); ?><!--  http://www.zubrag.com/scripts/password-protect.php -->
 <!DOCTYPE html>
 <html class="no-js" lang="he" xml:lang="he" dir="rtl">
 
@@ -95,6 +95,10 @@ direction: ltr;
     <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/Circuit-Pro-4.0.02-TagHeuer-Pak.exe">Circuit-Pro-4.0.02-TagHeuer-Pak.exe</a></span></p>
 
     <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/CP540_EN.pdf">CP540_EN.pdf</a></span></p>
+
+    <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/CP545_EN.pdf">CP545_EN.pdf</a></span></p>
+
+    <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/CP545_USBDriver.zip">CP545_USBDriver.zip</a></span></p>
 
     <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/EliteV3_User_EN_11-2012.pdf">EliteV3_User_EN_11-2012.pdf</a></span></p>
 
