@@ -16,7 +16,7 @@ sitemap:
 {% assign article_seasons =  site.posts | map: 'season' | join: ',' | join: ',' | downcase | split: ',' %}
 
 {% comment %}<!-- Push to tags -->{% endcomment %}
-{% for season_tag in article_seasons '%}
+{% for season_tag in article_seasons %}
   {% assign seasons = seasons | push: season_tag %}
 {% endfor %}
 
@@ -55,7 +55,7 @@ sitemap:
 {% assign article_tags =  posts_year | map: 'tags' | join: ',' | join: ',' | downcase | split: ',' %}
 
 {% comment %}<!-- Push to tags -->{% endcomment %}
-{% for tag in article_tags '%}
+{% for tag in article_tags %}
   {% assign tags = tags | push: tag %}
 {% endfor %}
 
