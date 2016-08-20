@@ -1,10 +1,13 @@
 #!/usr/bin/python
+# create html table from csv
+# Author(s): Chris Trombley <ctroms@gmail.com>
+# Version 2 - added css class to all columns except header
+# http://www.ctroms.com/blog/code/python/2011/04/20/csv-to-html-table-with-python/
+
 import time
 
 import sys
-import os
 import csv
-import string
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -14,43 +17,50 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+ 
+if len(sys.argv) < 3:
+    # Create the HTML file for output
+    timestr = time.strftime("%Y%m%d_%H%M")
+    filename = 'ConvertedHTML_'+timestr+'.txt'
+    #exit(1)
+else:
+    filename = sys.argv[2]
+    
+htmlfile = open(filename,"w")
 
-if len( sys.argv ) < 2 :
-    sys.stderr.write( sys.argv[ 0 ]  + 
-                      ": usage - "   + 
-                      sys.argv[ 0 ]  + " [.csv file name]\n" )
-    sys.exit()
+# Open the CSV file for reading
+reader = csv.reader(open(sys.argv[1]), delimiter='\t')
 
-if not os.path.exists(sys.argv[ 1 ]):
-    sys.stderr.write( sys.argv[ 1 ] + " not found \n" )
-    sys.exit()
-# delete empty lines
-input = open(sys.argv[ 1 ], 'rb')
-#input = [x.replace(" \r\n","\r\n") for x in input]
-#print input
-output = open('temp223344.csv', 'wb')
-writer = csv.writer(output)
-for row in csv.reader(input):
-    if row:
-        writer.writerow(row)
-input.close()
-output.close()
+# initialize rownum variable
+rownum = 0
 
-with open( 'temp223344.csv', 'rt') as csvfile:
-    table_string = "<table cellspacing=1 class=\"line_color\">\n"
-    for line in csv.reader(csvfile, delimiter='\t'):        
-        table_string += "\t<tr class=\"rnk_bkcolor\">\n" + \
-        "\t\t<td class=\"rnk_font\">" + \
-        string.join( line, "</td>\n\t\t<td class=\"rnk_font\">" ) + \
-        "</td>\n" + \
-        "\t</tr>\n"
-    table_string += "</table>\n\n"
-os.remove('temp223344.csv')
-#sys.stdout.write( table_string )
-timestr = time.strftime("%Y%m%d_%H%M")
-filename = 'ConvertedHTML_'+timestr+'.txt'
-text_file = open(filename, "w")
-text_file.write(table_string)
-text_file.close()
-print bcolors.OKGREEN +  "\ndone, see converted file:",filename,"\n" + bcolors.ENDC
-sys.exit()
+# write <table> tag
+htmlfile.write('<table cellspacing=1 class=\"line_color\">\n')
+
+# generate table contents
+for row in reader: # Read a single row from the CSV file
+
+    # write header row. assumes first row in csv contains header
+    if rownum == 0:
+        htmlfile.write('   <tr class=\"rnkh_bkcolor\">\n')
+        for column in row:
+            htmlfile.write('      <th class=\"rnkh_font\">' + column + '</th>\n')
+        htmlfile.write('   </tr>\n')
+
+    #write all other rows	
+    else:
+        htmlfile.write('   <tr class=\"rnk_bkcolor\">\n')	
+        for column in row:
+            htmlfile.write('      <td class=\"rnk_font\">' + column + '</td>\n')
+        htmlfile.write('   </tr>\n')
+
+    #increment row count	
+    rownum += 1
+
+# write </table> tag
+htmlfile.write('</table>\n')
+
+# print results to shell
+print ("Created " + str(rownum) + " row table.")
+print (bcolors.OKGREEN +  "\ndone, see converted file:",filename,"\n" + bcolors.ENDC)
+exit(0)
