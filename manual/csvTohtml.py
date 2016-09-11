@@ -3,7 +3,7 @@
 # Author(s): Chris Trombley <ctroms@gmail.com>
 # Version 2 - added css class to all columns except header
 # http://www.ctroms.com/blog/code/python/2011/04/20/csv-to-html-table-with-python/
-
+# http://stackoverflow.com/questions/4521426/delete-blank-rows-from-csv
 import time
 
 import sys
@@ -60,7 +60,8 @@ for row in reader: # Read a single row from the CSV file
 
 # write </table> tag
 htmlfile.write('</table>\n')
-
+# close the new created file
+htmlfile.close()
 # print results to shell
 print ("Created " + str(rownum) + " row table.")
 print (bcolors.OKGREEN +  "\ndone, see converted file:",filename,"\n" + bcolors.ENDC)
