@@ -49,10 +49,11 @@ for row in reader: # Read a single row from the CSV file
 
     #write all other rows	
     else:
-        htmlfile.write('   <tr class=\"rnk_bkcolor\">\n')	
-        for column in row:
-            htmlfile.write('      <td class=\"rnk_font\">' + column + '</td>\n')
-        htmlfile.write('   </tr>\n')
+        if any(row):#check if row not empty so not to get empty td.
+            htmlfile.write('   <tr class=\"rnk_bkcolor\">\n')	
+            for column in row:
+                htmlfile.write('      <td class=\"rnk_font\">' + column + '</td>\n')
+            htmlfile.write('   </tr>\n')
 
     #increment row count	
     rownum += 1
