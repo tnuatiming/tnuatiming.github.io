@@ -4,8 +4,9 @@ yellow #ffcc33
 red #cc3333
 base gray #58585A
 light gray #8f8f8f
-*/
-@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanshebrew.css);
 
 html {
   -webkit-box-sizing: border-box;
@@ -30,7 +31,7 @@ body {
   direction: rtl;
   line-height: 1.5;
   text-align: center;
-  font-family: 'Open Sans Hebrew', sans-serif;
+  font-family: 'Noto Sans Hebrew', 'Open Sans Hebrew', sans-serif;
   vertical-align: baseline;
   border: 0;
   min-width:468px;
