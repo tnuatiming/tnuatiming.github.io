@@ -2,6 +2,7 @@
 colors:
 yellow #ffcc33
 red #cc3333
+dark red #800000
 base gray #58585A
 light gray #8f8f8f
 
@@ -133,6 +134,7 @@ table {
 #race .no_num_color td:first-child { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none; }/*place column*/
 #race tr.bkcolor td.title_font {color:#fff; font-weight: bold;} /*category     background-color: rgba(245,245,245,0.5);*/
 .rnkh_bkcolor {color:#eee; background: rgba(0,0,0,0.5); font-weight: bold;} /*table header*/
+#race .comment_font {color: #800000; text-shadow: 0 1px 2px white;}
 
 /*elite v3 table*/
 .main_table a{display:none;}
@@ -618,6 +620,10 @@ a.logo_text{
     text-shadow: none;
     color: #333;
   }
+  #race .comment_font {
+    font-weight: normal;
+    text-shadow: none;
+  }
 }
 
 @media (min-width: 721px)        {
@@ -720,7 +726,7 @@ a.logo_text{
     float: right;
   }
 
-  td.rnk_font, th.rnkh_font {
+  td.rnk_font, th.rnkh_font, #race .comment_font {
     border: 1px solid #fff;
   }
 
@@ -732,7 +738,7 @@ a.logo_text{
     background:#f0f0f0;
   }
 
-  #race td.rnk_font {
+  #race td.rnk_font, #race .comment_font {
     font-weight: normal;
     text-shadow: none;
     color: #333;
