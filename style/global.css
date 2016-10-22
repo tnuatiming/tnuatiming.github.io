@@ -3,8 +3,8 @@ colors:
 yellow #ffcc33
 red #cc3333
 dark red #800000
-base gray #58585A
-light gray #8f8f8f
+base gray #58585A > #222
+light gray #8f8f8f > #666
 
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
 @import url(http://fonts.googleapis.com/earlyaccess/notosanshebrew.css);
@@ -39,26 +39,26 @@ body {
 }
 
 a {
-  color: #58585A;
+  color: #222;
   text-decoration: none;
 }
 
 a:active,a:hover,a:focus {
   outline: 0;
-  color: #8f8f8f;
+  color: #666;
   border-bottom: 1px dotted;
 }
 
 h1 {
   font-size: 2em;
-  color: #58585A;
+  color: #222;
   letter-spacing: 1px;
   text-shadow: 0 2px 3px #fff;
 }
 
 h2 {
   font-size: 1.5em;
-  color: #8f8f8f;
+  color: #666;
   text-shadow: 0 2px 3px #fff;
   text-decoration: none;
   font-weight: 700;
@@ -72,7 +72,7 @@ h2 {
 
 h3 {
   font-size: 1.2em;
-  color: #58585A;
+  color: #222;
   text-shadow: 0 1px 2px #fc3;
   text-decoration: none;
   font-weight: 700;
@@ -82,7 +82,7 @@ h3 {
 }
 
 p {
-  color: #58585A;
+  color: #222;
   text-align: right;
   font-size: 1.2em;
 }
@@ -94,7 +94,7 @@ img {
 }
 
 ul {
-  color: #58585A;
+  color: #222;
   text-align: right;
   list-style-type: none;
 }
@@ -104,7 +104,7 @@ ul {
 }
 
 li {
-  color: #58585A;
+  color: #222;
   text-align: right;
   margin: 10px;
   text-shadow: 0px 2px 3px #FFF;
@@ -124,16 +124,16 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-#race td.rnk_font {color: #58585A;font-weight: bold; text-shadow: 0 1px 2px white;}
+#race td.rnk_font {color: #222;font-weight: bold; text-shadow: 0 1px 2px white;}
 #race tr.rnk_bkcolor:nth-child(even) {background: rgba(224,224,224,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd) {background: rgba(208,208,208,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {background: #ffcc33;}
 #race td.subtitle_font {background: rgba(208,208,208,1);}
 #race td:first-child + td { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none;}/*number column*/
-#race .no_num_color td:first-child + td { font-weight: 700; background-color: rgba(0, 0, 0, 0); color:#58585A; text-shadow: 0 1px 2px #fff;}/*undo number column*/
+#race .no_num_color td:first-child + td { font-weight: 700; background-color: rgba(0, 0, 0, 0); color:#222; text-shadow: 0 1px 2px #fff;}/*undo number column*/
 #race .no_num_color td:first-child { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none; }/*place column*/
 #race tr.bkcolor td.title_font {color:#fff; font-weight: bold;} /*category     background-color: rgba(245,245,245,0.5);*/
-.rnkh_bkcolor {color:#eee; background: rgba(0,0,0,0.5); font-weight: bold;} /*table header*/
+.rnkh_bkcolor {color:#fff; background: rgba(0,0,0,0.5); font-weight: bold;} /*table header*/
 #race .comment_font {color: #800000; text-shadow: 0 1px 2px white;}
 
 /*elite v3 table*/
@@ -148,15 +148,15 @@ td img {height: 1.5em;}
 #DayTime {color: #333; float: left;}
 #ElapsedTime {color: #333; margin-right: 16px;}
 RemainingTime {color: #00FF00;}
-.HeaderRow {font-weight: bold; background-color: rgba(0,0,0,0.5); color: #eee;}
-.OddRow {background-color: rgba(208,208,208,0.5); color: #333;}
-.EvenRow {background-color:  rgba(224,224,224,0.5); color: #333;}
+.HeaderRow {font-weight: bold; background-color: rgba(0,0,0,0.5); color: #fff;}
+.OddRow {background-color: rgba(208,208,208,0.5); color: #111;}
+.EvenRow {background-color:  rgba(224,224,224,0.5); color: #111;}
 .BestTimeOverall {color: #FF0000; font-weight: bold;}
 .BestTime {color: #0000FF; font-weight: bold;}
 .OddRow .elite_no {font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color: #fff;}
 .EvenRow .elite_no {font-weight: bold; background-color: rgba(80, 80, 80, 0.5); color: #fff;}
 tr.OddRow:hover, tr.EvenRow:hover {background: #ccc;}
-/*#Id_Numero{font-weight: bold; background-color: rgba(0,0,0,0.5); color: #eee;}*/
+/*#Id_Numero{font-weight: bold; background-color: rgba(0,0,0,0.5); color: #fff;}*/
 .PitIn {color: #FF0000; font-weight: bold;}
 .PitOut {color: #FFFF00; font-weight: bold;}
 .Class1 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FF0000; padding: 0;}
@@ -407,12 +407,12 @@ a.logo_text{
 }
 
 #home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
-  border-bottom: 6px #58585A solid;
+  border-bottom: 6px #222 solid;
 }
 
 .navigation a:link,.navigation a:visited {
   font-weight: bold;
-  color: #58585A;
+  color: #222;
   display: block;
   width: auto;
   overflow: hidden;
@@ -424,7 +424,7 @@ a.logo_text{
 }
 
 .navigation a:hover,.navigation a:active {
-  color: #58585A;
+  color: #222;
   background-color: rgba(255,255,255,0.8);
   border-bottom: 6px #ffcc33 solid;
 }
@@ -488,7 +488,7 @@ a.logo_text{
 }
 
 .contact a {
-  color: #58585A;
+  color: #222;
 
 }
 
@@ -504,13 +504,13 @@ a.logo_text{
   margin: 20px auto 0;
   width: 100%;
   height: 36px;
-  border-top: 1px #8f8f8f solid;
+  border-top: 1px #666 solid;
   position: absolute;
   bottom: 0;
 }
 
 .mail, .copyright {
-  color: #58585A;
+  color: #222;
   text-shadow: 0 1px 1px #fff;
   font-size: 1em;
   margin: 0;
@@ -618,7 +618,7 @@ a.logo_text{
   #race td.rnk_font {
     font-weight: normal;
     text-shadow: none;
-    color: #333;
+    color: #111;
   }
   #race .comment_font {
     font-weight: normal;
@@ -741,7 +741,7 @@ a.logo_text{
   #race td.rnk_font, #race .comment_font {
     font-weight: normal;
     text-shadow: none;
-    color: #333;
+    color: #111;
   }
 
   body, .full-bg{
