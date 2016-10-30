@@ -1,48 +1,19 @@
  <?php
-
-if ($_POST['separator'] == "TAB") {
-  $var_value= "\t";
-}else{
-  $var_value= $_POST['separator'];
+$csv = file_get_contents($_FILES['file']['tmp_name']);
+$delimiter = array("\t",",","'","\"","|","\\","/",";");
+$replace1 = str_replace($delimiter, $delimiter[1], $csv);// convert delimiter to ,
+$replace = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $replace1);//delete empty lines
+function convert($replace)
+{
+  $out = [];
+  array_map(function($ln) use(&$out) {
+      $ln    = htmlentities($ln);
+      $out[] = count($out) == 0
+        ? "\t<tr class=\"rnkh_bkcolor\">\n\t\t<th>".implode("</th>\n\t\t<th>",explode(",",$ln))."</th>\n\t</tr>\n"
+        : "\t<tr class=\"rnk_bkcolor\">\n\t\t<td class=\"rnk_font\">".implode("</td>\n\t\t<td class=\"rnk_font\">",explode(",",$ln))."</td>\n\t</tr>\n";
+    }, explode("\n",$replace));
+  return "\n<table cellspacing=1 class=\"line_color\">\n".implode('',$out)."</table>\n";
 }
-
-$row = 1;
-if (($handle = fopen($_FILES['file']['tmp_name'], "r")) !== FALSE) {
-
-    echo "<table cellspacing=1 class=\"line_color\">\n";
-
-    while (($data = fgetcsv($handle, 0, $var_value)) !== FALSE) {
-        $num = count($data);
-        if ($row == 1) {
-            echo "\t<tr class=\"rnkh_bkcolor\">\n";
-        }else{
-            echo "\t<tr class=\"rnk_bkcolor\">\n";
-        }
-
-        for ($c=0; $c < $num; $c++) {
-            //echo $data[$c] . "<br />\n";
-            if(empty($data[$c])) {
-               $value = "";
-            }else{
-               $value = $data[$c];
-            }
-            if ($row == 1) {
-                echo "\t\t<th class=\"rnkh_font\">".$value."</th>\n";
-            }else{
-                echo "\t\t<td class=\"rnk_font\">".$value."</td>\n";
-            }
-        }
-
-        if ($row == 1) {
-            echo "\t</tr>\n";
-        }else{
-            echo "\t</tr>\n";
-        }
-        $row++;
-    }
-
-    echo "</table>\n";
-    fclose($handle);
-    unlink($_FILES["file"]["tmp_name"]);
-}
+ 
+echo convert($replace);
 ?>
