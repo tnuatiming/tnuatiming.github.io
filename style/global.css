@@ -128,7 +128,7 @@ table {
 #race tr.rnk_bkcolor:nth-child(even) {background: rgba(224,224,224,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd) {background: rgba(208,208,208,0.8);}
 #race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {background: #ffcc33;}
-#race td.subtitle_font {background: rgba(208,208,208,1); color:#767600; }
+#race td.subtitle_font {background: rgba(0,0,0,0.25); color:#ffcc33; }
 #race td:first-child + td { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none;}/*number column*/
 #race .no_num_color td:first-child + td { font-weight: 700; background-color: rgba(0, 0, 0, 0); color:#222; text-shadow: 0 1px 2px #fff;}/*undo number column*/
 #race .no_num_color td:first-child { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none; }/*place column*/
@@ -179,7 +179,7 @@ td.title_font {
 td.subtitle_font {
   font-size: 1em;
   font-weight: bold;
-  text-shadow: 0 1px 2px white;
+  text-shadow: 0 1px 2px black;
 }
 td, th {
   text-align: center;
