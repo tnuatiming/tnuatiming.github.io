@@ -1,9 +1,9 @@
 <?php
-$csv_file = file_get_contents($_FILES['file']['tmp_name']);
-$delimiter = array("\t",",","|","\\","/",";");
-$tmp = str_replace($delimiter, $delimiter[1], $csv_file);// convert delimiter to ,
-//$csv = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $tmp);//delete empty lines
-$csv = preg_replace('/^[\r\n]+|[\r\n]+$/m', '', $tmp);//delete empty lines
+$csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file
+$delimiter = array("\t",",","|","\\","/",";");// all the options for delimiters
+$csv = str_replace($delimiter, $delimiter[1], $csv_file);// convert delimiter to ,
+//$csv = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv);//delete empty lines(doesn't delete the last line)
+$csv = preg_replace('/^[\r\n]+|[\r\n]+$/m', '', $csv);//delete empty lines
 function convert($csv)
 {
   $out = [];
@@ -15,6 +15,14 @@ function convert($csv)
     }, explode("\n",$csv));
   return "\n<table cellspacing=1 class=\"line_color\">\n".implode('',$out)."</table>\n";
 }
- 
-echo convert($csv);
+// replace tabs with 4 spaces
+$html = convert($csv);
+$html = str_replace("\t", "    ", $html);
+
+// display the converted result as source code
+echo "<html><body><pre><code>";
+echo htmlentities($html);
+echo "</code></pre></body></html>";
+//echo convert($csv);
+
 ?>
