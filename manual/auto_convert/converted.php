@@ -15,9 +15,9 @@ function convert($csv)
     }, explode("\n",$csv));
   return "\n<table cellspacing=1 class=\"line_color\">\n".implode('',$out)."</table>\n";
 }
-// replace tabs with 4 spaces
+
 $html = convert($csv);
-$html = str_replace("\t", "    ", $html);
+$html = str_replace("\t", "    ", $html);// replace tabs with 4 spaces
 
 // display the converted result as source code
 echo "<html><body><pre><code>";
