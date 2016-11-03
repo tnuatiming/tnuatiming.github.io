@@ -228,6 +228,19 @@ direction: ltr;
         &lt;/tr&gt;
         </code></pre>
         </li>
+              <li> יש לתקן תצוגת הקפה מהירה ו-DNF(הוספת class ותיקון טקסט):
+        <pre><code>
+  
+        &lt;tr class="rnk_bkcolor"&gt;
+            &lt;td colspan="99" class="subtitle_font">DNS - לא סיים - הקפה 2&lt;/td&gt;
+        &lt;/tr&gt;
+        
+        &lt;tr class="rnk_bkcolor"&gt;
+            &lt;td colspan="99" class="comment_font"> הקפה מהירה: 54  דורון וינטר  - 00:59:16.725&lt;/td&gt;
+        &lt;/tr&gt;
+        </code></pre>
+        </li>
+
         <li>במידה וחסרים <pre style="width:50px;"><code>&lt;/td&gt;</code></pre> יש להריץ:
         <pre><code>
            sed -i '/&lt;[tT][dD] class="rnk_font"/s/$/&lt;\/td&gt;/g' file.html
@@ -244,13 +257,12 @@ direction: ltr;
         </code></pre>
       </li>
       
-      
     </ol>
-    במקום סעיפים 5,6 ניתן להשתמש ב-tidy-html5 ולהריץ את הפקודה:  tidy -f error.html -o output.html  -i input.html
+    במקום סעיפים 6,7 ניתן להשתמש ב-tidy-html5 ולהריץ את הפקודה:  tidy -f error.html -o output.html  -i input.html
     
-    <h3 class="c7">חצי אוטומטי</h3>
+    <h3 class="c7">חצי אוטומטי(דרך עדיפה)</h3>
     
-    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a>עבור 1-3, את סעיפים 4,5,6 יש לבצע ידנית.</span></p>
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a> את סעיפים 4,5 יש לבצע ידנית.</span></p>
     
     <h3 class="c7">שעון תצוגה</h3>
 
