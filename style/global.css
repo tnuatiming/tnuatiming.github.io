@@ -452,6 +452,21 @@ a.logo_text{
   padding-right: 10%;
 }
 
+#races .sesson {
+  float: right;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.sesson h1{
+  flex: 100%;
+}
+
+#races .sport {
+  float: right;
+  flex:  50%;
+}
+
 #auto {
   min-width: 100%;
 }
@@ -625,6 +640,11 @@ a.logo_text{
     font-weight: normal;
     text-shadow: none;
   }
+  
+  #races .sport {
+  flex: 100%;
+  }
+  
 }
 
 @media (min-width: 721px)        {

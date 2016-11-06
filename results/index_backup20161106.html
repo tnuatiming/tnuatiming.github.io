@@ -44,14 +44,7 @@ sitemap:
 
 {% assign year = unique_seasons[x] %}
 
-{% if x == 0 %}
-    <div class="sesson"><h1>עונת {{ year }}</h1>
-  {% else %}
-    </div><div class="sesson"><h1>עונת {{ year }}</h1>
-{% endif %}
-
-
-
+<h1>עונת {{ year }}</h1>
 {% assign posts_year = site.posts | where: "season", year | sort: "last" %}
 
 {% comment %}<!-- Create empty arrays -->{% endcomment %}
@@ -84,7 +77,7 @@ sitemap:
 {% assign unique_tags_number = unique_tags | size | minus: 1 %}
     {% comment %}<!-- loop and show the tag from only the relevant tag list-->{% endcomment %}
 {% for x in (0..unique_tags_number) %}
-<div class="sport"><h2>{{ unique_tags[x] }}</h2>
+<h2>{{ unique_tags[x] }}</h2>
 <ul>
 {% comment %}<!-- assign posts_year_tag is all posts with the 2 variables -->{% endcomment %}
 {% assign posts_year_tag = site.posts | where: "tag", unique_tags[x] | where: "season", year | sort: "last" %}
@@ -98,7 +91,7 @@ sitemap:
 {% endif %}
 
 {% endfor %}
-</ul></div>
+</ul>
 {% endfor %}
 {% endfor %}
-</div>
+
