@@ -640,11 +640,12 @@ a.logo_text{
     font-weight: normal;
     text-shadow: none;
   }
-  
   #races .sport {
-  flex: 100%;
+    flex: 100%;
   }
-
+  td, th {
+    font-size: 0.7em;
+  }
 }
 
 @media (min-width: 721px)        {
@@ -765,12 +766,7 @@ a.logo_text{
   body, .full-bg{
     background: #f0f0f0;
   }
-  .mail, .copyright {
-    float: right;
-  }  
-    .logo_tiny {
-    float: left;
-  }
+}
 
 }
 
