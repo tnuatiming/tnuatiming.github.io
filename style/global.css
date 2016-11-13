@@ -124,41 +124,176 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-#race td.rnk_font {color: #000;font-weight: normal; text-shadow: 0 1px 2px white;}
-#race tr.rnk_bkcolor:nth-child(even) {background: rgba(224,224,224,0.8);}
-#race tr.rnk_bkcolor:nth-child(odd) {background: rgba(208,208,208,0.8);}
-#race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {background: #ffcc33;}
-#race td.subtitle_font {background: rgba(0,0,0,0.25); color:#ffcc33; }
-#race td:first-child + td {font-weight: 700; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none;}/*number column*/
-#race .no_num_color td:first-child + td { font-weight: 700; background-color: rgba(0, 0, 0, 0); color:#222; text-shadow: 0 1px 2px #fff;}/*undo number column*/
-#race .no_num_color td:first-child { font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color:#fff; text-shadow: none; }/*place column*/
-#race tr.bkcolor td.title_font {color:#fff; font-weight: bold;} /*category     background-color: rgba(245,245,245,0.5);*/
-.rnkh_bkcolor {color:#fff; background: rgba(0,0,0,0.5); font-weight: bold;} /*table header*/
-#race .comment_font {color: #800000; text-shadow: 0 1px 2px white;}
+
+/*race resulte page*/
+#race td.rnk_font {
+    color: #000;
+    font-weight: 400; 
+    text-shadow: 0 1px 2px white;
+}
+
+#race tr.rnk_bkcolor:nth-child(even) {
+    background: rgba(224,224,224,0.8);
+}
+
+#race tr.rnk_bkcolor:nth-child(odd) {
+    background: rgba(208,208,208,0.8);
+}
+
+#race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {
+    background: #ffcc33;
+}
+
+#race td.subtitle_font {
+    background: rgba(0,0,0,0.25);
+    color:#ffcc33;
+}
+
+/*number column*/
+#race td:first-child + td {
+    font-weight: 700;
+    background-color:
+    rgba(37, 37, 37, 0.5);
+    color:#fff;
+    text-shadow: none;
+}
+
+/*undo number column*/
+#race .no_num_color td:first-child + td {
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0);
+    color:#222;
+    text-shadow: 0 1px 2px #fff;
+}
+
+/*place column*/
+#race .no_num_color td:first-child {
+    font-weight: 700;
+    background-color: rgba(37, 37, 37, 0.5);
+    color:#fff;
+    text-shadow: none;
+}
+
+/*category     background-color: rgba(245,245,245,0.5);*/
+#race tr.bkcolor td.title_font {
+    color:#fff;
+    font-weight: 700;
+}
+
+/*table header*/
+.rnkh_bkcolor {
+    color:#fff;
+    background: rgba(0,0,0,0.5);
+    font-weight: 700;
+}
+
+#race .comment_font {
+    color: #800000;
+    text-shadow: 0 1px 2px white;
+}
 
 /*elite v3 table*/
-.main_table a{display:none;}
-td img {height: 1.5em;}
-#Menu a{margin: 0 10px; font-size: 1em; color: #CCC;}
-#Title {font-weight: bold; font-size: 1.5em; color: rgba(0,0,0,0.5); margin: 0 0 0 0;display:none;}
-#Title img {height: 20px; vertical-align: center; margin: 0 16px 0 16px;}
-#ImageHeader {margin: 0 auto 16px auto;}
-#ImageFooter {margin: 16px auto 0 auto;}
-#Time {margin: 0 auto 8px auto; font-size: 1em; font-weight: bold; text-align: right;}
-#DayTime {color: #333; float: left;}
-#ElapsedTime {color: #333; margin-right: 16px;}
-RemainingTime {color: #00FF00;}
-.HeaderRow {font-weight: bold; background-color: rgba(0,0,0,0.5); color: #fff;}
-.OddRow {background-color: rgba(208,208,208,0.5); color: #111;}
-.EvenRow {background-color:  rgba(224,224,224,0.5); color: #111;}
-.BestTimeOverall {color: #FF0000; font-weight: bold;}
-.BestTime {color: #0000FF; font-weight: bold;}
-.OddRow .elite_no {font-weight: bold; background-color: rgba(37, 37, 37, 0.5); color: #fff;}
-.EvenRow .elite_no {font-weight: bold; background-color: rgba(80, 80, 80, 0.5); color: #fff;}
-tr.OddRow:hover, tr.EvenRow:hover {background: #ccc;}
-/*#Id_Numero{font-weight: bold; background-color: rgba(0,0,0,0.5); color: #fff;}*/
-.PitIn {color: #FF0000; font-weight: bold;}
-.PitOut {color: #FFFF00; font-weight: bold;}
+.main_table a {
+    display:none;
+}
+
+td img {
+    height: 1.5em;
+}
+
+#Menu a {
+    margin: 0 10px;
+    font-size: 1em;
+    color: #CCC;
+}
+
+#Title {
+    font-weight: 700;
+    font-size: 1.5em;
+    color: rgba(0,0,0,0.5);
+    margin: 0 0 0 0;
+    display:none;
+}
+
+#Title img {
+    height: 20px;
+    vertical-align: center;
+    margin: 0 16px 0 16px;
+}
+
+#ImageHeader {
+    margin: 0 auto 16px auto;
+}
+
+#ImageFooter {
+    margin: 16px auto 0 auto;
+}
+
+#Time {
+    margin: 0 auto 8px auto;
+    font-size: 1em;
+    font-weight: 700;
+    text-align: right;
+}
+
+#DayTime {
+    color: #333;
+    float: left;
+}
+
+#ElapsedTime {
+    color: #333;
+    margin-right: 16px;
+}
+
+#RemainingTime {
+    color: #00FF00;
+}
+
+.HeaderRow {
+    font-weight: 700;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+}
+
+.OddRow {
+    background-color: rgba(208,208,208,0.5);
+    color: #111;
+}
+
+.EvenRow {
+    background-color:  rgba(224,224,224,0.5);
+    color: #111;
+}
+
+.BestTimeOverall {
+    color: #FF0000;
+    font-weight: 700;
+}
+
+.BestTime {
+    color: #0000FF;
+    font-weight: 700;
+}
+
+.OddRow .elite_no {
+    font-weight: 700;
+    background-color: rgba(37, 37, 37, 0.5);
+    color: #fff;
+}
+.EvenRow .elite_no {
+    font-weight: 700;
+    background-color: rgba(80, 80, 80, 0.5);
+    color: #fff;
+}
+
+tr.OddRow:hover, tr.EvenRow:hover {
+    background: #ccc;
+}
+
+/*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
+.PitIn {color: #FF0000; font-weight: 700;}
+.PitOut {color: #FFFF00; font-weight: 700;}
 .Class1 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FF0000; padding: 0;}
 .Class2 {border-style: solid; border-width: 0 3px 0 3px; border-color: #00FF00; padding: 0;}
 .Class3 {border-style: solid; border-width: 0 3px 0 3px; border-color: #0000FF; padding: 0;}
@@ -168,17 +303,29 @@ tr.OddRow:hover, tr.EvenRow:hover {background: #ccc;}
 .Class7 {border-style: solid; border-width: 0 3px 0 3px; border-color: #800080; padding: 0;}
 .Class8 {border-style: solid; border-width: 0 3px 0 3px; border-color: #808000; padding: 0;}
 .Class9 {border-style: solid; border-width: 0 3px 0 3px; border-color: #008080; padding: 0;}
-#ImageZoom { position:absolute; visibility:hidden; width:auto; height:auto; max-width:100%; max-height:100%; }
-#Message {color: #FFFF00; font-size: 1.1em; }
+
+#ImageZoom {
+    position: absolute;
+    visibility: hidden;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#Message {
+    color: #FFFF00;
+    font-size: 1.1em;
+}
 
 td.title_font {
     font-size: 1.2em;
-    font-weight: bold;
+    font-weight: 700;
     text-shadow: 0 1px 2px white;
 }
 td.subtitle_font {
     font-size: 1em;
-    font-weight: bold;
+    font-weight: 700;
     text-shadow: 0 1px 2px black;
 }
 td, th {
@@ -412,7 +559,7 @@ border-bottom: 6px #222 solid;
 }
 
 .navigation a:link,.navigation a:visited {
-    font-weight: bold;
+    font-weight: 700;
     color: #222;
     display: block;
     width: auto;
@@ -504,8 +651,7 @@ margin: 20px 0;
 }
 
 .contact a {
-    color: #222;
-    
+    color: #222;    
 }
 
 .race h2 {
@@ -632,12 +778,12 @@ margin: 20px 0;
         background: none;
     }
     #race td.rnk_font {
-    font-weight: normal;
+    font-weight: 400;
     text-shadow: none;
     color: #111;
     }
     #race .comment_font {
-    font-weight: normal;
+    font-weight: 400;
     text-shadow: none;
     }
     #races .sport {
@@ -758,7 +904,7 @@ margin: 20px 0;
     }
     
     #race td.rnk_font, #race .comment_font {
-    font-weight: normal;
+    font-weight: 400;
     text-shadow: none;
     color: #111;
     }
@@ -766,8 +912,6 @@ margin: 20px 0;
     body, .full-bg{
         background: #f0f0f0;
     }
-}
-
 }
 
 @-moz-document url-prefix() {
