@@ -28,8 +28,20 @@
 {% endif %}
 
         {{ content }}
-
-    {% include footer.html %}
+{% comment %}<!--
+        <div class="erlier_races" style="margin-top:50px;"><h2 style="text-align: right;">תוצאות נוספות העונה:</h2>
+        <ul>
+{% for post in site.posts %}
+{% if post.categories[1] == page.categories[1] and post.season == page.season and post != page %}
+            <li><a href="{{ post.url }}">עונת {{ post.season }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</a></li>       
+{% endif %}
+  {% if post.categories[1] == page.categories[1] and post == page %}
+            <li><p style="color:#aaa; margin:0;font-size: 1em;" >עונת {{ post.season }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</p></li>       
+{% endif %}      
+{% endfor %}  
+        </ul></div>
+-->{% endcomment %}
+        {% include footer.html %}
 
 </body>
 </html>
