@@ -28,19 +28,30 @@
 {% endif %}
 
         {{ content }}
-{% comment %}<!--
-        <div class="erlier_races" style="margin-top:50px;"><h2 style="text-align: right;">תוצאות נוספות העונה:</h2>
-        <ul>
+
+{% assign counter = 0 %}{% comment %}<!-- check if there were more then one race in the season -->{% endcomment %}
 {% for post in site.posts %}
-{% if post.categories[1] == page.categories[1] and post.season == page.season and post != page %}
-            <li><a href="{{ post.url }}">עונת {{ post.season }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</a></li>       
+{% if post.categories[1] == page.categories[1] and post.season == page.season %}
+{% assign counter = counter | plus: 1 %}
 {% endif %}
-  {% if post.categories[1] == page.categories[1] and post == page %}
-            <li><p style="color:#aaa; margin:0;font-size: 1em;" >עונת {{ post.season }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</p></li>       
-{% endif %}      
-{% endfor %}  
-        </ul></div>
--->{% endcomment %}
+{% endfor %}
+    {% if counter >= 2 %}{% comment %}<!-- if there are more then one, add the results list at the buttom -->{% endcomment %}
+
+        <div class="erlier_races"><h2>תוצאות נוספות בעונת {{ page.season }}:</h2>
+                <ul>
+        {% for post in site.posts %}
+        {% if post.categories[1] == page.categories[1] and post.season == page.season and post != page %}
+                    <li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</a></li>       
+        {% endif %}
+        {% if post.categories[1] == page.categories[1] and post == page %}
+                    <li><p>{{ post.round }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</p></li>       
+        {% endif %}      
+        {% endfor %}  
+                </ul></div>
+    {% endif %}
+    {% assign counter = 0 %}
+
+                
         {% include footer.html %}
 
 </body>

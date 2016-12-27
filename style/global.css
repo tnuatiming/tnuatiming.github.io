@@ -69,7 +69,11 @@ h2 {
 }
 
 #race h2 {
-text-align: center;
+    text-align: center;
+}
+
+#race .erlier_races h2 {
+    text-align: right;
 }
 
 h3 {
@@ -193,6 +197,16 @@ table {
 #race .comment_font {
     color: #800000;
     text-shadow: 0 1px 2px white;
+}
+
+#race .erlier_races {
+    margin-top: 20px;
+}
+
+#race .erlier_races p {
+    color: #aaa;
+    margin:0;
+    font-size: 1em;
 }
 
 /*elite v3 table*/
