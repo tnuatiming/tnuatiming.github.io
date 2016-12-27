@@ -151,8 +151,8 @@ table {
 }
 
 #race td.subtitle_font {
-    background: rgba(0,0,0,0.25);
-    color:#333;
+/*    background: rgba(0,0,0,0.25);*/
+    color:#151B8D;
     font-weight: 400;
 }
 
