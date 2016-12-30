@@ -44,6 +44,7 @@ header = '\n\
         <th class="rnkh_font">מקצה 4</th>\n\
         <th class="rnkh_font">מקצה 5</th>\n\
         <th class="rnkh_font">זמן</th>\n\
+        <th class="rnkh_font">עונשין</th>\n\
         <th class="rnkh_font">פער</th>\n\
     </tr>\n\
 '
@@ -85,7 +86,13 @@ for row in reader: # Read a single row from the CSV file
             elif re.match("(.*)DISQ(.*)", str(row)):
                 htmlfile.write('    <tr>\n')
                 for column in row:
-                    column = re.sub('DISQ - Disqualified - Run', 'DISQ - נפסל - מקצה', str(column))
+                    column = re.sub('DISQ - Disqualified - Run', 'DSQ - נפסל - מקצה', str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+            elif re.match("(.*)DSQ(.*)", str(row)):
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    column = re.sub('DSQ - Disqualified - Run', 'DSQ - נפסל - מקצה', str(column))
                     htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
                 htmlfile.write('    </tr>\n')
             elif re.match("(.*)(b|B)est lap(.*)", str(row)):
