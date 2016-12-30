@@ -260,10 +260,14 @@ direction: ltr;
     </ol>
     במקום סעיפים 6,7 ניתן להשתמש ב-tidy-html5 ולהריץ את הפקודה:  tidy -f error.html -o output.html  -i input.html
     
-    <h3 class="c7">חצי אוטומטי(דרך עדיפה)</h3>
+    <h3 class="c7">חצי אוטומטי</h3>
     
     <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a> את סעיפים 4,5 יש לבצע ידנית.</span></p>
     
+    <h3 class="c7">אוטומטי(דרך עדיפה)</h3>
+
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTohtml.py">http://tnuatiming.com/manual/csvTohtml.py </a>קובץ python המבצע את כל הפעולות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות)</span></p>    
+
     <h3 class="c7">שעון תצוגה</h3>
 
     <p class="c1"><span><img alt="image06.png" src="/manual/images/image06.png"></span></p>
