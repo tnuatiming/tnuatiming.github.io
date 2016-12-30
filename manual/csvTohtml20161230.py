@@ -51,60 +51,12 @@ header = '\n\
 
 # Open the CSV file for reading
 reader = csv.reader(open(sys.argv[1]), delimiter='\t')
-reader1 = csv.reader(open(sys.argv[1]), delimiter='\t')
 
 # initialize rownum variable
 rownum = 0
 
 # write <table> tag
 htmlfile.write('<table cellspacing=\"1\" class=\"line_color\">\n')
-header1 = '\n\t<tr class=\"rnkh_bkcolor\">\n'
-laps = 0
-k = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-for row in reader1: 
-    if re.match("(.*)(R|r)nk(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">מקום</th>\n'
-    if re.match("(.*)(R|r)anking(.*)", str(row)):
-        pass
-    else:
-        if re.match("(.*)(R|r)ank(.*)", str(row)):
-            header1 += '\t\t<th class=\"rnkh_font\">מקום</th>\n'
-    if re.match("(.*)(N|n)um(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">מספר</th>\n'
-    if re.match("(.*)(B|b)ib(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">מספר</th>\n'
-    if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">נהג</th>\n'
-    elif re.match("(.*)(N|n)ame(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">שם</th>\n'
-    elif re.match("(.*)(D|d)river(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">נהג</th>\n'
-    if re.match("(.*)(F|f)irst (N|n)ame(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">נווט</th>\n'
-    for i in range(1, 20):
-        if re.match("(.*)(R|r)un "+str(i)+"(.*)", str(row)):
-            k[i] += 1
-            if k[i] == 1:   # make sure just the first laps is prossed           
-                header1 += '\t\t<th class=\"rnkh_font\">מקצה '+str(i)+'</th>\n'
-    if re.match("(.*)(L|l)aps(.*)", str(row)):
-        laps += 1
-        if laps == 1:   # make sure just the first laps is prossed
-            header1 += '\t\t<th class=\"rnkh_font\">הקפות</th>\n'
-        else:
-            pass
-    if re.match("(.*)(T|t)ime(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">זמן</th>\n'
-    if re.match("(.*)(P|p)enalty(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">עונשין</th>\n'
-    if re.match("(.*)(G|g)ap(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">פער</th>\n'
-    if re.match("(.*)(B|b).Lap(.*)", str(row)):
-        header1 += '\t\t<th class=\"rnkh_font\">הקפה מהירה</th>\n'
-
-header1 += '\t<tr>\n'
-print(header1)
-
-
 
 # generate table contents
 for row in reader: # Read a single row from the CSV file
@@ -154,7 +106,7 @@ for row in reader: # Read a single row from the CSV file
                 for column in row:
                     htmlfile.write('        <td  colspan=\"99\" class=\"title_font\">' + column + '</td>\n')
                 htmlfile.write('    </tr>\n')
-                htmlfile.write(header1)
+                htmlfile.write(header)
             else:
                 htmlfile.write('    <tr class=\"rnk_bkcolor\">\n')
                 for column in row:
