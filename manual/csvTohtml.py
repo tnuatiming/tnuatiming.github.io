@@ -21,10 +21,14 @@ class bcolors:
 if len(sys.argv) < 3:
     # Create the HTML file for output
     timestr = time.strftime("%Y%m%d_%H%M")
-    filename = 'ConvertedHTML_'+timestr+'.txt'
+    filename = sys.argv[1]
+    filename = filename.split(".",1)
+    filename = '{0}_ConvertedHTML_{1}.txt'.format(filename[0],timestr)
     #exit(1)
 else:
-    filename = sys.argv[2]
+    filename = sys.argv[1]
+    filename = filename.split(".",1)
+    filename = '{0}.txt'.format(filename[0])
     
 htmlfile = open(filename,"w")
 
