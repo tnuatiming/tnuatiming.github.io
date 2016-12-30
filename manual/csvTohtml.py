@@ -5,7 +5,7 @@
 # http://www.ctroms.com/blog/code/python/2011/04/20/csv-to-html-table-with-python/
 # http://stackoverflow.com/questions/4521426/delete-blank-rows-from-csv
 import time
-
+import re
 import sys
 import csv
 class bcolors:
@@ -28,6 +28,20 @@ else:
     
 htmlfile = open(filename,"w")
 
+header = '\n\
+    <tr class="rnkh_bkcolor">\n\
+        <th class="rnkh_font">מקום</th>\n\
+        <th class="rnkh_font">מספר</th>\n\
+        <th class="rnkh_font">נהג</th>\n\
+        <th class="rnkh_font">נווט</th>\n\
+        <th class="rnkh_font">מקצה 3</th>\n\
+        <th class="rnkh_font">מקצה 4</th>\n\
+        <th class="rnkh_font">מקצה 5</th>\n\
+        <th class="rnkh_font">זמן</th>\n\
+        <th class="rnkh_font">פער</th>\n\
+    </tr>\n\
+'
+
 # Open the CSV file for reading
 reader = csv.reader(open(sys.argv[1]), delimiter='\t')
 
@@ -35,25 +49,50 @@ reader = csv.reader(open(sys.argv[1]), delimiter='\t')
 rownum = 0
 
 # write <table> tag
-htmlfile.write('<table cellspacing=1 class=\"line_color\">\n')
+htmlfile.write('<table cellspacing=\"1\" class=\"line_color\">\n')
 
 # generate table contents
 for row in reader: # Read a single row from the CSV file
 
     # write header row. assumes first row in csv contains header
     if rownum == 0:
-        htmlfile.write('   <tr class=\"rnkh_bkcolor\">\n')
+        htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
         for column in row:
-            htmlfile.write('      <th class=\"rnkh_font\">' + column + '</th>\n')
-        htmlfile.write('   </tr>\n')
+            htmlfile.write('        <th class=\"rnkh_font\">' + column + '</th>\n')
+        htmlfile.write('    </tr>\n')
 
     #write all other rows	
     else:
         if any(row):#check if row not empty so not to get empty td.
-            htmlfile.write('   <tr class=\"rnk_bkcolor\">\n')	
-            for column in row:
-                htmlfile.write('      <td class=\"rnk_font\">' + column + '</td>\n')
-            htmlfile.write('   </tr>\n')
+            if re.match("(.*)DNS(.*)", str(row)):
+                htmlfile.write('    <tr>\n')	
+                for column in row:
+                    column = re.sub('DNS - Did not start - Run', 'DNS - לא התחיל - מקצה', str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+            elif re.match("(.*)DNF(.*)", str(row)):
+                htmlfile.write('    <tr>\n')	
+                for column in row:
+                    column = re.sub('DNF - Do not finish - Run', 'DNF - לא סיים - מקצה', str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+            elif re.match("(.*)(b|B)est lap(.*)", str(row)):
+                htmlfile.write('    <tr>\n')	
+                for column in row:
+                    column = re.sub('(b|B)est lap', 'הקפה טובה', str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"comment_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+            elif len(row) == 1:
+                htmlfile.write('    <tr>\n')	
+                for column in row:
+                    htmlfile.write('        <td  colspan=\"99\" class=\"title_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+                htmlfile.write(header)
+            else:
+                htmlfile.write('    <tr class=\"rnk_bkcolor\">\n')	
+                for column in row:
+                    htmlfile.write('        <td class=\"rnk_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
 
     #increment row count	
     rownum += 1
