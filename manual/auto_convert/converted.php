@@ -13,7 +13,7 @@ function convert($csv)
         ? "\t<tr class=\"rnkh_bkcolor\">\n\t\t<th class=\"rnkh_font\">".implode("</th>\n\t\t<th class=\"rnkh_font\">",explode(",",$ln))."</th>\n\t</tr>\n"
         : "\t<tr class=\"rnk_bkcolor\">\n\t\t<td class=\"rnk_font\">".implode("</td>\n\t\t<td class=\"rnk_font\">",explode(",",$ln))."</td>\n\t</tr>\n";
     }, explode("\n",$csv));
-  return "\n<table cellspacing=1 class=\"line_color\">\n".implode('',$out)."</table>\n";
+  return "\n<table class=\"line_color\">\n".implode('',$out)."</table>\n";
 }
 
 $html = convert($csv);

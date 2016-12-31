@@ -112,7 +112,7 @@ print(header)
 rownum = 0
 
 # write <table> tag
-htmlfile.write('<table cellspacing=\"1\" class=\"line_color\">\n')
+htmlfile.write('<table class=\"line_color\">\n')
 
 # generate table contents
 for row in reader: # Read a single row from the CSV file
