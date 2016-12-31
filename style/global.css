@@ -167,7 +167,7 @@ table {
 
 /*undo number column*/
 #race .no_num_color td:first-child + td {
-    font-weight: 700;
+    font-weight: 400;
     background-color: rgba(0, 0, 0, 0);
     color:#222;
     text-shadow: 0 1px 2px #fff;

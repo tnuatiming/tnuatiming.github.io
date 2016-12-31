@@ -21,7 +21,8 @@ class bcolors:
     UNDERLINE = '\033[4m'
  
 #if len(sys.argv) < 3:
-    # Create the HTML file for output
+
+# Create the HTML file for output
 timestr = time.strftime("%Y%m%d_%H%M")
 filename = sys.argv[1]
 filename = filename.split(".",1)
@@ -49,13 +50,9 @@ header_fixed = '\n\
     </tr>\n\
 '
 
-# Open the CSV file for reading
-reader = csv.reader(open(sys.argv[1]), delimiter='\t')
+# build the dynamic header
 readerheader = csv.reader(open(sys.argv[1]), delimiter='\t') # for the header
-
-# build the header
-
-header = '\n    <tr class=\"rnkh_bkcolor\">\n'
+header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
 laps = 0
 k = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 #if str(sys.argv[2]) == "a":
@@ -66,45 +63,53 @@ else:
     
 for row in readerheader: 
     if re.match("(.*)(R|r)nk(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">מקום</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
     if re.match("(.*)(R|r)anking(.*)", str(row)):
         pass
     else:
         if re.match("(.*)(R|r)ank(.*)", str(row)):
-            header += '        <th class=\"rnkh_font\">מקום</th>\n'
+            header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
     if re.match("(.*)(N|n)um(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">מספר</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
     if re.match("(.*)(B|b)ib(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">מספר</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
     if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">נהג</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
     elif re.match("(.*)(N|n)ame(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">שם</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
     elif re.match("(.*)(D|d)river(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">נהג</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
     if re.match("(.*)(F|f)irst (N|n)ame(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">נווט</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
     for i in range(1, 20):
         if re.match("(.*)(R|r)un "+str(i)+"(.*)", str(row)):
             k[i] += 1
             if k[i] == 1:   # make sure just the first laps is prossed           
-                header += '        <th class=\"rnkh_font\">'+round+' '+str(i)+'</th>\n'
+                header_dynamic += '        <th class=\"rnkh_font\">'+round+' '+str(i)+'</th>\n'
     if re.match("(.*)(L|l)aps(.*)", str(row)):
         laps += 1
         if laps == 1:   # make sure just the first laps is prossed
-            header += '        <th class=\"rnkh_font\">הקפות</th>\n'
+            header_dynamic += '        <th class=\"rnkh_font\">הקפות</th>\n'
         else:
             pass
     if re.match("(.*)(T|t)ime(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">זמן</th>\n'
-    if re.match("(.*)(P|p)enalty(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">עונשין</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">זמן</th>\n'
     if re.match("(.*)(G|g)ap(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">פער</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">פער</th>\n'
     if re.match("(.*)(B|b).Lap(.*)", str(row)):
-        header += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
+        header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
+    if re.match("(.*)(P|p)enalty(.*)", str(row)):
+        header_dynamic += '        <th class=\"rnkh_font\">עונשין</th>\n'
 
-header += '    </tr>\n'
+header_dynamic += '    </tr>\n'
+
+# set which header to use
+header = header_dynamic
+
+# start building the html file
+# Open the CSV file for reading
+reader = csv.reader(open(sys.argv[1]), delimiter='\t')
+
 # print header to shell to check if correct
 print(header)
 
@@ -117,10 +122,12 @@ htmlfile.write('<table class=\"line_color\">\n')
 # generate table contents
 for row in reader: # Read a single row from the CSV file
 
-    # write header row. assumes first row in csv contains header
+    # write header row. assumes first row in csv contains header (its wrong but we do not use it)
     if rownum == 0:
         htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
         for column in row:
+            column = re.sub('(l|L)aps', 'הקפות', str(column))
+            column = re.sub('(l|L)ap', 'הקפה', str(column))
             htmlfile.write('        <th class=\"rnkh_font\">' + column + '</th>\n')
         htmlfile.write('    </tr>\n')
 
