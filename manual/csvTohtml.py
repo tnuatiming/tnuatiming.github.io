@@ -55,51 +55,77 @@ readerheader = csv.reader(open(sys.argv[1]), delimiter='\t') # for the header
 header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
 laps = 0
 k = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+c = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# make sure item is prossed once
 #if str(sys.argv[2]) == "a":
 if len(sys.argv) < 3:
     round = "הקפה"
 else:
     round = "מקצה"
     
-for row in readerheader: 
-    if re.match("(.*)(R|r)nk(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
-    if re.match("(.*)(R|r)anking(.*)", str(row)):
-        pass
-    else:
-        if re.match("(.*)(R|r)ank(.*)", str(row)):
-            header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
-    if re.match("(.*)(N|n)um(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
-    if re.match("(.*)(B|b)ib(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
-    if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
-    elif re.match("(.*)(N|n)ame(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-    elif re.match("(.*)(D|d)river(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-    if re.match("(.*)(F|f)irst (N|n)ame(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
-    for i in range(1, 20):
-        if re.match("(.*)(R|r)un "+str(i)+"(.*)", str(row)):
-            k[i] += 1
-            if k[i] == 1:   # make sure just the first laps is prossed           
-                header_dynamic += '        <th class=\"rnkh_font\">'+round+' '+str(i)+'</th>\n'
-    if re.match("(.*)(L|l)aps(.*)", str(row)):
-        laps += 1
-        if laps == 1:   # make sure just the first laps is prossed
-            header_dynamic += '        <th class=\"rnkh_font\">הקפות</th>\n'
-        else:
+for row in readerheader:
+    for column in row:
+        if re.match("(.*)(R|r)nk(.*)", str(column)):
+            c[1] += 1
+            if c[1] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
+        if re.match("(.*)(R|r)anking(.*)", str(column)):
             pass
-    if re.match("(.*)(T|t)ime(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">זמן</th>\n'
-    if re.match("(.*)(G|g)ap(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">פער</th>\n'
-    if re.match("(.*)(B|b).Lap(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
-    if re.match("(.*)(P|p)enalty(.*)", str(row)):
-        header_dynamic += '        <th class=\"rnkh_font\">עונשין</th>\n'
+        else:
+            if re.match("(.*)(R|r)ank(.*)", str(column)):
+                c[2] += 1
+                if c[2] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
+        if re.match("(.*)(N|n)um(.*)", str(column)):
+            c[3] += 1
+            if c[3] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
+        if re.match("(.*)(B|b)ib(.*)", str(column)):
+            c[4] += 1
+            if c[4] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
+        if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
+            c[5] += 1
+            if c[5] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
+        elif re.match("(.*)(N|n)ame(.*)", str(column)):
+            c[6] += 1
+            if c[6] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
+        elif re.match("(.*)(D|d)river(.*)", str(column)):
+            c[7] += 1
+            if c[7] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
+        if re.match("(.*)(F|f)irst (N|n)ame(.*)", str(column)):
+            c[8] += 1
+            if c[8] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
+        for i in range(1, 20):
+            if re.match("(.*)(R|r)un "+str(i)+"(.*)", str(column)):
+                k[i] += 1
+                if k[i] == 1:           
+                    header_dynamic += '        <th class=\"rnkh_font\">'+round+' '+str(i)+'</th>\n'
+        if re.match("(.*)(L|l)aps(.*)", str(column)):
+            laps += 1
+            if laps == 1:   # make sure just the first laps is prossed
+                header_dynamic += '        <th class=\"rnkh_font\">הקפות</th>\n'
+            else:
+                pass
+        if re.match("(.*)(T|t)ime(.*)", str(column)):
+            c[9] += 1
+            if c[9] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">זמן</th>\n'
+        if re.match("(.*)(G|g)ap(.*)", str(column)):
+            c[10] += 1
+            if c[10] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">פער</th>\n'
+        if re.match("(.*)(B|b).Lap(.*)", str(column)):
+            c[11] += 1
+            if c[11] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
+        if re.match("(.*)(P|p)enalty(.*)", str(column)):
+            c[12] += 1
+            if c[12] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">עונשין</th>\n'
 
 header_dynamic += '    </tr>\n'
 
