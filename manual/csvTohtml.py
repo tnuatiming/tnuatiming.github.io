@@ -175,6 +175,10 @@ for row in reader: # Read a single row from the CSV file
                 for column in row:
                     column = re.sub('(l|L)aps', 'הקפות', str(column))
                     column = re.sub('(l|L)ap', 'הקפה', str(column))
+                    column = re.sub('1h', '01:', str(column))
+                    column = re.sub('2h', '02:', str(column))
+                    column = re.sub('3h', '03:', str(column))
+                    column = re.sub('4h', '04:', str(column))
                     htmlfile.write('        <td class=\"rnk_font\">' + column + '</td>\n')
                 htmlfile.write('    </tr>\n')
 
