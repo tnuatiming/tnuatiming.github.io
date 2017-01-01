@@ -126,8 +126,8 @@ for row in reader: # Read a single row from the CSV file
     if rownum == 0:
         htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
         for column in row:
-            column = re.sub('(l|L)aps', 'הקפות', str(column))
-            column = re.sub('(l|L)ap', 'הקפה', str(column))
+            column = re.sub('(l|L)aps', 'הקפות', str(column))#for lap by lap
+            column = re.sub('(l|L)ap', 'הקפה', str(column))#for lap by lap
             htmlfile.write('        <th class=\"rnkh_font\">' + column + '</th>\n')
         htmlfile.write('    </tr>\n')
 

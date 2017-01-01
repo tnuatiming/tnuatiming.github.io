@@ -45,9 +45,9 @@ sitemap:
 {% assign year = unique_seasons[x] %}
 
 {% if x == 0 %}
-    <div class="sesson"><h1>עונת {{ year }}</h1><!-- first "sesson" div -->
+    <div class="season"><h1>עונת {{ year }}</h1><!-- first "season" div -->
   {% else %}
-    </div><div class="sesson"><h1>עונת {{ year }}</h1><!-- other then first "sesson" div, need to close previos "sesson" div-->
+    </div><div class="season"><h1>עונת {{ year }}</h1><!-- other then first "season" div, need to close previos "season" div-->
 {% endif %}
 
 
@@ -101,4 +101,4 @@ sitemap:
 </ul></div>
 {% endfor %}
 {% endfor %}
-</div><!-- close last "sesson" div -->
+</div><!-- close last "season" div -->

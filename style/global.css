@@ -55,7 +55,7 @@ h1 {
     letter-spacing: 1px;
     text-shadow: 0 2px 3px #fff;
     text-align: center;
-    padding-left: 25%;
+    padding-left: 40%;
 }
 
 h2 {
@@ -605,30 +605,31 @@ border-bottom: 6px #222 solid;
 }
 
 #live .main_content {
-text-align: center;
+    text-align: center;
 }
 /*
 #races .main_content {
 padding-right: 10%;
 }*/
 
-#races .sesson {
-float: right;
-display: flex;
-flex-flow: row wrap;
+#races .season {
+    float: right;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
 }
 
-.sesson h1{
+.season h1{
     flex: 100%;
 }
 
 #races .sport {
-float: right;
-flex:  50%;
+    float: right;
+    flex:  50%;
 }
 
 #auto {
-min-width: 100%;
+    min-width: 100%;
 }
 
 .clear {
@@ -646,14 +647,14 @@ min-width: 100%;
 }
 
 #home .right {
-float: right;
-width: 45%;
+    float: right;
+    width: 45%;
 }
 
 #home .left {
-float: left;
-width: 50%;
-margin: 20px 0;
+    float: left;
+    width: 50%;
+    margin: 20px 0;
 }
 
 .next-race {
