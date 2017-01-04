@@ -1,0 +1,104 @@
+---
+layout: default
+body: races
+place: תוצאות מרוצים
+permalink: /results/index.html
+sitemap:
+#  lastmod: 2016-11-06
+  priority: 0.8
+  changefreq: 'monthly'
+  exclude: 'no'
+---
+{% assign seasons = '' | split: ',' %}
+{% assign unique_seasons = '' | split: ',' %}
+
+{% comment %}<!-- Map and flatten -->{% endcomment %}
+{% assign article_seasons =  site.posts | map: 'season' | join: ',' | join: ',' | downcase | split: ',' %}
+
+{% comment %}<!-- Push to tags -->{% endcomment %}
+{% for season_tag in article_seasons %}
+  {% assign seasons = seasons | push: season_tag %}
+{% endfor %}
+
+{% comment %}<!-- Uniq -->{% endcomment %}
+{% assign seasons = seasons | sort | reverse%}
+{% for season_tag in seasons %}
+
+  {% comment %}<!-- If not equal to previous then it must be unique as sorted -->{% endcomment %}
+  {% unless season_tag == previous %}
+
+    {% comment %}<!-- Push to unique_tags -->{% endcomment %}
+    {% assign unique_seasons = unique_seasons | push: season_tag %}
+  {% endunless %}
+
+  {% assign previous = season_tag %}
+{% endfor %}
+
+{% comment %}<!-- unique_tags_number gets the number of tags that relevant to the specific year -->{% endcomment %}
+{% assign unique_tags_numberx = unique_seasons | size | minus: 1 %}
+    {% comment %}<!-- loop and show the tag from only the relevant tag list-->{% endcomment %}
+{% for x in (0..unique_tags_numberx) %}
+
+
+
+
+{% assign year = unique_seasons[x] %}
+
+{% if x == 0 %}
+    <div class="season"><h1>עונת {{ year }}</h1><!-- first "season" div -->
+  {% else %}
+    </div><div class="season"><h1>עונת {{ year }}</h1><!-- other then first "season" div, need to close previos "season" div-->
+{% endif %}
+
+
+
+{% assign posts_year = site.posts | where: "season", year | sort: "last" %}
+
+{% comment %}<!-- Create empty arrays -->{% endcomment %}
+{% assign tags = '' | split: ',' %}
+{% assign unique_tags = '' | split: ',' %}
+
+{% comment %}<!-- Map and flatten -->{% endcomment %}
+{% assign article_tags =  posts_year | map: 'tags' | join: ',' | join: ',' | downcase | split: ',' %}
+
+{% comment %}<!-- Push to tags -->{% endcomment %}
+{% for tag in article_tags %}
+  {% assign tags = tags | push: tag %}
+{% endfor %}
+
+{% comment %}<!-- Uniq -->{% endcomment %}
+{% assign tags = tags | sort %}
+{% for tag in tags %}
+
+  {% comment %}<!-- If not equal to previous then it must be unique as sorted -->{% endcomment %}
+  {% unless tag == previous %}
+
+    {% comment %}<!-- Push to unique_tags -->{% endcomment %}
+    {% assign unique_tags = unique_tags | push: tag %}
+  {% endunless %}
+
+  {% assign previous = tag %}
+{% endfor %}
+
+{% comment %}<!-- unique_tags_number gets the number of tags that relevant to the specific year -->{% endcomment %}
+{% assign unique_tags_number = unique_tags | size | minus: 1 %}
+    {% comment %}<!-- loop and show the tag from only the relevant tag list-->{% endcomment %}
+{% for x in (0..unique_tags_number) %}
+<div class="sport"><h2>{{ unique_tags[x] }}</h2>
+<ul>
+{% comment %}<!-- assign posts_year_tag is all posts with the 2 variables -->{% endcomment %}
+{% assign posts_year_tag = site.posts | where: "tag", unique_tags[x] | where: "season", year | sort: "last" %}
+
+{% for post in posts_year_tag %}	
+
+{% if post.round == "" or post.round == nil or post.round == blank %}
+    <li><a href="{{ post.url }}">{{ post.place }}</a></li>
+  {% else %}
+<li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }}</a></li>  
+{% endif %}
+
+{% endfor %}
+</ul></div>
+{% endfor %}
+{% endfor %}
+</div><!-- close last "season" div -->

@@ -1,0 +1,60 @@
+
+{% assign article_seasons =  site.posts | map: 'season' | uniq | join: ',' | join: ',' | downcase | split: ',' %}
+{% for ss in article_seasons %}
+{{ ss }}<br>
+
+{% comment %}Posts will be filtered by one category{% endcomment %}
+{% assign filterCategory = ss %}
+
+{% for tag in site.tags %}
+    {% comment %}creates an empty array{% endcomment %}
+    {% assign postsInCategory = "" | split: "/" %}
+
+    {% comment %}looping over site.tags{% endcomment %}
+    {% for post in tag[1] %}
+        {% if post.season contains filterCategory %}
+            {% comment %}if a post is from our filter category we add it to postsInCategory array{% endcomment %}
+            {% assign postsInCategory = postsInCategory | push: post %}
+        {% endif %}
+    {% endfor %}
+
+    {% if postsInCategory.size > 0 %}
+        <h1>{{ tag[0] }}</h1>
+        {% for post in postsInCategory %}
+            <h2><a href="{{ post.url }}">{{ post.place }}</a>{{ post.place }}</h2>
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+{% endfor %}
+
+ 
+
+{% assign article_seasons =  site.posts | map: 'tags' | join: ',' | join: ',' | downcase | split: ',' %}
+{% assign article_seasons =  article_seasons | uniq | join: ',' %}
+{{article_seasons}}
+
+
+
+
+{% comment %}Posts will be filtered by one category{% endcomment %}
+{% assign filterCategory = "2017" %}
+
+{% for tag in site.tags %}
+    {% comment %}creates an empty array{% endcomment %}
+    {% assign postsInCategory = "" | split: "/" %}
+
+    {% comment %}looping over site.tags{% endcomment %}
+    {% for post in tag[1] %}
+        {% if post.season contains filterCategory %}
+            {% comment %}if a post is from our filter category we add it to postsInCategory array{% endcomment %}
+            {% assign postsInCategory = postsInCategory | push: post %}
+        {% endif %}
+    {% endfor %}
+
+    {% if postsInCategory.size > 0 %}
+        <h1>{{ tag[0] }}</h1>
+        {% for post in postsInCategory %}
+            <h2><a href="{{ site.baseurl }}{{ post.url }}"></a>{{ post.title }}</h2>
+        {% endfor %}
+    {% endif %}
+{% endfor %} 
