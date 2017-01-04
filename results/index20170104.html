@@ -1,3 +1,14 @@
+---
+layout: default
+body: races
+place: תוצאות מרוצים
+permalink: /results/index.html
+sitemap:
+#  lastmod: 2016-11-06
+  priority: 0.8
+  changefreq: 'monthly'
+  exclude: 'no'
+---
 
 {% assign article_seasons =  site.posts | map: 'season' | uniq | join: ',' | join: ',' | downcase | split: ',' %}
 {% for ss in article_seasons %}
