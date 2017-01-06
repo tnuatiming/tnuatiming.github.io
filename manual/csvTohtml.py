@@ -66,6 +66,9 @@ else:
     round = "מקצה"
     
 for row in readerheader:
+    c.sort(reverse=True)
+    if c[1] > 0:# stop checking rows after we processed the real header row
+        break
     for column in row:
         if re.match("(.*)(R|r)nk(.*)", str(column)):
             c[1] += 1
@@ -130,7 +133,6 @@ for row in readerheader:
             c[12] += 1
             if c[12] == 1:
                 header_dynamic += '        <th class=\"rnkh_font\">עונשין</th>\n'
-
 header_dynamic += '    </tr>\n'
 
 # set which header to use
