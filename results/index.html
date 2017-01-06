@@ -12,10 +12,7 @@ sitemap:
 
 {% assign article_seasons =  site.posts | map: 'season' | uniq | join: ',' | join: ',' | downcase | split: ',' %}
 {% for year in article_seasons %}
-    <div class="season"><h1>עונת {{ year }}</h1><!--  "season" div -->
-
-    {% comment %}Posts will be filtered by one category{% endcomment %}
-    {% assign filterCategory = year %}
+    <div class="season"><h1>עונת {{ year }}</h1>{% comment %}<!--  "season" div -->{% endcomment %}
 
     {% for tag in site.tags %}
         {% comment %}creates an empty array{% endcomment %}
@@ -23,7 +20,7 @@ sitemap:
 
         {% comment %}looping over site.tags{% endcomment %}
         {% for post in tag[1] %}
-            {% if post.season contains filterCategory %}
+            {% if post.season contains year %}
                 {% comment %}if a post is from our filter category we add it to postsInCategory array{% endcomment %}
                 {% assign postsInCategory = postsInCategory | push: post %}
             {% endif %}
@@ -40,10 +37,10 @@ sitemap:
                     {% endif %}        
                 {% endfor %}
                 </ul>
-                </div><!-- close  "sport" div -->
+                </div>{% comment %}<!-- close  "sport" div -->{% endcomment %}
             {% endif %}
     {% endfor %}
-</div><!-- close  "season" div -->
+</div>{% comment %}<!-- close  "season" div -->{% endcomment %}
 {% endfor %}
 
  

@@ -268,6 +268,10 @@ direction: ltr;
 
     <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTohtml.py">http://tnuatiming.com/manual/csvTohtml.py </a>קובץ python המבצע את כל הפעולות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות)</span></p>    
 
+    <h3 class="c7">מהלך המרוץ - אוטומטי</h3>
+
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTranspose.py">http://tnuatiming.com/manual/csvTranspose.py </a>קובץ python המבצע את כל הפעולות כולל סיבוב הטבלה</span></p>    
+
     <h3 class="c7">שעון תצוגה</h3>
 
     <p class="c1"><span><img alt="image06.png" src="/manual/images/image06.png"></span></p>

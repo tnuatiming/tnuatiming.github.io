@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! python3
 # create html table from csv
 # Author(s): Chris Trombley <ctroms@gmail.com>
 # Version 2 - added css class to all columns except header
@@ -54,8 +54,11 @@ header_fixed = '\n\
 readerheader = csv.reader(open(sys.argv[1]), delimiter='\t') # for the header
 header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
 laps = 0
-k = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-c = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# make sure item is prossed once
+RunNum = 20
+k= []
+for i in range(1, RunNum):
+    k = k + [0]
+c = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# make sure item is procssed once and no more
 #if str(sys.argv[2]) == "a":
 if len(sys.argv) < 3:
     round = "הקפה"
@@ -83,23 +86,24 @@ for row in readerheader:
             c[4] += 1
             if c[4] == 1:
                 header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
-        if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
-            c[5] += 1
-            if c[5] == 1:
-                header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
-        elif re.match("(.*)(N|n)ame(.*)", str(column)):
-            c[6] += 1
-            if c[6] == 1:
-                header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-        elif re.match("(.*)(D|d)river(.*)", str(column)):
+        if re.match("(.*)(N|n)ame(.*)", str(column)):
+            if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
+                c[5] += 1
+                if c[5] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
+            elif re.match("(.*)(F|f)irst (N|n)ame(.*)", str(column)):
+                c[8] += 1
+                if c[8] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
+            else:
+                c[6] += 1
+                if c[6] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
+        if re.match("(.*)(D|d)river(.*)", str(column)):
             c[7] += 1
             if c[7] == 1:
                 header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-        if re.match("(.*)(F|f)irst (N|n)ame(.*)", str(column)):
-            c[8] += 1
-            if c[8] == 1:
-                header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
-        for i in range(1, 20):
+        for i in range(1, RunNum):
             if re.match("(.*)(R|r)un "+str(i)+"(.*)", str(column)):
                 k[i] += 1
                 if k[i] == 1:           
@@ -137,6 +141,7 @@ header = header_dynamic
 reader = csv.reader(open(sys.argv[1]), delimiter='\t')
 
 # print header to shell to check if correct
+print (bcolors.HEADER +  "\nThis is the header we'll use:" + bcolors.ENDC)
 print(header)
 
 # initialize rownum variable
@@ -149,7 +154,8 @@ htmlfile.write('<table class=\"line_color\">\n')
 for row in reader: # Read a single row from the CSV file
 
     # write header row. assumes first row in csv contains header (its wrong but we do not use it)
-    if rownum == 0:
+    if reader.line_num == 1:
+#    if rownum == 0:
         htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
         for column in row:
             column = re.sub('(l|L)aps', 'הקפות', str(column))#for lap by lap
@@ -163,25 +169,25 @@ for row in reader: # Read a single row from the CSV file
             if re.match("(.*)DNS(.*)", str(row)):
                 htmlfile.write('    <tr>\n')
                 for column in row:
-                    column = re.sub('DNS - Did not start - Run', 'DNS - לא התחיל - מקצה', str(column))
+                    column = re.sub('DNS - Did not start - Run', 'DNS - לא התחיל - '+round, str(column))
                     htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
                 htmlfile.write('    </tr>\n')
             elif re.match("(.*)DNF(.*)", str(row)):
                 htmlfile.write('    <tr>\n')
                 for column in row:
-                    column = re.sub('DNF - Do not finish - Run', 'DNF - לא סיים - מקצה', str(column))
+                    column = re.sub('DNF - Do not finish - Run', 'DNF - לא סיים - '+round, str(column))
                     htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
                 htmlfile.write('    </tr>\n')
             elif re.match("(.*)DISQ(.*)", str(row)):
                 htmlfile.write('    <tr>\n')
                 for column in row:
-                    column = re.sub('DISQ - Disqualified - Run', 'DSQ - נפסל - מקצה', str(column))
+                    column = re.sub('DISQ - Disqualified - Run', 'DSQ - נפסל - '+round, str(column))
                     htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
                 htmlfile.write('    </tr>\n')
             elif re.match("(.*)DSQ(.*)", str(row)):
                 htmlfile.write('    <tr>\n')
                 for column in row:
-                    column = re.sub('DSQ - Disqualified - Run', 'DSQ - נפסל - מקצה', str(column))
+                    column = re.sub('DSQ - Disqualified - Run', 'DSQ - נפסל - '+round, str(column))
                     htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
                 htmlfile.write('    </tr>\n')
             elif re.match("(.*)(b|B)est lap(.*)", str(row)):
@@ -216,6 +222,6 @@ htmlfile.write('</table>\n')
 # close the new created file
 htmlfile.close()
 # print results to shell
-print ("Created " + str(rownum) + " row table.")
+print (bcolors.OKBLUE +  "Created " + str(rownum) + " row table.")
 print (bcolors.OKGREEN +  "\ndone, see converted file:",filename,"\n" + bcolors.ENDC)
 exit(0)

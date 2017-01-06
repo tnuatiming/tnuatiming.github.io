@@ -128,7 +128,7 @@ grunt.loadNpmTasks('grunt-text-replace');
 
 
 // Default task(s).
-  grunt.registerTask('default', ["shell:jekyllBuild", "connect", "watch"]);
+  grunt.registerTask('default', ["shell:jekyllBuild", "shell:htmlproof", "connect", "watch"]);
   grunt.registerTask('html', ['htmlmin']);
   grunt.registerTask('css', ['cssmin']);
   grunt.registerTask("serve", ["shell:jekyllServe"]);
