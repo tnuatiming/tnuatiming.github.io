@@ -55,6 +55,9 @@ h1 {
     letter-spacing: 1px;
     text-shadow: 0 2px 3px #fff;
     text-align: center;
+}
+
+#races h1 {
     padding-left: 40%;
 }
 

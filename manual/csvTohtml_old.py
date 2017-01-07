@@ -10,7 +10,6 @@ import time
 import re
 import sys
 import csv
-
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -21,20 +20,6 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
  
-def subToHebrew(cPlace, oldArg, subArg):
-    if re.match("(.*)"+oldArg+"(.*)", str(column)):
-        cPlace += 1
-        if cPlace == 1:
-            global header_dynamic
-            header_dynamic += '        <th class=\"rnkh_font\">'+subArg+'</th>\n'
-
-def dnx(findStr, subStr):
-    htmlfile.write('    <tr>\n')
-    for column in row:
-        column = re.sub(findStr, subStr+round, str(column))
-        htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
-    htmlfile.write('    </tr>\n')
-
 #if len(sys.argv) < 3:
 
 # Create the HTML file for output
@@ -68,11 +53,12 @@ header_fixed = '\n\
 # build the dynamic header
 readerheader = csv.reader(open(sys.argv[1]), delimiter='\t') # for the header
 header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
-RunNum = 99
-c= []
-for y in range(1, 120): # a list for run numbers (from 1 to RunNum) and to check duplicated in the header (101-120 )
-    c = c + [0]
-
+laps = 0
+RunNum = 20
+k= []
+for i in range(1, RunNum):
+    k = k + [0]
+c = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# make sure item is procssed once and no more
 #if str(sys.argv[2]) == "a":
 if len(sys.argv) < 3:
     round = "הקפה"
@@ -84,38 +70,85 @@ for row in readerheader:
     if c[1] > 0:# stop checking rows after we processed the real header row
         break
     for column in row:
-        subToHebrew(c[101],"(P|p)os.","מקום")
-        subToHebrew(c[102], "(R|r)nk", "מקום")
-        if re.match("(.*)(R|r)anking(.*)", str(row)):
+        if re.match("(.*)(P|p)os.(.*)", str(column)):
+            c[14] += 1
+            if c[14] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
+        if re.match("(.*)(R|r)nk(.*)", str(column)):
+            c[1] += 1
+            if c[1] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
+        if re.match("(.*)(R|r)anking(.*)", str(column)):
             pass
         else:
-            subToHebrew(c[103], "(R|r)ank", "מקום")
-        subToHebrew(c[104], "(N|n)um", "מספר")
-        subToHebrew(c[105], "(N|n)o.", "מספר")
-        subToHebrew(c[106], "(B|b)ib", "מספר")
+            if re.match("(.*)(R|r)ank(.*)", str(column)):
+                c[2] += 1
+                if c[2] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">מקום</th>\n'
+        if re.match("(.*)(N|n)um(.*)", str(column)):
+            c[3] += 1
+            if c[3] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
+        if re.match("(.*)(N|n)o.(.*)", str(column)):
+            c[13] += 1
+            if c[13] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
+        if re.match("(.*)(B|b)ib(.*)", str(column)):
+            c[4] += 1
+            if c[4] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">מספר</th>\n'
         if re.match("(.*)(N|n)ame(.*)", str(column)):
             if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
-                c[107] += 1
-                if c[107] == 1:
+                c[5] += 1
+                if c[5] == 1:
                     header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
             elif re.match("(.*)(F|f)irst (N|n)ame(.*)", str(column)):
-                c[108] += 1
-                if c[108] == 1:
+                c[8] += 1
+                if c[8] == 1:
                     header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
             else:
-                c[109] += 1
-                if c[109] == 1:
+                c[6] += 1
+                if c[6] == 1:
                     header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-        subToHebrew(c[110], "(D|d)river", "שם")
+        if re.match("(.*)(D|d)river(.*)", str(column)):
+            c[7] += 1
+            if c[7] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
         for i in range(1, RunNum):
-            subToHebrew(c[i], "(R|r)un "+str(i), round+' '+str(i))
-        subToHebrew(c[111], "(L|l)aps", "הקפות")
-        subToHebrew(c[112], "(T|t)ime", "זמן")
-        subToHebrew(c[113], "(G|g)ap", "פער")
-        subToHebrew(c[114], "(D|d)iff. with leader", "פער")
-        subToHebrew(c[115], "(B|b).Lap", "הקפה מהירה")
-        subToHebrew(c[116], "(B|b)est lap", "הקפה מהירה")
-        subToHebrew(c[117], "(P|p)enalty", "עונשין")
+            if re.match("(.*)(R|r)un "+str(i)+"(.*)", str(column)):
+                k[i] += 1
+                if k[i] == 1:           
+                    header_dynamic += '        <th class=\"rnkh_font\">'+round+' '+str(i)+'</th>\n'
+        if re.match("(.*)(L|l)aps(.*)", str(column)):
+            laps += 1
+            if laps == 1:   # make sure just the first laps is prossed
+                header_dynamic += '        <th class=\"rnkh_font\">הקפות</th>\n'
+            else:
+                pass
+        if re.match("(.*)(T|t)ime(.*)", str(column)):
+            c[9] += 1
+            if c[9] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">זמן</th>\n'
+        if re.match("(.*)(G|g)ap(.*)", str(column)):
+            c[10] += 1
+            if c[10] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">פער</th>\n'
+        if re.match("(.*)(D|d)iff. with leader(.*)", str(column)):
+            c[16] += 1
+            if c[16] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">פער</th>\n'
+        if re.match("(.*)(B|b).Lap(.*)", str(column)):
+            c[11] += 1
+            if c[11] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
+        if re.match("(.*)(B|b)est lap(.*)", str(column)):
+            c[15] += 1
+            if c[15] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
+        if re.match("(.*)(P|p)enalty(.*)", str(column)):
+            c[12] += 1
+            if c[12] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">עונשין</th>\n'
 header_dynamic += '    </tr>\n'
 
 # set which header to use
@@ -152,13 +185,29 @@ for row in reader: # Read a single row from the CSV file
     else:
         if any(row):#check if row not empty so not to get empty td.
             if re.match("(.*)DNS(.*)", str(row)):
-                dnx('DNS - Did not start - Run', 'DNS - לא התחיל - ')
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    column = re.sub('DNS - Did not start - Run', 'DNS - לא התחיל - '+round, str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
             elif re.match("(.*)DNF(.*)", str(row)):
-                dnx('DNF - Do not finish - Run', 'DNF - לא סיים - ')
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    column = re.sub('DNF - Do not finish - Run', 'DNF - לא סיים - '+round, str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
             elif re.match("(.*)DISQ(.*)", str(row)):
-                dnx('DISQ - Disqualified - Run', 'DSQ - נפסל - ')
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    column = re.sub('DISQ - Disqualified - Run', 'DSQ - נפסל - '+round, str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
             elif re.match("(.*)DSQ(.*)", str(row)):
-                dnx('DSQ - Disqualified - Run', 'DSQ - נפסל - ')
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    column = re.sub('DSQ - Disqualified - Run', 'DSQ - נפסל - '+round, str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"subtitle_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
             elif re.match("(.*)(b|B)est lap(.*)", str(row)):
                 htmlfile.write('    <tr>\n')
                 for column in row:
