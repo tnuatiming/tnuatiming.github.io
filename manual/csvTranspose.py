@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! python3
 # create html table from csv
 # Author(s): Chris Trombley <ctroms@gmail.com>
 # Version 2 - added css class to all columns except header
