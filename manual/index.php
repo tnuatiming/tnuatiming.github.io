@@ -124,6 +124,10 @@ direction: ltr;
     <pre><code> &#61; B1 &#38; &#34; &#34; &#38; C1</code></pre>
     <p> מספר מתחרה(לוודא שאין כפילויות!) וקטגוריה.  יש לשמור את הקובץ כ- encoding utf-8.</p>
   
+    <h3 class="c7">הסבת xlsx</h3>
+
+    <p class="c0"><span><a class="c2" href="https://www.beautifyconverter.com/excel-to-csv-converter.php">https://www.beautifyconverter.com/excel-to-csv-converter.php </a></span></p> 
+    </br>
     <p class="c1"><span><img alt="image02.png" src="/manual/images/image02.png"></span></p>
     
     <h2 class="c4">הגדרת CP</h2>
