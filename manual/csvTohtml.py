@@ -10,6 +10,8 @@ import time
 import re
 import sys
 import csv
+import codecs
+from chardet.universaldetector import UniversalDetector
 
 class bcolors:
     HEADER = '\033[95m'
@@ -20,7 +22,42 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
- 
+
+targetFormat = 'utf-8'
+outputDir = 'converted'
+detector = UniversalDetector()
+fileName = sys.argv[1] 
+OriginalName = sys.argv[1]
+
+def get_encoding_type(fileName):
+    detector.reset()
+    for line in open(fileName, 'rb'):
+        detector.feed(line)
+        if detector.done: break
+    detector.close()
+    return detector.result['encoding']
+
+def convertFileWithDetection(fileName):
+    print("Converting '" + fileName + "'...")
+    format=get_encoding_type(fileName)
+    try:
+        with codecs.open(fileName, 'rU', format) as sourceFile:
+            writeConversion(sourceFile)
+            print('Done.')
+            return
+    except UnicodeDecodeError:
+        pass
+
+    print("Error: failed to convert '" + fileName + "'.")
+
+def writeConversion(file):
+    with codecs.open(fileName + '.tmp', 'w', targetFormat) as targetFile:
+        for line in file:
+            targetFile.write(line)
+
+
+
+
 def subToHebrew(cPlace, oldArg, subArg):
     if re.match("(.*)"+oldArg+"(.*)", str(column)):
         cPlace += 1
@@ -37,9 +74,21 @@ def dnx(findStr, subStr):
 
 #if len(sys.argv) < 3:
 
+
+detector = UniversalDetector()
+
+codecs1 = get_encoding_type(fileName)
+print("\nfile codecs is "+codecs1)
+if codecs1 != "utf-8" and codecs1 != "UTF-8-SIG":
+    convertFileWithDetection(fileName)
+    print (bcolors.FAIL +  "file not utf-8, converted to new file: " + fileName + ".tmp ,trying to create the HTML file...\n" + bcolors.ENDC)
+    OriginalName = OriginalName + ".tmp"
+#    exit(0)
+
+
 # Create the HTML file for output
 timestr = time.strftime("%Y%m%d_%H%M")
-filename = sys.argv[1]
+filename = OriginalName
 filename = filename.split(".",1)
 filename = '{0}_ConvertedHTML_{1}.txt'.format(filename[0],timestr)
     #exit(1)
@@ -66,7 +115,7 @@ header_fixed = '\n\
 '
 
 # build the dynamic header
-readerheader = csv.reader(open(sys.argv[1]), delimiter='\t') # for the header
+readerheader = csv.reader(open(OriginalName), delimiter='\t') # for the header
 header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
 RunNum = 99
 c= []
@@ -120,10 +169,11 @@ header_dynamic += '    </tr>\n'
 
 # set which header to use
 header = header_dynamic
+#header = header_fixed
 
 # start building the html file
 # Open the CSV file for reading
-reader = csv.reader(open(sys.argv[1]), delimiter='\t')
+reader = csv.reader(open(OriginalName), delimiter='\t')
 
 # print header to shell to check if correct
 print (bcolors.HEADER +  "\nThis is the header we'll use:" + bcolors.ENDC)
