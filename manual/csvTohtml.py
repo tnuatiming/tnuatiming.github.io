@@ -63,13 +63,16 @@ def writeConversion(file):
 
 
 def subToHebrew(cPlace, oldArg, subArg):
+    global header_dynamic
     global c
     if re.match("(.*)"+oldArg+"(.*)", str(column)):
-        c[cPlace] += 1
-        if c[cPlace] == 1:
-            global header_dynamic
+        if cPlace != "q":
+            c[cPlace] += 1
+            if c[cPlace] == 1:
+                header_dynamic += '        <th class=\"rnkh_font\">'+subArg+'</th>\n'
+        else:
             header_dynamic += '        <th class=\"rnkh_font\">'+subArg+'</th>\n'
-
+            
 def dnx(findStr, subStr):
     htmlfile.write('    <tr>\n')
     for column in row:
@@ -123,7 +126,7 @@ readerheader = csv.reader(open(OriginalName), delimiter='\t') # for the header
 header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
 RunNum = 20
 c= []
-for y in range(1, 120): # a list for run numbers (from 1 to RunNum) and to check duplicated in the header (101-120 )
+for y in range(1, 130): # a list for run numbers (from 1 to RunNum) and to check duplicated in the header (101-130 )
     c = c + [0]
 #if str(sys.argv[2]) == "a":
 if len(sys.argv) < 3:
@@ -147,8 +150,12 @@ for row in readerheader:
         subToHebrew(104, "(N|n)um", "מספר")
         subToHebrew(105, "(N|n)o.", "מספר")
         subToHebrew(106, "(B|b)ib", "מספר")
-        if re.match("(.*)(N|n)ame(.*)", str(column)):
-            if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
+        if re.match("(.*)(N|n)ame(.*)", str(column)) or re.match("(.*)(D|d)river(.*)", str(column)):
+            if re.match("(.*)(D|d)river's (L|l)ast (N|n)ame(.*)", str(column)):
+                c[121] += 1
+                if c[121] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
+            elif re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
                 c[107] += 1
                 if c[107] == 1:
                     header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
@@ -156,20 +163,46 @@ for row in readerheader:
                 c[108] += 1
                 if c[108] == 1:
                     header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
+            elif re.match("(.*)(D|d)river(.*)", str(column)):
+                c[110] += 1
+                if c[110] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
             else:
                 c[109] += 1
                 if c[109] == 1:
                     header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-        subToHebrew(110, "(D|d)river", "שם")
+#        subToHebrew(110, "(D|d)river", "שם")
         for i in range(1, RunNum):
             subToHebrew(i, "(R|r)un "+str(i), round+' '+str(i))
-        subToHebrew(111, "(L|l)aps", "הקפות")
+#        subToHebrew(111, "(L|l)aps", "הקפות")
         subToHebrew(112, "(T|t)ime", "זמן")
         subToHebrew(113, "(G|g)ap", "פער")
         subToHebrew(114, "(D|d)iff. with leader", "פער")
-        subToHebrew(115, "(B|b).Lap", "הקפה מהירה")
-        subToHebrew(116, "(B|b)est lap", "הקפה מהירה")
-        subToHebrew(117, "(P|p)enalty", "עונשין")
+#        subToHebrew(115, "(B|b).(L|l)ap", "הקפה מהירה")
+#        subToHebrew(116, "(B|b)est (L|l)ap", "הקפה מהירה")
+        if re.match("(.*)(L|l)ap(.*)", str(column)):
+            if re.match("(.*)(B|b).(L|l)ap(.*)", str(column)):
+                c[116] += 1
+                if c[116] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
+            elif re.match("(.*)(B|b)est (L|l)ap(.*)", str(column)):
+                c[117] += 1
+                if c[117] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
+            elif re.match("(.*)(L|l)aps(.*)", str(column)):
+                c[111] += 1
+                if c[111] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">הקפות</th>\n'
+            else:
+                c[119] += 1
+                if c[119] == 1:
+                    header_dynamic += '        <th class=\"rnkh_font\">הקפה</th>\n'
+        subToHebrew("q", "(P|p)enalty", "עונשין")
+        subToHebrew(117, "(S|s)eq", "סידורי")
+        subToHebrew(118, "(H|h)our", "זמן כולל")
+        subToHebrew(120, "(P|p)oints", "נקודות")
+        subToHebrew(122, "(C|c)ategory", "קטגוריה")
+
 #        print('column:'+str(c))
 header_dynamic += '    </tr>\n'
 
