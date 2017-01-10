@@ -6,13 +6,10 @@
 # https://github.com/iamliamc/CSVtoHTML/blob/master/script4.py
 # http://www.ctroms.com/blog/code/python/2011/04/20/csv-to-html-table-with-python/
 # http://stackoverflow.com/questions/4521426/delete-blank-rows-from-csv
-# http://stackoverflow.com/questions/191359/how-to-convert-a-file-to-utf-8-in-python
 import time
 import re
 import sys
 import csv
-import io
-from chardet.universaldetector import UniversalDetector
 
 class bcolors:
     HEADER = '\033[95m'
@@ -23,50 +20,11 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-
-targetFormat = 'utf-8'
-outputDir = 'converted'
-detector = UniversalDetector()
-fileName = sys.argv[1] 
-OriginalName = sys.argv[1]
-
-def get_encoding_type(fileName):
-    detector.reset()
-    for line in open(fileName, 'rb'):
-        detector.feed(line)
-        if detector.done: break
-    detector.close()
-    return detector.result['encoding']
-
-def convertFileWithDetection(fileName):
-    print("Converting '" + fileName + "'...")
-    format=get_encoding_type(fileName)
-    try:
-        with io.open(fileName, 'rU', encoding=format) as sourceFile:
-            writeConversion(sourceFile)
-            print('Done.')
-            return
-    except UnicodeDecodeError:
-        pass
-
-    print("Error: failed to convert '" + fileName + "'.")
-
-def writeConversion(file):
-    global OriginalName
-    OriginalName,Ext = OriginalName.split(".",1)
-    OriginalName = OriginalName + "_utf8." + Ext
-    with io.open(OriginalName, 'w', encoding=targetFormat) as targetFile:
-        for line in file:
-            targetFile.write(line)
-
-
-
-
+ 
 def subToHebrew(cPlace, oldArg, subArg):
-    global c
     if re.match("(.*)"+oldArg+"(.*)", str(column)):
-        c[cPlace] += 1
-        if c[cPlace] == 1:
+        cPlace += 1
+        if cPlace == 1:
             global header_dynamic
             header_dynamic += '        <th class=\"rnkh_font\">'+subArg+'</th>\n'
 
@@ -79,20 +37,9 @@ def dnx(findStr, subStr):
 
 #if len(sys.argv) < 3:
 
-
-detector = UniversalDetector()
-
-codecs1 = get_encoding_type(fileName)
-print("\nfile codecs is "+codecs1)
-if codecs1 != "utf-8" and codecs1 != "UTF-8-SIG":
-    convertFileWithDetection(fileName)
-    print (bcolors.FAIL +  "file not utf-8, converted to new file: " + OriginalName + " ,trying to create the HTML file...\n" + bcolors.ENDC)
-#    exit(0)
-
-
 # Create the HTML file for output
 timestr = time.strftime("%Y%m%d_%H%M")
-filename = OriginalName
+filename = sys.argv[1]
 filename = filename.split(".",1)
 filename = '{0}_ConvertedHTML_{1}.txt'.format(filename[0],timestr)
     #exit(1)
@@ -119,12 +66,13 @@ header_fixed = '\n\
 '
 
 # build the dynamic header
-readerheader = csv.reader(open(OriginalName), delimiter='\t') # for the header
+readerheader = csv.reader(open(sys.argv[1]), delimiter='\t') # for the header
 header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
-RunNum = 20
+RunNum = 99
 c= []
 for y in range(1, 120): # a list for run numbers (from 1 to RunNum) and to check duplicated in the header (101-120 )
     c = c + [0]
+
 #if str(sys.argv[2]) == "a":
 if len(sys.argv) < 3:
     round = "הקפה"
@@ -132,21 +80,19 @@ else:
     round = "מקצה"
     
 for row in readerheader:
-#    print('unsorted:'+str(c))
     c.sort(reverse=True)
-#    print('sorted:'+str(c))
-    if c[1] > 0:# stop checking rows after we processed the real header row        
+    if c[1] > 0:# stop checking rows after we processed the real header row
         break
     for column in row:
-        subToHebrew(101,"(P|p)os.","מקום")
-        subToHebrew(102, "(R|r)nk", "מקום")
+        subToHebrew(c[101],"(P|p)os.","מקום")
+        subToHebrew(c[102], "(R|r)nk", "מקום")
         if re.match("(.*)(R|r)anking(.*)", str(row)):
             pass
         else:
-            subToHebrew(103, "(R|r)ank", "מקום")
-        subToHebrew(104, "(N|n)um", "מספר")
-        subToHebrew(105, "(N|n)o.", "מספר")
-        subToHebrew(106, "(B|b)ib", "מספר")
+            subToHebrew(c[103], "(R|r)ank", "מקום")
+        subToHebrew(c[104], "(N|n)um", "מספר")
+        subToHebrew(c[105], "(N|n)o.", "מספר")
+        subToHebrew(c[106], "(B|b)ib", "מספר")
         if re.match("(.*)(N|n)ame(.*)", str(column)):
             if re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
                 c[107] += 1
@@ -160,17 +106,16 @@ for row in readerheader:
                 c[109] += 1
                 if c[109] == 1:
                     header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-        subToHebrew(110, "(D|d)river", "שם")
+        subToHebrew(c[110], "(D|d)river", "שם")
         for i in range(1, RunNum):
-            subToHebrew(i, "(R|r)un "+str(i), round+' '+str(i))
-        subToHebrew(111, "(L|l)aps", "הקפות")
-        subToHebrew(112, "(T|t)ime", "זמן")
-        subToHebrew(113, "(G|g)ap", "פער")
-        subToHebrew(114, "(D|d)iff. with leader", "פער")
-        subToHebrew(115, "(B|b).Lap", "הקפה מהירה")
-        subToHebrew(116, "(B|b)est lap", "הקפה מהירה")
-        subToHebrew(117, "(P|p)enalty", "עונשין")
-#        print('column:'+str(c))
+            subToHebrew(c[i], "(R|r)un "+str(i), round+' '+str(i))
+        subToHebrew(c[111], "(L|l)aps", "הקפות")
+        subToHebrew(c[112], "(T|t)ime", "זמן")
+        subToHebrew(c[113], "(G|g)ap", "פער")
+        subToHebrew(c[114], "(D|d)iff. with leader", "פער")
+        subToHebrew(c[115], "(B|b).Lap", "הקפה מהירה")
+        subToHebrew(c[116], "(B|b)est lap", "הקפה מהירה")
+        subToHebrew(c[117], "(P|p)enalty", "עונשין")
 header_dynamic += '    </tr>\n'
 
 # set which header to use
@@ -179,7 +124,7 @@ header = header_dynamic
 
 # start building the html file
 # Open the CSV file for reading
-reader = csv.reader(open(OriginalName), delimiter='\t')
+reader = csv.reader(open(sys.argv[1]), delimiter='\t')
 
 # print header to shell to check if correct
 print (bcolors.HEADER +  "\nThis is the header we'll use:" + bcolors.ENDC)
