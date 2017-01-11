@@ -166,7 +166,7 @@ for row in readerheader:
             elif re.match("(.*)(D|d)river(.*)", str(column)):
                 c[110] += 1
                 if c[110] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
+                    header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
             else:
                 c[109] += 1
                 if c[109] == 1:

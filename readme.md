@@ -16,6 +16,8 @@ gem install jekyll
 
 gem install rdiscount -s http://gemcutter.org
 
+gem install html-proofer
+
 jekyll new myblog
 
 bundle install
