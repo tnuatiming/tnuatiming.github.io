@@ -226,51 +226,53 @@ htmlfile.write('<table class=\"line_color\">\n')
 
 # generate table contents
 for row in reader: # Read a single row from the CSV file
+    headerItems = ['Rank', 'Rnk', 'Bib.', 'Event Ranking', 'Gap', 'Num', 'Pos.', 'Name', 'All mountain']
+    if not any(item in row for item in headerItems): # delete english header row
 
     # write header row. assumes first row in csv contains header (its wrong but we do not use it)
-    if reader.line_num == 1:
-#    if rownum == 0:
-        htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
-        for column in row:
-            column = re.sub('(l|L)aps', 'הקפות', str(column))#for lap by lap
-            column = re.sub('(l|L)ap', 'הקפה', str(column))#for lap by lap
-            htmlfile.write('        <th class=\"rnkh_font\">' + column + '</th>\n')
-        htmlfile.write('    </tr>\n')
+        if reader.line_num == 1:
+    #    if rownum == 0:
+            htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
+            for column in row:
+                column = re.sub('(l|L)aps', 'הקפות', str(column))#for lap by lap
+                column = re.sub('(l|L)ap', 'הקפה', str(column))#for lap by lap
+                htmlfile.write('        <th class=\"rnkh_font\">' + column + '</th>\n')
+            htmlfile.write('    </tr>\n')
 
-    #write all other rows
-    else:
-        if any(row):#check if row not empty so not to get empty td.
-            if re.match("(.*)DNS(.*)", str(row)):
-                dnx('DNS - Did not start - Run', 'DNS - לא התחיל - ')
-            elif re.match("(.*)DNF(.*)", str(row)):
-                dnx('DNF - Do not finish - Run', 'DNF - לא סיים - ')
-            elif re.match("(.*)DISQ(.*)", str(row)):
-                dnx('DISQ - Disqualified - Run', 'DSQ - נפסל - ')
-            elif re.match("(.*)DSQ(.*)", str(row)):
-                dnx('DSQ - Disqualified - Run', 'DSQ - נפסל - ')
-            elif re.match("(.*)(b|B)est lap(.*)", str(row)):
-                htmlfile.write('    <tr>\n')
-                for column in row:
-                    column = re.sub('(b|B)est lap', 'הקפה מהירה', str(column))
-                    htmlfile.write('        <td  colspan=\"99\" class=\"comment_font\">' + column + '</td>\n')
-                htmlfile.write('    </tr>\n')
-            elif len(row) == 1:
-                htmlfile.write('    <tr>\n')
-                for column in row:
-                    htmlfile.write('        <td  colspan=\"99\" class=\"title_font\">' + column + '</td>\n')
-                htmlfile.write('    </tr>\n')
-                htmlfile.write(header)
-            else:
-                htmlfile.write('    <tr class=\"rnk_bkcolor\">\n')
-                for column in row:
-                    column = re.sub('(l|L)aps', 'הקפות', str(column))
-                    column = re.sub('(l|L)ap', 'הקפה', str(column))
-                    column = re.sub('1h', '01:', str(column))
-                    column = re.sub('2h', '02:', str(column))
-                    column = re.sub('3h', '03:', str(column))
-                    column = re.sub('4h', '04:', str(column))
-                    htmlfile.write('        <td class=\"rnk_font\">' + column + '</td>\n')
-                htmlfile.write('    </tr>\n')
+        #write all other rows
+        else:
+            if any(row):#check if row not empty so not to get empty td.
+                if re.match("(.*)DNS(.*)", str(row)):
+                    dnx('DNS - Did not start - Run', 'DNS - לא התחיל - ')
+                elif re.match("(.*)DNF(.*)", str(row)):
+                    dnx('DNF - Do not finish - Run', 'DNF - לא סיים - ')
+                elif re.match("(.*)DISQ(.*)", str(row)):
+                    dnx('DISQ - Disqualified - Run', 'DSQ - נפסל - ')
+                elif re.match("(.*)DSQ(.*)", str(row)):
+                    dnx('DSQ - Disqualified - Run', 'DSQ - נפסל - ')
+                elif re.match("(.*)(b|B)est lap(.*)", str(row)):
+                    htmlfile.write('    <tr>\n')
+                    for column in row:
+                        column = re.sub('(b|B)est lap', 'הקפה מהירה', str(column))
+                        htmlfile.write('        <td  colspan=\"99\" class=\"comment_font\">' + column + '</td>\n')
+                    htmlfile.write('    </tr>\n')
+                elif len(row) == 1:
+                    htmlfile.write('    <tr>\n')
+                    for column in row:
+                        htmlfile.write('        <td  colspan=\"99\" class=\"title_font\">' + column + '</td>\n')
+                    htmlfile.write('    </tr>\n')
+                    htmlfile.write(header)
+                else:
+                    htmlfile.write('    <tr class=\"rnk_bkcolor\">\n')
+                    for column in row:
+                        column = re.sub('(l|L)aps', 'הקפות', str(column))
+                        column = re.sub('(l|L)ap', 'הקפה', str(column))
+                        column = re.sub('1h', '01:', str(column))
+                        column = re.sub('2h', '02:', str(column))
+                        column = re.sub('3h', '03:', str(column))
+                        column = re.sub('4h', '04:', str(column))
+                        htmlfile.write('        <td class=\"rnk_font\">' + column + '</td>\n')
+                    htmlfile.write('    </tr>\n')
 
     #increment row count
     rownum += 1
