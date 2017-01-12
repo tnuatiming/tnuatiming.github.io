@@ -85,7 +85,7 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
     }
     fclose($handle1);
 }
-$header .= '    </tr>'."\r\n"; // finishing the denamic header
+$header .= '    </tr>'; // finishing the denamic header
 
 // start building the html 
 $row = 1;
