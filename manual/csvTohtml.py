@@ -25,7 +25,6 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 targetFormat = 'utf-8'
-outputDir = 'converted'
 detector = UniversalDetector()
 fileName = sys.argv[1] 
 OriginalName = sys.argv[1]
@@ -48,7 +47,6 @@ def convertFileWithDetection(fileName):
             return
     except UnicodeDecodeError:
         pass
-
     print("Error: failed to convert '" + fileName + "'.")
 
 def writeConversion(file):
@@ -60,13 +58,11 @@ def writeConversion(file):
             targetFile.write(line)
 
 
-
-
 def subToHebrew(cPlace, oldArg, subArg):
     global header_dynamic
     global c
     if re.match("(.*)"+oldArg+"(.*)", str(column)):
-        if cPlace != "q":
+        if cPlace != "q":# if there are more then 1 colunm with the same header
             c[cPlace] += 1
             if c[cPlace] == 1:
                 header_dynamic += '        <th class=\"rnkh_font\">'+subArg+'</th>\n'
@@ -82,22 +78,16 @@ def dnx(findStr, subStr):
 
 #if len(sys.argv) < 3:
 
-
-detector = UniversalDetector()
-
-codecs1 = get_encoding_type(fileName)
-print("\nfile codecs is "+codecs1)
-if codecs1 != "utf-8" and codecs1 != "UTF-8-SIG":
+OriginalCodecs = get_encoding_type(fileName)
+print("\nfile codecs is "+OriginalCodecs)
+if OriginalCodecs != "utf-8" and OriginalCodecs != "UTF-8-SIG":
     convertFileWithDetection(fileName)
     print (bcolors.FAIL +  "file not utf-8, converted to new file: " + OriginalName + " ,trying to create the HTML file...\n" + bcolors.ENDC)
 #    exit(0)
 
-
 # Create the HTML file for output
-timestr = time.strftime("%Y%m%d_%H%M")
-filename = OriginalName
-filename = filename.split(".",1)
-filename = '{0}_ConvertedHTML_{1}.txt'.format(filename[0],timestr)
+filename = OriginalName.split(".",1)
+filename = '{0}_ConvertedHTML_{1}.txt'.format(filename[0],time.strftime("%Y%m%d_%H%M"))
     #exit(1)
 #else:
 #    filename = sys.argv[1]

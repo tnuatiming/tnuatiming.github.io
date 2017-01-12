@@ -12,7 +12,7 @@
 <h3>Convert CSV to HTML Table</h3><br/>
 <form accept-charset="UTF-8" action="converted.php" method="post" enctype="multipart/form-data">
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
-<br/>
+  <input type="radio" name="radio" value="utf16">file is utf-16le <br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 </div>
