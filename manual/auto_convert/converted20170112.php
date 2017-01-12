@@ -89,7 +89,7 @@ $header .= '    </tr>'."\r\n"; // finishing the denamic header
 
 // start building the html 
 $row = 1;
-$html .= '<table class="line_color">'."\r\n";
+echo "<table class=\"line_color\">\n";
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
         if ($row > $noNeedLines) { // skip the first lines we do not need
@@ -105,33 +105,33 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     //            $data[0] = str_replace("laps", "הקפות", $data[0]);
     //            $data[0] = str_replace("lap", "הקפה", $data[0]);
                 if (strpos($data[0], 'DISQ') !== false) {
-                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '    </tr>'."\r\n";
+                    echo "    <tr class=\"rnk_bkcolor\">\n";
+                    echo "        <td  colspan=\"99\" class=\"subtitle_font\">$data[0]</td>\n";
+                    echo "    </tr>\n";
                 } elseif (strpos($data[0], 'DSQ') !== false) {
-                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '    </tr>'."\r\n";
+                    echo "    <tr class=\"rnk_bkcolor\">\n";
+                    echo "        <td  colspan=\"99\" class=\"subtitle_font\">$data[0]</td>\n";
+                    echo "    </tr>\n";
                 } elseif (strpos($data[0], 'DNS') !== false) {
-                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '    </tr>'."\r\n";
+                    echo "    <tr class=\"rnk_bkcolor\">\n";
+                    echo "        <td  colspan=\"99\" class=\"subtitle_font\">$data[0]</td>\n";
+                    echo "    </tr>\n";
                 } elseif (strpos($data[0], 'DNF') !== false) {
-                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '    </tr>'."\r\n";
+                    echo "    <tr class=\"rnk_bkcolor\">\n";
+                    echo "        <td  colspan=\"99\" class=\"subtitle_font\">$data[0]</td>\n";
+                    echo "    </tr>\n";
                 } elseif (strpos($data[0], 'הקפה מהירה:') !== false) {
-                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="comment_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '    </tr>'."\r\n";
+                    echo "    <tr class=\"rnk_bkcolor\">\n";
+                    echo "        <td  colspan=\"99\" class=\"comment_font\">$data[0]</td>\n";
+                    echo "    </tr>\n";
                 } else {    // category header
-                    $html .= '    <tr>'."\r\n";
-                    $html .= '        <td  colspan="99" class="title_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '    </tr>'."\r\n";
-                    $html .= $header."\r\n";
+                    echo "    <tr>\n";
+                    echo "        <td  colspan=\"99\" class=\"title_font\">$data[0]</td>\n";
+                    echo "    </tr>\n";
+                    echo "$header";
                 }
             } else { // row with more then 1 cell
-                $html .= '    <tr class="rnk_bkcolor">'."\r\n";
+                echo "    <tr class=\"rnk_bkcolor\">\n";
                 for ($c=0; $c < $num; $c++) {
                     $data[$c] = str_replace("laps", "הקפות", $data[$c]);
                     $data[$c] = str_replace("Laps", "הקפות", $data[$c]);
@@ -141,9 +141,9 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                     $data[$c] = str_replace("2h", "02:", $data[$c]);
                     $data[$c] = str_replace("3h", "03:", $data[$c]);
                     $data[$c] = str_replace("4h", "04:", $data[$c]);
-                    $html .= '        <td class="rnk_font">'.$data[$c].'</td>'."\r\n";
+                    echo "        <td class=\"rnk_font\">$data[$c]</td>\n";
                 }
-                $html .= '    </tr>'."\r\n";
+                echo "    </tr>\n";
             }
         }
     $row++;
@@ -152,7 +152,6 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     }
     fclose($handle);
 }
-$html .= '</table>'."\r\n";
-echo ($html);
-//echo htmlspecialchars($html);
+echo "</table>\n";
+
 ?>
