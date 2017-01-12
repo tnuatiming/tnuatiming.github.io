@@ -266,7 +266,7 @@ direction: ltr;
     
     <h3 class="c7">חצי אוטומטי</h3>
     
-    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a> את סעיפים 4,5 יש לבצע ידנית.</span></p>
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a> את סעיפים 4,5 יש לוודא תקינות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות).</span></p>
     
     <h3 class="c7">אוטומטי(דרך עדיפה)</h3>
 

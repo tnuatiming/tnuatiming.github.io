@@ -1,23 +1,23 @@
 <?php
-$csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file
+$csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
 if ($_POST['radio']) {
-    $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");
+    $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
 }
 $delimiter = array("\t",",","|","\\","/",";");// all the options for delimiters
-$csv = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to ,
+$csv = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to tab
 //$csv = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv);//delete empty lines(doesn't delete the last line)
 $csv = preg_replace('/^[\r\n]+|[\r\n]+$/m', '', $csv);//delete empty lines
-$csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv);// put the uploaded file
+$csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv);// recreate the uploaded file with the refoctoring
 
 $csv_file = ($_FILES['file']['tmp_name']);// get the uploaded file
 
-
+// header stack
 $stop = 0;
-$header .= '    <tr class="rnkh_bkcolor">'."\r\n";
+$header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
 $row = 1;
 if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
     while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
-        if ($stop == 0) {
+        if ($stop == 0) {      //stop going trough the line when the header is detected
             $num = count($data1);
             if ($num != 1) {
                 $row++;
@@ -80,20 +80,12 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
                 }
             }
         }
-//        echo "    </tr>\n";
     }
     fclose($handle1);
 }
-$header .= '    </tr>'."\r\n";
+$header .= '    </tr>'."\r\n"; // finishing the denamic header
 
-
-
-
-
-
-
-
-
+// start building the html 
 $row = 1;
 echo "<table class=\"line_color\">\n";
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
@@ -101,14 +93,14 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
 //        echo "data: $data[0]";
 //        echo "    <tr class=\"rnk_bkcolor\">\n";
         $num = count($data);
-        if ($num == 1) {
+        if ($num == 1) { // row with 1 cell
             $data[0] = str_replace("Run", "הקפה", $data[0]);
             $data[0] = str_replace("Disqualified", "נפסל", $data[0]);
             $data[0] = str_replace("Do not finish", "לא סיים", $data[0]);
             $data[0] = str_replace("Did not start", "לא התחיל", $data[0]);
             $data[0] = str_replace("Best lap:", "הקפה מהירה:", $data[0]);
-            $data[0] = str_replace("laps", "הקפות", $data[0]);
-            $data[0] = str_replace("lap", "הקפה", $data[0]);
+//            $data[0] = str_replace("laps", "הקפות", $data[0]);
+//            $data[0] = str_replace("lap", "הקפה", $data[0]);
             if (strpos($data[0], 'DISQ') !== false) {
                 echo "    <tr class=\"rnk_bkcolor\">\n";
                 echo "        <td  colspan=\"99\" class=\"subtitle_font\">$data[0]</td>\n";
@@ -129,13 +121,13 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                 echo "    <tr class=\"rnk_bkcolor\">\n";
                 echo "        <td  colspan=\"99\" class=\"comment_font\">$data[0]</td>\n";
                 echo "    </tr>\n";
-            } else {
+            } else {    // category header
                 echo "    <tr>\n";
                 echo "        <td  colspan=\"99\" class=\"title_font\">$data[0]</td>\n";
                 echo "    </tr>\n";
                 echo "$header";
             }
-        } else {
+        } else { // row with more then 1 cell
             $row++;
             echo "    <tr class=\"rnk_bkcolor\">\n";
             for ($c=0; $c < $num; $c++) {
@@ -150,8 +142,7 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                 echo "        <td class=\"rnk_font\">$data[$c]</td>\n";
             }
             echo "    </tr>\n";
-            }
-//        echo "    </tr>\n";
+        }
     }
     fclose($handle);
 }
