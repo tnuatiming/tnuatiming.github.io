@@ -3,6 +3,11 @@ $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded f
 if ($_POST['radio']) {
     $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
 }
+if ($_POST['run']) {
+    $runType = "מקצה";// use מקצה for "Run"
+} else {
+    $runType = "הקפה";// use הקפה for "Run"
+}
 $delimiter = array("\t",",","|","\\","/",";");// all the options for delimiters
 $csv = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to tab
 //$csv = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv);//delete empty lines(doesn't delete the last line)
@@ -56,36 +61,53 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
                     } elseif (strpos($data1[$c], 'Penalty') !== false) {
                         $header .= '        <th class="rnkh_font">עונשין</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 1') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 1</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 1</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 2') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 2</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 2</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 3') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 3</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 3</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 4') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 4</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 4</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 5') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 5</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 5</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 6') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 6</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 6</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 7') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 7</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 7</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 8') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 8</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 8</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 9') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 9</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 9</th>'."\r\n";
                     } elseif (strpos($data1[$c], 'Run 10') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה 10</th>'."\r\n";
+                        $header .= '        <th class="rnkh_font">'.$runType.' 10</th>'."\r\n";
+                    } elseif (strpos($data1[$c], 'Run 11') !== false) {
+                        $header .= '        <th class="rnkh_font">'.$runType.' 11</th>'."\r\n";
+                    } elseif (strpos($data1[$c], 'Run 12') !== false) {
+                        $header .= '        <th class="rnkh_font">'.$runType.' 12</th>'."\r\n";
+                    } elseif (strpos($data1[$c], 'Run 13') !== false) {
+                        $header .= '        <th class="rnkh_font">'.$runType.' 13</th>'."\r\n";
+                    } elseif (strpos($data1[$c], 'Run 14') !== false) {
+                        $header .= '        <th class="rnkh_font">'.$runType.' 14</th>'."\r\n";
+                    } elseif (strpos($data1[$c], 'Run 15') !== false) {
+                        $header .= '        <th class="rnkh_font">'.$runType.' 15</th>'."\r\n";
+                    } elseif (strpos($data1[$c], 'Run 16') !== false) {
+                        $header .= '        <th class="rnkh_font">'.$runType.' 16</th>'."\r\n";
                     }
                 }
             }
         $row1++;
         } else {
+            if ($_POST['deleterows']) {
+            $noNeedLines = 0; //do not skip the first lines up to and including the english header when building the html
+            } else {
             $noNeedLines = $row1; //use to skip the first lines up to and including the english header when building the html
+            }
         }
     }
     fclose($handle1);
 }
 $header .= '    </tr>'; // finishing the denamic header
+
 
 // start building the html 
 $row = 1;
@@ -97,7 +119,7 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     //        echo "    <tr class=\"rnk_bkcolor\">\n";
             $num = count($data);
             if ($num == 1) { // row with 1 cell
-                $data[0] = str_replace("Run", "הקפה", $data[0]);
+                $data[0] = str_replace("Run", $runType, $data[0]);
                 $data[0] = str_replace("Disqualified", "נפסל", $data[0]);
                 $data[0] = str_replace("Do not finish", "לא סיים", $data[0]);
                 $data[0] = str_replace("Did not start", "לא התחיל", $data[0]);
