@@ -1,6 +1,6 @@
 <?php
 $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
-if ($_POST['radio']) {
+if ($_POST['utf16']) {
     $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
 }
 if ($_POST['run']) {
@@ -171,6 +171,7 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                     $data[$c] = str_replace("2h", "02:", $data[$c]);
                     $data[$c] = str_replace("3h", "03:", $data[$c]);
                     $data[$c] = str_replace("4h", "04:", $data[$c]);
+                    $data[$c] = str_replace("5h", "05:", $data[$c]);
                     $html .= '        <td class="rnk_font">'.$data[$c].'</td>'."\r\n";
                 }
                 $html .= '    </tr>'."\r\n";
