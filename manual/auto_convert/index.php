@@ -14,6 +14,7 @@
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
   <input type="radio" name="radio" value="utf16">file is utf-16le <br/><br/>
   <input type="radio" name="run" value="run">&quot;מקצה&quot; (במקום &quot;הקפה&quot;) <br/><br/>
+  <input type="radio" name="changename" value="changename">&quot;נהג&quot; (במקום &quot;שם&quot;) <br/><br/>
   <input type="radio" name="deleterows" value="deleterows">אל תמחוק את השורות הראשונות <br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
