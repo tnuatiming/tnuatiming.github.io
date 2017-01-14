@@ -185,5 +185,6 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
 }
 $html .= '</table>'."\r\n";
 echo ($html);
+//echo nl2br(htmlentities($html);
 //echo htmlspecialchars($html);
 ?>
