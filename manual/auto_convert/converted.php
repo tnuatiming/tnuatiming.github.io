@@ -62,12 +62,18 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
                         $header .= '        <th class="rnkh_font">הקפות</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'B.Lap') !== false) {
                         $header .= '        <th class="rnkh_font">הקפה מהירה</th>'."\r\n";
+                    } elseif (stripos($data1[$c], 'Lap') !== false) {
+                        $header .= '        <th class="rnkh_font">הקפה</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Time') !== false) {
                         $header .= '        <th class="rnkh_font">זמן</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Gap') !== false) {
                         $header .= '        <th class="rnkh_font">פער</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Penalty') !== false) {
                         $header .= '        <th class="rnkh_font">עונשין</th>'."\r\n";
+                    } elseif (stripos($data1[$c], 'Hour') !== false) {
+                        $header .= '        <th class="rnkh_font">זמן כולל</th>'."\r\n";
+                    } elseif (stripos($data1[$c], 'Seq') !== false) {
+                        $header .= '        <th class="rnkh_font">סידורי</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Run 1') !== false) {
                         $header .= '        <th class="rnkh_font">'.$runType.' 1</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Run 2') !== false) {
@@ -160,18 +166,22 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                     $html .= $header."\r\n";
                 }
             } else { // row with more then 1 cell
-                $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                for ($c=0; $c < $num; $c++) {
-                    $data[$c] = str_ireplace("laps", "הקפות", $data[$c]);
-                    $data[$c] = str_ireplace("lap", "הקפה", $data[$c]);
-                    $data[$c] = str_replace("1h", "01:", $data[$c]);
-                    $data[$c] = str_replace("2h", "02:", $data[$c]);
-                    $data[$c] = str_replace("3h", "03:", $data[$c]);
-                    $data[$c] = str_replace("4h", "04:", $data[$c]);
-                    $data[$c] = str_replace("5h", "05:", $data[$c]);
-                    $html .= '        <td class="rnk_font">'.$data[$c].'</td>'."\r\n";
+                if (!in_array("START",$data)) {  // row with "START" in it will not br processed and apectly deleted
+                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
+                    for ($c=0; $c < $num; $c++) {
+                        $data[$c] = str_ireplace("laps", "הקפות", $data[$c]);
+                        $data[$c] = str_ireplace("lap", "הקפה", $data[$c]);
+                        $data[$c] = str_ireplace("START", "זינוק", $data[$c]);
+                        $data[$c] = str_ireplace("FINISH", "סיום", $data[$c]);
+                        $data[$c] = str_replace("1h", "01:", $data[$c]);
+                        $data[$c] = str_replace("2h", "02:", $data[$c]);
+                        $data[$c] = str_replace("3h", "03:", $data[$c]);
+                        $data[$c] = str_replace("4h", "04:", $data[$c]);
+                        $data[$c] = str_replace("5h", "05:", $data[$c]);
+                        $html .= '        <td class="rnk_font">'.$data[$c].'</td>'."\r\n";
+                    }
+                    $html .= '    </tr>'."\r\n";
                 }
-                $html .= '    </tr>'."\r\n";
             }
         }
     $row++;
