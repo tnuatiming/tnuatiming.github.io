@@ -116,7 +116,6 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
 }
 $header .= '    </tr>'; // finishing the denamic header
 
-
 // start building the html 
 $row = 1;
 $html .= '<table class="line_color">'."\r\n";
@@ -127,13 +126,13 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     //        echo "    <tr class=\"rnk_bkcolor\">\n";
             $num = count($data);
             if ($num == 1) { // row with 1 cell
-                $data[0] = str_replace("Run", $runType, $data[0]);
-                $data[0] = str_replace("Disqualified", "נפסל", $data[0]);
-                $data[0] = str_replace("Do not finish", "לא סיים", $data[0]);
-                $data[0] = str_replace("Did not start", "לא התחיל", $data[0]);
-                $data[0] = str_replace("Best lap:", "הקפה מהירה:", $data[0]);
-    //            $data[0] = str_replace("laps", "הקפות", $data[0]);
-    //            $data[0] = str_replace("lap", "הקפה", $data[0]);
+                $data[0] = str_ireplace("Run", $runType, $data[0]);
+                $data[0] = str_ireplace("Disqualified", "נפסל", $data[0]);
+                $data[0] = str_ireplace("Do not finish", "לא סיים", $data[0]);
+                $data[0] = str_ireplace("Did not start", "לא התחיל", $data[0]);
+                $data[0] = str_ireplace("Best lap:", "הקפה מהירה:", $data[0]);
+    //            $data[0] = str_ireplace("laps", "הקפות", $data[0]);
+    //            $data[0] = str_ireplace("lap", "הקפה", $data[0]);
                 if (strpos($data[0], 'DISQ') !== false) {
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
                     $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
@@ -163,10 +162,8 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
             } else { // row with more then 1 cell
                 $html .= '    <tr class="rnk_bkcolor">'."\r\n";
                 for ($c=0; $c < $num; $c++) {
-                    $data[$c] = str_replace("laps", "הקפות", $data[$c]);
-                    $data[$c] = str_replace("Laps", "הקפות", $data[$c]);
-                    $data[$c] = str_replace("lap", "הקפה", $data[$c]);
-                    $data[$c] = str_replace("Lap", "הקפה", $data[$c]);
+                    $data[$c] = str_ireplace("laps", "הקפות", $data[$c]);
+                    $data[$c] = str_ireplace("lap", "הקפה", $data[$c]);
                     $data[$c] = str_replace("1h", "01:", $data[$c]);
                     $data[$c] = str_replace("2h", "02:", $data[$c]);
                     $data[$c] = str_replace("3h", "03:", $data[$c]);
@@ -178,13 +175,12 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
             }
         }
     $row++;
-    
-    
     }
     fclose($handle);
 }
 $html .= '</table>'."\r\n";
 echo ($html);
-//echo nl2br(htmlentities($html);
+//echo htmlentities($html);
+//echo nl2br(htmlentities($html));
 //echo htmlspecialchars($html);
 ?>
