@@ -5,6 +5,8 @@
 // http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
 // http://www.becsv.com/csv-transpose.php
 // http://convertcsv.com/transpose-csv.htm
+// http://stackoverflow.com/questions/709669/how-do-i-remove-blank-lines-from-text-in-php
+
 
 //transpose from file
 
