@@ -9,6 +9,10 @@
 //transpose from file
 
 if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file name
+    $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
+    $csv_file = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv_file);//delete empty lines with out deleting the last line
+    $csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the uploaded file with the refoctoring
+
     $handle1 = trim(file_get_contents($_FILES['file']['tmp_name']));
 
 //prepar the data for the import to the array
@@ -23,9 +27,11 @@ if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file 
         for ($i = 0; $i < $count; $i++) {
             $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
             $num = count($data);  // column counter
-                for ($c=0; $c < $num; $c++) {
-                    $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
-                }
+                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){
+                    for ($c=0; $c < $num; $c++) {
+                        $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
+                    }
+            }
         }
 
 // start the html output
