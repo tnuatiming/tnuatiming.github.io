@@ -45,7 +45,9 @@ if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file 
     $html .= '    </tr>'."\r\n";
 
 //transpose array and output html
-
+    if ($_POST['donttranspose']) {
+        $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
+    }
     $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
     $countRow = count($tableArray);        // row counter
     $countColumn = count($tableArray[0]);  // column counter
@@ -108,7 +110,9 @@ if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a te
 
 //transpose array and output html
 
-    $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
+    if (!$_POST['donttranspose']) {
+        $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
+    }
     $countRow = count($tableArray);        // row counter
     $countColumn = count($tableArray[0]);  // column counter
 
