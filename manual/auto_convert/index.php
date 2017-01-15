@@ -12,8 +12,8 @@
 <form accept-charset="UTF-8" action="converted.php" method="post" enctype="multipart/form-data">
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
   <input type="checkbox" name="utf16" value="utf16">file is UTF-16LE <br/><br/>
-  <input type="checkbox" name="run" value="run">&quot;מקצה&quot; (במקום &quot;הקפה&quot;) <br/><br/>
-  <input type="checkbox" name="changename" value="changename">&quot;נהג&quot; (במקום &quot;שם&quot;) <br/><br/>
+  <input type="checkbox" name="run" value="run">&quot;מקצה&quot; במקום &quot;הקפה&quot; <br/><br/>
+  <input type="checkbox" name="changename" value="changename">&quot;נהג&quot; במקום &quot;שם&quot; <br/><br/>
   <input type="checkbox" name="deleterows" value="deleterows">אל תמחק את השורות הראשונות <br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
