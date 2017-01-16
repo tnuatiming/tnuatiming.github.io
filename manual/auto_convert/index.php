@@ -29,6 +29,7 @@
 <form accept-charset="UTF-8" action="transposeconverted.php" method="post" enctype="multipart/form-data"><br/>
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
 <textarea class="form-control resizable processed" name="textareaname" rows="20" cols="50"  placeholder="paste CSV Data" wrap="off"></textarea><br/><br/>  
+  <input type="checkbox" name="utf16le" value="utf16le">file is UTF-16LE <br/><br/>
   <input type="checkbox" name="donttranspose" value="donttranspose">do not
   transpose <br/><br/>
 <input type="submit" value="Convert" style="font-size: 1.2em;"/>

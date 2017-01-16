@@ -12,6 +12,9 @@
 
 if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file name
     $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
+if ($_POST['utf16le']) {
+    $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
+}
     $csv_file = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv_file);//delete empty lines with out deleting the last line
     $csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the uploaded file with the refoctoring
 
@@ -79,7 +82,11 @@ if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file 
 //transpose from textareaname
 
 if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a textareaname
-    $handle2 = trim($_POST['textareaname']);
+    $handle2 = ($_POST['textareaname']);
+    if (mb_detect_encoding($handle2, 'UTF-8', true) === false) { // make sure its utf-8
+      $handle2 = utf8_encode($handle2); 
+    } 
+    //$handle2 = trim($_POST['textareaname']);
 
 // import the data into the array
 
@@ -88,15 +95,17 @@ if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a te
 
     $tableArray = array();
 
-    // import the data into the array
+// import the data into the array
 
-    $count = count($textAr);   // row counter
+    $count = count($textAr);  // row counter
         for ($i = 0; $i < $count; $i++) {
-            $data = preg_split( "/[\t,]/", $textAr[$i]);  // split if delimeter is tab or ,
-            $num = count($data); // column counter
-                for ($c=0; $c < $num; $c++) {
-                    $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
-                }
+            $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
+            $num = count($data);  // column counter
+                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){
+                    for ($c=0; $c < $num; $c++) {
+                        $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
+                    }
+            }
         }
 
 // start the html output
