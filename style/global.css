@@ -593,6 +593,18 @@ border-bottom: 6px #222 solid;
     border-bottom: 6px #ffcc33 solid;
 }
 
+.navigation a.live:hover,.navigation a.live:active {
+    color: #222;
+    background-color: rgba(255,255,255,0.8);
+    border-bottom: 6px #c00 solid;
+}
+
+.navigation a.home:hover,.navigation a.home:active {
+    color: #222;
+    background-color: rgba(255,255,255,0.8);
+    border-bottom: 6px #6c3 solid;
+}
+
 .home-icon, .race-icon, .live-icon{
     max-width: 0.8em;
     max-height: 0.8em;
