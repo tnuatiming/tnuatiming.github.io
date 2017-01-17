@@ -32,7 +32,7 @@ if ($_POST['utf16le']) {
         for ($i = 0; $i < $count; $i++) {
             $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
             $num = count($data);  // column counter
-                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){
+                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
                     for ($c=0; $c < $num; $c++) {
                         $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
                     }
@@ -61,7 +61,11 @@ if ($_POST['utf16le']) {
                         $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);  // Case-insensitive
                         $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
                         $tableArray[$i][$c] = str_replace(".", "", $tableArray[$i][$c]);
-                        $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";
+                        if  ($c == 0) { // insert מקום to the top corner cell (0,0)
+                            $html .= '        <th class="rnkh_font">מקום</th>'."\r\n";
+                        } else {
+                            $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
+                        }
                     }
                     $html .= '    </tr>'."\r\n";
                 } else { // other rows
@@ -101,7 +105,7 @@ if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a te
         for ($i = 0; $i < $count; $i++) {
             $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
             $num = count($data);  // column counter
-                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){
+                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){  //clean 1 cell lines and Start and Grid lines
                     for ($c=0; $c < $num; $c++) {
                         $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
                     }
@@ -131,7 +135,11 @@ if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a te
                         $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);
                         $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
                         $tableArray[$i][$c] = str_replace(".", "", $tableArray[$i][$c]);
-                        $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";
+                        if  ($c == 0) {  // insert מקום to the top corner cell (0,0)
+                            $html .= '        <th class="rnkh_font">מקום</th>'."\r\n";
+                        } else {
+                            $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
+                        }
                     }
                     $html .= '    </tr>'."\r\n";
                 } else { // other rows
