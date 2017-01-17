@@ -16,12 +16,11 @@ if ($_POST['utf16le']) {
     $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
 }
     $csv_file = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv_file);//delete empty lines with out deleting the last line
-    $csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the uploaded file with the refoctoring
+//    $csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the uploaded file with the refoctoring
 
-    $handle1 = trim(file_get_contents($_FILES['file']['tmp_name']));
+    $handle1 = trim($csv_file);
 
 //prepar the data for the import to the array
-    $handle1 = trim(file_get_contents($_FILES['file']['tmp_name']));
     $textAr = explode("\n", $handle1);
     $textAr = array_filter($textAr, 'trim'); // remove any extra \r characters left behind
     $tableArray = array();
@@ -29,13 +28,16 @@ if ($_POST['utf16le']) {
 // import the data into the array
 
     $count = count($textAr);  // row counter
-        for ($i = 0; $i < $count; $i++) {
-            $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
-            $num = count($data);  // column counter
-                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
-                    for ($c=0; $c < $num; $c++) {
-                        $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
-                    }
+    for ($i = 0; $i < $count; $i++) {
+        $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
+        $num = count($data);  // column counter
+            if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
+                for ($c=0; $c < $num; $c++) {
+                    $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
+//                        $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
+                    $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);  // Case-insensitive
+                    $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
+                }
             }
         }
 
@@ -58,26 +60,19 @@ if ($_POST['utf16le']) {
                 if ($i == 0) { // header row
                     $html .= '    <tr class="rnkh_bkcolor">'."\r\n";
                     for ($c=0; $c < $countColumn; $c++) {
-                        $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);  // Case-insensitive
-                        $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
-                        $tableArray[$i][$c] = str_replace(".", "", $tableArray[$i][$c]);
-                        if  ($c == 0) { // insert מקום to the top corner cell (0,0)
+                        if  ($c == 0) {  // insert מקום to the top corner cell (0,0)
                             $html .= '        <th class="rnkh_font">מקום</th>'."\r\n";
                         } else {
                             $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
                         }
                     }
-                    $html .= '    </tr>'."\r\n";
                 } else { // other rows
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
                     for ($c=0; $c < $countColumn; $c++) {
-                        $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);
-                        $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
-                        $tableArray[$i][$c] = str_replace(".", "", $tableArray[$i][$c]);
                         $html .= '        <td class="rnk_font">'.$tableArray[$i][$c].'</td>'."\r\n";
                     }
-                    $html .= '    </tr>'."\r\n";
                 }
+        $html .= '    </tr>'."\r\n";
         }
     $html .= '</table>'."\r\n";
     echo ($html);
@@ -105,10 +100,11 @@ if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a te
         for ($i = 0; $i < $count; $i++) {
             $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
             $num = count($data);  // column counter
-                if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){  //clean 1 cell lines and Start and Grid lines
-                    for ($c=0; $c < $num; $c++) {
-                        $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
-                    }
+            if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){  //clean 1 cell lines and Start and Grid lines
+                for ($c=0; $c < $num; $c++) {
+                    $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
+//                        $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
+                }
             }
         }
 
