@@ -26,7 +26,7 @@ if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file 
 
 //transpose from textareaname
 
-if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a textareaname
+elseif (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a textareaname
     $textArea = ($_POST['textareaname']);
 
     if (mb_detect_encoding($textArea, 'UTF-8', true) === false) { // make sure its utf-8
@@ -37,11 +37,14 @@ if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a te
 
     $textArray = explode("\n", $textArea);
     $textArray = array_filter($textArray, 'trim'); // remove any extra \r characters left behind
+} else {
+    echo ("no file uploaded");
+    exit;
 }
 
 // import the data into the array
 
-$tableArray = array();
+$tableArray = []; // init empty array
 
 $count = count($textArray);  // row counter
 for ($i = 0; $i < $count; $i++) {
@@ -67,7 +70,7 @@ if (!$_POST['donttranspose']) {
 
 // start the html output
 
-$html = ("");
+$html = "";
 $html .= '<table class="line_color no_num_color">'."\r\n";
 $html .= '    <tr>'."\r\n";
 $html .= '        <td  colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";
