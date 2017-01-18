@@ -157,11 +157,11 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'הקפה מהירה:') !== false) {
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="comment_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } else {    // category header
                     $html .= '    <tr>'."\r\n";
-                    $html .= '        <td  colspan="99" class="title_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                     $html .= $header."\r\n";
                 }
@@ -178,7 +178,7 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                         $data[$c] = str_replace("3h", "03:", $data[$c]);
                         $data[$c] = str_replace("4h", "04:", $data[$c]);
                         $data[$c] = str_replace("5h", "05:", $data[$c]);
-                        $html .= '        <td class="rnk_font">'.$data[$c].'</td>'."\r\n";
+                        $html .= '        <td class="rnk_font">'.trim($data[$c]).'</td>'."\r\n";
                     }
                     $html .= '    </tr>'."\r\n";
                 }
