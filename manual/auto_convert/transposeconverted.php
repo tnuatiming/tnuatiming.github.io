@@ -22,123 +22,77 @@ if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file 
 
     $textArray = explode("\n", str_replace("\r", '', trim($csv_file)));
 //    $textArray = array_filter($textArray, 'trim'); // remove any extra \r characters left behind
-    $tableArray = array();
-
-// import the data into the array
-
-    $count = count($textArray);  // row counter
-    for ($i = 0; $i < $count; $i++) {
-        $data = preg_split( "/[\t,]/", $textArray[$i]); // split if delimeter is tab or ,
-        $num = count($data);  // column counter
-            if (($num > 1) && (stripos($textArray[$i], 'Start')) === FALSE && (stripos($textArray[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
-                for ($c=0; $c < $num; $c++) {
-                    $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
-                    // $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
-                    $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);  // Case-insensitive
-                    $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
-                }
-            }
-        }
-$tableArray = array_values($tableArray); // re index the array after deleting lines
-$tableArray[0][0] = "מקום";
-
-// start the html output
-
-    $html = ("");
-    $html .= '<table class="line_color no_num_color">'."\r\n";
-    $html .= '    <tr>'."\r\n";
-    $html .= '        <td  colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";
-    $html .= '    </tr>'."\r\n";
-
-//transpose array and output html
-    if (!$_POST['donttranspose']) {
-        $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
-    }
-    $countRow = count($tableArray);        // row counter
-    $countColumn = count($tableArray[0]);  // column counter
-
-        for ($i = 0; $i < $countRow; $i++) {
-                if ($i == 0) { // header row
-                    $html .= '    <tr class="rnkh_bkcolor">'."\r\n";
-                    for ($c=0; $c < $countColumn; $c++) {
-                        $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
-                    }
-                } else { // other rows
-                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    for ($c=0; $c < $countColumn; $c++) {
-                        $html .= '        <td class="rnk_font">'.$tableArray[$i][$c].'</td>'."\r\n";
-                    }
-                }
-        $html .= '    </tr>'."\r\n";
-        }
-    $html .= '</table>'."\r\n";
-    echo ($html);
 }
 
 //transpose from textareaname
 
 if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a textareaname
     $textArea = ($_POST['textareaname']);
+
     if (mb_detect_encoding($textArea, 'UTF-8', true) === false) { // make sure its utf-8
         $textArea = utf8_encode($textArea); 
     } 
     //$textArea = trim($_POST['textareaname']);
+    $textArea = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", trim($textArea)); // delete empty lines
 
-    $textArray = explode("\r\n", $textArea);
+    $textArray = explode("\n", $textArea);
     $textArray = array_filter($textArray, 'trim'); // remove any extra \r characters left behind
-
-    $tableArray = array();
+}
 
 // import the data into the array
 
-    $count = count($textArray);  // row counter
-    for ($i = 0; $i < $count; $i++) {
-        $data = preg_split( "/[\t,]/", $textArray[$i]); // split if delimeter is tab or ,
-        $num = count($data);  // column counter
-            if (($num > 1) && (stripos($textArray[$i], 'Start')) === FALSE && (stripos($textArray[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
-                for ($c=0; $c < $num; $c++) {
-                    $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
-                    // $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
-                    $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);  // Case-insensitive
-                    $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
-                }
+$tableArray = array();
+
+$count = count($textArray);  // row counter
+for ($i = 0; $i < $count; $i++) {
+    $data = preg_split( "/[\t,]/", $textArray[$i]); // split if delimeter is tab or ,
+    $num = count($data);  // column counter
+        if (($num > 1) && (stripos($textArray[$i], 'Start')) === FALSE && (stripos($textArray[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
+            for ($c=0; $c < $num; $c++) {
+                $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
+                // $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
+                $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);  // Case-insensitive
+                $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
             }
         }
+    }
+
 $tableArray = array_values($tableArray); // re index the array after deleting lines
 $tableArray[0][0] = "מקום";
 
+//transpose array and output html
+if (!$_POST['donttranspose']) {
+    $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
+}
+
 // start the html output
 
-    $html = ("");
-    $html .= '<table class="line_color no_num_color">'."\r\n";
-    $html .= '    <tr>'."\r\n";
-    $html .= '        <td  colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";
-    $html .= '    </tr>'."\r\n";
+$html = ("");
+$html .= '<table class="line_color no_num_color">'."\r\n";
+$html .= '    <tr>'."\r\n";
+$html .= '        <td  colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";
+$html .= '    </tr>'."\r\n";
 
-//transpose array and output html
-    if (!$_POST['donttranspose']) {
-        $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
-    }
-    $countRow = count($tableArray);        // row counter
-    $countColumn = count($tableArray[0]);  // column counter
+$countRow = count($tableArray);        // row counter
+$countColumn = count($tableArray[0]);  // column counter
 
-        for ($i = 0; $i < $countRow; $i++) {
-                if ($i == 0) { // header row
-                    $html .= '    <tr class="rnkh_bkcolor">'."\r\n";
-                    for ($c=0; $c < $countColumn; $c++) {
-                        $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
-                    }
-                } else { // other rows
-                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    for ($c=0; $c < $countColumn; $c++) {
-                        $html .= '        <td class="rnk_font">'.$tableArray[$i][$c].'</td>'."\r\n";
-                    }
+    for ($i = 0; $i < $countRow; $i++) {
+            if ($i == 0) { // header row
+                $html .= '    <tr class="rnkh_bkcolor">'."\r\n";
+                for ($c=0; $c < $countColumn; $c++) {
+                    $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
                 }
-        $html .= '    </tr>'."\r\n";
-        }
-    $html .= '</table>'."\r\n";
-    echo ($html);
-}
+            } else { // other rows
+                $html .= '    <tr class="rnk_bkcolor">'."\r\n";
+                for ($c=0; $c < $countColumn; $c++) {
+                    $html .= '        <td class="rnk_font">'.$tableArray[$i][$c].'</td>'."\r\n";
+                }
+            }
+    $html .= '    </tr>'."\r\n";
+    }
+$html .= '</table>'."\r\n";
+echo ($html);
+
 
 
 //if ($_POST['utf16']) {
