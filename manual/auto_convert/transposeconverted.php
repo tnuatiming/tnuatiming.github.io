@@ -12,26 +12,25 @@
 
 if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file name
     $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
-if ($_POST['utf16le']) {
-    $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
+    if ($_POST['utf16le']) {
+        $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
 }
     $csv_file = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv_file);//delete empty lines with out deleting the last line
 //    $csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the uploaded file with the refoctoring
 
-    $handle1 = trim($csv_file);
-
 //prepar the data for the import to the array
-    $textAr = explode("\n", str_replace("\r", '', $handle1));
-//    $textAr = array_filter($textAr, 'trim'); // remove any extra \r characters left behind
+
+    $textArray = explode("\n", str_replace("\r", '', trim($csv_file)));
+//    $textArray = array_filter($textArray, 'trim'); // remove any extra \r characters left behind
     $tableArray = array();
 
 // import the data into the array
 
-    $count = count($textAr);  // row counter
+    $count = count($textArray);  // row counter
     for ($i = 0; $i < $count; $i++) {
-        $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
+        $data = preg_split( "/[\t,]/", $textArray[$i]); // split if delimeter is tab or ,
         $num = count($data);  // column counter
-            if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
+            if (($num > 1) && (stripos($textArray[$i], 'Start')) === FALSE && (stripos($textArray[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
                 for ($c=0; $c < $num; $c++) {
                     $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
                     // $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
@@ -41,6 +40,7 @@ if ($_POST['utf16le']) {
             }
         }
 $tableArray = array_values($tableArray); // re index the array after deleting lines
+$tableArray[0][0] = "מקום";
 
 // start the html output
 
@@ -61,11 +61,7 @@ $tableArray = array_values($tableArray); // re index the array after deleting li
                 if ($i == 0) { // header row
                     $html .= '    <tr class="rnkh_bkcolor">'."\r\n";
                     for ($c=0; $c < $countColumn; $c++) {
-                        if  ($c == 0) {  // insert מקום to the top corner cell (0,0)
-                            $html .= '        <th class="rnkh_font">מקום</th>'."\r\n";
-                        } else {
-                            $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
-                        }
+                        $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
                     }
                 } else { // other rows
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
@@ -82,24 +78,24 @@ $tableArray = array_values($tableArray); // re index the array after deleting li
 //transpose from textareaname
 
 if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a textareaname
-    $handle2 = ($_POST['textareaname']);
-    if (mb_detect_encoding($handle2, 'UTF-8', true) === false) { // make sure its utf-8
-      $handle2 = utf8_encode($handle2); 
+    $textArea = ($_POST['textareaname']);
+    if (mb_detect_encoding($textArea, 'UTF-8', true) === false) { // make sure its utf-8
+        $textArea = utf8_encode($textArea); 
     } 
-    //$handle2 = trim($_POST['textareaname']);
+    //$textArea = trim($_POST['textareaname']);
 
-    $textAr = explode("\r\n", $handle2);
-    $textAr = array_filter($textAr, 'trim'); // remove any extra \r characters left behind
+    $textArray = explode("\r\n", $textArea);
+    $textArray = array_filter($textArray, 'trim'); // remove any extra \r characters left behind
 
     $tableArray = array();
 
 // import the data into the array
 
-    $count = count($textAr);  // row counter
+    $count = count($textArray);  // row counter
     for ($i = 0; $i < $count; $i++) {
-        $data = preg_split( "/[\t,]/", $textAr[$i]); // split if delimeter is tab or ,
+        $data = preg_split( "/[\t,]/", $textArray[$i]); // split if delimeter is tab or ,
         $num = count($data);  // column counter
-            if (($num > 1) && (stripos($textAr[$i], 'Start')) === FALSE && (stripos($textAr[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
+            if (($num > 1) && (stripos($textArray[$i], 'Start')) === FALSE && (stripos($textArray[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
                 for ($c=0; $c < $num; $c++) {
                     $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
                     // $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
@@ -109,6 +105,7 @@ if (($_POST['textareaname']) == True) {   // textareaname is true, phrasing a te
             }
         }
 $tableArray = array_values($tableArray); // re index the array after deleting lines
+$tableArray[0][0] = "מקום";
 
 // start the html output
 
@@ -129,11 +126,7 @@ $tableArray = array_values($tableArray); // re index the array after deleting li
                 if ($i == 0) { // header row
                     $html .= '    <tr class="rnkh_bkcolor">'."\r\n";
                     for ($c=0; $c < $countColumn; $c++) {
-                        if  ($c == 0) {  // insert מקום to the top corner cell (0,0)
-                            $html .= '        <th class="rnkh_font">מקום</th>'."\r\n";
-                        } else {
-                            $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
-                        }
+                        $html .= '        <th class="rnkh_font">'.$tableArray[$i][$c].'</th>'."\r\n";                        
                     }
                 } else { // other rows
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
