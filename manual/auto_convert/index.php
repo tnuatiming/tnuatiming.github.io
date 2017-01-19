@@ -24,7 +24,6 @@
 </div>
 <div  class="convert">
 <h3>Lap by Lap - Trnspose and Convert CSV to HTML Table</h3>
-<p>clean the file so only the table remain (delete all the header lines), add "מקום" to the first cell (it is probably empty), make sure delimiter is TAB or ","</p>
 <p>you can upload a file or paste the csv table in the box below</p>
 <form accept-charset="UTF-8" action="transposeconverted.php" method="post" enctype="multipart/form-data"><br/>
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>

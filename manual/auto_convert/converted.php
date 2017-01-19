@@ -14,10 +14,10 @@ if ($_POST['changename']) {
     $changeName = "שם";// use שם for "Run"
 }
 $delimiter = array("\t",",","|","\\","/",";");// all the options for delimiters
-$csv = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to tab
+$csv_file = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to tab
 //$csv = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv);//delete empty lines(doesn't delete the last line)
-$csv = preg_replace('/^[\r\n]+|[\r\n]+$/m', '', $csv);//delete empty lines
-$csv_file = file_put_contents($_FILES['file']['tmp_name'], $csv);// recreate the uploaded file with the refoctoring
+$csv_file = preg_replace('/^[\r\n]+|[\r\n]+$/m', '', $csv_file);//delete empty lines
+file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the uploaded file with the refoctoring
 
 $csv_file = ($_FILES['file']['tmp_name']);// get the uploaded file
 
