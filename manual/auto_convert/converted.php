@@ -194,8 +194,10 @@ $html .= '</table>'."\r\n";
 //echo htmlentities($html);
 //echo nl2br(htmlentities($html));
 //echo htmlspecialchars($html);
-echo ($html);
-echo "<br><br><br>";
+if (!$_POST['dontshowraw']) {
+    echo ($html);
+    echo "<br><br><br>";
+}
 echo "<pre>";
 echo htmlentities($html);
 echo "</pre>";

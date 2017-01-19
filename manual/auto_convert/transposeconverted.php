@@ -94,8 +94,10 @@ $countColumn = count($tableArray[0]);  // column counter
     $html .= '    </tr>'."\r\n";
     }
 $html .= '</table>'."\r\n";
-echo ($html);
-echo "<br><br><br>";
+if (!$_POST['dontshowraw']) {
+    echo ($html);
+    echo "<br><br><br>";
+}
 echo "<pre>";
 echo htmlentities($html);
 echo "</pre>";

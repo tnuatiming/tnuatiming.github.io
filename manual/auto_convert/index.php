@@ -19,6 +19,7 @@
   <input type="checkbox" name="run" value="run">&quot;מקצה&quot; במקום &quot;הקפה&quot; <br/><br/>
   <input type="checkbox" name="changename" value="changename">&quot;נהג&quot; במקום &quot;שם&quot; <br/><br/>
   <input type="checkbox" name="deleterows" value="deleterows">אל תמחק את השורות הראשונות <br/><br/>
+  <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished raw table<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 </div>
@@ -29,8 +30,8 @@
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
   <input type="checkbox" name="utf16le" value="utf16le">file is UTF-16LE <br/><br/>
   <textarea name="textareaname" rows="20" cols="50"  placeholder="paste CSV table" wrap="off"></textarea><br/><br/>  
-  <input type="checkbox" name="donttranspose" value="donttranspose">do not
-  transpose <br/><br/>
+  <input type="checkbox" name="donttranspose" value="donttranspose">do not transpose <br/><br/>
+  <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished raw table<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 </div>
