@@ -173,7 +173,6 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                         $data[$c] = str_ireplace("lap", "הקפה", $data[$c]);
                         $data[$c] = str_ireplace("START", "זינוק", $data[$c]);
                         $data[$c] = str_ireplace("FINISH", "סיום", $data[$c]);
-                        $data[$c] = str_replace("*", "", $data[$c]);
                         $data[$c] = str_replace("1h", "01:", $data[$c]);
                         $data[$c] = str_replace("2h", "02:", $data[$c]);
                         $data[$c] = str_replace("3h", "03:", $data[$c]);
