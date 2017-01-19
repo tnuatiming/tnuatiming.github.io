@@ -190,8 +190,13 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     fclose($handle);
 }
 $html .= '</table>'."\r\n";
-echo ($html);
+//echo ($html);
 //echo htmlentities($html);
 //echo nl2br(htmlentities($html));
 //echo htmlspecialchars($html);
+echo ($html);
+echo "<br><br><br>";
+echo "<pre>";
+echo htmlentities($html);
+echo "</pre>";
 ?>
