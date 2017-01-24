@@ -51,11 +51,12 @@
     {% assign counter = 0 %}
 
 {% if page.round == "" or page.round == nil or page.round == blank or page.round == empty %}
-    <p><span id="date">{{ page.place }}</span></p>
+    <p><span id="name">{{ page.place }}</span></p>
 {% else %}
-    <p><span id="date">{{ page.round }} - {{ page.place }}</span></p>
+    <p><span id="name">{{ page.round }} - {{ page.place }}</span></p>
 {% endif %}
-                
+    <p><span id="date">{{ page.date | date: "%Y%m%d" }}</span></p>
+  
         {% include footer.html %}
 
 </body>

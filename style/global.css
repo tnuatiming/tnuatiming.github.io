@@ -71,7 +71,7 @@ h2 {
     margin: 0 20px;
 }
 
-p span#date  {
+p span#date,p span#name   {
     Display: none;
 }
 

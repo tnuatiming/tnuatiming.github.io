@@ -12,7 +12,7 @@
 
 <?php
 /* gets the date from a URL */
-function get_data($url) {
+function get_data($url,$clas) {
 //   $ch = curl_init();
 //    $timeout = 5;
 //    curl_setopt($ch, CURLOPT_URL, $url);
@@ -26,7 +26,7 @@ function get_data($url) {
     $doc = new DOMDocument();
     $doc->loadHTML($data);
     foreach ($doc->getElementsByTagName('span') as $node) {
-        if (strpos(($doc->saveHtml($node)), 'date') !== false) {
+        if (strpos(($doc->saveHtml($node)), $clas) !== false) {
             $xxx=  $doc->saveHtml($node);
             $xxx= rtrim(substr($xxx,16), '</span>'); // get the inner html
         }
@@ -77,13 +77,29 @@ foreach ((rscandir('/home/raz/public_html/results'.'/')) as $item):
     }
 endforeach;
 
+/* add value in multidimantinal array*/
+foreach ($data2 as &$item):
+//   if($item[2]==rallysprint2016r1.html){
+//      array_push($item, "2022-12-4"); // or just $item[] = "2022-12-4";
+//    }
+    $ur = ('/results/'.$item[0].'/'.$item[1].'/'.$item[2]);
+    array_push($item, (get_data($ur,"name"))); // add inner html span name value
+    array_push($item, (get_data($ur,"date"))); // add inner html span date value
+endforeach;
+/* Sort Multi-dimensional Array by DATE*/
+usort($data2, function($a, $b) {
+    return $a['4'] - $b['4'];
+});
+$data2 = array_values($data2); // re index
+$data2 = array_reverse($data2);// reverse the array so newest result is first
+
 //print_r($data2);
-arsort($data2);
 
 foreach ($data2 as $item):
     array_push($category, $item[0]);
     array_push($season, $item[1]);
 endforeach;
+
 $category = array_unique($category); // delete duplicate
 asort($category);
 $category = array_values($category); // re index
@@ -129,11 +145,26 @@ arsort($season);
 //print_r($category);
 //sort($data2);
 
+
+// make new manual array for category sorted by HEBREW name, use $category if need auto sort
+$category1 = array ();
+$category1[0] = "allmountain";
+$category1[1] = "enduro";
+$category1[2] = "gymkhana";
+$category1[3] = "motocross";
+$category1[4] = "superbike";
+$category1[5] = "supermoto";
+$category1[6] = "karting";
+$category1[7] = "rally";
+$category1[8] = "rallysprint";
+$category1[9] = "baja";
+$category1[10] = "running";
+
 foreach ($season as $item):
     echo ('<div class="season"><h1>עונת '.$item.'</h1>');
     $html .= '<div class="season">'."\r\n".'<h1>עונת '.$item.'</h1>'."\r\n";
     $www = '';
-    foreach ($category as $itemx):
+    foreach ($category1 as $itemx):
         foreach ($data2 as $item1):
                 if (($item1[0] == $itemx) and ($item1[1] == $item)) {
                     if ($www !== $itemx) {
@@ -191,8 +222,8 @@ foreach ($season as $item):
                     }
                         $ur = ('/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2]);
 //                        $ul =('http://tnuatiming.com'.$ur);
-                        echo ('<li><a href='.$ur.'>'.(get_data($ur)).'</a></li>');
-                        $html .= '<li><a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.(get_data($ur)).'</a></li>'."\r\n";
+                        echo ('<li><a href='.$ur.'>'.$item1[3].'</a></li>');
+                        $html .= '<li><a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[3].'</a></li>'."\r\n";
 //                        $html .= '<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[2].'</a><br>'."\r\n";
                 }
             endforeach;
