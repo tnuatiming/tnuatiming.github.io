@@ -5,7 +5,10 @@
 <title>All Results</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta charset="UTF-8"/>
-<style>h2 {color:gray;}a {color:blue;}li {color: #222;text-align: right;margin: 10px;text-shadow: 0px 2px 3px #FFF;list-style-type: none;font-size: 1.2em;}.index {text-align:right; font-family: "Noto Sans Hebrew", "Open Sans Hebrew", sans-serif;float:right; margin: 40px 5% 40px 5%; min-width:35%;}
+<style>
+h2 {color:gray;}
+a {color:blue;}
+.index {text-align:right; font-family: 'Noto Sans Hebrew', 'Open Sans Hebrew', sans-serif;float:right; margin: 40px 5% 40px 5%; min-width:35%;}
 </style>
 </head>
 <body>
@@ -72,7 +75,7 @@ $data2 = array ();
 $category = array ();
 $season = array ();
 foreach ((rscandir('/home/raz/public_html/results'.'/')) as $item):
-    if (($item != '/results/index.html') and ($item != '/results/index1.html')) { //skip index.html
+    if ($item != '/results/index.html') { //skip index.html
         $data2[] = explode("/", str_replace("/results/", "",$item));
     }
 endforeach;
@@ -121,7 +124,7 @@ echo ('</div>');
 
 /* start making the index html FILE */
 
-$html .= '<?php include("/home/raz/public_html/password_protect.php"); ?>'."\r\n".'<!DOCTYPE html>'."\r\n".'<html class="no-js" lang="he" xml:lang="he">'."\r\n".'<head>'."\r\n".'<title>All Results</title>'."\r\n".'<meta http-equiv="X-UA-Compatible" content="IE=edge"/>'."\r\n".'<meta charset="UTF-8"/>'."\r\n".'<style>h2 {color:gray;}a {color:blue;}li {color: #222;text-align: right;margin: 10px;text-shadow: 0px 2px 3px #FFF;list-style-type: none;font-size: 1.2em;}.index {text-align:right; font-family: "Noto Sans Hebrew", "Open Sans Hebrew", sans-serif;float:right; margin: 40px 5% 40px 5%; min-width:35%;}</style>'."\r\n".'</head>'."\r\n";
+$html .= '<?php include("/home/raz/public_html/password_protect.php"); ?>'."\r\n".'<!DOCTYPE html>'."\r\n".'<html class="no-js" lang="he" xml:lang="he">'."\r\n".'<head>'."\r\n".'<title>All Results</title>'."\r\n".'<meta http-equiv="X-UA-Compatible" content="IE=edge"/>'."\r\n".'<meta charset="UTF-8"/>'."\r\n".'<style>h2 {color:gray;}a {color:blue;}.index {text-align:right; font-family: "Noto Sans Hebrew", "Open Sans Hebrew", sans-serif;float:right; margin: 40px 5% 40px 5%; min-width:35%;}</style>'."\r\n".'</head>'."\r\n";
 $html .= '<body>'."\r\n";
 echo ('<div class="index">');
 $html .= '<div class="index">'."\r\n";
@@ -134,79 +137,75 @@ arsort($season);
 //sort($data2);
 
 foreach ($season as $item):
-    echo ('<div class="season"><h2>עונת '.$item.'</h2>');
-    $html .= '<div class="season">'."\r\n".'<h2>עונת '.$item.'</h2>'."\r\n";
+    echo ('<h2>עונת '.$item.'</h2>');
+    $html .= '<h2>עונת '.$item.'</h2>'."\r\n";
     $www = '';
-    foreach ($category as $itemx):
-        foreach ($data2 as $item1):
+    foreach ($data2 as $item1):
+        if ($item1[1] == $item) {
+            foreach ($category as $itemx):
                 if (($item1[0] == $itemx) and ($item1[1] == $item)) {
                     if ($www !== $itemx) {
                         switch ($itemx) {
                             case "enduro":
-                                echo ('<h3>אנדורו</h3><ul>');
-                                $html .= '<h3>אנדורו</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>אנדורו</h3>');
+                                $html .= '<h3>אנדורו</h3>'."\r\n";
                                 break;
                             case "baja":
-                                echo ('<h3>ראלי רייד</h3><ul>');
-                                $html .= '<h3>ראלי רייד</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>ראלי רייד</h3>');
+                                $html .= '<h3>ראלי רייד</h3>'."\r\n";
                                 break;
                             case "rally":
-                                echo ('<h3>ראלי</h3><ul>');
-                                $html .= '<h3>ראלי</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>ראלי</h3>');
+                                $html .= '<h3>ראלי</h3>'."\r\n";
                                 break;
                             case "rallysprint":
-                                echo ('<h3>ראלי ספרינט</h3><ul>');
-                                $html .= '<h3>ראלי ספרינט</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>ראלי ספרינט</h3>');
+                                $html .= '<h3>ראלי ספרינט</h3>'."\r\n";
                                 break;
                             case "running":
-                                echo ('<h3>ריצה</h3><ul>');
-                                $html .= '<h3>ריצה</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>ריצה</h3>');
+                                $html .= '<h3>ריצה</h3>'."\r\n";
                                 break;
                             case "motocross":
-                                echo ('<h3>מוטוקרוס</h3><ul>');
-                                $html .= '<h3>מוטוקרוס</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>מוטוקרוס</h3>');
+                                $html .= '<h3>מוטוקרוס</h3>'."\r\n";
                                 break;
                             case "gymkhana":
-                                echo ("<h3>ג'ימקאנה</h3><ul>");
-                                $html .= "<h3>ג'ימקאנה</h3>"."\r\n".'<ul>'."\r\n";
+                                echo ("<h3>ג'ימקאנה</h3>");
+                                $html .= "<h3>ג'ימקאנה</h3>"."\r\n";
                                 break;
                             case "superbike":
-                                echo ('<h3>סופרבייק</h3><ul>');
-                                $html .= '<h3>סופרבייק</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>סופרבייק</h3>');
+                                $html .= '<h3>סופרבייק</h3>'."\r\n";
                                 break;
                             case "allmountain":
-                                echo ('<h3>אול מאונטיין</h3><ul>');
-                                $html .= '<h3>אול מאונטיין</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>אול מאונטיין</h3>');
+                                $html .= '<h3>אול מאונטיין</h3>'."\r\n";
                                 break;
                             case "karting":
-                                echo ('<h3>קרטינג</h3><ul>');
-                                $html .= '<h3>קרטינג</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>קרטינג</h3>');
+                                $html .= '<h3>קרטינג</h3>'."\r\n";
                                 break;
                             case "supermoto":
-                                echo ('<h3>סופרמוטו</h3><ul>');
-                                $html .= '<h3>סופרמוטו</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>סופרמוטו</h3>');
+                                $html .= '<h3>סופרמוטו</h3>'."\r\n";
                                 break;
                             default:
-                                echo ('<h3>'.$itemx.'</h3><ul>');
-                                $html .= '<h3>'.$itemx.'</h3>'."\r\n".'<ul>'."\r\n";
+                                echo ('<h3>'.$itemx.'</h3>');
+                                $html .= '<h3>'.$itemx.'</h3>'."\r\n";
                         }
 //                        echo ('<h3>'.$itemx.'</h3>');
                         $www = $itemx;
                     }
                         $ur = ('/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2]);
 //                        $ul =('http://tnuatiming.com'.$ur);
-                        echo ('<li><a href='.$ur.'>'.(get_data($ur)).'</a></li>');
-                        $html .= '<li><a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.(get_data($ur)).'</a></li>'."\r\n";
+                        echo ('<a href='.$ur.'>'.(get_data($ur)).'</a><br>');
+                        $html .= '<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.(get_data($ur)).'</a><br>'."\r\n";
 //                        $html .= '<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[2].'</a><br>'."\r\n";
                 }
             endforeach;
-                    if ($www == $itemx) {
-    echo ('</ul>');
-    $html .= '</ul>'."\r\n";
-
-}
-            endforeach;
-echo ('</div>');
+        }
+    endforeach;
 endforeach;
 
 echo ('</div>');

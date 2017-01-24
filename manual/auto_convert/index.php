@@ -35,5 +35,8 @@
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 </div>
+<div  class="convert">
+<a href='http://tnuatiming.com/manual/auto_convert/fileindex.php'>recreat the results index</a><br>
+</div>
 </body>
 </html>
