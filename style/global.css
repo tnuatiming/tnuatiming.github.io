@@ -71,6 +71,10 @@ h2 {
     margin: 0 20px;
 }
 
+p span#date  {
+    Display: none;
+}
+
 #race h2 {
     text-align: center;
 }

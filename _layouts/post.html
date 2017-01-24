@@ -26,7 +26,6 @@
         {% else %}
            <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>        {% endif %}
 {% endif %}
-
         {{ content }}
 
 {% assign counter = 0 %}{% comment %}<!-- check if there were more then one race in the season -->{% endcomment %}
@@ -51,6 +50,11 @@
     {% endif %}
     {% assign counter = 0 %}
 
+{% if page.round == empty %}
+    <p><span id="date">{{ page.place }}</span></p>
+{% else %}
+    <p><span id="date">{{ page.round }} - {{ page.place }}</span></p>
+{% endif %}
                 
         {% include footer.html %}
 

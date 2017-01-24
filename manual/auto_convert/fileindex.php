@@ -8,31 +8,51 @@
 <style>
 h2 {color:gray;}
 a {color:blue;}
-.index {float:left; margin: 40px 5% 0 5%; min-width:35%;}
+.index {    font-family: 'Noto Sans Hebrew', 'Open Sans Hebrew', sans-serif;float:left; margin: 40px 5% 40px 5%; min-width:35%;}
 </style>
 </head>
 <body>
 
 <?php
+/* gets the date from a URL */
+function get_data($url) {
+//   $ch = curl_init();
+//    $timeout = 5;
+//    curl_setopt($ch, CURLOPT_URL, $url);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+//    $data = curl_exec($ch);
+//    curl_close($ch);
+
+    $data = file_get_contents("../..".$url);// get the uploaded file content
+    $data = mb_convert_encoding($data, 'HTML-ENTITIES', 'UTF-8');
+    $doc = new DOMDocument();
+    $doc->loadHTML($data);
+    foreach ($doc->getElementsByTagName('span') as $node) {
+        if (strpos(($doc->saveHtml($node)), 'date') !== false) {
+            $xxx=  $doc->saveHtml($node);
+            $xxx= rtrim(substr($xxx,16), '</span>'); // get the inner html
+        }
+    }
+    return $xxx;
+}
+//$returned_content = get_data('http://tnuatiming.com/results/enduro/2016/enduro2016r5.html');
+//echo ($returned_content);
+
+/* scan a folder to get the files */
 
 function rscandir($base='', &$data=array()) {
 
     $array = array_diff(scandir($base), array('.', '..')); # remove ' and .. from the array */
-
     foreach($array as $value) : /* loop through the array at the level of the supplied $base */
-
         if (is_dir($base.$value)) : /* if this is a directory */
         //     $data[] = $base.$value.'/'; /* add it to the $data array */
             $data = rscandir($base.$value.'/', $data); /* then make a recursive call with the 
-            current $value as the $base supplying the $data array to carry into the recursion */
-            
+            current $value as the $base supplying the $data array to carry into the recursion */            
         elseif (is_file($base.$value)) : /* else if the current $value is a file */
-            $data[] = str_replace("/home/raz/public_html", "",$base.$value); /* just add the current $value to the $data array */
-            
+            $data[] = str_replace("/home/raz/public_html", "",$base.$value); /* just add the current $value to the $data array */            
         endif;
-
     endforeach;
-
     return $data; // return the $data array
 }
 //$oldClass = '';
@@ -50,14 +70,14 @@ function rscandir($base='', &$data=array()) {
 //}
 //endforeach;
 
- 
+// make attays of categorys and seasons
 $data2 = array ();
 $category = array ();
 $season = array ();
 foreach ((rscandir('/home/raz/public_html/results'.'/')) as $item):
-if ($item != '/results/index.html') { //skip index.html
-    $data2[] = explode("/", str_replace("/results/", "",$item));
-}
+    if ($item != '/results/index.html') { //skip index.html
+        $data2[] = explode("/", str_replace("/results/", "",$item));
+    }
 endforeach;
 
 //print_r($data2);
@@ -67,16 +87,19 @@ foreach ($data2 as $item):
     array_push($category, $item[0]);
     array_push($season, $item[1]);
 endforeach;
-    $category = array_unique($category); // delete duplicate
-    asort($category);
-    $category = array_values($category); // re index
+$category = array_unique($category); // delete duplicate
+asort($category);
+$category = array_values($category); // re index
 
-    $season = array_unique($season);
-    asort($season);
-    $season = array_values($season); 
+$season = array_unique($season);
+asort($season);
+$season = array_values($season); 
 
 //print_r($category);
 //print_r($season);
+
+/* start making the index html TEXT */
+
 echo ('<div class="index">');
 echo ('<h1>sort by category</h1>');
 
@@ -98,8 +121,11 @@ foreach ($category as $item):
     endforeach;
 endforeach;
 echo ('</div>');
+
+/* start making the index html FILE */
+
 $html .= '<?php include("/home/raz/public_html/password_protect.php"); ?>'."\r\n".'<!DOCTYPE html>'."\r\n".'<html class="no-js" lang="he" xml:lang="he">'."\r\n".'<head>'."\r\n".'<title>All Results</title>'."\r\n".'<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'."\r\n".'<meta charset="UTF-8"/>'."\r\n".'<style>h2 {color:gray;}a {color:blue;}.index {float:left; margin: 40px 5% 0 5%; min-width:35%;}</style>'."\r\n".'</head>'."\r\n";
-$html .= '<body><html>'."\r\n";
+$html .= '<body>'."\r\n";
 echo ('<div class="index">');
 $html .= '<div class="index">'."\r\n";
 echo ('<h1>sort by year</h1>');
@@ -112,7 +138,7 @@ arsort($season);
 
 foreach ($season as $item):
     echo ('<h2>עונת '.$item.'</h2>');
-$html .= '<h2>עונת '.$item.'</h2>'."\r\n";
+    $html .= '<h2>עונת '.$item.'</h2>'."\r\n";
     $www = '';
     foreach ($data2 as $item1):
         if ($item1[1] == $item) {
@@ -165,23 +191,27 @@ $html .= '<h2>עונת '.$item.'</h2>'."\r\n";
                                 $html .= '<h3>סופרמוטו</h3>'."\r\n";
                                 break;
                             default:
-                            echo ('<h3>'.$itemx.'</h3>');
+                                echo ('<h3>'.$itemx.'</h3>');
                                 $html .= '<h3>'.$itemx.'</h3>'."\r\n";
                         }
 //                        echo ('<h3>'.$itemx.'</h3>');
                         $www = $itemx;
                     }
-                        echo ('<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[2].'</a><br>');
-                        $html .= '<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[2].'</a><br>'."\r\n";
+                        $ur = ('/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2]);
+//                        $ul =('http://tnuatiming.com'.$ur);
+                        echo ('<a href='.$ur.'>'.(get_data($ur)).'</a><br>');
+                        $html .= '<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.(get_data($ur)).'</a><br>'."\r\n";
+//                        $html .= '<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[2].'</a><br>'."\r\n";
                 }
             endforeach;
         }
     endforeach;
 endforeach;
+
 echo ('</div>');
 $html .= '</div>'."\r\n";
 $html .= '</body></html>'."\r\n";
-$myfile = fopen("index1.html", "w") or die("Unable to open file!");
+$myfile = fopen("index1.html", "w") or die("Unable to open file!"); // make the file
 fwrite($myfile, $html);
 fclose($myfile);
 
