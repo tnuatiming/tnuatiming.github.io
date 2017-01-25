@@ -1,4 +1,7 @@
 <?php
+//echo ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
+//echo ($_POST['category']);
+//echo ($_POST['type']);
 $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
 if ($_POST['utf16']) {
     $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
