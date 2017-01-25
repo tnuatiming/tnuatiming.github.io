@@ -210,21 +210,22 @@ foreach ($season as $items):
                 if (($item1[6] == $itemx) and ($item1[1] == $items)) {
                     if ($www !== $itemx) {
                             echo ('<h2>'.$item1[6].'</h2><ul>');
-                            $html .= '<div class="sport"><h2>'.$item1[6].'</h2>'."\r\n".'<ul>'."\r\n";
+                            $html .= '    <div class="sport">'."\r\n".'    <h2>'.$item1[6].'</h2>'."\r\n".'        <ul>'."\r\n";
 
                     
                     $www = $itemx;
                     }
                         echo ('<li><a href='.$item1[5].'>'.$item1[3].'</a></li>');
-                        $html .= '<li><a href='.$item1[5].'>'.$item1[3].'</a></li>'."\r\n";
+                        $html .= '            <li><a href='.$item1[5].'>'.$item1[3].'</a></li>'."\r\n";
                 }
             endforeach;
                     if ($www == $itemx) {
     echo ('</ul>');
-    $html .= '</ul>'."\r\n".'</div>'."\r\n";
+    $html .= '        </ul>'."\r\n".'    </div>'."\r\n";
 }
             endforeach;
 echo ('</div>');
+$html .= '</div>'."\r\n";
 endforeach;
 
 echo ('</div>');
