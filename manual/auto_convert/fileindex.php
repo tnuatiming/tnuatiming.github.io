@@ -221,14 +221,15 @@ foreach ($season as $items):
             endforeach;
                     if ($www == $itemx) {
     echo ('</ul>');
-    $html .= '        </ul>'."\r\n".'    </div>'."\r\n";
+    $html .= '        </ul>'."\r\n".'    </div>'."\r\n"; // close sport class
 }
             endforeach;
 echo ('</div>');
-$html .= '</div>'."\r\n";
+$html .= '</div>'."\r\n"; // close season class
 endforeach;
 
 echo ('</div>');
+$html .= '<p><span id="date">last updated: '.date("Y-m-d H:i:s").' UTC</span></p>'."\r\n"; // hidden time
 $html .= (file_get_contents('foot.txt'));
 $myfile = fopen("../../results/index1.html", "w") or die("Unable to open file!"); // make the file
 fwrite($myfile, $html);
