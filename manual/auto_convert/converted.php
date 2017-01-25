@@ -1,7 +1,63 @@
 <?php
-//echo ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
-//echo ($_POST['category']);
-//echo ($_POST['type']);
+// liquid header
+
+//$head .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
+if (!$_POST['liquid']) {
+    $head .= ('---'."\r\n".'layout: post'."\r\n");
+    $head .= ('tag: "'.$_POST['category'].'"'."\r\n");
+    if ($_POST['category'] == "אנדורו") {
+        $head .= ('type: "'.$_POST['type'].'"'."\r\n");
+    }
+    if ($_POST['place']) {
+    $head .= ('place: "'.$_POST['place'].'"'."\r\n");
+    }
+    $head .= ('season: "'.$_POST['seasonyear'].'"'."\r\n");
+    if ($_POST['round']) {
+        $head .= ('round: "'.$_POST['round'].'"'."\r\n");
+    }
+    switch ($_POST['category']) {
+        case "אנדורו":
+            $cat = "enduro";
+            break;
+        case "ראלי רייד":
+            $cat = "baja";
+            break;
+        case "ראלי":
+            $cat = "rally";
+            break;
+        case "ראלי ספרינט":
+            $cat = "rallysprint";
+            break;
+        case "ריצה":
+            $cat = "running";
+            break;
+        case "מוטוקרוס":
+            $cat = "motocross";
+            break;
+        case 'ג\'ימקאנה':
+            $cat = "gymkhana";
+            break;
+        case "סופרבייק":
+            $cat = "superbike";
+            break;
+        case "אול מאונטיין":
+            $cat = "allmountain";
+            break;
+        case "קרטינג":
+            $cat = "karting";
+            break;
+        case "סופרמוטו":
+            $cat = "supermoto";
+            break;
+        default:
+            $cat = $_POST['category'];
+    }
+    $head .= ('categories: [results, '.$cat.']'."\r\n");
+
+    $head .= ('---'."\r\n");
+}
+
+
 $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
 if ($_POST['utf16']) {
     $csv_file = mb_convert_encoding($csv_file, "UTF-8", "UTF-16LE");// enable utf-16le encoding
@@ -202,6 +258,7 @@ if (!$_POST['dontshowraw']) {
     echo "<br><br><br>";
 }
 echo "<pre>";
+echo htmlentities($head);
 echo htmlentities($html);
 echo "</pre>";
 ?>
