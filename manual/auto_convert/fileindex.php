@@ -6,11 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta charset="UTF-8"/>
 <style>h2 {color:gray;}a {color:blue;}li {color: #222;text-align: right;margin: 10px;text-shadow: 0px 2px 3px #FFF;list-style-type: none;font-size: 1.2em;} html {text-align:right; font-family: "Noto Sans Hebrew", "Open Sans Hebrew", sans-serif;}.index {text-align:right; float:right; margin: 40px 5% 40px 5%; min-width:35%;}
+p.rr {padding: 20px;font-size:2em;color:white;background:green;display: none;  position: absolute;left: 10px;top: 10px;}
+p.qq {padding: 20px;font-size:2em;color:white;background:red; position: absolute;left: 10px;top: 10px;}
 </style>
 </head>
 <body>
-
+<p class="qq">in progress</p>
+<p class="rr">finished</p>
 <?php
+$finish = "none";
 /* gets the date from a URL */
 function get_data($url,$clas) {
 //   $ch = curl_init();
@@ -238,7 +242,13 @@ for ($row = 0; $row < 4; $row++) {
 }
 echo "</ul>";
 */
+$finish = "block";
+$finish1 = "none";
 ?>
 
 </body>
+<style>
+p.qq {background:green;display: <?php echo ($finish1) ?>;}
+p.rr {background:green;display: <?php echo ($finish) ?>;}
+</style>
 </html>
