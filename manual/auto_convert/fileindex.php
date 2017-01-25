@@ -71,9 +71,9 @@ function rscandir($base='', &$data=array()) {
 $data2 = array ();
 $category = array ();
 $season = array ();
-foreach ((rscandir('/home/raz/public_html/results'.'/')) as $item):
-    if (($item != '/results/index.html') and ($item != '/results/index1.html')) { //skip index.html
-        $data2[] = explode("/", str_replace("/results/", "",$item));
+foreach ((rscandir('/home/raz/public_html/results'.'/')) as $itemc):
+    if (($itemc != '/results/index.html') and ($itemc != '/results/index1.html')) { //skip index.html
+        $data2[] = explode("/", str_replace("/results/", "",$itemc));
     }
 endforeach;
 
@@ -82,10 +82,51 @@ foreach ($data2 as &$item):
 //   if($item[2]==rallysprint2016r1.html){
 //      array_push($item, "2022-12-4"); // or just $item[] = "2022-12-4";
 //    }
-    $ur = ('/results/'.$item[0].'/'.$item[1].'/'.$item[2]);
-    array_push($item, (get_data($ur,"name"))); // add inner html span name value
-    array_push($item, (get_data($ur,"date"))); // add inner html span date value
+    $iurl = ('/results/'.$item[0].'/'.$item[1].'/'.$item[2]);
+    array_push($item, (get_data($iurl,"name"))); // add inner html span name value
+    array_push($item, (get_data($iurl,"date"))); // add inner html span date value
+    array_push($item, $iurl); // add internal address value
+
+    switch ($item[0]) {
+        case "enduro":
+            array_push($item,"אנדורו");
+            break;
+        case "baja":
+            array_push($item,"ראלי רייד");
+            break;
+        case "rally":
+            array_push($item,"ראלי");
+            break;
+        case "rallysprint":
+            array_push($item,"ראלי ספרינט");
+            break;
+        case "running":
+            array_push($item,"ריצה");
+            break;
+        case "motocross":
+            array_push($item,"מוטוקרוס");
+            break;
+        case "gymkhana":
+            array_push($item,'ג\'ימקאנה');
+            break;
+        case "superbike":
+            array_push($item,"סופרבייק");
+            break;
+        case "allmountain":
+            array_push($item,"אול מאונטיין");
+            break;
+        case "karting":
+            array_push($item,"קרטינג");
+            break;
+        case "supermoto":
+            array_push($item,"סופרמוטו");
+            break;
+        default:
+            array_push($item,$item[0]);
+    }
+  
 endforeach;
+
 /* Sort Multi-dimensional Array by DATE*/
 usort($data2, function($a, $b) {
     return $a['4'] - $b['4'];
@@ -93,11 +134,9 @@ usort($data2, function($a, $b) {
 $data2 = array_values($data2); // re index
 $data2 = array_reverse($data2);// reverse the array so newest result is first
 
-//print_r($data2);
-
-foreach ($data2 as $item):
-    array_push($category, $item[0]);
-    array_push($season, $item[1]);
+foreach ($data2 as $itemu):
+    array_push($category, $itemu[6]);
+    array_push($season, $itemu[1]);
 endforeach;
 
 $category = array_unique($category); // delete duplicate
@@ -111,7 +150,9 @@ $season = array_values($season);
 //print_r($category);
 //print_r($season);
 
-/* start making the index html TEXT */
+//print_r($data2);
+
+/* start making the index html TEXT 
 
 echo ('<div class="index">');
 echo ('<h1>sort by category</h1>');
@@ -134,7 +175,7 @@ foreach ($category as $item):
     endforeach;
 endforeach;
 echo ('</div>');
-
+*/
 /* start making the index html FILE */
 $html .= (file_get_contents('head.txt'));
 echo ('<h1>sort by year</h1>');
@@ -146,7 +187,7 @@ arsort($season);
 //sort($data2);
 
 
-// make new manual array for category sorted by HEBREW name, use $category if need auto sort
+/* make new manual array for category sorted by HEBREW name, use $category if need auto sort
 $category1 = array ();
 $category1[0] = "allmountain";
 $category1[1] = "enduro";
@@ -159,78 +200,28 @@ $category1[7] = "rally";
 $category1[8] = "rallysprint";
 $category1[9] = "baja";
 $category1[10] = "running";
-
-foreach ($season as $item):
-    echo ('<div class="season"><h1>עונת '.$item.'</h1>');
-    $html .= '<div class="season">'."\r\n".'<h1>עונת '.$item.'</h1>'."\r\n";
+*/
+foreach ($season as $items):
+    echo ('<div class="season"><h1>עונת '.$items.'</h1>');
+    $html .= '<div class="season">'."\r\n".'<h1>עונת '.$items.'</h1>'."\r\n";
     $www = '';
-    foreach ($category1 as $itemx):
+    foreach ($category as $itemx):
         foreach ($data2 as $item1):
-                if (($item1[0] == $itemx) and ($item1[1] == $item)) {
+                if (($item1[6] == $itemx) and ($item1[1] == $items)) {
                     if ($www !== $itemx) {
-                        switch ($itemx) {
-                            case "enduro":
-                                echo ('<h2>אנדורו</h2><ul>');
-                                $html .= '<div class="sport"><h2>אנדורו</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "baja":
-                                echo ('<h2>ראלי רייד</h2><ul>');
-                                $html .= '<div class="sport"><h2>ראלי רייד</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "rally":
-                                echo ('<h2>ראלי</h2><ul>');
-                                $html .= '<div class="sport"><h2>ראלי</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "rallysprint":
-                                echo ('<h2>ראלי ספרינט</h2><ul>');
-                                $html .= '<div class="sport"><h2>ראלי ספרינט</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "running":
-                                echo ('<h2>ריצה</h2><ul>');
-                                $html .= '<div class="sport"><h2>ריצה</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "motocross":
-                                echo ('<h2>מוטוקרוס</h2><ul>');
-                                $html .= '<div class="sport"><h2>מוטוקרוס</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "gymkhana":
-                                echo ("<h2>ג'ימקאנה</h2><ul>");
-                                $html .= '<div class="sport"><h2>ג\'ימקאנה</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "superbike":
-                                echo ('<h2>סופרבייק</h2><ul>');
-                                $html .= '<div class="sport"><h2>סופרבייק</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "allmountain":
-                                echo ('<h2>אול מאונטיין</h2><ul>');
-                                $html .= '<div class="sport"><h2>אול מאונטיין</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "karting":
-                                echo ('<h2>קרטינג</h2><ul>');
-                                $html .= '<div class="sport"><h2>קרטינג</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            case "supermoto":
-                                echo ('<h2>סופרמוטו</h2><ul>');
-                                $html .= '<div class="sport"><h2>סופרמוטו</h2>'."\r\n".'<ul>'."\r\n";
-                                break;
-                            default:
-                                echo ('<h2>'.$itemx.'</h2><ul>');
-                                $html .= '<div class="sport"><h2>'.$itemx.'</h2>'."\r\n".'<ul>'."\r\n";
-                        }
-//                        echo ('<h2>'.$itemx.'</h2>');
-                        $www = $itemx;
+                            echo ('<h2>'.$item1[6].'</h2><ul>');
+                            $html .= '<div class="sport"><h2>'.$item1[6].'</h2>'."\r\n".'<ul>'."\r\n";
+
+                    
+                    $www = $itemx;
                     }
-                        $ur = ('/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2]);
-//                        $ul =('http://tnuatiming.com'.$ur);
-                        echo ('<li><a href='.$ur.'>'.$item1[3].'</a></li>');
-                        $html .= '<li><a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[3].'</a></li>'."\r\n";
-//                        $html .= '<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[2].'</a><br>'."\r\n";
+                        echo ('<li><a href='.$item1[5].'>'.$item1[3].'</a></li>');
+                        $html .= '<li><a href='.$item1[5].'>'.$item1[3].'</a></li>'."\r\n";
                 }
             endforeach;
                     if ($www == $itemx) {
     echo ('</ul>');
     $html .= '</ul>'."\r\n".'</div>'."\r\n";
-
 }
             endforeach;
 echo ('</div>');
@@ -242,6 +233,13 @@ $myfile = fopen("../../results/index1.html", "w") or die("Unable to open file!")
 fwrite($myfile, $html);
 fclose($myfile);
 
+/* as $data2 is sorted by latest result, this will show the 4 last results
+echo "<ul>";
+for ($row = 0; $row < 4; $row++) {
+    echo ('<li><a href='.$data2[$row][5].'>'.$data2[$row][3].'</a></li>');
+}
+echo "</ul>";
+*/
 ?>
 
 </body>
