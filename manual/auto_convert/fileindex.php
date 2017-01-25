@@ -246,9 +246,9 @@ $finish = "block";
 $finish1 = "none";
 ?>
 
-</body>
 <style>
-p.qq {background:green;display: <?php echo ($finish1) ?>;}
-p.rr {background:green;display: <?php echo ($finish) ?>;}
+p.qq {display: <?php echo ($finish1) ?>;}
+p.rr {display: <?php echo ($finish) ?>;}
 </style>
+</body>
 </html>
