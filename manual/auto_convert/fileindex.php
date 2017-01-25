@@ -27,11 +27,11 @@ function get_data($url,$clas) {
     $doc->loadHTML($data);
     foreach ($doc->getElementsByTagName('span') as $node) {
         if (strpos(($doc->saveHtml($node)), $clas) !== false) {
-            $xxx=  $doc->saveHtml($node);
-            $xxx= rtrim(substr($xxx,16), '</span>'); // get the inner html
+            $innerHtml=  $doc->saveHtml($node);
+            $innerHtml= rtrim(substr($innerHtml,16), '</span>'); // get the inner html
         }
     }
-    return $xxx;
+    return $innerHtml;
 }
 //$returned_content = get_data('http://tnuatiming.com/results/enduro/2016/enduro2016r5.html');
 //echo ($returned_content);
@@ -68,17 +68,17 @@ function rscandir($base='', &$data=array()) {
 //endforeach;
 
 // make attays of categorys and seasons
-$data2 = array ();
+$results = array ();
 $category = array ();
 $season = array ();
 foreach ((rscandir('/home/raz/public_html/results'.'/')) as $itemc):
     if (($itemc != '/results/index.html') and ($itemc != '/results/index1.html')) { //skip index.html
-        $data2[] = explode("/", str_replace("/results/", "",$itemc));
+        $results[] = explode("/", str_replace("/results/", "",$itemc));
     }
 endforeach;
 
 /* add value in multidimantinal array*/
-foreach ($data2 as &$item):
+foreach ($results as &$item):
 //   if($item[2]==rallysprint2016r1.html){
 //      array_push($item, "2022-12-4"); // or just $item[] = "2022-12-4";
 //    }
@@ -86,7 +86,6 @@ foreach ($data2 as &$item):
     array_push($item, (get_data($iurl,"name"))); // add inner html span name value
     array_push($item, (get_data($iurl,"date"))); // add inner html span date value
     array_push($item, $iurl); // add internal address value
-
     switch ($item[0]) {
         case "enduro":
             array_push($item,"אנדורו");
@@ -124,17 +123,17 @@ foreach ($data2 as &$item):
         default:
             array_push($item,$item[0]);
     }
-  
 endforeach;
 
-/* Sort Multi-dimensional Array by DATE*/
-usort($data2, function($a, $b) {
+/* Sort Multi-dimensional Array by DATE */
+usort($results, function($a, $b) {
     return $a['4'] - $b['4'];
 });
-$data2 = array_values($data2); // re index
-$data2 = array_reverse($data2);// reverse the array so newest result is first
+$results = array_values($results); // re index
+$results = array_reverse($results);// reverse the array so newest result are first
 
-foreach ($data2 as $itemu):
+/* create category and season arrays */
+foreach ($results as $itemu):
     array_push($category, $itemu[6]);
     array_push($season, $itemu[1]);
 endforeach;
@@ -150,7 +149,7 @@ $season = array_values($season);
 //print_r($category);
 //print_r($season);
 
-//print_r($data2);
+//print_r($results);
 
 /* start making the index html TEXT 
 
@@ -160,15 +159,15 @@ echo ('<h1>sort by category</h1>');
 foreach ($category as $item):
     echo ('<h2>'.$item.'</h2>');
     $www = '';
-    foreach ($data2 as $item1):
-        if ($item1[0] == $item) {
-            foreach ($season as $itemx):
-                if (($item1[1] == $itemx) and ($item1[0] == $item)) {
-                    if ($www !== $itemx) {
-                        echo ('<h2>'.$itemx.'</h2>');
-                        $www = $itemx;
+    foreach ($results as $resultsItem):
+        if ($resultsItem[0] == $item) {
+            foreach ($season as $categoryItem):
+                if (($resultsItem[1] == $categoryItem) and ($resultsItem[0] == $item)) {
+                    if ($www !== $categoryItem) {
+                        echo ('<h2>'.$categoryItem.'</h2>');
+                        $www = $categoryItem;
                     }
-                        echo ('<a href=/results/'.$item1[0].'/'.$item1[1].'/'.$item1[2].'>'.$item1[2].'</a><br>');
+                        echo ('<a href=/results/'.$resultsItem[0].'/'.$resultsItem[1].'/'.$resultsItem[2].'>'.$resultsItem[2].'</a><br>');
                 }
             endforeach;
         }
@@ -184,8 +183,7 @@ echo ('<h1>sort by year</h1>');
 arsort($season);
 //rsort($category);
 //print_r($category);
-//sort($data2);
-
+//sort($results);
 
 /* make new manual array for category sorted by HEBREW name, use $category if need auto sort
 $category1 = array ();
@@ -201,31 +199,29 @@ $category1[8] = "rallysprint";
 $category1[9] = "baja";
 $category1[10] = "running";
 */
-foreach ($season as $items):
-    echo ('<div class="season"><h1>עונת '.$items.'</h1>');
-    $html .= '<div class="season">'."\r\n".'<h1>עונת '.$items.'</h1>'."\r\n";
+foreach ($season as $seasonItem):
+    echo ('<div class="season"><h1>עונת '.$seasonItem.'</h1>');
+    $html .= '<div class="season">'."\r\n".'<h1>עונת '.$seasonItem.'</h1>'."\r\n";
     $www = '';
-    foreach ($category as $itemx):
-        foreach ($data2 as $item1):
-                if (($item1[6] == $itemx) and ($item1[1] == $items)) {
-                    if ($www !== $itemx) {
-                            echo ('<h2>'.$item1[6].'</h2><ul>');
-                            $html .= '    <div class="sport">'."\r\n".'    <h2>'.$item1[6].'</h2>'."\r\n".'        <ul>'."\r\n";
-
-                    
-                    $www = $itemx;
+    foreach ($category as $categoryItem):
+        foreach ($results as $resultsItem):
+                if (($resultsItem[6] == $categoryItem) and ($resultsItem[1] == $seasonItem)) {
+                    if ($www !== $categoryItem) {
+                        echo ('<h2>'.$resultsItem[6].'</h2><ul>');
+                        $html .= '    <div class="sport">'."\r\n".'    <h2>'.$resultsItem[6].'</h2>'."\r\n".'        <ul>'."\r\n";                    
+                        $www = $categoryItem;
                     }
-                        echo ('<li><a href='.$item1[5].'>'.$item1[3].'</a></li>');
-                        $html .= '            <li><a href='.$item1[5].'>'.$item1[3].'</a></li>'."\r\n";
+                    echo ('<li><a href='.$resultsItem[5].'>'.$resultsItem[3].'</a></li>');
+                    $html .= '            <li><a href='.$resultsItem[5].'>'.$resultsItem[3].'</a></li>'."\r\n";
                 }
-            endforeach;
-                    if ($www == $itemx) {
-    echo ('</ul>');
-    $html .= '        </ul>'."\r\n".'    </div>'."\r\n"; // close sport class
-}
-            endforeach;
-echo ('</div>');
-$html .= '</div>'."\r\n"; // close season class
+        endforeach;
+        if ($www == $categoryItem) {
+            echo ('</ul>');
+            $html .= '        </ul>'."\r\n".'    </div>'."\r\n"; // close sport class
+        }
+    endforeach;
+    echo ('</div>');
+    $html .= '</div>'."\r\n"; // close season class
 endforeach;
 
 echo ('</div>');
@@ -235,10 +231,10 @@ $myfile = fopen("../../results/index1.html", "w") or die("Unable to open file!")
 fwrite($myfile, $html);
 fclose($myfile);
 
-/* as $data2 is sorted by latest result, this will show the 4 last results
+/* as $results is sorted by latest result, this will show the 4 last results
 echo "<ul>";
 for ($row = 0; $row < 4; $row++) {
-    echo ('<li><a href='.$data2[$row][5].'>'.$data2[$row][3].'</a></li>');
+    echo ('<li><a href='.$results[$row][5].'>'.$results[$row][3].'</a></li>');
 }
 echo "</ul>";
 */
