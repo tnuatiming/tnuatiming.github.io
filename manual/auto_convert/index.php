@@ -7,7 +7,8 @@
 <meta charset="UTF-8"/>
 <style>
 .convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;}
-
+input, label {float:left;margin:5px;}
+p#type { display: inline; }
 </style>
 
 <?php function date_picker($name, $startyear=NULL, $endyear=NULL)
@@ -62,14 +63,18 @@
 function category_picker($name)
 {
 
-    $category=array('אול מאונטיין','אנדורו',"ג'ימקאנה",'מוטוקרוס','סופרבייק','סופרמוטו','ראלי','ראלי ספרינט','ראלי רייד','ריצה');
+    $category=array("אול מאונטיין","אנדורו","ג'ימקאנה","מוטוקרוס","סופרבייק","סופרמוטו","ראלי","ראלי ספרינט","ראלי רייד","ריצה");
 
     // category dropdown
-    $html="<select name=\"category\">";
+    $html="<select id=\"category\" name=\"category\">";
 
-    for($i=1;$i<=10;$i++)
+    for($i=0;$i<=9;$i++)
     {
-        $html.="<option value=".$category[$i].">".$category[$i]."</option>";
+        if ($i == 0) {
+            $html.="<option selected value=".$category[$i].">".$category[$i]."</option>";
+        } else {
+            $html.="<option value=".$category[$i].">".$category[$i]."</option>";
+        }
     }
     $html.="</select> ";
    
@@ -97,22 +102,22 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
     return $html;
 }
 ?>
-
 </head>
 <body>
 <div  class="convert">
 <h3>Ranking - Convert CSV to HTML Table</h3><br/>
 <form accept-charset="UTF-8" action="converted.php" method="post" enctype="multipart/form-data">
-<?php  echo date_picker("registration") ?><br/><br/>
-<?php  echo category_picker("registration") ?><br/><br/>
-  <select class="type" name="type">
+<label>event date: </label><?php  echo date_picker("registration") ?><br/><br/>
+<div><label>category: </label><?php  echo category_picker("registration") ?><p id="type"></p></div>
+<!--  <select class="type" id="type" name="type">
     <option value="" selected></option>
     <option value="ספיישל טסט">ספיישל טסט</option>
     <option value="היירסקרמבל">היירסקרמבל</option>
-  </select><br/><br/>
-  <textarea name="place" rows="1" cols="40"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
-  <textarea name="round" rows="1" cols="10"  placeholder="מרוץ מספר" wrap="off"></textarea><br/><br/>  
-<?php  echo year_picker("season") ?><br/><br/>
+  </select>-->
+<br/>
+  <label>place: </label><textarea name="place" rows="1" cols="40"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
+  <label>round: </label><textarea name="round" rows="1" cols="10"  placeholder="מרוץ מספר" wrap="off"></textarea><br/><br/>  
+<label>season: </label><?php  echo year_picker("season") ?><br/><br/>
   <input type="checkbox" name="liquid" value="liquid">do not create liquid header <br/><br/><br/>
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
   <input type="checkbox" name="utf16" value="utf16">file is UTF-16LE <br/><br/>
@@ -122,7 +127,8 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished raw table<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
-</div>
+<!--  <p id="demo"></p>-->
+  </div>
 <div  class="convert">
 <h3>Lap by Lap - Trnspose and Convert CSV to HTML Table</h3>
 <p>you can upload a file or paste the csv table in the box below</p>
@@ -138,5 +144,22 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 <div  class="convert">
 <a href='http://tnuatiming.com/manual/auto_convert/fileindex.php'>recreat the results index</a><br>
 </div>
+<!--<script>
+    document.getElementById("type").onchange = function() {
+        var cat= document.getElementById("type").value;
+        document.getElementById("demo").innerHTML =  "your category: "  +  cat ;
+  };
+</script>-->
+<script>
+    document.getElementById("category").onchange = function() {
+        var cat1= document.getElementById("category").value;
+        if (cat1=="אנדורו") {
+            document.getElementById("type").innerHTML = "<select class='type' id='type' name='type'></option><option value='ספיישל טסט'>ספיישל טסט</option><option selected value='היירסקרמבל'>היירסקרמבל</option><option value=''></select>"
+            ;
+        } else {
+            document.getElementById("type").innerHTML = "";
+        }
+    };
+</script>
 </body>
 </html>
