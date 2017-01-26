@@ -4,16 +4,22 @@
 //$head .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
 if (!$_POST['liquid']) {
     $head .= ('---'."\r\n".'layout: post'."\r\n");
-    $head .= ('tag: "'.$_POST['category'].'"'."\r\n");
+    $head .= ('tag: "'.($_POST['category']).'"'."\r\n");
     if ($_POST['category'] == "אנדורו") {
         $head .= ('type: "'.$_POST['type'].'"'."\r\n");
     }
     if ($_POST['place']) {
-    $head .= ('place: "'.$_POST['place'].'"'."\r\n");
+        $head .= ('place: "'.$_POST['place'].'"'."\r\n");
     }
     $head .= ('season: "'.$_POST['seasonyear'].'"'."\r\n");
+    if ($_POST['noseason']) {
+        $head .= ('noseason: "true"'."\r\n");
+    }
     if ($_POST['round']) {
-        $head .= ('round: "'.$_POST['round'].'"'."\r\n");
+        $head .= ('round: "מרוץ '.$_POST['round'].'"'."\r\n");
+    } else {
+        $head .= ('round: ""'."\r\n");
+    
     }
     switch ($_POST['category']) {
         case "אנדורו":

@@ -63,7 +63,7 @@ p#type { display: inline; }
 function category_picker($name)
 {
 
-    $category=array("אול מאונטיין","אנדורו","ג'ימקאנה","מוטוקרוס","סופרבייק","סופרמוטו","ראלי","ראלי ספרינט","ראלי רייד","ריצה");
+    $category=array('אול מאונטיין','אנדורו',"ג'ימקאנה",'מוטוקרוס','סופרבייק','סופרמוטו','ראלי','ראלי ספרינט','ראלי רייד','ריצה');
 
     // category dropdown
     $html="<select id=\"category\" name=\"category\">";
@@ -71,9 +71,9 @@ function category_picker($name)
     for($i=0;$i<=9;$i++)
     {
         if ($i == 0) {
-            $html.="<option selected value=".$category[$i].">".$category[$i]."</option>";
+            $html.='<option selected value="'.$category[$i].'">'.$category[$i].'</option>';
         } else {
-            $html.="<option value=".$category[$i].">".$category[$i]."</option>";
+            $html.='<option value="'.$category[$i].'">'.$category[$i].'</option>';
         }
     }
     $html.="</select> ";
@@ -118,6 +118,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <label>place: </label><textarea name="place" rows="1" cols="40"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
   <label>round: </label><textarea name="round" rows="1" cols="10"  placeholder="מרוץ מספר" wrap="off"></textarea><br/><br/>  
 <label>season: </label><?php  echo year_picker("season") ?><br/><br/>
+  <input type="checkbox" name="noseason" value="noseason">no season <br/><br/>
   <input type="checkbox" name="liquid" value="liquid">do not create liquid header <br/><br/><br/>
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
   <input type="checkbox" name="utf16" value="utf16">file is UTF-16LE <br/><br/>
@@ -142,7 +143,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 </form>
 </div>
 <div  class="convert">
-<a href='http://tnuatiming.com/manual/auto_convert/fileindex.php'>recreat the results index</a><br>
+<a href='http://tnuatiming.com/manual/auto_convert/fileindex.php'>recreate the results index</a><br>
 </div>
 <!--<script>
     document.getElementById("type").onchange = function() {
