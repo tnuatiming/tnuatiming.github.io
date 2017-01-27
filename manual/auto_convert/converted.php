@@ -2,7 +2,7 @@
 // liquid header
 
 //$head .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
-if (!$_POST['liquid']) {
+if ($_POST['liquid']) {
     $head .= ('---'."\r\n".'layout: post'."\r\n");
     $head .= ('tag: "'.($_POST['category']).'"'."\r\n");
     if ($_POST['category'] == "אנדורו") {

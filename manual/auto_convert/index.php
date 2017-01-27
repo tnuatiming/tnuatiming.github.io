@@ -9,7 +9,12 @@
 .convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;}
 input, label {float:left;margin:5px;}
 p#type { display: inline; }
-</style>
+.liqu {
+    Display: none;
+}
+.democlass {
+    Display: block;
+}</style>
 
 <?php function date_picker($name, $startyear=NULL, $endyear=NULL)
 {
@@ -105,21 +110,23 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 </head>
 <body>
 <div  class="convert">
-<h3>Ranking - Convert CSV to HTML Table</h3><br/>
+<h3>Ranking - Convert CSV to HTML Table</h3>
+<button onclick="myFunction()">show liquid header option</button><br/><br/>
 <form accept-charset="UTF-8" action="converted.php" method="post" enctype="multipart/form-data">
-<label>event date: </label><?php  echo date_picker("registration") ?><br/><br/>
-<div><label>category: </label><?php  echo category_picker("registration") ?><p id="type"></p></div>
+<div id="liqu" class="liqu"><label>event date: </label><?php  echo date_picker("registration") ?><br/><br/>
+<label>category: </label><?php  echo category_picker("registration") ?><p id="type"></p>
 <!--  <select class="type" id="type" name="type">
     <option value="" selected></option>
     <option value="ספיישל טסט">ספיישל טסט</option>
     <option value="היירסקרמבל">היירסקרמבל</option>
   </select>-->
-<br/>
+<br/><br/>
   <label>place: </label><textarea name="place" rows="1" cols="40"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
   <label>round: </label><textarea name="round" rows="1" cols="10"  placeholder="מרוץ מספר" wrap="off"></textarea><br/><br/>  
 <label>season: </label><?php  echo year_picker("season") ?><br/><br/>
-  <input type="checkbox" name="noseason" value="noseason">no season <br/><br/>
-  <input type="checkbox" name="liquid" value="liquid">do not create liquid header <br/><br/><br/>
+  <input type="checkbox" name="noseason" value="noseason">do not display season <br/>
+<p id="type1"></p>  
+  </div>
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
   <input type="checkbox" name="utf16" value="utf16">file is UTF-16LE <br/><br/>
   <input type="checkbox" name="run" value="run">&quot;מקצה&quot; >>> &quot;הקפה&quot; <br/><br/>
@@ -162,5 +169,27 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
         }
     };
 </script>
+<script>
+
+function myFunction() {
+    var x = document.getElementById('liqu');
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+            document.getElementById("type1").innerHTML = "<input type='checkbox' name='liquid' value='liquid'>create liquid header <br/>"
+    } else {
+        x.style.display = 'block';
+            document.getElementById("type1").innerHTML = "<input style='display: none;''type='checkbox' name='liquid' value='liquid' checked><br/>"
+    }
+}
+
+</script>
+<!--<script>
+function myFunction() {
+    document.getElementsByTagName("div")[1].setAttribute("class", "democlass");
+            document.getElementById("type1").innerHTML = "<input type='checkbox' name='liquid' value='liquid' checked>create liquid header <br/><br/><br/>"
+            ;
+}
+</script>-->
+
 </body>
 </html>
