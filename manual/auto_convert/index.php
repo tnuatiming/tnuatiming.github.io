@@ -8,13 +8,10 @@
 <style>
 .convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;}
 input, label {float:left;margin:5px;}
-p#type { display: inline; }
-.liqu {
-    Display: none;
-}
-.democlass {
-    Display: block;
-}</style>
+p#type { display: inline;}
+.liqu {Display: none;}
+.democlass {Display: block;}
+</style>
 
 <?php function date_picker($name, $startyear=NULL, $endyear=NULL)
 {
@@ -152,12 +149,6 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 <div  class="convert">
 <a href='http://tnuatiming.com/manual/auto_convert/fileindex.php'>recreate the results index</a><br>
 </div>
-<!--<script>
-    document.getElementById("type").onchange = function() {
-        var cat= document.getElementById("type").value;
-        document.getElementById("demo").innerHTML =  "your category: "  +  cat ;
-  };
-</script>-->
 <script>
     document.getElementById("category").onchange = function() {
         var cat1= document.getElementById("category").value;
