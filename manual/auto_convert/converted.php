@@ -62,7 +62,21 @@ if ($_POST['liquid']) {
 
     $head .= ('---'."\r\n");
 }
+/*
+//the file name to save, FIX if no round
+$localFileName = ('../../results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.$_POST['round'].'.html');
+$globalFileName = ('http://tnuatiming.com/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.$_POST['round'].'.html');
 
+echo '<meta property="og:url" content="'.$globalFileName.'"/>';
+
+echo '<meta property="article:tag" content="'.$_POST['category'].'"/>';
+
+echo '<meta property="og:description" content="תוצאות"/>';
+
+echo '<title>תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58;'.($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').' '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'</title>';
+
+echo '<meta property="og:title" content="תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58; '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'"/>';
+*/
 
 $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
 if ($_POST['utf16']) {

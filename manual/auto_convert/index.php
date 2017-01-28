@@ -108,7 +108,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 <body>
 <div  class="convert">
 <h3>Ranking - Convert CSV to HTML Table</h3>
-<button onclick="myFunction()">show liquid header option</button><br/><br/>
+<button onclick="myFunction()">show front matter header option</button><br/><br/>
 <form accept-charset="UTF-8" action="converted.php" method="post" enctype="multipart/form-data">
 <div id="liqu" class="liqu"><label>event date: </label><?php  echo date_picker("registration") ?><br/><br/>
 <label>category: </label><?php  echo category_picker("registration") ?><p id="type"></p>

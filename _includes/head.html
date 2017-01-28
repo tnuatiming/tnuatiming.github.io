@@ -31,7 +31,7 @@
 
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים"/>
-  <meta property="og:title" content="תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}{% endif %}{% if page.round %}&#58; {{ page.round }}{% endif %}{% if page.season %} עונת {{ page.season }}{% endif %}{% if page.place %} &ndash; {{ page.place }}{% endif %}"/>
+  <meta property="og:title" content="תנועה מדידת זמנים {% if page.tag %} &middot; {{ page.tag }}&#58; {% endif %}{% if page.round %}{{ page.round }}{% endif %}{% if page.season %} עונת {{ page.season }}{% endif %}{% if page.place %} &ndash; {{ page.place }}{% endif %}"/>
   {% if page.tag %}<meta property="og:description" content="תוצאות"/>{% else if page.place %}<meta property="og:description" content="{{ page.place }}"/>{% endif %}
   {% if page.tag %}<meta property="og:type" content="article"/>{% endif %}
   {% if page.tag %}<meta property="article:tag" content="{{ page.categories[1] }}"/>{% endif %}

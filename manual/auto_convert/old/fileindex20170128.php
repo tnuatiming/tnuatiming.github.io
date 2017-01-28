@@ -92,33 +92,8 @@ foreach ($results as &$item):
 //      array_push($item, "2022-12-4"); // or just $item[] = "2022-12-4";
 //    }
     $iurl = ('/results/'.$item[0].'/'.$item[1].'/'.$item[2]);
-//    array_push($item, (get_data($iurl,"name"))); // add inner html span name value
-//    array_push($item, (get_data($iurl,"rund"))); // add inner html span round value
-//    array_push($item, (get_data($iurl,"date"))); // add inner html span date value
-
-    $data = file_get_contents("../..".$iurl);// get the uploaded file content
-    $data = mb_convert_encoding($data, 'HTML-ENTITIES', 'UTF-8');
-    $doc = new DOMDocument();
-    $doc->loadHTML($data);
-    foreach ($doc->getElementsByTagName('span') as $node) {
-        if (strpos(($doc->saveHtml($node)), "name") !== false) {
-            $innerHtml=  $doc->saveHtml($node);
-            $innerHtml= rtrim(substr($innerHtml,16), '</span>'); // get the inner html
-            array_push($item, $innerHtml);
-        } 
-        if (strpos(($doc->saveHtml($node)), "rund") !== false) {
-            $innerHtml=  $doc->saveHtml($node);
-            $innerHtml= rtrim(substr($innerHtml,16), '</span>'); // get the inner html
-            array_push($item, $innerHtml);
-        } 
-        if (strpos(($doc->saveHtml($node)), "date") !== false) {
-            $innerHtml=  $doc->saveHtml($node);
-            $innerHtml= rtrim(substr($innerHtml,16), '</span>'); // get the inner html
-            array_push($item, $innerHtml);
-        }
-    }
-    
-    
+    array_push($item, (get_data($iurl,"name"))); // add inner html span name value
+    array_push($item, (get_data($iurl,"date"))); // add inner html span date value
     array_push($item, $iurl); // add internal address value
     switch ($item[0]) {
         case "enduro":
@@ -161,14 +136,14 @@ endforeach;
 
 /* Sort Multi-dimensional Array by DATE */
 usort($results, function($a, $b) {
-    return $a['5'] - $b['5'];
+    return $a['4'] - $b['4'];
 });
 $results = array_values($results); // re index
 $results = array_reverse($results);// reverse the array so newest result are first
 
 /* create category and season arrays */
 foreach ($results as $itemu):
-    array_push($category, $itemu[7]);
+    array_push($category, $itemu[6]);
     array_push($season, $itemu[1]);
 endforeach;
 
@@ -188,11 +163,10 @@ $season = array_values($season);
 [0] => enduro
 [1] => 2017
 [2] => enduro2017r1.html
-[3] => אום זוקא
-[4] => מרוץ 1
-[5] => 20161231
-[6] => /results/enduro/2017/enduro2017r1.html
-[7] => אנדורו
+[3] => מרוץ 1 - אום זוקא
+[4] => 20161231
+[5] => /results/enduro/2017/enduro2017r1.html
+[6] => אנדורו
 */
 
 /* start making the index html TEXT 
@@ -249,19 +223,14 @@ foreach ($season as $seasonItem):
     $www = '';
     foreach ($category as $categoryItem):
         foreach ($results as $resultsItem):
-                if (($resultsItem[7] == $categoryItem) and ($resultsItem[1] == $seasonItem)) {
+                if (($resultsItem[6] == $categoryItem) and ($resultsItem[1] == $seasonItem)) {
                     if ($www !== $categoryItem) {
-                        echo ('<h2>'.$resultsItem[7].'</h2><ul>');
-                        $html .= '    <div class="sport">'."\r\n".'    <h2>'.$resultsItem[7].'</h2>'."\r\n".'        <ul>'."\r\n";                    
+                        echo ('<h2>'.$resultsItem[6].'</h2><ul>');
+                        $html .= '    <div class="sport">'."\r\n".'    <h2>'.$resultsItem[6].'</h2>'."\r\n".'        <ul>'."\r\n";                    
                         $www = $categoryItem;
                     }
-                    if ($resultsItem[4]) {
-                        echo ('<li><a href='.$resultsItem[6].'>'.$resultsItem[4].' - '.$resultsItem[3].'</a></li>');
-                        $html .= '            <li><a href='.$resultsItem[6].'>'.$resultsItem[4].' - '.$resultsItem[3].'</a></li>'."\r\n";
-                    } else {
-                        echo ('<li><a href='.$resultsItem[6].'>'.$resultsItem[3].'</a></li>');
-                        $html .= '            <li><a href='.$resultsItem[6].'>'.$resultsItem[3].'</a></li>'."\r\n";                    
-                    }
+                    echo ('<li><a href='.$resultsItem[5].'>'.$resultsItem[3].'</a></li>');
+                    $html .= '            <li><a href='.$resultsItem[5].'>'.$resultsItem[3].'</a></li>'."\r\n";
                 }
         endforeach;
         if ($www == $categoryItem) {
@@ -283,25 +252,22 @@ fclose($myfile);
 /* as $results is sorted by latest result, this will show the 4 last results
 echo "<ul>";
 for ($row = 0; $row < 4; $row++) {
-    echo ('<li><a href='.$results[$row][6].'>'.$results[$row][7].': עונת '.$results[$row][1].' '.$results[$row][4].'</a></li>');
+    echo ('<li><a href='.$results[$row][5].'>'.$results[$row][6].': עונת '.$results[$row][1].' '.$results[$row][3].'</a></li>');
 }
 echo "</ul>";
 */
 
-/* test denamic meta data for header of a result page to use in converted.php page, need to addapt $results[$row][x] to input in that page
+<meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
+echo '<meta property="og:url" content="http://tnuatiming.com'.$results[$row][5].'"/>';
 
-
-$row = 1; //just row to test
-echo '<meta property="og:url" content="http://tnuatiming.com'.$results[$row][6].'"/>';
-
+{% if page.tag %}<meta property="article:tag" content="{{ page.categories[1] }}"/>{% endif %}
 echo '<meta property="article:tag" content="'.$results[$row][0].'"/>';
 
-echo '<meta property="og:description" content="תוצאות"/>';
+<meta property="og:description" content="{{ page.place }}"/>{% endif %}
+echo '<meta property="og:description" content="'.$results[$row][3].'"/>';
 
-echo '<title>תנועה מדידת זמנים &middot; '.$results[$row][7].($results[$row][1] ? ' עונת '.$results[$row][1] : '').($results[$row][4] ? ' '.$results[$row][4] : '').($results[$row][3] ? ' &ndash; '.$results[$row][3] : '').'</title>';
 
-echo '<meta property="og:title" content="תנועה מדידת זמנים &middot; '.$results[$row][7].'&#58; '.($results[$row][4] ? $results[$row][4] : '').($results[$row][1] ? ' עונת '.$results[$row][1] : '').($results[$row][3] ? ' &ndash; '.$results[$row][3] : '').'"/>';
-*/
+
 
 $finish = "block";
 $finish1 = "none";
