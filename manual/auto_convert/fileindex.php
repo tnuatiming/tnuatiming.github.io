@@ -49,7 +49,7 @@ function get_data($url,$clas) {
 
 function rscandir($base='', &$data=array()) {
 
-    $array = array_diff(scandir($base), array('.', '..')); # remove ' and .. from the array */
+    $array = array_diff(scandir($base), array('.', '..')); /* remove . and .. from the array */
     foreach($array as $value) : /* loop through the array at the level of the supplied $base */
         if (is_dir($base.$value)) : /* if this is a directory */
         //     $data[] = $base.$value.'/'; /* add it to the $data array */
