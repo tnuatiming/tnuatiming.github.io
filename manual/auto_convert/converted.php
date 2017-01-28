@@ -62,21 +62,35 @@ if ($_POST['liquid']) {
 
     $head .= ('---'."\r\n");
 }
-/*
+
 //the file name to save, FIX if no round
 $localFileName = ('../../results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.$_POST['round'].'.html');
 $globalFileName = ('http://tnuatiming.com/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.$_POST['round'].'.html');
+$date = ($_POST['registrationday']."-".$_POST['registrationmonth']."-".$_POST['registrationyear']);
 
-echo '<meta property="og:url" content="'.$globalFileName.'"/>';
+if ($_POST['finishedpage']) {
 
-echo '<meta property="article:tag" content="'.$_POST['category'].'"/>';
+    $html .= (file_get_contents('headP1.txt'));
+    $html .= ('        <title>תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58;'.($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').' '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'</title>'."\r\n");
+    $html .= ('        <meta property="og:url" content="'.$globalFileName.'"/>'."\r\n");
+    $html .= ('        <meta property="article:tag" content="'.$_POST['category'].'"/>'."\r\n");
+    $html .= ('        <meta property="og:description" content="תוצאות"/>'."\r\n");
+    $html .= ('        <meta property="og:title" content="תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58; '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'"/>'."\r\n");
+    $html .= (file_get_contents('headP2.txt'));
+    $html .= ('    <body id="race" class="'.$cat.'">'."\r\n");
+    $html .= (file_get_contents('headP3.txt'));
 
-echo '<meta property="og:description" content="תוצאות"/>';
 
-echo '<title>תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58;'.($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').' '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'</title>';
+    $html .= ('            <h2>'.$_POST['category'].'</h2>'."\r\n");
+    $html .= ('            <h2>'.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').' &ndash; '.$date.'</h2>'."\r\n");
 
-echo '<meta property="og:title" content="תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58; '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'"/>';
-*/
+    
+}
+
+
+
+
+
 
 $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
 if ($_POST['utf16']) {
@@ -269,16 +283,22 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     fclose($handle);
 }
 $html .= '</table>'."\r\n";
+if ($_POST['finishedpage']) {
+    $html .= (file_get_contents('foot.txt'));
+    echo ($html);
+}
 //echo ($html);
 //echo htmlentities($html);
 //echo nl2br(htmlentities($html));
 //echo htmlspecialchars($html);
-if (!$_POST['dontshowraw']) {
-    echo ($html);
-    echo "<br><br><br>";
+if (!$_POST['finishedpage']) {
+    if (!$_POST['dontshowraw']) {
+        echo ($html);
+        echo "<br><br><br>";
+    }
+    echo "<pre>";
+    echo htmlentities($head);
+    echo htmlentities($html);
+    echo "</pre>";
 }
-echo "<pre>";
-echo htmlentities($head);
-echo htmlentities($html);
-echo "</pre>";
 ?>

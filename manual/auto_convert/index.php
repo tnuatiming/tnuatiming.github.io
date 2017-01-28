@@ -130,6 +130,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <input type="checkbox" name="changename" value="changename">&quot;נהג&quot; >>> &quot;שם&quot; <br/><br/>
   <input type="checkbox" name="deleterows" value="deleterows">do not delete the hedear lines<br/><br/>
   <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished raw table<br/><br/>
+  <input type="checkbox" name="finishedpage" value="finishedpage">show the finished page<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 <!--  <p id="demo"></p>-->

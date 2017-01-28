@@ -220,7 +220,16 @@ endforeach;
 echo ('</div>');
 */
 /* start making the index html FILE */
-$html .= (file_get_contents('head.txt'));
+/* build the headerof the html FILE */
+$html .= (file_get_contents('headP1.txt'));
+$html .= ('        <title>תנועה מדידת זמנים עונת &ndash; תוצאות מרוצים</title>'."\r\n");
+$html .= ('        <meta property="og:title" content="תנועה מדידת זמנים  &ndash; תוצאות מרוצים">'."\r\n");
+$html .= ('        <meta property="og:url" content="http://tnuatiming.com/results/index.html">'."\r\n");
+$html .= ('        <meta property="og:description" content="תוצאות מרוצים">'."\r\n");
+$html .= (file_get_contents('headP2.txt'));
+$html .= ('    <body id="races">'."\r\n");
+$html .= (file_get_contents('headP3.txt'));
+
 echo ('<h1>sort by year</h1>');
 //$html .= '<h1>תוצאות קודמות</h1>'."\r\n";
 
@@ -280,7 +289,7 @@ $myfile = fopen("../../results/index1.html", "w") or die("Unable to open file!")
 fwrite($myfile, $html);
 fclose($myfile);
 
-/* as $results is sorted by latest result, this will show the 4 last results
+/* as $results is sorted by latest result, this will show the 4 last results, for the main index.html
 echo "<ul>";
 for ($row = 0; $row < 4; $row++) {
     echo ('<li><a href='.$results[$row][6].'>'.$results[$row][7].': עונת '.$results[$row][1].' '.$results[$row][4].'</a></li>');
