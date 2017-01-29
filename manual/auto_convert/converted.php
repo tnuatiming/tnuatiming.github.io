@@ -284,7 +284,7 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
 $html .= '</table>'."\r\n";
 
 
-//this to get more result of the same category and year
+//this to get more result of the same category and year, used at fileindex.php as well
 
 function rscandir($base='', &$data=array()) {
 
@@ -300,7 +300,6 @@ function rscandir($base='', &$data=array()) {
     return $data; // return the $data array
 }
 
-// make arrays of categorys and seasons
 $results = array ();
 
 foreach ((rscandir('/home/raz/public_html/results'.'/')) as $itemc):
@@ -390,6 +389,17 @@ $results = array_values($results); // re index
 $results = array_reverse($results);// reverse the array so newest result are first
 $p = 0;
 //print_r($results);
+/*
+[0] => enduro
+[1] => 2017
+[2] => enduro2017r1.html
+[3] => אום זוקא
+[4] => מרוץ 1
+[5] => 20161231
+[6] => /results/enduro/2017/enduro2017r1.html
+[7] => אנדורו
+*/
+
 foreach ($results as $itemu):
     if (($itemu[0] == $cat) && ($itemu[1] == $_POST['seasonyear']) && ($localFileName !== $itemu[6])) {
         if ($p == 0) {

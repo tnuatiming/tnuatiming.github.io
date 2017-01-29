@@ -76,6 +76,8 @@ function rscandir($base='', &$data=array()) {
 //}
 //endforeach;
 
+
+//  building the results array, used at converted.php as well
 // make arrays of categorys and seasons
 $results = array ();
 $category = array ();
@@ -195,7 +197,8 @@ $season = array_values($season);
 [7] => אנדורו
 */
 
-/* start making the index html TEXT 
+/* 
+//start making the index html TEXT 
 
 echo ('<div class="index">');
 echo ('<h1>sort by category</h1>');
@@ -219,8 +222,9 @@ foreach ($category as $item):
 endforeach;
 echo ('</div>');
 */
-/* start making the index html FILE */
-/* build the headerof the html FILE */
+
+//start making the index html FILE 
+// build the headerof the html FILE 
 $html .= (file_get_contents('headP1.txt'));
 $html .= ('        <title>תנועה מדידת זמנים עונת &ndash; תוצאות מרוצים</title>'."\r\n");
 $html .= ('        <meta property="og:title" content="תנועה מדידת זמנים  &ndash; תוצאות מרוצים">'."\r\n");
@@ -238,7 +242,8 @@ arsort($season);
 //print_r($category);
 //sort($results);
 
-/* make new manual array for category sorted by HEBREW name, use $category if need auto sort
+/* 
+// make new manual array for category sorted by HEBREW name, use $category if need auto sort
 $category1 = array ();
 $category1[0] = "allmountain";
 $category1[1] = "enduro";
@@ -289,7 +294,8 @@ $myfile = fopen("../../results/index1.html", "w") or die("Unable to open file!")
 fwrite($myfile, $html);
 fclose($myfile);
 
-/* as $results is sorted by latest result, this will show the 4 last results, for the main index.html
+/* 
+// as $results is sorted by latest result, this will show the 4 last results, for the main index.html
 echo "<ul>";
 for ($row = 0; $row < 4; $row++) {
     echo ('<li><a href='.$results[$row][6].'>'.$results[$row][7].': עונת '.$results[$row][1].' '.$results[$row][4].'</a></li>');
@@ -297,7 +303,8 @@ for ($row = 0; $row < 4; $row++) {
 echo "</ul>";
 */
 
-/* test denamic meta data for header of a result page to use in converted.php page, need to addapt $results[$row][x] to input in that page
+/* 
+// test denamic meta data for header of a result page to use in converted.php page, need to addapt $results[$row][x] to input in that page
 
 
 $row = 1; //just row to test
@@ -312,6 +319,7 @@ echo '<title>תנועה מדידת זמנים &middot; '.$results[$row][7].($res
 echo '<meta property="og:title" content="תנועה מדידת זמנים &middot; '.$results[$row][7].'&#58; '.($results[$row][4] ? $results[$row][4] : '').($results[$row][1] ? ' עונת '.$results[$row][1] : '').($results[$row][3] ? ' &ndash; '.$results[$row][3] : '').'"/>';
 */
 
+// displaying progress bar
 $finish = "block";
 $finish1 = "none";
 ?>
