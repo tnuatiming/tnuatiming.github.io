@@ -64,12 +64,11 @@ if ($_POST['liquid']) {
 }
 
 //the file name to save, FIX if no round
-$localFileName = ('/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.$_POST['round'].'.html');
-$globalFileName = ('http://tnuatiming.com/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.$_POST['round'].'.html');
+$localFileName = ('/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
+$globalFileName = ('http://tnuatiming.com/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
 $date = ($_POST['registrationday']."-".$_POST['registrationmonth']."-".$_POST['registrationyear']);
 
 if ($_POST['finishedpage']) {
-
     $html .= (file_get_contents('headP1.txt'));
     $html .= ('        <title>תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58;'.($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').' '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'</title>'."\r\n");
     $html .= ('        <meta property="og:url" content="'.$globalFileName.'"/>'."\r\n");
@@ -283,64 +282,27 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     fclose($handle);
 }
 $html .= '</table>'."\r\n";
-if ($_POST['finishedpage']) {
-    $html .= '<p><span id="name">'.$_POST['place'].'</span></p>'."\r\n";
-    $html .= '<p><span id="rund">'.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').'</span></p>'."\r\n";
-    $html .= '<p><span id="date">'.$_POST['registrationyear'].sprintf("%02d",$_POST['registrationmonth']).sprintf("%02d",$_POST['registrationday']).'</span></p>'."\r\n";
-    $html .= (file_get_contents('foot.txt'));
-    echo ($html);
-}
-//echo ($html);
-//echo htmlentities($html);
-//echo nl2br(htmlentities($html));
-//echo htmlspecialchars($html);
-if (!$_POST['finishedpage']) {
-    if (!$_POST['dontshowraw']) {
-        echo ($html);
-        echo "<br><br><br>";
-    }
-    echo "<pre>";
-    echo htmlentities($head);
-    echo htmlentities($html);
-    echo "</pre>";
-}
 
 
+//this to get more result of the same category and year
 
-/* this to get more result of the same category and year
 function rscandir($base='', &$data=array()) {
 
     $array = array_diff(scandir($base), array('.', '..')); // remove . and .. from the array 
     foreach($array as $value) : // loop through the array at the level of the supplied $base 
         if (is_dir($base.$value)) : // if this is a directory 
         //     $data[] = $base.$value.'/'; // add it to the $data array 
-            $data = rscandir($base.$value.'/', $data); // then make a recursive call with the 
-            current $value as the $base supplying the $data array to carry into the recursion             
+            $data = rscandir($base.$value.'/', $data); // then make a recursive call with the current $value as the $base supplying the $data array to carry into the recursion           
         elseif (is_file($base.$value)) : // else if the current $value is a file 
-            $data[] = str_replace("/home/raz/public_html", "",$base.$value); // just add the current $value to the $data array             
+            $data[] = str_replace("/home/raz/public_html", "",$base.$value); // just add the current $value to the $data array     
         endif;
     endforeach;
     return $data; // return the $data array
 }
-//$oldClass = '';
-//echo '<pre>'; var_export(rscandir('/home/raz/public_html/results'.'/')); echo '</pre>';
-//foreach((rscandir('/home/raz/public_html/results'.'/')) as $v) :
-//if ($v != '/results/index.html') {
-//    $getClass = (explode("/",str_replace("/results/", "",$v))[0]);
-//    if ($getClass !== $oldClass){
-//        echo ('<h2>'.$getClass.'</h2>');
-//        $oldClass = $getClass;
-//    }
-//    $getFileName = (explode("/",str_replace("/results/", "",$v))[2]);
-//
-//    echo '<a href='.$v.' class="'.$getClass.'">'.$getFileName.'</a><br>';
-//}
-//endforeach;
 
-// make attays of categorys and seasons
+// make arrays of categorys and seasons
 $results = array ();
-$category = array ();
-$season = array ();
+
 foreach ((rscandir('/home/raz/public_html/results'.'/')) as $itemc):
     if (($itemc != '/results/index.html') and ($itemc != '/results/index1.html')) { //skip index.html
         $results[] = explode("/", str_replace("/results/", "",$itemc));
@@ -426,14 +388,43 @@ usort($results, function($a, $b) {
 });
 $results = array_values($results); // re index
 $results = array_reverse($results);// reverse the array so newest result are first
-
+$p = 0;
 //print_r($results);
-echo ('<h2>תוצאות נוספות בעונת '.$_POST['seasonyear'].':</h2>');
 foreach ($results as $itemu):
     if (($itemu[0] == $cat) && ($itemu[1] == $_POST['seasonyear']) && ($localFileName !== $itemu[6])) {
-        echo ('<a href='.$itemu[6].'>'.($itemu[4] ? $itemu[4].' - ' : '').$itemu[3].' - '.$date.'</a><br>');
+        if ($p == 0) {
+            $pRaces = '<div class="erlier_races">'."\r\n".'    <h2>תוצאות נוספות בעונת '.$_POST['seasonyear'].':</h2>'."\r\n".'    <ul>'."\r\n";
+        }
+        $p += 1;
+        $butifyDate = (str_split($itemu[5],2));        
+        $pRaces .= '        <li><a href='.$itemu[6].'>'.($itemu[4] ? $itemu[4].' - ' : '').$itemu[3].' - '.ltrim($butifyDate[3],'0').'-'.ltrim($butifyDate[2],'0').'-'.$butifyDate[0].$butifyDate[1].'</a></li>'."\r\n";
     }
 endforeach;
-*/
+if ($p > 0) {
+    $pRaces .= '    </ul>'."\r\n".'</div>'."\r\n";
+}
+
+if ($_POST['finishedpage']) {
+    $html .= $pRaces;
+    $html .= '<p><span id="name">'.$_POST['place'].'</span></p>'."\r\n";
+    $html .= '<p><span id="rund">'.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').'</span></p>'."\r\n";
+    $html .= '<p><span id="date">'.$_POST['registrationyear'].sprintf("%02d",$_POST['registrationmonth']).sprintf("%02d",$_POST['registrationday']).'</span></p>'."\r\n";
+    $html .= (file_get_contents('foot.txt'));
+    echo ($html);
+}
+//echo ($html);
+//echo htmlentities($html);
+//echo nl2br(htmlentities($html));
+//echo htmlspecialchars($html);
+if (!$_POST['finishedpage']) {
+    if (!$_POST['dontshowraw']) {
+        echo ($html);
+        echo "<br><br><br>";
+    }
+    echo "<pre>";
+    echo htmlentities($head);
+    echo htmlentities($html);
+    echo "</pre>";
+}
 
 ?>

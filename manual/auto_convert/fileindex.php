@@ -76,7 +76,7 @@ function rscandir($base='', &$data=array()) {
 //}
 //endforeach;
 
-// make attays of categorys and seasons
+// make arrays of categorys and seasons
 $results = array ();
 $category = array ();
 $season = array ();

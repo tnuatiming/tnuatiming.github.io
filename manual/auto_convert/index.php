@@ -7,8 +7,9 @@
 <meta charset="UTF-8"/>
 <style>
 .convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;}
-input, label {float:left;margin:5px;}
-p#type { display: inline;}
+input, label {float:left;margin:0 5px;}
+p#type,p#r { display: inline;}
+#r {margin:0 20px}
 .liqu {Display: none;}
 .democlass {Display: block;}
 </style>
@@ -110,27 +111,52 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 <h3>Ranking - Convert CSV to HTML Table</h3>
 <button onclick="myFunction()">show front matter header option</button><br/><br/>
 <form accept-charset="UTF-8" action="converted.php" method="post" enctype="multipart/form-data">
-<div id="liqu" class="liqu"><label>event date: </label><?php  echo date_picker("registration") ?><br/><br/>
-<label>category: </label><?php  echo category_picker("registration") ?><p id="type"></p>
+<div id="liqu" class="liqu">
+  <label>event date: </label><?php  echo date_picker("registration") ?>
+  <br/><br/>
+  
+  <label>category: </label><?php  echo category_picker("registration") ?><p id="type"></p>
 <!--  <select class="type" id="type" name="type">
     <option value="" selected></option>
     <option value="ספיישל טסט">ספיישל טסט</option>
     <option value="היירסקרמבל">היירסקרמבל</option>
   </select>-->
-<br/><br/>
+  <br/><br/>
+  
   <label>place: </label><textarea name="place" rows="1" cols="40"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
-  <label>round: </label><textarea name="round" rows="1" cols="10"  placeholder="מרוץ מספר" wrap="off"></textarea><br/><br/>  
-<label>season: </label><?php  echo year_picker("season") ?><br/><br/>
-  <input type="checkbox" name="noseason" value="noseason">do not display season <br/>
-<p id="type1"></p>  
-  </div>
+
+  <label>round: </label><select id="round" name="round">
+  <option value="" selected></option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  </select>
+  
+  <p id="r"><textarea name="r" rows="1" cols="10" placeholder="r" wrap="off"></textarea></p>
+  <br/><br/>  
+  
+  <label>season: </label><?php  echo year_picker("season") ?>
+  <br/><br/>
+  
+  <input type="checkbox" name="noseason" value="noseason">do not display season 
+  <br/>
+  
+  <p id="type1"></p>  
+</div>
   <input type="file" name="file" style="color:red; font-size: 1.2em;"/><br/><br/>
   <input type="checkbox" name="utf16" value="utf16">file is UTF-16LE <br/><br/>
   <input type="checkbox" name="run" value="run">&quot;מקצה&quot; >>> &quot;הקפה&quot; <br/><br/>
   <input type="checkbox" name="changename" value="changename">&quot;נהג&quot; >>> &quot;שם&quot; <br/><br/>
   <input type="checkbox" name="deleterows" value="deleterows">do not delete the hedear lines<br/><br/>
-  <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished raw table<br/><br/>
-  <input type="checkbox" name="finishedpage" value="finishedpage">show the finished page<br/><br/>
+  <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished table<br/><br/>
+  <input type="checkbox" name="finishedpage" value="finishedpage">show as a web page<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 <!--  <p id="demo"></p>-->
