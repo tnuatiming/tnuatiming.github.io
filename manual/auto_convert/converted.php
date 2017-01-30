@@ -1,7 +1,9 @@
 <?php
 // liquid header
 
-//$liquidHead .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
+//$liquidHead .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday'])); //add leading zero
+$categoryTranslate = array("אנדורו"=>"enduro", "ראלי רייד"=>"baja", "ראלי"=>"rally", "ראלי ספרינט"=>"rallysprint", "ריצה"=>"running", "מוטוקרוס"=>"motocross", "ג'ימקאנה"=>"gymkhana", "סופרבייק"=>"superbike", "אול מאונטיין"=>"allmountain", "קרטינג"=>"karting", "סופרמוטו"=>"supermoto");
+
 if ($_POST['liquid']) {
     $liquidHead .= ('---'."\r\n".'layout: post'."\r\n");
     $liquidHead .= ('tag: "'.($_POST['category']).'"'."\r\n");
@@ -21,51 +23,28 @@ if ($_POST['liquid']) {
         $liquidHead .= ('round: ""'."\r\n");
     
     }
-    switch ($_POST['category']) {
-        case "אנדורו":
-            $cat = "enduro";
+// $englishCategory gets the category in english
+    foreach($categoryTranslate as $z => $z_value) {
+        if (($_POST['category']) == $z) {
+            $englishCategory = $z_value;
             break;
-        case "ראלי רייד":
-            $cat = "baja";
-            break;
-        case "ראלי":
-            $cat = "rally";
-            break;
-        case "ראלי ספרינט":
-            $cat = "rallysprint";
-            break;
-        case "ריצה":
-            $cat = "running";
-            break;
-        case "מוטוקרוס":
-            $cat = "motocross";
-            break;
-        case 'ג\'ימקאנה':
-            $cat = "gymkhana";
-            break;
-        case "סופרבייק":
-            $cat = "superbike";
-            break;
-        case "אול מאונטיין":
-            $cat = "allmountain";
-            break;
-        case "קרטינג":
-            $cat = "karting";
-            break;
-        case "סופרמוטו":
-            $cat = "supermoto";
-            break;
-        default:
-            $cat = $_POST['category'];
+        } else {
+            $englishCategory = $_POST['category'];
+        }
     }
-    $liquidHead .= ('categories: [results, '.$cat.']'."\r\n");
+
+    
+    $liquidHead .= ('categories: [results, '.$englishCategory.']'."\r\n");
 
     $liquidHead .= ('---'."\r\n");
 }
 
+
+
+
 //the file name to save
-$localFileName = ('/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
-$globalFileName = ('http://tnuatiming.com/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
+$localFileName = ('/results/'.$englishCategory.'/'.$_POST['seasonyear'].'/'.$englishCategory.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
+$globalFileName = ('http://tnuatiming.com/results/'.$englishCategory.'/'.$_POST['seasonyear'].'/'.$englishCategory.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
 $date = ($_POST['registrationday']."-".$_POST['registrationmonth']."-".$_POST['registrationyear']);
 
 if ($_POST['finishedpage']) {
@@ -76,7 +55,7 @@ if ($_POST['finishedpage']) {
     $html .= ('        <meta property="og:description" content="תוצאות"/>'."\r\n");
     $html .= ('        <meta property="og:title" content="תנועה מדידת זמנים &middot; '.$_POST['category'].'&#58; '.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').'"/>'."\r\n");
     $html .= (file_get_contents('headP2.txt'));
-    $html .= ('    <body id="race" class="'.$cat.'">'."\r\n");
+    $html .= ('    <body id="race" class="'.$englishCategory.'">'."\r\n");
     $html .= (file_get_contents('headP3.txt'));
     $html .= ('            <h2>'.$_POST['category'].(($_POST['category'] == "אנדורו") ? ' &ndash; '.$_POST['type'] : '').'</h2>'."\r\n");
     $html .= ('            <h2>'.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').' &ndash; '.$date.'</h2>'."\r\n");
@@ -115,7 +94,6 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
             $num = count($data1);
             if ($num != 1) {
                 for ($c=0; $c < $num; $c++) {
-
                 
                     $headerItem = array("Rank"=>"מקום", "Rnk"=>"מקום", "Pos."=>"מקום", "Num"=>"מספר", "Bib."=>"מספר", "Driver's last name"=>$changeName, "Driver's first name"=>"נווט", "Last Name"=>$changeName, "First Name"=>"נווט", "Name"=>$changeName, "Driver"=>$changeName, "Laps"=>"הקפות", "B.Lap"=>"הקפה מהירה", "Lap"=>"הקפה", "Time"=>"זמן", "Gap"=>"פער", "Penalty"=>"עונשין", "Category"=>"קטגוריה", "Hour"=>"זמן כולל", "Seq"=>"סידורי", "Points"=>"נקודות", "Run 1"=>"$runType 1", "Run 2"=>"$runType 2", "Run 3"=>"$runType 3", "Run 4"=>"$runType 4", "Run 5"=>"$runType 5", "Run 6"=>"$runType 6", "Run 7"=>"$runType 7", "Run 8"=>"$runType 8", "Run 9"=>"$runType 9", "Run 10"=>"$runType 10", "Run 11"=>"$runType 11", "Run 12"=>"$runType 12");
 
@@ -268,45 +246,20 @@ foreach ($results as &$item):
         }
     }
     
-    
     array_push($item, $iurl); // add internal address value
-    switch ($item[0]) {
-        case "enduro":
-            array_push($item,"אנדורו");
+
+    $noTranslation = 0;
+    foreach($categoryTranslate as $z => $z_value) { // add english category
+        if (($item[0]) == $z) {
+            array_push($item,$z_value);
+            $noTranslation = 1;
             break;
-        case "baja":
-            array_push($item,"ראלי רייד");
-            break;
-        case "rally":
-            array_push($item,"ראלי");
-            break;
-        case "rallysprint":
-            array_push($item,"ראלי ספרינט");
-            break;
-        case "running":
-            array_push($item,"ריצה");
-            break;
-        case "motocross":
-            array_push($item,"מוטוקרוס");
-            break;
-        case "gymkhana":
-            array_push($item,'ג\'ימקאנה');
-            break;
-        case "superbike":
-            array_push($item,"סופרבייק");
-            break;
-        case "allmountain":
-            array_push($item,"אול מאונטיין");
-            break;
-        case "karting":
-            array_push($item,"קרטינג");
-            break;
-        case "supermoto":
-            array_push($item,"סופרמוטו");
-            break;
-        default:
-            array_push($item,$item[0]);
+        } 
     }
+    if ($noTranslation == 0) { // if no translation to english,push the hebrew category
+        array_push($item,$item[0]);
+    }
+
 endforeach;
 
 // Sort Multi-dimensional Array by DATE 
@@ -329,7 +282,7 @@ $p = 0;
 */
 
 foreach ($results as $itemu):
-    if (($itemu[0] == $cat) && ($itemu[1] == $_POST['seasonyear']) && ($localFileName !== $itemu[6])) {
+    if (($itemu[0] == $englishCategory) && ($itemu[1] == $_POST['seasonyear']) && ($localFileName !== $itemu[6])) {
         if ($p == 0) {
             $pRaces = '<div class="erlier_races">'."\r\n".'    <h2>תוצאות נוספות בעונת '.$_POST['seasonyear'].':</h2>'."\r\n".'    <ul>'."\r\n";
         }
