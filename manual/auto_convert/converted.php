@@ -118,8 +118,7 @@ $stop = 0;
 $header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
 $row1 = 0;
 if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
-echo($handle1);
-while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
+    while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
         if ($stop == 0) {      //stop going trough the line when the header is detected
             $num = count($data1);
             if ($num != 1) {
