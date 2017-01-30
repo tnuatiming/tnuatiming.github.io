@@ -1,24 +1,24 @@
 <?php
 // liquid header
 
-//$head .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
+//$liquidHead .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday']));
 if ($_POST['liquid']) {
-    $head .= ('---'."\r\n".'layout: post'."\r\n");
-    $head .= ('tag: "'.($_POST['category']).'"'."\r\n");
+    $liquidHead .= ('---'."\r\n".'layout: post'."\r\n");
+    $liquidHead .= ('tag: "'.($_POST['category']).'"'."\r\n");
     if ($_POST['category'] == "אנדורו") {
-        $head .= ('type: "'.$_POST['type'].'"'."\r\n");
+        $liquidHead .= ('type: "'.$_POST['type'].'"'."\r\n");
     }
     if ($_POST['place']) {
-        $head .= ('place: "'.$_POST['place'].'"'."\r\n");
+        $liquidHead .= ('place: "'.$_POST['place'].'"'."\r\n");
     }
-    $head .= ('season: "'.$_POST['seasonyear'].'"'."\r\n");
+    $liquidHead .= ('season: "'.$_POST['seasonyear'].'"'."\r\n");
     if ($_POST['noseason']) {
-        $head .= ('noseason: "true"'."\r\n");
+        $liquidHead .= ('noseason: "true"'."\r\n");
     }
     if ($_POST['round']) {
-        $head .= ('round: "מרוץ '.$_POST['round'].'"'."\r\n");
+        $liquidHead .= ('round: "מרוץ '.$_POST['round'].'"'."\r\n");
     } else {
-        $head .= ('round: ""'."\r\n");
+        $liquidHead .= ('round: ""'."\r\n");
     
     }
     switch ($_POST['category']) {
@@ -58,9 +58,9 @@ if ($_POST['liquid']) {
         default:
             $cat = $_POST['category'];
     }
-    $head .= ('categories: [results, '.$cat.']'."\r\n");
+    $liquidHead .= ('categories: [results, '.$cat.']'."\r\n");
 
-    $head .= ('---'."\r\n");
+    $liquidHead .= ('---'."\r\n");
 }
 
 //the file name to save
@@ -80,14 +80,8 @@ if ($_POST['finishedpage']) {
     $html .= (file_get_contents('headP3.txt'));
     $html .= ('            <h2>'.$_POST['category'].(($_POST['category'] == "אנדורו") ? ' &ndash; '.$_POST['type'] : '').'</h2>'."\r\n");
     $html .= ('            <h2>'.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').' &ndash; '.$date.'</h2>'."\r\n");
-
     
 }
-
-
-
-
-
 
 $csv_file = file_get_contents($_FILES['file']['tmp_name']);// get the uploaded file content
 if ($_POST['utf16']) {
@@ -366,7 +360,7 @@ if (!$_POST['finishedpage']) {
         echo "<br><br><br>";
     }
     echo "<pre>";
-    echo htmlentities($head);
+    echo htmlentities($liquidHead);
     echo htmlentities($html);
     echo "</pre>";
 }
