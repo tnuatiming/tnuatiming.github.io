@@ -114,7 +114,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <label>event date: </label><?php  echo date_picker("registration") ?>
   <br/><br/>
   
-  <label>category: </label><?php  echo category_picker("registration") ?><p id="type"></p>
+  <label>category: </label><?php  echo category_picker("registration") ?><p id="type"><select class='type' id='type' name='type'></option><option value='ספיישל טסט'>ספיישל טסט</option><option selected value='היירסקרמבל'>היירסקרמבל</option><option value=''></select></p>
 <!--  <select class="type" id="type" name="type">
     <option value="" selected></option>
     <option value="ספיישל טסט">ספיישל טסט</option>
@@ -175,7 +175,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 <div  class="convert">
 <a href='http://tnuatiming.com/manual/auto_convert/fileindex.php'>recreate the results index</a><br>
 </div>
-<script>
+<!--<script>
     document.getElementById("category").onchange = function() {
         var cat1= document.getElementById("category").value;
         if (cat1=="אנדורו") {
@@ -183,6 +183,17 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
             ;
         } else {
             document.getElementById("type").innerHTML = "";
+        }
+    };
+</script>-->
+<script>
+    document.getElementById("category").onchange = function() {
+        var cat1= document.getElementById("category").value;
+        var x = document.getElementById('type');
+        if (cat1=="אנדורו") {
+        x.style.display = 'block';
+        } else {
+        x.style.display = 'none';
         }
     };
 </script>
