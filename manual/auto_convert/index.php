@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta charset="UTF-8"/>
 <style>
-.convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;}
+.convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;text-align: center}
 input, label {float:left;margin:0 5px;}
 p#type { display: none;}
 p#r { display: inline;}
