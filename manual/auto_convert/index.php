@@ -6,13 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <meta charset="UTF-8"/>
 <style>
-.convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;text-align: center}
-input, label {float:left;margin:0 5px;}
-p#type { display: none;}
-p#r { display: inline;}
-#r {margin:0 20px}
-.liqu {Display: none;}
-.democlass {Display: block;}
+.convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;}
+input, label, textarea {margin:0 5px 0 0;vertical-align: middle;
+}
+p#type {display: none;}
+textarea#r {display: inline;margin:0 0 0 15px;}
+.liqu {display: none;}
+.democlass {display: block;}
+select#round {}
 </style>
 
 <?php function date_picker($name, $startyear=NULL, $endyear=NULL)
@@ -115,15 +116,15 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <label>event date: </label><?php  echo date_picker("registration") ?>
   <br/><br/>
   
-  <label>category: </label><?php  echo category_picker("registration") ?><p id="type"><select class='type' id='type' name='type'></option><option value='ספיישל טסט'>ספיישל טסט</option><option selected value='היירסקרמבל'>היירסקרמבל</option><option value=''></select></p>
-<!--  <select class="type" id="type" name="type">
-    <option value="" selected></option>
-    <option value="ספיישל טסט">ספיישל טסט</option>
-    <option value="היירסקרמבל">היירסקרמבל</option>
-  </select>-->
+  <label>category: </label><?php  echo category_picker("registration") ?>
+  <p id="type"><select class='type' id='type' name='type'>
+  <option value='ספיישל טסט'>ספיישל טסט</option>
+  <option selected value='היירסקרמבל'>היירסקרמבל</option>
+  <option value=''></option>
+  </select></p>
   <br/><br/>
   
-  <label>place: </label><textarea name="place" rows="1" cols="40"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
+  <label>place: </label><textarea name="place" rows="1" cols="30"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
 
   <label>round: </label><select id="round" name="round">
   <option value="" selected></option>
@@ -139,9 +140,9 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <option value="10">10</option>
   </select>
   
-  <p id="r"><textarea name="r" rows="1" cols="10" placeholder="r" wrap="off"></textarea></p>
+  <textarea id="r" name="r" rows="1" cols="5" placeholder="r" wrap="off"></textarea>
   <br/><br/>  
-  
+ 
   <label>season: </label><?php  echo year_picker("season") ?>
   <br/><br/>
   
