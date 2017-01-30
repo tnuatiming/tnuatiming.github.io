@@ -4,7 +4,6 @@
 //$liquidHead .= ($_POST['registrationyear']."-".sprintf("%02d",$_POST['registrationmonth'])."-".sprintf("%02d",$_POST['registrationday'])); //add leading zero
 $categoryTranslate = array("אנדורו"=>"enduro", "ראלי רייד"=>"baja", "ראלי"=>"rally", "ראלי ספרינט"=>"rallysprint", "ריצה"=>"running", "מוטוקרוס"=>"motocross", "ג'ימקאנה"=>"gymkhana", "סופרבייק"=>"superbike", "אול מאונטיין"=>"allmountain", "קרטינג"=>"karting", "סופרמוטו"=>"supermoto");
 
-if ($_POST['liquid']) {
     $liquidHead .= ('---'."\r\n".'layout: post'."\r\n");
     $liquidHead .= ('tag: "'.($_POST['category']).'"'."\r\n");
     if ($_POST['category'] == "אנדורו") {
@@ -37,7 +36,7 @@ if ($_POST['liquid']) {
     $liquidHead .= ('categories: [results, '.$englishCategory.']'."\r\n");
 
     $liquidHead .= ('---'."\r\n");
-}
+
 
 
 
@@ -313,7 +312,9 @@ if (!$_POST['finishedpage']) {
         echo "<br><br><br>";
     }
     echo "<pre>";
+if ($_POST['liquid']) {
     echo htmlentities($liquidHead);
+}
     echo htmlentities($html);
     echo "</pre>";
 }
