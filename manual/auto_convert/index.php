@@ -8,7 +8,8 @@
 <style>
 .convert {float:left;font-size: 1.2em; margin: 40px 5% 0 5%;width: 35%; min-width:400px;}
 input, label {float:left;margin:0 5px;}
-p#type,p#r { display: inline;}
+p#type { display: none;}
+p#r { display: inline;}
 #r {margin:0 20px}
 .liqu {Display: none;}
 .democlass {Display: block;}
@@ -189,11 +190,11 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 <script>
     document.getElementById("category").onchange = function() {
         var cat1= document.getElementById("category").value;
-        var x = document.getElementById('type');
+        var z = document.getElementById('type');
         if (cat1=="אנדורו") {
-        x.style.display = 'block';
+            z.style.display = 'inline';
         } else {
-        x.style.display = 'none';
+            z.style.display = 'none';
         }
     };
 </script>
@@ -203,10 +204,17 @@ function myFunction() {
     var x = document.getElementById('liqu');
     if (x.style.display === 'block') {
         x.style.display = 'none';
-            document.getElementById("type1").innerHTML = "<input type='checkbox' name='liquid' value='liquid'>create liquid header <br/>"
+        document.getElementById("type1").innerHTML = "<input type='checkbox' name='liquid' value='liquid'>create liquid header <br/>";
     } else {
+        var cat1= document.getElementById("category").value;
+        var z = document.getElementById('type');
+        if (cat1=="אנדורו") {
+            z.style.display = 'inline';
+        } else {
+            z.style.display = 'none';
+        }
         x.style.display = 'block';
-            document.getElementById("type1").innerHTML = "<input style='display: none;''type='checkbox' name='liquid' value='liquid' checked><br/>"
+        document.getElementById("type1").innerHTML = "<input style='display: none;''type='checkbox' name='liquid' value='liquid' checked><br/>";
     }
 }
 
