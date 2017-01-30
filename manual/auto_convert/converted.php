@@ -123,84 +123,18 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
             $num = count($data1);
             if ($num != 1) {
                 for ($c=0; $c < $num; $c++) {
-                    if (stripos($data1[$c], 'Rank') !== false) {
-                        $header .= '        <th class="rnkh_font">מקום</th>'."\r\n";
-                        $stop = 1;
-                    } elseif (stripos($data1[$c], 'Rnk') !== false) {
-                        $header .= '        <th class="rnkh_font">מקום</th>'."\r\n";
-                        $stop = 1;
-                    } elseif (stripos($data1[$c], 'Pos.') !== false) {
-                        $header .= '        <th class="rnkh_font">מקום</th>'."\r\n";
-                        $stop = 1;
-                    } elseif (stripos($data1[$c], 'Num') !== false) {
-                        $header .= '        <th class="rnkh_font">מספר</th>'."\r\n";
-                        $stop = 1;
-                    } elseif (stripos($data1[$c], 'Bib.') !== false) {
-                        $header .= '        <th class="rnkh_font">מספר</th>'."\r\n";
-                        $stop = 1;
-                    } elseif (stripos($data1[$c], 'Driver\'s last name') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$changeName.'</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Driver\'s first name') !== false) {
-                        $header .= '        <th class="rnkh_font">נווט</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Last Name') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$changeName.'</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'First Name') !== false) {
-                        $header .= '        <th class="rnkh_font">נווט</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Name') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$changeName.'</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Driver') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$changeName.'</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Laps') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפות</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'B.Lap') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה מהירה</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Lap') !== false) {
-                        $header .= '        <th class="rnkh_font">הקפה</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Time') !== false) {
-                        $header .= '        <th class="rnkh_font">זמן</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Gap') !== false) {
-                        $header .= '        <th class="rnkh_font">פער</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Penalty') !== false) {
-                        $header .= '        <th class="rnkh_font">עונשין</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Category') !== false) {
-                        $header .= '        <th class="rnkh_font">קטגוריה</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Hour') !== false) {
-                        $header .= '        <th class="rnkh_font">זמן כולל</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Seq') !== false) {
-                        $header .= '        <th class="rnkh_font">סידורי</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 1') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 1</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 2') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 2</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 3') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 3</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 4') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 4</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 5') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 5</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 6') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 6</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 7') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 7</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 8') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 8</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 9') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 9</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 10') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 10</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 11') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 11</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 12') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 12</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 13') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 13</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 14') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 14</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 15') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 15</th>'."\r\n";
-                    } elseif (stripos($data1[$c], 'Run 16') !== false) {
-                        $header .= '        <th class="rnkh_font">'.$runType.' 16</th>'."\r\n";
+
+                
+                    $headerItem = array("Rank"=>"מקום", "Rnk"=>"מקום", "Pos."=>"מקום", "Num"=>"מספר", "Bib."=>"מספר", "Driver's last name"=>$changeName, "Driver's first name"=>"נווט", "Last Name"=>$changeName, "First Name"=>"נווט", "Name"=>$changeName, "Driver"=>$changeName, "Laps"=>"הקפות", "B.Lap"=>"הקפה מהירה", "Lap"=>"הקפה", "Time"=>"זמן", "Gap"=>"פער", "Penalty"=>"עונשין", "Category"=>"קטגוריה", "Hour"=>"זמן כולל", "Seq"=>"סידורי", "Points"=>"נקודות", "Run 1"=>"$runType 1", "Run 2"=>"$runType 2", "Run 3"=>"$runType 3", "Run 4"=>"$runType 4", "Run 5"=>"$runType 5", "Run 6"=>"$runType 6", "Run 7"=>"$runType 7", "Run 8"=>"$runType 8", "Run 9"=>"$runType 9", "Run 10"=>"$runType 10", "Run 11"=>"$runType 11", "Run 12"=>"$runType 12");
+
+                    foreach($headerItem as $x => $x_value) {
+                        if (stripos($data1[$c], $x) !== false) {
+                            $header .= '        <th class="rnkh_font">'.$x_value.'</th>'."\r\n";
+                            $stop = 1;
+                            break; 
+                        } 
                     }
+                
                 }
             }
         $row1++;
