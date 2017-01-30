@@ -63,7 +63,7 @@ if ($_POST['liquid']) {
     $head .= ('---'."\r\n");
 }
 
-//the file name to save, FIX if no round
+//the file name to save
 $localFileName = ('/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
 $globalFileName = ('http://tnuatiming.com/results/'.$cat.'/'.$_POST['seasonyear'].'/'.$cat.$_POST['seasonyear'].'r'.($_POST['r'] ? $_POST['r'] : $_POST['round']).'.html');
 $date = ($_POST['registrationday']."-".$_POST['registrationmonth']."-".$_POST['registrationyear']);
@@ -162,6 +162,8 @@ if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
                         $header .= '        <th class="rnkh_font">פער</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Penalty') !== false) {
                         $header .= '        <th class="rnkh_font">עונשין</th>'."\r\n";
+                    } elseif (stripos($data1[$c], 'Category') !== false) {
+                        $header .= '        <th class="rnkh_font">קטגוריה</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Hour') !== false) {
                         $header .= '        <th class="rnkh_font">זמן כולל</th>'."\r\n";
                     } elseif (stripos($data1[$c], 'Seq') !== false) {

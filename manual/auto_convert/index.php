@@ -19,8 +19,7 @@ p#type,p#r { display: inline;}
     if($startyear==NULL) $startyear = date("Y")-3;
     if($endyear==NULL) $endyear=date("Y")+10; 
 
-    $months=array('','January','February','March','April','May',
-    'June','July','August', 'September','October','November','December');
+    $months=array('','January','February','March','April','May','June','July','August', 'September','October','November','December');
 
     // Month dropdown
     $html="<select name=\"".$name."month\">";
