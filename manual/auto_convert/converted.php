@@ -54,7 +54,7 @@ if ($_POST['finishedpage']) {
     $html .= ('    <body id="race" class="'.$englishCategory.'">'."\r\n");
     $html .= (file_get_contents('headP3.txt'));
     $html .= ('            <h2>'.$_POST['category'].(($_POST['category'] == "אנדורו") ? ' &ndash; '.$_POST['type'] : '').'</h2>'."\r\n");
-    $html .= ('            <h2>'.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').($_POST['seasonyear'] ? ' עונת '.$_POST['seasonyear'] : '').($_POST['place'] ? ' &ndash; '.$_POST['place'] : '').' &ndash; '.$date.'</h2>'."\r\n");
+    $html .= ('            <h2>'.($_POST['round'] ? 'מרוץ '.$_POST['round'].' ' : '').(!$_POST['noseason'] ? 'עונת '.$_POST['seasonyear'].' &ndash; ' : '').($_POST['place'] ? $_POST['place'] : '').' &ndash; '.$date.'</h2>'."\r\n");
     
 }
 
@@ -292,7 +292,9 @@ if ($p > 0) {
 }
 
 if ($_POST['finishedpage']) {
-    $html .= $pRaces;
+    if ($_POST['presults']) {
+        $html .= $pRaces;
+    }
     $html .= '<p><span id="name">'.$_POST['place'].'</span></p>'."\r\n";
     $html .= '<p><span id="rund">'.($_POST['round'] ? 'מרוץ '.$_POST['round'] : '').'</span></p>'."\r\n";
     $html .= '<p><span id="date">'.$_POST['registrationyear'].sprintf("%02d",$_POST['registrationmonth']).sprintf("%02d",$_POST['registrationday']).'</span></p>'."\r\n";
