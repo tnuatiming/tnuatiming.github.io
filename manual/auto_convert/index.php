@@ -67,12 +67,12 @@ select#round {}
 function category_picker($name)
 {
 
-    $category=array('אול מאונטיין','אנדורו',"ג'ימקאנה",'מוטוקרוס','סופרבייק','סופרמוטו','ראלי','ראלי ספרינט','ראלי רייד','ריצה');
+    $category=array('','אול מאונטיין','אנדורו',"ג'ימקאנה",'מוטוקרוס','סופרבייק','סופרמוטו','ראלי','ראלי ספרינט','ראלי רייד','ריצה');
 
     // category dropdown
     $html="<select id=\"category\" name=\"category\">";
 
-    for($i=0;$i<=9;$i++)
+    for($i=0;$i<=10;$i++)
     {
         if ($i == 0) {
             $html.='<option selected value="'.$category[$i].'">'.$category[$i].'</option>';
