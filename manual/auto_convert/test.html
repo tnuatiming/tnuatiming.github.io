@@ -1,0 +1,76 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'הקפה');
+      data.addColumn('number', '4');
+      data.addColumn('number', '1');
+      data.addColumn('number', '2');
+      data.addColumn('number', '41');
+      data.addColumn('number', '11');
+      data.addColumn('number', '21');
+      data.addColumn('number', '42');
+      data.addColumn('number', '12');
+      data.addColumn('number', '22');
+      data.addColumn('number', '43');
+      data.addColumn('number', '13');
+      data.addColumn('number', '23');
+      data.addColumn('number', '152');
+      data.addColumn('number', '252');
+      data.addColumn('number', '453');
+      data.addColumn('number', '135');
+      data.addColumn('number', '253');
+      data.addColumn('number', '2503');
+
+      data.addRows([
+[1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
+[2,1,2,3,5,7,4,8,9,12,10,13,11,6,14,15,18,16,17],
+[3,1,2,3,6,7,4,9,10,12,8,13,11,5,14,15,null,16,17],
+[4,1,2,3,6,7,4,9,10,12,8,13,11,5,14,15,null,17,16],
+[5,1,2,4,6,8,3,9,10,12,7,13,11,5,14,15,null,17,16],
+[6,1,2,4,6,8,3,9,10,12,7,13,11,5,14,15,null,17,16],
+[7,1,2,4,7,8,3,10,9,11,6,13,12,5,14,15,null,17,16],
+[8,1,2,4,7,8,3,9,12,10,6,13,11,5,15,14,null,null,16],
+[9,1,2,4,6,7,3,8,11,9,null,12,10,5,null,null,null,null,null],
+[10,1,2,4,6,7,3,8,null,9,null,null,10,5,null,null,null,null,null],
+[11,1,2,4,5,6,3,null,null,null,null,null,null,null,null,null,null,null,null],
+[12,1,2,4,5,null,3,null,null,null,null,null,null,null,null,null,null,null,null],
+[13,1,2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]]);
+
+   
+   
+   
+   
+   
+   
+   
+   var options = {
+      chart: {
+          title: '',
+          subtitle: ''
+        },
+        width: 1200,
+        height: 800,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+<body>
+  <div id="line_top_x"></div>
+</body>
+</html>
