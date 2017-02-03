@@ -25,6 +25,7 @@ if (($_FILES['file']['tmp_name']) == True) {   // file is true, phrasing a file 
 }
 //transpose from textareaname
 $textArray22 = $textArray;
+$textArray33 = $textArray;
 
 
 // import the data into the array
@@ -89,7 +90,109 @@ $tableArray22[$key][$i] = 'null';
 }   
    }
 
-    $tableArray22 = array_map(null, ...$tableArray22); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
+print_r($tableArray22);    
+    
+//chart js
+    
+ $count22 = count($tableArray22);
+foreach ($tableArray22 as $key=>$subarr) {
+    $num22 = count($subarr);
+}
+ $count22 += 1;
+ 
+ 
+for ($y = 1; $y < $count22; $y++) {
+//    print_r($xvalue);
+   $bbb .= "{label: '".$tableArray22[$y][0]."',data: [";
+            for ($z=1; $z < $num22; $z++) {
+$q = $num22 - 1;
+if ($z == $q) {
+
+    $bbb .= ($tableArray22[$y][$z]);
+    } else {
+
+    $bbb .= ($tableArray22[$y][$z].',');
+  
+    }
+    }
+    
+    
+ $f = $count22 - 2;
+if ($y == $f) {
+   
+    $bbb .= '],borderColor: "rgba('.rand(0, 255).','.rand(0, 255).','.rand(0, 255).',1)",lineTension: 0.1,fill: false}'."\r\n";
+} else {
+    $bbb .= '],borderColor: "rgba('.rand(0, 255).','.rand(0, 255).','.rand(0, 255).',1)",lineTension: 0.1,fill: false},'."\r\n";
+
+}
+    
+    }  
+    
+   echo($bbb); 
+   
+    
+    
+    
+    
+    //canvas js
+    
+ $count33 = count($tableArray22);
+foreach ($tableArray22 as $key=>$subarr) {
+    $num33 = count($subarr);
+}
+ $count33 += 1;
+ 
+ 
+for ($o = 1; $o < $count33; $o++) {
+//    print_r($xvalue);
+   $ccc .= '{'."\r\n".'type: "line",'."\r\n".' showInLegend: true,'."\r\n".'name: "'.$tableArray22[$o][0].'",'."\r\n".'dataPoints:['."\r\n";
+            for ($k=1; $k < $num33; $k++) {
+$t = $num33 - 1;
+if ($k == $t) {
+
+    $ccc .= '{x:'.$k.', y:'.($tableArray22[$o][$k]).'}'."\r\n";
+    } else {
+
+    $ccc .= '{x:'.$k.', y:'.($tableArray22[$o][$k]).'},'."\r\n";
+  
+    }
+    }
+    
+    
+ $tt = $count33 - 2;
+if ($o == $tt) {
+   
+    $ccc .= ']'."\r\n".'},'."\r\n";
+} else {
+    $ccc .= ']'."\r\n".'},'."\r\n";
+
+}
+    
+    }  
+    
+   echo($ccc); 
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    
+$tableArray22 = array_map(null, ...$tableArray22); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
 
   
 
@@ -182,4 +285,6 @@ echo "</pre>";
 
 
 //echo htmlspecialchars($html);
+
+*/
 ?>

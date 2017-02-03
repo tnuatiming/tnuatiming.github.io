@@ -1,6 +1,3434 @@
 <html>
 <head>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ 
+  <script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+ axisX:{
+   labelFontSize: 20,
+   titleFontSize: 24,
+  title:"הקפה",
+    minimum: 1,
+   interval: 1,
+},
+axisY:{
+   labelFontSize: 20,
+   titleFontSize: 24,
+  title:"מקום",
+    reversed:  true,
+    minimum: 0,
+   interval: 5,
+},
+ legend: {
+                itemmouseover: function (e) {
+                //console.log("legend click: " + e.dataPointIndex);
+                //console.log(e);
+                    e.dataSeries.lineThickness = 5;
+ 
+                e.chart.render();
+            },
+                itemmouseout: function (e) {
+                //console.log("legend click: " + e.dataPointIndex);
+                //console.log(e);
+                    e.dataSeries.lineThickness = 2;
+ 
+                e.chart.render();
+            },
+                itemclick: function (e) {
+                //console.log("legend click: " + e.dataPointIndex);
+                //console.log(e);
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+
+                e.chart.render();
+            },
+   horizontalAlign: "right", // "center" , "right"
+       verticalAlign: "center",  // "top" , "bottom"
+       fontSize: 15
+     },
+      title:{
+      text: ""
+      },
+ toolTip: {
+    content: "מתחרה: {name}<br>הקפה: {x}<br>מקום: {y}"      
+},
+data: [
+    {
+
+type: "line",
+
+ showInLegend: true,
+
+name: "22",
+
+dataPoints:[
+
+{x:1, y:1},
+
+{x:2, y:1},
+
+{x:3, y:2},
+
+{x:4, y:2},
+
+{x:5, y:1},
+
+{x:6, y:1},
+
+{x:7, y:1},
+
+{x:8, y:1},
+
+{x:9, y:1}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "767",
+
+dataPoints:[
+
+{x:1, y:2},
+
+{x:2, y:2},
+
+{x:3, y:3},
+
+{x:4, y:3},
+
+{x:5, y:2},
+
+{x:6, y:2},
+
+{x:7, y:7},
+
+{x:8, y:10},
+
+{x:9, y:10}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "5",
+
+dataPoints:[
+
+{x:1, y:3},
+
+{x:2, y:4},
+
+{x:3, y:4},
+
+{x:4, y:4},
+
+{x:5, y:3},
+
+{x:6, y:3},
+
+{x:7, y:2},
+
+{x:8, y:2},
+
+{x:9, y:2}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "88",
+
+dataPoints:[
+
+{x:1, y:4},
+
+{x:2, y:5},
+
+{x:3, y:5},
+
+{x:4, y:5},
+
+{x:5, y:5},
+
+{x:6, y:5},
+
+{x:7, y:4},
+
+{x:8, y:4},
+
+{x:9, y:4}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "8",
+
+dataPoints:[
+
+{x:1, y:5},
+
+{x:2, y:3},
+
+{x:3, y:1},
+
+{x:4, y:1},
+
+{x:5, y:10},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "25",
+
+dataPoints:[
+
+{x:1, y:6},
+
+{x:2, y:6},
+
+{x:3, y:7},
+
+{x:4, y:6},
+
+{x:5, y:4},
+
+{x:6, y:4},
+
+{x:7, y:3},
+
+{x:8, y:3},
+
+{x:9, y:3}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "844",
+
+dataPoints:[
+
+{x:1, y:7},
+
+{x:2, y:9},
+
+{x:3, y:8},
+
+{x:4, y:10},
+
+{x:5, y:8},
+
+{x:6, y:7},
+
+{x:7, y:6},
+
+{x:8, y:8},
+
+{x:9, y:7}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "18",
+
+dataPoints:[
+
+{x:1, y:8},
+
+{x:2, y:8},
+
+{x:3, y:6},
+
+{x:4, y:7},
+
+{x:5, y:6},
+
+{x:6, y:6},
+
+{x:7, y:5},
+
+{x:8, y:5},
+
+{x:9, y:9}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "4",
+
+dataPoints:[
+
+{x:1, y:9},
+
+{x:2, y:7},
+
+{x:3, y:9},
+
+{x:4, y:9},
+
+{x:5, y:9},
+
+{x:6, y:9},
+
+{x:7, y:8},
+
+{x:8, y:7},
+
+{x:9, y:6}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "94",
+
+dataPoints:[
+
+{x:1, y:10},
+
+{x:2, y:10},
+
+{x:3, y:10},
+
+{x:4, y:8},
+
+{x:5, y:7},
+
+{x:6, y:8},
+
+{x:7, y:9},
+
+{x:8, y:6},
+
+{x:9, y:5}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "2",
+
+dataPoints:[
+
+{x:1, y:11},
+
+{x:2, y:12},
+
+{x:3, y:12},
+
+{x:4, y:12},
+
+{x:5, y:12},
+
+{x:6, y:11},
+
+{x:7, y:11},
+
+{x:8, y:11},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "19",
+
+dataPoints:[
+
+{x:1, y:12},
+
+{x:2, y:11},
+
+{x:3, y:11},
+
+{x:4, y:11},
+
+{x:5, y:11},
+
+{x:6, y:10},
+
+{x:7, y:10},
+
+{x:8, y:9},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "3",
+
+dataPoints:[
+
+{x:1, y:13},
+
+{x:2, y:13},
+
+{x:3, y:13},
+
+{x:4, y:13},
+
+{x:5, y:13},
+
+{x:6, y:12},
+
+{x:7, y:12},
+
+{x:8, y:12},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "61",
+
+dataPoints:[
+
+{x:1, y:14},
+
+{x:2, y:14},
+
+{x:3, y:14},
+
+{x:4, y:14},
+
+{x:5, y:14},
+
+{x:6, y:13},
+
+{x:7, y:13},
+
+{x:8, y:13},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "100",
+
+dataPoints:[
+
+{x:1, y:15},
+
+{x:2, y:15},
+
+{x:3, y:15},
+
+{x:4, y:15},
+
+{x:5, y:15},
+
+{x:6, y:14},
+
+{x:7, y:15},
+
+{x:8, y:16},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "9",
+
+dataPoints:[
+
+{x:1, y:16},
+
+{x:2, y:19},
+
+{x:3, y:21},
+
+{x:4, y:20},
+
+{x:5, y:20},
+
+{x:6, y:19},
+
+{x:7, y:19},
+
+{x:8, y:19},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "247",
+
+dataPoints:[
+
+{x:1, y:17},
+
+{x:2, y:17},
+
+{x:3, y:17},
+
+{x:4, y:17},
+
+{x:5, y:17},
+
+{x:6, y:16},
+
+{x:7, y:16},
+
+{x:8, y:15},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "7",
+
+dataPoints:[
+
+{x:1, y:18},
+
+{x:2, y:16},
+
+{x:3, y:16},
+
+{x:4, y:16},
+
+{x:5, y:19},
+
+{x:6, y:18},
+
+{x:7, y:17},
+
+{x:8, y:18},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "60",
+
+dataPoints:[
+
+{x:1, y:19},
+
+{x:2, y:18},
+
+{x:3, y:18},
+
+{x:4, y:19},
+
+{x:5, y:18},
+
+{x:6, y:17},
+
+{x:7, y:18},
+
+{x:8, y:17},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "217",
+
+dataPoints:[
+
+{x:1, y:20},
+
+{x:2, y:20},
+
+{x:3, y:20},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "355",
+
+dataPoints:[
+
+{x:1, y:21},
+
+{x:2, y:21},
+
+{x:3, y:19},
+
+{x:4, y:18},
+
+{x:5, y:16},
+
+{x:6, y:15},
+
+{x:7, y:14},
+
+{x:8, y:14},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "818",
+
+dataPoints:[
+
+{x:1, y:22},
+
+{x:2, y:22},
+
+{x:3, y:22},
+
+{x:4, y:21},
+
+{x:5, y:21},
+
+{x:6, y:20},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "85",
+
+dataPoints:[
+
+{x:1, y:23},
+
+{x:2, y:23},
+
+{x:3, y:25},
+
+{x:4, y:28},
+
+{x:5, y:32},
+
+{x:6, y:22},
+
+{x:7, y:20},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "901",
+
+dataPoints:[
+
+{x:1, y:24},
+
+{x:2, y:24},
+
+{x:3, y:23},
+
+{x:4, y:23},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "125",
+
+dataPoints:[
+
+{x:1, y:25},
+
+{x:2, y:26},
+
+{x:3, y:26},
+
+{x:4, y:25},
+
+{x:5, y:25},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "56",
+
+dataPoints:[
+
+{x:1, y:26},
+
+{x:2, y:27},
+
+{x:3, y:28},
+
+{x:4, y:27},
+
+{x:5, y:26},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "888",
+
+dataPoints:[
+
+{x:1, y:27},
+
+{x:2, y:28},
+
+{x:3, y:27},
+
+{x:4, y:24},
+
+{x:5, y:24},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "103",
+
+dataPoints:[
+
+{x:1, y:28},
+
+{x:2, y:25},
+
+{x:3, y:24},
+
+{x:4, y:22},
+
+{x:5, y:22},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "224",
+
+dataPoints:[
+
+{x:1, y:29},
+
+{x:2, y:44},
+
+{x:3, y:61},
+
+{x:4, y:71},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "135",
+
+dataPoints:[
+
+{x:1, y:30},
+
+{x:2, y:31},
+
+{x:3, y:32},
+
+{x:4, y:31},
+
+{x:5, y:28},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "28",
+
+dataPoints:[
+
+{x:1, y:31},
+
+{x:2, y:29},
+
+{x:3, y:31},
+
+{x:4, y:39},
+
+{x:5, y:37},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "123",
+
+dataPoints:[
+
+{x:1, y:32},
+
+{x:2, y:30},
+
+{x:3, y:30},
+
+{x:4, y:30},
+
+{x:5, y:31},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "144",
+
+dataPoints:[
+
+{x:1, y:33},
+
+{x:2, y:32},
+
+{x:3, y:29},
+
+{x:4, y:26},
+
+{x:5, y:23},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "403",
+
+dataPoints:[
+
+{x:1, y:34},
+
+{x:2, y:35},
+
+{x:3, y:37},
+
+{x:4, y:35},
+
+{x:5, y:38},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "89",
+
+dataPoints:[
+
+{x:1, y:35},
+
+{x:2, y:33},
+
+{x:3, y:33},
+
+{x:4, y:32},
+
+{x:5, y:30},
+
+{x:6, y:21},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "130",
+
+dataPoints:[
+
+{x:1, y:36},
+
+{x:2, y:36},
+
+{x:3, y:36},
+
+{x:4, y:34},
+
+{x:5, y:34},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "95",
+
+dataPoints:[
+
+{x:1, y:37},
+
+{x:2, y:34},
+
+{x:3, y:34},
+
+{x:4, y:33},
+
+{x:5, y:29},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "146",
+
+dataPoints:[
+
+{x:1, y:38},
+
+{x:2, y:43},
+
+{x:3, y:42},
+
+{x:4, y:41},
+
+{x:5, y:44},
+
+{x:6, y:23},
+
+{x:7, y:22},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "91",
+
+dataPoints:[
+
+{x:1, y:39},
+
+{x:2, y:41},
+
+{x:3, y:41},
+
+{x:4, y:40},
+
+{x:5, y:40},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "86",
+
+dataPoints:[
+
+{x:1, y:40},
+
+{x:2, y:42},
+
+{x:3, y:44},
+
+{x:4, y:44},
+
+{x:5, y:45},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "285",
+
+dataPoints:[
+
+{x:1, y:41},
+
+{x:2, y:49},
+
+{x:3, y:47},
+
+{x:4, y:45},
+
+{x:5, y:43},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "212",
+
+dataPoints:[
+
+{x:1, y:42},
+
+{x:2, y:50},
+
+{x:3, y:46},
+
+{x:4, y:43},
+
+{x:5, y:39},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "117",
+
+dataPoints:[
+
+{x:1, y:43},
+
+{x:2, y:40},
+
+{x:3, y:39},
+
+{x:4, y:38},
+
+{x:5, y:35},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "111",
+
+dataPoints:[
+
+{x:1, y:44},
+
+{x:2, y:39},
+
+{x:3, y:38},
+
+{x:4, y:37},
+
+{x:5, y:36},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "46",
+
+dataPoints:[
+
+{x:1, y:45},
+
+{x:2, y:47},
+
+{x:3, y:49},
+
+{x:4, y:49},
+
+{x:5, y:50},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "555",
+
+dataPoints:[
+
+{x:1, y:46},
+
+{x:2, y:38},
+
+{x:3, y:40},
+
+{x:4, y:36},
+
+{x:5, y:33},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "392",
+
+dataPoints:[
+
+{x:1, y:47},
+
+{x:2, y:63},
+
+{x:3, y:58},
+
+{x:4, y:52},
+
+{x:5, y:48},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "72",
+
+dataPoints:[
+
+{x:1, y:48},
+
+{x:2, y:37},
+
+{x:3, y:35},
+
+{x:4, y:29},
+
+{x:5, y:27},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "35",
+
+dataPoints:[
+
+{x:1, y:49},
+
+{x:2, y:52},
+
+{x:3, y:54},
+
+{x:4, y:51},
+
+{x:5, y:51},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "79",
+
+dataPoints:[
+
+{x:1, y:50},
+
+{x:2, y:45},
+
+{x:3, y:43},
+
+{x:4, y:42},
+
+{x:5, y:41},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "110",
+
+dataPoints:[
+
+{x:1, y:51},
+
+{x:2, y:48},
+
+{x:3, y:45},
+
+{x:4, y:47},
+
+{x:5, y:47},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "447",
+
+dataPoints:[
+
+{x:1, y:52},
+
+{x:2, y:46},
+
+{x:3, y:48},
+
+{x:4, y:46},
+
+{x:5, y:42},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "128",
+
+dataPoints:[
+
+{x:1, y:53},
+
+{x:2, y:51},
+
+{x:3, y:50},
+
+{x:4, y:48},
+
+{x:5, y:46},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "745",
+
+dataPoints:[
+
+{x:1, y:54},
+
+{x:2, y:54},
+
+{x:3, y:53},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "909",
+
+dataPoints:[
+
+{x:1, y:55},
+
+{x:2, y:58},
+
+{x:3, y:62},
+
+{x:4, y:60},
+
+{x:5, y:57},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "54",
+
+dataPoints:[
+
+{x:1, y:56},
+
+{x:2, y:60},
+
+{x:3, y:63},
+
+{x:4, y:59},
+
+{x:5, y:58},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "83",
+
+dataPoints:[
+
+{x:1, y:57},
+
+{x:2, y:53},
+
+{x:3, y:52},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "253",
+
+dataPoints:[
+
+{x:1, y:58},
+
+{x:2, y:57},
+
+{x:3, y:56},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "260",
+
+dataPoints:[
+
+{x:1, y:59},
+
+{x:2, y:55},
+
+{x:3, y:51},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "80",
+
+dataPoints:[
+
+{x:1, y:60},
+
+{x:2, y:65},
+
+{x:3, y:59},
+
+{x:4, y:53},
+
+{x:5, y:52},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "930",
+
+dataPoints:[
+
+{x:1, y:61},
+
+{x:2, y:66},
+
+{x:3, y:68},
+
+{x:4, y:61},
+
+{x:5, y:59},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "222",
+
+dataPoints:[
+
+{x:1, y:62},
+
+{x:2, y:59},
+
+{x:3, y:57},
+
+{x:4, y:54},
+
+{x:5, y:53},
+
+{x:6, y:24},
+
+{x:7, y:21},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "26",
+
+dataPoints:[
+
+{x:1, y:63},
+
+{x:2, y:69},
+
+{x:3, y:71},
+
+{x:4, y:62},
+
+{x:5, y:60},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "99",
+
+dataPoints:[
+
+{x:1, y:64},
+
+{x:2, y:56},
+
+{x:3, y:55},
+
+{x:4, y:50},
+
+{x:5, y:49},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "777",
+
+dataPoints:[
+
+{x:1, y:65},
+
+{x:2, y:68},
+
+{x:3, y:69},
+
+{x:4, y:58},
+
+{x:5, y:61},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "904",
+
+dataPoints:[
+
+{x:1, y:66},
+
+{x:2, y:62},
+
+{x:3, y:66},
+
+{x:4, y:57},
+
+{x:5, y:56},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "227",
+
+dataPoints:[
+
+{x:1, y:67},
+
+{x:2, y:72},
+
+{x:3, y:75},
+
+{x:4, y:65},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "97",
+
+dataPoints:[
+
+{x:1, y:68},
+
+{x:2, y:64},
+
+{x:3, y:65},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "112",
+
+dataPoints:[
+
+{x:1, y:69},
+
+{x:2, y:61},
+
+{x:3, y:60},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "276",
+
+dataPoints:[
+
+{x:1, y:70},
+
+{x:2, y:70},
+
+{x:3, y:72},
+
+{x:4, y:63},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "17",
+
+dataPoints:[
+
+{x:1, y:71},
+
+{x:2, y:67},
+
+{x:3, y:64},
+
+{x:4, y:56},
+
+{x:5, y:55},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "98",
+
+dataPoints:[
+
+{x:1, y:72},
+
+{x:2, y:74},
+
+{x:3, y:76},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "76",
+
+dataPoints:[
+
+{x:1, y:73},
+
+{x:2, y:73},
+
+{x:3, y:67},
+
+{x:4, y:55},
+
+{x:5, y:54},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "118",
+
+dataPoints:[
+
+{x:1, y:74},
+
+{x:2, y:71},
+
+{x:3, y:70},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "211",
+
+dataPoints:[
+
+{x:1, y:75},
+
+{x:2, y:75},
+
+{x:3, y:73},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "71",
+
+dataPoints:[
+
+{x:1, y:76},
+
+{x:2, y:76},
+
+{x:3, y:74},
+
+{x:4, y:64},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "934",
+
+dataPoints:[
+
+{x:1, y:77},
+
+{x:2, y:77},
+
+{x:3, y:80},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "55",
+
+dataPoints:[
+
+{x:1, y:78},
+
+{x:2, y:78},
+
+{x:3, y:77},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "881",
+
+dataPoints:[
+
+{x:1, y:79},
+
+{x:2, y:83},
+
+{x:3, y:83},
+
+{x:4, y:68},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "81",
+
+dataPoints:[
+
+{x:1, y:80},
+
+{x:2, y:84},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "582",
+
+dataPoints:[
+
+{x:1, y:81},
+
+{x:2, y:86},
+
+{x:3, y:84},
+
+{x:4, y:69},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "666",
+
+dataPoints:[
+
+{x:1, y:82},
+
+{x:2, y:80},
+
+{x:3, y:81},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "262",
+
+dataPoints:[
+
+{x:1, y:83},
+
+{x:2, y:89},
+
+{x:3, y:87},
+
+{x:4, y:75},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "45",
+
+dataPoints:[
+
+{x:1, y:84},
+
+{x:2, y:79},
+
+{x:3, y:78},
+
+{x:4, y:66},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "618",
+
+dataPoints:[
+
+{x:1, y:85},
+
+{x:2, y:85},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "820",
+
+dataPoints:[
+
+{x:1, y:86},
+
+{x:2, y:81},
+
+{x:3, y:82},
+
+{x:4, y:70},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "147",
+
+dataPoints:[
+
+{x:1, y:87},
+
+{x:2, y:88},
+
+{x:3, y:85},
+
+{x:4, y:72},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "910",
+
+dataPoints:[
+
+{x:1, y:88},
+
+{x:2, y:82},
+
+{x:3, y:79},
+
+{x:4, y:67},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "205",
+
+dataPoints:[
+
+{x:1, y:89},
+
+{x:2, y:87},
+
+{x:3, y:86},
+
+{x:4, y:73},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "13",
+
+dataPoints:[
+
+{x:1, y:90},
+
+{x:2, y:90},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "243",
+
+dataPoints:[
+
+{x:1, y:91},
+
+{x:2, y:91},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "221",
+
+dataPoints:[
+
+{x:1, y:92},
+
+{x:2, y:92},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "999",
+
+dataPoints:[
+
+{x:1, y:93},
+
+{x:2, y:93},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "225",
+
+dataPoints:[
+
+{x:1, y:94},
+
+{x:2, y:null},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "164",
+
+dataPoints:[
+
+{x:1, y:95},
+
+{x:2, y:97},
+
+{x:3, y:89},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "333",
+
+dataPoints:[
+
+{x:1, y:96},
+
+{x:2, y:95},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "16",
+
+dataPoints:[
+
+{x:1, y:97},
+
+{x:2, y:94},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "527",
+
+dataPoints:[
+
+{x:1, y:98},
+
+{x:2, y:99},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "6",
+
+dataPoints:[
+
+{x:1, y:99},
+
+{x:2, y:98},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "15",
+
+dataPoints:[
+
+{x:1, y:100},
+
+{x:2, y:96},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "151",
+
+dataPoints:[
+
+{x:1, y:101},
+
+{x:2, y:102},
+
+{x:3, y:90},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "175",
+
+dataPoints:[
+
+{x:1, y:102},
+
+{x:2, y:101},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "30",
+
+dataPoints:[
+
+{x:1, y:103},
+
+{x:2, y:100},
+
+{x:3, y:88},
+
+{x:4, y:74},
+
+{x:5, y:62},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "20",
+
+dataPoints:[
+
+{x:1, y:104},
+
+{x:2, y:null},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+},
+
+{
+
+type: "line",
+
+ showInLegend: true,
+
+name: "444",
+
+dataPoints:[
+
+{x:1, y:105},
+
+{x:2, y:103},
+
+{x:3, y:null},
+
+{x:4, y:null},
+
+{x:5, y:null},
+
+{x:6, y:null},
+
+{x:7, y:null},
+
+{x:8, y:null},
+
+{x:9, y:null}
+
+]
+
+}
+      ]
+    });
+
+    chart.render();
+  }
+  </script>
+ <script type="text/javascript" src="canvasjs.min.js"></script>
+ 
+ 
+ 
+ 
+ 
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
@@ -41,7 +3469,8 @@
 [10,1,2,4,6,7,3,8,null,9,null,null,10,5,null,null,null,null,null],
 [11,1,2,4,5,6,3,null,null,null,null,null,null,null,null,null,null,null,null],
 [12,1,2,4,5,null,3,null,null,null,null,null,null,null,null,null,null,null,null],
-[13,1,2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]]);
+[13,1,2,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+]);
 
    
    
@@ -61,16 +3490,311 @@
           x: {
             0: {side: 'top'}
           }
-        }
+         }
       };
 
       var chart = new google.charts.Line(document.getElementById('line_top_x'));
 
-      chart.draw(data, options);
+      chart.draw(data, google.charts.Line.convertOptions(options));
     }
-  </script>
+  
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+  
+  
 </head>
 <body>
-  <div id="line_top_x"></div>
+<!--  <div id="line_top_x"></div>-->
+<div><canvas id="myChart"></canvas></canvas></div>
+<script>
+
+
+
+var data = {
+  type: 'line',
+  options: {
+    legend: {
+        display: true,
+        position: "right",
+        labels: {
+        boxWidth: 10,
+        }
+    },
+          scales: {
+       xAxes: [{
+        position: "top",
+        scaleLabel: {
+          display: true,
+          labelString: "הקפה",
+          fontFamily: "Montserrat",
+          fontColor: "black",
+        },
+        ticks: {
+          fontFamily: "Montserrat",
+        }
+      }],
+       yAxes: [{id: 'y-axis-1',scaleLabel: {
+          display: true,
+          labelString: "מקום",
+          fontFamily: "Montserrat",
+          fontColor: "black",
+        }, type: 'linear', position: 'left', ticks: {reverse: true,min: 1, fixedStepSize: 1}}]
+      },
+ tooltips: {
+   enabled: true,
+   mode: 'label',
+ //              titleMarginBottom: 8,
+            bodySpacing: 8,
+ //           xPadding: 15,
+  //          yPadding: 10,
+   //         cornerRadius: 2,
+            bodyFontStyle: "bold",
+            backgroundColor: "#fcfcfc",
+            titleFontColor: "#3a3938",
+            bodyFontColor: "#3a3938",
+
+ },          
+
+  /*   tooltips: {
+        callbacks: {
+                label: function(tooltipItems, data) {
+                    return data.datasets.label;
+           }
+        }
+    }*/
+},
+data: {
+    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+    datasets: [
+    
+{label: '22',data: [1,1,2,2,1,1,1,1,1],borderColor: "rgba(47,24,4,1)",lineTension: 0.1,fill: false},
+
+{label: '767',data: [2,2,3,3,2,2,7,10,10],borderColor: "rgba(77,18,142,1)",lineTension: 0.1,fill: false},
+
+{label: '5',data: [3,4,4,4,3,3,2,2,2],borderColor: "rgba(195,165,92,1)",lineTension: 0.1,fill: false},
+
+{label: '88',data: [4,5,5,5,5,5,4,4,4],borderColor: "rgba(246,197,169,1)",lineTension: 0.1,fill: false},
+
+{label: '8',data: [5,3,1,1,10,null,null,null,null],borderColor: "rgba(216,230,75,1)",lineTension: 0.1,fill: false},
+
+{label: '25',data: [6,6,7,6,4,4,3,3,3],borderColor: "rgba(99,16,131,1)",lineTension: 0.1,fill: false},
+
+{label: '844',data: [7,9,8,10,8,7,6,8,7],borderColor: "rgba(75,16,242,1)",lineTension: 0.1,fill: false},
+
+{label: '18',data: [8,8,6,7,6,6,5,5,9],borderColor: "rgba(154,97,109,1)",lineTension: 0.1,fill: false},
+
+{label: '4',data: [9,7,9,9,9,9,8,7,6],borderColor: "rgba(107,119,213,1)",lineTension: 0.1,fill: false},
+
+{label: '94',data: [10,10,10,8,7,8,9,6,5],borderColor: "rgba(42,27,179,1)",lineTension: 0.1,fill: false},
+
+{label: '2',data: [11,12,12,12,12,11,11,11,null],borderColor: "rgba(30,75,204,1)",lineTension: 0.1,fill: false},
+
+{label: '19',data: [12,11,11,11,11,10,10,9,null],borderColor: "rgba(34,152,222,1)",lineTension: 0.1,fill: false},
+
+{label: '3',data: [13,13,13,13,13,12,12,12,null],borderColor: "rgba(177,92,132,1)",lineTension: 0.1,fill: false},
+
+{label: '61',data: [14,14,14,14,14,13,13,13,null],borderColor: "rgba(13,83,73,1)",lineTension: 0.1,fill: false},
+
+{label: '100',data: [15,15,15,15,15,14,15,16,null],borderColor: "rgba(183,43,47,1)",lineTension: 0.1,fill: false},
+
+{label: '9',data: [16,19,21,20,20,19,19,19,null],borderColor: "rgba(2,143,64,1)",lineTension: 0.1,fill: false},
+
+{label: '247',data: [17,17,17,17,17,16,16,15,null],borderColor: "rgba(133,219,81,1)",lineTension: 0.1,fill: false},
+
+{label: '7',data: [18,16,16,16,19,18,17,18,null],borderColor: "rgba(120,118,178,1)",lineTension: 0.1,fill: false},
+
+{label: '60',data: [19,18,18,19,18,17,18,17,null],borderColor: "rgba(230,225,42,1)",lineTension: 0.1,fill: false},
+
+{label: '217',data: [20,20,20,null,null,null,null,null,null],borderColor: "rgba(187,11,69,1)",lineTension: 0.1,fill: false},
+
+{label: '355',data: [21,21,19,18,16,15,14,14,null],borderColor: "rgba(110,42,144,1)",lineTension: 0.1,fill: false},
+
+{label: '818',data: [22,22,22,21,21,20,null,null,null],borderColor: "rgba(58,77,41,1)",lineTension: 0.1,fill: false},
+
+{label: '85',data: [23,23,25,28,32,22,20,null,null],borderColor: "rgba(25,254,133,1)",lineTension: 0.1,fill: false},
+
+{label: '901',data: [24,24,23,23,null,null,null,null,null],borderColor: "rgba(157,12,216,1)",lineTension: 0.1,fill: false},
+
+{label: '125',data: [25,26,26,25,25,null,null,null,null],borderColor: "rgba(231,195,4,1)",lineTension: 0.1,fill: false},
+
+{label: '56',data: [26,27,28,27,26,null,null,null,null],borderColor: "rgba(23,197,148,1)",lineTension: 0.1,fill: false},
+
+{label: '888',data: [27,28,27,24,24,null,null,null,null],borderColor: "rgba(88,75,112,1)",lineTension: 0.1,fill: false},
+
+{label: '103',data: [28,25,24,22,22,null,null,null,null],borderColor: "rgba(169,196,230,1)",lineTension: 0.1,fill: false},
+
+{label: '224',data: [29,44,61,71,null,null,null,null,null],borderColor: "rgba(91,171,199,1)",lineTension: 0.1,fill: false},
+
+{label: '135',data: [30,31,32,31,28,null,null,null,null],borderColor: "rgba(133,103,211,1)",lineTension: 0.1,fill: false},
+
+{label: '28',data: [31,29,31,39,37,null,null,null,null],borderColor: "rgba(203,213,254,1)",lineTension: 0.1,fill: false},
+
+{label: '123',data: [32,30,30,30,31,null,null,null,null],borderColor: "rgba(91,16,75,1)",lineTension: 0.1,fill: false},
+
+{label: '144',data: [33,32,29,26,23,null,null,null,null],borderColor: "rgba(132,42,74,1)",lineTension: 0.1,fill: false},
+
+{label: '403',data: [34,35,37,35,38,null,null,null,null],borderColor: "rgba(10,200,86,1)",lineTension: 0.1,fill: false},
+
+{label: '89',data: [35,33,33,32,30,21,null,null,null],borderColor: "rgba(227,175,25,1)",lineTension: 0.1,fill: false},
+
+{label: '130',data: [36,36,36,34,34,null,null,null,null],borderColor: "rgba(232,199,223,1)",lineTension: 0.1,fill: false},
+
+{label: '95',data: [37,34,34,33,29,null,null,null,null],borderColor: "rgba(124,31,43,1)",lineTension: 0.1,fill: false},
+
+{label: '146',data: [38,43,42,41,44,23,22,null,null],borderColor: "rgba(237,200,240,1)",lineTension: 0.1,fill: false},
+
+{label: '91',data: [39,41,41,40,40,null,null,null,null],borderColor: "rgba(211,36,155,1)",lineTension: 0.1,fill: false},
+
+{label: '86',data: [40,42,44,44,45,null,null,null,null],borderColor: "rgba(155,170,2,1)",lineTension: 0.1,fill: false},
+
+{label: '285',data: [41,49,47,45,43,null,null,null,null],borderColor: "rgba(111,117,216,1)",lineTension: 0.1,fill: false},
+
+{label: '212',data: [42,50,46,43,39,null,null,null,null],borderColor: "rgba(109,209,233,1)",lineTension: 0.1,fill: false},
+
+{label: '117',data: [43,40,39,38,35,null,null,null,null],borderColor: "rgba(185,85,20,1)",lineTension: 0.1,fill: false},
+
+{label: '111',data: [44,39,38,37,36,null,null,null,null],borderColor: "rgba(3,96,220,1)",lineTension: 0.1,fill: false},
+
+{label: '46',data: [45,47,49,49,50,null,null,null,null],borderColor: "rgba(89,67,140,1)",lineTension: 0.1,fill: false},
+
+{label: '555',data: [46,38,40,36,33,null,null,null,null],borderColor: "rgba(115,43,83,1)",lineTension: 0.1,fill: false},
+
+{label: '392',data: [47,63,58,52,48,null,null,null,null],borderColor: "rgba(83,168,115,1)",lineTension: 0.1,fill: false},
+
+{label: '72',data: [48,37,35,29,27,null,null,null,null],borderColor: "rgba(127,149,59,1)",lineTension: 0.1,fill: false},
+
+{label: '35',data: [49,52,54,51,51,null,null,null,null],borderColor: "rgba(111,104,95,1)",lineTension: 0.1,fill: false},
+
+{label: '79',data: [50,45,43,42,41,null,null,null,null],borderColor: "rgba(11,4,10,1)",lineTension: 0.1,fill: false},
+
+{label: '110',data: [51,48,45,47,47,null,null,null,null],borderColor: "rgba(14,115,127,1)",lineTension: 0.1,fill: false},
+
+{label: '447',data: [52,46,48,46,42,null,null,null,null],borderColor: "rgba(231,225,80,1)",lineTension: 0.1,fill: false},
+
+{label: '128',data: [53,51,50,48,46,null,null,null,null],borderColor: "rgba(209,154,166,1)",lineTension: 0.1,fill: false},
+
+{label: '745',data: [54,54,53,null,null,null,null,null,null],borderColor: "rgba(229,157,6,1)",lineTension: 0.1,fill: false},
+
+{label: '909',data: [55,58,62,60,57,null,null,null,null],borderColor: "rgba(193,247,73,1)",lineTension: 0.1,fill: false},
+
+{label: '54',data: [56,60,63,59,58,null,null,null,null],borderColor: "rgba(78,106,117,1)",lineTension: 0.1,fill: false},
+
+{label: '83',data: [57,53,52,null,null,null,null,null,null],borderColor: "rgba(161,189,29,1)",lineTension: 0.1,fill: false},
+
+{label: '253',data: [58,57,56,null,null,null,null,null,null],borderColor: "rgba(20,60,178,1)",lineTension: 0.1,fill: false},
+
+{label: '260',data: [59,55,51,null,null,null,null,null,null],borderColor: "rgba(80,172,27,1)",lineTension: 0.1,fill: false},
+
+{label: '80',data: [60,65,59,53,52,null,null,null,null],borderColor: "rgba(176,184,31,1)",lineTension: 0.1,fill: false},
+
+{label: '930',data: [61,66,68,61,59,null,null,null,null],borderColor: "rgba(186,198,147,1)",lineTension: 0.1,fill: false},
+
+{label: '222',data: [62,59,57,54,53,24,21,null,null],borderColor: "rgba(58,173,116,1)",lineTension: 0.1,fill: false},
+
+{label: '26',data: [63,69,71,62,60,null,null,null,null],borderColor: "rgba(139,126,14,1)",lineTension: 0.1,fill: false},
+
+{label: '99',data: [64,56,55,50,49,null,null,null,null],borderColor: "rgba(49,100,172,1)",lineTension: 0.1,fill: false},
+
+{label: '777',data: [65,68,69,58,61,null,null,null,null],borderColor: "rgba(56,37,163,1)",lineTension: 0.1,fill: false},
+
+{label: '904',data: [66,62,66,57,56,null,null,null,null],borderColor: "rgba(130,116,14,1)",lineTension: 0.1,fill: false},
+
+{label: '227',data: [67,72,75,65,null,null,null,null,null],borderColor: "rgba(247,22,203,1)",lineTension: 0.1,fill: false},
+
+{label: '97',data: [68,64,65,null,null,null,null,null,null],borderColor: "rgba(21,43,8,1)",lineTension: 0.1,fill: false},
+
+{label: '112',data: [69,61,60,null,null,null,null,null,null],borderColor: "rgba(199,123,181,1)",lineTension: 0.1,fill: false},
+
+{label: '276',data: [70,70,72,63,null,null,null,null,null],borderColor: "rgba(227,44,109,1)",lineTension: 0.1,fill: false},
+
+{label: '17',data: [71,67,64,56,55,null,null,null,null],borderColor: "rgba(2,231,52,1)",lineTension: 0.1,fill: false},
+
+{label: '98',data: [72,74,76,null,null,null,null,null,null],borderColor: "rgba(150,33,226,1)",lineTension: 0.1,fill: false},
+
+{label: '76',data: [73,73,67,55,54,null,null,null,null],borderColor: "rgba(10,172,96,1)",lineTension: 0.1,fill: false},
+
+{label: '118',data: [74,71,70,null,null,null,null,null,null],borderColor: "rgba(25,222,197,1)",lineTension: 0.1,fill: false},
+
+{label: '211',data: [75,75,73,null,null,null,null,null,null],borderColor: "rgba(197,22,235,1)",lineTension: 0.1,fill: false},
+
+{label: '71',data: [76,76,74,64,null,null,null,null,null],borderColor: "rgba(105,153,95,1)",lineTension: 0.1,fill: false},
+
+{label: '934',data: [77,77,80,null,null,null,null,null,null],borderColor: "rgba(119,144,117,1)",lineTension: 0.1,fill: false},
+
+{label: '55',data: [78,78,77,null,null,null,null,null,null],borderColor: "rgba(67,165,160,1)",lineTension: 0.1,fill: false},
+
+{label: '881',data: [79,83,83,68,null,null,null,null,null],borderColor: "rgba(76,109,28,1)",lineTension: 0.1,fill: false},
+
+{label: '81',data: [80,84,null,null,null,null,null,null,null],borderColor: "rgba(2,80,72,1)",lineTension: 0.1,fill: false},
+
+{label: '582',data: [81,86,84,69,null,null,null,null,null],borderColor: "rgba(111,83,47,1)",lineTension: 0.1,fill: false},
+
+{label: '666',data: [82,80,81,null,null,null,null,null,null],borderColor: "rgba(164,233,81,1)",lineTension: 0.1,fill: false},
+
+{label: '262',data: [83,89,87,75,null,null,null,null,null],borderColor: "rgba(134,244,253,1)",lineTension: 0.1,fill: false},
+
+{label: '45',data: [84,79,78,66,null,null,null,null,null],borderColor: "rgba(231,13,220,1)",lineTension: 0.1,fill: false},
+
+{label: '618',data: [85,85,null,null,null,null,null,null,null],borderColor: "rgba(172,211,243,1)",lineTension: 0.1,fill: false},
+
+{label: '820',data: [86,81,82,70,null,null,null,null,null],borderColor: "rgba(151,60,140,1)",lineTension: 0.1,fill: false},
+
+{label: '147',data: [87,88,85,72,null,null,null,null,null],borderColor: "rgba(246,180,29,1)",lineTension: 0.1,fill: false},
+
+{label: '910',data: [88,82,79,67,null,null,null,null,null],borderColor: "rgba(107,247,195,1)",lineTension: 0.1,fill: false},
+
+{label: '205',data: [89,87,86,73,null,null,null,null,null],borderColor: "rgba(12,68,48,1)",lineTension: 0.1,fill: false},
+
+{label: '13',data: [90,90,null,null,null,null,null,null,null],borderColor: "rgba(40,70,129,1)",lineTension: 0.1,fill: false},
+
+{label: '243',data: [91,91,null,null,null,null,null,null,null],borderColor: "rgba(113,182,212,1)",lineTension: 0.1,fill: false},
+
+{label: '221',data: [92,92,null,null,null,null,null,null,null],borderColor: "rgba(161,90,190,1)",lineTension: 0.1,fill: false},
+
+{label: '999',data: [93,93,null,null,null,null,null,null,null],borderColor: "rgba(242,224,178,1)",lineTension: 0.1,fill: false},
+
+{label: '225',data: [94,null,null,null,null,null,null,null,null],borderColor: "rgba(240,199,191,1)",lineTension: 0.1,fill: false},
+
+{label: '164',data: [95,97,89,null,null,null,null,null,null],borderColor: "rgba(204,115,147,1)",lineTension: 0.1,fill: false},
+
+{label: '333',data: [96,95,null,null,null,null,null,null,null],borderColor: "rgba(192,10,208,1)",lineTension: 0.1,fill: false},
+
+{label: '16',data: [97,94,null,null,null,null,null,null,null],borderColor: "rgba(76,0,132,1)",lineTension: 0.1,fill: false},
+
+{label: '527',data: [98,99,null,null,null,null,null,null,null],borderColor: "rgba(106,108,124,1)",lineTension: 0.1,fill: false},
+
+{label: '6',data: [99,98,null,null,null,null,null,null,null],borderColor: "rgba(45,121,192,1)",lineTension: 0.1,fill: false},
+
+{label: '15',data: [100,96,null,null,null,null,null,null,null],borderColor: "rgba(94,161,6,1)",lineTension: 0.1,fill: false},
+
+{label: '151',data: [101,102,90,null,null,null,null,null,null],borderColor: "rgba(223,19,188,1)",lineTension: 0.1,fill: false},
+
+{label: '175',data: [102,101,null,null,null,null,null,null,null],borderColor: "rgba(180,180,22,1)",lineTension: 0.1,fill: false},
+
+{label: '30',data: [103,100,88,74,62,null,null,null,null],borderColor: "rgba(114,166,246,1)",lineTension: 0.1,fill: false},
+
+{label: '20',data: [104,null,null,null,null,null,null,null,null],borderColor: "rgba(36,150,189,1)",lineTension: 0.1,fill: false},
+
+{label: '444',data: [105,103,null,null,null,null,null,null,null],borderColor: "rgba(228,99,49,1)",lineTension: 0.1,fill: false}
+
+]
+  }
+}
+var options = {
+  responsive: true,
+};
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, data, options);
+
+
+</script>
+
+
+<div id="chartContainer" style="height: 100%; width: 100%;">
+  </div>
 </body>
 </html>
