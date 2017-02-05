@@ -5,7 +5,17 @@
   window.onload = function () {
     var chart = new CanvasJS.Chart("chartContainer",
     {
- axisX:{
+       title:{
+      text: "Plotting against Secondary X Axis",
+      },
+axisX:{
+       title: "",
+       tickLength: 0,
+       margin:0,
+       lineThickness:0,
+       valueFormatString:" " //comment this to show numeric values
+      },
+axisX2:{
    labelFontSize: 20,
    titleFontSize: 24,
   title:"הקפה",
@@ -3508,8 +3518,8 @@ dataPoints:[
   
 </head>
 <body>
-<!--  <div id="line_top_x"></div>-->
-<div><canvas id="myChart"></canvas></canvas></div>
+<!--  <div id="line_top_x"></div>
+<div><canvas id="myChart"></canvas></canvas></div>-->
 <script>
 
 

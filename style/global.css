@@ -33,6 +33,7 @@ body {
     line-height: 1.5;
     text-align: center;
     font-family: 'Noto Sans Hebrew', 'Open Sans Hebrew', sans-serif;
+    -webkit-font-smoothing: antialiased;
     vertical-align: baseline;
     border: 0;
     min-width:468px;
@@ -201,6 +202,12 @@ table {
     font-weight: 700;
 }
 
+tr.rnkh_bkcolor {
+    position: -webkit-sticky;  
+    position: sticky;  
+    top: -1px;
+}
+
 #race .comment_font {
     color: #800000;
     text-shadow: 0 1px 2px white;
@@ -362,15 +369,21 @@ td, th {
 }
 
 .page {
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
-    width: 90%;
+ /*   overflow: hidden;
+    padding-bottom: 0;  height of your footer */
     min-height: 100vh; /* will cover the 100% of viewport */
     display: block;
     position: relative;
-    padding-bottom: 0; /* height of your footer */
+    display: flex;
+    flex-direction: column;
 }
+/*
+.page > * {
+  flex: 1 100%;
+}*/
 
 .row {
     width: 100%;
@@ -583,7 +596,7 @@ border-bottom: 6px #222 solid;
     color: #222;
     display: block;
     width: auto;
-    overflow: hidden;
+/*    overflow: hidden;*/
     padding: 4px 10px;
     text-decoration: none;
     text-transform: uppercase;
@@ -617,7 +630,7 @@ border-bottom: 6px #222 solid;
 
 .main_content {
     float: right;
-    margin-bottom: 50px;
+/*    margin-bottom: 50px;*/
     margin-top: 10px;
     text-align: right;
     width: 100%;
@@ -697,12 +710,14 @@ padding-right: 10%;
 
 .footer {
     margin: 20px auto 0;
-    padding: 10px 0;
     width: 100%;
 /*    height: 36px;*/
     border-top: 1px #666 solid;
+ /*   padding: 10px 0;
     position: absolute;
-    bottom: 0;
+    bottom: 0;*/
+    align-self:flex-end;  
+    margin-top: auto
 }
 
 .mail, .copyright {
