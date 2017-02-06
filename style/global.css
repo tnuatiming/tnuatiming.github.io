@@ -19,7 +19,7 @@ html {
     -ms-text-size-adjust: 100%;
     margin: 0;
     padding: 0;
-    position: relative;
+/*    position: relative;*/
 }
 
 body {
@@ -28,7 +28,7 @@ body {
     padding: 0;
     margin: 0;
     font-size: 110%;
-    position: relative;
+/*    position: relative;*/
     direction: rtl;
     line-height: 1.5;
     text-align: center;
@@ -365,7 +365,7 @@ td, th {
 .full-bg {
     background: rgba(240,240,240,0.90);
     min-height: 100%;
-    position: relative;
+/*    position: relative;*/
 }
 
 .page {
@@ -376,7 +376,7 @@ td, th {
     padding-bottom: 0;  height of your footer */
     min-height: 100vh; /* will cover the 100% of viewport */
     display: block;
-    position: relative;
+/*    position: relative;*/
     display: flex;
     flex-direction: column;
 }
@@ -398,8 +398,8 @@ td, th {
 /*language*/
 .language {
     display: block;
-    float: left;
     text-align: left;
+    flex: 1 100%;
 }
 
 .language a:link,.language a:visited {
@@ -417,16 +417,24 @@ td, th {
 
 /*logo*/
 
-.logo_main,.logo_image {
-    float: right;
-}
-
-a.main_logo {
-    display: block;
+.logo_main {
+    flex-grow: 1;
+    order: 2;
+    display: flex;  
+    flex-direction: row;
 }
 
 .logo_image {
     margin: 10px;
+    order: 1;
+}
+
+.logo_text {
+    order: 2;
+}
+
+a.main_logo {
+    display: block;
 }
 
 .logo-stat {
@@ -531,7 +539,6 @@ a.main_logo {
 }
 
 .logo_text {
-    float: right;
     width: 40%;
     max-width: 220px;
     text-align: right;
@@ -556,11 +563,11 @@ a.logo_text{
 /*navigation*/
 
 .navigation {
-    float: left;
-    max-width: 65%;
+    order: 3;
     text-align: left;
     margin-top: -100px;
     fill: currentColor;
+    flex-grow: 2;
 }
 
 .navigation ul {
@@ -629,9 +636,8 @@ border-bottom: 6px #222 solid;
 }
 
 .main_content {
-    float: right;
 /*    margin-bottom: 50px;*/
-    margin-top: 10px;
+    margin-top: 25px;
     text-align: right;
     width: 100%;
     flex: 1 100%;
@@ -709,8 +715,13 @@ padding-right: 10%;
     margin: 5px 30px 5px 10px;
 }
 
+.header {
+    width: 100%;
+    display: flex;  
+    flex-direction: column;
+}
+
 .footer {
-    margin: 20px auto 0;
     width: 100%;
 /*    margin: 20px auto 0;
     height: 36px;*/
@@ -719,7 +730,9 @@ padding-right: 10%;
     position: absolute;
     margin-top: auto;
     bottom: 0;*/
-    align-self:flex-end;  
+    align-self:flex-end;
+    display: flex;  
+    flex-direction: row-reverse;
 }
 
 .mail, .copyright {
@@ -728,13 +741,20 @@ padding-right: 10%;
     font-size: 1em;
     margin: 0;
     padding: 0;
-    float: right;
-    text-align: right;
+    flex-grow: 2;
 }
 
 .copyright {
     text-align: left;
-    float: left;
+    order: 1;
+}
+.mail {
+    text-align: right;
+    order: 3;
+}
+
+.logo_tiny {
+    order: 2;
 }
 
 .animated {
