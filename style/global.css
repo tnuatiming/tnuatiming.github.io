@@ -634,6 +634,7 @@ border-bottom: 6px #222 solid;
     margin-top: 10px;
     text-align: right;
     width: 100%;
+    flex: 1 100%;
 }
 
 #live .main_content {
@@ -715,9 +716,9 @@ padding-right: 10%;
     border-top: 1px #666 solid;
  /*   padding: 10px 0;
     position: absolute;
+    margin-top: auto;
     bottom: 0;*/
     align-self:flex-end;  
-    margin-top: auto
 }
 
 .mail, .copyright {
