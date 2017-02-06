@@ -201,12 +201,12 @@ table {
     background: rgba(0,0,0,0.5);
     font-weight: 700;
 }
-
+/*
 tr.rnkh_bkcolor {
     position: -webkit-sticky;  
     position: sticky;  
     top: -1px;
-}
+}*/
 
 #race .comment_font {
     color: #800000;
