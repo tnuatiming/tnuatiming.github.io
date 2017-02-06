@@ -568,19 +568,21 @@ a.logo_text{
     margin-top: -100px;
     fill: currentColor;
     flex-grow: 2;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .navigation ul {
-    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
     padding: 0;
     list-style: none;
     list-style-type: none;
     vertical-align: middle;
-    float: left;
 }
 
 .navigation li {
-    float: right;
     margin: 10px 0;
     padding: 0;
     background: rgba(255,255,255,0.4);
@@ -652,7 +654,6 @@ padding-right: 10%;
 }*/
 
 #races .season {
-    float: right;
     display: flex;
     flex-flow: row wrap;
     width: 100%;
@@ -663,7 +664,6 @@ padding-right: 10%;
 }
 
 #races .sport {
-    float: right;
     flex:  50%;
 }
 
@@ -819,10 +819,10 @@ padding-right: 10%;
         margin-top: 0;
         margin-left: 0;
         max-width: 100%;
+        justify-content: space-around;
     }
     .navigation ul {
         /*   margin: 0 10px 10px 0;*/
-        float: right;
         background: rgba(255,255,255,0.6);
     }
     .navigation li {
@@ -926,7 +926,6 @@ padding-right: 10%;
     }
     
     .navigation ul {
-        float: right;
     }
     
     td.rnk_font, th.rnkh_font, #race .comment_font {
