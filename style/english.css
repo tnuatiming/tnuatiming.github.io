@@ -20,7 +20,9 @@ a.live:hover, a.live:active {
 .main {
 text-align: left;
 }
-
+.mail {
+text-align: left;
+}
 .right{
     float: left;
     width: 40%;
@@ -46,28 +48,32 @@ text-align: left;
   text-align:left;
   margin-top: 30px;
 }
+.logo_head{    display: flex;
+}
+.logotop {padding:20px;
+}
 
 .head {    
-      float:left;
+order:2;
 }
+.logo {    
+order:1;
+}
+
 .copyright {    
     direction: ltr;
+  text-align:right;
 }
 .navigation {
    margin-top: 0;
 }
 .navigation ul {
-   float:right; 
    margin-right: 150px;
 }
 .navigation li {
-   float:left; 
 }
 .language, .language a:link, .language a:visited{
-  float:right;
-}
-.logotop {
-    float:left;   
+  text-align:right;
 }
 li {
    text-align:left;   
@@ -77,31 +83,28 @@ li {
 .image-side {
 	  float: left;  
 	}
-
+.logotop {padding:10px;
+}
 
 .navigation, .header, .main_content, .footer {
-	     float:left;
             margin-right:0;
         }
     }
 
 @media screen and (min-width: 60em) {
  
-.logotop{float:left}
-.head{float:left} 
+.logotop{}
+.head{} 
 	  
 .navigation, .header {
             margin-right:0;
-	    float:left;
         }
  
 .main_content{    
-	    float:left;
         }
   
 .footer {
             margin-right:0;
-	    float:left;
         }
     }
 
