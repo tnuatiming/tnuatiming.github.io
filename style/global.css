@@ -566,7 +566,6 @@ a.logo_text{
     order: 3;
     text-align: left;
     margin-top: -100px;
-    fill: currentColor;
     flex-grow: 2;
     display: flex;
     justify-content: flex-end;
@@ -585,7 +584,6 @@ a.logo_text{
 .navigation li {
     margin: 10px 0;
     padding: 0;
-    background: rgba(255,255,255,0.4);
     border-right: 1px solid #ccc;
     white-space: nowrap ;
     min-width: 9em;
@@ -602,6 +600,7 @@ border-bottom: 6px #222 solid;
 
 .navigation a:link,.navigation a:visited {
     font-weight: 700;
+    background: rgba(255,255,255,0.4);
     color: #222;
     display: block;
     width: auto;
@@ -788,7 +787,7 @@ padding-right: 10%;
 
 @media (min-width: 1100px) {
     
-    .navigation {
+    .navigation ul {
         margin-left: 60px;
     }
 }
@@ -818,7 +817,6 @@ padding-right: 10%;
     .navigation {
         margin-top: 0;
         margin-left: 0;
-        max-width: 100%;
         justify-content: space-around;
     }
     .navigation ul {
