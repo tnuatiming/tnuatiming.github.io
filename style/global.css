@@ -435,6 +435,7 @@ td, th {
 }
 
 a.main_logo {
+    display: block;
 }
 
 .logo-stat {
