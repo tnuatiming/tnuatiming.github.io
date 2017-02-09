@@ -422,6 +422,7 @@ td, th {
     order: 2;
     display: flex;  
     flex-direction: row;
+    margin-bottom: 15px;
 }
 
 .logo_image {
@@ -542,7 +543,6 @@ a.main_logo {
     width: 40%;
     max-width: 220px;
     text-align: right;
-    margin-bottom: 15px;
     z-index: 1000;
 }
 
