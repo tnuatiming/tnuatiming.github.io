@@ -377,12 +377,8 @@ td, th {
     min-height: 100vh; /* will cover the 100% of viewport */
     display: block;
 /*    position: relative;*/
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
 }
 /*
 .page > * {
@@ -403,9 +399,7 @@ td, th {
 .language {
     display: block;
     text-align: left;
-    -webkit-flex: 1 100%;
-        -ms-flex: 1 100%;
-            flex: 1 100%;
+    flex: 1 100%;
 }
 
 .language a:link,.language a:visited {
@@ -424,18 +418,10 @@ td, th {
 /*logo*/
 
 .logo_main {
-    -webkit-flex-grow: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    -webkit-order: 2;
-        -ms-flex-order: 2;
-            order: 2;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    flex-grow: 1;
+    order: 2;
     display: flex;  
-    -webkit-flex-direction: row;  
-        -ms-flex-direction: row;  
-            flex-direction: row;
+    flex-direction: row;
     margin-bottom: 15px;
 }
 
@@ -577,29 +563,17 @@ a.logo_text{
 /*navigation*/
 
 .navigation {
-    -webkit-order: 3;
-        -ms-flex-order: 3;
-            order: 3;
+    order: 3;
     text-align: left;
     margin-top: -100px;
-    -webkit-flex-grow: 2;
-        -ms-flex-positive: 2;
-            flex-grow: 2;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    flex-grow: 2;
     display: flex;
-    -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 .navigation ul {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    flex-direction: row;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -667,9 +641,7 @@ border-bottom: 6px #222 solid;
     margin-top: 25px;
     text-align: right;
     width: 100%;
-    -webkit-flex: 1 100%;
-        -ms-flex: 1 100%;
-            flex: 1 100%;
+    flex: 1 100%;
 }
 
 #live .main_content {
@@ -681,25 +653,17 @@ padding-right: 10%;
 }*/
 
 #races .season {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-flow: row wrap;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
+    flex-flow: row wrap;
     width: 100%;
 }
 
 .season h1{
-    -webkit-flex: 100%;
-        -ms-flex: 100%;
-            flex: 100%;
+    flex: 100%;
 }
 
 #races .sport {
-    -webkit-flex:  50%;
-        -ms-flex:  50%;
-            flex:  50%;
+    flex:  50%;
 }
 
 #auto {
@@ -752,12 +716,8 @@ padding-right: 10%;
 
 .header {
     width: 100%;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;  
-    -webkit-flex-direction: column;  
-        -ms-flex-direction: column;  
-            flex-direction: column;
+    flex-direction: column;
 }
 
 .footer {
@@ -769,15 +729,9 @@ padding-right: 10%;
     position: absolute;
     margin-top: auto;
     bottom: 0;*/
-    -webkit-align-self:flex-end;
-        -ms-flex-item-align:end;
-            align-self:flex-end;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    align-self:flex-end;
     display: flex;  
-    -webkit-flex-direction: row-reverse;  
-        -ms-flex-direction: row-reverse;  
-            flex-direction: row-reverse;
+    flex-direction: row-reverse;
 }
 
 .mail, .copyright {
@@ -786,9 +740,7 @@ padding-right: 10%;
     font-size: 1em;
     margin: 0;
     padding: 0;
-    -webkit-flex-grow: 2;
-        -ms-flex-positive: 2;
-            flex-grow: 2;
+    flex-grow: 2;
 }
 
 .copyright {
@@ -885,9 +837,7 @@ padding-right: 10%;
     text-shadow: none;
     }
     #races .sport {
-    -webkit-flex: 100%;
-        -ms-flex: 100%;
-            flex: 100%;
+    flex: 100%;
     }
     td, th {
         font-size: 0.7em;

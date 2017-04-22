@@ -135,19 +135,23 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
     //            $data[0] = str_ireplace("lap", "הקפה", $data[0]);
                 if (strpos($data[0], 'DISQ') !== false) {
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DSQ') !== false) {
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNS') !== false) {
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DNS - לא התחיל</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNF') !== false) {
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DNF - לא סיים</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'הקפה מהירה:') !== false) {
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
