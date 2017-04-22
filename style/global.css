@@ -405,7 +405,7 @@ td, th {
     text-align: left;
     -webkit-flex: 1 100%;
         -ms-flex: 1 100%;
-            flex: 1 100%
+            flex: 1 100%;
 }
 
 .language a:link,.language a:visited {
