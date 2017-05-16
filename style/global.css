@@ -159,7 +159,7 @@ table {
 }
 
 #race td.subtitle_font {
-/*    background: rgba(0,0,0,0.25);*/
+    background: rgba(0,0,0,0.15);
     color:#151B8D;
     font-weight: 400;
 }
@@ -211,6 +211,7 @@ tr.rnkh_bkcolor {
 #race .comment_font {
     color: #800000;
     text-shadow: 0 1px 2px white;
+    /*text-align: right;*/
 }
 
 #race .erlier_races {
