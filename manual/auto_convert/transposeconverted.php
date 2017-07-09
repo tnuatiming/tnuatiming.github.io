@@ -65,7 +65,7 @@ $tableArray[0][0] = "מקום";
 
 //transpose array and output html
 if (!$_POST['donttranspose']) {
-    $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php
+    $tableArray = array_map(null, ...$tableArray); // TRANSPOSE MAGIC: http://stackoverflow.com/questions/797251/transposing-multidimensional-arrays-in-php OR https://stackoverflow.com/questions/30082814/create-transpose-matrix-using-php
 }
 
 // start the html output
