@@ -308,7 +308,7 @@ td img {
     font-weight: 700;
 }
 
-.OddRow .elite_no {
+/*.OddRow .elite_no {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
     color: #fff;
@@ -318,9 +318,16 @@ td img {
     background-color: rgba(80, 80, 80, 0.5);
     color: #fff;
 }
+*/
+.elite_no {
+    font-weight: 700;
+    background-color: rgba(37, 37, 37, 0.5);
+    color: #fff;    
+    text-shadow: none;
+}
 
 tr.OddRow:hover, tr.EvenRow:hover {
-    background: #ccc;
+    background: #ffcc33;
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/

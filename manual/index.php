@@ -183,6 +183,8 @@ direction: ltr;
     <p class="c1"><span><img alt="image05.png" src="/manual/images/image05.png"></span></p>
     
     <p class="c1"><span><img alt="image01.png" src="/manual/images/image01.png"></span></p>
+
+    <p class="c0"><span>יש לוודא שבחרנו  line  ו- counting lap מסומן רק בסיום ההקפה</span></p>
     
     <p class="c1"><span><img alt="image04.png" src="/manual/images/image04.png"></span></p>
     
