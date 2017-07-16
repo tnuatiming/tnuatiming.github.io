@@ -153,7 +153,7 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
                     $html .= '        <td  colspan="99" class="subtitle_font">DNF - לא סיים</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
-                } elseif (strpos($data[0], 'הקפה מהירה:') !== false) {
+                } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
                     $html .= '    <tr>'."\r\n";
                     $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";

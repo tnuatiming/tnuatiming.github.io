@@ -192,6 +192,12 @@ direction: ltr;
     
     <p class="c1"><span><img alt="image11.png" src="/manual/images/image11.png"></span></p>
     
+    <h2 class="c4">מוטוקרוס או הקפות במסלול סגור</h2>
+    
+    <p class="c1"><span><img alt="image22.png" src="/manual/images/image22.png"></span></p>
+    
+    <p class="c1"><span><img alt="image23.png" src="/manual/images/image23.png"></span></p>
+
     <h2 class="c4">live timing</h2>
  
     <p class="c1"><span><img alt="image07.png" src="/manual/images/image07.png"></span></p>
