@@ -2,6 +2,7 @@
 # create html table from csv
 # Author(s): Chris Trombley <ctroms@gmail.com>
 # Version 2 - added css class to all columns except header
+# Version 3 20170717 - simplefied and adjusted for use on elite 3 output
 # https://github.com/ctroms/snippets/blob/master/csvtotable.py
 # https://github.com/iamliamc/CSVtoHTML/blob/master/script4.py
 # http://www.ctroms.com/blog/code/python/2011/04/20/csv-to-html-table-with-python/
@@ -58,16 +59,6 @@ def writeConversion(file):
             targetFile.write(line)
 
 
-def subToHebrew(cPlace, oldArg, subArg):
-    global header_dynamic
-    global c
-    if re.match("(.*)"+oldArg+"(.*)", str(column)):
-        if cPlace != "q":# if there are more then 1 colunm with the same header
-            c[cPlace] += 1
-            if c[cPlace] == 1:
-                header_dynamic += '        <th class=\"rnkh_font\">'+subArg+'</th>\n'
-        else:
-            header_dynamic += '        <th class=\"rnkh_font\">'+subArg+'</th>\n'
             
 def dnx(findStr, subStr):
     htmlfile.write('    <tr>\n')
@@ -96,173 +87,108 @@ filename = '{0}_ConvertedHTML_{1}.txt'.format(filename[0],time.strftime("%Y%m%d_
     
 htmlfile = open(filename,"w")
 
-header_fixed = '\n\
-    <tr class="rnkh_bkcolor">\n\
-        <th class="rnkh_font">מקום</th>\n\
-        <th class="rnkh_font">מספר</th>\n\
-        <th class="rnkh_font">נהג</th>\n\
-        <th class="rnkh_font">נווט</th>\n\
-        <th class="rnkh_font">מקצה 3</th>\n\
-        <th class="rnkh_font">מקצה 4</th>\n\
-        <th class="rnkh_font">מקצה 5</th>\n\
-        <th class="rnkh_font">זמן</th>\n\
-        <th class="rnkh_font">עונשין</th>\n\
-        <th class="rnkh_font">פער</th>\n\
-    </tr>\n\
-'
-
-# build the dynamic header
+# build the dynamic header. going over the rows, finding the header row and creating the header in html format to use and append in the secound run.
 readerheader = csv.reader(open(OriginalName), delimiter='\t') # for the header
-header_dynamic = '\n    <tr class=\"rnkh_bkcolor\">\n'
-RunNum = 20
-c= []
-for y in range(1, 130): # a list for run numbers (from 1 to RunNum) and to check duplicated in the header (101-130 )
-    c = c + [0]
 #if str(sys.argv[2]) == "a":
 if len(sys.argv) < 3:
     round = "הקפה"
 else:
     round = "מקצה"
-    
+header_total = ''
+   
 for row in readerheader:
-#    print('unsorted:'+str(c))
-    c.sort(reverse=True)
-#    print('sorted:'+str(c))
-    if c[1] > 0:# stop checking rows after we processed the real header row        
-        break
-    for column in row:
-        subToHebrew(101,"(P|p)os.","מקום")
-        subToHebrew(102, "(R|r)nk", "מקום")
-        if re.match("(.*)(R|r)anking(.*)", str(row)):
-            pass
-        else:
-            subToHebrew(103, "(R|r)ank", "מקום")
-        subToHebrew(104, "(N|n)um", "מספר")
-        subToHebrew(105, "(N|n)o.", "מספר")
-        subToHebrew(106, "(B|b)ib", "מספר")
-        if re.match("(.*)(N|n)ame(.*)", str(column)) or re.match("(.*)(D|d)river(.*)", str(column)):
-            if re.match("(.*)(D|d)river's (L|l)ast (N|n)ame(.*)", str(column)):
-                c[121] += 1
-                if c[121] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-            elif re.match("(.*)(L|l)ast (N|n)ame(.*)", str(column)):
-                c[107] += 1
-                if c[107] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">נהג</th>\n'
-            elif re.match("(.*)(F|f)irst (N|n)ame(.*)", str(column)):
-                c[108] += 1
-                if c[108] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">נווט</th>\n'
-            elif re.match("(.*)(D|d)river(.*)", str(column)):
-                c[110] += 1
-                if c[110] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-            else:
-                c[109] += 1
-                if c[109] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">שם</th>\n'
-#        subToHebrew(110, "(D|d)river", "שם")
-        for i in range(1, RunNum):
-            subToHebrew(i, "(R|r)un "+str(i), round+' '+str(i))
-#        subToHebrew(111, "(L|l)aps", "הקפות")
-        subToHebrew(112, "(T|t)ime", "זמן")
-        subToHebrew(113, "(G|g)ap", "פער")
-        subToHebrew(114, "(D|d)iff. with leader", "פער")
-#        subToHebrew(115, "(B|b).(L|l)ap", "הקפה מהירה")
-#        subToHebrew(116, "(B|b)est (L|l)ap", "הקפה מהירה")
-        if re.match("(.*)(L|l)ap(.*)", str(column)):
-            if re.match("(.*)(B|b).(L|l)ap(.*)", str(column)):
-                c[116] += 1
-                if c[116] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
-            elif re.match("(.*)(B|b)est (L|l)ap(.*)", str(column)):
-                c[117] += 1
-                if c[117] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">הקפה מהירה</th>\n'
-            elif re.match("(.*)(L|l)aps(.*)", str(column)):
-                c[111] += 1
-                if c[111] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">הקפות</th>\n'
-            else:
-                c[119] += 1
-                if c[119] == 1:
-                    header_dynamic += '        <th class=\"rnkh_font\">הקפה</th>\n'
-        subToHebrew("q", "(P|p)enalty", "עונשין")
-        subToHebrew(117, "(S|s)eq", "סידורי")
-        subToHebrew(118, "(H|h)our", "זמן כולל")
-        subToHebrew(120, "(P|p)oints", "נקודות")
-        subToHebrew(122, "(C|c)ategory", "קטגוריה")
+        if len(row)> 3: # find the first row with more then 3 column and assumes its the header row
+    #    if rownum == 0:
+ #           htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
+            header_total += '    <tr class=\"rnkh_bkcolor\">\n'
+            for column in row:
+                column = re.sub('(r|R)ank', 'מקום', str(column))
+                column = re.sub('(r|R)nk', 'מקום', str(column))
+                column = re.sub('(p|P)os.', 'מקום', str(column))
+                column = re.sub('(n|N)um', 'מספר', str(column))
+                column = re.sub('(b|B)ib.', 'מספר', str(column))
+                column = re.sub("Driver's last name", 'שם', str(column))
+                column = re.sub("Driver's first name", 'נווט', str(column))
+                column = re.sub('(l|L)Last Name', 'שם', str(column))
+                column = re.sub('(f|F)irst Name', 'נווט', str(column))
+                column = re.sub('(n|N)ame', 'שם', str(column))
+                column = re.sub('(d|D)river', 'שם', str(column))
+                column = re.sub('(l|L)aps', 'הקפות', str(column))
+                column = re.sub('B.Lap', 'הקפה מהירה', str(column))
+                column = re.sub('(l|L)ap', 'הקפה', str(column))
+                column = re.sub('(t|T)ime', 'זמן', str(column))
+                column = re.sub('(h|H)Hour', 'זמן', str(column))
+                column = re.sub('(g|G)ap', 'פער', str(column))
+                column = re.sub('(p|P)enalty', 'עונשין', str(column))
+                column = re.sub('(c|C)ategory', 'קטגוריה', str(column))
+                column = re.sub('(s|S)Seq', 'סידורי', str(column))
+                column = re.sub('(r|R)un', round, str(column))
+ #               htmlfile.write('        <th class=\"rnkh_font\">' + column + '</th>\n')
+                header_total += '        <th class=\"rnkh_font\">' + column + '</th>\n'
+#            htmlfile.write('    </tr>\n')
+            header_total += '    </tr>\n'
+            break
+        #write all other rows
 
-#        print('column:'+str(c))
-header_dynamic += '    </tr>\n'
-
-# set which header to use
-header = header_dynamic
-#header = header_fixed
+# print header to shell to check if correct
+print (bcolors.HEADER +  "\nThis is the header we'll use:" + bcolors.ENDC)
+print(header_total)
 
 # start building the html file
 # Open the CSV file for reading
 reader = csv.reader(open(OriginalName), delimiter='\t')
 
-# print header to shell to check if correct
-print (bcolors.HEADER +  "\nThis is the header we'll use:" + bcolors.ENDC)
-print(header)
-
-# initialize rownum variable
+# initialize variables
 rownum = 0
-
+headerrow = 0
 # write <table> tag
 htmlfile.write('<table class=\"line_color\">\n')
 
 # generate table contents
 for row in reader: # Read a single row from the CSV file
-    headerItems = ['Rank', 'Rnk', 'Bib.', 'Event Ranking', 'Gap', 'Num', 'Pos.', 'Name', 'All mountain']
-    if not any(item in row for item in headerItems): # delete english header row
-
-    # write header row. assumes first row in csv contains header (its wrong but we do not use it)
-        if reader.line_num == 1:
-    #    if rownum == 0:
-            htmlfile.write('    <tr class=\"rnkh_bkcolor\">\n')
-            for column in row:
-                column = re.sub('(l|L)aps', 'הקפות', str(column))#for lap by lap
-                column = re.sub('(l|L)ap', 'הקפה', str(column))#for lap by lap
-                htmlfile.write('        <th class=\"rnkh_font\">' + column + '</th>\n')
-            htmlfile.write('    </tr>\n')
-
-        #write all other rows
-        else:
-            if any(row):#check if row not empty so not to get empty td.
-                if re.match("(.*)DNS(.*)", str(row)):
-                    dnx('DNS - Did not start - Run', 'DNS - לא התחיל - ')
-                elif re.match("(.*)DNF(.*)", str(row)):
-                    dnx('DNF - Do not finish - Run', 'DNF - לא סיים - ')
-                elif re.match("(.*)DISQ(.*)", str(row)):
-                    dnx('DISQ - Disqualified - Run', 'DSQ - נפסל - ')
-                elif re.match("(.*)DSQ(.*)", str(row)):
-                    dnx('DSQ - Disqualified - Run', 'DSQ - נפסל - ')
-                elif re.match("(.*)(b|B)est lap(.*)", str(row)):
-                    htmlfile.write('    <tr>\n')
-                    for column in row:
-                        column = re.sub('(b|B)est lap', 'הקפה מהירה', str(column))
-                        htmlfile.write('        <td  colspan=\"99\" class=\"comment_font\">' + column + '</td>\n')
-                    htmlfile.write('    </tr>\n')
-                elif len(row) == 1:
-                    htmlfile.write('    <tr>\n')
-                    for column in row:
-                        htmlfile.write('        <td  colspan=\"99\" class=\"title_font\">' + column + '</td>\n')
-                    htmlfile.write('    </tr>\n')
-                    htmlfile.write(header)
-                else:
-                    htmlfile.write('    <tr class=\"rnk_bkcolor\">\n')
-                    for column in row:
-                        column = re.sub('(l|L)aps', 'הקפות', str(column))
-                        column = re.sub('(l|L)ap', 'הקפה', str(column))
-                        column = re.sub('1h', '01:', str(column))
-                        column = re.sub('2h', '02:', str(column))
-                        column = re.sub('3h', '03:', str(column))
-                        column = re.sub('4h', '04:', str(column))
-                        htmlfile.write('        <td class=\"rnk_font\">' + column + '</td>\n')
-                    htmlfile.write('    </tr>\n')
+    
+    if len(row)> 3 and headerrow == 0: # find the first row with more then 3 column and assumes its the header row so we can pass it
+        headerrow = 1
+    #write all other rows
+    else:
+        if any(row):#check if row not empty so not to get empty td.
+            if re.match("(.*)DNS(.*)", str(row)):
+                dnx('DNS - Did not start - Run', 'DNS - לא התחיל - ')
+            elif re.match("(.*)DNF(.*)", str(row)):
+                dnx('DNF - Do not finish - Run', 'DNF - לא סיים - ')
+            elif re.match("(.*)DISQ(.*)", str(row)):
+                dnx('DISQ - Disqualified - Run', 'DSQ - נפסל - ')
+            elif re.match("(.*)DSQ(.*)", str(row)):
+                dnx('DSQ - Disqualified - Run', 'DSQ - נפסל - ')
+            elif re.match("(.*)(b|B)est lap(.*)", str(row)):
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    column = re.sub('(b|B)est lap', 'הקפה מהירה', str(column))
+                    htmlfile.write('        <td  colspan=\"99\" class=\"comment_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+            elif re.match("(.*)הקפה מהירה(.*)", str(row)):
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    htmlfile.write('        <td  colspan=\"99\" class=\"comment_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+            elif len(row) == 1: #after going all the other options we left with the category header
+                htmlfile.write('    <tr>\n')
+                for column in row:
+                    htmlfile.write('        <td  colspan=\"99\" class=\"title_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
+#                   htmlfile.write(header)
+                htmlfile.write(header_total) #append the header html code
+            else: # and finally craeating the particepent html table row with fixes for laps and time
+                htmlfile.write('    <tr class=\"rnk_bkcolor\">\n')
+                for column in row:
+                    column = re.sub('(l|L)aps', 'הקפות', str(column))
+                    column = re.sub('(l|L)ap', 'הקפה', str(column))
+                    column = re.sub('1h', '01:', str(column))
+                    column = re.sub('2h', '02:', str(column))
+                    column = re.sub('3h', '03:', str(column))
+                    column = re.sub('4h', '04:', str(column))
+                    htmlfile.write('        <td class=\"rnk_font\">' + column + '</td>\n')
+                htmlfile.write('    </tr>\n')
 
     #increment row count
     rownum += 1
