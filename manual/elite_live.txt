@@ -85,9 +85,9 @@ function AfficherImageZoom(a,b){""!=b?(document.getElementById("ImageZoom").src=
 
 </script>
    
+<!--
 
 <style type="text/css">
-<!--
 body {font-family: Alef, Arial, Helvetica, sans-serif; text-align: center; margin: 1em; background-color: #000;}
 img {border:0;}
 .main_table a{display:none;}
@@ -121,8 +121,8 @@ td img {height: 1.5em;}
 .Class9 {border-style: solid; border-width: 0 3px 0 3px; border-color: #008080; padding: 0;}
 #ImageZoom { position:absolute; visibility:hidden; width:auto; height:auto; max-width:100%; max-height:100%; }
 #Message {color: #FFFF00; font-size: 1.1em; }
--->
 </style>
+-->
 
  </head>
     
@@ -186,13 +186,14 @@ td img {height: 1.5em;}
       
         <div class="main_table col">
             <div class="content">
+            
+            <img id="ImageZoom" src="/images/liveheader.jpg" />
+
+<!----<div id="result"></div>--->
 
 
-            
-            
-            
-            <!----<img id="ImageZoom" src="#" />
-<div id="result"></div>--->
+
+
 
 
 

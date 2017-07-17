@@ -344,12 +344,13 @@ tr.OddRow:hover, tr.EvenRow:hover {
 .Class9 {border-style: solid; border-width: 0 3px 0 3px; border-color: #008080; padding: 0;}
 
 #ImageZoom {
-    position: absolute;
-    visibility: hidden;
     width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%;
+    max-height: 80%;
+}
+#live #Title {
+    display:block;
 }
 
 #Message {
