@@ -351,6 +351,7 @@ tr.OddRow:hover, tr.EvenRow:hover {
 }
 #live #Title {
     display:block;
+    margin-top: 20px;
 }
 
 #Message {
