@@ -27,6 +27,7 @@ body {
     display: block;
     padding: 0;
     margin: 0;
+    font-size: 110%;
 /*    position: relative;*/
     direction: rtl;
     line-height: 1.5;
@@ -398,9 +399,7 @@ td, th {
 .page > * {
   flex: 1 100%;
 }*/
-.header, .main_content, .footer, .row {
-  flex: 1 100%;
-}
+
 .row {
     width: 100%;
 }
