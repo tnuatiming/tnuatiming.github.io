@@ -36,6 +36,7 @@ body {
     vertical-align: baseline;
     border: 0;
     min-width:800px;
+    background: rgba(240,240,240,1);
 }
 
 a {
@@ -130,7 +131,7 @@ ul.history li {
 }
 
 table {
-    font-size: 1em;
+    font-size: 0.9em;
     line-height: 2em;
     margin: 0 auto;
     width: 100%;
@@ -373,7 +374,6 @@ td, th {
 }
 
 .full-bg {
-    background: rgba(240,240,240,0.90);
     min-height: 100%;
 /*    position: relative;*/
 }
