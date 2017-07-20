@@ -905,74 +905,126 @@ padding-right: 10%;
 
 @media (min-width: 721px)        {
     
-    body#home{
-        background: #fff url(/images/4752751.jpg) center center no-repeat fixed;
+    body#home .full-bg{
+        background-image: url("/images/4752751.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    body#home-english .full-bg{
+        background-image: url("/images/4752751.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#home-english{
-        background: #fff url(/images/4752751.jpg) center center no-repeat fixed;
+    body#races .full-bg{
+        background-image: url("/images/478466.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;    
+    }
+    
+    body#live .full-bg{
+        background-image: url("/images/10854828.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#races{
-        background: #fff url(/images/478466.jpg) center center no-repeat fixed;
+    body#race .full-bg{
+        background-image: url("/images/4074271.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#live{
-        background: #fff url(/images/10854828.jpg) center center no-repeat fixed;
+    body#race.enduro .full-bg{
+        background-image: url("/images/enduro.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race{
-        background: #fff url(/images/4074271.jpg) center center no-repeat fixed;
+    body#race.motocross .full-bg{
+        background-image: url("/images/motocross.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race.enduro{
-        background: #fff url(/images/enduro.jpg) center center no-repeat fixed;
+    body#race.supermoto .full-bg{
+        background-image: url("/images/supermoto.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race.motocross{
-        background: #fff url(/images/motocross.jpg) center center no-repeat fixed;
+    body#race.allmountain .full-bg{
+        background-image: url("/images/allmountain.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race.supermoto{
-        background: #fff url(/images/supermoto.jpg) center center no-repeat fixed;
+    body#race.gymkhana .full-bg{
+        background-image: url("/images/gymkhana.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race.allmountain{
-        background: #fff url(/images/allmountain.jpg) center center no-repeat fixed;
+    body#race.rally .full-bg, body#race.baja .full-bg{
+        background-image: url("/images/rally.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race.gymkhana{
-        background: #fff url(/images/gymkhana.jpg) center center no-repeat fixed;
+    body#race.karting .full-bg{
+        background-image: url("/images/kart.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race.rally, body#race.baja{
-        background: #fff url(/images/rally.jpg) center center no-repeat fixed;
+    body#race.rallysprint .full-bg{
+        background-image: url("/images/rallysprint.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
     
-    body#race.karting{
-        background: #fff url(/images/kart.jpg) center center no-repeat fixed;
+    body#race.running .full-bg{
+        background-image: url("/images/running.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
-    
-    body#race.rallysprint{
-        background: #fff url(/images/rallysprint.jpg) center center no-repeat fixed;
-        background-size: cover;
-    }
-    
-    body#race.running{
-        background: #fff url(/images/running.jpg) center center no-repeat fixed;
-        background-size: cover;
+    .full-bg:after{
+        position:fixed;
+        content:"";
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background:rgba(240,240,240,0.85);
+        z-index:-1;
     }
 }
 
