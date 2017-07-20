@@ -1023,7 +1023,7 @@ padding-right: 10%;
         left:0;
         right:0;
         bottom:0;
-        background:rgba(240,240,240,0.85);
+        background:rgba(240,240,240,0.9);
         z-index:-1;
     }
 }
