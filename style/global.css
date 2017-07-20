@@ -398,9 +398,6 @@ td, th {
 .page > * {
   flex: 1 100%;
 }*/
-.header, .main_content, .footer, .row {
-  flex: 1 100%;
-}
 .row {
     width: 100%;
 }
