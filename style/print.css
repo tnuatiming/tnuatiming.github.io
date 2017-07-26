@@ -38,6 +38,10 @@ tr {
     page-break-inside:avoid; page-break-after:auto    
 }
 
+td.rnk_font, th.rnkh_font, #race .comment_font {
+    border: none;
+}
+
 body#race.motocross table {
     page-break-inside:avoid
 }
