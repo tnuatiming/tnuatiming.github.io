@@ -160,6 +160,8 @@ if ($_POST['elite']) {
                 $data[0] = str_ireplace("Do not finish", "לא סיים", $data[0]);
                 $data[0] = str_ireplace("Did not start", "לא התחיל", $data[0]);
                 $data[0] = str_ireplace("Best lap:", "הקפה מהירה:", $data[0]);
+                $data[0] = str_replace(",", "", $data[0]);
+                $data[0] = str_replace("No.", "", $data[0]);
     //            $data[0] = str_ireplace("laps", "הקפות", $data[0]);
     //            $data[0] = str_ireplace("lap", "הקפה", $data[0]);
                 if (strpos($data[0], 'DISQ') !== false) {
@@ -196,6 +198,7 @@ if ($_POST['elite']) {
                 if (!in_array("START",$data)) {  // row with "START" in it will not br processed and apectly deleted
                     $html .= '    <tr class="rnk_bkcolor">'."\r\n";
                     for ($c=0; $c < $num; $c++) {
+                        $data[$c] = str_replace("1 הקפות", "1 הקפה", $data[$c]);
                         $data[$c] = str_ireplace("laps", "הקפות", $data[$c]);
                         $data[$c] = str_ireplace("lap", "הקפה", $data[$c]);
                         $data[$c] = str_ireplace("START", "זינוק", $data[$c]);
