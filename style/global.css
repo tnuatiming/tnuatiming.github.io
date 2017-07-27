@@ -146,12 +146,12 @@ table {
     text-shadow: 0 1px 2px white;
 }
 
-#race tr.rnk_bkcolor:nth-child(even) {
-    background: rgba(224,224,224,0.8);
-}
-
 #race tr.rnk_bkcolor:nth-child(odd) {
     background: rgba(208,208,208,0.8);
+}
+
+#race tr.rnk_bkcolor:nth-child(even) {
+    background: rgba(224,224,224,0.8);
 }
 
 #race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {
@@ -817,7 +817,8 @@ padding-right: 10%;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     -webkit-animation-duration: 2s;
-    animation-duration: 2s;
+    animation-duration: 2s;        
+    background:rgba(240,240,240,0.9);
 }
 
 .animated.hinge {
@@ -1015,16 +1016,6 @@ padding-right: 10%;
         background-attachment: fixed;
         background-size: cover;
     }
-    .full-bg:after{
-        position:fixed;
-        content:"";
-        top:0;
-        left:0;
-        right:0;
-        bottom:0;
-        background:rgba(240,240,240,0.9);
-        z-index:-1;
-    }
 }
 
 @media (max-width: 600px)        {
@@ -1040,12 +1031,12 @@ padding-right: 10%;
         border: 1px solid #fff;
     }
     
- /*   #race tr.rnk_bkcolor:nth-child(odd){
-    background:#f0f0f0;
-    }*/
+    #race tr.rnk_bkcolor:nth-child(odd) {
+    background-color: #e0e0e0;
+    }
     
     #race tr.rnk_bkcolor:nth-child(even){
-    background:#f0f0f0;
+    background-color: #f0f0f0;
     }
     
     #race td.rnk_font, #race .comment_font {
