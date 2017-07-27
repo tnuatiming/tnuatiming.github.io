@@ -1,19 +1,20 @@
-        </div>
-            <div class="row footer">
-                <a class="mail" href="mailto:119raz@walla.com">רז הימן - 119raz&#64;walla.com</a> <a class="copyright" href="/terms.html">&#169; כל הזכויות שמורות לתנועה מדידת זמנים</a> 
-                <a class="logo_tiny" href="http://tnuatiming.com">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                        <switch>
-                            <g style="fill-opacity:1;stroke:none">
-                                <circle r="7" transform="matrix(0.86602544,0.49999993,-0.49999993,0.86602544,0,0)" style="fill:#ff6600" cx="24.284611" cy="-5.9378204"/>
-                                <circle r="7" transform="matrix(-0.86602544,0.49999993,-0.49999993,-0.86602544,0,0)" style="fill:#cc0000" cx="5.9378204" cy="-24.284611"/>
-                                <circle r="7" transform="matrix(0.2588191,0.96592581,-0.96592581,0.25881909,0,0)" style="fill:#003399" cx="33.793804" cy="-33.3913"/>
-                                <circle r="7" transform="matrix(0.86602544,-0.49999993,0.49999993,0.86602544,0,0)" style="fill:#66cc33" cx="0.28461337" cy="47.507042"/>
-                            </g>
-                            <foreignObject width="16" height="16" requiredExtensions="http://example.com/SVGExtensions/EmbeddedXHTML"><img src="/images/logo16.png" width="16" height="16" alt="לוגו תנועה מדידת זמנים"/></foreignObject>
-                        </switch>
-                    </svg>
-                </a>
+            </div>
+                <div class="row footer">
+                    <a class="mail" href="mailto:119raz@walla.com">רז הימן - 119raz&#64;walla.com</a> <a class="copyright" href="/terms.html">&#169; כל הזכויות שמורות לתנועה מדידת זמנים</a> 
+                    <a class="logo_tiny" href="http://tnuatiming.com">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                            <switch>
+                                <g style="fill-opacity:1;stroke:none">
+                                    <circle r="7" transform="matrix(0.86602544,0.49999993,-0.49999993,0.86602544,0,0)" style="fill:#ff6600" cx="24.284611" cy="-5.9378204"/>
+                                    <circle r="7" transform="matrix(-0.86602544,0.49999993,-0.49999993,-0.86602544,0,0)" style="fill:#cc0000" cx="5.9378204" cy="-24.284611"/>
+                                    <circle r="7" transform="matrix(0.2588191,0.96592581,-0.96592581,0.25881909,0,0)" style="fill:#003399" cx="33.793804" cy="-33.3913"/>
+                                    <circle r="7" transform="matrix(0.86602544,-0.49999993,0.49999993,0.86602544,0,0)" style="fill:#66cc33" cx="0.28461337" cy="47.507042"/>
+                                </g>
+                                <foreignObject width="16" height="16" requiredExtensions="http://example.com/SVGExtensions/EmbeddedXHTML"><img src="/images/logo16.png" width="16" height="16" alt="לוגו תנועה מדידת זמנים"/></foreignObject>
+                            </switch>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

@@ -73,7 +73,10 @@ if ($_POST['changename']) {
     $changeName = "שם";// use שם for "Run"
 }
 $delimiter = array("\t",",","|","\\","/",";");// all the options for delimiters
-$csv_file = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to tab
+if ($_POST['elite']) {
+} else {
+    $csv_file = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to tab
+}
 //$csv = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $csv);//delete empty lines(doesn't delete the last line)
 $csv_file = preg_replace('/^[\r\n]+|[\r\n]+$/m', '', $csv_file);//delete empty lines
 file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the uploaded file with the refoctoring
@@ -81,47 +84,73 @@ file_put_contents($_FILES['file']['tmp_name'], $csv_file);// recreate the upload
 $csv_file = ($_FILES['file']['tmp_name']);// get the uploaded file
 
 // header stack
-$stop = 0;
-$header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
-$row1 = 0;
-if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
-    while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
-        if ($stop == 0) {      //stop going trough the line when the header is detected
-            $num = count($data1);
-            if ($num != 1) {
-                for ($c=0; $c < $num; $c++) {
-                
-                    $headerItem = array("Rank"=>"מקום", "Rnk"=>"מקום", "Pos."=>"מקום", "Num"=>"מספר", "Bib."=>"מספר", "Driver's last name"=>$changeName, "Driver's first name"=>"נווט", "Last Name"=>$changeName, "First Name"=>"נווט", "Name"=>$changeName, "Driver"=>$changeName, "Laps"=>"הקפות", "B.Lap"=>"הקפה מהירה", "Lap"=>"הקפה", "Time"=>"זמן", "Gap"=>"פער", "Penalty"=>"עונשין", "Category"=>"קטגוריה", "Hour"=>"זמן כולל", "Seq"=>"סידורי", "Points"=>"נקודות", "Run 1"=>"$runType 1", "Run 2"=>"$runType 2", "Run 3"=>"$runType 3", "Run 4"=>"$runType 4", "Run 5"=>"$runType 5", "Run 6"=>"$runType 6", "Run 7"=>"$runType 7", "Run 8"=>"$runType 8", "Run 9"=>"$runType 9", "Run 10"=>"$runType 10", "Run 11"=>"$runType 11", "Run 12"=>"$runType 12");
-
-                    foreach($headerItem as $x => $x_value) {
-                        if (stripos($data1[$c], $x) !== false) {
-                            $header .= '        <th class="rnkh_font">'.$x_value.'</th>'."\r\n";
-                            $stop = 1;
-                            break; 
-                        } 
+if ($_POST['elite']) {  //create header for elite v3
+    $stop = 0;
+    $header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
+    $row1 = 0;
+    if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
+        while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
+            if ($stop == 0) {      //stop going trough the line when the header is detected
+                $num = count($data1);
+                if ($num > 3) { // header line probably more then 3 colmuns
+                    for ($c=0; $c < $num; $c++) {
+                        $header .= '        <th class="rnkh_font">'.$data1[$c].'</th>'."\r\n";
+                        $stop = 1;
+                   
                     }
-                
                 }
-            }
-        $row1++;
-        } else {
-            if ($_POST['deleterows']) {
-            $noNeedLines = 0; //do not skip the first lines up to and including the english header when building the html
+            $row1++;
             } else {
-            $noNeedLines = $row1; //use to skip the first lines up to and including the english header when building the html
+                $noNeedLines = $row1; //use to skip the first lines up to and including the english header when building the html
             }
         }
+        fclose($handle1);
     }
-    fclose($handle1);
-}
-$header .= '    </tr>'; // finishing the denamic header
+    $header .= '    </tr>'; // finishing the denamic header
 
+} else {//create header for vola
+    $stop = 0;
+    $header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
+    $row1 = 0;
+    if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
+        while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
+            if ($stop == 0) {      //stop going trough the line when the header is detected
+                $num = count($data1);
+                if ($num != 1) {
+                    for ($c=0; $c < $num; $c++) {
+                    
+                        $headerItem = array("Rank"=>"מקום", "Rnk"=>"מקום", "Pos."=>"מקום", "Num"=>"מספר", "Bib."=>"מספר", "Driver's last name"=>$changeName, "Driver's first name"=>"נווט", "Last Name"=>$changeName, "First Name"=>"נווט", "Name"=>$changeName, "Driver"=>$changeName, "Laps"=>"הקפות", "B.Lap"=>"הקפה מהירה", "Lap"=>"הקפה", "Time"=>"זמן", "Gap"=>"פער", "Penalty"=>"עונשין", "Category"=>"קטגוריה", "Hour"=>"זמן כולל", "Seq"=>"סידורי", "Points"=>"נקודות", "Run 1"=>"$runType 1", "Run 2"=>"$runType 2", "Run 3"=>"$runType 3", "Run 4"=>"$runType 4", "Run 5"=>"$runType 5", "Run 6"=>"$runType 6", "Run 7"=>"$runType 7", "Run 8"=>"$runType 8", "Run 9"=>"$runType 9", "Run 10"=>"$runType 10", "Run 11"=>"$runType 11", "Run 12"=>"$runType 12");
+
+                        foreach($headerItem as $x => $x_value) {
+                            if (stripos($data1[$c], $x) !== false) {
+                                $header .= '        <th class="rnkh_font">'.$x_value.'</th>'."\r\n";
+                                $stop = 1;
+                                break; 
+                            } 
+                        }
+                    
+                    }
+                }
+            $row1++;
+            } else {
+                if ($_POST['deleterows']) {
+                $noNeedLines = 0; //do not skip the first lines up to and including the english header when building the html
+                } else {
+                $noNeedLines = $row1; //use to skip the first lines up to and including the english header when building the html
+                }
+            }
+        }
+        fclose($handle1);
+    }
+    $header .= '    </tr>'; // finishing the denamic header
+}
 // start building the html 
 $row = 1;
 $html .= '<table class="line_color">'."\r\n";
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
-        if ($row > $noNeedLines) { // skip the first lines we do not need
+if ($_POST['elite']) {
+    if ($row !== $noNeedLines) { // skip the first lines we do not need
     //        echo "data: $data[0]";
     //        echo "    <tr class=\"rnk_bkcolor\">\n";
             $num = count($data);
@@ -183,7 +212,72 @@ if (($handle = fopen($csv_file, "r")) !== FALSE) {
                 }
             }
         }
-    $row++;
+} else {
+    if ($row > $noNeedLines) { // skip the first lines we do not need
+    //        echo "data: $data[0]";
+    //        echo "    <tr class=\"rnk_bkcolor\">\n";
+            $num = count($data);
+            if ($num == 1) { // row with 1 cell
+                $data[0] = str_ireplace("Run", $runType, $data[0]);
+                $data[0] = str_ireplace("Disqualified", "נפסל", $data[0]);
+                $data[0] = str_ireplace("Do not finish", "לא סיים", $data[0]);
+                $data[0] = str_ireplace("Did not start", "לא התחיל", $data[0]);
+                $data[0] = str_ireplace("Best lap:", "הקפה מהירה:", $data[0]);
+    //            $data[0] = str_ireplace("laps", "הקפות", $data[0]);
+    //            $data[0] = str_ireplace("lap", "הקפה", $data[0]);
+                if (strpos($data[0], 'DISQ') !== false) {
+                    $html .= '    <tr>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
+                    $html .= '    </tr>'."\r\n";
+                } elseif (strpos($data[0], 'DSQ') !== false) {
+                    $html .= '    <tr>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
+                    $html .= '    </tr>'."\r\n";
+                } elseif (strpos($data[0], 'DNS') !== false) {
+                    $html .= '    <tr>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DNS - לא התחיל</td>'."\r\n";
+                    $html .= '    </tr>'."\r\n";
+                } elseif (strpos($data[0], 'DNF') !== false) {
+                    $html .= '    <tr>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">DNF - לא סיים</td>'."\r\n";
+                    $html .= '    </tr>'."\r\n";
+                } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
+                    $html .= '    <tr>'."\r\n";
+                    $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
+                    $html .= '    </tr>'."\r\n";
+                } else {    // category header
+                    $html .= '    <tr>'."\r\n";
+                    $html .= '        <td  colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
+                    $html .= '    </tr>'."\r\n";
+                    $html .= $header."\r\n";
+                }
+            } else { // row with more then 1 cell
+                if (!in_array("START",$data)) {  // row with "START" in it will not br processed and apectly deleted
+                    $html .= '    <tr class="rnk_bkcolor">'."\r\n";
+                    for ($c=0; $c < $num; $c++) {
+                        $data[$c] = str_ireplace("laps", "הקפות", $data[$c]);
+                        $data[$c] = str_ireplace("lap", "הקפה", $data[$c]);
+                        $data[$c] = str_ireplace("START", "זינוק", $data[$c]);
+                        $data[$c] = str_ireplace("FINISH", "סיום", $data[$c]);
+                        $data[$c] = str_replace("*", "", $data[$c]);
+                        $data[$c] = str_replace("1h", "01:", $data[$c]);
+                        $data[$c] = str_replace("2h", "02:", $data[$c]);
+                        $data[$c] = str_replace("3h", "03:", $data[$c]);
+                        $data[$c] = str_replace("4h", "04:", $data[$c]);
+                        $data[$c] = str_replace("5h", "05:", $data[$c]);
+                        $html .= '        <td class="rnk_font">'.trim($data[$c]).'</td>'."\r\n";
+                    }
+                    $html .= '    </tr>'."\r\n";
+                }
+            }
+        }
+
+}
+        $row++;
     }
     fclose($handle);
 }
