@@ -8,6 +8,7 @@ markdown: rdiscount
 permalink: /:categories/:year/:title.html
 excerpt_separator: <!--more-->
 include: [
+    live/Images/,
     english/index.html,
     .htaccess
 ]
