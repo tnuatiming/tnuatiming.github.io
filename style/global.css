@@ -131,8 +131,8 @@ ul.history li {
 }
 
 table {
-/*    font-size: 0.9em;
-    line-height: 2em;*/
+    font-size: 0.9em;
+/*    line-height: 2em;*/
     margin: 0 auto;
     width: 100%;
     border-collapse: collapse;
@@ -1048,8 +1048,28 @@ padding-right: 10%;
     body, .full-bg{
         background: #f0f0f0;
     }
-}
 
+    .logo li {
+        -webkit-transition-property: none !important;
+        transition-property: none !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+        -webkit-animation: none !important;
+        animation: none !important;
+    }    
+/*
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #f0f0f0;
+        padding-bottom: 10px;
+    }
+
+    .main_content {
+        margin-top: 170px;
+    }   */ 
+}
 @-moz-document url-prefix() {
     
 }
