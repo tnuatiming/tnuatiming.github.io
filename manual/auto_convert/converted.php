@@ -110,27 +110,25 @@ if ($_POST['elite']) {  //create header for elite v3
         }
         fclose($handle1);
     }
-    $header .= '    </tr>'; // finishing the denamic header
+    $header .= '    </tr>'; // finishing the dynamic header
 
   // copy best lap lines to new variable to insert in the second pass
     if ($_POST['nobestlap']) { 
-        $totalBlab = 0;
-        $blap = ""; // start creating the denamic header
-        $rowb = 0;
+//        $totalBlab = 0; // how many best laps lines we have
+        $blap = ""; // start creating the best lap lines variable
         if (($handle2 = fopen($csv_file, "r")) !== FALSE) {
             while (($datab = fgetcsv($handle2, 1000, "\t")) !== FALSE) {
                     $num = count($datab);
-                    if ($num < 3) { // header line probably more then 3 colmuns
+                    if ($num < 3) { // best lap less then 3 colmuns
                     if (strpos($datab[0], 'הקפה מהירה') !== false) {
                             $datab[0] = str_replace(",", "", $datab[0]);
                             $datab[0] = str_replace("No.", "", $datab[0]); // deleting the elite 3 no. from the best lap line
                             $datab[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $datab[0]); // fixing the elite 3 best lap line when displaying per category
                             $datab[0] = str_replace("מספר", "", $datab[0]);
                             $blap .= $datab[0]."\r\n";
-                            $totalBlab++;
+//                            $totalBlab++;
                         }
                     }
-                $rowb++;
             }
             fclose($handle2);
         }
