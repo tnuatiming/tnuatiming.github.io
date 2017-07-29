@@ -160,6 +160,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <input type="checkbox" id="finishedpage" name="finishedpage" value="finishedpage">show as a web page<br/><br/>
   <input type="checkbox" id="presults" name="presults" value="presults">show previous results<br/><br/>
   <input type="checkbox" id="elite" name="elite" value="elite" checked>elite v3 file<br/><br/>
+  <input type="checkbox" id="nobestlap" name="nobestlap" value="nobestlap" checked>elite v3 file contain best lap info<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 <!--  <p id="demo"></p>-->

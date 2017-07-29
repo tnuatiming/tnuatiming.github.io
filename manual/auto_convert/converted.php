@@ -112,6 +112,49 @@ if ($_POST['elite']) {  //create header for elite v3
     }
     $header .= '    </tr>'; // finishing the denamic header
 
+  // copy best lap lines to new variable to insert in the second pass
+    if ($_POST['nobestlap']) { 
+        $totalBlab = 0;
+        $blap = ""; // start creating the denamic header
+        $rowb = 0;
+        if (($handle2 = fopen($csv_file, "r")) !== FALSE) {
+            while (($datab = fgetcsv($handle2, 1000, "\t")) !== FALSE) {
+                    $num = count($datab);
+                    if ($num < 3) { // header line probably more then 3 colmuns
+                    if (strpos($datab[0], 'הקפה מהירה') !== false) {
+                            $datab[0] = str_replace(",", "", $datab[0]);
+                            $datab[0] = str_replace("No.", "", $datab[0]); // deleting the elite 3 no. from the best lap line
+                            $datab[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $datab[0]); // fixing the elite 3 best lap line when displaying per category
+                            $datab[0] = str_replace("מספר", "", $datab[0]);
+                            $blap .= $datab[0]."\r\n";
+                            $totalBlab++;
+                        }
+                    }
+                $rowb++;
+            }
+            fclose($handle2);
+        }
+        
+        //echo "total lines: $totalBlab"; 
+        //echo "<br><br>";
+
+        //$lineNum = 0;
+        //$lines = split("\r\n", $blap);
+        //foreach ($lines as $line) {
+        //    $lineNum++;
+        //    echo "line: $lineNum $line<br>"; 
+        //}   
+
+        //echo "<br><br>";
+        $kw = explode("\r\n", $blap);
+        //for($i=0;$i<count($kw);$i++){
+        //    echo "$kw[$i]<br>";
+        //}    
+
+        //echo "<br><br>";    
+        //echo "$kw[1]<br>";
+    }
+
 } else {//create header for vola
     $stop = 0;
     $header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
@@ -151,6 +194,8 @@ if ($_POST['elite']) {  //create header for elite v3
 }
 // start building the html 
 $row = 1;
+$blapinsert = 0;
+$categoryheader = -1;
 $html .= '<table class="line_color">'."\r\n";
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
@@ -166,10 +211,10 @@ if ($_POST['elite']) { // elite v3
                 $data[0] = str_ireplace("Do not finish", "לא סיים", $data[0]);
                 $data[0] = str_ireplace("Did not start", "לא התחיל", $data[0]);
                 $data[0] = str_ireplace("Best lap:", "הקפה מהירה:", $data[0]);
-                $data[0] = str_replace(",", "", $data[0]);
-                $data[0] = str_replace("No.", "", $data[0]); // deleting the elite 3 no. from the best lap line
-                $data[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $data[0]); // fixing the elite 3 best lap line when displaying per category
-                $data[0] = str_replace("מספר", "", $data[0]);
+//                $data[0] = str_replace(",", "", $data[0]);
+//                $data[0] = str_replace("No.", "", $data[0]); // deleting the elite 3 no. from the best lap line
+//                $data[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $data[0]); // fixing the elite 3 best lap line when displaying per category
+//                $data[0] = str_replace("מספר", "", $data[0]);
                 $data[0] = str_ireplace("הקפה מהירה :", "הקפה מהירה:", $data[0]);
                 $data[0] = str_replace("קטגוריה : ", "", $data[0]); // deleting the elite 3 category from the category header
     //            $data[0] = str_ireplace("laps", "הקפות", $data[0]);
@@ -195,13 +240,33 @@ if ($_POST['elite']) { // elite v3
                     $html .= '        <td  colspan="99" class="subtitle_font">DNF - לא סיים</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
-                    $html .= '    <tr>'."\r\n";
-                    $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
-                    $html .= '    </tr>'."\r\n";
+//                    $html .= '    <tr>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
+//                    $html .= '    </tr>'."\r\n";
                 } else {    // category header
+
+// inserting best lap BEFORE next category header
+                    if ($_POST['nobestlap']) { 
+                        if ($categoryheader > (-1)) {
+                            $html .= '    <tr>'."\r\n";
+                            $html .= '        <td  colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
+                            $html .= '    </tr>'."\r\n";
+                        }
+                    }
+// end inserting best lap BEFORE next category header
+                               
                     $html .= '    <tr>'."\r\n";
                     $html .= '        <td  colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
+                    $categoryheader++;
+
+// inserting best lap after category header
+//                    $html .= '    <tr>'."\r\n";
+//                    $html .= '        <td  colspan="99" class="comment_font">'.trim($kw[$blapinsert]).'</td>'."\r\n";
+//                    $html .= '    </tr>'."\r\n";
+//                    $blapinsert++;
+// end inserting best lap after category header
+
                     $html .= $header."\r\n";
                 }
             } else { // row with more then 1 cell
@@ -294,6 +359,15 @@ if ($_POST['elite']) { // elite v3
     }
     fclose($handle);
 }
+
+// last best lap line
+if ($_POST['nobestlap']) { 
+    $html .= '    <tr>'."\r\n";
+    $html .= '        <td  colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
+    $html .= '    </tr>'."\r\n";
+}
+// end last best lap line
+
 $html .= '</table>'."\r\n";
 
 
