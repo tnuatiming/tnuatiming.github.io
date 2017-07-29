@@ -73,7 +73,7 @@ if ($_POST['changename']) {
     $changeName = "שם";// use שם for "Run"
 }
 $delimiter = array("\t",",","|","\\","/",";");// all the options for delimiters
-if ($_POST['elite']) {
+if ($_POST['elite']) { // for elite we do not want the convert delimiters as they used for other things
 } else {
     $csv_file = str_replace($delimiter, $delimiter[0], $csv_file);// convert delimiter to tab
 }
@@ -154,7 +154,7 @@ $row = 1;
 $html .= '<table class="line_color">'."\r\n";
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
-if ($_POST['elite']) {
+if ($_POST['elite']) { // elite v3
 //    if ($row !== $noNeedLines) { // skip the first lines we do not need
     if ($row > $noNeedLines) { // skip the first lines we do not need
     //        echo "data: $data[0]";
@@ -225,7 +225,7 @@ if ($_POST['elite']) {
                 }
             }
         }
-} else {
+} else { // vola
     if ($row > $noNeedLines) { // skip the first lines we do not need
     //        echo "data: $data[0]";
     //        echo "    <tr class=\"rnk_bkcolor\">\n";
