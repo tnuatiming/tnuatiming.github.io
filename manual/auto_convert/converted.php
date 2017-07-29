@@ -101,7 +101,11 @@ if ($_POST['elite']) {  //create header for elite v3
                 }
             $row1++;
             } else {
+                if ($_POST['deleterows']) {
+                $noNeedLines = 0; //do not skip the first lines up to and including the english header when building the html
+                } else {
                 $noNeedLines = $row1; //use to skip the first lines up to and including the english header when building the html
+                }
             }
         }
         fclose($handle1);
@@ -116,7 +120,8 @@ if ($_POST['elite']) {  //create header for elite v3
         while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
             if ($stop == 0) {      //stop going trough the line when the header is detected
                 $num = count($data1);
-                if ($num != 1) {
+//                if ($num != 1) {
+                if ($num > 1) {
                     for ($c=0; $c < $num; $c++) {
                     
                         $headerItem = array("Rank"=>"מקום", "Rnk"=>"מקום", "Pos."=>"מקום", "Num"=>"מספר", "Bib."=>"מספר", "Driver's last name"=>$changeName, "Driver's first name"=>"נווט", "Last Name"=>$changeName, "First Name"=>"נווט", "Name"=>$changeName, "Driver"=>$changeName, "Laps"=>"הקפות", "B.Lap"=>"הקפה מהירה", "Lap"=>"הקפה", "Time"=>"זמן", "Gap"=>"פער", "Penalty"=>"עונשין", "Category"=>"קטגוריה", "Hour"=>"זמן כולל", "Seq"=>"סידורי", "Points"=>"נקודות", "Run 1"=>"$runType 1", "Run 2"=>"$runType 2", "Run 3"=>"$runType 3", "Run 4"=>"$runType 4", "Run 5"=>"$runType 5", "Run 6"=>"$runType 6", "Run 7"=>"$runType 7", "Run 8"=>"$runType 8", "Run 9"=>"$runType 9", "Run 10"=>"$runType 10", "Run 11"=>"$runType 11", "Run 12"=>"$runType 12");
@@ -150,7 +155,8 @@ $html .= '<table class="line_color">'."\r\n";
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
 if ($_POST['elite']) {
-    if ($row !== $noNeedLines) { // skip the first lines we do not need
+//    if ($row !== $noNeedLines) { // skip the first lines we do not need
+    if ($row > $noNeedLines) { // skip the first lines we do not need
     //        echo "data: $data[0]";
     //        echo "    <tr class=\"rnk_bkcolor\">\n";
             $num = count($data);
@@ -161,7 +167,11 @@ if ($_POST['elite']) {
                 $data[0] = str_ireplace("Did not start", "לא התחיל", $data[0]);
                 $data[0] = str_ireplace("Best lap:", "הקפה מהירה:", $data[0]);
                 $data[0] = str_replace(",", "", $data[0]);
-                $data[0] = str_replace("No.", "", $data[0]);
+                $data[0] = str_replace("No.", "", $data[0]); // deleting the elite 3 no. from the best lap line
+                $data[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $data[0]); // fixing the elite 3 best lap line when displaying per category
+                $data[0] = str_replace("מספר", "", $data[0]);
+                $data[0] = str_ireplace("הקפה מהירה :", "הקפה מהירה:", $data[0]);
+                $data[0] = str_replace("קטגוריה : ", "", $data[0]); // deleting the elite 3 category from the category header
     //            $data[0] = str_ireplace("laps", "הקפות", $data[0]);
     //            $data[0] = str_ireplace("lap", "הקפה", $data[0]);
                 if (strpos($data[0], 'DISQ') !== false) {
