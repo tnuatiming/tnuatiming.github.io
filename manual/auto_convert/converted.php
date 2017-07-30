@@ -112,11 +112,18 @@ if ($_POST['elite']) {  //create header for elite v3
 //                            $totalBlab++;
 //                            $blap .= $data1[0]."\r\n";
 
-// rearrange the best lap line so it is connsistend with vola
+// rearrange the best lap line so it is connsistend with vola and check how long the name cell is
                             $blaparray = explode(" ", $data1[0]); 
-                            $blap .= ($blaparray[0]." ".$blaparray[1]." ".$blaparray[3]." ".$blaparray[4]." ".$blaparray[5]." ".$blaparray[6]." ".$blaparray[7]." ".$blaparray[8]." - ".$blaparray[2]."\r\n"); 
+                            if ($blaparray[8]) {
+                                $blap .= ($blaparray[0]." ".$blaparray[1]." ".$blaparray[3]." ".$blaparray[4]." ".$blaparray[5]." ".$blaparray[6]." ".$blaparray[7]." ".$blaparray[8]." - ".$blaparray[2]."\r\n"); 
+                            } elseif ($blaparray[7]) {
+                                $blap .= ($blaparray[0]." ".$blaparray[1]." ".$blaparray[3]." ".$blaparray[4]." ".$blaparray[5]." ".$blaparray[6]." ".$blaparray[7]." - ".$blaparray[2]."\r\n"); 
 //                            print_r($blaparray);
-
+                            } elseif ($blaparray[6]) {
+                                $blap .= ($blaparray[0]." ".$blaparray[1]." ".$blaparray[3]." ".$blaparray[4]." ".$blaparray[5]." ".$blaparray[6]." - ".$blaparray[2]."\r\n"); 
+                            } else {
+                                $blap .= ($blaparray[0]." ".$blaparray[1]." ".$blaparray[3]." ".$blaparray[4]." ".$blaparray[5]." - ".$blaparray[2]."\r\n"); 
+                            }
                     }
         
         //echo "total lines: $totalBlab"; 
