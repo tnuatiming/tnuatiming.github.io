@@ -108,8 +108,15 @@ if ($_POST['elite']) {  //create header for elite v3
                             $data1[0] = str_replace("No.", "", $data1[0]); // deleting the elite 3 no. from the best lap line
                             $data1[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $data1[0]); // fixing the elite 3 best lap line when displaying per category
                             $data1[0] = str_replace("מספר", "", $data1[0]);
-                            $blap .= $data1[0]."\r\n";
+                            $data1[0] = str_replace(" :", ":", $data1[0]);
 //                            $totalBlab++;
+//                            $blap .= $data1[0]."\r\n";
+
+// rearrange the best lap line so it is connsistend with vola
+                            $blaparray = explode(" ", $data1[0]); 
+                            $blap .= ($blaparray[0]." ".$blaparray[1]." ".$blaparray[3]." ".$blaparray[4]." ".$blaparray[5]." ".$blaparray[6]." ".$blaparray[7]." ".$blaparray[8]." - ".$blaparray[2]."\r\n"); 
+//                            print_r($blaparray);
+
                     }
         
         //echo "total lines: $totalBlab"; 
@@ -123,7 +130,7 @@ if ($_POST['elite']) {  //create header for elite v3
         //}   
 
         //echo "<br><br>";
-        $kw = explode("\r\n", $blap);
+        //$kw = explode("\r\n", $blap); // moved down so it will run just once when we finish the first pass
         //for($i=0;$i<count($kw);$i++){
         //    echo "$kw[$i]<br>";
         //}    
@@ -143,6 +150,7 @@ if ($_POST['elite']) {  //create header for elite v3
         fclose($handle1);
     }
     $header .= '    </tr>'; // finishing the dynamic header
+    $kw = explode("\r\n", $blap); // convert the best lap list into array
 
     if ($_POST['deleterows']) {
     $noNeedLines = 0; //do not skip the first lines up to and including the english header when building the html
