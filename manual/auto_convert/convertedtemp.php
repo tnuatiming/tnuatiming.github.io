@@ -86,31 +86,52 @@ $csv_file = ($_FILES['file']['tmp_name']);// get the uploaded file
 // header stack
 if ($_POST['elite']) {  //create header for elite v3
     $stop = 0;
-    $blap = ""; // start creating the best lap lines variable
     $header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
-    $row1 = 1;
+    $row1 = 0;
     if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
         while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
+            if ($stop == 0) {      //stop going trough the line when the header is detected
                 $num = count($data1);
-                if (($stop == 0) && ($num > 3)) { // header line probably more then 3 colmuns and stop going trough the line when the header is detected
+                if ($num > 3) { // header line probably more then 3 colmuns
                     for ($c=0; $c < $num; $c++) {
                         $header .= '        <th class="rnkh_font">'.$data1[$c].'</th>'."\r\n";
                         $stop = 1;
-                        $hrow = $row1;
+                   
                     }
+                }
+            $row1++;
+            } else {
+                if ($_POST['deleterows']) {
+                $noNeedLines = 0; //do not skip the first lines up to and including the english header when building the html
                 } else {
-                if ($_POST['nobestlap']) {
+                $noNeedLines = $row1; //use to skip the first lines up to and including the english header when building the html
+                }
+            }
+        }
+        fclose($handle1);
+    }
+    $header .= '    </tr>'; // finishing the dynamic header
 
   // copy best lap lines to new variable to insert in the second pass
+    if ($_POST['nobestlap']) { 
 //        $totalBlab = 0; // how many best laps lines we have
-                    if (($num < 3) && (strpos($data1[0], 'הקפה מהירה') !== false)) { // best lap less then 3 colmuns
-                            $data1[0] = str_replace(",", "", $data1[0]);
-                            $data1[0] = str_replace("No.", "", $data1[0]); // deleting the elite 3 no. from the best lap line
-                            $data1[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $data1[0]); // fixing the elite 3 best lap line when displaying per category
-                            $data1[0] = str_replace("מספר", "", $data1[0]);
-                            $blap .= $data1[0]."\r\n";
+        $blap = ""; // start creating the best lap lines variable
+        if (($handle2 = fopen($csv_file, "r")) !== FALSE) {
+            while (($datab = fgetcsv($handle2, 1000, "\t")) !== FALSE) {
+                    $num = count($datab);
+                    if ($num < 3) { // best lap less then 3 colmuns
+                    if (strpos($datab[0], 'הקפה מהירה') !== false) {
+                            $datab[0] = str_replace(",", "", $datab[0]);
+                            $datab[0] = str_replace("No.", "", $datab[0]); // deleting the elite 3 no. from the best lap line
+                            $datab[0] = preg_replace("~ קטגוריה \'(.*?)\' ~", "", $datab[0]); // fixing the elite 3 best lap line when displaying per category
+                            $datab[0] = str_replace("מספר", "", $datab[0]);
+                            $blap .= $datab[0]."\r\n";
 //                            $totalBlab++;
+                        }
                     }
+            }
+            fclose($handle2);
+        }
         
         //echo "total lines: $totalBlab"; 
         //echo "<br><br>";
@@ -130,26 +151,7 @@ if ($_POST['elite']) {  //create header for elite v3
 
         //echo "<br><br>";    
         //echo "$kw[1]<br>";
-                
-        //    echo "<br><br>";    
-        //echo "$kw[0]<br>";
-            
-        //print_r($kw);
-        
-                    }
-                }
-            $row1++;
-        }
-        fclose($handle1);
     }
-    $header .= '    </tr>'; // finishing the dynamic header
-
-    if ($_POST['deleterows']) {
-    $noNeedLines = 0; //do not skip the first lines up to and including the english header when building the html
-    } else {
-    $noNeedLines = $hrow; //use to skip the first lines up to and including the english header when building the html
-    }
-
 
 } else {//create header for vola
     $stop = 0;
