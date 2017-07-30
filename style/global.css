@@ -24,6 +24,7 @@ html {
 
 body {
     height: 100%;
+    width: 100%;
     display: block;
     padding: 0;
     margin: 0;
@@ -131,8 +132,8 @@ ul.history li {
 }
 
 table {
-    font-size: 0.9em;
-/*    line-height: 2em;*/
+/*    font-size: 0.9em;
+    line-height: 2em;*/
     margin: 0 auto;
     width: 100%;
     border-collapse: collapse;
@@ -370,7 +371,7 @@ td, th {
     text-align: center;
     vertical-align: middle;
     border-collapse: collapse;
-    font-size: 0.8em;
+/*    font-size: 0.8em;*/
 }
 
 .full-bg {
@@ -1021,7 +1022,10 @@ padding-right: 10%;
 @media (max-width: 600px)        {
     
     body {
-        font-size: 80%;
+/*        font-size: 80%;*/
+    }
+    .page {
+        width: 100%;
     }
     
     .navigation ul {
