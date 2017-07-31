@@ -1022,7 +1022,7 @@ padding-right: 10%;
 @media (max-width: 600px)        {
     
     body {
-/*        font-size: 80%;*/
+    font-size: 80%;
     }
     .page {
         width: 100%;

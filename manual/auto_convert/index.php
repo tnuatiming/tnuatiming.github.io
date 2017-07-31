@@ -112,7 +112,10 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
 <h3>Ranking - Convert CSV to HTML Table</h3>
 <button onclick="myFunction()">show front matter header option</button><br/><br/>
 <form accept-charset="UTF-8" action="converted.php" method="post" enctype="multipart/form-data">
-<div id="liqu" class="liqu">
+
+  <input type="checkbox" id="elite" name="elite" value="elite" checked>elite v3 file (uncheck for vola)<br/><br/>
+
+  <div id="liqu" class="liqu">
   <label>event date: </label><?php  echo date_picker("registration") ?>
   <br/><br/>
   
@@ -159,7 +162,6 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished table<br/><br/>
   <input type="checkbox" id="finishedpage" name="finishedpage" value="finishedpage">show as a web page<br/><br/>
   <input type="checkbox" id="presults" name="presults" value="presults">show previous results<br/><br/>
-  <input type="checkbox" id="elite" name="elite" value="elite" checked>elite v3 file<br/><br/>
   <input type="checkbox" id="nobestlap" name="nobestlap" value="nobestlap" checked>elite v3 file contain best lap info<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
