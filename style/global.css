@@ -474,7 +474,7 @@ a.main_logo {
 .logo {
     margin: 0;
     padding: 0;
-    font-size: 50px;
+    font-size: 78px;
     width: 1em;
     height: 1em;
     position: relative;
@@ -485,15 +485,15 @@ a.main_logo {
 
 .logo li {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
 }
 
 .logo li:nth-child(1) {
     left: 50%;
     top: 0;
-    margin: 0 0 0 -5px;
+    margin: 0 0 0 -8px;
     background: #F60;
     /*ktm*/
     -webkit-transform-origin: 50% 250%;
@@ -505,7 +505,7 @@ a.main_logo {
 .logo li:nth-child(2) {
     top: 50%;
     right: 0;
-    margin: -5px 0 0;
+    margin: -8px 0 0;
     background: #039;
     /*yamaha*/
     -webkit-transform-origin: -150% 50%;
@@ -517,7 +517,7 @@ a.main_logo {
 .logo li:nth-child(3) {
     left: 50%;
     bottom: 0;
-    margin: 0 0 0 -5px;
+    margin: 0 0 0 -8px;
     background: #6c3;
     /*kawasaki*/
     -webkit-transform-origin: 50% -150%;
@@ -529,7 +529,7 @@ a.main_logo {
 .logo li:nth-child(4) {
     top: 50%;
     left: 0;
-    margin: -5px 0 0;
+    margin: -8px 0 0;
     background: #c00;
     /*honda*/
     -webkit-transform-origin: 250% 50%;
@@ -1050,8 +1050,11 @@ padding-right: 10%;
     .navigation a.home:hover,.navigation a.home:active {
         border-bottom: none;
     }
+    .logo {
+        font-size: 60px;
+   }
 
-    svg.live-icon {
+   svg.live-icon {
         fill: white;
     }
 
