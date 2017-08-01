@@ -855,15 +855,6 @@ padding-right: 10%;
         margin-left: 60px;
     }
     
-    #home .left {
-        display:none;
-    }
-    
-    #home .right{
-        float: right;
-        width: 100%;
-    }
-    
 }
 
 @media (min-width: 768px)        {
@@ -1109,6 +1100,16 @@ padding-right: 10%;
         text-shadow: none;
         color: #111;
     }
+/*
+    #home .left {
+        display:none;
+    }
+    
+    #home .right{
+        float: right;
+        width: 100%;
+    }
+    */
     
 }
 @-moz-document url-prefix() {
