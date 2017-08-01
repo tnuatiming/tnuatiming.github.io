@@ -138,7 +138,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-table::before {
+table::before, table::after {
     content: "";
     display: table;
      width: 100%;
@@ -973,7 +973,7 @@ padding-right: 10%;
 }
 
 @media (max-width: 1024px), (screen and (max-device-width : 1024px) and (min-device-width : 1366px) and (orientation : landscape))   {
-    body {
+    table {
         font-size: 80%;
     }
     body, .full-bg{
@@ -1076,12 +1076,6 @@ padding-right: 10%;
     .main_content {
         margin-top: 170px;
     }   */ 
-
-    #races .sport {
-        -webkit-flex: 100%;
-        -ms-flex: 100%;
-        flex: 100%;
-    }
     
     td.rnk_font, th.rnkh_font, #race .comment_font {
         border: 1px solid #fff;
@@ -1112,6 +1106,14 @@ padding-right: 10%;
     */
     
 }
+/*@media (max-width: 731px)        {
+    #races .sport {
+        -webkit-flex: 100%;
+        -ms-flex: 100%;
+        flex: 100%;
+    }
+}*/
+
 @-moz-document url-prefix() {
     
 }
