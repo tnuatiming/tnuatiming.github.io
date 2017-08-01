@@ -134,10 +134,15 @@ ul.history li {
 table {
 /*    font-size: 0.9em;
     line-height: 2em;*/
-    margin: 0 auto;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+}
+table::before {
+    content: "";
+    display: table;
+     width: 100%;
+   margin: 0 auto;
 }
 
 /*race resulte page*/
@@ -852,13 +857,6 @@ padding-right: 10%;
 }
 
 @media (max-width: 999px) {
-    body {
-        font-size: 100%;
-    }
-    
-    .page {
-        width: 95%;
-    }
     
     #home .left {
     display:none;
@@ -871,40 +869,7 @@ padding-right: 10%;
     
 }
 
-@media (max-width: 900px)  {
-    
-    .navigation {
-        margin-top: 0;
-        margin-left: 0;
-        justify-content: space-around;
-    }
-    .navigation ul {
-        /*   margin: 0 10px 10px 0;*/
-        background: rgba(255,255,255,0.6);
-    }
-    .navigation li {
-        margin: 0;
-        background: none;
-    }
-    #race td.rnk_font {
-    font-weight: 400;
-    text-shadow: none;
-    color: #111;
-    }
-    #race .comment_font {
-    font-weight: 400;
-    text-shadow: none;
-    }
-    #races .sport {
-    -webkit-flex: 100%;
-        -ms-flex: 100%;
-            flex: 100%;
-    }
-    td, th {
-    }
-}
-
-@media (min-width: 800px)        {
+@media (min-width: 768px)        {
     
     body#home .full-bg{
         background-image: url("/images/4752751.jpg");
@@ -1019,38 +984,87 @@ padding-right: 10%;
     }
 }
 
-@media (max-width: 600px)        {
-    
+@media (max-width: 1024px)        {
     body {
-    font-size: 80%;
+        font-size: 80%;
     }
-    .page {
-        width: 100%;
-    }
-    
-    .navigation ul {
-    }
-    
-    td.rnk_font, th.rnkh_font, #race .comment_font {
-        border: 1px solid #fff;
-    }
-    
-    #race tr.rnk_bkcolor:nth-child(odd) {
-    background-color: #e0e0e0;
-    }
-    
-    #race tr.rnk_bkcolor:nth-child(even){
-    background-color: #f0f0f0;
-    }
-    
-    #race td.rnk_font, #race .comment_font {
-    font-weight: 400;
-    text-shadow: none;
-    color: #111;
-    }
-    
     body, .full-bg{
         background: #f0f0f0;
+    }
+
+    .page {
+        width: 98%;
+        margin: 0 auto;
+    }
+    
+    .navigation {
+        margin-top: 0;
+        margin-left: 0;
+        justify-content: space-around;
+    }
+    .navigation ul {
+        /*   margin: 0 10px 10px 0;*/
+        background: rgba(255,255,255,0.6);
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        list-style-type: none;
+        vertical-align: middle;
+    }
+    .navigation li {
+        margin: 0;
+        background: none;
+    }
+    .navigation a, .navigation a.races {
+        color: #222;
+        background-color: #ffcc33;
+        border-bottom: none;
+        font-size: 1.2em;
+    }
+
+    .navigation a.live {
+        color: white;
+        background-color: #c00;
+        border-bottom: none;
+        text-shadow: none;
+        font-size: 1.2em;
+    }
+
+    .navigation a.home {
+        color: #222;
+        background-color: #6c3;
+        border-bottom: none;
+        font-size: 1.2em;
+    }
+
+    #home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
+        border-bottom: 6px #222 solid;
+    }
+
+    .navigation a:link, .navigation a:visited {
+        padding: 10px 30px;
+        border-bottom: none;
+    }
+
+    .navigation a:hover, .navigation a:active {
+        border-bottom: none;
+    }
+    .navigation a.live:hover,.navigation a.live:active {
+        border-bottom: none;
+    }
+
+    .navigation a.home:hover,.navigation a.home:active {
+        border-bottom: none;
+    }
+
+    svg.live-icon {
+        fill: white;
     }
 
     .logo li, .css3-blink {
@@ -1061,64 +1075,7 @@ padding-right: 10%;
         -webkit-animation: none !important;
         animation: none !important;
     }    
-.navigation a, .navigation a.races {
-    color: #222;
-    background-color: #ffcc33;
-    border-bottom: none;
-    font-size: 1.2em;
-}
 
-.navigation a.live {
-    color: white;
-    background-color: #c00;
-    border-bottom: none;
-    text-shadow: none;
-    font-size: 1.2em;
-}
-
-.navigation a.home {
-    color: #222;
-    background-color: #6c3;
-    border-bottom: none;
-    font-size: 1.2em;
-}
-
-#home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
-border-bottom: 6px #222 solid;
-}
-
-.navigation a:link, .navigation a:visited {
-    padding: 10px 30px;
-    border-bottom: none;
-}
-
-.navigation a:hover, .navigation a:active {
-    border-bottom: none;
-}
-.navigation a.live:hover,.navigation a.live:active {
-    border-bottom: none;
-}
-
-.navigation a.home:hover,.navigation a.home:active {
-     border-bottom: none;
-}
-
-svg.live-icon {
-    fill: white;
-}
-.navigation ul {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-    list-style-type: none;
-    vertical-align: middle;
-}
 /*
     .header {
         position: fixed;
@@ -1131,6 +1088,31 @@ svg.live-icon {
     .main_content {
         margin-top: 170px;
     }   */ 
+
+    #races .sport {
+        -webkit-flex: 100%;
+        -ms-flex: 100%;
+        flex: 100%;
+    }
+    
+    td.rnk_font, th.rnkh_font, #race .comment_font {
+        border: 1px solid #fff;
+    }
+    
+    #race tr.rnk_bkcolor:nth-child(odd) {
+        background-color: #e0e0e0;
+    }
+    
+    #race tr.rnk_bkcolor:nth-child(even){
+        background-color: #f0f0f0;
+    }
+    
+    #race td.rnk_font, #race .comment_font {
+        font-weight: 400;
+        text-shadow: none;
+        color: #111;
+    }
+    
 }
 @-moz-document url-prefix() {
     
