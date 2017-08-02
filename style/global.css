@@ -19,6 +19,7 @@ html {
     -ms-text-size-adjust: 100%;
     margin: 0;
     padding: 0;
+    display:table;/*    fixes html/body not expending to the size of the content (table)*/
 /*    position: relative;*/
 }
 
@@ -36,7 +37,12 @@ body {
     -webkit-font-smoothing: antialiased;
     vertical-align: baseline;
     border: 0;
-    min-width:800px;
+/*    min-width: -webkit-min-content;
+    min-width: -moz-min-content;
+    min-width: min-content;
+    min-height: -webkit-min-content;
+    min-height: -moz-min-content;
+    min-height: min-content;*/
     background: rgba(240,240,240,1);
 }
 
@@ -377,6 +383,10 @@ td, th {
     vertical-align: middle;
     border-collapse: collapse;
 /*    font-size: 0.8em;*/
+}
+
+td.rnk_font, th.rnkh_font, #race .comment_font {
+    border: 1px solid #fff;
 }
 
 .full-bg {
