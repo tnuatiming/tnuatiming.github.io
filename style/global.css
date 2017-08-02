@@ -713,6 +713,7 @@ border-bottom: 6px #222 solid;
     -webkit-flex: 1 100%;
         -ms-flex: 1 100%;
             flex: 1 100%;
+    display:table;/*    fixes not expending to the size of the content (table)*/
 }
 
 #live .main_content {
@@ -1000,7 +1001,7 @@ padding-right: 10%;
     }
 }
 
-@media (max-width: 1024px), (screen and (max-device-width : 1024px) and (min-device-width : 1366px) and (orientation : landscape))   {
+@media (max-width: 1024px)   {
     table {
         font-size: 80%;
     }
