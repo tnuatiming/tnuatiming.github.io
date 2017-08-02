@@ -260,7 +260,7 @@ td img {
 }
 
 #Title img {
-    height: 20px;
+    height: 24px;
     vertical-align: center;
     margin: 0 16px 0 16px;
 }
@@ -281,17 +281,18 @@ td img {
 }
 
 #DayTime {
-    color: #333;
+    color: rgba(0,0,0,.5);
     float: left;
 }
 
 #ElapsedTime {
-    color: #333;
+    color: #008000;
     margin-right: 16px;
 }
 
 #RemainingTime {
-    color: #00FF00;
+    color: #800000;
+    float: right;
 }
 
 .HeaderRow {
@@ -308,6 +309,17 @@ td img {
 .EvenRow {
     background-color:  rgba(224,224,224,0.8);
     color: #111;
+}
+#live td {
+    border: 1px solid #fff;
+}
+
+#live td:first-child + td {
+    font-weight: 700;
+    background-color:
+    rgba(37, 37, 37, 0.5);
+    color:#fff;
+    text-shadow: none;
 }
 
 .BestTimeOverall {
@@ -367,7 +379,7 @@ tr.OddRow:hover, tr.EvenRow:hover {
 }
 
 #Message {
-    color: #FFFF00;
+    color: rgba(0,0,0,.5);
     font-size: 1.1em;
 }
 
