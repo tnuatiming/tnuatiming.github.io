@@ -1079,6 +1079,12 @@ padding-right: 10%;
     .navigation a.home:hover,.navigation a.home:active {
         border-bottom: none;
     }
+
+    .logo_main {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
     .logo {
         font-size: 60px;
    }
