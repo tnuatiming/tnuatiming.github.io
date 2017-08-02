@@ -301,12 +301,12 @@ td img {
 }
 
 .OddRow {
-    background-color: rgba(208,208,208,0.5);
+    background-color: rgba(208,208,208,0.8);
     color: #111;
 }
 
 .EvenRow {
-    background-color:  rgba(224,224,224,0.5);
+    background-color:  rgba(224,224,224,0.8);
     color: #111;
 }
 
@@ -385,8 +385,14 @@ td, th {
 /*    font-size: 0.8em;*/
 }
 
-td.rnk_font, th.rnkh_font, #race .comment_font {
+td.rnk_font, th.rnkh_font {
     border: 1px solid #fff;
+}
+
+td.comment_font {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
 }
 
 .full-bg {
@@ -1090,7 +1096,7 @@ padding-right: 10%;
         margin-top: 170px;
     }   */ 
     
-    td.rnk_font, th.rnkh_font, #race .comment_font {
+    td.rnk_font, th.rnkh_font {
         border: 1px solid #fff;
     }
     
@@ -1102,10 +1108,16 @@ padding-right: 10%;
         background-color: #f0f0f0;
     }
     
-    #race td.rnk_font, #race .comment_font {
+    #race td.rnk_font {
         font-weight: 400;
         text-shadow: none;
         color: #111;
+    }
+
+    td.comment_font {
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
     }
 /*
     #home .left {
