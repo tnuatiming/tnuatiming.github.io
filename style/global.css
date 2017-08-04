@@ -678,10 +678,6 @@ a.logo_text{
     border-right: none;
 }
 
-#home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
-border-bottom: 6px #222 solid;
-}
-
 .navigation a:link,.navigation a:visited {
     font-weight: 700;
     background: rgba(255,255,255,0.4);
@@ -696,31 +692,38 @@ border-bottom: 6px #222 solid;
     vertical-align: middle;
 }
 
-.navigation a:hover,.navigation a:active {
+.navigation a.races:hover {
     color: #222;
     background-color: rgba(255,255,255,0.8);
     border-bottom: 6px #ffcc33 solid;
 }
 
-#home .navigation a.live:hover, #home .navigation a.live:active, #races .navigation a.live:hover, #races .navigation a.live:active, #race .navigation a.live:hover, #race .navigation a.live:active {
-    color: #222;
-    background-color: rgba(255,255,255,0.8);
-    border-bottom: 6px #c00 solid;
-}
 
-:not(#home) .navigation a.home:hover, :not(#home) .navigation a.home:active {
+.navigation a.home:hover {
     color: #222;
     background-color: rgba(255,255,255,0.8);
     border-bottom: 6px #6c3 solid;
 }
 
-#home .navigation a.races:hover,#home .navigation a.races:active, #live .navigation a.races:hover,#live .navigation a.races:active {
+.navigation a.live:hover {
     color: #222;
     background-color: rgba(255,255,255,0.8);
-    border-bottom: 6px #ffcc33 solid;
+    border-bottom: 6px #c00 solid;
 }
 
-.home-icon, .race-icon, .live-icon{
+.navigation a.live:hover .live-icon {
+    fill: #222;
+}
+
+#home .navigation a.home,
+#terms .navigation a.home,
+#live .navigation a.live,
+#races .navigation a.races,
+#race .navigation a.races {
+    border-bottom: 6px #222 solid;
+}
+
+.home-icon, .race-icon, .live-icon {
     max-width: 0.8em;
     max-height: 0.8em;
     padding: 0 4px;
@@ -966,8 +969,22 @@ padding-right: 10%;
         font-size: 1.2em;
     }
 
-    #home a.home,#live a.live,#races a.races,#race a.races,#terms a.home {
-        border-bottom: 6px #222 solid;
+
+    #home .navigation a.home:hover,
+    #terms .navigation a.home:hover {
+        color: #222;
+        background-color: #6c3;
+    }
+
+    #live .navigation a.live:hover {
+        color: #fff;
+        background-color: #c00;
+    }
+
+    #races .navigation a.races:hover,
+    #race .navigation a.races:hover {
+        color: #222;
+        background-color: #ffcc33;
     }
 
     .navigation a:link, .navigation a:visited {
@@ -975,20 +992,6 @@ padding-right: 10%;
         border-bottom: none;
     }
 
-    .navigation a:hover, .navigation a:active {
-        border-bottom: none;
-    }
-    .navigation a.live:hover,.navigation a.live:active {
-        border-bottom: none;
-    }
-
-    .navigation a.home:hover,.navigation a.home:active {
-        border-bottom: none;
-    }
-
-    .navigation a.races:hover,.navigation a.races:active {
-        border-bottom: none;
-    }
     .logo_main {
         margin-top: 10px;
         margin-right: 10px;
