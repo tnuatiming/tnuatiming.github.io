@@ -133,8 +133,12 @@ li {
     font-size: 1.2em;
 }
 
-.next-race li, ul.history li {
+ul.history li {
     list-style-type: disc;
+}
+
+#home .sp_tag {
+    border-bottom: 1px solid ;
 }
 
 table {
@@ -698,16 +702,22 @@ border-bottom: 6px #222 solid;
     border-bottom: 6px #ffcc33 solid;
 }
 
-.navigation a.live:hover,.navigation a.live:active {
+#home .navigation a.live:hover, #home .navigation a.live:active, #races .navigation a.live:hover, #races .navigation a.live:active, #race .navigation a.live:hover, #race .navigation a.live:active {
     color: #222;
     background-color: rgba(255,255,255,0.8);
     border-bottom: 6px #c00 solid;
 }
 
-.navigation a.home:hover,.navigation a.home:active {
+#live .navigation a.home:hover, #live .navigation a.home:active, #races .navigation a.home:hover, #races .navigation a.home:active, #race .navigation a.home:hover, #race .navigation a.home:active {
     color: #222;
     background-color: rgba(255,255,255,0.8);
     border-bottom: 6px #6c3 solid;
+}
+
+#home .navigation a.races:hover,#home .navigation a.races:active, #live .navigation a.races:hover,#live .navigation a.races:active {
+    color: #222;
+    background-color: rgba(255,255,255,0.8);
+    border-bottom: 6px #ffcc33 solid;
 }
 
 .home-icon, .race-icon, .live-icon{
@@ -976,6 +986,9 @@ padding-right: 10%;
         border-bottom: none;
     }
 
+    .navigation a.races:hover,.navigation a.races:active {
+        border-bottom: none;
+    }
     .logo_main {
         margin-top: 10px;
         margin-right: 10px;

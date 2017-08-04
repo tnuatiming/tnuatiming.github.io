@@ -17,8 +17,9 @@ a.live:hover, a.live:active {
   background-color: rgba(255,255,255,0.8);
   border-bottom: 6px #ffcc33 solid;
 }
-.main {
-text-align: left;
+.main_content {
+    text-align: left;
+    margin-bottom: 20px;
 }
 .mail {
 text-align: left;
@@ -78,44 +79,18 @@ order:1;
 li {
    text-align:left;   
 }
-@media screen and (max-width: 60em) {
-        
-.image-side {
-	  float: left;  
-	}
-.logotop {padding:10px;
-}
 
-.navigation, .header, .main_content, .footer {
-            margin-right:0;
-        }
+@media (max-width: 1024px)   {
+    .left {
+        display:none;
     }
-
-@media screen and (min-width: 60em) {
- 
-.logotop{}
-.head{} 
-	  
-.navigation, .header {
-            margin-right:0;
-        }
- 
-.main_content{    
-        }
-  
-.footer {
-            margin-right:0;
-        }
+    
+    .right{
+        float: left;
+        width: 100%;
     }
-
-@media all and (max-width: 42em)
-	{
- .right{
-    float: left;
-    width: 100%;
+ .navigation ul {
+   margin: 0 auto;
 }
-.left{
-  display: none;
+   
 }
-	}
-	

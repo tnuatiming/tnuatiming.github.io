@@ -31,21 +31,21 @@ sitemap:
 {% if post.noseason == "true" %}
     {% if post.round != null %}
                 <li>
-                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} {{ post.place }}</a>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> <span class="sp_tag">{{ post.tag }}:</span> {{ post.round }} {{ post.place }}</a>
                 </li>
     {% else %}
                 <li>
-                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.place }}</a>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> <span class="sp_tag">{{ post.tag }}:</span> {{ post.place }}</a>
                 </li>
     {% endif %}                
 {% else %}
     {% if post.round != null %}
                 <li>
-                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> <span class="sp_tag">{{ post.tag }}:</span> {{ post.round }} עונת {{ post.season }} - {{ post.place }}</a>
                 </li>
     {% else %}
                 <li>
-                  <a href="{{ post.url | prepend: site.baseurl }}"> {{ post.tag }}: עונת {{ post.season }} - {{ post.place }}</a>
+                  <a href="{{ post.url | prepend: site.baseurl }}"> <span class="sp_tag">{{ post.tag }}:</span> עונת {{ post.season }} - {{ post.place }}</a>
                 </li>
     {% endif %}                
 {% endif %}
