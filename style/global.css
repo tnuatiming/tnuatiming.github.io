@@ -715,6 +715,13 @@ a.logo_text{
     fill: #222;
 }
 
+#home .navigation a.home:hover,
+#terms .navigation a.home:hover,
+#live .navigation a.live:hover,
+#races .navigation a.races:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
 #home .navigation a.home,
 #terms .navigation a.home,
 #live .navigation a.live,
