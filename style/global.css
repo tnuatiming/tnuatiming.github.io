@@ -708,7 +708,7 @@ border-bottom: 6px #222 solid;
     border-bottom: 6px #c00 solid;
 }
 
-#live .navigation a.home:hover, #live .navigation a.home:active, #races .navigation a.home:hover, #races .navigation a.home:active, #race .navigation a.home:hover, #race .navigation a.home:active {
+:not(#home) .navigation a.home:hover, :not(#home) .navigation a.home:active {
     color: #222;
     background-color: rgba(255,255,255,0.8);
     border-bottom: 6px #6c3 solid;
