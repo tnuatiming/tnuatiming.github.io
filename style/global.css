@@ -19,7 +19,7 @@ html {
     -ms-text-size-adjust: 100%;
     margin: 0;
     padding: 0;
-    display:table;/*    fixes html/body not expending to the size of the content (table)*/
+    display:table;  /*  fixes html/body not expending to the size of the content (table)*/
 /*    position: relative;*/
 }
 
@@ -921,7 +921,7 @@ padding-right: 10%;
 
 @media (max-width: 1024px)   {
     table {
-        font-size: 80%;
+        font-size: 70%;
     }
     body, .full-bg{
         background: #f0f0f0;
