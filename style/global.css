@@ -741,10 +741,10 @@ a.logo_text{
     margin-top: 25px;
     text-align: right;
     width: 100%;
-    -webkit-flex: 1 100%;
-        -ms-flex: 1 100%;
-            flex: 1 100%;
-    display:table;/*    fixes not expending to the size of the content (table)*/
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+/*    display:table;    fixes not expending to the size of the content (table)*/
 }
 
 #live .main_content {
@@ -853,6 +853,8 @@ padding-right: 10%;
     -webkit-flex-direction: row-reverse;  
         -ms-flex-direction: row-reverse;  
             flex-direction: row-reverse;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .mail, .copyright {
@@ -926,7 +928,7 @@ padding-right: 10%;
     }
 
     .page {
-        width: 98%;
+        width: 95%;
         margin: 0 auto;
     }
     
