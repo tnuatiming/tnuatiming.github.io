@@ -407,9 +407,9 @@ td.rnk_font, th.rnkh_font {
     
 th.rnkh_font {
   background: rgba(118,116,114,1); /*same as rgba(0,0,0,.5) with out alpha transperancy*/
-  position: -webkit-sticky;
+/*  position: -webkit-sticky;
   position: sticky;
-  top: 0px;
+  top: 0px;*/
 }
 
 tr.rnkh_bkcolor {
@@ -955,13 +955,13 @@ padding-right: 10%;
     .navigation li {
         margin: 0;
         background: none;
-        min-width: 30%;
+        min-width: 33%;
     }
     .navigation a, .navigation a.races {
         color: #222;
         background-color: #ffcc33;
         border-bottom: none;
-        font-size: 1.2em;
+      /*  font-size: 1.2em;*/
     }
 
     .navigation a.live {
@@ -969,14 +969,12 @@ padding-right: 10%;
         background-color: #c00;
         border-bottom: none;
         text-shadow: none;
-        font-size: 1.2em;
     }
 
     .navigation a.home {
         color: #222;
         background-color: #6c3;
         border-bottom: none;
-        font-size: 1.2em;
     }
 
 
