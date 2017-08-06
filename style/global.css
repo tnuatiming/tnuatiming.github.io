@@ -955,6 +955,7 @@ padding-right: 10%;
     .navigation li {
         margin: 0;
         background: none;
+        min-width: 30%;
     }
     .navigation a, .navigation a.races {
         color: #222;
