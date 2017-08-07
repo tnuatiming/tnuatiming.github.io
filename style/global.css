@@ -398,11 +398,12 @@ td, th {
     text-align: center;
     vertical-align: middle;
     border-collapse: collapse;
-/*    font-size: 0.8em;*/
+ /*    font-size: 0.8em;*/
 }
 
 td.rnk_font, th.rnkh_font {
     border: 1px solid #fff;
+    white-space: nowrap;
 }
     
 th.rnkh_font {
@@ -420,6 +421,10 @@ td.comment_font {
     border-bottom: none;
     border-left: none;
     border-right: none;
+}
+
+#race td.rnk_font.penalty {
+    color: #ff0000;
 }
 
 .full-bg {
