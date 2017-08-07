@@ -921,14 +921,14 @@ padding-right: 10%;
 
 @media (max-width: 1024px)   {
     table {
-        font-size: 70%;
+     /*    font-size: 70%;*/
     }
     body, .full-bg{
         background: #f0f0f0;
     }
 
     .page {
-        width: 95%;
+        width: 100%;
         margin: 0 auto;
     }
     
