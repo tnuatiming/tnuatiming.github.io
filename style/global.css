@@ -1044,6 +1044,9 @@ padding-right: 10%;
     .main_content {
         margin-top: 170px;
     }   */ 
+    td.title_font {
+        font-size: 1.6em;
+    }
     
     td.rnk_font, th.rnkh_font {
         border: 1px solid #fff;
