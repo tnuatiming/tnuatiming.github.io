@@ -93,6 +93,7 @@ if ($_POST['elite']) {  //create header for elite v3
         while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
                 $num = count($data1);
                 if (($stop == 0) && ($num > 3)) { // header line probably more then 3 colmuns and stop going trough the line when the header is detected
+                    $bigTable = $num;
                     for ($c=0; $c < $num; $c++) {
                         $header .= '        <th class="rnkh_font">'.$data1[$c].'</th>'."\r\n";
                         $stop = 1;
@@ -176,6 +177,7 @@ if ($_POST['elite']) {  //create header for elite v3
                 $num = count($data1);
 //                if ($num != 1) {
                 if ($num > 1) {
+                    $bigTable = $num;
                     for ($c=0; $c < $num; $c++) {
                     
                         $headerItem = array("Rank"=>"מקום", "Rnk"=>"מקום", "Pos."=>"מקום", "Num"=>"מספר", "Bib."=>"מספר", "Driver's last name"=>$changeName, "Driver's first name"=>"נווט", "Last Name"=>$changeName, "First Name"=>"נווט", "Name"=>$changeName, "Driver"=>$changeName, "Laps"=>"הקפות", "B.Lap"=>"הקפה מהירה", "Lap"=>"הקפה", "Time"=>"זמן", "Gap"=>"פער", "Penalty"=>"עונשין", "Category"=>"קטגוריה", "Hour"=>"זמן כולל", "Seq"=>"סידורי", "Points"=>"נקודות", "Run 1"=>"$runType 1", "Run 2"=>"$runType 2", "Run 3"=>"$runType 3", "Run 4"=>"$runType 4", "Run 5"=>"$runType 5", "Run 6"=>"$runType 6", "Run 7"=>"$runType 7", "Run 8"=>"$runType 8", "Run 9"=>"$runType 9", "Run 10"=>"$runType 10", "Run 11"=>"$runType 11", "Run 12"=>"$runType 12");
@@ -207,7 +209,13 @@ if ($_POST['elite']) {  //create header for elite v3
 $row = 1;
 $blapinsert = 0;
 $categoryheader = -1;
-$html .= '<table class="line_color">'."\r\n";
+
+if ($bigTable > 10) { // check if table has more then 10 colmuns and mark the class
+    $html .= '<table class="line_color big_table">'."\r\n";
+} else {
+    $html .= '<table class="line_color">'."\r\n";
+}
+
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
 if ($_POST['elite']) { // elite v3

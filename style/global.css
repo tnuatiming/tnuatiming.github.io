@@ -144,6 +144,7 @@ ul.history li {
 table {
 /*    font-size: 0.9em;
     line-height: 2em;*/
+    font-size: 1em;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -928,6 +929,10 @@ padding-right: 10%;
     table {
      /*    font-size: 70%;*/
     }
+    .big_table {
+        font-size: 0.7em;
+    }
+
     body, .full-bg{
         background: #f0f0f0;
     }
