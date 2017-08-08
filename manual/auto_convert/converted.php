@@ -1,5 +1,5 @@
 <?php
-$categoryTranslate = array("אנדורו"=>"enduro", "ראלי רייד"=>"baja", "ראלי"=>"rally", "ראלי ספרינט"=>"rallysprint", "ריצה"=>"running", "מוטוקרוס"=>"motocross", "ג'ימקאנה"=>"gymkhana", "סופרבייק"=>"superbike", "אול מאונטיין"=>"allmountain", "קרטינג"=>"karting", "סופרמוטו"=>"supermoto");
+$categoryTranslate = array("אנדורו"=>"enduro", "ראלי רייד"=>"baja", "ראלי"=>"rally", "ראלי ספרינט"=>"rallysprint", "ריצה"=>"running", "מוטוקרוס"=>"motocross", "ג'ימקאנה"=>"gymkhana", "סופרבייק"=>"superbike", "אול מאונטיין"=>"allmountain", "קרטינג"=>"karting", "טרקטורונים"=>"atv", "סופרמוטו"=>"supermoto");
 
 // liquid header
 
