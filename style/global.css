@@ -938,6 +938,11 @@ padding-right: 10%;
     }
 
     .page {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+#live .page, #race .page {
         width: 100%;
         margin: 0 auto;
     }
