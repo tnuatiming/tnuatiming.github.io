@@ -150,6 +150,10 @@ direction: ltr;
     
     <p class="c1"><span><img alt="image21.png" src="/manual/images/image21.png"></span></p>
     
+    <p class="c0"><span>או בגרסה החדשה</span></p>
+
+    <p class="c1"><span><img alt="image24.png" src="/manual/images/image24.png"></span></p>
+    
     <p class="c1"><span><img alt="image18.png" src="/manual/images/image18.png"></span></p>
     
     <p class="c1"><span><img alt="image03.png" src="/manual/images/image03.png"></span></p>
