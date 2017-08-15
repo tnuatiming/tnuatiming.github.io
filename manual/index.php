@@ -73,8 +73,35 @@ direction: ltr;
     <div class="content">
     
     <h1 class="c5">הוראות הפעלה</h1>
-    
-    <h2 class="c4">תוכנות</h2>
+<ul>    
+<li><a href="#C1">תוכנות</a></li>
+<li><a href="#C2">יבוא מתחרים</a>
+    <ul>
+    <li><a href="#C2_1">הסבת xlsx</a></li>
+    </ul>
+</li>
+<li><a href="#C3">הגדרת CP</a></li>
+<li><a href="#C4">היירסקרמבל</a>
+    <ul>
+    <li><a href="#C4_1">אופציה א</a></li>
+    <li><a href="#C4_2">אופציה ב</a></li>
+    <li><a href="#C4_3">מדידת זמנים</a></li>
+    </ul>
+</li>
+<li><a href="#C5">ספיישל טסט</a></li>
+<li><a href="#C6">מוטוקרוס או הקפות במסלול סגור</a></li>
+<li><a href="#C7">live timing</a></li>
+<li><a href="#C9">שעון תצוגה</a>
+<li><a href="#C8">התאמת התוצאות לתצוגה באתר</a>
+    <ul>
+    <li><a href="#C8_1">ידני</a></li>
+    <li><a href="#C8_2">אוטומטי</a></li>
+    </ul>
+</li>
+</ul>
+<br><br>
+
+<h2 id="C1" class="c4">תוכנות</h2>
     
     <div class="downloads">
     
@@ -118,35 +145,35 @@ direction: ltr;
 
     </div>
   
-    <h2 class="c4">יבוא מתחרים</h2>
+    <h2 id="C2" class="c4">יבוא מתחרים</h2>
  
     <p class="c0"> מקובץ csv או xls. צריך לכלול לפחות: שם מלא בעמודה יחידה (לא כמו בצילום מתחת) אפשר להשתמש בנוסחה לאיחוד תאים:</p>
     <pre><code> &#61; B1 &#38; &#34; &#34; &#38; C1</code></pre>
     <p> מספר מתחרה(לוודא שאין כפילויות!) וקטגוריה.  יש לשמור את הקובץ כ- encoding utf-8.</p>
   
-    <h3 class="c7">הסבת xlsx</h3>
+    <h3 id="C2_1" class="c7">הסבת xlsx</h3>
 
     <p class="c0"><span><a class="c2" href="https://www.beautifyconverter.com/excel-to-csv-converter.php">https://www.beautifyconverter.com/excel-to-csv-converter.php </a></span></p> 
     </br>
     <p class="c1"><span><img alt="image02.png" src="/manual/images/image02.png"></span></p>
     
-    <h2 class="c4">הגדרת CP</h2>
+    <h2 id="C3" class="c4">הגדרת CP</h2>
    
     <p class="c1"><span><img alt="image17.png" src="/manual/images/image17.png"></span></p>
     
     <p class="c0"><span>יש לבצע test ולבדוק שמתקבלת תשובה כמו בתמונה</span></p>
     
-    <h2 class="c4">היירסקרמבל</h2>
+    <h2 id="C4" class="c4">היירסקרמבל</h2>
     
     <p class="c1"><span><img alt="image05.png" src="/manual/images/image05.png"></span></p>
     
     <p class="c1"><span><img alt="image01.png" src="/manual/images/image01.png"></span></p>
 
-    <h3 class="c7">אופציה א  (לא עובד ללא Encoder או CP?)</h3>
+    <h3 id="C4_1" class="c7">אופציה א  (לא עובד ללא Encoder או CP?)</h3>
 
     <p class="c1"><span><img alt="image14.png" src="/manual/images/image14.png"></span></p>
     
-    <h3 class="c7">אופציה ב</h3>
+    <h3 id="C4_2" class="c7">אופציה ב</h3>
     
     <p class="c1"><span><img alt="image21.png" src="/manual/images/image21.png"></span></p>
     
@@ -162,7 +189,7 @@ direction: ltr;
     
     <p class="c1"><span><img alt="image00.png" src="/manual/images/image00.png"></span></p>
     
-    <h3 class="c7">מדידת זמנים</h3>
+    <h3 id="C4_3" class="c7">מדידת זמנים</h3>
     
     <h3 class="c7">זינוק אופציה א (לא עובד ללא Encoder או CP?)</h3>
 
@@ -182,7 +209,7 @@ direction: ltr;
     
     <p class="c0"><span>כשמסתיים הזמן, יש ללחוץ על דגל השחמט וכל מתחרה שמסיים לאחר מכן מקבל את הזמן הכללי/מספר הקפות הסופי שלו.</span></p>
 
-    <h2 class="c4">ספיישל טסט</h2>
+    <h2 id="C5" class="c4">ספיישל טסט</h2>
     
     <p class="c1"><span><img alt="image05.png" src="/manual/images/image05.png"></span></p>
     
@@ -196,13 +223,13 @@ direction: ltr;
     
     <p class="c1"><span><img alt="image11.png" src="/manual/images/image11.png"></span></p>
     
-    <h2 class="c4">מוטוקרוס או הקפות במסלול סגור</h2>
+    <h2 id="C6" class="c4">מוטוקרוס או הקפות במסלול סגור</h2>
     
     <p class="c1"><span><img alt="image22.png" src="/manual/images/image22.png"></span></p>
     
     <p class="c1"><span><img alt="image23.png" src="/manual/images/image23.png"></span></p>
 
-    <h2 class="c4">live timing</h2>
+    <h2 id="C7" class="c4">live timing</h2>
  
     <p class="c1"><span><img alt="image07.png" src="/manual/images/image07.png"></span></p>
  
@@ -216,11 +243,15 @@ direction: ltr;
  
     <p class="c1"><span><img alt="image15.png" src="/manual/images/image15.png"></span></p>
  
-    <h2 class="c4">התאמת התוצאות לתצוגה באתר</h2>
+    <h2 id="C9" class="c7">שעון תצוגה</h2>
+
+    <p class="c1"><span><img alt="image06.png" src="/manual/images/image06.png"></span></p>
+    
+    <h2 id="C8" class="c4">התאמת התוצאות לתצוגה באתר</h2>
 
     <p class="c1"><span><img alt="image16.png" src="/manual/images/image16.png"></span></p>
     
-    <h3 class="c7">ידני</h3>
+    <h3 id="C8_1" class="c7">ידני</h3>
 
     <p class="c0">יש לבצע את הפעולות לפי הסדר המופיע להלן:</p>
     <ol>
@@ -252,7 +283,7 @@ direction: ltr;
         &lt;/tr&gt;
         
         &lt;tr class="rnk_bkcolor"&gt;
-            &lt;td colspan="99" class="comment_font"> הקפה מהירה: 54  דורון וינטר  - 00:59:16.725&lt;/td&gt;
+            &lt;td colspan="99" class="comment_font"> הקפה מהירה: (54)  דורון וינטר  - 00:59:16.725&lt;/td&gt;
         &lt;/tr&gt;
         </code></pre>
         </li>
@@ -276,11 +307,11 @@ direction: ltr;
     </ol>
     במקום סעיפים 6,7 ניתן להשתמש ב-tidy-html5 ולהריץ את הפקודה:  tidy -f error.html -o output.html  -i input.html
     
-    <h3 class="c7">חצי אוטומטי</h3>
+    <h3 id="C8_2" class="c7">אוטומטי(דרך האתר)</h3>
     
     <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a> את סעיפים 4,5 יש לוודא תקינות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות).</span></p>
     
-    <h3 class="c7">אוטומטי(דרך עדיפה)</h3>
+    <h3 class="c7">אוטומטי(סקריפט)</h3>
 
     <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTohtml.py">http://tnuatiming.com/manual/csvTohtml.py </a>קובץ python המבצע את כל הפעולות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות)</span></p>    
 
@@ -288,10 +319,6 @@ direction: ltr;
 
     <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTranspose.py">http://tnuatiming.com/manual/csvTranspose.py </a>קובץ python המבצע את כל הפעולות כולל סיבוב הטבלה</span></p>    
 
-    <h3 class="c7">שעון תצוגה</h3>
-
-    <p class="c1"><span><img alt="image06.png" src="/manual/images/image06.png"></span></p>
-    
     <p class="c0"><span>p5f123d7a7e</span></p>
     
     </div>
