@@ -75,6 +75,7 @@ direction: ltr;
     <h1 class="c5">הוראות הפעלה</h1>
 <ul>    
 <li><a href="#C1">תוכנות</a></li>
+<li><a href="#C11">הגדרות ראשוניות</a>
 <li><a href="#C2">יבוא מתחרים</a>
     <ul>
     <li><a href="#C2_1">הסבת xlsx</a></li>
@@ -145,6 +146,95 @@ direction: ltr;
 
     </div>
   
+    <h2 id="C11" class="c4">הגדרות ראשוניות</h2>
+
+    <div class="downloads">
+
+    <ol>
+    <li>internet connection</li>
+    <li>time syncro cp > pc</li>
+    <li>CP > impulse time in according to race type</li>
+
+    <li>setting > option</li>
+        <ol>
+    <li>translate to hebrew<br>
+    <pre><code>No.,מספר,center
+Name,שם,right
+Category,קטגוריה,right
+Group,קבוצה,right
+Custom1,משפחה,right
+Trans. 1,טרנספונדר,right
+Driver 1,שם,right
+,,
+Pos.,מקום,center
+Cat. Pos.,מקום בקטגוריה,center
+Total time,זמן,right
+Total laps,הקפות,center
+Best lap,הקפה מהירה,right
+In lap,בהקפה,center
+Lap time,הקפה אחרונה,right
+Lap time 1,הקפה 1,right
+Lap time 2,הקפה 2,right
+Lap time 3,הקפה 3,right
+Lap time 4,הקפה 4,right
+Lap time 5,הקפה 5,right
+Lap time 6,הקפה 6,right
+Lap time 7,הקפה 7,right
+Lap time 8,הקפה 8,right
+Lap time 9,הקפה 9,right
+Lap time 10,הקפה 10,right
+Lap time 11,הקפה 11,right
+Lap time 12,הקפה 12,right
+Diff. with leader,פער,right
+Start time,זמן זינוק,right
+Total time penelty,עונשין-זמן,right
+Total laps penelty,עונשין-הקפות,center
+Position penelty,עונשין-מקום,center
+Running time,זמן מירוץ,right
+,,
+Abbreviation lap :,הקפות,center
+Abbreviation last lap in race :,הקפה אחרונה,center
+Abbreviation laps completed :,סיום,center
+,,
+Status 1,DNF,center
+Status 2,DNS,center
+Status 3,DSQ,center</code></pre></li>
+            <li>live internet setting and test</li>
+            <li>timing > photo cell</li>
+        </ol>
+    <li>setting > stopwatch > set and test</li>
+    <li>setting > display panel</li>
+    <li>open new event , enter name(type - place) and date</li>
+    <li>database of event > import competitors from csv/txt file</li>
+    <li>right click > folder > new</li>
+        <ol>
+            <li>place as folder name</li>
+            <li>setting > add track name(leave the Distance at 0!)</li>
+            <li>edit timing channels to fit race type</li>
+            <li>edit printing body > display the best lap (קטגוריה)</li>
+            <li>options > enable live internet</li>
+            <li>create tamplate</li>
+        </ol>
+    <li>right click > race> new</li>
+        <ol>
+            <li>general > race name (categopry), begin date and callsification on</li>
+            <li>options > minimum lap time, auto finish, staggered start, consider the 1st passing as a full lap</li>
+            <li>requirements > must cross the finshing line > DNF(status 1)</li>
+            <li>import competitors of category</li>
+            <li>create tamplate</li>
+        </ol>
+    <li>timing</li>
+        <ol>
+            <li>green flag</li>
+            <li>manual hit > assign to all competitors, and fix stopwatch and channel</li>
+            <li>chackered flag</li>
+        </ol>
+    <li>merge/separate races if needed</li>
+    <li>print > print the classification > apply sort on competitors > קטגוריה >> choose from template list</li>
+    <li>export event if needed</li>
+   </ol>
+     </div>
+   
     <h2 id="C2" class="c4">יבוא מתחרים</h2>
  
     <p class="c0"> מקובץ csv או xls. צריך לכלול לפחות: שם מלא בעמודה יחידה (לא כמו בצילום מתחת) אפשר להשתמש בנוסחה לאיחוד תאים:</p>
