@@ -9,7 +9,7 @@ sitemap:
   changefreq: 'monthly'
   exclude: 'no'
 ---
-
+<!--
 <script>
 (function() {
   var httpRequest;
@@ -37,5 +37,19 @@ sitemap:
     }
   }
 })();
+</script>
+<p id=raceheader></p>
+-->
+<script>
+
+function populatePre(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        document.getElementById('raceheader').textContent = this.responseText;
+    };
+    xhr.open('GET', url);
+    xhr.send();
+}
+populatePre('raceheader.txt');
 </script>
 <p id=raceheader></p>
