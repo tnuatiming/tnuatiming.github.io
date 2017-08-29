@@ -265,9 +265,9 @@ td img {
 }
 
 #Title img {
-    height: 24px;
-    vertical-align: center;
-    margin: 0 16px 0 16px;
+    height: 48px;
+    vertical-align: middle;
+    margin: 0 16px;
 }
 
 #ImageHeader {
@@ -378,9 +378,18 @@ tr.OddRow:hover, tr.EvenRow:hover {
     max-width: 80%;
     max-height: 80%;
 }
+
 #live #Title {
     display:block;
-    margin-top: 20px;
+    vertical-align: middle;
+}
+
+#live p#raceheader {
+    color: #58585a;
+    font-size: 200%;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px auto;
 }
 
 #Message {

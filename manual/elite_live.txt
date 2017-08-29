@@ -54,7 +54,7 @@
         function AfficherImageZoom(a,b){""!=b?(document.getElementById("ImageZoom").src=b,document.getElementById("ImageZoom").style.left=a.clientX+"px",document.getElementById("ImageZoom").style.top=a.clientY+"px",document.getElementById("ImageZoom").style.visibility="visible"):document.getElementById("ImageZoom").style.visibility="hidden"};
     </script>
 
-    	<!-- google-analytics -->
+    <!-- google-analytics -->
     <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -135,7 +135,8 @@
         <div class="main_table col">
             <div class="content">
             
-            <img id="ImageZoom" src="/images/liveheader.jpg" />
+         <!--   <img id="ImageZoom" src="/images/liveheader.jpg" />--->
+            <p id="raceheader">מדידה בזמן אמת</p>
 
 <!----<div id="result"></div>--->
 
