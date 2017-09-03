@@ -319,6 +319,15 @@ if ($_POST['elite']) { // elite v3
                         $data[$c] = str_replace("3h", "03:", $data[$c]);
                         $data[$c] = str_replace("4h", "04:", $data[$c]);
                         $data[$c] = str_replace("5h", "05:", $data[$c]);
+                        if (substr( $data[$c], 0, 3 ) === "00:") { // delete leading 00:
+                            $data[$c] = substr_replace($data[$c], '', 0, 3);
+                        }
+                        if (substr( $data[$c], 0, 3 ) === "00:") { // delete second leading 00:
+                            $data[$c] = substr_replace($data[$c], '', 0, 3);
+                        }
+                        if (substr( $data[$c], 0, 1 ) === "0") { // delete leading 0
+                            $data[$c] = substr_replace($data[$c], '', 0, 1);
+                        }                        
                         if (strpos($data[$c], '(C)') !== false) {
                             $data[$c] = str_replace("(C)", " P ", $data[$c]);
                             $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
