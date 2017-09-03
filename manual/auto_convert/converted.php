@@ -273,6 +273,7 @@ if ($_POST['elite']) { // elite v3
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
                     $html .= '        <td  colspan="99" class="subtitle_font">DNS - לא התחיל</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
+                } elseif (strpos($data[0], 'Requirements : Must cross the finishing line') !== false) {
                 } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
 //                    $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
