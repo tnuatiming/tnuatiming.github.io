@@ -74,7 +74,8 @@ td, th {
     text-align: left;
     padding: 1px;
 }
-tbody tr:hover {
+
+tbody tr:hover { 
   background: yellow;
 }
 .s0{font-weight: bold;text-align: center;}
@@ -261,25 +262,27 @@ Status 3,DSQ,center</code></pre></li>
    
 <div class="ritz grid-container" dir="ltr">
     <table class="waffle" cellspacing="0" cellpadding="0">
-        <tbody>
+        <thead>
             <tr style='height:20px;'>
-                <td class="s0" dir="ltr" rowspan="2">race</td>
-                <td class="s0" dir="ltr" rowspan="2">type configuration</td>
-                <td class="s0" dir="ltr" colspan="3">start loop</td>
-                <td class="s0" dir="ltr" colspan="3">finish loop</td>
-                <td class="s0" dir="ltr" rowspan="2">classification on</td>
-                <td class="s0" dir="ltr" rowspan="2">staggerted start</td>
-                <td class="s0" dir="ltr" rowspan="2">consider the 1st passing as full lap</td>
-                <td class="s0" dir="ltr" rowspan="2">start</td>
+                <th class="s0" dir="ltr" rowspan="2">race</th>
+                <th class="s0" dir="ltr" rowspan="2">type configuration</th>
+                <th class="s0" dir="ltr" colspan="3">start loop</th>
+                <th class="s0" dir="ltr" colspan="3">finish loop</th>
+                <th class="s0" dir="ltr" rowspan="2">classification on</th>
+                <th class="s0" dir="ltr" rowspan="2">staggerted start</th>
+                <th class="s0" dir="ltr" rowspan="2">consider the 1st passing as full lap</th>
+                <th class="s0" dir="ltr" rowspan="2">start</th>
             </tr>
             <tr style='height:20px;'>
-                <td class="s01" dir="ltr">stopwatch</td>
-                <td class="s01" dir="ltr">channel</td>
-                <td class="s01" dir="ltr">counting lap</td>
-                <td class="s01" dir="ltr">stopwatch</td>
-                <td class="s01" dir="ltr">channel</td>
-                <td class="s01" dir="ltr">counting lap</td>
+                <th class="s01" dir="ltr">stopwatch</th>
+                <th class="s01" dir="ltr">channel</th>
+                <th class="s01" dir="ltr">counting lap</th>
+                <th class="s01" dir="ltr">stopwatch</th>
+                <th class="s01" dir="ltr">channel</th>
+                <th class="s01" dir="ltr">counting lap</th>
             </tr>
+        </thead>
+       <tbody>
             <tr style='height:20px;'>
                 <td class="s1 s11" dir="ltr">motocross</td>
                 <td class="s2" dir="ltr">circuit</td>
@@ -321,20 +324,6 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" dir="ltr"></td>
                 <td class="s2" dir="ltr"></td>
                 <td class="s1" dir="ltr"></td>
-            </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">superbike/supermoto(old)</td>
-                <td class="s2" dir="ltr">circuit</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr">close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</td>
             </tr>
             <tr style='height:20px;'>
                 <td class="s1 s11" dir="ltr">superbike/supermoto</td>
@@ -405,6 +394,20 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" dir="ltr">v</td>
                 <td class="s2" dir="ltr"></td>
                 <td class="s1" dir="ltr"></td>
+            </tr>
+            <tr style='height:20px;'>
+                <td class="s1 s11" dir="ltr">superbike/supermoto(old)</td>
+                <td class="s2" dir="ltr">circuit</td>
+                <td class="s2" dir="ltr"></td>
+                <td class="s2" dir="ltr"></td>
+                <td class="s2" dir="ltr"></td>
+                <td class="s2" dir="ltr">1</td>
+                <td class="s2" dir="ltr">1</td>
+                <td class="s2" dir="ltr">v</td>
+                <td class="s2" dir="ltr">total laps</td>
+                <td class="s2" dir="ltr"></td>
+                <td class="s2" dir="ltr"></td>
+                <td class="s1" dir="ltr">close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</td>
             </tr>
         </tbody>
     </table>
