@@ -67,7 +67,7 @@ direction: ltr;
 table {
     border-collapse: collapse;
     width: 100%;
-}
+overflow-x: auto; display: block;}
 
 td, th {
     border: 1px solid #dddddd;
@@ -78,7 +78,7 @@ td, th {
 tbody tr:hover { 
   background: yellow;
 }
-.s0{font-weight: bold;text-align: center;}
+.s0, .s00{font-weight: bold;text-align: center;}
 .s01{font-weight: bold;color:green;text-align: center;}
 .s2{text-align: center;}
 .s11{font-weight: bold;color:red;}
@@ -264,14 +264,18 @@ Status 3,DSQ,center</code></pre></li>
     <table class="waffle" cellspacing="0" cellpadding="0">
         <thead>
             <tr style='height:20px;'>
-                <th class="s0" dir="ltr" rowspan="2">race</th>
+                <th class="s00" dir="ltr" rowspan="3">race type</th>
+                <th class="s00" dir="ltr" colspan="7">folder settings</th>
+                <th class="s00" dir="ltr" colspan="3">race settings</th>
+                <th class="s00" dir="ltr" rowspan="3">start procedure</th>
+            </tr>
+            <tr style='height:20px;'>
                 <th class="s0" dir="ltr" rowspan="2">type configuration</th>
                 <th class="s0" dir="ltr" colspan="3">start loop</th>
                 <th class="s0" dir="ltr" colspan="3">finish loop</th>
                 <th class="s0" dir="ltr" rowspan="2">classification on</th>
                 <th class="s0" dir="ltr" rowspan="2">staggerted start</th>
                 <th class="s0" dir="ltr" rowspan="2">consider the 1st passing as full lap</th>
-                <th class="s0" dir="ltr" rowspan="2">start</th>
             </tr>
             <tr style='height:20px;'>
                 <th class="s01" dir="ltr">stopwatch</th>
