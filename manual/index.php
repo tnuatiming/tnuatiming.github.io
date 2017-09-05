@@ -32,20 +32,20 @@
   
 <style>
 a {
-  color: blue;
-  text-decoration: none;
+    color: blue;
+    text-decoration: none;
 }
 img {
-  border: 0;
-  max-width: 100%;
-  height: auto;
+    border: 0;
+    max-width: 100%;
+    height: auto;
 }
 .content {
-  max-width: 80%;
-  margin: 0 auto;
-  position: relative;
-  min-height: 100%;
-  overflow: hidden;
+    max-width: 90%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
 }
 ol {
     display: block;
@@ -56,32 +56,47 @@ ol {
     margin-right: 0;
     padding-left: 40px;
 }
-
 pre {
-background: #eee;
+    background: #eee;
 }
 pre, .downloads {
-text-align: left;
-direction: ltr;
+    text-align: left;
+    direction: ltr;
 }
 table {
     border-collapse: collapse;
     width: 100%;
-overflow-x: auto; display: block;}
-
+    overflow-x: auto; 
+    display: block;
+    direction: ltr;
+}
+tr {
+  height: 20px;
+}
 td, th {
-    border: 1px solid #dddddd;
+    border: 2px solid #ccc;
     text-align: left;
     padding: 1px;
 }
-
 tbody tr:hover { 
-  background: yellow;
+    background: yellow;
 }
-.s0, .s00{font-weight: bold;text-align: center;}
-.s01{font-weight: bold;color:green;text-align: center;}
-.s2{text-align: center;}
-.s11{font-weight: bold;color:red;}
+.s0, .s00 {
+    font-weight: bold;
+    text-align: center;
+}
+.s01 {
+    font-weight: bold;
+    color:green;
+    text-align: center;
+}
+.s2 {
+    text-align: center;
+}
+.s11 {
+    font-weight: bold;
+    color:red;
+}
 </style>
 
 
@@ -260,158 +275,158 @@ Status 3,DSQ,center</code></pre></li>
    <h2 id="C11_1" class="c4">טבלת הגדרות לפי מרוץ</h2>
    
    
-<div class="ritz grid-container" dir="ltr">
+<div>
     <table class="waffle" cellspacing="0" cellpadding="0">
         <thead>
-            <tr style='height:20px;'>
-                <th class="s00" dir="ltr" rowspan="3">race type</th>
-                <th class="s00" dir="ltr" colspan="7">folder settings</th>
-                <th class="s00" dir="ltr" colspan="3">race settings</th>
-                <th class="s00" dir="ltr" rowspan="3">start procedure</th>
+            <tr>
+                <th class="s00"  rowspan="3">race type</th>
+                <th class="s00"  colspan="7">folder settings</th>
+                <th class="s00"  colspan="3">race settings</th>
+                <th class="s00"  rowspan="3">start procedure</th>
             </tr>
-            <tr style='height:20px;'>
-                <th class="s0" dir="ltr" rowspan="2">type configuration</th>
-                <th class="s0" dir="ltr" colspan="3">start loop</th>
-                <th class="s0" dir="ltr" colspan="3">finish loop</th>
-                <th class="s0" dir="ltr" rowspan="2">classification on</th>
-                <th class="s0" dir="ltr" rowspan="2">staggerted start</th>
-                <th class="s0" dir="ltr" rowspan="2">consider the 1st passing as full lap</th>
+            <tr>
+                <th class="s0"  rowspan="2">type configuration</th>
+                <th class="s0"  colspan="3">start loop</th>
+                <th class="s0"  colspan="3">finish loop</th>
+                <th class="s0"  rowspan="2">classification on</th>
+                <th class="s0"  rowspan="2">staggerted start</th>
+                <th class="s0"  rowspan="2">consider the 1st passing as full lap</th>
             </tr>
-            <tr style='height:20px;'>
-                <th class="s01" dir="ltr">stopwatch</th>
-                <th class="s01" dir="ltr">channel</th>
-                <th class="s01" dir="ltr">counting lap</th>
-                <th class="s01" dir="ltr">stopwatch</th>
-                <th class="s01" dir="ltr">channel</th>
-                <th class="s01" dir="ltr">counting lap</th>
+            <tr>
+                <th class="s01" >stopwatch</th>
+                <th class="s01" >channel</th>
+                <th class="s01" >counting lap</th>
+                <th class="s01" >stopwatch</th>
+                <th class="s01" >channel</th>
+                <th class="s01" >counting lap</th>
             </tr>
         </thead>
        <tbody>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">motocross</td>
-                <td class="s2" dir="ltr">circuit</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">starting schedule</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr">green flag + hit(pass), select all competitors and set start time according to hit</td>
+            <tr>
+                <td class="s1 s11" >motocross</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" >starting schedule</td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s1" >green flag + hit(pass), select all competitors and set start time according to hit</td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">enduro-special test</td>
-                <td class="s2" dir="ltr">line</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">4</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr"></td>
+            <tr>
+                <td class="s1 s11" >superbike/supermoto</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" >starting schedule</td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" ></td>
+                <td class="s2" >v</td>
+                <td class="s1" >green flag + hit(pass), select all competitors and set start time according to hit</td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">enduro-hare scramble</td>
-                <td class="s2" dir="ltr">circuit</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr"></td>
+            <tr>
+                <td class="s1 s11" >enduro-special test</td>
+                <td class="s2" >line</td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >4</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" >v</td>
+                <td class="s2" ></td>
+                <td class="s1" ></td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">superbike/supermoto</td>
-                <td class="s2" dir="ltr">circuit</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">starting schedule</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s1" dir="ltr">green flag + hit(pass), select all competitors and set start time according to hit</td>
+            <tr>
+                <td class="s1 s11" >enduro-hare scramble</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s1" ></td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">rally sprint</td>
-                <td class="s2" dir="ltr">line</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">4</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">best lap</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr"></td>
+            <tr>
+                <td class="s1 s11" >rally sprint</td>
+                <td class="s2" >line</td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >4</td>
+                <td class="s2" >v</td>
+                <td class="s2" >best lap</td>
+                <td class="s2" >v</td>
+                <td class="s2" ></td>
+                <td class="s1" ></td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">rally</td>
-                <td class="s2" dir="ltr">line</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">4</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr"></td>
+            <tr>
+                <td class="s1 s11" >rally</td>
+                <td class="s2" >line</td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >4</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" >v</td>
+                <td class="s2" ></td>
+                <td class="s1" ></td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">rally raid</td>
-                <td class="s2" dir="ltr">circuit</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr">green flag</td>
+            <tr>
+                <td class="s1 s11" >rally raid</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" >v</td>
+                <td class="s2" ></td>
+                <td class="s1" >green flag</td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">gymkhana</td>
-                <td class="s2" dir="ltr">line</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">4</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">best lap</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr"></td>
+            <tr>
+                <td class="s1 s11" >gymkhana</td>
+                <td class="s2" >line</td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >4</td>
+                <td class="s2" >v</td>
+                <td class="s2" >best lap</td>
+                <td class="s2" >v</td>
+                <td class="s2" ></td>
+                <td class="s1" ></td>
             </tr>
-            <tr style='height:20px;'>
-                <td class="s1 s11" dir="ltr">superbike/supermoto(old)</td>
-                <td class="s2" dir="ltr">circuit</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">1</td>
-                <td class="s2" dir="ltr">v</td>
-                <td class="s2" dir="ltr">total laps</td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s2" dir="ltr"></td>
-                <td class="s1" dir="ltr">close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</td>
+            <tr>
+                <td class="s1 s11" >superbike/supermoto(old)</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s1" >close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</td>
             </tr>
         </tbody>
     </table>
