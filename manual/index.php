@@ -328,7 +328,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" >v</td>
-                <td class="s1" >green flag + hit(pass), select all competitors and set start time according to hit</td>
+                <td class="s1" >close gate, green flag + hit(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
             </tr>
             <tr>
                 <td class="s1 s11" >enduro-special test</td>
