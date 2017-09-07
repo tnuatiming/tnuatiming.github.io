@@ -225,7 +225,9 @@ Total time penelty,עונשין-זמן,right
 Total laps penelty,עונשין-הקפות,center
 Position penelty,עונשין-מקום,center
 Running time,זמן מירוץ,right
+Points,נקודות,center
 ,,
+Abbreviation penality / bonnus, P ,left
 Abbreviation lap :,הקפות,center
 Abbreviation last lap in race :,הקפה אחרונה,center
 Abbreviation laps completed :,סיום,center
@@ -314,7 +316,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag + hit(pass), select all competitors and set start time according to hit</td>
+                <td class="s1" >green flag + cp hit(pass), select all competitors and set start time according to hit</td>
             </tr>
             <tr>
                 <td class="s1 s11" >superbike/supermoto</td>
@@ -328,7 +330,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" >v</td>
-                <td class="s1" >close gate, green flag + hit(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
+                <td class="s1" >close gate, green flag + cp hit(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
             </tr>
             <tr>
                 <td class="s1 s11" >enduro-special test</td>

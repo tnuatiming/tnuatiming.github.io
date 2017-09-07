@@ -95,6 +95,8 @@ if ($_POST['elite']) {  //create header for elite v3
                 if (($stop == 0) && ($num > 3)) { // header line probably more then 3 colmuns and stop going trough the line when the header is detected
                     $bigTable = $num;
                     for ($c=0; $c < $num; $c++) {
+                        $data1[$c] = str_replace("Lap timer", "הקפה", $data1[$c]);
+                        $data1[$c] = str_replace("Lap time", "הקפה", $data1[$c]);
                         $header .= '        <th class="rnkh_font">'.$data1[$c].'</th>'."\r\n";
                         $stop = 1;
                         $hrow = $row1;
