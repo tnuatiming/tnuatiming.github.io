@@ -527,6 +527,8 @@ Status 3,DSQ,center</code></pre></li>
     
     <p class="c1"><span><img alt="image23.png" src="/manual/images/image23.png"></span></p>
 
+    <p class="c1"><span><img alt="image25.png" src="/manual/images/image25.png"></span></p>
+
     <h2 id="C7" class="c4">live timing</h2>
  
     <p class="c1"><span><img alt="image07.png" src="/manual/images/image07.png"></span></p>
@@ -543,7 +545,7 @@ Status 3,DSQ,center</code></pre></li>
  
     <h2 id="C9" class="c7">שעון תצוגה</h2>
 
-    <p class="c1"><span><img alt="image06.png" src="/manual/images/image06.png"></span></p>
+    <p class="c1"><span><img alt="image26.png" src="/manual/images/image26.png"></span></p>
     
     <h2 id="C8" class="c4">התאמת התוצאות לתצוגה באתר</h2>
 
