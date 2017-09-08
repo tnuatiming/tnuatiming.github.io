@@ -97,6 +97,10 @@ tbody tr:hover {
     font-weight: bold;
     color:red;
 }
+.s33 {
+    font-weight: bold;
+    color: olive;
+}
 </style>
 
 
@@ -270,9 +274,7 @@ Status 3,DSQ,center</code></pre></li>
     <li>export event if needed</li>
    </ol>
      </div>
-   
 
-   
    
    <h2 id="C11_1" class="c4">טבלת הגדרות לפי מרוץ</h2>
    
@@ -417,7 +419,21 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
-                <td class="s1 s11" >superbike/supermoto(old)</td>
+                <td class="s1 s11" ><s>superbike/supermoto(old)</s></td>
+                <td class="s2" ><s>circuit</s></td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" ><s>1</s></td>
+                <td class="s2" ><s>1</s></td>
+                <td class="s2" ><s>v</s></td>
+                <td class="s2" ><s>total laps</s></td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s1" ><s>close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</s></td>
+            </tr>
+            <tr>
+                <td class="s1 s33" >qualifying</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
@@ -425,23 +441,15 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >1</td>
                 <td class="s2" >1</td>
                 <td class="s2" >v</td>
-                <td class="s2" >total laps</td>
+                <td class="s2" >best lap</td>
+                <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s2" ></td>
-                <td class="s1" >close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</td>
+                <td class="s1" >green flag</td>
             </tr>
         </tbody>
     </table>
 </div>
 
-   
-   
-   
-   
-   
-   
-   
-   
    
    <h2 id="C2" class="c4">יבוא מתחרים</h2>
  
