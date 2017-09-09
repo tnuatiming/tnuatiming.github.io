@@ -327,7 +327,7 @@ if ($_POST['elite']) { // elite v3
                         if (substr( $data[$c], 0, 3 ) === "00:") { // delete second leading 00:
                             $data[$c] = substr_replace($data[$c], '', 0, 3);
                         }
-                        if (substr( $data[$c], 0, 1 ) === "0") { // delete leading 0
+                        if ((substr( $data[$c], 0, 1 ) === "0") and (substr( $data[$c], 0, 2 ) !== "0.")) { // delete leading 0
                             $data[$c] = substr_replace($data[$c], '', 0, 1);
                         }                        
                         if (strpos($data[$c], '(C)') !== false) {
