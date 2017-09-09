@@ -557,8 +557,8 @@ a.main_logo {
     /*ktm*/
     -webkit-transform-origin: 50% 250%;
     transform-origin: 50% 250%;
-    -webkit-animation: rota 11.3s linear infinite;
-    animation: rota 11.3s linear infinite;
+    -webkit-animation: rota 23s linear infinite;
+    animation: rota 23s linear infinite;
 }
 
 .logo li:nth-child(2) {
@@ -569,8 +569,8 @@ a.main_logo {
     /*yamaha*/
     -webkit-transform-origin: -150% 50%;
     transform-origin: -150% 50%;
-    -webkit-animation: rota 18.6s linear infinite;
-    animation: rota 18.6s linear infinite;
+    -webkit-animation: rota 13s linear infinite;
+    animation: rota 13s linear infinite;
 }
 
 .logo li:nth-child(3) {
@@ -581,8 +581,8 @@ a.main_logo {
     /*kawasaki*/
     -webkit-transform-origin: 50% -150%;
     transform-origin: 50% -150%;
-    -webkit-animation: rota 14.5s linear infinite;
-    animation: rota 14.5s linear infinite;
+    -webkit-animation: rota 17s linear infinite;
+    animation: rota 17s linear infinite;
 }
 
 .logo li:nth-child(4) {
@@ -593,8 +593,8 @@ a.main_logo {
     /*honda*/
     -webkit-transform-origin: 250% 50%;
     transform-origin: 250% 50%;
-    -webkit-animation: rota 17.2s linear infinite;
-    animation: rota 17.2s linear infinite;
+    -webkit-animation: rota 19s linear infinite;
+    animation: rota 19s linear infinite;
 }
 
 
