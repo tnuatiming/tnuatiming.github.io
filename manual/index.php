@@ -263,7 +263,7 @@ Status 3,DSQ,center</code></pre></li>
             <li>import competitors of category</li>
             <li>create tamplate</li>
         </ol>
-    <li>remember to activate the live timing after entering an event</li>
+    <li>remember to enable the live timing after entering an event</li>
     <li>timing</li>
         <ol>
             <li>green flag</li>
@@ -540,7 +540,7 @@ Status 3,DSQ,center</code></pre></li>
 
     <h2 id="C7" class="c4">live timing</h2>
     
-    <p class="c0">remember to activate the live timing after entering an event</p>
+    <p class="c0">remember to enable the live timing after entering an event</p>
     
     <p class="c1"><span><img alt="image07.png" src="/manual/images/image07.png"></span></p>
  
