@@ -79,8 +79,12 @@ order:1;
 li {
    text-align:left;   
 }
-
+.logo_image {}
+.logo_text {
+}
 @media (max-width: 1024px)   {
+body {    font-size: 0.8em;
+}
     .left {
         display:none;
     }
@@ -92,5 +96,7 @@ li {
  .navigation ul {
    margin: 0 auto;
 }
-   
+   ul {
+   padding-left: 10px;
+}
 }
