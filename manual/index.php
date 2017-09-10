@@ -288,7 +288,8 @@ Status 3,DSQ,center</code></pre></li>
                 <th class="s00"  colspan="7">folder settings</th>
                 <th class="s00"  colspan="3">race settings</th>
                 <th class="s00"  rowspan="3">start procedure</th>
-            </tr>
+                <th class="s00"  rowspan="3">finish procedure</th>
+           </tr>
             <tr>
                 <th class="s0"  rowspan="2">type configuration</th>
                 <th class="s0"  colspan="3">start loop</th>
@@ -319,7 +320,8 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag + cp hit(pass), select all competitors and set start time according to hit</td>
+                <td class="s1" >green flag near start + cp hit on start(pass) > turn to green flag, select all competitors and set start time according to hit</td>
+                <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
             <tr>
                 <td class="s1 s11" >superbike/supermoto</td>
@@ -333,7 +335,8 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" >v</td>
-                <td class="s1" >close gate, green flag + cp hit(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
+                <td class="s1" >close gate, green flag near start + cp hit on start(pass) > turn to green flag, open gate after all competitors pass, select all competitors and set start time according to hit</td>
+                <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
             <tr>
                 <td class="s1 s11" >enduro-special test</td>
@@ -347,6 +350,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
+                <td class="s1" ></td>
                 <td class="s1" ></td>
             </tr>
             <tr>
@@ -362,6 +366,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
                 <td class="s1" ></td>
+                <td class="s1" ></td>
             </tr>
             <tr>
                 <td class="s1 s11" >rally sprint</td>
@@ -375,6 +380,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >best lap</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
+                <td class="s1" ></td>
                 <td class="s1" ></td>
             </tr>
             <tr>
@@ -390,6 +396,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
                 <td class="s1" ></td>
+                <td class="s1" ></td>
             </tr>
             <tr>
                 <td class="s1 s11" >rally raid</td>
@@ -403,7 +410,8 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag</td>
+                <td class="s1" >green flag + cp hit(pass) > turn to green flag</td>
+                <td class="s1" ></td>
             </tr>
             <tr>
                 <td class="s1 s11" >gymkhana</td>
@@ -417,6 +425,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >best lap</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
+                <td class="s1" ></td>
                 <td class="s1" ></td>
             </tr>
             <tr>
@@ -432,6 +441,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
                 <td class="s1" ><s>close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</s></td>
+                <td class="s1" ></td>
             </tr>
             <tr>
                 <td class="s1 s33" >qualifying</td>
@@ -445,7 +455,8 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >best lap</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag</td>
+                <td class="s1" >green flag + cp hit(pass) > turn to green flag</td>
+                <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
         </tbody>
     </table>
