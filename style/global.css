@@ -1171,6 +1171,14 @@ padding-right: 10%;
         background-size: cover;
     }
     
+    body#race.superbike .full-bg{
+        background-image: url("/images/superbike.jpg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
     body#race.allmountain .full-bg{
         background-image: url("/images/allmountain.jpg");
         background-position: center center;
