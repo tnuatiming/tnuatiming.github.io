@@ -244,7 +244,7 @@ Status 3,DSQ,center</code></pre></li>
         </ol>
     <li>setting > stopwatch > set and test</li>
     <li>setting > display panel</li>
-    <li>open new event , enter name(type - place) and date</li>
+    <li>open new event , enter name(type - round - year) and date</li>
     <li>database of event > import competitors from csv/txt file</li>
     <li>right click > folder > new</li>
         <ol>
@@ -255,9 +255,10 @@ Status 3,DSQ,center</code></pre></li>
             <li>options > enable live internet</li>
             <li>create tamplate</li>
         </ol>
+    <li>import competitors to event database</li>
     <li>right click > race> new</li>
         <ol>
-            <li>general > race name (categopry), begin date and callsification on</li>
+            <li>general > race name (category - heat), begin date and callsification on</li>
             <li>options > minimum lap time, auto finish, staggered start, consider the 1st passing as a full lap</li>
             <li>requirements > must cross the finshing line > DNF(status 1)</li>
             <li>import competitors of category</li>
@@ -266,9 +267,10 @@ Status 3,DSQ,center</code></pre></li>
     <li>remember to enable the live timing after entering an event</li>
     <li>timing</li>
         <ol>
-            <li>green flag</li>
-            <li>manual hit > assign to all competitors, and fix stopwatch and channel</li>
-            <li>chackered flag</li>
+            <li>start procedure</li>
+            <li>preferably use only hits from cp</li>
+            <li>remember that first lap order not important, last one is!</li>
+            <li>finish procedure</li>
         </ol>
     <li>merge/separate races if needed</li>
     <li>print > print the classification > apply sort on competitors > קטגוריה >> choose from template list</li>
