@@ -325,7 +325,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag near start + cp hit on start(pass) > turn to green flag, select all competitors and set start time according to hit</td>
+                <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
                 <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
             <tr>
@@ -355,11 +355,11 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" >v</td>
-                <td class="s1" >close gate, green flag near start + cp hit on start(pass) > turn to green flag, open gate after all competitors pass, select all competitors and set start time according to hit</td>
+                <td class="s1" >close gate, green flag near start + cp hit on start(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
                 <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
             <tr>
-                <td class="s1 s11" >rally sprint</td>
+                <td class="s1 s11" >rally sprint/ rally/ gymkhana</td>
                 <td class="s2" >line</td>
                 <td class="s2" >1</td>
                 <td class="s2" >1</td>
@@ -374,22 +374,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
-                <td class="s1 s11" >rally</td>
-                <td class="s2" >line</td>
-                <td class="s2" >1</td>
-                <td class="s2" >1</td>
-                <td class="s2" ></td>
-                <td class="s2" >1</td>
-                <td class="s2" >4</td>
-                <td class="s2" >v</td>
-                <td class="s2" >total laps</td>
-                <td class="s2" >v</td>
-                <td class="s2" ></td>
-                <td class="s1" ></td>
-                <td class="s1" ></td>
-            </tr>
-            <tr>
-                <td class="s1 s11" >rally raid</td>
+                <td class="s1 s11" >rally raid/ baja</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
@@ -400,22 +385,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag + cp hit(pass) > turn to green flag</td>
-                <td class="s1" ></td>
-            </tr>
-            <tr>
-                <td class="s1 s11" >gymkhana</td>
-                <td class="s2" >line</td>
-                <td class="s2" >1</td>
-                <td class="s2" >1</td>
-                <td class="s2" ></td>
-                <td class="s2" >1</td>
-                <td class="s2" >4</td>
-                <td class="s2" >v</td>
-                <td class="s2" >best lap</td>
-                <td class="s2" >v</td>
-                <td class="s2" ></td>
-                <td class="s1" ></td>
+                <td class="s1" >green flag</td>
                 <td class="s1" ></td>
             </tr>
             <tr>
