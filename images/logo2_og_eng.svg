@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,22 +40,22 @@
      guidetolerance="10"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:window-width="1689"
-     inkscape:window-height="1455"
+     inkscape:window-width="2876"
+     inkscape:window-height="1720"
      id="namedview14"
      showgrid="false"
-     inkscape:zoom="0.73"
-     inkscape:cx="520.88798"
-     inkscape:cy="45"
+     inkscape:zoom="1.45"
+     inkscape:cx="613.84173"
+     inkscape:cy="265.68966"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
   <g
-     id="g879"
-     transform="translate(-24.101416)">
+     id="g964"
+     transform="translate(6.1849427e-6,15.999999)">
     <g
-       transform="matrix(3.75,0,0,3.75,328,209)"
+       transform="matrix(3.75,0,0,3.75,303.89858,197)"
        style="fill-opacity:1;stroke:none"
        id="g4148">
       <circle
@@ -88,38 +88,48 @@
          id="circle4156" />
     </g>
     <g
-       style="fill:#58585a;fill-opacity:1"
-       transform="translate(306.73973,-54.994734)"
-       id="g862">
-      <flowRoot
-         xml:space="preserve"
-         id="flowRoot835"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:Cantarell;letter-spacing:-12px;word-spacing:0px;fill:#58585a;fill-opacity:1;stroke:none"><flowRegion
-           id="flowRegion837"
-           style="font-size:96px;letter-spacing:-12px;fill:#58585a;fill-opacity:1"><rect
-             id="rect839"
-             width="812.69843"
-             height="539.68256"
-             x="231.74603"
-             y="217.30159"
-             style="font-size:96px;letter-spacing:-12px;fill:#58585a;fill-opacity:1" /></flowRegion><flowPara
-           id="flowPara841"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:-12px;fill:#58585a;fill-opacity:1">Tnua</flowPara><flowPara
-           id="flowPara843"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:96px;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:-12px;fill:#58585a;fill-opacity:1" /></flowRoot>      <flowRoot
-         xml:space="preserve"
-         id="flowRoot845"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:Cantarell;letter-spacing:0px;word-spacing:0px;fill:#58585a;fill-opacity:1;stroke:none"
-         transform="translate(23.809523,-18.253968)"><flowRegion
-           style="fill:#58585a;fill-opacity:1"
-           id="flowRegion847"><rect
-             style="fill:#58585a;fill-opacity:1"
-             id="rect849"
-             width="407.93649"
-             height="141.26984"
-             x="233.33333"
-             y="402.22223" /></flowRegion><flowPara
-           id="flowPara851"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:96px;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:12px;fill:#58585a;fill-opacity:1">Timing</flowPara></flowRoot>    </g>
+       transform="translate(0,-35.200001)"
+       id="g946">
+      <g
+         id="g934">
+        <g
+           id="g923">
+          <path
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:-12px;word-spacing:0px;fill:#58585a;fill-opacity:1;stroke:none"
+             d="m 511.53711,232.00205 v 21.69727 h 43.77539 v 72.76758 h 23.61523 v -72.76758 h 43.77735 v -21.69727 z"
+             id="path903"
+             inkscape:connector-curvature="0" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path905"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:-12px;word-spacing:0px;fill:#58585a;fill-opacity:1;stroke:none"
+             d="m 714.5054,273.28205 c 0,-25.152 -7.68,-41.28 -33.984,-41.28 -10.368,0 -21.12,2.688 -31.872,8.064 l -3.456,-5.952 h -16.512 v 92.352 h 23.616 v -70.08 c 9.408,-3.456 16.704,-5.184 22.08,-5.184 11.52,0 16.512,8.064 16.512,19.2 v 56.064 h 23.616 z" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path907"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:-12px;word-spacing:0px;fill:#58585a;fill-opacity:1;stroke:none"
+             d="m 760.1474,328.38605 c 13.248,0 19.584,-3.264 29.76,-8.64 l 3.648,6.72 h 16.128 v -92.352 h -23.616 v 68.736 c -6.144,3.648 -12.48,5.568 -19.2,5.568 -12.288,0 -17.088,-8.064 -17.088,-19.2 v -55.104 h -23.616 v 51.84 c 0,25.536 6.912,42.432 33.984,42.432 z" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path909"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:192px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:-12px;word-spacing:0px;fill:#58585a;fill-opacity:1;stroke:none"
+             d="m 872.4854,304.57805 c -4.992,3.072 -10.56,5.376 -19.008,5.376 -8.448,0 -15.36,-3.264 -15.36,-10.944 0,-12.864 20.16,-12.864 34.368,-12.864 z m 0,-34.752 c -28.416,0 -57.984,2.688 -57.984,30.912 0,17.664 14.784,27.648 33.216,27.648 10.752,0 19.776,-2.688 26.88,-8.256 l 3.072,6.336 h 18.432 v -57.024 c 0,-26.688 -13.632,-37.44 -42.432,-37.44 -12.096,0 -27.456,2.88 -32.064,5.952 l 4.608,17.664 c 5.952,-3.264 16.512,-6.144 23.808,-6.144 17.472,0 22.464,4.032 22.464,20.352 z" />
+        </g>
+        <flowRoot
+           transform="translate(284.02527,-73.248702)"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Cantarell;-inkscape-font-specification:Cantarell;letter-spacing:0px;word-spacing:0px;fill:#58585a;fill-opacity:1;stroke:none"
+           id="flowRoot845"
+           xml:space="preserve"><flowRegion
+             id="flowRegion847"
+             style="fill:#58585a;fill-opacity:1"><rect
+               y="402.22223"
+               x="233.33333"
+               height="141.26984"
+               width="407.93649"
+               id="rect849"
+               style="fill:#58585a;fill-opacity:1" /></flowRegion><flowPara
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:96px;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:16px;fill:#58585a;fill-opacity:1"
+             id="flowPara851">Timing</flowPara></flowRoot>      </g>
+    </g>
   </g>
 </svg>

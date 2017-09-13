@@ -76,7 +76,7 @@ tr {
 td, th {
     border: 2px solid #ccc;
     text-align: left;
-    padding: 1px;
+    padding: 5px 1px;
 }
 tbody tr:hover { 
     background: yellow;
@@ -401,7 +401,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >best lap</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag + cp hit(pass) > turn to green flag</td>
+                <td class="s1" >green flag</td>
                 <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
             <tr class="s44">
