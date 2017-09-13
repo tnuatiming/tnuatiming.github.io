@@ -140,7 +140,7 @@ tbody tr:hover {
     <li><a href="#C8_2">אוטומטי</a></li>
     </ul>
 </li>
-<li><a href="#C9">לוגואים</a>
+<li><a href="#C10">לוגואים</a>
 </ul>
 <br><br>
 
