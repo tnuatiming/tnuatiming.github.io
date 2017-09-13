@@ -140,6 +140,7 @@ tbody tr:hover {
     <li><a href="#C8_2">אוטומטי</a></li>
     </ul>
 </li>
+<li><a href="#C9">לוגואים</a>
 </ul>
 <br><br>
 
@@ -601,6 +602,12 @@ Status 3,DSQ,center</code></pre></li>
 
     <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTranspose.py">http://tnuatiming.com/manual/csvTranspose.py </a>קובץ python המבצע את כל הפעולות כולל סיבוב הטבלה</span></p>    
 
+       <h2 id="C10" class="c7">לוגואים</h2>
+ 
+    <p class="c1"><span><img alt="logo.svg" src="/images/logo.svg"></span></p>
+    <p class="c1"><span><img alt="logo2_full.svg" src="/images/logo2_full.svg"></span></p>
+    <p class="c1"><span><img alt="logo2_full_eng.svg" src="/images/logo2_full_eng.svg"></span></p>
+    <p class="c1"><span><img alt="CheckeredFlag.svg" src="/live/Images/CheckeredFlag.svg"></span></p>
     <p class="c0"><span>p5f123d7a7e</span></p>
     
     </div>
