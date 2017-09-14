@@ -101,7 +101,8 @@ tbody tr:hover {
     font-weight: bold;
     color: olive;
 }
-.s44 {
+.strike > td {
+    text-decoration-line: line-through;
     color: #ccc;
 }
 </style>
@@ -404,19 +405,19 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" >green flag</td>
                 <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
-            <tr class="s44">
-                <td class="s1" ><s>superbike/ supermoto</s></td>
-                <td class="s2" ><s>circuit</s></td>
+            <tr class="strike">
+                <td class="s1" >superbike/ supermoto</td>
+                <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s2" ><s>1</s></td>
-                <td class="s2" ><s>1</s></td>
-                <td class="s2" ><s>v</s></td>
-                <td class="s2" ><s>total laps</s></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s1" ><s>close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</s></td>
+                <td class="s1" >close gate, green flag, open gate after all competitors pass, manual passing &gt; assign passing to all competitors(F10) &gt; fix stopwatch/channel to 1</td>
                 <td class="s1" ></td>
             </tr>
         </tbody>
