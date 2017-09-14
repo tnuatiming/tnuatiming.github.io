@@ -389,7 +389,19 @@ tr.OddRow:hover, tr.EvenRow:hover {
     font-size: 200%;
     font-weight: 700;
     text-align: center;
-    margin: 10px auto;
+    margin: auto 20px;
+    vertical-align: middle;
+}
+
+#live #live_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.live_header_image {
+    height:64px;
 }
 
 #Message {
