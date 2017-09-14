@@ -256,18 +256,47 @@ td img {
     color: #CCC;
 }
 
-#Title {
+#ImageZoom {
+    width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#live #Title {
+    display: block;
+    vertical-align: middle;
     font-weight: 700;
     font-size: 1.5em;
     color: rgba(0,0,0,0.5);
     margin: 0 0 0 0;
-    display:none;
 }
 
 #Title img {
     height: 48px;
     vertical-align: middle;
     margin: 0 16px;
+}
+
+#live p#raceheader {
+    color: #58585a;
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+    margin: auto 20px;
+    vertical-align: middle;
+}
+
+#live #live_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.live_header_image {
+    height: 48px;
+    margin: auto 5px;
 }
 
 #ImageHeader {
@@ -371,38 +400,6 @@ tr.OddRow:hover, tr.EvenRow:hover {
 .Class7 {border-style: solid; border-width: 0 3px 0 3px; border-color: #800080; padding: 0;}
 .Class8 {border-style: solid; border-width: 0 3px 0 3px; border-color: #808000; padding: 0;}
 .Class9 {border-style: solid; border-width: 0 3px 0 3px; border-color: #008080; padding: 0;}
-
-#ImageZoom {
-    width: auto;
-    height: auto;
-    max-width: 80%;
-    max-height: 80%;
-}
-
-#live #Title {
-    display:block;
-    vertical-align: middle;
-}
-
-#live p#raceheader {
-    color: #58585a;
-    font-size: 200%;
-    font-weight: 700;
-    text-align: center;
-    margin: auto 20px;
-    vertical-align: middle;
-}
-
-#live #live_header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.live_header_image {
-    height:64px;
-}
 
 #Message {
     color: rgba(0,0,0,.5);
