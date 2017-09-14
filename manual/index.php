@@ -316,7 +316,7 @@ Status 3,DSQ,center</code></pre></li>
         </thead>
        <tbody>
             <tr>
-                <td class="s1 s11" >motocross/ enduro hare scramble</td>
+                <td class="s11" >motocross/ enduro hare scramble</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" >starting schedule</td>
@@ -331,7 +331,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
             <tr>
-                <td class="s1 s11" >enduro special test</td>
+                <td class="s11" >enduro special test</td>
                 <td class="s2" >line</td>
                 <td class="s2" >1</td>
                 <td class="s2" >1</td>
@@ -346,7 +346,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
-                <td class="s1 s11" >superbike/ supermoto</td>
+                <td class="s11" >superbike/ supermoto</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" >starting schedule</td>
@@ -361,7 +361,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" >cp hit(pass) > turn to chackered flag</td>
             </tr>
             <tr>
-                <td class="s1 s11" >rally sprint/ rally/ gymkhana</td>
+                <td class="s11" >rally sprint/ rally/ gymkhana</td>
                 <td class="s2" >line</td>
                 <td class="s2" >1</td>
                 <td class="s2" >1</td>
@@ -376,7 +376,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
-                <td class="s1 s11" >rally raid/ baja</td>
+                <td class="s11" >rally raid/ baja</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
@@ -391,7 +391,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
-                <td class="s1 s33" >qualifying</td>
+                <td class="s33" >qualifying</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
