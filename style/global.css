@@ -348,14 +348,14 @@ td img {
     border: 1px solid #fff;
 }
 
-#live td:first-child + td {
+/*#live td:first-child + td {
     font-weight: 700;
     background-color:
     rgba(37, 37, 37, 0.5);
     color:#fff;
     text-shadow: none;
 }
-
+*/
 .BestTimeOverall {
     color: #FF0000;
     font-weight: 700;
@@ -389,17 +389,17 @@ tr.OddRow:hover, tr.EvenRow:hover {
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
-.PitIn {color: #FF0000; font-weight: 700;}
-.PitOut {color: #FFFF00; font-weight: 700;}
-.Class1 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FF0000; padding: 0;}
-.Class2 {border-style: solid; border-width: 0 3px 0 3px; border-color: #00FF00; padding: 0;}
-.Class3 {border-style: solid; border-width: 0 3px 0 3px; border-color: #0000FF; padding: 0;}
-.Class4 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FF00FF; padding: 0;}
-.Class5 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FFFF00; padding: 0;}
-.Class6 {border-style: solid; border-width: 0 3px 0 3px; border-color: #0000FF; padding: 0;}
-.Class7 {border-style: solid; border-width: 0 3px 0 3px; border-color: #800080; padding: 0;}
-.Class8 {border-style: solid; border-width: 0 3px 0 3px; border-color: #808000; padding: 0;}
-.Class9 {border-style: solid; border-width: 0 3px 0 3px; border-color: #008080; padding: 0;}
+#live .PitIn {color: #FF0000; font-weight: 700;}
+#live .PitOut {color: #FFFF00; font-weight: 700;}
+#live .Class1 {background-color: #ff6700;}
+#live .Class2 {background-color: #218000;}
+#live .Class3 {background-color: #6c3;}
+#live .Class4 {background-color: #FF00FF;}
+#live .Class5 {background-color: #ff33e8;}
+#live .Class6 {background-color: #00a4fe;}
+#live .Class7 {background-color: #800080;}
+#live .Class8 {background-color: #808000;}
+#live .Class9 {background-color: #008080;}
 
 #Message {
     color: rgba(0,0,0,.5);
