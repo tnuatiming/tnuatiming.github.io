@@ -163,15 +163,15 @@ table::before, table::after {
     text-shadow: 0 1px 2px white;
 }
 
-#race tr.rnk_bkcolor:nth-child(odd) {
+#race tr.rnk_bkcolor:nth-of-type(odd) {
     background: rgba(208,208,208,0.8);
 }
 
-#race tr.rnk_bkcolor:nth-child(even) {
+#race tr.rnk_bkcolor:nth-of-type(even) {
     background: rgba(224,224,224,0.8);
 }
 
-#race tr.rnk_bkcolor:nth-child(odd):hover, #race tr.rnk_bkcolor:nth-child(even):hover {
+#race tr.rnk_bkcolor:nth-of-type(odd):hover, #race tr.rnk_bkcolor:nth-of-type(even):hover {
     background: #ffcc33;
 }
 
@@ -182,7 +182,7 @@ table::before, table::after {
 }
 
 /*number column*/
-#race td:first-child + td {
+#race td:nth-of-type(2) {
     font-weight: 700;
     background-color:
     rgba(37, 37, 37, 0.5);
@@ -191,7 +191,7 @@ table::before, table::after {
 }
 
 /*undo number column*/
-#race .no_num_color td:first-child + td {
+#race .no_num_color td:nth-of-type(2) {
     font-weight: 400;
     background-color: rgba(0, 0, 0, 0);
     color:#222;
@@ -344,18 +344,7 @@ td img {
     background-color:  rgba(224,224,224,0.8);
     color: #111;
 }
-#live td {
-    border: 1px solid #fff;
-}
 
-/*#live td:first-child + td {
-    font-weight: 700;
-    background-color:
-    rgba(37, 37, 37, 0.5);
-    color:#fff;
-    text-shadow: none;
-}
-*/
 .BestTimeOverall {
     color: #FF0000;
     font-weight: 700;
@@ -377,6 +366,18 @@ td img {
     color: #fff;
 }
 */
+#live td {
+    border: 1px solid #fff;
+}
+
+#live td:nth-of-type(2) {
+    font-weight: 700;
+    background-color:
+    rgba(37, 37, 37, 0.5);
+    color:#fff;
+    text-shadow: none;
+}
+
 .elite_no {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
@@ -389,17 +390,17 @@ tr.OddRow:hover, tr.EvenRow:hover {
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
-#live .PitIn {color: #FF0000; font-weight: 700;}
-#live .PitOut {color: #FFFF00; font-weight: 700;}
-#live .Class1 {background-color: #ff6700;}
-#live .Class2 {background-color: #218000;}
-#live .Class3 {background-color: #6c3;}
-#live .Class4 {background-color: #FF00FF;}
-#live .Class5 {background-color: #ff33e8;}
-#live .Class6 {background-color: #00a4fe;}
-#live .Class7 {background-color: #800080;}
-#live .Class8 {background-color: #808000;}
-#live .Class9 {background-color: #008080;}
+#live td.PitIn {color: #ff0000; background-color: black;} /*Red*/
+#live td.PitOut {color: #ffff00; background-color: black;} /*Yellow*/
+#live td.Class1 {background-color: #ff6700; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class2 {background-color: #218000; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class3 {background-color: #66cc33; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class4 {background-color: #ff00ff; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class5 {background-color: #ff33e8; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class6 {background-color: #00a4fe; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class7 {background-color: #800080; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class8 {background-color: #808000; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class9 {background-color: #008080; color: #fff; font-weight: 700; text-shadow: none;}
 
 #Message {
     color: rgba(0,0,0,.5);
@@ -1077,11 +1078,11 @@ padding-right: 10%;
         border: 1px solid #fff;
     }
     
-    #race tr.rnk_bkcolor:nth-child(odd) {
+    #race tr.rnk_bkcolor:nth-of-type(odd) {
         background-color: #e0e0e0;
     }
     
-    #race tr.rnk_bkcolor:nth-child(even){
+    #race tr.rnk_bkcolor:nth-of-type(even){
         background-color: #f0f0f0;
     }
     
@@ -1089,6 +1090,14 @@ padding-right: 10%;
         font-weight: 400;
         text-shadow: none;
         color: #111;
+    }
+    /*number column*/
+    #race td:nth-of-type(2) {
+        font-weight: 700;
+        background-color:
+        rgba(37, 37, 37, 0.5);
+        color:#fff;
+        text-shadow: none;
     }
 
     td.comment_font {
@@ -1237,11 +1246,11 @@ padding-right: 10%;
         background-size: cover;
     }
 
-    #race tr.rnk_bkcolor:nth-child(odd) {
+    #race tr.rnk_bkcolor:nth-of-type(odd) {
         background: rgba(208,208,208,0.8);
     }
 
-    #race tr.rnk_bkcolor:nth-child(even) {
+    #race tr.rnk_bkcolor:nth-of-type(even) {
         background: rgba(224,224,224,0.8);
     }
    
