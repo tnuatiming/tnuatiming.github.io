@@ -328,7 +328,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
                 <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
-                <td class="s1" >cp hit(pass) > turn to chackered flag</td>
+                <td class="s1" >on winner competitor right click > insert flag > finish flag OR cp hit(pass) > insert finish flag</td>
             </tr>
             <tr>
                 <td class="s11" >enduro special test</td>
@@ -342,7 +342,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" ></td>
+                <td class="s1" >green flag early so the board will show time of day</td>
                 <td class="s1" ></td>
             </tr>
             <tr>
@@ -358,7 +358,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s2" >v</td>
                 <td class="s1" >close gate, green flag near start + cp hit on start(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
-                <td class="s1" >cp hit(pass) > turn to chackered flag</td>
+                <td class="s1" >on winner competitor right click > insert flag > finish flag OR cp hit(pass) > insert finish flag</td>
             </tr>
             <tr>
                 <td class="s11" >rally sprint/ rally/ gymkhana</td>
@@ -403,7 +403,7 @@ Status 3,DSQ,center</code></pre></li>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
                 <td class="s1" >green flag</td>
-                <td class="s1" >cp hit(pass) > turn to chackered flag</td>
+                <td class="s1" >on session end cp hit(pass) > insert finish flag</td>
             </tr>
             <tr class="strike">
                 <td class="s1" >superbike/ supermoto</td>
