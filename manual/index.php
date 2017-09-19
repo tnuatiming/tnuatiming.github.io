@@ -605,10 +605,10 @@ Status 3,DSQ,center</code></pre></li>
 
        <h2 id="C10" class="c7">לוגואים</h2>
  
-    <p class="c1"><span><img alt="logo.svg" src="/images/logo.svg"></span></p>
-    <p class="c1"><span><img alt="logo2_full.svg" src="/images/logo2_full.svg"></span></p>
-    <p class="c1"><span><img alt="logo2_full_eng.svg" src="/images/logo2_full_eng.svg"></span></p>
-    <p class="c1"><span><img alt="CheckeredFlag.svg" src="/live/Images/CheckeredFlag.svg"></span></p>
+    <a class="c1" href="http://tnuatiming.com/images/logo.svg"><span><img alt="logo.svg" src="/images/logo.svg"></span></a><br><br>
+    <a class="c1" href="http://tnuatiming.com/images/logo2_full.svg"><span><img alt="logo2_full.svg" src="/images/logo2_full.svg"></span></a><br><br>
+    <a class="c1" href="http://tnuatiming.com/images/logo2_full_eng.svg"><span><img alt="logo2_full_eng.svg" src="/images/logo2_full_eng.svg"></span></a><br><br>
+    <a class="c1" href="http://tnuatiming.com/live/Images/CheckeredFlag.svg"><span><img alt="CheckeredFlag.svg" src="/live/Images/CheckeredFlag.svg"></span></a><br><br>
     <p class="c0"><span>p5f123d7a7e</span></p>
     
     </div>
