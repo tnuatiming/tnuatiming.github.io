@@ -388,15 +388,15 @@ tr.OddRow:hover, tr.EvenRow:hover {
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
-#live td.PitIn {border-left: 6px solid black; color: #ff0000; background-color: black;} /*Red*/
-#live td.PitOut {border-left: 6px solid black; color: #ffff00; background-color: black;} /*Yellow*/
-#live td.Class1 {border-left: 6px solid #808080; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class2 {border-left: 6px solid #800080; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.PitIn {border-left: 6px solid #808080; color: #ff0000; background-color: black;} /*Red*/
+#live td.PitOut {border-left: 6px solid #808080; color: #ffff00; background-color: black;} /*Yellow*/
+#live td.Class1 {border-left: 6px solid #c0c0c0; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class2 {border-left: 6px solid #800000; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class3 {border-left: 6px solid #66cc33; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class4 {border-left: 6px solid #ff00ff; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class5 {border-left: 6px solid #ff00ff; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class5 {border-left: 6px solid #008000; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class6 {border-left: 6px solid #00a4fe; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class7 {border-left: 6px solid #008000; color: #fff; font-weight: 700; text-shadow: none;}
+#live td.Class7 {border-left: 6px solid #ffffff; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class8 {border-left: 6px solid #ff6700; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class9 {border-left: 6px solid #000080; color: #fff; font-weight: 700; text-shadow: none;}
 
