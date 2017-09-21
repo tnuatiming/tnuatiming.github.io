@@ -135,10 +135,11 @@ tbody tr:hover {
 <li><a href="#C6">מוטוקרוס או הקפות במסלול סגור</a></li>
 <li><a href="#C7">live timing</a></li>
 <li><a href="#C9">שעון תצוגה</a>
+<li><a href="#C80">הדפסת התוצאות</a>
 <li><a href="#C8">התאמת התוצאות לתצוגה באתר</a>
     <ul>
-    <li><a href="#C8_1">ידני</a></li>
     <li><a href="#C8_2">אוטומטי</a></li>
+    <li><a href="#C8_1">ידני</a></li>
     </ul>
 </li>
 <li><a href="#C10">לוגואים</a>
@@ -531,10 +532,32 @@ Status 3,DSQ,center</code></pre></li>
 
     <p class="c1"><span><img alt="image26.png" src="/manual/images/image26.png"></span></p>
     
-    <h2 id="C8" class="c4">התאמת התוצאות לתצוגה באתר</h2>
+    <h2 id="C80" class="c4">הדפסת התוצאות</h2>
+
+    <p class="c0">folder > settings > edit printing settings > body</p>
+
+    <p class="c1"><span><img alt="image27.png" src="/manual/images/image27.png"></span></p>
+
+    <p class="c1"><span><img alt="image28.png" src="/manual/images/image28.png"></span></p>
 
     <p class="c1"><span><img alt="image16.png" src="/manual/images/image16.png"></span></p>
     
+    <h2 id="C8" class="c4">התאמת התוצאות לתצוגה באתר</h2>
+
+    <p class="c1"><span><img alt="image29.png" src="/manual/images/image29.png"></span></p>
+
+    <h3 id="C8_2" class="c7">אוטומטי(דרך האתר)</h3>
+    
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a> את סעיפים 4,5 יש לוודא תקינות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות).</span></p>
+    
+    <h3 class="c7">אוטומטי(סקריפט)</h3>
+
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTohtml.py">http://tnuatiming.com/manual/csvTohtml.py </a>קובץ python המבצע את כל הפעולות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות)</span></p>    
+
+    <h3 class="c7">מהלך המרוץ - אוטומטי</h3>
+
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTranspose.py">http://tnuatiming.com/manual/csvTranspose.py </a>קובץ python המבצע את כל הפעולות כולל סיבוב הטבלה</span></p>    
+
     <h3 id="C8_1" class="c7">ידני</h3>
 
     <p class="c0">יש לבצע את הפעולות לפי הסדר המופיע להלן:</p>
@@ -591,18 +614,6 @@ Status 3,DSQ,center</code></pre></li>
     </ol>
     במקום סעיפים 6,7 ניתן להשתמש ב-tidy-html5 ולהריץ את הפקודה:  tidy -f error.html -o output.html  -i input.html
     
-    <h3 id="C8_2" class="c7">אוטומטי(דרך האתר)</h3>
-    
-    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/auto_convert/">http://tnuatiming.com/manual/auto_convert </a> את סעיפים 4,5 יש לוודא תקינות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות).</span></p>
-    
-    <h3 class="c7">אוטומטי(סקריפט)</h3>
-
-    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTohtml.py">http://tnuatiming.com/manual/csvTohtml.py </a>קובץ python המבצע את כל הפעולות(לאחר ההמרה יש לנקות את השורות הראשונות שאינן נחוצות)</span></p>    
-
-    <h3 class="c7">מהלך המרוץ - אוטומטי</h3>
-
-    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/csvTranspose.py">http://tnuatiming.com/manual/csvTranspose.py </a>קובץ python המבצע את כל הפעולות כולל סיבוב הטבלה</span></p>    
-
        <h2 id="C10" class="c7">לוגואים</h2>
  
     <a class="c1" href="http://tnuatiming.com/images/logo.svg"><span><img alt="logo.svg" src="/images/logo.svg"></span></a><br><br>
