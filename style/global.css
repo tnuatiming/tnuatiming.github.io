@@ -345,12 +345,12 @@ td img {
 }
 
 .BestTimeOverall {
-    color: magenta;
+    color: #ff0000;
     font-weight: 700;
 }
 
 .BestTime {
-    color: green;
+    color: #0000ff;
     font-weight: 700;
 }
 
