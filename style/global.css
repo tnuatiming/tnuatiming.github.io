@@ -345,12 +345,12 @@ td img {
 }
 
 .BestTimeOverall {
-    color: #FF0000;
+    color: magenta;
     font-weight: 700;
 }
 
 .BestTime {
-    color: #0000FF;
+    color: green;
     font-weight: 700;
 }
 
@@ -399,6 +399,20 @@ tr.OddRow:hover, tr.EvenRow:hover {
 #live td.Class7 {border-left: 6px solid #fffacd; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class8 {border-left: 6px solid #ff6700; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class9 {border-left: 6px solid #000080; color: #fff; font-weight: 700; text-shadow: none;}
+
+/*racing Colors */
+#live td.PitIn {border-left: 6px solid #808080; color: #ff0000; background-color: black;} /*Red*/
+#live td.PitOut {border-left: 6px solid #808080; color: #ffff00; background-color: black;} /*Yellow*/
+#live td.Class1 {border-left: 6px solid #c0c0c0; color: #fff; font-weight: 700; text-shadow: none;}/*silver arrow*/
+#live td.Class2 {border-left: 6px solid #004225; color: #fff; font-weight: 700; text-shadow: none;}/*British racing green*/
+#live td.Class3 {border-left: 6px solid #318CE7; color: #fff; font-weight: 700; text-shadow: none;}/*Bleu de France*/
+#live td.Class4 {border-left: 6px solid #cc0000; color: #fff; font-weight: 700; text-shadow: none;}/*Rosso corsa*/
+#live td.Class5 {border-left: 6px solid #ffffff; color: #fff; font-weight: 700; text-shadow: none;}/*williams white*/
+#live td.Class6 {border-left: 6px solid #00007d; color: #fff; font-weight: 700; text-shadow: none;}/*Redbull dark blue*/
+#live td.Class7 {border-left: 6px solid #ff80c7; color: #fff; font-weight: 700; text-shadow: none;}/*force india*/
+#live td.Class8 {border-left: 6px solid #ffd800; color: #fff; font-weight: 700; text-shadow: none;}/*renault yellow*/
+#live td.Class9 {border-left: 6px solid #ff7b08; color: #fff; font-weight: 700; text-shadow: none;}/*mclaren orange*/
+/*hass #6c0000, mercedes #00cfba, */
 
 #Message {
     color: rgba(0,0,0,.5);
