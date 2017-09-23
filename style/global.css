@@ -408,8 +408,8 @@ tr.OddRow:hover, tr.EvenRow:hover {
 #live td.Class2 {border-left: 6px solid #004225; color: #fff; font-weight: 700; text-shadow: none;}/*British racing green*/
 #live td.Class3 {border-left: 6px solid #318CE7; color: #fff; font-weight: 700; text-shadow: none;}/*Bleu de France*/
 #live td.Class4 {border-left: 6px solid #cc0000; color: #fff; font-weight: 700; text-shadow: none;}/*Rosso corsa*/
-#live td.Class5 {border-left: 6px solid #ffffff; color: #fff; font-weight: 700; text-shadow: none;}/*williams white*/
-#live td.Class6 {border-left: 6px solid #00007d; color: #fff; font-weight: 700; text-shadow: none;}/*Redbull dark blue*/
+#live td.Class5 {border-left: 6px solid #fafafa; color: #fff; font-weight: 700; text-shadow: none;}/*williams white*/
+#live td.Class6 {border-left: 6px solid #58cd2e; color: #fff; font-weight: 700; text-shadow: none;}/*Aprilia Racing*/
 #live td.Class7 {border-left: 6px solid #ff80c7; color: #fff; font-weight: 700; text-shadow: none;}/*force india*/
 #live td.Class8 {border-left: 6px solid #ffd800; color: #fff; font-weight: 700; text-shadow: none;}/*renault yellow*/
 #live td.Class9 {border-left: 6px solid #ff7b08; color: #fff; font-weight: 700; text-shadow: none;}/*mclaren orange*/
