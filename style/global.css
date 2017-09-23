@@ -364,11 +364,11 @@ td img {
     background-color: rgba(80, 80, 80, 0.5);
     color: #fff;
 }
-*/
+
 #live td {
     border: 1px solid #fff;
 }
-
+*/
 #live td:nth-of-type(2) {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
@@ -388,8 +388,9 @@ tr.OddRow:hover, tr.EvenRow:hover {
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
-#live td.PitIn {border-left: 6px solid #808080; color: #ff0000; background-color: black;} /*Red*/
-#live td.PitOut {border-left: 6px solid #808080; color: #ffff00; background-color: black;} /*Yellow*/
+/*
+#live td.PitIn {border-left: 6px solid #808080; color: #ff0000; background-color: black;}
+#live td.PitOut {border-left: 6px solid #808080; color: #ffff00; background-color: black;}
 #live td.Class1 {border-left: 6px solid #c0c0c0; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class2 {border-left: 6px solid #800000; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class3 {border-left: 6px solid #66cc33; color: #fff; font-weight: 700; text-shadow: none;}
@@ -399,7 +400,7 @@ tr.OddRow:hover, tr.EvenRow:hover {
 #live td.Class7 {border-left: 6px solid #fffacd; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class8 {border-left: 6px solid #ff6700; color: #fff; font-weight: 700; text-shadow: none;}
 #live td.Class9 {border-left: 6px solid #000080; color: #fff; font-weight: 700; text-shadow: none;}
-
+*/
 /*racing Colors */
 #live td.PitIn {border-left: 6px solid #808080; color: #ff0000; background-color: black;} /*Red*/
 #live td.PitOut {border-left: 6px solid #808080; color: #ffff00; background-color: black;} /*Yellow*/
@@ -434,7 +435,7 @@ td, th {
 }
 
 td.rnk_font, th.rnkh_font {
-    border: 1px solid #fff;
+ /*    border: 1px solid #fff;*/
     white-space: nowrap;
 }
     
@@ -1085,11 +1086,11 @@ padding-right: 10%;
     td.title_font {
         font-size: 1.6em;
     }
-    
+/*    
     td.rnk_font, th.rnkh_font {
         border: 1px solid #fff;
     }
-    
+*/    
     #race tr.rnk_bkcolor:nth-of-type(odd) {
         background-color: #e0e0e0;
     }
