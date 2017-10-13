@@ -127,7 +127,7 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   </select></p>
   <br/><br/>
   
-  <label>place: </label><textarea name="place" rows="1" cols="30"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
+  <label>location: </label><textarea name="place" rows="1" cols="30"  placeholder="מקום" wrap="off"></textarea><br/><br/>  
 
   <label>round: </label><select id="round" name="round">
   <option value="" selected></option>
@@ -158,11 +158,11 @@ function year_picker($name, $startyear=NULL, $endyear=NULL)
   <input type="checkbox" name="utf16" value="utf16">file is UTF-16LE <br/><br/>
   <input type="checkbox" name="run" value="run">&quot;מקצה&quot; >>> &quot;הקפה&quot; <br/><br/>
   <input type="checkbox" name="changename" value="changename">&quot;נהג&quot; >>> &quot;שם&quot; <br/><br/>
-  <input type="checkbox" name="deleterows" value="deleterows">do not delete the hedear lines<br/><br/>
-  <input type="checkbox" name="dontshowraw" value="dontshowraw">do not show the finished table<br/><br/>
-  <input type="checkbox" id="finishedpage" name="finishedpage" value="finishedpage">show as a web page<br/><br/>
-  <input type="checkbox" id="presults" name="presults" value="presults">show previous results<br/><br/>
   <input type="checkbox" id="nobestlap" name="nobestlap" value="nobestlap" checked>elite v3 file contain best lap info<br/><br/>
+  <input type="checkbox" name="deleterows" value="deleterows">do not delete the hedear lines<br/><br/>
+  <input type="checkbox" name="dontshowraw" value="dontshowraw" checked>do not show the finished table<br/><br/>
+  <input type="checkbox" id="presults" name="presults" value="presults">show previous results<br/><br/>
+  <input type="checkbox" id="finishedpage" name="finishedpage" value="finishedpage" checked>show as a web page<br/><br/>
   <input type="submit" value="Convert" style="font-size: 1.2em;"/>
 </form>
 <!--  <p id="demo"></p>-->
