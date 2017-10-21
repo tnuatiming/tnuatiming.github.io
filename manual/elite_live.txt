@@ -146,10 +146,9 @@
         <div class="main_table col">
             <div class="content">
             
-         <!--   <img id="ImageZoom" src="/images/liveheader.jpg" />--->
-            <p id="raceheader"></p>
-
-<!----<div id="result"></div>--->
+            <!----<img id="ImageZoom" src="/images/liveheader.jpg" alt="live header">--->
+            <!----<p id="raceheader"></p>--->
+            <!----<div id="result"></div>--->
 
 
 
@@ -162,7 +161,7 @@
 
 
             </div><!-- end content -->
-        </div>
+        </div><!-- end main_table col -->
 
       </div> <!-- end main_content --> 
         <div class="row footer">
