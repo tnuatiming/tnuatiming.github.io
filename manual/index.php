@@ -450,18 +450,8 @@ Status 3,DSQ,center</code></pre></li>
     
     <p class="c1"><span><img alt="image01.png" src="/manual/images/image01.png"></span></p>
 
-    <h3 id="C4_1" class="c7">אופציה א  (לא עובד ללא Encoder או CP?)</h3>
-
     <p class="c1"><span><img alt="image14.png" src="/manual/images/image14.png"></span></p>
-    
-    <h3 id="C4_2" class="c7">אופציה ב</h3>
-    
-    <p class="c1"><span><img alt="image21.png" src="/manual/images/image21.png"></span></p>
-    
-    <p class="c0"><span>או בגרסה החדשה</span></p>
-
-    <p class="c1"><span><img alt="image24.png" src="/manual/images/image24.png"></span></p>
-    
+        
     <p class="c1"><span><img alt="image18.png" src="/manual/images/image18.png"></span></p>
     
     <p class="c1"><span><img alt="image03.png" src="/manual/images/image03.png"></span></p>
@@ -472,23 +462,17 @@ Status 3,DSQ,center</code></pre></li>
     
     <h3 id="C4_3" class="c7">מדידת זמנים</h3>
     
-    <h3 class="c7">זינוק אופציה א (לא עובד ללא Encoder או CP?)</h3>
+    <h3 class="c7">זינוק (לא עובד ללא Encoder או CP?)</h3>
 
-    <p class="c0"><span>בזינוק יש ללחוץ על הדגל הירוק ולרשום את זמן הזינוק. יש לבחור את כל המתמודדים (ctrl-a) ,לבחור start time ולהכניס את זמן הזינוק שרשמנו. </span></p>
+    <p class="c0"><span>בזינוק יש ללחוץ על הדגל הירוק, לתת היט ולרשום את זמן הזינוק. יש לבחור את כל המתמודדים (ctrl-a) ,לבחור start time ולהכניס את זמן הזינוק שרשמנו. </span></p>
     
     <p class="c1"><span><img alt="image09.png" src="/manual/images/image09.png"></span></p>
     
-    <p class="c1"><span><img alt="image20.png" src="/manual/images/image20.png"></span></p>
-    
-    <p class="c1"><span><img alt="image19.png" src="/manual/images/image19.png"></span></p>
-
-    <h3 class="c7">זינוק אופציה ב</h3>
-    
-    <p class="c0"><span>בזינוק יש ללחוץ על הדגל הירוק וזה בעצם ההזנקה של כל המתחרים, כל היט שמתקבל לאחר מכן הוא הקפה שהושלמה.</span></p>
-    
+    <p class="c1"><span><img alt="image25.png" src="/manual/images/image25.png"></span></p>
+        
     <h3 class="c7">סיום</h3>
     
-    <p class="c0"><span>כשמסתיים הזמן, יש ללחוץ על דגל השחמט וכל מתחרה שמסיים לאחר מכן מקבל את הזמן הכללי/מספר הקפות הסופי שלו.</span></p>
+    <p class="c0"><span>כשמסתיים הזמן, יש ללחוץ על דגל השחמט וכל מתחרה שמסיים לאחר מכן מקבל את הזמן הכללי/מספר הקפות הסופי שלו. אם הסיום הוא כשמתחרה מסיים, יש לבחור אותו ו"להכניס" דגל סיום</span></p>
 
     <h2 id="C5" class="c4">ספיישל טסט</h2>
     
