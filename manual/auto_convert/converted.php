@@ -244,37 +244,37 @@ if ($_POST['elite']) { // elite v3
                 if (strpos($data[0], 'DISQ') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DSQ') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNS') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DNS - לא התחיל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNF') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DNF - לא סיים</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Status 1') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DNF - לא סיים</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Status 2') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Status 3') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DNS - לא התחיל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Requirements : Must cross the finishing line') !== false) {
                 } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
@@ -361,22 +361,22 @@ if ($_POST['elite']) { // elite v3
                 if (strpos($data[0], 'DISQ') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DSQ') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DSQ - נפסל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNS') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DNS - לא התחיל</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNF') !== false) {
                     $html .= '    <tr>'."\r\n";
 //                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">DNF - לא סיים</td>'."\r\n";
+                    $html .= '        <td  colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
                     $html .= '    <tr>'."\r\n";
