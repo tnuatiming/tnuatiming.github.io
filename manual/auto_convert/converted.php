@@ -97,6 +97,7 @@ if ($_POST['elite']) {  //create header for elite v3
                     for ($c=0; $c < $num; $c++) {
                         $data1[$c] = str_replace("Lap timer", "הקפה", $data1[$c]);
                         $data1[$c] = str_replace("Lap time", "הקפה", $data1[$c]);
+                        $data1[$c] = str_replace("Total time penality", "עונשין", $data1[$c]);
                         $header .= '        <th class="rnkh_font">'.$data1[$c].'</th>'."\r\n";
                         $stop = 1;
                         $hrow = $row1;
@@ -331,6 +332,9 @@ if ($_POST['elite']) { // elite v3
                             $data[$c] = substr_replace($data[$c], '', 0, 1);
                         }                        
                         if (strpos($data[$c], '(C)') !== false) {
+                            $data[$c] = str_replace("(C) 00:0", " P ", $data[$c]);
+                            $data[$c] = str_replace("(C) 00:", " P ", $data[$c]);
+                            $data[$c] = str_replace("(C) 0", " P ", $data[$c]);
                             $data[$c] = str_replace("(C)", " P ", $data[$c]);
                             $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
                         } else {

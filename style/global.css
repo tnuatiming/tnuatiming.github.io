@@ -455,11 +455,11 @@ td.comment_font {
     border-left: none;
     border-right: none;
 }
-
+/* 
 #race td.rnk_font.penalty {
     color: #ff0000;
 }
-
+*/
 .full-bg {
     min-height: 100%;
     width: 100%;
