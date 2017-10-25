@@ -526,6 +526,8 @@ Status 3,DSQ,center</code></pre></li>
 
     <p class="c1"><span><img alt="image16.png" src="/manual/images/image16.png"></span></p>
     
+    <p class="c0">if displaying lap times colmuns, please start with the last lap as it is actually the first...</p>
+
     <h2 id="C8" class="c4">התאמת התוצאות לתצוגה באתר</h2>
 
     <p class="c1"><span><img alt="image29.png" src="/manual/images/image29.png"></span></p>

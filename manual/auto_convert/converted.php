@@ -89,15 +89,29 @@ if ($_POST['elite']) {  //create header for elite v3
     $blap = ""; // start creating the best lap lines variable
     $header .= '    <tr class="rnkh_bkcolor">'."\r\n"; // start creating the denamic header
     $row1 = 1;
+    $lapscount = 1;// number of lap
     if (($handle1 = fopen($csv_file, "r")) !== FALSE) {
         while (($data1 = fgetcsv($handle1, 1000, "\t")) !== FALSE) {
                 $num = count($data1);
                 if (($stop == 0) && ($num > 3)) { // header line probably more then 3 colmuns and stop going trough the line when the header is detected
                     $bigTable = $num;
                     for ($c=0; $c < $num; $c++) {
+                        if ((strpos($data1[$c], 'הקפה מהירה') === false) and ((strpos($data1[$c], 'Lap time') !== false) or (strpos($data1[$c], 'הקפה') !== false))) {// rearange the lap numbers to start from 1 (in elite we start the colmuns with the last lap as it is actually the first...)
+                            $data1[$c] = ("הקפה ".$lapscount);
+                            $lapscount++;
+                        }
+                        $data1[$c] = str_replace("No.", "מספר", $data1[$c]);
+                        $data1[$c] = str_replace("Name", "שם", $data1[$c]);
+                        $data1[$c] = str_replace("Category", "קטגוריה", $data1[$c]);
+                        $data1[$c] = str_replace("Pos.", "מקום", $data1[$c]);
+                        $data1[$c] = str_replace("Total time penality", "עונשין", $data1[$c]);
+                        $data1[$c] = str_replace("Total time", "זמן", $data1[$c]);
+                        $data1[$c] = str_replace("Total laps", "הקפות", $data1[$c]);
+                        $data1[$c] = str_replace("Best lap", "הקפה מהירה", $data1[$c]);
+                        $data1[$c] = str_replace("Diff. with leader", "פער", $data1[$c]);
+                        $data1[$c] = str_replace("Points", "נקודות", $data1[$c]);
                         $data1[$c] = str_replace("Lap timer", "הקפה", $data1[$c]);
                         $data1[$c] = str_replace("Lap time", "הקפה", $data1[$c]);
-                        $data1[$c] = str_replace("Total time penality", "עונשין", $data1[$c]);
                         $header .= '        <th class="rnkh_font">'.$data1[$c].'</th>'."\r\n";
                         $stop = 1;
                         $hrow = $row1;
