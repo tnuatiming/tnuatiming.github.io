@@ -272,7 +272,7 @@ td img {
 }
 
 #Title img {
-    height: 48px;
+    height: 24px;
     vertical-align: middle;
     margin: 0 16px;
 }
@@ -294,7 +294,7 @@ td img {
 }
 
 .live_header_image {
-    height: 48px;
+    height: 24px;
     margin: auto 5px;
 }
 
