@@ -155,8 +155,12 @@ table.no_num_color {
 }
 
 .big_table {
-    font-size: 0.5em;
+    font-size: 0.8em;
     overflow-x:auto;
+    width: 100%;
+}
+.big_table th.rnkh_font {
+    white-space: pre-wrap;
 }
 
 table::before, table::after {
@@ -207,8 +211,8 @@ table::before, table::after {
     text-shadow: 0 1px 2px #fff;
 }
 
-/*place column*/
-#race .no_num_color td:first-child {
+/*place column*/ 
+#race .no_num_color td.rnk_font:nth-of-type(1) {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
     color:#fff;
@@ -218,6 +222,12 @@ table::before, table::after {
 /*category     background-color: rgba(245,245,245,0.5);*/
 #race tr.bkcolor td.title_font {
     color:#fff;
+    font-weight: 700;
+}
+
+/*category     background-color: rgba(245,245,245,0.5);*/
+#race .no_num_color td.title_font {
+    color: #666;
     font-weight: 700;
 }
 
