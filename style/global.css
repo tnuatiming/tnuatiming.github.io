@@ -149,11 +149,21 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+table.no_num_color {
+    margin-top: 10px;
+}
+
+.big_table {
+    font-size: 0.5em;
+    overflow-x:auto;
+}
+
 table::before, table::after {
     content: "";
     display: table;
-     width: 100%;
-   margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
 }
 
 /*race resulte page*/
@@ -963,9 +973,6 @@ padding-right: 10%;
 @media (max-width: 1024px)   {
     table {
      /*    font-size: 70%;*/
-    }
-    .big_table {
-        font-size: 0.7em;
     }
 
     body, .full-bg{

@@ -50,12 +50,14 @@ $count = count($textArray);  // row counter
 for ($i = 0; $i < $count; $i++) {
     $data = preg_split( "/[\t,]/", $textArray[$i]); // split if delimeter is tab or ,
     $num = count($data);  // column counter
-        if (($num > 1) && (stripos($textArray[$i], 'Start')) === FALSE && (stripos($textArray[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
+// vola line, next line for elite v3        if (($num > 1) && (stripos($textArray[$i], 'Start')) === FALSE && (stripos($textArray[$i], 'Grid')) === FALSE){ //clean 1 cell lines and Start and Grid lines
+        if ($num > 1) { //clean 1 cell lines and Start and Grid lines
             for ($c=0; $c < $num; $c++) {
                 $tableArray[$i][$c] = str_replace(".", "", $data[$c]); // insert cell data into multidimensional array after strip "."
                 // $tableArray[$i][$c] = $data[$c];  // insert cell data into multidimensional array
                 $tableArray[$i][$c] = str_ireplace("laps", "הקפות", $tableArray[$i][$c]);  // Case-insensitive
                 $tableArray[$i][$c] = str_ireplace("lap", "הקפה", $tableArray[$i][$c]);
+                $tableArray[0][$c] = $c; // added for elite v3 as it has no column for postion.
             }
         }
     }
@@ -71,7 +73,11 @@ if (!$_POST['donttranspose']) {
 // start the html output
 
 $html = "";
-$html .= '<table class="line_color no_num_color">'."\r\n";
+if ($count > 12) { //big table
+    $html .= '<table class="line_color no_num_color big_table">'."\r\n";
+} else {
+    $html .= '<table class="line_color no_num_color">'."\r\n";
+}
 $html .= '    <tr>'."\r\n";
 $html .= '        <td  colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";
 $html .= '    </tr>'."\r\n";
