@@ -12,6 +12,8 @@ include: [
     .htaccess
 ]
 exclude: [
+  119,
+  119.pub,
   images/temp,
   images/original,
   images/old,
