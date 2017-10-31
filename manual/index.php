@@ -242,9 +242,9 @@ Abbreviation lap :,הקפות,center
 Abbreviation last lap in race :,הקפה אחרונה,center
 Abbreviation laps completed :,סיום,center
 ,,
-Status 1,DNF,center
-Status 2,DNS,center
-Status 3,DSQ,center</code></pre></li>
+Status 10,DSQ,center
+Status 11,DNF,center
+Status 12,DNS,center</code></pre></li>
             <li>live internet setting and test</li>
             <li>timing > photo cell</li>
         </ol>

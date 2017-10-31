@@ -96,7 +96,7 @@ if ($_POST['elite']) {  //create header for elite v3
                 if (($stop == 0) && ($num > 3)) { // header line probably more then 3 colmuns and stop going trough the line when the header is detected
                     $bigTable = $num;
                     for ($c=0; $c < $num; $c++) {
-                        if ((strpos($data1[$c], 'הקפה מהירה') === false) and ((strpos($data1[$c], 'Lap time') !== false) or (strpos($data1[$c], 'הקפה') !== false))) {// rearange the lap numbers to start from 1 (in elite we start the colmuns with the last lap as it is actually the first...)
+                        if ((preg_match('~[0-9]~', $data1[$c])) and ((strpos($data1[$c], 'Lap time') !== false) or (strpos($data1[$c], 'הקפה') !== false))) {// rearange the lap numbers to start from 1 (in elite we start the colmuns with the last lap as it is actually the first...)
                             $data1[$c] = ("הקפה ".$lapscount);
                             $lapscount++;
                         }
