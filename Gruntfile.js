@@ -15,7 +15,7 @@
         command: "./gitup.sh"
       },
       htmlproof: {
-        command: "htmlproofer ./_site --disable-external"
+        command: "htmlproofer ./_site --disable-external --check-html"
       }
 },
                  
