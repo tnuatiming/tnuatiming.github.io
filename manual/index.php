@@ -317,7 +317,7 @@ Status 12,DNS,center</code></pre></li>
         </thead>
        <tbody>
             <tr>
-                <td class="s11" >motocross/ enduro hare scramble</td>
+                <td class="s11" >motocross</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
                 <td class="s2" >starting schedule</td>
@@ -330,6 +330,21 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
                 <td class="s1" >on winner competitor right click > insert flag > finish flag OR cp hit(pass) > insert finish flag</td>
+            </tr>
+            <tr>
+                <td class="s11" >enduro hare scramble</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" >starting schedule</td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
+                <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag OR cp hit(pass) > insert finish flag</td>
             </tr>
             <tr>
                 <td class="s11" >enduro special test</td>
@@ -404,7 +419,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
                 <td class="s1" >green flag</td>
-                <td class="s1" >on session end cp hit(pass) > insert finish flag</td>
+                <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag OR on session end cp hit(pass) > insert finish flag</td>
             </tr>
             <tr class="strike">
                 <td class="s1" >superbike/ supermoto</td>
