@@ -723,82 +723,105 @@ a.logo_text{
     padding: 0;
     list-style: none;
     list-style-type: none;
+    text-align: center;
     vertical-align: middle;
 }
 
 .navigation li {
-    margin: 10px 0;
-    padding: 0;
-    border-right: 1px solid #ccc;
+  /*  margin: 10px 0;
+    line-height: 40px;
+    height: 40px;
+    border-right: 1px solid #ccc;*/
     white-space: nowrap ;
     min-width: 9em;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-.navigation li:first-child {
-    border-right: none;
-}
-
-.navigation a:link,.navigation a:visited {
+.navigation a, 
+.navigation a:link, 
+.navigation a:visited, 
+.navigation a.races, 
+.navigation a.live, 
+.navigation a.home {
     font-weight: 700;
-    background: rgba(255,255,255,0.4);
     color: #222;
+    background-color: rgba(240,240,240,0.9);
     display: block;
     width: auto;
-/*    overflow: hidden;*/
-    padding: 4px 10px;
+    /*    overflow: hidden;*/
     text-decoration: none;
     text-transform: uppercase;
+    text-shadow: none;
     font-size: 1em;
     vertical-align: middle;
-}
-
-.navigation a:link,.navigation a:visited {
-    background: rgba(240,240,240,0.9);
+    text-decoration: none;
+    border-top: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    padding: 10px;
 }
 
 .navigation a.races:hover {
     color: #222;
     background-color: rgba(255,255,255,0.8);
-    border-bottom: 6px #ffcc33 solid;
+    /*border-bottom: 6px #ffcc33 solid;*/
 }
-
 
 .navigation a.home:hover {
     color: #222;
     background-color: rgba(255,255,255,0.8);
-    border-bottom: 6px #6c3 solid;
+    /*border-bottom: 6px #6c3 solid;*/
 }
 
 .navigation a.live:hover {
     color: #222;
     background-color: rgba(255,255,255,0.8);
-    border-bottom: 6px #c00 solid;
-}
-
-.navigation a.live:hover .live-icon {
-    fill: #222;
-}
-
-#home .navigation a.home:hover,
-#terms .navigation a.home:hover,
-#live .navigation a.live:hover,
-#races .navigation a.races:hover {
-    background-color: rgba(255,255,255,0.4);
-}
-
-#home .navigation a.home,
-#terms .navigation a.home,
-#live .navigation a.live,
-#races .navigation a.races,
-#race .navigation a.races {
-    border-bottom: 6px #222 solid;
+    /*border-bottom: 6px #c00 solid;*/
 }
 
 .home-icon, .race-icon, .live-icon {
     max-width: 0.8em;
     max-height: 0.8em;
     padding: 0 4px;
+}
+
+#home .navigation a.home,
+#terms .navigation a.home {
+    color: #222;
+    background-color: #6c3;
+}
+
+#live .navigation a.live {
+    color: #fff;
+    background-color: #c00;
+}
+
+#races .navigation a.races,
+#race .navigation a.races {
+    color: #222;
+    background-color: #ffcc33;
+}
+
+#home .navigation a.home:hover,
+#terms .navigation a.home:hover {
+    color: #222;
+    background-color: #6c3;
+}
+
+#live .navigation a.live:hover {
+    color: #fff;
+    background-color: #c00;
+}
+
+#races .navigation a.races:hover,
+#race .navigation a.races:hover {
+    color: #222;
+    background-color: #ffcc33;
+}
+
+#live svg.live-icon {
+    fill: white;
 }
 
 .main_content {
@@ -1003,7 +1026,7 @@ padding-right: 10%;
         margin: 0 auto;
     }
 
-#live .page, #race .page {
+    #live .page, #race .page {
         width: 100%;
         margin: 0 auto;
     }
