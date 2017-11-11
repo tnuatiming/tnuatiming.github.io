@@ -289,7 +289,7 @@ td img {
     font-weight: 700;
     font-size: 1.5em;
     color: rgba(0,0,0,0.5);
-    margin: 0 0 0 0;
+    margin: 5px 0 5px 0;
 }
 
 #Title img {
@@ -303,7 +303,7 @@ td img {
     font-size: 2em;
     font-weight: 700;
     text-align: center;
-    margin: auto 20px;
+    margin: 5px 20px;
     vertical-align: middle;
 }
 
@@ -328,7 +328,7 @@ td img {
 }
 
 #Time {
-    margin: 0 auto 8px auto;
+    margin: 5px auto 8px auto;
     font-size: 1em;
     font-weight: 700;
     text-align: right;
@@ -753,6 +753,10 @@ a.logo_text{
     vertical-align: middle;
 }
 
+.navigation a:link,.navigation a:visited {
+    background: rgba(240,240,240,0.9);
+}
+
 .navigation a.races:hover {
     color: #222;
     background-color: rgba(255,255,255,0.8);
@@ -951,6 +955,10 @@ padding-right: 10%;
     background:rgba(240,240,240,0.9);
 }
 
+#race .animated, #live .animated {
+    background:rgba(255,255,255,0.9);
+}
+
 .animated.hinge {
     -webkit-animation-duration: 2s;
     animation-duration: 2s;
@@ -1144,6 +1152,9 @@ padding-right: 10%;
     #home .right{
         float: right;
         width: 100%;
+    }
+    #live #Title {
+        font-size: 1.2em;
     }
     
 }
