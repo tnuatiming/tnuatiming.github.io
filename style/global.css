@@ -738,15 +738,12 @@ a.logo_text{
     text-align: center;
     margin: 0;
     padding: 0;
-    border-top: 1px #ccc solid;
-    border-left: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
 }
-
+/*
 .navigation li:first-child {
     border-right: 1px #ccc solid;
 }
-
+*/
 .navigation a, 
 .navigation a:link, 
 .navigation a:visited, 
@@ -759,14 +756,20 @@ a.logo_text{
     background-color: #f0f0f0;
     display: block;
     width: auto;
-    /*    overflow: hidden;*/
+    /*    overflow: hidden;
+    border-bottom: 6px #f0f0f0 solid;     */
     text-decoration: none;
     text-transform: uppercase;
     text-shadow: none;
     font-size: 1em;
     vertical-align: middle;
     text-decoration: none;
-    border-bottom: 6px #f0f0f0 solid;
+    border-top: 1px #ccc solid;
+    border-left: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+}
+.navigation a.home {
+    border-right: 1px #ccc solid;
 }
 
 .navigation a.races:hover {
