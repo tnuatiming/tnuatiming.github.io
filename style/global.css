@@ -738,14 +738,14 @@ a.logo_text{
     text-align: center;
     margin: 0;
     padding: 0;
-    border-top: 1px #ccc solid;
-    border-left: 1px #ccc solid;
+/*    border-top: 1px #ccc solid;
+    border-left: 1px #ccc solid;*/
     border-bottom: 1px #ccc solid;
 }
-
+/*
 .navigation li:first-child {
     border-right: 1px #ccc solid;
-}
+}*/
 
 .navigation a, 
 .navigation a:link, 
