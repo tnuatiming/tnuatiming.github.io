@@ -737,6 +737,7 @@ a.logo_text{
     text-align: center;
     margin: 0;
     padding: 0;
+    margin-right: 1px;
 }
 
 .navigation a, 
@@ -747,7 +748,7 @@ a.logo_text{
 .navigation a.home {
     font-weight: 700;
     color: #222;
-    background-color: rgba(240,240,240,0.9);
+    background-color: #f0f0f0;
     display: block;
     width: auto;
     /*    overflow: hidden;*/
@@ -764,19 +765,19 @@ a.logo_text{
 
 .navigation a.races:hover {
     color: #222;
-    background-color: rgba(255,255,255,0.8);
+    background-color: #fff;
     /*border-bottom: 6px #ffcc33 solid;*/
 }
 
 .navigation a.home:hover {
     color: #222;
-    background-color: rgba(255,255,255,0.8);
+    background-color: #fff;
     /*border-bottom: 6px #6c3 solid;*/
 }
 
 .navigation a.live:hover {
     color: #222;
-    background-color: rgba(255,255,255,0.8);
+    background-color: #fff;
     /*border-bottom: 6px #c00 solid;*/
 }
 
@@ -797,8 +798,8 @@ a.logo_text{
     background-color: #c00;
 }
 
-#races .navigation a.races,
-#race .navigation a.races {
+/*#race .navigation a.races,*/
+#races .navigation a.races {
     color: #222;
     background-color: #ffcc33;
 }
@@ -814,8 +815,8 @@ a.logo_text{
     background-color: #c00;
 }
 
-#races .navigation a.races:hover,
-#race .navigation a.races:hover {
+/*#race .navigation a.races:hover,*/
+#races .navigation a.races:hover {
     color: #222;
     background-color: #ffcc33;
 }
