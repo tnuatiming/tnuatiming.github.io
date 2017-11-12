@@ -819,7 +819,7 @@ a.logo_text{
 #race .navigation a.races {
     color: #222;
     /*background-color: #fc3;*/
-    border-bottom: 6px #222 solid;
+    border-bottom: 6px #666 solid;
 }
 
 #home .navigation a.home:hover,
