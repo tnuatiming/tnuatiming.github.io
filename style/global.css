@@ -42,8 +42,8 @@ body {
     min-width: min-content;
     min-height: -webkit-min-content;
     min-height: -moz-min-content;
-    min-height: min-content;*/
-    background: rgba(240,240,240,1);
+    min-height: min-content;
+    background: rgba(240,240,240,1);*/
 }
 
 a {
@@ -731,13 +731,20 @@ a.logo_text{
   /*  margin: 10px 0;
     line-height: 40px;
     height: 40px;
+    margin-right: 1px;
     border-right: 1px solid #ccc;*/
     white-space: nowrap ;
     min-width: 9em;
     text-align: center;
     margin: 0;
     padding: 0;
-    margin-right: 1px;
+    border-top: 1px #ccc solid;
+    border-left: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+}
+
+.navigation li:first-child {
+    border-right: 1px #ccc solid;
 }
 
 .navigation a, 
@@ -746,6 +753,7 @@ a.logo_text{
 .navigation a.races, 
 .navigation a.live, 
 .navigation a.home {
+    padding: 10px;
     font-weight: 700;
     color: #222;
     background-color: #f0f0f0;
@@ -758,27 +766,25 @@ a.logo_text{
     font-size: 1em;
     vertical-align: middle;
     text-decoration: none;
-    border-top: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
-    padding: 10px;
+    border-bottom: 6px #f0f0f0 solid;
 }
 
 .navigation a.races:hover {
     color: #222;
     background-color: #fff;
-    /*border-bottom: 6px #ffcc33 solid;*/
+    border-bottom: 6px #fc3 solid;
 }
 
 .navigation a.home:hover {
     color: #222;
     background-color: #fff;
-    /*border-bottom: 6px #6c3 solid;*/
+    border-bottom: 6px #6c3 solid;
 }
 
 .navigation a.live:hover {
     color: #222;
     background-color: #fff;
-    /*border-bottom: 6px #c00 solid;*/
+    border-bottom: 6px #c00 solid;
 }
 
 .home-icon, .race-icon, .live-icon {
@@ -790,39 +796,47 @@ a.logo_text{
 #home .navigation a.home,
 #terms .navigation a.home {
     color: #222;
-    background-color: #6c3;
+    /*background-color: #6c3;*/
+    border-bottom: 6px #6c3 solid;
 }
 
 #live .navigation a.live {
-    color: #fff;
-    background-color: #c00;
+    color: #222;
+    /*background-color: #c00;*/
+    border-bottom: 6px #c00 solid;
 }
 
-/*#race .navigation a.races,*/
+#live svg.live-icon {
+    fill: #222;
+}
+
 #races .navigation a.races {
     color: #222;
-    background-color: #ffcc33;
+    /*background-color: #fc3;*/
+    border-bottom: 6px #fc3 solid;
+}
+
+#race .navigation a.races {
+    color: #222;
+    /*background-color: #fc3;*/
+    border-bottom: 6px #222 solid;
 }
 
 #home .navigation a.home:hover,
 #terms .navigation a.home:hover {
     color: #222;
-    background-color: #6c3;
+    /*background-color: #6c3;*/
 }
 
 #live .navigation a.live:hover {
-    color: #fff;
-    background-color: #c00;
+    color: #222;
+    /*background-color: #c00;*/
 }
 
-/*#race .navigation a.races:hover,*/
+#race .navigation a.races:hover,
 #races .navigation a.races:hover {
     color: #222;
-    background-color: #ffcc33;
-}
-
-#live svg.live-icon {
-    fill: white;
+    /*background-color: #fc3;*/
 }
 
 .main_content {
@@ -1018,9 +1032,9 @@ padding-right: 10%;
      /*    font-size: 70%;*/
     }
 
-    body, .full-bg{
+ /*    body, .full-bg{
         background: #f0f0f0;
-    }
+    }*/
 
     .page {
         width: 95%;
@@ -1039,7 +1053,6 @@ padding-right: 10%;
     }
     .navigation ul {
         /*   margin: 0 10px 10px 0;*/
-        background: rgba(255,255,255,0.6);
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
@@ -1059,13 +1072,13 @@ padding-right: 10%;
     }
     .navigation a, .navigation a.races {
         color: #222;
-        background-color: #ffcc33;
+        background-color: #fc3;
         border-bottom: none;
       /*  font-size: 1.2em;*/
     }
 
     .navigation a.live {
-        color: white;
+        color: #fff;
         background-color: #c00;
         border-bottom: none;
         text-shadow: none;
@@ -1076,23 +1089,58 @@ padding-right: 10%;
         background-color: #6c3;
         border-bottom: none;
     }
+    .navigation a.home:hover,
+    .navigation a.live:hover,
+    .navigation a.races:hover {
+        border-bottom: none;
+    }
 
+    #home .navigation a.home,
+    #terms .navigation a.home {
+        color: #222;
+        background-color: #6c3;
+            border-bottom: none;
+    }
+
+    #live .navigation a.live {
+        color: #fff;
+        background-color: #c00;
+            border-bottom: none;
+    }
+
+    #race .navigation a.races,
+    #races .navigation a.races {
+        color: #222;
+        background-color: #fc3;
+            border-bottom: none;
+    }
 
     #home .navigation a.home:hover,
     #terms .navigation a.home:hover {
         color: #222;
         background-color: #6c3;
+        border-bottom: none;
     }
 
     #live .navigation a.live:hover {
         color: #fff;
         background-color: #c00;
+        border-bottom: none;
+    }
+
+    #live svg.live-icon, svg.live-icon {
+        fill: #fff;
+    }
+
+    .navigation a.live:hover svg.live-icon {
+        fill: #222;
     }
 
     #races .navigation a.races:hover,
     #race .navigation a.races:hover {
         color: #222;
-        background-color: #ffcc33;
+        background-color: #fc3;
+        border-bottom: none;
     }
 
     .navigation a:link, .navigation a:visited {
@@ -1108,10 +1156,6 @@ padding-right: 10%;
     .logo {
         font-size: 60px;
    }
-
-   svg.live-icon {
-        fill: white;
-    }
 
     .logo li, .css3-blink {
         -webkit-transition-property: none !important;
