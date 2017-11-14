@@ -405,7 +405,7 @@ td img {
 }
 
 tr.OddRow:hover, tr.EvenRow:hover {
-    background: #ffcc33;
+    background: #fc3;
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
@@ -1028,11 +1028,11 @@ padding-right: 10%;
 }
 
 @media (max-width: 1024px) {
-    table {
-     /*    font-size: 70%;*/
+   /*  table {
+        font-size: 70%;
     }
 
- /*    body, .full-bg{
+     body, .full-bg{
         background: #f0f0f0;
     }*/
 
@@ -1101,20 +1101,20 @@ padding-right: 10%;
     #terms .navigation a.home {
         color: #222;
         background-color: #6c3;
-            border-bottom: none;
+        border-bottom: none;
     }
 
     #live .navigation a.live {
         color: #fff;
         background-color: #c00;
-            border-bottom: none;
+        border-bottom: none;
     }
 
     #race .navigation a.races,
     #races .navigation a.races {
         color: #222;
         background-color: #fc3;
-            border-bottom: none;
+        border-bottom: none;
     }
 
     #home .navigation a.home:hover,

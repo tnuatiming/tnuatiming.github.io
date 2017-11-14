@@ -9,11 +9,11 @@ AddOutputFilter INCLUDES .shtml
 # Use ChromeFrame if it's installed for a better experience for the poor IE folk
 
 <IfModule mod_headers.c>
-  Header set X-UA-Compatible "IE=Edge,chrome=1"
-  # mod_headers can't match by content-type, but we don't want to send this header on *everything*...
-  <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webm|webp|woff|xml|xpi)$">
+Header set X-UA-Compatible "IE=Edge,chrome=1"
+# mod_headers can't match by content-type, but we don't want to send this header on *everything*...
+<FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webm|webp|woff|xml|xpi)$">
     Header unset X-UA-Compatible
-  </FilesMatch>
+</FilesMatch>
 </IfModule>
 
 
@@ -47,7 +47,7 @@ AddEncoding gzip                       svgz
 AddType application/vnd.ms-fontobject  eot
 AddType application/x-font-ttf         ttf ttc
 AddType application/x-font-woff        woff
-AddType font/opentype                  otf
+AddType application/x-font-opentype    otf
 
 # Assorted types
 AddType application/octet-stream            safariextz
@@ -74,36 +74,36 @@ AddHandler server-parsed .shtml .shtm .htm .html
 
 <IfModule mod_deflate.c>
 
-  # Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
-  <IfModule mod_setenvif.c>
+# Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+<IfModule mod_setenvif.c>
     <IfModule mod_headers.c>
-      SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
-      RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+    SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+    RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
     </IfModule>
-  </IfModule>
+</IfModule>
 
-  # Compress all output labeled with one of the following MIME-types
-  # (for Apache versions below 2.3.7, you don't need to enable `mod_filter`
-  # and can remove the `<IfModule mod_filter.c>` and `</IfModule>` lines as
-  # `AddOutputFilterByType` is still in the core directives)
-  <IfModule mod_filter.c>
+# Compress all output labeled with one of the following MIME-types
+# (for Apache versions below 2.3.7, you don't need to enable `mod_filter`
+# and can remove the `<IfModule mod_filter.c>` and `</IfModule>` lines as
+# `AddOutputFilterByType` is still in the core directives)
+<IfModule mod_filter.c>
     AddOutputFilterByType DEFLATE application/atom+xml \
-                                  application/javascript \
-                                  application/json \
-                                  application/rss+xml \
-                                  application/vnd.ms-fontobject \
-                                  application/x-font-ttf \
-                                  application/xhtml+xml \
-                                  application/xml \
-                                  font/opentype \
-                                  image/svg+xml \
-                                  image/x-icon \
-                                  text/css \
-                                  text/html \
-                                  text/plain \
-                                  text/x-component \
-                                  text/xml
-  </IfModule>
+                                application/javascript \
+                                application/json \
+                                application/rss+xml \
+                                application/vnd.ms-fontobject \
+                                application/x-font-ttf \
+                                application/xhtml+xml \
+                                application/xml \
+                                font/opentype \
+                                image/svg+xml \
+                                image/x-icon \
+                                text/css \
+                                text/html \
+                                text/plain \
+                                text/x-component \
+                                text/xml
+</IfModule>
 
 </IfModule>
 
@@ -131,9 +131,9 @@ AddHandler server-parsed .shtml .shtm .htm .html
 # Rewrite "www.example.com -> example.com".
 
 <IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -185,25 +185,25 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # shouldn't allow everybody to surf through every folder on your server (which
 # includes rather private places like CMS system folders).
 <IfModule mod_autoindex.c>
-  Options -Indexes
+Options -Indexes
 </IfModule>
 
 # Block access to "hidden" directories or files whose names begin with a
 # period. This includes directories used by version control systems such as
 # Subversion or Git.
 <IfModule mod_rewrite.c>
-  RewriteCond %{SCRIPT_FILENAME} -d [OR]
-  RewriteCond %{SCRIPT_FILENAME} -f
-  RewriteRule "(^|/)\." - [F]
+RewriteCond %{SCRIPT_FILENAME} -d [OR]
+RewriteCond %{SCRIPT_FILENAME} -f
+RewriteRule "(^|/)\." - [F]
 </IfModule>
 
 # Block access to backup and source files. These files may be left by some
 # text/html editors and pose a great security danger, when anyone can access
 # them.
 <FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
-  Order allow,deny
-  Deny from all
-  Satisfy All
+Order allow,deny
+Deny from all
+Satisfy All
 </FilesMatch>
 
 # If your server is not already configured as such, the following directive
@@ -263,7 +263,7 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 
 # Increase cookie security
 <IfModule mod_php5.c>
-  php_value session.cookie_httponly true
+php_value session.cookie_httponly true
 </IfModule>
 
 
@@ -280,52 +280,95 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # "access plus 1 week".
 
 <IfModule mod_expires.c>
-  ExpiresActive on
 
-# Perhaps better to whitelist expires rules? Perhaps.
-  ExpiresDefault                          "access plus 1 week"
-
-# cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
-  ExpiresByType text/cache-manifest       "access plus 0 seconds"
-
-# Your document html
-  ExpiresByType text/html                 "access plus 0 seconds"
-
-# Data
-  ExpiresByType application/json          "access plus 0 seconds"
-  ExpiresByType application/xml           "access plus 0 seconds"
-  ExpiresByType text/xml                  "access plus 0 seconds"
-
-# Feed
-  ExpiresByType application/atom+xml      "access plus 1 hour"
-  ExpiresByType application/rss+xml       "access plus 1 hour"
-
-# Favicon (cannot be renamed)
-  ExpiresByType image/x-icon              "access plus 1 week"
-
-# Media: images, video, audio
-  ExpiresByType audio/ogg                 "access plus 1 month"
-  ExpiresByType image/gif                 "access plus 1 month"
-  ExpiresByType image/jpeg                "access plus 1 month"
-  ExpiresByType image/png                 "access plus 1 month"
-  ExpiresByType video/mp4                 "access plus 1 month"
-  ExpiresByType video/ogg                 "access plus 1 month"
-  ExpiresByType video/webm                "access plus 1 month"
-
-# HTC files  (css3pie)
-  ExpiresByType text/x-component          "access plus 1 month"
-
-# Webfonts
-  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
-  ExpiresByType application/x-font-ttf    "access plus 1 month"
-  ExpiresByType application/x-font-woff   "access plus 1 month"
-  ExpiresByType font/opentype             "access plus 1 month"
-  ExpiresByType image/svg+xml             "access plus 1 month"
-
-# CSS and JavaScript
-  ExpiresByType application/javascript    "access plus 1 week"
-  ExpiresByType text/css                  "access plus 1 week"
-
+    ExpiresActive on
+    ExpiresDefault                                    "access plus 1 day"
+    
+    # DATA
+    ExpiresByType text/xml                            "access plus 0 seconds"
+    ExpiresByType text/html                           "access plus 0 seconds"
+    ExpiresByType text/plain                          "access plus 0 seconds"
+    ExpiresByType application/xml                     "access plus 0 seconds"
+    ExpiresByType application/json                    "access plus 0 seconds"
+    ExpiresByType application/rss+xml                 "access plus 1 hour"
+    ExpiresByType application/atom+xml                "access plus 1 hour"
+    ExpiresByType text/x-component                    "access plus 1 hour"
+    
+    # MANIFEST
+    ExpiresByType application/x-web-app-manifest+json "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                 "access plus 0 seconds"
+    
+    # SCRIPTS
+    ExpiresByType text/css                            "now plus 1 week" 
+    ExpiresByType text/javascript                     "access plus 1 month" 
+    ExpiresByType application/javascript              "access plus 1 month" 
+    ExpiresByType application/x-javascript            "access plus 1 month" 
+    
+    # IMAGES
+    ExpiresByType image/gif                           "access plus 1 month"
+    ExpiresByType image/png                           "access plus 1 month"
+    ExpiresByType image/jpe                           "access plus 1 month"
+    ExpiresByType image/jpg                           "access plus 1 month"
+    ExpiresByType image/jpeg                          "access plus 1 month"
+    ExpiresByType image/jp2                           "access plus 1 month"
+    ExpiresByType image/pipeg                         "access plus 1 month"
+    ExpiresByType image/bmp                           "access plus 1 month"
+    ExpiresByType image/tiff                          "access plus 1 month"
+    ExpiresByType image/svg+xml                       "access plus 1 month"
+    ExpiresByType image/vnd.microsoft.icon            "access plus 1 month"
+    
+    # ICONS
+    ExpiresByType image/ico                           "access plus 1 month"
+    ExpiresByType image/icon                          "access plus 1 month"
+    ExpiresByType text/ico                            "access plus 1 month"
+    ExpiresByType image/x-ico                         "access plus 1 month"
+    ExpiresByType image/x-icon                        "access plus 1 month"
+    ExpiresByType application/ico                     "access plus 1 month"
+    
+    # AUDIO
+    ExpiresByType audio/ogg                           "access plus 1 month"
+    ExpiresByType audio/basic                         "access plus 1 month"
+    ExpiresByType audio/mid                           "access plus 1 month"
+    ExpiresByType audio/midi                          "access plus 1 month"
+    ExpiresByType audio/mpeg                          "access plus 1 month"
+    ExpiresByType audio/x-aiff                        "access plus 1 month"
+    ExpiresByType audio/x-mpegurl                     "access plus 1 month"
+    ExpiresByType audio/x-pn-realaudio                "access plus 1 month"
+    ExpiresByType audio/x-wav                         "access plus 1 month"
+    
+    # VIDEO
+    ExpiresByType video/ogg                           "access plus 1 month"
+    ExpiresByType video/mp4                           "access plus 1 month"
+    ExpiresByType video/webm                          "access plus 1 month"
+    ExpiresByType video/x-msvideo                     "access plus 1 month"
+    ExpiresByType video/mpeg                          "access plus 1 month"
+    ExpiresByType video/quicktime                     "access plus 1 month"
+    ExpiresByType video/x-la-asf                      "access plus 1 month"
+    ExpiresByType video/x-ms-asf                      "access plus 1 month"
+    ExpiresByType x-world/x-vrml                      "access plus 1 month"
+    
+    # FONTS
+    ExpiresByType font/truetype                       "access plus 1 month"
+    ExpiresByType font/opentype                       "access plus 1 month"
+    ExpiresByType application/x-font-ttf              "access plus 1 month"
+    ExpiresByType application/x-font-woff             "access plus 1 month"
+    ExpiresByType application/font-woff               "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject       "access plus 1 month"
+    
+    # FLASH
+    ExpiresByType application/x-shockwave-flash       "access plus 1 month"
+    ExpiresByType video/x-flv                         "access plus 1 month"
+    
+    # OTHERS
+    ExpiresByType application/pdf                     "access plus 1 month"
+    ExpiresByType image/vnd.wap.wbmp                  "access plus 1 month"
+    ExpiresByType application/vnd.wap.wbxml           "access plus 1 month"
+    ExpiresByType application/smil                    "access plus 1 month"
+    
+    <IfModule mod_headers.c>
+        Header append Cache-Control "public"
+    </IfModule>
+    
 </IfModule>
 
 Redirect permanent /races/enduro/enduro2012r5.html /results/enduro/2013/enduro2013r5.html
