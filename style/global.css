@@ -19,7 +19,7 @@ html {
     -ms-text-size-adjust: 100%;
     margin: 0;
     padding: 0;
-    display:table;  /*  fixes html/body not expending to the size of the content (table)*/
+    display: table;  /*  fixes html/body not expending to the size of the content (table)*/
 /*    position: relative;*/
 }
 
@@ -144,10 +144,13 @@ ul.history li {
 table {
 /*    font-size: 0.9em;
     line-height: 2em;*/
+    white-space: nowrap;
     font-size: 1em;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    vertical-align: middle;
+    text-align: center;
 }
 
 table.no_num_color {
