@@ -142,7 +142,8 @@ tbody tr:hover {
     <li><a href="#C8_1">ידני</a></li>
     </ul>
 </li>
-<li><a href="#C10">לוגואים</a>
+<li><a href="#C10">לוגואים</a></li>
+<li><a href="#C101">תוצאות כקובץ CSV</a></li>
 </ul>
 <br><br>
 
@@ -621,7 +622,8 @@ Status 12,DNS,center</code></pre></li>
     <a class="c1" href="http://tnuatiming.com/images/logo2_full.svg"><span><img alt="logo2_full.svg" src="/images/logo2_full.svg"></span></a><br><br>
     <a class="c1" href="http://tnuatiming.com/images/logo2_full_eng.svg"><span><img alt="logo2_full_eng.svg" src="/images/logo2_full_eng.svg"></span></a><br><br>
     <a class="c1" href="http://tnuatiming.com/live/Images/CheckeredFlag.svg"><span><img alt="CheckeredFlag.svg" src="/live/Images/CheckeredFlag.svg"></span></a><br><br>
-    <p class="c0"><span>p5f123d7a7e</span></p>
+    <a id="C101" class="c2" href="http://tnuatiming.com/results/csv/index.html">תוצאות כקובץ CSV</a>
+    <p class="c0" style="color: lightgray;"><span>p5f123d7a7e</span></p>
     
     </div>
 </body>

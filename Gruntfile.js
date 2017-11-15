@@ -14,6 +14,9 @@
       gitUpdate: {
         command: "./gitup.sh"
       },
+      csvUpdate: {
+        command: "./convert_html_to_csv.sh"
+      },
       htmlproof: {
         command: "htmlproofer ./_site --disable-external --check-html"
       }
@@ -134,9 +137,10 @@ grunt.loadNpmTasks('grunt-text-replace');
   grunt.registerTask("serve", ["shell:jekyllServe"]);
   grunt.registerTask("build", ["shell:jekyllBuild"]);
 //  grunt.registerTask("ftp", ["shell:jekyllBuild", "replace", "ftpush"]);
-grunt.registerTask("ftp", ["shell:jekyllBuild", "shell:htmlproof", "html", "css", "ftpush"]);
+grunt.registerTask("ftp", ["shell:jekyllBuild", "shell:htmlproof", "shell:csvUpdate", "html", "css", "ftpush"]);
 // grunt.registerTask("ftp", ["shell:jekyllBuild", "html", "css", "ftpush"]);
  grunt.registerTask("git", ["shell:gitUpdate"]);
+ grunt.registerTask("csv", ["shell:jekyllBuild", "shell:htmlproof", "shell:csvUpdate"]);
   grunt.registerTask("htmlproof", ["shell:htmlproof"]);
 //  grunt.registerTask("upload", ["shell:jekyllBuild", "replace", "ftpush", "shell:gitUpdate"]);
   grunt.registerTask("upload", ["shell:jekyllBuild", "html", "css", "ftpush", "shell:gitUpdate"]);
