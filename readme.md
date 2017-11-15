@@ -87,6 +87,10 @@ npm install grunt-text-replace --save-dev
 
 npm install grunt-contrib-clean --save-dev
 
+npm install grunt-zip
+
+npm install grunt-zip-directories
+
 // update Gruntfile.js and package.json
 
 ## install script (run in the root dir of the project)
@@ -97,7 +101,7 @@ instal/update nodejs:
 3. Add ~/.node/current/bin to your path (e.g echo export PATH=$HOME/.node/current/bin:$PATH >> ~/.bashrc)
 
 
-npm update npm && npm install -g grunt-cli && npm install grunt --save-dev && npm install grunt-contrib-cssmin --save-dev &&  npm install grunt-contrib-htmlmin --save-dev && npm install grunt-shell --save-dev && npm install load-grunt-tasks --save-dev && npm install grunt-contrib-watch --save-dev && npm install grunt-contrib-connect --save-dev && npm install grunt-ftpush --save-dev && npm install grunt-text-replace --save-dev && npm install grunt-contrib-clean --save-dev
+npm update npm && npm install -g grunt-cli && npm install grunt --save-dev && npm install grunt-contrib-cssmin --save-dev &&  npm install grunt-contrib-htmlmin --save-dev && npm install grunt-shell --save-dev && npm install load-grunt-tasks --save-dev && npm install grunt-contrib-watch --save-dev && npm install grunt-contrib-connect --save-dev && npm install grunt-ftpush --save-dev && npm install grunt-text-replace --save-dev && npm install grunt-contrib-clean --save-dev && npm install grunt-zip && npm install grunt-zip-directories
 
 Add this line to your application's Gemfile:
 
