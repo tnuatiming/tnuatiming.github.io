@@ -12,6 +12,7 @@ include: [
     english/index.html,
     _*.png,
     _*.svg,
+    _*.zip,
     .htaccess
 ]
 exclude: [

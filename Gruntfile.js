@@ -110,7 +110,7 @@ zip_directories: {
             expand: true,
             cwd: './',
             dest: './jekyll_backup',
-            src: ['*','!jekyll_backup','!software','!images','!node_modules','!assets', '!_site']
+            src: ['*','!jekyll_backup','!software','!images','!node_modules','!assets', '!_site', '!manual']
         }]
     }
 },
