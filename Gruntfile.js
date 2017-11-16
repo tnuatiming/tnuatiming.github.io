@@ -158,7 +158,7 @@ grunt.registerTask('csv', ['shell:jekyllBuild', 'shell:htmlproof', 'shell:csvUpd
 grunt.registerTask('htmlproof', ['shell:htmlproof']);
 grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'ftpush', 'shell:gitUpdate']);
 grunt.registerTask('backup', ['zip_directories', 'zip']);
-grunt.registerTask('ftp', ['zip_directories', 'zip', 'shell:jekyllBuild', 'shell:csvUpdate', 'shell:htmlproof', 'html', 'css', 'ftpush']);
+grunt.registerTask('ftp', ['shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'ftpush']);
 //  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftpush']);
 //  grunt.registerTask('upload', ['shell:jekyllBuild', 'replace', 'ftpush', 'shell:gitUpdate']);
 // grunt.registerTask('ftp', ['shell:jekyllBuild', 'html', 'css', 'ftpush']);

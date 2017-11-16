@@ -1,14 +1,12 @@
 #!/bin/bash
 ## the script scan all sub folder and convert tables from html files to csv files
-    rm csv/*
-    #cd ~/tnuatiming.github.io/_posts/
-    find _posts/ -type f -name '*.md' | while read F; do
-    #find . -type f -name '*.md' | while read F; do
+    cd _site/results/
+    mkdir csv
+    find . -type f -name '*.html' | while read F; do
     #find -name '*.html' -type f -printf '%h\0%d\0%p\n' | sort -t '\0' -n | awk -F '\0' '{print $3}' | while read F; do
-    file1=$(basename "$F")
-    file="${file1//-/_}"
+    file=$(basename "$F")
     if [ "$file" != "index.html" ]; then
-        url="<li><a href=http://tnuatiming.com/csv/${file%.*}.csv>${file1%.*}</a></li>"
+        url="<li><a href=http://tnuatiming.com/results/csv/${file%.*}.csv>${file%.*}</a></li>"
         echo $url >> csv/tmp.html
     #    dirname "$F" >>directories.txt
     #    cat "$F" >>FullTextOfAllFiles.txt

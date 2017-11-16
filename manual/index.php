@@ -622,7 +622,7 @@ Status 12,DNS,center</code></pre></li>
     <a class="c1" href="http://tnuatiming.com/images/logo2_full.svg"><span><img alt="logo2_full.svg" src="/images/logo2_full.svg"></span></a><br><br>
     <a class="c1" href="http://tnuatiming.com/images/logo2_full_eng.svg"><span><img alt="logo2_full_eng.svg" src="/images/logo2_full_eng.svg"></span></a><br><br>
     <a class="c1" href="http://tnuatiming.com/live/Images/CheckeredFlag.svg"><span><img alt="CheckeredFlag.svg" src="/live/Images/CheckeredFlag.svg"></span></a><br><br>
-    <a id="C101" class="c2" href="http://tnuatiming.com/results/csv/index.html">תוצאות כקובץ CSV</a>
+    <a id="C101" class="c2" href="http://tnuatiming.com/csv/index.html">תוצאות כקובץ CSV</a>
     <p class="c0" style="color: lightgray;"><span>p5f123d7a7e</span></p>
     
     </div>
