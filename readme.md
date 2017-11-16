@@ -14,13 +14,13 @@ gem update
 
 gem install jekyll
 
-gem install rdiscount -s http://gemcutter.org
+gem install rdiscount -s http://gemcutter.org // no need anymore, using kramdown
 
 gem install html-proofer
 
 jekyll new myblog
 
-bundle install
+bundle install // no need all the bundle stuff
 
 bundle update
 
@@ -28,7 +28,7 @@ bundle gem install jekyll --pre
 
 bundle exec guard init
 
-guard init livereload
+guard init livereload // no need, not using guard
 
 (https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
 
@@ -41,13 +41,13 @@ bundle exec guard
  
 ### install git
 
-git clone https://github.com/amirsher/amirsher.github.io
+git clone https://github.com/tnuatiming/tnuatiming.github.io
 
 git add --all
 
-git config user.email aaa@gmail.com
+git config user.email tnuatiming@gmail.com
 
-git config user.name amirsher
+git config user.name tnuatiming
 
 git config --global color.ui auto
 
@@ -67,25 +67,25 @@ npm update npm
 
 npm install -g grunt-cli //the -g is to get grunt in the path
 
-npm install grunt --save-dev
+npm install grunt
 
-npm install grunt-contrib-cssmin --save-dev
+npm install grunt-contrib-cssmin
 
-npm install grunt-contrib-htmlmin --save-dev
+npm install grunt-contrib-htmlmin
 
-npm install grunt-shell --save-dev
+npm install grunt-shell
 
-npm install load-grunt-tasks --save-dev
+npm install load-grunt-tasks
 
-npm install grunt-contrib-watch --save-dev
+npm install grunt-contrib-watch
 
-npm install grunt-contrib-connect --save-dev
+npm install grunt-contrib-connect
 
-npm install grunt-contrib-ftpush --save-dev
+npm install grunt-contrib-ftpush
 
-npm install grunt-text-replace --save-dev
+npm install grunt-text-replace
 
-npm install grunt-contrib-clean --save-dev
+npm install grunt-contrib-clean
 
 npm install grunt-zip
 
@@ -101,23 +101,25 @@ instal/update nodejs:
 3. Add ~/.node/current/bin to your path (e.g echo export PATH=$HOME/.node/current/bin:$PATH >> ~/.bashrc)
 
 
-npm update npm && npm install -g grunt-cli && npm install grunt --save-dev && npm install grunt-contrib-cssmin --save-dev &&  npm install grunt-contrib-htmlmin --save-dev && npm install grunt-shell --save-dev && npm install load-grunt-tasks --save-dev && npm install grunt-contrib-watch --save-dev && npm install grunt-contrib-connect --save-dev && npm install grunt-ftpush --save-dev && npm install grunt-text-replace --save-dev && npm install grunt-contrib-clean --save-dev && npm install grunt-zip && npm install grunt-zip-directories
+npm update npm && npm install -g grunt-cli && npm install grunt && npm install grunt-contrib-cssmin &&  npm install grunt-contrib-htmlmin && npm install grunt-shell && npm install load-grunt-tasks && npm install grunt-contrib-watch && npm install grunt-contrib-connect && npm install grunt-ftpush && npm install grunt-text-replace && npm install grunt-contrib-clean && npm install grunt-zip && npm install grunt-zip-directories
 
 Add this line to your application's Gemfile:
 
 gem 'html-proofer'
+
 And then execute:
 
 $ bundle
+
 Or install it yourself as:
 
 $ gem install html-proofer
 
 ### running grunt tasks
 
-grunt //normal jekyell server with live update
+grunt //normal jekyell local server with live update
 
-grunt ftp //building minifing and uploading to live site
+grunt ftp //building, minifing, backuping, proofing and uploading to live site
 
 grunt git  //updating git repo
 

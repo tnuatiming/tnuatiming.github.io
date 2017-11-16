@@ -2,6 +2,8 @@
   "name": "tnuatiming",
   "version": "1.0.0",
   "devDependencies": {
+  },
+  "dependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-cssmin": "^2.2.1",
@@ -10,9 +12,7 @@
     "grunt-ftpush": "^0.3.3",
     "grunt-shell": "^2.1.0",
     "grunt-text-replace": "^0.4.0",
-    "load-grunt-tasks": "^3.5.2"
-  },
-  "dependencies": {
+    "load-grunt-tasks": "^3.5.2",
     "grunt-zip": "^0.17.1",
     "grunt-zip-directories": "^1.0.1"
   }

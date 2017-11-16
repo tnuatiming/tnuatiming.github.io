@@ -6,19 +6,19 @@
     
  shell: {
       jekyllServe: {
-        command: "jekyll serve"
+        command: 'jekyll serve'
       },
       jekyllBuild: {
-        command: "jekyll build"
+        command: 'jekyll build'
       },
       gitUpdate: {
-        command: "./gitup.sh"
+        command: './gitup.sh'
       },
       csvUpdate: {
-        command: "./convert_html_to_csv.sh"
+        command: './convert_html_to_csv.sh'
       },
       htmlproof: {
-        command: "htmlproofer ./_site --disable-external --check-html"
+        command: 'htmlproofer ./_site --disable-external --check-html'
       }
 },
                  
@@ -75,20 +75,20 @@
         livereload: true
       },
       site: {
-        files: ["index.html", "terms.html", "_layouts/*.html", "_posts/*", "results/*.html", "style/*", "_includes/*.html", "live/*.html", "assets/*", "english/*.html"],
-        tasks: ["shell:jekyllBuild"]
+        files: ['index.html', 'terms.html', '_layouts/*.html', '_posts/*', 'results/*.html', 'style/*', '_includes/*.html', 'live/*.html', 'assets/*', 'english/*.html'],
+        tasks: ['shell:jekyllBuild']
       },
 //      js: {
-//        files: ["js/*.js"],
-//        tasks: ["uglify", "shell:jekyllBuild"]
+//        files: ['js/*.js'],
+//        tasks: ['uglify', 'shell:jekyllBuild']
 //      },
 //      css: {
- //       files: ["scss/*.scss"],
-//        tasks: ["sass", "autoprefixer", "shell:jekyllBuild"]
+ //       files: ['scss/*.scss'],
+//        tasks: ['sass', 'autoprefixer', 'shell:jekyllBuild']
 //      },
 //      svgIcons: {
-//        files: ["svg/*.svg"],
-//        tasks: ["svgstore", "shell:jekyllBuild"]
+//        files: ['svg/*.svg'],
+//        tasks: ['svgstore', 'shell:jekyllBuild']
 //      }
     },
    
@@ -148,19 +148,19 @@ grunt.loadNpmTasks('grunt-zip-directories');
 grunt.loadNpmTasks('grunt-zip');
 
 // Default task(s).
-  grunt.registerTask('default', ["shell:jekyllBuild", "shell:htmlproof", "connect", "watch"]);
-  grunt.registerTask('html', ['htmlmin']);
-  grunt.registerTask('css', ['cssmin']);
-  grunt.registerTask("serve", ["shell:jekyllServe"]);
-  grunt.registerTask("build", ["shell:jekyllBuild"]);
-//  grunt.registerTask("ftp", ["shell:jekyllBuild", "replace", "ftpush"]);
-grunt.registerTask("ftp", ["zip_directories", "zip", "shell:jekyllBuild", "shell:htmlproof", "shell:csvUpdate", "html", "css", "ftpush"]);
-// grunt.registerTask("ftp", ["shell:jekyllBuild", "html", "css", "ftpush"]);
- grunt.registerTask("git", ["shell:gitUpdate"]);
- grunt.registerTask("csv", ["shell:jekyllBuild", "shell:htmlproof", "shell:csvUpdate"]);
-  grunt.registerTask("htmlproof", ["shell:htmlproof"]);
-//  grunt.registerTask("upload", ["shell:jekyllBuild", "replace", "ftpush", "shell:gitUpdate"]);
-  grunt.registerTask("upload", ["shell:jekyllBuild", "html", "css", "ftpush", "shell:gitUpdate"]);
-  grunt.registerTask("backup", ["zip_directories", "zip"]);
+grunt.registerTask('default', ['shell:jekyllBuild', 'shell:htmlproof', 'connect', 'watch']);
+grunt.registerTask('html', ['htmlmin']);
+grunt.registerTask('css', ['cssmin']);
+grunt.registerTask('serve', ['shell:jekyllServe']);
+grunt.registerTask('build', ['shell:jekyllBuild']);
+grunt.registerTask('git', ['shell:gitUpdate']);
+grunt.registerTask('csv', ['shell:jekyllBuild', 'shell:htmlproof', 'shell:csvUpdate']);
+grunt.registerTask('htmlproof', ['shell:htmlproof']);
+grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'ftpush', 'shell:gitUpdate']);
+grunt.registerTask('backup', ['zip_directories', 'zip']);
+grunt.registerTask('ftp', ['zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'shell:csvUpdate', 'html', 'css', 'ftpush']);
+//  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftpush']);
+//  grunt.registerTask('upload', ['shell:jekyllBuild', 'replace', 'ftpush', 'shell:gitUpdate']);
+// grunt.registerTask('ftp', ['shell:jekyllBuild', 'html', 'css', 'ftpush']);
 
 };
