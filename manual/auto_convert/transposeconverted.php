@@ -79,7 +79,7 @@ if ($count > 12) { //big table
     $html .= '<table class="line_color no_num_color">'."\r\n";
 }
 $html .= '    <tr>'."\r\n";
-$html .= '        <td  colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";
+$html .= '        <td colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";
 $html .= '    </tr>'."\r\n";
 
 $countRow = count($tableArray);        // row counter

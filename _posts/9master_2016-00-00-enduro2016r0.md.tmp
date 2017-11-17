@@ -10,7 +10,7 @@ categories: [results, enduro]
 <h3>בוגרים</h3>
 <table class="line_color">
 
-    <tr><td colspan="99" class="title_font">  מקצועית E1 </td></tr>
+    <tr><td colspan="99" class="title_font">מקצועית E1</td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -24,9 +24,9 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  מקצועית E2 </td></tr>
+    <tr><td colspan="99" class="title_font">מקצועית E2</td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -40,9 +40,9 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  מקצועית E3 </td></tr>
+    <tr><td colspan="99" class="title_font">מקצועית E3</td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -56,9 +56,9 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  סניורים </td></tr>
+    <tr><td colspan="99" class="title_font">סניורים</td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -71,27 +71,10 @@ categories: [results, enduro]
     </tr>
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
 
-    <tr><td colspan="99" class="title_font">  עממית C1 </td></tr>
-
-    <tr class="rnkh_bkcolor">
-        <th class="rnkh_font">מקום</th>
-        <th class="rnkh_font">מספר</th>
-        <th class="rnkh_font">שם</th>
-        <th class="rnkh_font">הקפות</th>
-        <th class="rnkh_font">זמן כולל</th>
-        <th class="rnkh_font">פער</th>
-        <th class="rnkh_font">הקפה מהירה</th>
-    </tr>
-
-
-    <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
-    </tr>
-
-    <tr><td colspan="99" class="title_font">  עממית C2 </td></tr>
+    <tr><td colspan="99" class="title_font">עממית C1</td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -105,9 +88,10 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  עממית C3 </td></tr>
+
+    <tr><td colspan="99" class="title_font">עממית C2</td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -121,9 +105,9 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  מתחילים </td></tr>
+    <tr><td colspan="99" class="title_font">עממית C3</td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -137,14 +121,30 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
+    </tr>
+    <tr><td colspan="99" class="title_font">מתחילים</td></tr>
+
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">זמן כולל</th>
+        <th class="rnkh_font">פער</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+    </tr>
+
+
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
 </table>
 
 
 
 <table class="line_color no_num_color">
-    <tr><td colspan="99" class="title_font">  מהלך המירוץ  </td></tr>
+    <tr><td colspan="99" class="title_font">מהלך המירוץ </td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -171,7 +171,7 @@ categories: [results, enduro]
 
 <table class="line_color">
 
-    <tr><td colspan="99" class="title_font">  ג'וניור  </td></tr>
+    <tr><td colspan="99" class="title_font">ג'וניורס </td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -186,9 +186,9 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  ג'וניור מתחילים  </td></tr>
+    <tr><td colspan="99" class="title_font">ג'וניורס מתחילים </td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -202,9 +202,9 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  סופר ג'וניור  </td></tr>
+    <tr><td colspan="99" class="title_font">סופר ג'וניורס </td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -218,9 +218,9 @@ categories: [results, enduro]
 
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
-    <tr><td colspan="99" class="title_font">  סופר ג'וניור מתחילים  </td></tr>
+    <tr><td colspan="99" class="title_font">סופר ג'וניורס מתחילים </td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
@@ -233,14 +233,14 @@ categories: [results, enduro]
     </tr>
 
     <tr>
-        <td colspan="99" class="comment_font"> הקפה מהירה: 00  משה משה  - 00:00.00</td>
+        <td colspan="99" class="comment_font">הקפה מהירה: 00  משה משה  - 00:00.00</td>
     </tr>
 </table>
 
 
 
 <table class="line_color no_num_color">
-    <tr><td colspan="99" class="title_font">  מהלך המירוץ  </td></tr>
+    <tr><td colspan="99" class="title_font">מהלך המירוץ </td></tr>
 
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>

@@ -257,43 +257,43 @@ if ($_POST['elite']) { // elite v3
     //            $data[0] = str_ireplace("lap", "הקפה", $data[0]);
                 if (strpos($data[0], 'DISQ') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DSQ') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNS') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNF') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Status 1') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Status 2') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Status 3') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'Requirements : Must cross the finishing line') !== false) {
                 } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
 //                    $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
 //                    $html .= '    </tr>'."\r\n";
                 } else {    // category header
 
@@ -301,20 +301,20 @@ if ($_POST['elite']) { // elite v3
                     if ($_POST['nobestlap']) { 
                         if ($categoryheader > (-1)) {
                             $html .= '    <tr>'."\r\n";
-                            $html .= '        <td  colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
+                            $html .= '        <td colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
                             $html .= '    </tr>'."\r\n";
                         }
                     }
 // end inserting best lap BEFORE next category header
                                
                     $html .= '    <tr>'."\r\n";
-                    $html .= '        <td  colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                     $categoryheader++;
 
 // inserting best lap after category header
 //                    $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="comment_font">'.trim($kw[$blapinsert]).'</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="comment_font">'.trim($kw[$blapinsert]).'</td>'."\r\n";
 //                    $html .= '    </tr>'."\r\n";
 //                    $blapinsert++;
 // end inserting best lap after category header
@@ -374,31 +374,31 @@ if ($_POST['elite']) { // elite v3
     //            $data[0] = str_ireplace("lap", "הקפה", $data[0]);
                 if (strpos($data[0], 'DISQ') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DSQ') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">נפסל - DSQ</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNS') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">לא התחיל - DNS</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'DNF') !== false) {
                     $html .= '    <tr>'."\r\n";
-//                    $html .= '        <td  colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
-                    $html .= '        <td  colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
+//                    $html .= '        <td colspan="99" class="subtitle_font">'.$data[0].'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } elseif (strpos($data[0], 'הקפה מהירה') !== false) {
                     $html .= '    <tr>'."\r\n";
-                    $html .= '        <td  colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="comment_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                 } else {    // category header
                     $html .= '    <tr>'."\r\n";
-                    $html .= '        <td  colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
+                    $html .= '        <td colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
                     $html .= $header."\r\n";
                 }
@@ -432,7 +432,7 @@ if ($_POST['elite']) { // elite v3
 // last best lap line
 if ($_POST['nobestlap']) { 
     $html .= '    <tr>'."\r\n";
-    $html .= '        <td  colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
+    $html .= '        <td colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
     $html .= '    </tr>'."\r\n";
 }
 // end last best lap line
