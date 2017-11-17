@@ -114,6 +114,10 @@ img {
     height: auto;
 }
 
+#race .message {
+    color: #333;
+}
+
 ul {
     color: #222;
     text-align: right;
