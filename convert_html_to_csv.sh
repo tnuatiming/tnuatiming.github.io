@@ -17,8 +17,10 @@ find _posts/ -type f -name '*.md' | while read F; do
 
     ## creating event name header, very bad performance...
         grep -F tag "$F" | sed -e "s/^tag: \"//" | tr -d "\"" > "csv/${file%.*}.csv"
-        ## get the line that contain "round" | delete 'round: "' | delete '"' and end of line return | add 1 space in the end >> APPEND to file
-        grep -F round "$F" | sed -e "s/^round: \"//" | tr -d "\"\n\r" | sed 's/$/ /' >> "csv/${file%.*}.csv"
+        if ! grep -q "round: \"\"" "$F"; then
+            ## get the line that contain "round" | delete 'round: "' | delete '"' and end of line return | add 1 space in the end >> APPEND to file
+            grep -F round "$F" | sed -e "s/^round: \"//" | tr -d "\"\n\r" | sed 's/$/ /' >> "csv/${file%.*}.csv"
+        fi
         if ! grep -q "noseason: \"true\"" "$F"; then
             echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
             grep -F season "$F" | grep -v "noseason" | sed -e "s/^season: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
