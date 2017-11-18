@@ -8,4 +8,5 @@ password_protect.php
 id_rsa
 id_rsa.pub
 .tt
+jekyll_backup/
 
