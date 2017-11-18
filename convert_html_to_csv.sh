@@ -19,14 +19,16 @@ find _posts/ -type f -name '*.md' | while read F; do
         grep -F tag "$F" | sed -e "s/^tag: \"//" | tr -d "\"" > "csv/${file%.*}.csv"
         ## get the line that contain "round" | delete 'round: "' | delete '"' and end of line return | add 1 space in the end >> APPEND to file
         grep -F round "$F" | sed -e "s/^round: \"//" | tr -d "\"\n\r" | sed 's/$/ /' >> "csv/${file%.*}.csv"
-        echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
-        grep -F season "$F" | grep -v "noseason" | sed -e "s/^season: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
-        echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+        if ! grep -q "noseason: \"true\"" "$F"; then
+            echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+            grep -F season "$F" | grep -v "noseason" | sed -e "s/^season: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
+            echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+        fi
         grep -F place "$F" | sed -e "s/^place: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
         echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
         ## rearange the date to be hebrew human readable
         echo $file1 | awk -v FS=- -v OFS=- '{print $3,$2,$1}' >> "csv/${file%.*}.csv"
-
+            
     #    echo "${file1//.md/}" > "csv/${file%.*}.csv"
         cat "$F" 2>/dev/null | grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/,/Ig' >> "csv/${file%.*}.csv"
     fi
