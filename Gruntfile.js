@@ -19,6 +19,9 @@
       },
       htmlproof: {
         command: 'htmlproofer ./_site --disable-external --check-html'
+      },
+      clean: {
+        command: 'rm -r ./_site'
       }
 },
                  
@@ -104,7 +107,7 @@ replace: {
 },
 
 zip_directories: {
-    asdf: {
+    backup: {
         files: [{
             filter: 'isDirectory',
             expand: true,
@@ -158,7 +161,7 @@ grunt.registerTask('csv', ['shell:jekyllBuild', 'shell:htmlproof', 'shell:csvUpd
 grunt.registerTask('htmlproof', ['shell:htmlproof']);
 grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'ftpush', 'shell:gitUpdate']);
 grunt.registerTask('backup', ['zip_directories', 'zip']);
-grunt.registerTask('ftp', ['shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'ftpush']);
+grunt.registerTask('ftp', ['shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'ftpush', 'shell:clean']);
 //  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftpush']);
 //  grunt.registerTask('upload', ['shell:jekyllBuild', 'replace', 'ftpush', 'shell:gitUpdate']);
 // grunt.registerTask('ftp', ['shell:jekyllBuild', 'html', 'css', 'ftpush']);
