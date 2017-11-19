@@ -50,7 +50,7 @@ exclude: [
     gitup.sh,
     gitup_descr.sh,
     convert_html_to_csv.sh,
-    convert_html_to_csv20171118.sh,
+    convert_html_to_csv*.sh,
     readme.md
 ]
 
