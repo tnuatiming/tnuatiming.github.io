@@ -1,4 +1,5 @@
 _site/
+jekyll_backup/**
 node_modules
 .ftpauth
 .ftppass
@@ -8,9 +9,3 @@ password_protect.php
 id_rsa
 id_rsa.pub
 .tt
-jekyll_backup/_posts.zip
-jekyll_backup/csv.zip
-jekyll_backup/main.zip
-jekyll_backup/_includes.zip
-jekyll_backup/_layouts.zip
-jekyll_backup/results.zip
