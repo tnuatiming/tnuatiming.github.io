@@ -16,7 +16,9 @@ find _posts/ -type f -name '*.md' | while read F; do
     #    cat "$F" >>FullTextOfAllFiles.txt
 
     ## creating event name header, very bad performance...
-        grep -F tag "$F" | sed "s/^tag: \"//" | tr -d "\"" > "csv/${file%.*}.csv"
+        grep -F tag "$F" | sed "s/^tag: \"//" | tr -d "\"\n\r" > "csv/${file%.*}.csv"
+        grep -F type "$F" | sed "s/^type: \"//" | tr -d "\"\n\r" | sed 's/^/ - /' >> "csv/${file%.*}.csv"
+        echo '' >> "csv/${file%.*}.csv" ## add new line
         if ! grep -q "round: \"\"" "$F"; then
             ## get the line that contain "round" | delete 'round: "' | delete " and end of line return | add 1 space in the end >> APPEND to file
             grep -F round "$F" | sed "s/^round: \"//" | tr -d "\"\n\r" | sed 's/$/ /' >> "csv/${file%.*}.csv"
