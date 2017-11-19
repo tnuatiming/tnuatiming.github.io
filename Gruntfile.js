@@ -21,7 +21,7 @@
         command: 'htmlproofer ./_site --disable-external --check-html'
       },
       clean: {
-        command: 'rm -r ./_site'
+        command: 'rm -r ./_site && rm -r ./jekyll_backup'
       }
 },
                  
