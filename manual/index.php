@@ -163,7 +163,9 @@ tbody tr:hover {
 
     <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/HL980Utility.exe">HL980Utility.exe</a></span></p>
     
-    <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/UC232A_Windows_Setup_V1.0.083.exe">aten-serial-to-usb-UC232A_Windows_Setup.exe</a></span></p>
+    <p class="c3"><span class="c6"><a class="c2" href="http://www.aten.com/au/en/products/usb-&-thunderbolt/usb-converters/uc232a/">aten-serial-to-usb-UC232A_Windows_Setup.exe(remote)</a></span></p>
+    
+    <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/UC232A_Windows_Setup_V1.0.083.exe">aten-serial-to-usb-UC232A_Windows_Setup.exe(local)</a></span></p>
 
     <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/aten-serial-to-usb-UC232A_Windows_Setup.exe">aten-serial-to-usb-UC232A_Windows_Setup.exe(old)</a></span></p>
 
