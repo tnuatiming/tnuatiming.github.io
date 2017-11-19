@@ -16,17 +16,17 @@ find _posts/ -type f -name '*.md' | while read F; do
     #    cat "$F" >>FullTextOfAllFiles.txt
 
     ## creating event name header, very bad performance...
-        grep -F tag "$F" | sed -e "s/^tag: \"//" | tr -d "\"" > "csv/${file%.*}.csv"
+        grep -F tag "$F" | sed "s/^tag: \"//" | tr -d "\"" > "csv/${file%.*}.csv"
         if ! grep -q "round: \"\"" "$F"; then
-            ## get the line that contain "round" | delete 'round: "' | delete '"' and end of line return | add 1 space in the end >> APPEND to file
-            grep -F round "$F" | sed -e "s/^round: \"//" | tr -d "\"\n\r" | sed 's/$/ /' >> "csv/${file%.*}.csv"
+            ## get the line that contain "round" | delete 'round: "' | delete " and end of line return | add 1 space in the end >> APPEND to file
+            grep -F round "$F" | sed "s/^round: \"//" | tr -d "\"\n\r" | sed 's/$/ /' >> "csv/${file%.*}.csv"
         fi
         if ! grep -q "noseason: \"true\"" "$F"; then
             echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
-            grep -F season "$F" | grep -v "noseason" | sed -e "s/^season: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
+            grep -F season "$F" | grep -v "noseason" | sed "s/^season: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
             echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
         fi
-        grep -F place "$F" | sed -e "s/^place: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
+        grep -F place "$F" | sed "s/^place: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
         echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
         ## rearange the date to be hebrew human readable
         echo $file1 | awk -v FS=- -v OFS=- '{print $3,$2,$1}' >> "csv/${file%.*}.csv"
