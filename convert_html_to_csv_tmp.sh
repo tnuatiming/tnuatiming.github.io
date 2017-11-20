@@ -13,6 +13,7 @@ find _posts/ -type f -name '*.md' | while read F; do
     type=""
     round=""
     season=""
+    noseason=""
     place=""
     if [ "$file" != "index.html" ]; then ##pass on index.html
         url="<li><a href=http://tnuatiming.com/csv/${file%.*}.csv>${file1%.*}</a></li>"
@@ -21,7 +22,7 @@ find _posts/ -type f -name '*.md' | while read F; do
     #    cat "$F" >>FullTextOfAllFiles.txt
 
     ## get data into variables
-        while IFS='' read -r line || [[ -n "$line" ]]; do
+        while read -r line ; do
             if [[ $line == *"tag"* ]]; then
                 tag=$(printf "$line" | sed -e "s/^tag: \"//" -e "s/\"$//")
             fi
@@ -29,14 +30,15 @@ find _posts/ -type f -name '*.md' | while read F; do
                 type=$(echo "$line" | sed -e "s/^type: \"//" -e "s/\"$//")
             fi
             #echo '' >> "csv/${file%.*}.csv" ## add new line
-            if [[ $line == *"round:"* ]]; then
-                round=$(echo "$line" | sed -e "s/^round: \"//" -e "s/\"$/ /")
+            if [[ $line == *"round"* ]]; then
+                round=$(echo "$line" | sed -e "s/^round: \"//" -e "s/\"$//")
             fi 
-            if [[ $line == *"season"* ]]; then
-                if ! [[ $line == *"noseason: \"true\""* ]]; then
-                    season=$(echo "$line" | sed -e "s/^season: \"//" -e "s/\"$//")
-                fi      
+            if [[ $line == *"season"* ]] && ! [[ $line == *"noseason"* ]]; then
+                season=$(echo "$line" | sed -e "s/^season: \"//" -e "s/\"$//")
             fi
+            if [[ $line == *"noseason"* ]]; then
+                noseason=$(echo "$line" | sed -e "s/^noseason: \"//" -e "s/\"$//" | tr -d "\n\r")
+            fi 
             if [[ $line == *"place"* ]]; then
                 place=$(echo "$line" | sed -e "s/^place: \"//" -e "s/\"$//")
             fi
@@ -51,13 +53,19 @@ find _posts/ -type f -name '*.md' | while read F; do
         if [ ! -z "$round" ]; then
             echo $round | sed 's/$/ /' | tr -d "\n\r"  >> "csv/${file%.*}.csv"
         fi
-        if [ ! -z "$season" ]; then
-            echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
-            echo $season | tr -d "\n\r"  >> "csv/${file%.*}.csv"
+        if ! [[ $noseason == "true" ]]; then
+            if [ ! -z "$season" ]; then
+                echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+                echo $season | tr -d "\n\r"  >> "csv/${file%.*}.csv"
+            fi
         fi
-        echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+        if [ ! -z "$round" ] || [ ! -z "$season" ] ; then
+            if ! [[ $noseason == "true" ]]; then
+                echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+            fi
+        fi
         echo $place | tr -d "\n\r"  >> "csv/${file%.*}.csv"
-        printf " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+        echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
         echo $file1 | awk -v FS=- -v OFS=- '{print $3,$2,$1}' >> "csv/${file%.*}.csv"
        
         ## creating event name header, very bad performance...
