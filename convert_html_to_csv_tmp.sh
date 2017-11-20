@@ -6,6 +6,7 @@ rm csv/*
 find _posts/ -type f -name '*.md' | while read F; do
 #find . -type f -name '*.md' | while read F; do
 #find -name '*.html' -type f -printf '%h\0%d\0%p\n' | sort -t '\0' -n | awk -F '\0' '{print $3}' | while read F; do
+
     R=$F
     file1=$(basename "$F") ##cut the file name from the path
     file="${file1//-/_}" ##replace - with _
@@ -15,13 +16,14 @@ find _posts/ -type f -name '*.md' | while read F; do
     season=""
     noseason=""
     place=""
+
     if [ "$file" != "index.html" ]; then ##pass on index.html
         url="<li><a href=http://tnuatiming.com/csv/${file%.*}.csv>${file1%.*}</a></li>"
         echo $url >> csv/tmp.html
     #    dirname "$F" >>directories.txt
     #    cat "$F" >>FullTextOfAllFiles.txt
 
-    ## get data into variables
+    ## get header info into variables
         while read -r line ; do
             if [[ $line == *"tag"* ]]; then
                 tag=$(printf "$line" | sed -e "s/^tag: \"//" -e "s/\"$//" | tr -d "\n\r")
@@ -90,6 +92,7 @@ find _posts/ -type f -name '*.md' | while read F; do
         cat "$F" 2>/dev/null | grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/,/Ig' >> "csv/${file%.*}.csv"
     fi
 done
+
 sort -b -f --version-sort csv/tmp.html > csv/index.html
 ## add to end
 echo "</ol></body></html>" >> csv/index.html
