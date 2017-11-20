@@ -24,23 +24,23 @@ find _posts/ -type f -name '*.md' | while read F; do
     ## get data into variables
         while read -r line ; do
             if [[ $line == *"tag"* ]]; then
-                tag=$(printf "$line" | sed -e "s/^tag: \"//" -e "s/\"$//")
+                tag=$(printf "$line" | sed -e "s/^tag: \"//" -e "s/\"$//" | tr -d "\n\r")
             fi
             if [[ $line == *"type"* ]]; then
-                type=$(echo "$line" | sed -e "s/^type: \"//" -e "s/\"$//")
+                type=$(echo "$line" | sed -e "s/^type: \"//" -e "s/\"$//" | tr -d "\n\r")
             fi
             #echo '' >> "csv/${file%.*}.csv" ## add new line
             if [[ $line == *"round"* ]]; then
-                round=$(echo "$line" | sed -e "s/^round: \"//" -e "s/\"$//")
+                round=$(echo "$line" | sed -e "s/^round: \"//" -e "s/\"$//" | tr -d "\n\r")
             fi 
             if [[ $line == *"season"* ]] && ! [[ $line == *"noseason"* ]]; then
-                season=$(echo "$line" | sed -e "s/^season: \"//" -e "s/\"$//")
+                season=$(echo "$line" | sed -e "s/^season: \"//" -e "s/\"$//" | tr -d "\n\r")
             fi
             if [[ $line == *"noseason"* ]]; then
                 noseason=$(echo "$line" | sed -e "s/^noseason: \"//" -e "s/\"$//" | tr -d "\n\r")
             fi 
             if [[ $line == *"place"* ]]; then
-                place=$(echo "$line" | sed -e "s/^place: \"//" -e "s/\"$//")
+                place=$(echo "$line" | sed -e "s/^place: \"//" -e "s/\"$//" | tr -d "\n\r")
             fi
         done <"$R"
 
