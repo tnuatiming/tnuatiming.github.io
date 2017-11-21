@@ -37,29 +37,29 @@ find _posts/ -type f -name '*.md' | while read F; do
     #place=$(sed -n '/place/ {p;q}' < "$F" | sed -e "s/^place: \"//" -e "s/\"$//" | tr -d "\n\r")
     
 ## build the header
-    echo $tag | tr -d "\n\r" > "csv/${file%.*}.csv"
+    echo $tag | tr -d "\n\r" > "csv/${file}.csv"
     if [ ! -z "$type" ]; then
-        echo $type | sed 's/^/ - /' | tr -d "\n\r"  >> "csv/${file%.*}.csv"
+        echo $type | sed 's/^/ - /' | tr -d "\n\r"  >> "csv/${file}.csv"
     fi
-    echo "" >> "csv/${file%.*}.csv"
+    echo "" >> "csv/${file}.csv"
     if [ ! -z "$round" ]; then
-        echo $round | sed 's/$/ /' | tr -d "\n\r"  >> "csv/${file%.*}.csv"
+        echo $round | sed 's/$/ /' | tr -d "\n\r"  >> "csv/${file}.csv"
     fi
     if ! [[ $noseason == "true" ]]; then
         if [ ! -z "$season" ]; then
-            echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
-            echo $season | tr -d "\n\r"  >> "csv/${file%.*}.csv"
+            echo "עונת " | tr -d '\n\r' >> "csv/${file}.csv"
+            echo $season | tr -d "\n\r"  >> "csv/${file}.csv"
         fi
     fi
     if [ ! -z "$round" ] || [ ! -z "$season" ] ; then
         if ! [[ $noseason == "true" ]]; then
-            echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+            echo " - " | tr -d '\n\r' >> "csv/${file}.csv"
         fi
     fi
-    echo $place | tr -d "\n\r"  >> "csv/${file%.*}.csv"
-    echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+    echo $place | tr -d "\n\r"  >> "csv/${file}.csv"
+    echo " - " | tr -d '\n\r' >> "csv/${file}.csv"
     ## add the date in the correct format
-    echo $date >> "csv/${file%.*}.csv"
+    echo $date >> "csv/${file}.csv"
     
     if [ "$file" != "index.html" ]; then ##pass on index.html
         url="<li><a href=http://tnuatiming.com/csv/$file.csv>$file2</a></li>"
@@ -67,8 +67,8 @@ find _posts/ -type f -name '*.md' | while read F; do
     #    dirname "$F" >>directories.txt
     #    cat "$F" >>FullTextOfAllFiles.txt
 
-            #    echo "${file1//.md/}" > "csv/${file%.*}.csv"
-        cat "$F" 2>/dev/null | grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/,/Ig' >> "csv/${file%.*}.csv"
+            #    echo "${file1//.md/}" > "csv/${file}.csv"
+        cat "$F" 2>/dev/null | grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/,/Ig' >> "csv/${file}.csv"
     fi
 done
 sort -b -f --version-sort csv/tmp.html > csv/index.html
