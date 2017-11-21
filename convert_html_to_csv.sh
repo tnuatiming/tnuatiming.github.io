@@ -61,19 +61,20 @@ find _posts/ -type f -name '*.md' | while read F; do
     ## add the date in the correct format
     echo $date >> "csv/$file.csv"
     
-    if [ "$file" != "index.html" ]; then ##pass on index.html
+    #if [ "$file" != "index.html" ]; then ##pass on index.html
         url="<li><a href=http://tnuatiming.com/csv/$file.csv>$file2</a></li>"
         echo $url >> csv/tmp.html
+
     #    dirname "$F" >>directories.txt
     #    cat "$F" >>FullTextOfAllFiles.txt
 
             #    echo "${file//.md/}" > "csv/$file.csv"
         cat "$F" 2>/dev/null | grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/,/Ig' >> "csv/$file.csv"
-    fi
+    #fi
 done
-sort -b -f --version-sort csv/tmp.html > csv/index.html
+sort -br -f --version-sort csv/tmp.html > csv/index.html
 ## add to end
 echo "</ol></body></html>" >> csv/index.html
 ## add to start
-sed -i '1i<!doctype html><html lang="he" xml:lang="he" dir="rtl"><head><meta charset="utf-8"><style>a{margin-right:20px;text-decoration:none;}a:hover{color:lightgray;}ol{margin-right:40px;font-size:1.5em;}</style></head><body><ol>' csv/index.html
+sed -i '1i<!doctype html><html lang="he" xml:lang="he" dir="rtl"><head><meta charset="utf-8"><style>a{margin-right:20px;text-decoration:none;}a:hover{color:lightgray;}ol{margin-right:40px;font-size:1.5em;}</style></head><body><ol reversed>' csv/index.html
 rm csv/tmp.html
