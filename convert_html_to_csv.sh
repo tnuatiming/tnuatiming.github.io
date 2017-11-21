@@ -7,7 +7,7 @@ mkdir -p csv ## create dir if not presrnt
 find _posts/ -type f -name '*.md' | while read F; do
 #find . -type f -name '*.md' | while read F; do
 #find -name '*.html' -type f -printf '%h\0%d\0%p\n' | sort -t '\0' -n | awk -F '\0' '{print $3}' | while read F; do
-    file=$(basename "$F" | sed -e "s/.md$//" -e "s/-/_/g") ##cut the file name from the path
+    file=$(basename "$F" | sed -e "s/-/_/g") ##cut the file name from the path
     #file2=$(echo $file | awk -v FS=_ '{print $4,$3,$2,$1}' | sed 's/ /-/g')
     date=$(echo $file | awk -v FS=_ -v OFS=- '{print $3,$2,$1}')
     tag=""
@@ -19,12 +19,12 @@ find _posts/ -type f -name '*.md' | while read F; do
 
 ## creating event name header variables
     ## using grep
-    tag=$(grep -m 1 -F tag "$F" | sed -e "s/^tag: \"//" -e "s/\"$//" | tr -d "\n\r")
-    type=$(grep -m 1 -F type "$F" | sed -e "s/^type: \"//" -e "s/\"$//" | tr -d "\n\r")
-    round=$(grep -m 1 -F round "$F" | sed -e "s/^round: \"//" -e "s/\"$//" | tr -d "\n\r")
-    season=$(grep -m 1 -F season "$F" | grep -v "noseason" | sed -e "s/^season: \"//" -e "s/\"$//" | tr -d "\n\r")
-    noseason=$(grep -m 1 -F noseason "$F" | sed -e "s/^noseason: \"//" -e "s/\"$//" | tr -d "\n\r")
-    place=$(grep -m 1 -F place "$F" | sed -e "s/^place: \"//" -e "s/\"$//" | tr -d "\n\r")
+    tag=$(grep -m 1 -F tag "$F" | sed "s/^tag: \"//;s/\"$//;s/\n\r$//")
+    type=$(grep -m 1 -F type "$F" | sed "s/^type: \"//;s/\"$//;s/\n\r$//")
+    round=$(grep -m 1 -F round "$F" | sed "s/^round: \"//;s/\"$//;s/\n\r$//")
+    season=$(grep -m 1 -F season "$F" | grep -v "noseason" | sed "s/^season: \"//;s/\"$//;s/\n\r$//")
+    noseason=$(grep -m 1 -F noseason "$F" | sed "s/^noseason: \"//;s/\"$//;s/\n\r$//")
+    place=$(grep -m 1 -F place "$F" | sed "s/^place: \"//;s/\"$//;s/\n\r$//")
     
     file2=$tag' - '$round' עונת '$season' - '$place' - '$date
 
@@ -72,7 +72,7 @@ find _posts/ -type f -name '*.md' | while read F; do
         cat "$F" 2>/dev/null | grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/,/Ig' >> "csv/$file.csv"
     #fi
 done
-sort -br -f --version-sort csv/tmp.html > csv/index.html
+sort -r -f --version-sort csv/tmp.html -o csv/index.html
 ## add to end
 echo "</ol></body></html>" >> csv/index.html
 ## add to start
