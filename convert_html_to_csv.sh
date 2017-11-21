@@ -8,6 +8,12 @@ find _posts/ -type f -name '*.md' | while read F; do
 #find -name '*.html' -type f -printf '%h\0%d\0%p\n' | sort -t '\0' -n | awk -F '\0' '{print $3}' | while read F; do
     file1=$(basename "$F") ##cut the file name from the path
     file="${file1//-/_}" ##replace - with _
+    tag=""
+    type=""
+    round=""
+    season=""
+    noseason=""
+    place=""
     
     if [ "$file" != "index.html" ]; then ##pass on index.html
         url="<li><a href=http://tnuatiming.com/csv/${file%.*}.csv>${file1%.*}</a></li>"
@@ -15,25 +21,49 @@ find _posts/ -type f -name '*.md' | while read F; do
     #    dirname "$F" >>directories.txt
     #    cat "$F" >>FullTextOfAllFiles.txt
 
-    ## creating event name header, very bad performance...
-        grep -F tag "$F" | sed "s/^tag: \"//" | tr -d "\"\n\r" > "csv/${file%.*}.csv"
-        grep -F type "$F" | sed "s/^type: \"//" | tr -d "\"\n\r" | sed 's/^/ - /' >> "csv/${file%.*}.csv"
-        printf '\n' >> "csv/${file%.*}.csv" ## add new line
-        if ! grep -q "round: \"\"" "$F"; then
-            ## get the line that contain "round" | delete 'round: "' | delete " and end of line return | add 1 space in the end >> APPEND to file
-            grep -F round "$F" | sed "s/^round: \"//" | tr -d "\"\n\r" | sed 's/$/ /' >> "csv/${file%.*}.csv"
+    ## creating event name header
+        ## using grep
+        tag=$(grep -m 1 -F tag "$F" | sed -e "s/^tag: \"//" -e "s/\"$//" | tr -d "\n\r")
+        type=$(grep -m 1 -F type "$F" | sed -e "s/^type: \"//" -e "s/\"$//" | tr -d "\n\r")
+        round=$(grep -m 1 -F round "$F" | sed -e "s/^round: \"//" -e "s/\"$//" | tr -d "\n\r")
+        season=$(grep -m 1 -F season "$F" | grep -v "noseason" | sed -e "s/^season: \"//" -e "s/\"$//" | tr -d "\n\r")
+        noseason=$(grep -m 1 -F noseason "$F" | sed -e "s/^noseason: \"//" -e "s/\"$//" | tr -d "\n\r")
+        place=$(grep -m 1 -F place "$F" | sed -e "s/^place: \"//" -e "s/\"$//" | tr -d "\n\r")
+        
+        ## using sed
+        #tag=$(sed -n '/tag/ {p;q}' < "$F" | sed -e "s/^tag: \"//" -e "s/\"$//" | tr -d "\n\r")
+        #type=$(sed -n '/type/ {p;q}' < "$F" | sed -e "s/^type: \"//" -e "s/\"$//" | tr -d "\n\r")
+        #round=$(sed -n '/round/ {p;q}' < "$F" | sed -e "s/^round: \"//" -e "s/\"$//" | tr -d "\n\r")
+        #season=$(sed -n '/season/ {p;q}' < "$F" | grep -v "noseason" | sed -e "s/^season: \"//" -e "s/\"$//" | tr -d "\n\r")
+        #noseason=$(sed -n '/noseason/ {p;q}' < "$F" | sed -e "s/^noseason: \"//" -e "s/\"$//" | tr -d "\n\r")
+        #place=$(sed -n '/place/ {p;q}' < "$F" | sed -e "s/^place: \"//" -e "s/\"$//" | tr -d "\n\r")
+      
+   ## build the header
+        echo $tag | tr -d "\n\r" > "csv/${file%.*}.csv"
+        if [ ! -z "$type" ]; then
+            echo $type | sed 's/^/ - /' | tr -d "\n\r"  >> "csv/${file%.*}.csv"
         fi
-        if ! grep -q "noseason: \"true\"" "$F"; then
-            echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
-            grep -F season "$F" | grep -v "noseason" | sed "s/^season: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
-            echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+        echo "" >> "csv/${file%.*}.csv"
+        if [ ! -z "$round" ]; then
+            echo $round | sed 's/$/ /' | tr -d "\n\r"  >> "csv/${file%.*}.csv"
         fi
-        grep -F place "$F" | sed "s/^place: \"//" | tr -d "\"\n\r" >> "csv/${file%.*}.csv"
+        if ! [[ $noseason == "true" ]]; then
+            if [ ! -z "$season" ]; then
+                echo "עונת " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+                echo $season | tr -d "\n\r"  >> "csv/${file%.*}.csv"
+            fi
+        fi
+        if [ ! -z "$round" ] || [ ! -z "$season" ] ; then
+            if ! [[ $noseason == "true" ]]; then
+                echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+            fi
+        fi
+        echo $place | tr -d "\n\r"  >> "csv/${file%.*}.csv"
         echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
-        ## rearange the date to be hebrew human readable
+        ## add the date in the correct format
         echo $file1 | awk -v FS=- -v OFS=- '{print $3,$2,$1}' >> "csv/${file%.*}.csv"
-            
-    #    echo "${file1//.md/}" > "csv/${file%.*}.csv"
+
+            #    echo "${file1//.md/}" > "csv/${file%.*}.csv"
         cat "$F" 2>/dev/null | grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/,/Ig' >> "csv/${file%.*}.csv"
     fi
 done

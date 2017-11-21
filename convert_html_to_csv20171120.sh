@@ -68,6 +68,7 @@ find _posts/ -type f -name '*.md' | while read F; do
         fi
         echo $place | tr -d "\n\r"  >> "csv/${file%.*}.csv"
         echo " - " | tr -d '\n\r' >> "csv/${file%.*}.csv"
+        ## add the date in the correct format
         echo $file1 | awk -v FS=- -v OFS=- '{print $3,$2,$1}' >> "csv/${file%.*}.csv"
        
         ## creating event name header, very bad performance...
