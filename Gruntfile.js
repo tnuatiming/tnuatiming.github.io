@@ -46,7 +46,7 @@
       },
       files: [{                                   // Dictionary of files 
         cwd: '_site',
-        src: ['**/*.html', '!results/csv/index.html' ],
+        src: ['**/*.html', '!csv/index.html' ],
         dest: '_site',
        expand: true    // 'destination': 'source' 
       }]
