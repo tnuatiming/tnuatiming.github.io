@@ -12,7 +12,10 @@
         command: 'jekyll build'
       },
       gitUpdate: {
-        command: './gitup.sh'
+        command: './gitup_descr.sh',
+			options: {stdout: true,
+                stdin: true
+            }
       },
       csvUpdate: {
         command: './convert_html_to_csv.sh'
