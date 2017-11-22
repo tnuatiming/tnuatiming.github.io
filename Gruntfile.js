@@ -12,7 +12,7 @@
         command: 'jekyll build'
       },
       gitUpdate: {
-        command: ['echo please provide description for git:','./gitup_descr.sh'
+        command: ['echo -e "\n\e[91mPlease provide description for git:\n\e[0m"','./gitup_descr.sh'
         ].join('&&')
       },
       csvUpdate: {
