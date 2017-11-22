@@ -7,7 +7,7 @@ mkdir -p csv ## create dir if not presrnt
 find _posts/ -type f -name '*.md' | while read F; do
 #find . -type f -name '*.md' | while read F; do
 #find -name '*.html' -type f -printf '%h\0%d\0%p\n' | sort -t '\0' -n | awk -F '\0' '{print $3}' | while read F; do
-    file=$(basename "$F" | sed -e "s/.md$//" -e "s/-/_/g") ##cut the file name from the path
+    file=$(basename "$F" | sed -e "s/.md$//" -e "s/-/_/g") ##cut the file name from the path and the extention
     #file2=$(echo $file | awk -v FS=_ '{print $4,$3,$2,$1}' | sed 's/ /-/g')
     date=$(echo $file | awk -v FS=_ -v OFS=- '{print $3,$2,$1}')
     tag=""
