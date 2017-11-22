@@ -12,10 +12,8 @@
         command: 'jekyll build'
       },
       gitUpdate: {
-        command: './gitup_descr.sh',
-			options: {stdout: true,
-                stdin: true
-            }
+        command: ['echo please provide description for git:','./gitup_descr.sh'
+        ].join('&&')
       },
       csvUpdate: {
         command: './convert_html_to_csv.sh'
