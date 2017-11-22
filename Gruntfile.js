@@ -12,7 +12,7 @@
         command: 'jekyll build'
       },
       gitUpdate: {
-        command: ['echo -e "\n\e[91mPlease provide description for git:\n\e[0m"','./gitup_descr.sh'
+        command: ['printf "$(tput setaf 4)\nplease provide description for git:\n\n$(tput sgr0)"','./gitup_descr.sh'
         ].join('&&')
       },
       csvUpdate: {
@@ -158,7 +158,7 @@ grunt.registerTask('css', ['cssmin']);
 grunt.registerTask('serve', ['shell:jekyllServe']);
 grunt.registerTask('build', ['shell:jekyllBuild']);
 grunt.registerTask('git', ['shell:gitUpdate']);
-grunt.registerTask('csv', ['shell:jekyllBuild', 'shell:htmlproof', 'shell:csvUpdate']);
+grunt.registerTask('csv', ['shell:csvUpdate']);
 grunt.registerTask('htmlproof', ['shell:htmlproof']);
 grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'ftpush', 'shell:gitUpdate']);
 grunt.registerTask('backup', ['zip_directories', 'zip']);
