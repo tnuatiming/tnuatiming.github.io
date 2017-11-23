@@ -15,6 +15,7 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
 
     with open(file, "r")  as f0:# create the variables for header
         tag=''
+        type=''
         round=''
         season=''
         noseason=''
@@ -23,24 +24,26 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
         for line in f0:
                 if "tag" in line:
                     line=line.replace('"','')
-                    tag=line.replace('tag: ','')
+                    tag=line.replace('tag: ','').rstrip()
     #                print (tag.strip())
+                if "type" in line:
+                    line=line.replace('"','')
+                    type=line.replace('type: ','').rstrip()
                 if "round" in line:
                     line=line.replace('"','')
-                    round=line.replace('round: ','')
+                    round=line.replace('round: ','').rstrip()+' '
                 if "season" in line and "noseason" not in line:
                     line=line.replace('"','')
-                    season=line.replace('season: ','')
+                    season=line.replace('season: ','').rstrip()
                 if "noseason" in line:
                     line=line.replace('"','')
-                    noseason=line.replace('noseason: ','')
-                    noseason=noseason.rstrip()
+                    noseason=line.replace('noseason: ','').rstrip()
     #                print (noseason)
                 if "place" in line:
                     line=line.replace('"','')
-                    place=line.replace('place: ','')
+                    place=line.replace('place: ','').rstrip()
     f0.close()
-    date = datetime.datetime.strptime(file[:10], '%Y-%m-%d').strftime('%d-%m-%Y')# extract date from file name and make it beutyfull
+    date = datetime.datetime.strptime(file[:10], '%Y-%m-%d').strftime('%d-%m-%Y').rstrip()# extract date from file name and make it beutyfull
     
     with open(file, "r")  as f1:# phrasing and creating the csv file
 #        print(file)
@@ -53,12 +56,17 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
         file=file.replace("-","_")
 
         with open("/home/amir/tnuatiming.github.io/csv/"+file+'.csv', 'w') as f:# create the result header
-            f.write(tag) 
-            if round != '':
+            f.write(tag.rstrip()) 
+            if type != '':
+                f.write(' - '+type.rstrip()) 
+            f.write('\n') 
+            if round.rstrip() != '':
                 f.write(round.rstrip()+' ') 
             if noseason == '':
                 f.write('עונת '+season.rstrip()) 
-            f.write(' - '+place.rstrip()) 
+            if round.rstrip() != '' or noseason == '':
+                f.write(' - ') 
+            f.write(place.rstrip()) 
             f.write(' - '+date+'\n') 
         f.close()
 
@@ -80,7 +88,7 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
             f.close()
 
     with open("/home/amir/tnuatiming.github.io/csv/index.html", 'a') as f2:
-        url="<li><a href=http://tnuatiming.com/csv/"+file+".csv>"+tag.rstrip()+" - "+round.rstrip()+" עונת "+season.rstrip()+" - "+place.rstrip()+" - "+date.rstrip()+"</a></li>"
+        url="<li><a href=http://tnuatiming.com/csv/"+file+".csv>"+tag+" - "+round+"עונת "+season+" - "+place+" - "+date+"</a></li>"
         f2.write(url+'\n') 
     f2.close()
 
