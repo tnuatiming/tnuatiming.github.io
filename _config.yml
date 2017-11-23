@@ -49,8 +49,7 @@ exclude: [
     .grunt,
     gitup.sh,
     gitup_descr.sh,
-    convert_html_to_csv.sh,
-    convert_html_to_csv*.sh,
+    convert_html_to_csv*,
     readme.md
 ]
 

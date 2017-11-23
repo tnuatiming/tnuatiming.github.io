@@ -12,7 +12,7 @@
         command: 'jekyll build'
       },
       gitUpdate: {
-        command: ['printf "$(tput setaf 4)\nplease provide description for git:\n\n$(tput sgr0)"','./gitup_descr.sh'
+        command: ['printf "$(tput setaf 1)\nplease provide description for git:\n\n$(tput sgr0)"','./gitup_descr.sh'
         ].join('&&')
       },
       csvUpdate: {
