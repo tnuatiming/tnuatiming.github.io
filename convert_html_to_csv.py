@@ -98,5 +98,5 @@ with open("/home/amir/tnuatiming.github.io/csv/index.html", 'r+') as f3:
     content = f3.read()
     f3.seek(0, 0)
     head='<!doctype html><html lang="he" xml:lang="he" dir="rtl"><head><meta charset="utf-8"><style>a{margin-right:20px;text-decoration:none;}a:hover{color:lightgray;}ol{margin-right:40px;font-size:1.5em;}</style></head><body><ol reversed>'
-    f3.write(head.rstrip('\r\n') + '\n' + content + '</ol></body></html>')
+    f3.write(head.rstrip('\r\n') + '\n' + content + '</ol></body></html>\n')
 f3.close()
