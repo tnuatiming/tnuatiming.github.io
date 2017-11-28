@@ -365,8 +365,17 @@ php_value session.cookie_httponly true
     ExpiresByType application/vnd.wap.wbxml           "access plus 1 month"
     ExpiresByType application/smil                    "access plus 1 month"
     
+#    <Location "/images">
+#        ExpiresActive On
+#        ExpiresDefault "access plus 1 month"
+#    </Location>
+
     <IfModule mod_headers.c>
         Header append Cache-Control "public"
+    # One month for most static assets
+        <filesMatch ".(jpg|jpeg|png|gif|js|ico)$">
+            Header set Cache-Control "max-age=2628000, public"
+        </filesMatch>
     </IfModule>
     
 </IfModule>
