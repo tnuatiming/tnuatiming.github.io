@@ -997,11 +997,11 @@ padding-right: 10%;
     animation-fill-mode: both;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;        
-    background:rgba(240,240,240,0.9);
+    background:rgba(240,240,240,0.8);
 }
 
 #race .animated, #live .animated {
-    background:rgba(255,255,255,0.9);
+    background:rgba(255,255,255,0.8);
 }
 
 .animated.hinge {
