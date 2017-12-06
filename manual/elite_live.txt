@@ -194,16 +194,30 @@
   ga('send', 'pageview');
 </script>
 <!-- fix time format -->
+</script>
+<!-- fix time format -->
 <script>
+var temp;
 var startTime;
 var OldstartTime;
 var NewstartTime;
 window.setInterval(function(){
     NewstartTime = document.getElementById("DayTime").innerHTML;
-    startTime = NewstartTime.split('/')
+    startTime = NewstartTime.split('/');
     if (startTime[2] != OldstartTime) {
-        document.getElementById("DayTime").innerHTML = ((startTime[1]+'\/'+startTime[0]+'\/'+startTime[2]).replace(/( PM)|( AM)/g,''));
-        OldstartTime = startTime[2]
+        temp = NewstartTime.split(/[/:\s]/);
+        if ((temp[6]) === "PM") {
+            temp[3] = parseInt(temp[3]) + 12;
+            if ((temp[3]) === "24") {
+                temp[3] = "00";
+            }
+        } else if ((temp[6]) === "AM") {
+            if (parseInt(temp[3]) < 10) {
+                temp[3] = ("0" + temp[3]);
+            }
+        }
+        document.getElementById("DayTime").innerHTML = (temp[1]+'\/'+temp[0]+'\/'+temp[2]+' '+temp[3]+':'+temp[4]+':'+temp[5]);
+        OldstartTime = startTime[2];
     }
 }, 1000);
 </script>
