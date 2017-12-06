@@ -193,6 +193,20 @@
   ga('create', 'UA-38104277-1', 'auto');
   ga('send', 'pageview');
 </script>
+<!-- fix time format -->
+<script>
+var startTime;
+var OldstartTime;
+var NewstartTime;
+window.setInterval(function(){
+    NewstartTime = document.getElementById("DayTime").innerHTML;
+    startTime = NewstartTime.split('/')
+    if (startTime[2] != OldstartTime) {
+        document.getElementById("DayTime").innerHTML = ((startTime[1]+'\/'+startTime[0]+'\/'+startTime[2]).replace(/( PM)|( AM)/g,''));
+        OldstartTime = startTime[2]
+    }
+}, 1000);
+</script>
 </body>
 </html>
 
