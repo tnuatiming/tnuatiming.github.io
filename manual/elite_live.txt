@@ -53,7 +53,7 @@
         var TimerLoad,TimerChange;var MaxNum,Rafraichir,Changement,ClassementReduit,ClassementReduitXpremier;var UrlRefresh,UrlChange;Rafraichir=30000;Changement=90000;MaxNum=1;ClassementReduit=0;ClassementReduitXpremier=10; function Load(url,target){var xhr;var fct;if(UrlChange)url=UrlRefresh;else UrlRefresh=url;UrlChange=0;if(TimerLoad)clearTimeout(TimerLoad);try{xhr=new ActiveXObject("Msxml2.XMLHTTP")}catch(e){try{xhr=new ActiveXObject("Microsoft.XMLHTTP")}catch(e2){try{xhr=new XMLHttpRequest}catch(e3){xhr=false}}}xhr.onreadystatechange=function(){if(xhr.readyState==4&&xhr.status==200)if(ClassementReduit==0)document.getElementById(target).innerHTML=xhr.responseText;else document.getElementById(target).innerHTML=ExtraireClassementReduit(xhr.responseText)}; xhr.open("GET",url+"?r="+Math.random(),true);xhr.send(null);fct=function(){Load(url,target)};TimerLoad=setTimeout(fct,Rafraichir)} function ExtraireClassementReduit(Texte){var i,j,CompteurTD,CompteurTR;var ColPosition,ColNumero,ColNom,ColEcart1er;var Lignes;var NouveauTexte;CompteurTR=0;ColPosition=-1;ColNumero=-1;ColNom=-1;ColEcart1er=-1;Texte=Texte.substring(Texte.indexOf("<tr"));Lignes=Texte.split("\r\n");NouveauTexte='<table width="100%" cellpadding="0" cellspacing="0">';for(i=0;i<Lignes.length;i++)if(Lignes[i].substring(0,3)=="<tr"){NouveauTexte+=Lignes[i];CompteurTD=0}else if(Lignes[i].substring(0,4)=="</tr"){CompteurTR++; if(CompteurTR==ClassementReduitXpremier+1)break}else if(Lignes[i].substring(0,3)=="<td"){if(CompteurTR==0)if(Lignes[i].indexOf("\"Id_Position\"")!=-1){ColPosition=CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}else if(Lignes[i].indexOf("\"Id_Numero\"")!=-1){ColNumero=CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}else if(Lignes[i].indexOf("\"Id_Nom\"")!=-1){ColNom=CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}else{if(Lignes[i].indexOf("\"Id_Ecart1er\"")!=-1){ColEcart1er= CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}}else if(CompteurTD==ColPosition||CompteurTD==ColNumero||CompteurTD==ColNom||CompteurTD==ColEcart1er)NouveauTexte+=Lignes[i];CompteurTD++}NouveauTexte+="</table>";return NouveauTexte} function Change(){var Num,Index;if(document.forms["Changement"].chkChangement.checked){Index=UrlRefresh.indexOf(".");Num=parseInt(UrlRefresh.substring(1,Index))+1;if(Num>MaxNum)Num=1;UrlRefresh="p"+Num+".html";UrlChange=1;fct=function(){Change()};TimerChange=setTimeout(fct,Changement)}else if(TimerChange)clearTimeout(TimerChange)};
         function AfficherImageZoom(a,b){""!=b?(document.getElementById("ImageZoom").src=b,document.getElementById("ImageZoom").style.left=a.clientX+"px",document.getElementById("ImageZoom").style.top=a.clientY+"px",document.getElementById("ImageZoom").style.visibility="visible"):document.getElementById("ImageZoom").style.visibility="hidden"};
     </script>
-    <!-- read race header from raceheader.txt -->
+    <!-- read race header from raceheader.txt 
     <script>
         function populatePre(url) {
             var xhr = new XMLHttpRequest();
@@ -64,7 +64,7 @@
             xhr.send();
         }
         populatePre('raceheader.txt');
-    </script>
+    </script>-->
     <!-- google-analytics -->
     <script type="text/javascript">
 
@@ -197,30 +197,28 @@
 </script>
 <!-- fix time format -->
 <script>
-var temp;
-var startTime;
-var OldstartTime;
-var NewstartTime;
+//var OldstartTime;
 window.setInterval(function(){
-    NewstartTime = document.getElementById("DayTime").innerHTML;
-    startTime = NewstartTime.split('/');
-    if (startTime[2] != OldstartTime) {
-        temp = NewstartTime.split(/[/:\s]/);
-        if ((temp[6]) === "PM") {
-            temp[3] = parseInt(temp[3]) + 12;
-            if ((temp[3]) === "24") {
-                temp[3] = "00";
-            }
-        } else if ((temp[6]) === "AM") {
-            if (parseInt(temp[3]) < 10) {
-                temp[3] = ("0" + temp[3]);
-            }
-        }
-        document.getElementById("DayTime").innerHTML = (temp[1]+'\/'+temp[0]+'\/'+temp[2]+' '+temp[3]+':'+temp[4]+':'+temp[5]);
-        OldstartTime = startTime[2];
+    var OldTime = document.getElementById("DayTime").innerHTML;
+    if  (OldTime.includes("M")) {
+        var date = new Date(OldTime);
+    //    console.log(date);
+    //    console.log(date.toLocaleDateString());         // Detects the locale automatically.
+    //    console.log(date.toLocaleDateString('en-GB')); 
+    //    console.log(date.toLocaleDateString('he-IL')); 
+    //    console.log(date.toLocaleTimeString()); // Detects the locale automatically.
+    //    console.log(date.toLocaleTimeString('en-GB'));
+    //    console.log(date.toLocaleTimeString('he-IL'));
+        var NewDate = date.toLocaleDateString('en-GB');
+        var NewTime = date.toLocaleTimeString('he-IL');
+//        if (NewTime != OldstartTime) {
+            document.getElementById("DayTime").innerHTML = NewTime+" "+NewDate;
+//            }
+//        OldstartTime = NewTime;
     }
-}, 1000);
+}, 3000);
 </script>
+
 </body>
 </html>
 
