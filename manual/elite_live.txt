@@ -209,14 +209,24 @@ window.setInterval(function(){
     //    console.log(date.toLocaleTimeString()); // Detects the locale automatically.
     //    console.log(date.toLocaleTimeString('en-GB'));
     //    console.log(date.toLocaleTimeString('he-IL'));
-        var NewDate = date.toLocaleDateString('en-GB');
-        var NewTime = date.toLocaleTimeString('he-IL');
+        var NewDate = date.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+        var NewTime = date.toLocaleTimeString('he-IL', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
 //        if (NewTime != OldstartTime) {
+            var parts = NewDate.split("/");
+            NewDate = parts[0] + "-" + parts[1] + "-" + parts[2];
             document.getElementById("DayTime").innerHTML = NewTime+" "+NewDate;
 //            }
 //        OldstartTime = NewTime;
     }
-}, 3000);
+}, 1000);
 </script>
 
 </body>
