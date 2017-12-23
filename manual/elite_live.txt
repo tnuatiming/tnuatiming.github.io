@@ -196,7 +196,7 @@
 <!-- fix time format -->
 </script>
 <!-- fix time format -->
-<script>
+<!--<script>
 //var OldstartTime;
 window.setInterval(function(){
     var OldTime = document.getElementById("DayTime").innerHTML;
@@ -227,7 +227,7 @@ window.setInterval(function(){
 //        OldstartTime = NewTime;
     }
 }, 1000);
-</script>
+</script> -->
 
 </body>
 </html>
