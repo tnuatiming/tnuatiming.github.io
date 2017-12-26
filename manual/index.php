@@ -191,6 +191,8 @@ tbody tr:hover {
 
     <p class="c3"><span class="c6"><a class="c2" href="http://www.chronelec.com/soft/DecoderSettings.msi">DecoderSettings.msi(latest)</a></span></p>
 
+    <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/THCOM08.pdf">Tag Heuer comunication protocol (THCOM08)</a></span></p>
+
     <p class="c3"><span class="c6"><a class="c2" href="http://www.microsoft.com/en-us/download/details.aspx?id=42643">Microsoft .NET Framework 4.5.2</a></span></p>
 
     </div>
