@@ -1387,6 +1387,15 @@ padding-right: 10%;
         background-size: cover;
     }
 
+    body#race.timeattack .full-bg{
+        background-image: url("/images/timeattack.jpg");
+        background-color: #f0f0f0;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
     #race tr.rnk_bkcolor:nth-of-type(odd) {
         background: rgba(208,208,208,0.8);
     }
