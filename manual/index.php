@@ -294,7 +294,9 @@ Status 12,DNS,center</code></pre></li>
    
    <h2 id="C11_1" class="c4">טבלת הגדרות לפי מרוץ</h2>
    
-   
+    <p class="c0">זמן ביינים: מגדירים את נקודת ההתחלה ונקודת הסיום. לדוגמא בין הזינוק לנקודה הראשונה. במידה והזינוק הוא starting schedule ורוצים את הזינוק כנקודת ההתחלה אז בוחרים starting schedule כנקודת ההתחלה</p>
+    <p class="c1"><span><img alt="hardenduro.png" src="/manual/images/hardenduro.png"></span></p>
+
 <div>
     <table class="waffle" cellspacing="0" cellpadding="0">
         <thead>
@@ -336,7 +338,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
                 <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
-                <td class="s1" >on winner competitor right click > insert flag > finish flag OR cp hit(pass) > insert finish flag</td>
+                <td class="s1" >on winner competitor right click > insert flag > finish flag</td>
             </tr>
             <tr>
                 <td class="s11" >enduro hare scramble</td>
@@ -351,7 +353,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
                 <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
-                <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag OR cp hit(pass) > insert finish flag</td>
+                <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag</td>
             </tr>
             <tr>
                 <td class="s11" >enduro special test</td>
@@ -369,6 +371,21 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
+                <td class="s11" >hard enduro</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" >starting schedule</td>
+                <td class="s2" >v</td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" ></td>
+                <td class="s2" >v</td>
+                <td class="s1" >green flag near start, for each row: cp hit on row start(pass), select all competitors in the row and set start time according to hit</td>
+                <td class="s1" >on first finished competitor: right click > insert flag > finish flag</td>
+            </tr>
+            <tr>
                 <td class="s11" >superbike/ supermoto</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
@@ -381,7 +398,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" ></td>
                 <td class="s2" >v</td>
                 <td class="s1" >close gate, green flag near start + cp hit on start(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
-                <td class="s1" >on winner competitor right click > insert flag > finish flag OR cp hit(pass) > insert finish flag</td>
+                <td class="s1" >on winner competitor right click > insert flag > finish flag</td>
             </tr>
             <tr>
                 <td class="s11" >rally sprint/ rally/ gymkhana</td>
@@ -414,6 +431,21 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
+                <td class="s11" >time attack</td>
+                <td class="s2" >circuit</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
+                <td class="s2" >v</td>
+                <td class="s2" >best lap</td>
+                <td class="s2" ></td>
+                <td class="s2" ></td>
+                <td class="s1" >green flag</td>
+                <td class="s1" ></td>
+            </tr>
+            <tr>
                 <td class="s33" >qualifying</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
@@ -426,7 +458,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
                 <td class="s1" >green flag</td>
-                <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag OR on session end cp hit(pass) > insert finish flag</td>
+                <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag</td>
             </tr>
             <tr class="strike">
                 <td class="s1" >superbike/ supermoto</td>
