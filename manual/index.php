@@ -118,6 +118,10 @@ tbody tr:hover {
 <li><a href="#C1">תוכנות</a></li>
 <li><a href="#C11">הגדרות ראשוניות</a>
 <li><a href="#C11_1">טבלת הגדרות לפי מרוץ</a>
+    <ul>
+    <li><a href="#C11_2">זמן ביינים</a></li>
+    </ul>
+</li>
 <li><a href="#C2">יבוא מתחרים</a>
     <ul>
     <li><a href="#C2_1">הסבת xlsx</a></li>
@@ -136,6 +140,7 @@ tbody tr:hover {
 <li><a href="#C7">live timing</a></li>
 <li><a href="#C9">שעון תצוגה</a>
 <li><a href="#C80">הדפסת התוצאות</a>
+<li><a href="#C13">הגדרות GPRS</a>
 <li><a href="#C8">התאמת התוצאות לתצוגה באתר</a>
     <ul>
     <li><a href="#C8_2">אוטומטי</a></li>
@@ -163,6 +168,8 @@ tbody tr:hover {
 
     <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/HL980Utility.exe">HL980Utility.exe</a></span></p>
     
+    <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/G_HL980_EN.pdf">G_HL980_EN.pdf</a></span></p>
+
     <p class="c3"><span class="c6"><a class="c2" href="http://www.aten.com/au/en/products/usb-&-thunderbolt/usb-converters/uc232a/">aten-serial-to-usb-UC232A_Windows_Setup.exe(remote)</a></span></p>
     
     <p class="c3"><span class="c6"><a class="c2" href="http://tnuatiming.com/software/UC232A_Windows_Setup_V1.0.083.exe">aten-serial-to-usb-UC232A_Windows_Setup.exe(local)</a></span></p>
@@ -293,8 +300,10 @@ Status 12,DNS,center</code></pre></li>
 
    
    <h2 id="C11_1" class="c4">טבלת הגדרות לפי מרוץ</h2>
-   
-    <p class="c0">זמן ביינים: מגדירים את נקודת ההתחלה ונקודת הסיום. לדוגמא בין הזינוק לנקודה הראשונה. במידה והזינוק הוא starting schedule ורוצים את הזינוק כנקודת ההתחלה אז בוחרים starting schedule כנקודת ההתחלה</p>
+       
+    <h3 id="C11_2" class="c7">זמן ביינים</h3>
+
+    <p class="c0">מגדירים את נקודת ההתחלה ונקודת הסיום. לדוגמא בין הזינוק לנקודה הראשונה. במידה והזינוק הוא starting schedule ורוצים את הזינוק כנקודת ההתחלה אז בוחרים starting schedule כנקודת ההתחלה. ב-timing יש לאפשר intermedate display על מנת שההיטים יופיעו.</p>
     <p class="c1"><span><img alt="hardenduro.png" src="/manual/images/hardenduro.png"></span></p>
 
 <div>
@@ -367,22 +376,22 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag early so the board will show time of day</td>
+                <td class="s1" >green flag near first start</td>
                 <td class="s1" ></td>
             </tr>
             <tr>
                 <td class="s11" >hard enduro</td>
                 <td class="s2" >circuit</td>
-                <td class="s2" ></td>
-                <td class="s2" >starting schedule</td>
+                <td class="s2" >1</td>
+                <td class="s2" >1</td>
                 <td class="s2" >v</td>
                 <td class="s2" >1</td>
-                <td class="s2" >1</td>
+                <td class="s2" >4</td>
                 <td class="s2" >v</td>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
-                <td class="s2" >v</td>
-                <td class="s1" >green flag near start, for each row: cp hit on row start(pass), select all competitors in the row and set start time according to hit</td>
+                <td class="s2" ></td>
+                <td class="s1" >green flag near start, for each row: cp hit on row start(pass), F11 (duplicate) on hit as number of starters on row, manully enter competitors numbers</td>
                 <td class="s1" >on first finished competitor: right click > insert flag > finish flag</td>
             </tr>
             <tr>
@@ -412,7 +421,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >best lap</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" ></td>
+                <td class="s1" >green flag near first start</td>
                 <td class="s1" ></td>
             </tr>
             <tr>
@@ -427,7 +436,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag</td>
+                <td class="s1" >green flag near first start</td>
                 <td class="s1" ></td>
             </tr>
             <tr>
@@ -442,7 +451,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >best lap</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag</td>
+                <td class="s1" >green flag near first start</td>
                 <td class="s1" ></td>
             </tr>
             <tr>
@@ -457,7 +466,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >best lap</td>
                 <td class="s2" >v</td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag</td>
+                <td class="s1" >green flag on session start</td>
                 <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag</td>
             </tr>
             <tr class="strike">
@@ -568,6 +577,8 @@ Status 12,DNS,center</code></pre></li>
  
     <h2 id="C9" class="c7">שעון תצוגה</h2>
 
+    <p class="c0">ניתן להגדיר timinihg out, על מנת לאפשר תצוגה בין מדידות, למשל את time of day.</p>
+
     <p class="c1"><span><img alt="image26.png" src="/manual/images/image26.png"></span></p>
     
     <h2 id="C80" class="c4">הדפסת התוצאות</h2>
@@ -581,6 +592,10 @@ Status 12,DNS,center</code></pre></li>
     <p class="c1"><span><img alt="image16.png" src="/manual/images/image16.png"></span></p>
     
     <p class="c0">if displaying lap times colmuns, please start with the last lap as it is actually the first...</p>
+
+    <h2 id="C13" class="c4">הגדרות GPRS</h2>
+
+    <p class="c1"><span><img alt="image30.png" src="/manual/images/image30.png"></span></p>
 
     <h2 id="C8" class="c4">התאמת התוצאות לתצוגה באתר</h2>
 
