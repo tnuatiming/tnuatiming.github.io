@@ -12,7 +12,8 @@ sitemap:
 
 {% assign article_seasons =  site.posts | map: 'season' | uniq | join: ',' | join: ',' | downcase | split: ',' %}
 {% for year in article_seasons %}
-    <div class="season"><h1>עונת {{ year }}</h1>{% comment %}<!--  "season" div -->{% endcomment %}
+<h1>עונת {{ year }}</h1>
+<div class="season">{% comment %}<!--  "season" div -->{% endcomment %}
 
     {% for tag in site.tags %}
         {% comment %}creates an empty array{% endcomment %}

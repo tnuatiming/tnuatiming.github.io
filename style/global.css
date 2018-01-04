@@ -867,25 +867,19 @@ padding-right: 10%;
 }*/
 
 #races .season {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
-    width: 100%;
+    column-count: 2;
+    column-fill: balance;
+    width: 80%;
+    margin-right: 50px;
 }
 
 .season h1{
-    -webkit-flex: 100%;
-        -ms-flex: 100%;
-            flex: 100%;
+    width: 100%;
 }
 
 #races .sport {
-    -webkit-flex:  50%;
-        -ms-flex:  50%;
-            flex:  50%;
+  display: inline-block;/* avoid to break through columns */
+  width: 100%;
 }
 
 #auto {
@@ -1031,7 +1025,13 @@ padding-right: 10%;
     .navigation ul {
         margin-left: 60px;
     }
-    
+ #races .season {
+    column-count: 3;
+    column-fill: balance;
+    width: 95%;
+    margin-right: 0;
+}
+   
 }
 
 @media (max-width: 1024px) {
@@ -1248,6 +1248,13 @@ padding-right: 10%;
 .full-bg{
         background-color: #f0f0f0;
     }    
+
+    #races .season {
+        column-count: 2;
+        column-fill: balance;
+        width: 100%;
+        margin-right: 0;
+    }
 }
 
 @media (min-width: 768px) {
