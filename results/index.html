@@ -9,13 +9,14 @@ sitemap:
   changefreq: 'monthly'
   exclude: 'no'
 ---
-
+{% assign sorted_tags = site.tags | sort %}
 {% assign article_seasons =  site.posts | map: 'season' | uniq | join: ',' | join: ',' | downcase | split: ',' %}
+
 {% for year in article_seasons %}
 <h1>עונת {{ year }}</h1>
 <div class="season">{% comment %}<!--  "season" div -->{% endcomment %}
 
-    {% for tag in site.tags %}
+    {% for tag in sorted_tags %}
         {% comment %}creates an empty array{% endcomment %}
         {% assign postsInCategory = "" | split: "/" %}
 
