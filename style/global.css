@@ -991,7 +991,7 @@ padding-right: 10%;
     animation-fill-mode: both;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;        
-    background:rgba(240,240,240,0.8);
+    background:rgba(240,240,240,0.9);
 }
 
 #races .animated, #live .animated {
