@@ -5,7 +5,6 @@ Disallow: /manual/
 Disallow: /software/
 Disallow: /header.html
 Disallow: /footer.html
-Disallow: /terms.html
 Sitemap: http://tnuatiming.com/sitemap.xml
 
 
