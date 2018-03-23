@@ -149,6 +149,12 @@ RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
 #   RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
+# ----------------------------------------------------------------------
+# Redirect HTTP to HTTPS automatically
+# ----------------------------------------------------------------------
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # ----------------------------------------------------------------------
 # Custom 404 page
@@ -200,7 +206,7 @@ RewriteRule "(^|/)\." - [F]
 # Block access to backup and source files. These files may be left by some
 # text/html editors and pose a great security danger, when anyone can access
 # them.
-<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp|zip)|~)$">
 Order allow,deny
 Deny from all
 Satisfy All
