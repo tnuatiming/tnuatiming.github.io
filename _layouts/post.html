@@ -13,18 +13,24 @@
     <h2> {{ page.tag }} - {{ page.type }}</h2>  
 {% endif %}
 
+{% if page.display_date %}
+    {% assign display_date = page.display_date %}
+{% else %}
+    {% assign display_date = page.date | date: "%-d-%-m-%Y" %}
+{% endif %}
 
 {% if page.noseason == "true" %}
         {% if page.round == empty %}
-            <h2>{{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+            <h2>{{ page.place }} - {{ display_date }}</h2>
         {% else %}
-            <h2>{{ page.round }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+            <h2>{{ page.round }} - {{ page.place }} - {{ display_date }}</h2>
         {% endif %}
 {% else %}
         {% if page.round == empty %}
-            <h2>עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>
+            <h2>עונת {{ page.season }} - {{ page.place }} - {{ display_date }}</h2>
         {% else %}
-           <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ page.date | date: "%-d-%-m-%Y" }}</h2>        {% endif %}
+           <h2>{{ page.round }} עונת {{ page.season }} - {{ page.place }} - {{ display_date }}</h2>        
+        {% endif %}
 {% endif %}
         {{ content }}
 
@@ -39,11 +45,20 @@
         <div class="erlier_races"><h2>תוצאות נוספות בעונת {{ page.season }}:</h2>
                 <ul>
         {% for post in site.posts %}
+        
+        {% if post.display_date %}
+            {% assign display_date = post.display_date %}
+        {% else %}
+            {% assign display_date = page.date | date: "%-d-%-m-%Y" %}
+        {% endif %}
+        
         {% if post.categories[1] == page.categories[1] and post.season == page.season and post != page %}
-                    <li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</a></li>       
+                    <li><a href="{{ post.url }}">{{ post.round }} - {{ post.place }} - {{ display_date }}</a></li>       
         {% endif %}
         {% if post.categories[1] == page.categories[1] and post == page %}
-                    <li><p>{{ post.round }} - {{ post.place }} - {{ post.date | date: "%-d-%-m-%Y" }}</p></li>       
+
+            <li><p>{{ post.round }} - {{ post.place }} - {{ display_date }}</p></li>       
+                    
         {% endif %}      
         {% endfor %}  
                 </ul></div>
