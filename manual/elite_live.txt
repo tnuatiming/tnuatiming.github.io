@@ -2,8 +2,8 @@
 <html class="no-js" lang="he" xml:lang="he" dir="rtl">
 <head>
     <title>live  &middot; תנועה מדידת זמנים</title> 
-    <meta name="description" content="מדידה בזמן אמת - live timing -  כפי שמתקבלות ממערכת מדידת הזמנים" />
-    <meta name="keywords" content="מדידת זמנים, תנועה, רז הימן, זמן אמת, raz heymann, live timing, time keep, israel">
+    <meta name="description" content="תוצאות בזמן אמת - live timing -  כפי שמתקבלות ממערכת מדידת הזמנים" />
+    <meta name="keywords" content="מדידת זמנים, תנועה, רז הימן, זמן אמת, תוצאות, raz heymann, live timing, time keep, israel">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo" />
@@ -39,7 +39,7 @@
     <meta property="og:locale" content="he_IL" />
     <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים"/>
     <meta property="og:title" content="תנועה מדידת זמנים"/> 
-    <meta property="og:description" content="מדידה בזמן אמת"/>
+    <meta property="og:description" content="תוצאות בזמן אמת"/>
     <meta property="article:tag" content="live timing"/>
     <meta property="og:url" content="http://tnuatiming.com/live/index.html"/>
     <meta property="og:image" content="http://tnuatiming.com/images/logo2_og.png"/>
