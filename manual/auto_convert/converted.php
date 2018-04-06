@@ -110,8 +110,9 @@ if ($_POST['elite']) {  //create header for elite v3
                         $data1[$c] = str_replace("Best lap", "הקפה מהירה", $data1[$c]);
                         $data1[$c] = str_replace("Diff. with leader", "פער", $data1[$c]);
                         $data1[$c] = str_replace("Points", "נקודות", $data1[$c]);
-                        $data1[$c] = str_replace("Lap timer", "הקפה", $data1[$c]);
-                        $data1[$c] = str_replace("Lap time", "הקפה", $data1[$c]);
+                        $data1[$c] = str_replace("Lap timer", $runType, $data1[$c]);
+                        $data1[$c] = str_replace("Lap time", $runType, $data1[$c]);
+                        $data1[$c] = str_replace("Round", $runType, $data1[$c]);
                         $header .= '        <th class="rnkh_font">'.$data1[$c].'</th>'."\r\n";
                         $stop = 1;
                         $hrow = $row1;
