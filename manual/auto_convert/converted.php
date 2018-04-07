@@ -300,7 +300,7 @@ if ($_POST['elite']) { // elite v3
 
 // inserting best lap BEFORE next category header
                     if ($_POST['nobestlap']) { 
-                        if (($categoryheader > (-1)) and (!empty($kw[$categoryheader]))) {
+                        if (($categoryheader > (-1)) and (!empty($kw[$categoryheader]))) { // added check that best lap not empty (needed for raced which doesn't have best lap), or else empty "comment_font" line is added
                             $html .= '    <tr>'."\r\n";
                             $html .= '        <td colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
                             $html .= '    </tr>'."\r\n";
@@ -352,7 +352,7 @@ if ($_POST['elite']) { // elite v3
                             $data[$c] = str_replace("(C) 0", " P ", $data[$c]);
                             $data[$c] = str_replace("(C)", " P ", $data[$c]);
                             $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
-                        } elseif ((strpos($data[$c], 'D') !== false) and ($c > 2)) {
+                        } elseif ((strpos($data[$c], 'D') !== false) and ($c > 2)) { // adding penalty class to cells with D (Dns/Dsq/Dnf) starting with the third cell (first cells contain names and dont want to touch them)
                             $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
                         } else {
                             $html .= '        <td class="rnk_font">'.trim($data[$c]).'</td>'."\r\n";
@@ -433,7 +433,7 @@ if ($_POST['elite']) { // elite v3
 }
 
 // last best lap line
-if (($_POST['nobestlap']) and (!empty($kw[$categoryheader]))) { 
+if (($_POST['nobestlap']) and (!empty($kw[$categoryheader]))) { // added check that best lap not empty (needed for raced which doesn't have best lap), or else empty "comment_font" line is added
     $html .= '    <tr>'."\r\n";
     $html .= '        <td colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
     $html .= '    </tr>'."\r\n";

@@ -443,9 +443,10 @@ tr.OddRow:hover, tr.EvenRow:hover {
 #live td.Class9 {border-right: 6px solid #c0c0c0; color: #fff; font-weight: 700; text-shadow: none;}/*silver arrow*/
 /*hass #6c0000, mercedes #00cfba, */
 
-#Message {
+#live #Message {
     color: rgba(0,0,0,.5);
     font-size: 1.1em;
+    display:none;
 }
 
 td.title_font {
