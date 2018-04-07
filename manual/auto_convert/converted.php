@@ -300,7 +300,7 @@ if ($_POST['elite']) { // elite v3
 
 // inserting best lap BEFORE next category header
                     if ($_POST['nobestlap']) { 
-                        if ($categoryheader > (-1)) {
+                        if (($categoryheader > (-1)) and (!empty($kw[$categoryheader]))) {
                             $html .= '    <tr>'."\r\n";
                             $html .= '        <td colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
                             $html .= '    </tr>'."\r\n";
@@ -351,6 +351,8 @@ if ($_POST['elite']) { // elite v3
                             $data[$c] = str_replace("(C) 00:", " P ", $data[$c]);
                             $data[$c] = str_replace("(C) 0", " P ", $data[$c]);
                             $data[$c] = str_replace("(C)", " P ", $data[$c]);
+                            $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
+                        } elseif ((strpos($data[$c], 'D') !== false) and ($c > 2)) {
                             $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
                         } else {
                             $html .= '        <td class="rnk_font">'.trim($data[$c]).'</td>'."\r\n";
@@ -431,7 +433,7 @@ if ($_POST['elite']) { // elite v3
 }
 
 // last best lap line
-if ($_POST['nobestlap']) { 
+if (($_POST['nobestlap']) and (!empty($kw[$categoryheader]))) { 
     $html .= '    <tr>'."\r\n";
     $html .= '        <td colspan="99" class="comment_font">'.trim($kw[$categoryheader]).'</td>'."\r\n";
     $html .= '    </tr>'."\r\n";
