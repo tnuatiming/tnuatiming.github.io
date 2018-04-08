@@ -1,6 +1,11 @@
 #!/usr/bin/python
+
+# change log:
+# 2018-4-7 move to relative universal paths
+
 from bs4 import BeautifulSoup
 import glob, os, csv, datetime 
+CWD = os.getcwd() # '/home/amir/tnuatiming.github.io'
 
 if not os.path.exists("csv"):# create csv dir
     os.makedirs("csv")
@@ -9,7 +14,7 @@ files = glob.glob('csv/*')# clean the csv dir
 for fd in files:
     os.remove(fd)
 
-os.chdir("/home/amir/tnuatiming.github.io/_posts/")# dir with all the html files
+os.chdir(CWD+"/_posts/")# dir with all the html files
 
 for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
 
@@ -55,7 +60,7 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
         file=file.replace(".md","")# remove .md
         file=file.replace("-","_")
 
-        with open("/home/amir/tnuatiming.github.io/csv/"+file+'.csv', 'w') as f:# create the result header
+        with open(CWD+"/csv/"+file+'.csv', 'w') as f:# create the result header
             f.write(tag.rstrip()) 
             if type != '':
                 f.write(' - '+type.rstrip()) 
@@ -72,7 +77,7 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
 
         for table in tables:
     #        headers = [header.text for header in table.find_all('th')]
-            with open("/home/amir/tnuatiming.github.io/csv/"+file+'.csv', 'a') as f:# add empty line before each table
+            with open(CWD+"/csv/"+file+'.csv', 'a') as f:# add empty line before each table
                 f.write('\n') 
             f.close()
 
@@ -81,20 +86,20 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
             for row in table.find_all('tr'):
                 rows.append([val.text for val in row.find_all(['th','td'])])
 
-            with open("/home/amir/tnuatiming.github.io/csv/"+file+'.csv', 'a') as f:
+            with open(CWD+"/csv/"+file+'.csv', 'a') as f:
                 writer = csv.writer(f)
     #            writer.writerow(headers)
                 writer.writerows(row for row in rows if row)
             f.close()
 
-    with open("/home/amir/tnuatiming.github.io/csv/index.html", 'a') as f2:
+    with open(CWD+"/csv/index.html", 'a') as f2:
         url="<li><a href=http://tnuatiming.com/csv/"+file+".csv>"+tag+" - "+round+"עונת "+season+" - "+place+" - "+date+"</a></li>"
         f2.write(url+'\n') 
     f2.close()
 
-os.chdir("/home/amir/tnuatiming.github.io/")
+os.chdir(CWD)
 
-with open("/home/amir/tnuatiming.github.io/csv/index.html", 'r+') as f3:
+with open(CWD+"/csv/index.html", 'r+') as f3:
     content = f3.read()
     f3.seek(0, 0)
     head='<!doctype html><html lang="he" xml:lang="he" dir="rtl"><head><meta charset="utf-8"><style>a{margin-right:20px;text-decoration:none;}a:hover{color:lightgray;}ol{margin-right:40px;font-size:1.5em;}</style></head><body><ol reversed>'
