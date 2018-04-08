@@ -16,7 +16,8 @@
         ].join('&&')
       },
       csvUpdate: {
-        command: './convert_html_to_csv.sh'
+//        command: './convert_html_to_csv.sh'
+        command: 'python convert_html_to_csv.py'
       },
       htmlproof: {
         command: 'htmlproofer ./_site --disable-external --check-html'
