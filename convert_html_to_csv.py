@@ -92,6 +92,12 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
                 writer.writerows(row for row in rows if row)
             f.close()
 
+        # add copyright at the end
+        with open(CWD+"/csv/"+file+'.csv', 'a') as f:
+            f.write('\n\xa9 כל הזכויות שמורות לתנועה מדידת זמנים')
+        f.close()
+
+
     with open(CWD+"/csv/index.html", 'a') as f2:
         url="<li><a href=http://tnuatiming.com/csv/"+file+".csv>"+tag+" - "+round+"עונת "+season+" - "+place+" - "+date+"</a></li>"
         f2.write(url+'\n') 

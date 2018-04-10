@@ -352,8 +352,12 @@ if ($_POST['elite']) { // elite v3
                             $data[$c] = str_replace("(C) 0", " P ", $data[$c]);
                             $data[$c] = str_replace("(C)", " P ", $data[$c]);
                             $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
-                        } elseif ((strpos($data[$c], 'D') !== false) and ($c > 2)) { // adding penalty class to cells with D (Dns/Dsq/Dnf) starting with the third cell (first cells contain names and dont want to touch them)
-                            $html .= '        <td class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
+                        } elseif ((strpos($data[$c], 'DNS') !== false) and ($c > 2)) { // adding penalty class to cells with D (Dns/Dsq/Dnf) starting with the third cell (first cells contain names and dont want to touch them)
+                            $html .= '        <td title="לא התחיל" class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
+                        } elseif ((strpos($data[$c], 'DNF') !== false) and ($c > 2)) { 
+                            $html .= '        <td title="לא סיים" class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
+                        } elseif ((strpos($data[$c], 'DSQ') !== false) and ($c > 2)) { 
+                            $html .= '        <td title="נפסל" class="rnk_font penalty">'.trim($data[$c]).'</td>'."\r\n";
                         } else {
                             $html .= '        <td class="rnk_font">'.trim($data[$c]).'</td>'."\r\n";
                         }
