@@ -1,6 +1,6 @@
 {
-	"short_name": "תנועה מדידת זמנים",
-        "name": "תנועה מדידת זמנים פועלת תחת חברת תנועה מערכות מחשוב וניווט בעמ ועוסקת במדידת זמנים בארועי ספורט מוטוריים",
+	"short_name": "תנועה זמנים",
+        "name": "תנועה מדידת זמנים",
 	"icons": [
 		{
 			"src": "\/android-chrome-36x36.png",
@@ -37,6 +37,16 @@
 			"sizes": "192x192",
 			"type": "image\/png",
 			"density": 4
+		},
+		{
+			"src": "\/android-chrome-256x256.png",
+			"sizes": "256x256",
+			"type": "image\/png"
+		},
+		{
+			"src": "\/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image\/png"
 		}
 	],
     "start_url": "index.html",
