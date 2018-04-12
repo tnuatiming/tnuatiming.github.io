@@ -12,6 +12,10 @@
     {% include footer.html %}
 
 </body>
+
+{% if page.url == "/index.html" %}
+{% endif %}
+{% if page.body == "home" %}
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
@@ -25,4 +29,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+{% endif %}
+
 </html>
