@@ -47,6 +47,7 @@ exclude: [
     node_modules,
     sitemap.xml.old,
     .grunt,
+    .ftpauth,
     gitup.sh,
     gitup_descr.sh,
     convert_html_to_csv*,

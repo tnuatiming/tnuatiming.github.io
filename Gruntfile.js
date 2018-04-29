@@ -124,6 +124,31 @@ zip: {
       './jekyll_backup/main.zip': ['*', '!id_rsa', '!id_rsa.pub', '.htaccess', '_config.yml', '!password_protect.php']
 },
     
+
+  ftp_push: {
+    your_target: {
+      options: {
+		authKey: "key1",
+    	host: "tnuatiming.com",
+    	dest: "public_html",
+    	port: 21,
+        incrementalUpdates: "false"
+      },
+      files: [
+        {
+          expand: true,
+          cwd: '_site/',
+          src: [
+            "**",
+            "!software/"
+          ]
+        }
+      ]
+    }
+  },
+
+
+// old
 ftpush: {
   build: {
     auth: {
@@ -147,7 +172,8 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-htmlmin');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-connect');
-grunt.loadNpmTasks('grunt-ftpush');
+//grunt.loadNpmTasks('grunt-ftpush');
+grunt.loadNpmTasks('grunt-ftp-push');
 grunt.loadNpmTasks('grunt-text-replace');
 grunt.loadNpmTasks('grunt-zip-directories');
 grunt.loadNpmTasks('grunt-zip');
@@ -161,11 +187,11 @@ grunt.registerTask('build', ['shell:jekyllBuild']);
 grunt.registerTask('git', ['shell:gitUpdate']);
 grunt.registerTask('csv', ['shell:csvUpdate']);
 grunt.registerTask('htmlproof', ['shell:htmlproof']);
-grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'ftpush', 'shell:gitUpdate']);
+grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'ftp_push', 'shell:gitUpdate']);
 grunt.registerTask('backup', ['zip_directories', 'zip']);
-grunt.registerTask('ftp', ['shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'ftpush', 'shell:clean']);
-//  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftpush']);
-//  grunt.registerTask('upload', ['shell:jekyllBuild', 'replace', 'ftpush', 'shell:gitUpdate']);
-// grunt.registerTask('ftp', ['shell:jekyllBuild', 'html', 'css', 'ftpush']);
+grunt.registerTask('ftp', ['shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'ftp_push', 'shell:clean']);
+//  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftp_push']);
+//  grunt.registerTask('upload', ['shell:jekyllBuild', 'replace', 'ftp_push', 'shell:gitUpdate']);
+// grunt.registerTask('ftp', ['shell:jekyllBuild', 'html', 'css', 'ftp_push']);
 
 };
