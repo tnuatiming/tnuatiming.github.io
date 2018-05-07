@@ -1,0 +1,301 @@
+
+<script type="text/javascript">
+    var TimerLoad, TimerChange;
+    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
+    var UrlRefresh, UrlChange;
+    Rafraichir = 30000;
+    Changement = 90000;
+    MaxNum = 1;
+    ClassementReduit = 1;
+    ClassementReduitXpremier = 10;
+
+    function Load(url, target) {
+        var xhr;
+        var fct;
+        if (UrlChange) url = UrlRefresh;
+        else UrlRefresh = url;
+        UrlChange = 0;
+        if (TimerLoad) clearTimeout(TimerLoad);
+        try {
+            xhr = new ActiveXObject("Msxml2.XMLHTTP")
+        } catch (e) {
+            try {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP")
+            } catch (e2) {
+                try {
+                    xhr = new XMLHttpRequest
+                } catch (e3) {
+                    xhr = false
+                }
+            }
+        }
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                if (ClassementReduit == 0) document.getElementById(target).innerHTML = xhr.responseText;
+                else document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
+                }
+        };
+        xhr.open("GET", url + "?r=" + Math.random(), true);
+        xhr.send(null);
+        fct = function() {
+            Load(url, target)
+        };
+        TimerLoad = setTimeout(fct, Rafraichir)
+    };
+
+    function ExtraireClassementReduitNew(Texte) {
+        var i;
+        var Lignes;
+        var opt;
+        var NouveauTexte;
+        var tempLine = "";
+        Classx = 0;
+        var category = ["","","","","","","","","",""];
+        comp = 0;
+        hr = 0;
+        var headerRow = "";
+      //  Texte = Texte.substring(Texte.indexOf("<tr"));
+      //  console.log(Texte);
+        Lignes = Texte.split("\r\n");
+   //     console.log(Lignes.length);
+        NouveauTexte = Lignes[0];
+        NouveauTexte += Lignes[1];
+    //    NouveauTexte += "<table>";
+        for (i = 2; i < Lignes.length; i++) {
+             if  (Lignes[i].includes("HeaderRow") || hr == 1) {
+                headerRow += Lignes[i].replace(/ width=".*"/ig, "").replace(/ align=".*"/ig, "").replace(/HeaderRow/i, "rnkh_bkcolor") + '\r\n';
+                hr = 1;
+                if (Lignes[i].substring(0, 4) == "</tr") {
+                    hr = 0;
+          //          NouveauTexte += headerRow + '\r\n';
+                }
+            
+            } else {
+                if (Lignes[i].substring(0, 3) == "<tr") {
+                    tempLine += Lignes[i].replace(/OddRow/i, "rnk_bkcolor").replace(/EvenRow/i, "rnk_bkcolor") + '\r\n';
+                    comp = 1;
+                } else if (Lignes[i].substring(0, 4) == "</tr") {
+                    comp = 0;
+                    tempLine += Lignes[i] + '\r\n';
+                } else if (Lignes[i].substring(0, 3) == "<td" && comp == 1) {
+                    tempLine += Lignes[i].replace(/ width=".*"/ig, "").replace(/ align=".*"/ig, "") + '\r\n';
+
+                    for (g = 1; g < 10; g++) {                    
+                        if (Lignes[i].includes("Class"+g)) {
+                            Classx = g;
+                        }
+                    }
+                } 
+  //          console.log(tempLine);
+                if (comp == 0) {
+                            opt = category[Classx] + tempLine + '\r\n';
+                            category[Classx] = opt;
+                            tempLine = "";
+                            opt = "";
+                //          console.log(category[Classx]);
+                }
+            }
+        }
+     //   console.log(category);
+   for (g = 1; g < 10; g++) {
+        opt = category[g];
+        if (opt != "") {
+            
+            opt = refactor(opt);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n' + opt + '\r\n</table>';
+        }
+    }    
+    //    NouveauTexte += "</table>";
+        return NouveauTexte
+    };
+    
+    function ExtraireClassementReduit(Texte) {
+        var i;
+        var Lignes;
+        var NouveauTexte;
+        var tempLine = "";
+        var Classx;
+        var Class1 = "", Class2 = "", Class3 = "", Class4 = "", Class5 = "", Class6 = "", Class7 = "", Class8 = "", Class9 = "";
+        inCat = 0;
+        comp = 0;
+        hr = 0;
+        var headerRow = "";
+      //  Texte = Texte.substring(Texte.indexOf("<tr"));
+        console.log(Texte);
+        Lignes = Texte.split("\r\n");
+   //     console.log(Lignes.length);
+        NouveauTexte = Lignes[0];
+        NouveauTexte += Lignes[1];
+    //    NouveauTexte += "<table>";
+        for (i = 2; i < Lignes.length; i++) {
+             if  (Lignes[i].includes("HeaderRow") || hr == 1) {
+                headerRow += Lignes[i].replace(/ width=".*"/ig, "").replace(/ align=".*"/ig, "") + '\r\n';
+                hr = 1;
+                if (Lignes[i].substring(0, 4) == "</tr") {
+                    hr = 0;
+          //          NouveauTexte += headerRow + '\r\n';
+                }
+            } else {
+                if (Lignes[i].substring(0, 3) == "<tr") {
+                    tempLine += Lignes[i] + '\r\n';
+                    comp = 1;
+                } else if (Lignes[i].substring(0, 4) == "</tr") {
+                    comp = 0;
+                    tempLine += Lignes[i] + '\r\n';
+                } else if (Lignes[i].substring(0, 3) == "<td" && comp == 1) {
+                    tempLine += Lignes[i].replace(/ width=".*"/ig, "").replace(/ align=".*"/ig, "") + '\r\n';
+                    if (Lignes[i].includes("zzz")) {
+                        inCat = 1;
+                    } else if (Lignes[i].includes("Class1")) {
+                        Classx = "Class1";
+                    } else if (Lignes[i].includes("Class2")) {
+                        Classx = "Class2";
+                    } else if (Lignes[i].includes("Class3")) {
+                        Classx = "Class3";
+                    } else if (Lignes[i].includes("Class4")) {
+                        Classx = "Class4";
+                    } else if (Lignes[i].includes("Class5")) {
+                        Classx = "Class5";
+                    } else if (Lignes[i].includes("Class6")) {
+                        Classx = "Class6";
+                    } else if (Lignes[i].includes("Class7")) {
+                        Classx = "Class7";
+                    } else if (Lignes[i].includes("Class8")) {
+                        Classx = "Class8";
+                    } else if (Lignes[i].includes("Class9")) {
+                        Classx = "Class9";
+                    } 
+                } 
+  //          console.log(tempLine);
+    //        console.log(inCat + " " + comp + "\r\n");
+           if (comp == 0) {
+                if (inCat == 1) {
+                        NouveauTexte += tempLine + '\r\n';
+                        inCat = 0;
+                        tempLine = "";
+                } else if (Classx == "Class1") {
+                        Class1 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class2") {
+                        Class2 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class3") {
+                        Class3 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class4") {
+                        Class4 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class5") {
+                        Class5 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class6") {
+                        Class6 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class7") {
+                        Class7 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class8") {
+                        Class8 += tempLine + '\r\n';
+                        tempLine = "";
+                } else if (Classx == "Class9") {
+                        Class9 += tempLine + '\r\n';
+                        tempLine = "";
+                } else {
+                        inCat = 0;
+                        tempLine = "";
+                }
+                }
+            }
+        }
+
+        if (Class1 != "") {
+            Class1 = refactor(Class1);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class1 + '</table>\r\n' ;
+        }
+        if (Class2 != "") {
+            Class2 = refactor(Class2);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class2 + '</table>\r\n' ;
+        }
+        if (Class3 != "") {
+            Class3 = refactor(Class3);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class3 + '</table>\r\n' ;
+        }
+        if (Class4 != "") {
+            Class4 = refactor(Class4);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class4 + '</table>\r\n' ;
+        }
+        if (Class5 != "") {
+            Class5 = refactor(Class5);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class5 + '</table>\r\n' ;
+        }
+        if (Class6 != "") {
+            Class6 = refactor(Class6);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class6 + '</table>\r\n' ;
+        }
+        if (Class7 != "") {
+            Class7 = refactor(Class7);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class7 + '</table>\r\n' ;
+        }
+        if (Class8 != "") {
+            Class8 = refactor(Class8);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class8 + '</table>\r\n' ;
+        }
+        if (Class9 != "") {
+            Class9 = refactor(Class9);
+            NouveauTexte += '<table>\r\n' + headerRow + '\r\n';
+            NouveauTexte += Class9 + '</table>\r\n' ;
+        }
+
+    //    NouveauTexte += "</table>";
+        return NouveauTexte
+    };
+
+    function refactor(classic) {
+        var rePos = "";
+        var retf = "";
+        d = -1;
+        f = 1;
+        var j;
+
+        rePos = classic.split("\r\n");
+        for (j = 0; j < rePos.length; j++) {
+            if (rePos[j].substring(0, 3) == "<tr") {
+                d = j + 1;
+            }
+            if (d == j) {
+                retf += rePos[j].replace(/>.*</i, ">"+f+"<");
+                f++;
+            } else {
+                retf += rePos[j];
+            }
+        }
+        return retf
+    };
+    
+    function Change() {
+        var Num, Index;
+        if (document.forms["Changement"].chkChangement.checked) {
+            Index = UrlRefresh.indexOf(".");
+            Num = parseInt(UrlRefresh.substring(1, Index)) + 1;
+            if (Num > MaxNum) Num = 1;
+            UrlRefresh = "p" + Num + ".html";
+            UrlChange = 1;
+            fct = function() {
+                Change()
+            };
+            TimerChange = setTimeout(fct, Changement)
+        } else if (TimerChange) clearTimeout(TimerChange)
+    };
+
+    function AfficherImageZoom(a, b) {
+        "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
+    };
+</script>

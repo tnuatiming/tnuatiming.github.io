@@ -185,15 +185,15 @@ table::before, table::after {
     text-shadow: 0 1px 2px white;
 }
 
-#race tr.rnk_bkcolor:nth-of-type(odd) {
+#live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
     background: rgba(208,208,208,0.8);
 }
 
-#race tr.rnk_bkcolor:nth-of-type(even) {
+#live tr.rnk_bkcolor:nth-of-type(even), #race tr.rnk_bkcolor:nth-of-type(even) {
     background: rgba(224,224,224,0.8);
 }
 
-#race tr.rnk_bkcolor:nth-of-type(odd):hover, #race tr.rnk_bkcolor:nth-of-type(even):hover {
+#live tr.rnk_bkcolor:nth-of-type(odd):hover, #live tr.rnk_bkcolor:nth-of-type(even):hover ,#race tr.rnk_bkcolor:nth-of-type(odd):hover, #race tr.rnk_bkcolor:nth-of-type(even):hover {
     background: #ffcc33;
 }
 
@@ -228,7 +228,7 @@ table::before, table::after {
 }
 
 /*category     background-color: rgba(245,245,245,0.5);*/
-#race tr.bkcolor td.title_font {
+#live tr.bkcolor td.title_font, #race tr.bkcolor td.title_font {
     color:#fff;
     font-weight: 700;
 }
@@ -299,6 +299,17 @@ td img {
     color: rgba(0,0,0,0.5);
     margin: 5px 0 5px 0;
 }
+
+#live table {
+    margin: 10px 0 10px 0;
+}
+
+#live tr.rnkh_bkcolor {
+    color:#fff;
+    background: rgba(0,0,0,0.5);
+    font-weight: 700;
+}
+
 
 #Title img {
     height: 24px;
@@ -397,14 +408,14 @@ td img {
 #live td {
     border: 1px solid #fff;
 }
-*/
+
 #live td:nth-of-type(2) {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
     color:#fff;
     text-shadow: none;
 }
-
+*/
 .elite_no {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
@@ -1197,11 +1208,11 @@ padding-right: 10%;
         border: 1px solid #fff;
     }
 */    
-    #race tr.rnk_bkcolor:nth-of-type(odd) {
+    #live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
         background-color: #e0e0e0;
     }
     
-    #race tr.rnk_bkcolor:nth-of-type(even){
+    #live tr.rnk_bkcolor:nth-of-type(even), #race tr.rnk_bkcolor:nth-of-type(even){
         background-color: #f0f0f0;
     }
     
@@ -1405,11 +1416,11 @@ padding-right: 10%;
         background-size: cover;
     }
 
-    #race tr.rnk_bkcolor:nth-of-type(odd) {
+    #live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
         background: rgba(208,208,208,0.8);
     }
 
-    #race tr.rnk_bkcolor:nth-of-type(even) {
+    #live tr.rnk_bkcolor:nth-of-type(even), #race tr.rnk_bkcolor:nth-of-type(even) {
         background: rgba(224,224,224,0.8);
     }
    

@@ -575,7 +575,9 @@ Status 12,DNS,center</code></pre></li>
  
     <p class="c1"><span><img alt="image15.png" src="/manual/images/image15.png"></span></p>
  
-    <h2 id="C9" class="c7">שעון תצוגה</h2>
+    <p class="c0">תוצאות לפי קטגוריה נמצאים ב: live/cat.html. יש לזכור להוסיף את שורת הקטגוריה ל-classification ולהפעיל את display category colors. עובד רק כאשר יש עד 9 קטגוריות במרוץ!</p>
+ 
+ <h2 id="C9" class="c7">שעון תצוגה</h2>
 
     <p class="c0">ניתן להגדיר timinihg out, על מנת לאפשר תצוגה בין מדידות, למשל את time of day.</p>
 

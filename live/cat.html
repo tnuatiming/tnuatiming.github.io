@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+ <!DOCTYPE html>
 <html class="no-js" lang="he" xml:lang="he" dir="rtl">
 <head>
     <title>live  &middot; תנועה מדידת זמנים</title> 
@@ -56,13 +56,12 @@
     Rafraichir = 30000;
     Changement = 90000;
     MaxNum = 1;
-    ClassementReduit = 0;
+    ClassementReduit = 1;
     ClassementReduitXpremier = 10;
 
     function Load(url, target) {
         var xhr;
         var fct;
-        var cleanText;
         if (UrlChange) url = UrlRefresh;
         else UrlRefresh = url;
         UrlChange = 0;
@@ -81,12 +80,10 @@
             }
         }
         xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200)
-                if (ClassementReduit == 0) {
-                    cleanText = xhr.responseText;
-                    document.getElementById(target).innerHTML = cleanText.replace(/ width=".*"/ig, "").replace(/ align=".*"/ig, "");
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                if (ClassementReduit == 0) document.getElementById(target).innerHTML = xhr.responseText;
+                else document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
                 }
-                else document.getElementById(target).innerHTML = ExtraireClassementReduit(xhr.responseText)
         };
         xhr.open("GET", url + "?r=" + Math.random(), true);
         xhr.send(null);
@@ -94,51 +91,157 @@
             Load(url, target)
         };
         TimerLoad = setTimeout(fct, Rafraichir)
-    }
+    };
 
-    function ExtraireClassementReduit(Texte) {
-        var i, j, CompteurTD, CompteurTR;
-        var ColPosition, ColNumero, ColNom, ColEcart1er;
+    function ExtraireClassementReduitNew(Texte) {
+        var i;
         var Lignes;
+        var opt, opt1; // can delete all opt in code  when using resultsByCategory
         var NouveauTexte;
-        CompteurTR = 0;
-        ColPosition = -1;
-        ColNumero = -1;
-        ColNom = -1;
-        ColEcart1er = -1;
-        Texte = Texte.substring(Texte.indexOf("<tr"));
-        Lignes = Texte.split("\r\n");
-        NouveauTexte = '<table width="100%" cellpadding="0" cellspacing="0">';
-        for (i = 0; i < Lignes.length; i++)
-            if (Lignes[i].substring(0, 3) == "<tr") {
-                NouveauTexte += Lignes[i];
-                CompteurTD = 0
-            } else if (Lignes[i].substring(0, 4) == "</tr") {
-            CompteurTR++;
-            if (CompteurTR == ClassementReduitXpremier + 1) break
-        } else if (Lignes[i].substring(0, 3) == "<td") {
-            if (CompteurTR == 0)
-                if (Lignes[i].indexOf("\"Id_Position\"") != -1) {
-                    ColPosition = CompteurTD;
-                    NouveauTexte += Lignes[i].replace(/ width=".*"/i, "")
-                } else if (Lignes[i].indexOf("\"Id_Numero\"") != -1) {
-                ColNumero = CompteurTD;
-                NouveauTexte += Lignes[i].replace(/ width=".*"/i, "")
-            } else if (Lignes[i].indexOf("\"Id_Nom\"") != -1) {
-                ColNom = CompteurTD;
-                NouveauTexte += Lignes[i].replace(/ width=".*"/i, "")
-            } else {
-                if (Lignes[i].indexOf("\"Id_Ecart1er\"") != -1) {
-                    ColEcart1er = CompteurTD;
-                    NouveauTexte += Lignes[i].replace(/ width=".*"/i, "")
-                }
-            } else if (CompteurTD == ColPosition || CompteurTD == ColNumero || CompteurTD == ColNom || CompteurTD == ColEcart1er) NouveauTexte += Lignes[i];
-            CompteurTD++
-        }
-        NouveauTexte += "</table>";
-        return NouveauTexte
-    }
+        var tempLine = "";
+        Classx = 0; // can delete all opt in code  when using resultsByCategory
+        var category = ["","","","","","","","","",""]; // can delete all opt in code  when using resultsByCategory
+        var categoryName = ["","","","","","","","","",""]; // can delete all opt in code  when using resultsByCategory
+        notHeaderTR = 0;
+        hr = 0; // 1 if inside the header TR
+        catLine = 0; // the number of lines between the TR and the category TD
+        q = 0; // used to find the category line of each competitor
+        qq = 0; // used to find the category line of each competitor
+        cc = 0; // used to find the category line of each competitor
+        var headerRow = "";
+        var catName = "&nbsp;";
+        var resultsByCategory = [];
 
+        //  Texte = Texte.substring(Texte.indexOf("<tr"));
+      //  console.log(Texte);
+        Lignes = Texte.split("\r\n");
+   //     console.log(Lignes.length);
+        NouveauTexte = Lignes[0]; // clear the NouveauTexte variable and add the title line
+        NouveauTexte += Lignes[1]; // add the time line
+    //    NouveauTexte += "<table>";
+        for (i = 2; i < Lignes.length; i++) { // start with third line as the 2 first line allready proccessed
+            if  (Lignes[i].includes("HeaderRow")) { 
+                            q = i;
+            }
+             if  (Lignes[i].includes("HeaderRow") || hr == 1) { // if header TR or inside the header TR
+                if  (Lignes[i].includes("Id_Categorie")) { // find the category TD in the header
+                    catLine = i - q;
+                } else {
+                headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
+                hr = 1;
+                }
+                if (Lignes[i].substring(0, 4) == "</tr") {
+                    hr = 0;
+          //          NouveauTexte += headerRow + '\r\n';
+                }
+            
+            } else {
+                if (Lignes[i].substring(0, 3) == "<tr") {
+                    qq = i;
+       //     console.log("qq1 " + qq);
+                    tempLine += Lignes[i].replace(/OddRow/i, "rnk_bkcolor").replace(/EvenRow/i, "rnk_bkcolor") + '\r\n';
+                    notHeaderTR = 1; // mark that we inside a TR (not header TR)
+                } else if (Lignes[i].substring(0, 4) == "</tr") {
+                    notHeaderTR = 0; // mark that we finished the TR (not header TR)
+                    tempLine += Lignes[i] + '\r\n';
+                } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) {
+                    cc = qq + catLine;
+                    if (i == cc && catLine != 0) { // if category TD
+                        catName = Lignes[i].substring(Lignes[i].indexOf(">")+1,Lignes[i].lastIndexOf("<")); // find the category name and NOT adding the category line
+       //     console.log("catName " + catName);
+
+                    } else {
+                    tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "") + '\r\n'; // clean and add the line
+                    }
+                    for (g = 1; g < 10; g++) {     // iterate trough the classes/category and find the category the copmetitor is in, can delete when using resultsByCategory and the competitor category determinded by category colmun               
+                        if (Lignes[i].includes("Class"+g)) {
+                            Classx = g;
+                        }
+                    }
+                } 
+  //          console.log(tempLine);
+                if (notHeaderTR == 0) {
+                            opt = category[Classx] + tempLine;
+                            category[Classx] = opt;
+                            categoryName[Classx] = catName;
+                            
+                            if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
+                                opt1 = tempLine;
+                            } else {
+                                opt1 = resultsByCategory[catName] + tempLine;
+                            }
+                            
+                            resultsByCategory[catName] = opt1;
+                            
+                            tempLine = "";
+                            opt = "";
+                            opt1 = "";
+                //          console.log(category[Classx]);
+                }
+            }
+        }
+      //  console.log(resultsByCategory);
+     //   console.log(category);
+     //   console.log(categoryName);
+
+//    NouveauTexte += '<table>\r\n'
+//    for (g = 0; g < 10; g++) {
+//        opt = category[g];
+//        if (opt != "") {
+        //    opt = refactor(opt); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
+//        NouveauTexte += '<td colspan="99" class="title_font">' + categoryName[g] + '</td>\r\n' + headerRow + '\r\n' + opt + '\r\n';
+//        }
+//    }    
+//    NouveauTexte += "</table>";
+
+        
+        var sortedObj = sortObjKeysAlphabetically(resultsByCategory);
+        NouveauTexte += '<table>\r\n'
+        for(var key in sortedObj) {
+            opt1 = sortedObj[key];
+            if (opt1 != "") {
+            //    opt1 = refactor(opt1); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
+                NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + headerRow + '\r\n' + opt1.replace(/undefined/ig, "") + '\r\n';
+            }
+        }    
+        NouveauTexte += "</table>";
+                
+        
+    return NouveauTexte
+    };
+
+    
+    function sortObjKeysAlphabetically(obj) {
+        var ordered = {};
+        Object.keys(obj).sort().forEach(function(key) {
+        ordered[key] = obj[key];
+        });
+        return ordered;
+        };
+ 
+
+    function refactor(classic) {
+        var rePos = "";
+        var retf = "";
+        d = -1;
+        f = 1;
+        var j;
+
+        rePos = classic.split("\r\n");
+        for (j = 0; j < rePos.length; j++) {
+            if (rePos[j].substring(0, 3) == "<tr") {
+                d = j + 1;
+            }
+            if (d == j) {
+                retf += rePos[j].replace(/>.*</i, ">"+f+"<");
+                f++;
+            } else {
+                retf += rePos[j];
+            }
+        }
+        return retf
+    };
+    
     function Change() {
         var Num, Index;
         if (document.forms["Changement"].chkChangement.checked) {
@@ -158,19 +261,9 @@
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
 </script>
-    <!-- read race header from raceheader.txt 
-    <script>
-        function populatePre(url) {
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function () {
-                document.getElementById('raceheader').textContent = this.responseText;
-            };
-            xhr.open('GET', url);
-            xhr.send();
-        }
-        populatePre('raceheader.txt');
-    </script>-->
-    <!-- google-analytics -->
+
+
+<!-- google-analytics -->
     <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -250,17 +343,12 @@
       
         <div class="main_table col">
             <div class="content">
-            
-            <!----<img id="ImageZoom" src="/images/liveheader.jpg" alt="live header">--->
-            <!----<p id="raceheader"></p>--->
-            <!----<div id="result"></div>--->
+     
+     
 
 
-
-
-
-
-
+<div id="result"></div>
+<p><a href="http://www.chronelec.com" target="_blank" style="text-decoration: none; color: #999999;"><br><br>Software Elite v3 - www.chronelec.com</a></p>
 
 
 
@@ -298,41 +386,6 @@
   ga('create', 'UA-38104277-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!-- fix time format -->
-</script>
-<!-- fix time format -->
-<!--<script>
-//var OldstartTime;
-window.setInterval(function(){
-    var OldTime = document.getElementById("DayTime").innerHTML;
-    if  (OldTime.includes("M")) {
-        var date = new Date(OldTime);
-    //    console.log(date);
-    //    console.log(date.toLocaleDateString());         // Detects the locale automatically.
-    //    console.log(date.toLocaleDateString('en-GB')); 
-    //    console.log(date.toLocaleDateString('he-IL')); 
-    //    console.log(date.toLocaleTimeString()); // Detects the locale automatically.
-    //    console.log(date.toLocaleTimeString('en-GB'));
-    //    console.log(date.toLocaleTimeString('he-IL'));
-        var NewDate = date.toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        });
-        var NewTime = date.toLocaleTimeString('he-IL', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
-//        if (NewTime != OldstartTime) {
-            var parts = NewDate.split("/");
-            NewDate = parts[0] + "-" + parts[1] + "-" + parts[2];
-            document.getElementById("DayTime").innerHTML = NewTime+" "+NewDate;
-//            }
-//        OldstartTime = NewTime;
-    }
-}, 1000);
-</script> -->
 
 </body>
 </html>
