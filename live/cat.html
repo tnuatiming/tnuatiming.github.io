@@ -124,6 +124,13 @@
                             q = i;
             }
              if  (Lignes[i].includes("HeaderRow") || hr == 1) { // if header TR or inside the header TR
+                if  (Lignes[i].includes("<td ")) {
+                    if  (Lignes[i].includes("class=")) { // add rnkh_font class to TD
+                        Lignes[i] = Lignes[i].replace(/ class="/i, ' class="rnkh_font ')
+                    } else {
+                        Lignes[i] = Lignes[i].replace(/<td /i, '<td  class="rnkh_font" ')
+                    }
+                } 
                 if  (Lignes[i].includes("Id_Categorie")) { // find the category TD in the header
                     catLine = i - q;
                 } else {
@@ -209,7 +216,8 @@
         
     return NouveauTexte
     };
-
+    
+    
     
     function sortObjKeysAlphabetically(obj) {
         var ordered = {};
