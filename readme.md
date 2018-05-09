@@ -103,6 +103,8 @@ instal/update nodejs:
 
 npm update npm && npm install -g grunt-cli && npm install grunt && npm install grunt-contrib-cssmin &&  npm install grunt-contrib-htmlmin && npm install grunt-shell && npm install load-grunt-tasks && npm install grunt-contrib-watch && npm install grunt-contrib-connect && npm install grunt-ftp-push && npm install grunt-text-replace && npm install grunt-contrib-clean && npm install grunt-zip && npm install grunt-zip-directories
 
+using lftp with .netrc to upload to site (no need for all grunt ftp push junk)
+
 Add this line to your application's Gemfile:
 
 gem 'html-proofer'

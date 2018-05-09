@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "devDependencies": {},
   "dependencies": {
+    "coffeescript": "^2.3.0",
+    "graceful-fs": "^4.1.11",
     "grunt": "^1.0.2",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-cssmin": "^2.2.1",
     "grunt-contrib-htmlmin": "^2.4.0",
     "grunt-contrib-watch": "^1.0.1",
-    "grunt-ftp-deploy": "^0.2.0",
     "grunt-ftp-push": "^1.2.1",
     "grunt-ftpush": "^0.3.3",
     "grunt-shell": "^2.1.0",
     "grunt-text-replace": "^0.4.0",
     "grunt-zip": "^0.17.1",
     "grunt-zip-directories": "^1.0.1",
-    "load-grunt-tasks": "^3.5.2"
+    "load-grunt-tasks": "^3.5.2",
+    "minimatch": "^3.0.4"
   }
 }
