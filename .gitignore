@@ -10,3 +10,4 @@ id_rsa
 id_rsa.pub
 .tt
 lftp.log
+log/

@@ -23,7 +23,7 @@
         command: 'htmlproofer ./_site --disable-external --check-html'
       },
       lftp: {
-        command: 'lftp -u raz tnuatiming.com/ -e "set ftp:ssl-allow no; set ssl:verify-certificate no;mirror --reverse --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/;cache flush;exit" > lftp.log'
+        command: 'lftp -u raz tnuatiming.com/ -e "set ftp:ssl-allow no; set ssl:verify-certificate no;mirror --reverse --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/;cache flush;exit" | tee "log/lftp_$(date +%F_%R).log"'
       },
       clean: {
         command: 'rm -r ./_site && rm -r ./jekyll_backup'

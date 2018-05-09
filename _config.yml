@@ -52,6 +52,7 @@ exclude: [
     gitup_descr.sh,
     convert_html_to_csv*,
     readme.md,
-    lftp.log
+    lftp.log,
+    log/
 ]
 
