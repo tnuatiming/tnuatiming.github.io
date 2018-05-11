@@ -1,0 +1,55 @@
+---
+layout: default
+body: live
+permalink: /live/index20180511.html
+place: live timing
+sitemap:
+#  lastmod: 2015-09-23
+  priority: 0.9
+  changefreq: 'monthly'
+  exclude: 'no'
+---
+<!--
+<script>
+(function() {
+  var httpRequest;
+  window.onload = makeRequest;
+
+  function makeRequest() {
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+   //   alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('GET', 'raceheader.txt');
+    httpRequest.send();
+  }
+
+  function alertContents() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        document.getElementById('raceheader').innerHTML = (httpRequest.responseText);
+     } else {
+   //     alert('There was a problem with the request.');
+      }
+    }
+  }
+})();
+</script>
+<p id=raceheader></p>
+-->
+<script>
+
+function populatePre(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        document.getElementById('raceheader').textContent = this.responseText;
+    };
+    xhr.open('GET', url);
+    xhr.send();
+}
+populatePre('raceheader.txt');
+</script>
+<span id="live_header"><img class="live_header_image" alt="CheckeredFlag" src="Images/CheckeredFlag.png"><p id=raceheader></p><img class="live_header_image" alt="CheckeredFlag" src="Images/CheckeredFlag.png"></span>

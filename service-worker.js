@@ -1,5 +1,5 @@
 var cacheName = 'tnuaTimingCache';
-var filesToCache = ['./images/4752751.jpg','./images/logo16.png', './style/global.css'];
+var filesToCache = ['/images/4752751.jpg','/images/logo16.png'];
 
 self.addEventListener('install', function(e) {
     e.waitUntil(

@@ -66,6 +66,7 @@
       //  console.log(Texte);
         Lignes = Texte.split("\r\n");
    //     console.log(Lignes.length);
+        if  (Lignes.length > 5) { // check to see if we have more the 5 lines which mean we have a full page from elite and not one edited for disply
         NouveauTexte = Lignes[0]; // clear the NouveauTexte variable and add the title line
         NouveauTexte += Lignes[1]; // add the time line
     //    NouveauTexte += "<table>";
@@ -136,7 +137,8 @@
                 //          console.log(category[Classx]);
                 }
             }
-        }
+        }  // end for
+        } // end if check for more the 5 lines
       //  console.log(resultsByCategory);
      //   console.log(category);
      //   console.log(categoryName);
@@ -166,6 +168,7 @@
         
     return NouveauTexte
     };
+
     
     function sortObjKeysAlphabetically(obj) {
         var ordered = {};

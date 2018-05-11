@@ -116,6 +116,7 @@
       //  console.log(Texte);
         Lignes = Texte.split("\r\n");
    //     console.log(Lignes.length);
+        if  (Lignes.length > 5) { // check to see if we have more the 5 lines which mean we have a full page from elite and not one edited for disply
         NouveauTexte = Lignes[0]; // clear the NouveauTexte variable and add the title line
         NouveauTexte += Lignes[1]; // add the time line
     //    NouveauTexte += "<table>";
@@ -186,7 +187,8 @@
                 //          console.log(category[Classx]);
                 }
             }
-        }
+        }  // end for
+        } // end if check for more the 5 lines
       //  console.log(resultsByCategory);
      //   console.log(category);
      //   console.log(categoryName);
@@ -216,8 +218,7 @@
         
     return NouveauTexte
     };
-    
-    
+        
     
     function sortObjKeysAlphabetically(obj) {
         var ordered = {};
@@ -269,9 +270,21 @@
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
 </script>
+<script>
+        function populatePre(url) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                document.getElementById('raceheader').textContent = this.responseText;
+            };
+            xhr.open('GET', url);
+            xhr.send();
+        }
+        populatePre('raceheader.txt');
+</script>
 
 
-<!-- google-analytics -->
+
+<!-- google-analytics -->
     <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -353,11 +366,10 @@
             <div class="content">
      
      
+    <p id="raceheader"></p>
 
 
-<div id="result"></div>
-<p><a href="http://www.chronelec.com" target="_blank" style="text-decoration: none; color: #999999;"><br><br>Software Elite v3 - www.chronelec.com</a></p>
-
+    <div id="result"></div>
 
 
 

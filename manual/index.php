@@ -244,6 +244,7 @@ Lap time 10,הקפה 10,right
 Lap time 11,הקפה 11,right
 Lap time 12,הקפה 12,right
 Diff. with leader,פער,right
+Diff. with leader cat.,פער בקטגוריה,right
 Start time,זמן זינוק,right
 Total time penelty,עונשין-זמן,right
 Total laps penelty,עונשין-הקפות,center

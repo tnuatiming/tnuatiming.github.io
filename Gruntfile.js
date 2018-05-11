@@ -23,7 +23,7 @@
         command: 'htmlproofer ./_site --disable-external --check-html'
       },
       lftp: {
-        command: 'lftp -u raz tnuatiming.com/ -e "set ftp:ssl-allow no; set ssl:verify-certificate no;mirror --reverse --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/;cache flush;exit" | tee "log/lftp_$(date +%Y%m%d_%H%M).log"'
+        command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname false ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; rm ./public_html/live/p1.html ; rm ./public_html/live1/p1.html ; exit" | tee "log/lftp_$(date +%Y%m%d_%H%M).log"'
       },
       clean: {
         command: 'rm -r ./_site && rm -r ./jekyll_backup'
@@ -118,7 +118,7 @@ zip_directories: {
             expand: true,
             cwd: './',
             dest: './jekyll_backup',
-            src: ['*','!jekyll_backup','!software','!images','!node_modules','!assets', '!_site', '!manual']
+            src: ['*','!jekyll_backup','!software','!images','!node_modules','!assets', '!_site', '!manual', '!log']
         }]
     }
 },
@@ -190,7 +190,7 @@ grunt.registerTask('build', ['shell:jekyllBuild']);
 grunt.registerTask('git', ['shell:gitUpdate']);
 grunt.registerTask('csv', ['shell:csvUpdate']);
 grunt.registerTask('htmlproof', ['shell:htmlproof']);
-grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'ftp_push', 'shell:gitUpdate']);
+grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'shell:lftp', 'shell:gitUpdate']);
 grunt.registerTask('backup', ['zip_directories', 'zip']);
 grunt.registerTask('ftp', ['shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'shell:lftp', 'shell:clean']);
 //  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftp_push']);

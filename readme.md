@@ -105,6 +105,12 @@ npm update npm && npm install -g grunt-cli && npm install grunt && npm install g
 
 using lftp with .netrc to upload to site (no need for all grunt ftp push junk)
 
+.netrc:
+machine tnuatiming.com
+login xxxxx 
+password xxxxxx 
+
+
 Add this line to your application's Gemfile:
 
 gem 'html-proofer'

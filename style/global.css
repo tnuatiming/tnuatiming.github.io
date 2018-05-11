@@ -408,6 +408,7 @@ td img {
 #live td {
     border: 1px solid #fff;
 }
+*/
 
 #live td:nth-of-type(2) {
     font-weight: 700;
@@ -415,7 +416,7 @@ td img {
     color:#fff;
     text-shadow: none;
 }
-*/
+
 .elite_no {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
