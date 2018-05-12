@@ -172,6 +172,9 @@ sitemap:
             opt1 = sortedObj[key];
             if (opt1 != "") {
             //    opt1 = refactor(opt1); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
+                if (key == 'undefined' || catName == null || catName == "&nbsp;") {
+                    key = "כללי";
+                }
                 NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + headerRow + '\r\n' + opt1.replace(/undefined/ig, "") + '\r\n';
             }
         }    
@@ -235,12 +238,12 @@ sitemap:
     <!-- read race header from raceheader.txt -->
 <script>
         function populatePre(url) {
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
                 document.getElementById('raceheader').textContent = this.responseText;
             };
-            xhr.open('GET', url);
-            xhr.send();
+            xhttp.open('GET', url);
+            xhttp.send();
         }
         populatePre('raceheader.txt');
 </script>

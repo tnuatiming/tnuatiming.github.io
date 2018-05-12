@@ -300,10 +300,6 @@ td img {
     margin: 5px 0 5px 0;
 }
 
-#live table {
-    margin: 10px 0 10px 0;
-}
-
 #live tr.rnkh_bkcolor {
     color:#fff;
     background: rgba(0,0,0,0.5);
@@ -463,7 +459,7 @@ tr.OddRow:hover, tr.EvenRow:hover {
 }
 
 td.title_font {
-    font-size: 1.2em;
+    font-size: 1.6em;
     font-weight: 700;
     text-shadow: 0 1px 2px white;
     padding-top: 10px;
