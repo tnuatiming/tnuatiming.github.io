@@ -47,6 +47,7 @@
     dist: {                                      // Target 
       options: {                                 // Target options 
         removeComments: true,
+        minifyJS: true,
         collapseWhitespace: true
         
       },

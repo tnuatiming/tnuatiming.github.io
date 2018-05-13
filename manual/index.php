@@ -347,7 +347,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
+                <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit<br>**</td>
                 <td class="s1" >on winner competitor right click > insert flag > finish flag</td>
             </tr>
             <tr>
@@ -362,7 +362,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" ></td>
-                <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit</td>
+                <td class="s1" >green flag near start + cp hit on start(pass), select all competitors and set start time according to hit<br>**</td>
                 <td class="s1" >on first finished competitor after time end right click > insert flag > finish flag</td>
             </tr>
             <tr>
@@ -407,7 +407,7 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s2" >total laps</td>
                 <td class="s2" ></td>
                 <td class="s2" >v</td>
-                <td class="s1" >close gate, green flag near start + cp hit on start(pass), open gate after all competitors pass, select all competitors and set start time according to hit</td>
+                <td class="s1" >close gate, green flag near start + cp hit on start(pass), open gate after all competitors pass, select all competitors and set start time according to hit<br>**</td>
                 <td class="s1" >on winner competitor right click > insert flag > finish flag</td>
             </tr>
             <tr>
@@ -489,7 +489,10 @@ Status 12,DNS,center</code></pre></li>
     </table>
 </div>
 
-   
+<p class="c0"><span>** יתכן ו-start time לא יופיע בכפתור הימני בעכבר. יש לבחור בתפריט Competitors > Assign starting schedules. יש לבחור start time לפי ההיט, לבחור את כל המתחרים (ctrl-a) Apply ולאשר.</span></p>
+
+    <p class="c1"><span><img alt="image991.png" src="/manual/images/image991.png"></span></p>
+
    <h2 id="C2" class="c4">יבוא מתחרים</h2>
  
     <p class="c0"> מקובץ csv או xls. צריך לכלול לפחות: שם מלא בעמודה יחידה (לא כמו בצילום מתחת) אפשר להשתמש בנוסחה לאיחוד תאים:</p>
@@ -561,6 +564,22 @@ Status 12,DNS,center</code></pre></li>
     <p class="c1"><span><img alt="image25.png" src="/manual/images/image25.png"></span></p>
 
     <h2 id="C7" class="c4">live timing</h2>
+        
+    <p class="c0">remember to enable the live timing after entering an event</p>
+    
+    <p class="c1"><span><img alt="image71.png" src="/manual/images/image71.png"></span></p>
+ 
+    <p class="c0">יש לודא ש- remote file שונה מ- index.html</p>
+
+    <p class="c1"><span><img alt="image72.png" src="/manual/images/image72.png"></span></p>
+ 
+    <p class="c0">שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל. עובד רק כאשר יש עד 9 קטגוריות במרוץ!</p>
+
+    <p class="c1"><span><img alt="image73.png" src="/manual/images/image73.png"></span></p>
+ 
+    <p class="c1"><span><img alt="image74.png" src="/manual/images/image74.png"></span></p>
+    
+    <h2 id="C77" class="c4">live timing(old)</h2>
     
     <p class="c0">remember to enable the live timing after entering an event</p>
     
@@ -575,9 +594,7 @@ Status 12,DNS,center</code></pre></li>
     <p class="c0"><span>הקוד נמצא באתר: <a class="c2" href="http://tnuatiming.com/manual/elite_live.txt">http://tnuatiming.com/manual/elite_live.txt</a> מחולק לשניים.</span></p>
  
     <p class="c1"><span><img alt="image15.png" src="/manual/images/image15.png"></span></p>
- 
-    <p class="c0">תוצאות לפי קטגוריה נמצאים ב: live/cat.html. יש לזכור להוסיף את שורת הקטגוריה ל-classification ולהפעיל את display category colors. עובד רק כאשר יש עד 9 קטגוריות במרוץ!</p>
- 
+  
  <h2 id="C9" class="c7">שעון תצוגה</h2>
 
     <p class="c0">ניתן להגדיר timinihg out, על מנת לאפשר תצוגה בין מדידות, למשל את time of day.</p>
