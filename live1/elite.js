@@ -11,10 +11,19 @@
     ClassementReduitXpremier = 10;
 
     var useCategory = "yes";
+
     function category(choice){
         useCategory = choice;
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+        
         Load('p1.html', 'result');
-    }
+    };
 
     function Load(url, target) {
         var xhr;
@@ -41,7 +50,9 @@
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                 if (ClassementReduit == 0) document.getElementById(target).innerHTML = xhr.responseText;
                 else document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
-                }
+ //           } else {
+ //               document.getElementById("categoryOrAll").style.display = "none";
+            }
         };
         xhr.open("GET", url + "?r=" + Math.random(), true);
         xhr.send(null);
@@ -63,8 +74,12 @@
         notHeaderTR = 0;
         hr = 0; // 1 if inside the header TR
         catLine = 0; // the number of lines between the TR and the category TD
-        q = 0; // used to find the category line of each competitor
+        q = 0; // used to find the pesent line in the TR for finding category, diff with leader etc lines 
+        diffCatLeaderLine = 0; // the number of lines between the TR and the diff with category leader TD
+        diffLeaderLine = 0; // the number of lines between the TR and the diff with overall leader TD
         qq = 0; // used to find the category line of each competitor
+        dcl = 0; // used to find the diff with category leader line of each competitor
+        dco = 0; // used to find the diff with overall leader line of each competitor
         cc = 0; // used to find the category line of each competitor
         var headerRow = "";
         var catName = "&nbsp;";
@@ -90,8 +105,12 @@
                         Lignes[i] = Lignes[i].replace(/<td /i, '<td  class="rnkh_font" ')
                     }
                 } 
-                if  (Lignes[i].includes("Id_Categorie")) { // find the category TD in the header
+                if  (Lignes[i].includes('id="Id_Categorie"')) { // find the category TD in the header
                     catLine = i - q;
+                } else if (Lignes[i].includes('id="Id_Ecart1erCategorie"') && useCategory == "no") {// find the diff with category leader TD in the header
+                    diffCatLeaderLine = i - q;
+                } else if (Lignes[i].includes('id="Id_Ecart1er"') && useCategory == "yes") {// find the diff with overall leader TD in the header
+                    diffLeaderLine = i - q;
                 } else {
                 headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
                 hr = 1;
@@ -112,13 +131,19 @@
                     tempLine += Lignes[i] + '\r\n';
                 } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) {
                     cc = qq + catLine;
+                    dcl = qq + diffCatLeaderLine;
+                    dco = qq + diffLeaderLine;
                     if (i == cc && catLine != 0) { // if category TD
                         if (useCategory == "yes") { // display as category or all
                             catName = Lignes[i].substring(Lignes[i].indexOf(">")+1,Lignes[i].lastIndexOf("<")); // find the category name and NOT adding the category line
        //     console.log("catName " + catName);
                         }
+                    } else if (i == dcl && useCategory == "no" && diffCatLeaderLine != 0) {  // find the the diff with category leader line and NOT adding the line
+                        continue
+                    } else if (i == dco && useCategory == "yes" && diffLeaderLine != 0) {  // find the the diff with overall leader line and NOT adding the line
+                        continue
                     } else {
-                    tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "") + '\r\n'; // clean and add the line
+                    tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>00:/i, '>') + '\r\n'; // clean and add the line
                     }
                     for (g = 1; g < 10; g++) {     // iterate trough the classes/category and find the category the copmetitor is in, can delete when using resultsByCategory and the competitor category determinded by category colmun               
                         if (Lignes[i].includes("Class"+g)) {

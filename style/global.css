@@ -343,7 +343,7 @@ td img {
 }
 
 #Time {
-    margin: 5px auto 8px auto;
+    margin: 5px auto 0 auto;
     font-size: 1em;
     font-weight: 700;
     text-align: right;
@@ -453,19 +453,24 @@ tr.OddRow:hover, tr.EvenRow:hover {
 /*hass #6c0000, mercedes #00cfba, */
 
 #live #categoryOrAll {
-    float: right;
-    margin: 20px;
+    width: 100%;
+    overflow:hidden;
     display:none;
 }
 
 #live #categoryOrAll button {
+    float: right;
     font-size: 1.1em;
-    margin: 0 10px;
+    padding: 0 10px;
+    margin: 0 20px;
 }
 
 #live #Message {
     color: rgba(0,0,0,.5);
     font-size: 1.1em;
+    display:none;
+}
+#live #displayCatButton {
     display:none;
 }
 

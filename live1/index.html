@@ -10,11 +10,12 @@ sitemap:
   exclude: 'no'
 ---
     
-    <p id="raceheader">תוצאות בזמן אמת</p>
+<div><p id="raceheader">תוצאות בזמן אמת</p></div>
 
-    <div id="result"></div>
-    
 <div id="categoryOrAll">
-    <button onClick="category('yes')">לפי קטגוריה</button>
-    <button onClick="category('no')">כללי</button>
+    <button id="displayCatButton" onClick="category('yes')">לפי קטגוריה</button>
+    <button id="displayAllButton" onClick="category('no')">כללי</button>
 </div>
+
+<div id="result"></div>
+    
