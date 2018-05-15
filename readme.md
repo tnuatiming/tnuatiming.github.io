@@ -101,7 +101,7 @@ instal/update nodejs:
 3. Add ~/.node/current/bin to your path (e.g echo export PATH=$HOME/.node/current/bin:$PATH >> ~/.bashrc)
 
 
-npm update npm && npm install -g grunt-cli && npm install grunt && npm install grunt-contrib-cssmin &&  npm install grunt-contrib-htmlmin && npm install grunt-shell && npm install load-grunt-tasks && npm install grunt-contrib-watch && npm install grunt-contrib-connect && npm install grunt-ftp-push && npm install grunt-text-replace && npm install grunt-contrib-clean && npm install grunt-zip && npm install grunt-zip-directories
+sudo npm install -g grunt-cli && npm install grunt grunt-contrib-cssmin grunt-contrib-htmlmin grunt-shell load-grunt-tasks grunt-contrib-watch grunt-contrib-connect grunt-ftp-push grunt-text-replace grunt-contrib-clean grunt-zip grunt-zip-directories --save-dev
 
 using lftp with .netrc to upload to site (no need for all grunt ftp push junk)
 
