@@ -284,198 +284,9 @@ td img {
     color: #CCC;
 }
 
-#ImageZoom {
-    width: auto;
-    height: auto;
-    max-width: 80%;
-    max-height: 80%;
-}
-
-#live #Title {
-    display: block;
-    vertical-align: middle;
-    font-weight: 700;
-    font-size: 1.5em;
-    color: rgba(0,0,0,0.5);
-    margin: 5px 0 5px 0;
-}
-
-#live tr.rnkh_bkcolor {
-    color:#fff;
-    background: rgba(0,0,0,0.5);
-    font-weight: 700;
-}
-
-
-#Title img {
-    height: 24px;
-    vertical-align: middle;
-    margin: 0 16px;
-}
-
-#live p#raceheader {
-    color: #58585a;
-    font-size: 2em;
-    font-weight: 700;
-    text-align: center;
-    margin: 5px 20px;
-    vertical-align: middle;
-}
-
-#live #live_header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.live_header_image {
-    height: 24px;
-    margin: auto 5px;
-}
-
-#ImageHeader {
-    margin: 0 auto 16px auto;
-}
-
-#ImageFooter {
-    margin: 16px auto 0 auto;
-}
-
-#Time {
-    margin: 5px auto 0 auto;
-    font-size: 1em;
-    font-weight: 700;
-    text-align: right;
-}
-
-#DayTime {
-    color: rgba(0,0,0,.5);
-    float: left;
-}
-
-#ElapsedTime {
-    color: #008000;
-    margin-right: 16px;
-}
-
-#RemainingTime {
-    color: #800000;
-    float: right;
-}
-
-.HeaderRow {
-    font-weight: 700;
-    background-color: rgba(0,0,0,0.5);
-    color: #fff;
-}
-
-.OddRow {
-    background-color: rgba(208,208,208,0.8);
-    color: #111;
-}
-
-.EvenRow {
-    background-color:  rgba(224,224,224,0.8);
-    color: #111;
-}
-
-.BestTimeOverall {
-    color: #ff0000;
-    font-weight: 700;
-}
-
-.BestTime {
-    color: #0000ff;
-    font-weight: 700;
-}
-
-/*.OddRow .elite_no {
-    font-weight: 700;
-    background-color: rgba(37, 37, 37, 0.5);
-    color: #fff;
-}
-.EvenRow .elite_no {
-    font-weight: 700;
-    background-color: rgba(80, 80, 80, 0.5);
-    color: #fff;
-}
-
-#live td {
-    border: 1px solid #fff;
-}
-*/
-
-#live td:nth-of-type(2) {
-    font-weight: 700;
-    background-color: rgba(37, 37, 37, 0.5);
-    color:#fff;
-    text-shadow: none;
-}
-
-.elite_no {
-    font-weight: 700;
-    background-color: rgba(37, 37, 37, 0.5);
-    color: #fff;    
-    text-shadow: none;
-}
-
-tr.OddRow:hover, tr.EvenRow:hover {
-    background: #fc3;
-}
-
-/*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
-/*
-#live td.PitIn {border-left: 6px solid #808080; color: #ff0000; background-color: black;}
-#live td.PitOut {border-left: 6px solid #808080; color: #ffff00; background-color: black;}
-#live td.Class1 {border-left: 6px solid #c0c0c0; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class2 {border-left: 6px solid #800000; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class3 {border-left: 6px solid #66cc33; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class4 {border-left: 6px solid #ff00ff; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class5 {border-left: 6px solid #008000; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class6 {border-left: 6px solid #00a4fe; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class7 {border-left: 6px solid #fffacd; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class8 {border-left: 6px solid #ff6700; color: #fff; font-weight: 700; text-shadow: none;}
-#live td.Class9 {border-left: 6px solid #000080; color: #fff; font-weight: 700; text-shadow: none;}
-*/
-/*racing Colors */
-#live td.PitIn {border-right: 6px solid #808080; color: #ff0000; background-color: black;} /*Red*/
-#live td.PitOut {border-right: 6px solid #808080; color: #ffff00; background-color: black;} /*Yellow*/
-#live td.Class1 {border-right: 6px solid #58cd2e; color: #fff; font-weight: 700; text-shadow: none;}/*Aprilia Racing green*/
-#live td.Class2 {border-right: 6px solid #ff80c7; color: #fff; font-weight: 700; text-shadow: none;}/*force india pink*/
-#live td.Class3 {border-right: 6px solid #318CE7; color: #fff; font-weight: 700; text-shadow: none;}/*Bleu de France*/
-#live td.Class4 {border-right: 6px solid #cc0000; color: #fff; font-weight: 700; text-shadow: none;}/*Rosso corsa red*/
-#live td.Class5 {border-right: 6px solid #004225; color: #fff; font-weight: 700; text-shadow: none;}/*British racing green*/
-#live td.Class6 {border-right: 6px solid #ff7b08; color: #fff; font-weight: 700; text-shadow: none;}/*mclaren orange*/
-#live td.Class7 {border-right: 6px solid #ffd800; color: #fff; font-weight: 700; text-shadow: none;}/*renault yellow*/
-#live td.Class8 {border-right: 6px solid #fafafa; color: #fff; font-weight: 700; text-shadow: none;}/*williams white*/
-#live td.Class9 {border-right: 6px solid #c0c0c0; color: #fff; font-weight: 700; text-shadow: none;}/*silver arrow*/
-/*hass #6c0000, mercedes #00cfba, */
-
-#live #categoryOrAll {
-    width: 100%;
-    overflow:hidden;
-    display:none;
-}
-
-#live #categoryOrAll button {
-    float: right;
-    font-size: 1.1em;
-    padding: 0 10px;
-    margin: 0 20px;
-}
-
-#live #Message {
-    color: rgba(0,0,0,.5);
-    font-size: 1.1em;
-    display:none;
-}
-#live #displayCatButton {
-    display:none;
-}
 
 td.title_font {
-    font-size: 1.6em;
+    font-size: 1.2em;
     font-weight: 700;
     text-shadow: 0 1px 2px white;
     padding-top: 10px;
@@ -1214,7 +1025,7 @@ padding-right: 10%;
         margin-top: 170px;
     }   */ 
     td.title_font {
-        font-size: 1.6em;
+        font-size: 1.2em;
     }
 /*    
     td.rnk_font, th.rnkh_font {
@@ -1255,9 +1066,6 @@ padding-right: 10%;
     #home .right{
         float: right;
         width: 100%;
-    }
-    #live #Title {
-        font-size: 1.2em;
     }
     
 }

@@ -573,7 +573,7 @@ Status 12,DNS,center</code></pre></li>
 
     <p class="c1"><span><img alt="image72.png" src="/manual/images/image72.png"></span></p>
  
-    <p class="c0">שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל. עובד רק כאשר יש עד 9 קטגוריות במרוץ!</p>
+    <p class="c0">שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל. עובד רק כאשר יש עד 9 קטגוריות במרוץ. בנוסף, יש לוודא ששורת "פער" (Diff. with leader) ושורת "פער מראשון" (Diff. with leader cat) מופיעות.</p>
 
     <p class="c1"><span><img alt="image73.png" src="/manual/images/image73.png"></span></p>
  
