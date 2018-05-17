@@ -503,13 +503,21 @@ td.comment_font {
     color: #111;
 }
 
-#live .BestTimeOverall {
+#live td.BestTimeOverall {
     color: #ff0000;
     font-weight: 700;
 }
 
-#live .BestTime {
+#live td.BestTime {
     color: #0000ff;
+    font-weight: 700;
+}
+#live td.up {
+    color: green;
+    font-weight: 700;
+}
+#live td.down {
+    color: red;
     font-weight: 700;
 }
 

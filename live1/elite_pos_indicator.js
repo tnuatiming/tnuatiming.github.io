@@ -1,4 +1,4 @@
- <!-- tag heuer live timing -->
+<!-- tag heuer live timing -->
 
 <script type="text/javascript">
     var TimerLoad, TimerChange;
@@ -75,14 +75,23 @@
         hr = 0; // 1 if inside the header TR
         q = 0; // used to find the pesent line in the TR for finding category, diff with leader etc lines 
         qq = 0; // used to find the category line of each competitor
+        timeLine = 0; // the number of lines between the TR and the time TD
         catLine = 0; // the number of lines between the TR and the category TD
         diffCatLeaderLine = 0; // the number of lines between the TR and the diff with category leader TD
         diffLeaderLine = 0; // the number of lines between the TR and the diff with overall leader TD
+        posLine = 0; // the number of lines between the TR and the position TD
+        posPrevLine = 0; // the number of lines between the TR and the previous lap position TD
+        tl = 0; // used to find the time line of each competitor
+        var timeInfo = "-";
         dcl = 0; // used to find the diff with category leader line of each competitor
         dco = 0; // used to find the diff with overall leader line of each competitor
+        pl = 0; // used to find the lap position line of each competitor
+        ppl = 0; // used to find the previous lap position line of each competitor
         cc = 0; // used to find the category line of each competitor
         var headerRow = "";
         var catName = "&nbsp;";
+        positionPrev = 0;
+        position = 0;
         var resultsByCategory = [];
 
         //  Texte = Texte.substring(Texte.indexOf("<tr"));
@@ -111,9 +120,20 @@
                     diffCatLeaderLine = i - q;
                 } else if (Lignes[i].includes('id="Id_Ecart1er"') && useCategory == "yes") {// find the diff with overall leader TD in the header
                     diffLeaderLine = i - q;
+                } else if (Lignes[i].includes('id="Id_TpsCumule"')) {// find the time TD in the header
+                    timeLine = i - q;
+                    headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
+                } else if (Lignes[i].includes('id="Id_Position"')) {// find the position TD in the header
+                    posLine = i - q;
+                    headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
+                } else if (Lignes[i].includes('id="Id_PositionTourPrec"')) {// find the previous lap position TD in the header
+                    posPrevLine = i - q;
+                    if (useCategory == "no") {
+                        headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
+                    }
                 } else {
-                headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
-                hr = 1;
+                    headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
+                    hr = 1;
                 }
                 if (Lignes[i].substring(0, 4) == "</tr") {
                     hr = 0;
@@ -130,9 +150,12 @@
                     notHeaderTR = 0; // mark that we finished the TR (not header TR)
                     tempLine += Lignes[i] + '\r\n';
                 } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) {
+                    tl = qq + timeLine;
                     cc = qq + catLine;
                     dcl = qq + diffCatLeaderLine;
                     dco = qq + diffLeaderLine;
+                    pl = qq + posLine;
+                    ppl = qq + posPrevLine;
                     if (i == cc && catLine != 0) { // if category TD
                         if (useCategory == "yes") { // display as category or all
                             catName = Lignes[i].substring(Lignes[i].indexOf(">")+1,Lignes[i].lastIndexOf("<")); // find the category name and NOT adding the category line
@@ -142,6 +165,23 @@
                         continue
                     } else if (i == dco && useCategory == "yes" && diffLeaderLine != 0) {  // find the the diff with overall leader line and NOT adding the line
                         continue
+                    } else if (i == pl && posLine != 0) {  // find the the diff with overall leader line and NOT adding the line
+                        position = Lignes[i].substring(Lignes[i].indexOf(">")+1,Lignes[i].lastIndexOf("<")); // find the position
+                        tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "") + '\r\n'; // clean and add the line
+                    } else if (i == tl && timeLine != 0) {  // find the the time line
+                        timeInfo = Lignes[i].substring(Lignes[i].indexOf(">")+1,Lignes[i].lastIndexOf("<")); // find the time
+                        tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>00:/i, '>') + '\r\n'; // clean and add the line
+                    } else if (i == ppl && posPrevLine != 0) {  // find the the previous lap position line
+                        if (useCategory == "no") {
+                            positionPrev = Lignes[i].substring(Lignes[i].indexOf(">")+1,Lignes[i].lastIndexOf("<")); // find the previous position
+                            if (positionPrev > position && timeInfo != "-") {
+                                tempLine += Lignes[i].replace(/ class="/i, ' class="up rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>.+</i, '>&uarr;<') + '\r\n'; 
+                            } else if (positionPrev < position && timeInfo != "-") {
+                                tempLine += Lignes[i].replace(/ class="/i, ' class="down rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>.+</i, '>&darr;<') + '\r\n'; 
+                            } else {
+                                tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>.+</i, '>&harr;<') + '\r\n';                             
+                            }
+                        }
                     } else {
                     tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>00:/i, '>') + '\r\n'; // clean and add the line
                     }

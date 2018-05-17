@@ -226,6 +226,7 @@ Driver 1,שם,right
 ,,
 Pos.,מקום,center
 Cat. Pos.,מקום בקטגוריה,center
+Prev. lap pos.,,center (יש להשאיר ריק)
 Total time,זמן,right
 Total laps,הקפות,center
 Best lap,הקפה מהירה,right
@@ -244,7 +245,7 @@ Lap time 10,הקפה 10,right
 Lap time 11,הקפה 11,right
 Lap time 12,הקפה 12,right
 Diff. with leader,פער,right
-Diff. with leader cat.,פער מהראשון,right
+Diff. with leader cat.,פער,right (זהה לקודם)
 Start time,זמן זינוק,right
 Total time penelty,עונשין-זמן,right
 Total laps penelty,עונשין-הקפות,center
