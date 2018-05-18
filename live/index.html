@@ -9,8 +9,11 @@ sitemap:
   changefreq: 'weekly'
   exclude: 'no'
 ---
-    
-    <p id="raceheader"></p>
+<div><p id="raceheader">תוצאות בזמן אמת</p></div>
 
-    <div id="result"></div>
-    
+<div id="categoryOrAll">
+    <button id="displayCatButton" class="btn" onClick="category('yes')">לפי קטגוריה</button>
+    <button id="displayAllButton" class="btn blue" onClick="category('no')">כללי</button>
+</div>
+
+<div id="result"></div>

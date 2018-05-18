@@ -1,0 +1,272 @@
+ <!-- tag heuer live timing -->
+
+<script type="text/javascript">
+    var TimerLoad, TimerChange;
+    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
+    var UrlRefresh, UrlChange;
+    Rafraichir = 30000;
+    Changement = 90000;
+    MaxNum = 1;
+    ClassementReduit = 1;
+    ClassementReduitXpremier = 10;
+
+    var useCategory = "yes";
+
+    function category(choice){
+        useCategory = choice;
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+        
+        Load('p1.html', 'result');
+    };
+
+    function Load(url, target) {
+        var xhr;
+        var fct;
+        if (UrlChange) url = UrlRefresh;
+        else UrlRefresh = url;
+        UrlChange = 0;
+        if (TimerLoad) clearTimeout(TimerLoad);
+        try {
+            xhr = new ActiveXObject("Msxml2.XMLHTTP")
+        } catch (e) {
+            try {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP")
+            } catch (e2) {
+                try {
+                    xhr = new XMLHttpRequest
+                } catch (e3) {
+                    xhr = false
+                }
+            }
+        }
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                if (ClassementReduit == 0) document.getElementById(target).innerHTML = xhr.responseText;
+                else document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
+ //           } else {
+ //               document.getElementById("categoryOrAll").style.display = "none";
+            }
+        };
+        xhr.open("GET", url + "?r=" + Math.random(), true);
+        xhr.send(null);
+        fct = function() {
+            Load(url, target)
+        };
+        TimerLoad = setTimeout(fct, Rafraichir)
+    };
+
+    function ExtraireClassementReduitNew(Texte) {
+        var i;
+        var Lignes;
+        var opt, opt1; // can delete all opt in code  when using resultsByCategory
+        var NouveauTexte;
+        var tempLine = "";
+        Classx = 0; // can delete all opt in code  when using resultsByCategory
+        var category = ["","","","","","","","","",""]; // can delete all opt in code  when using resultsByCategory
+        var categoryName = ["","","","","","","","","",""]; // can delete all opt in code  when using resultsByCategory
+        notHeaderTR = 0;
+        hr = 0; // 1 if inside the header TR
+        q = 0; // used to find the pesent line in the TR for finding category, diff with leader etc lines 
+        qq = 0; // used to find the category line of each competitor
+        catLine = 0; // the number of lines between the TR and the category TD
+        diffCatLeaderLine = 0; // the number of lines between the TR and the diff with category leader TD
+        diffLeaderLine = 0; // the number of lines between the TR and the diff with overall leader TD
+        dcl = 0; // used to find the diff with category leader line of each competitor
+        dco = 0; // used to find the diff with overall leader line of each competitor
+        cc = 0; // used to find the category line of each competitor
+        var headerRow = "";
+        var catName = "&nbsp;";
+        var resultsByCategory = [];
+
+        //  Texte = Texte.substring(Texte.indexOf("<tr"));
+      //  console.log(Texte);
+        Lignes = Texte.split("\r\n");
+   //     console.log(Lignes.length);
+        if  (Lignes.length > 5) { // check to see if we have more the 5 lines which mean we have a full page from elite and not one edited for disply
+        NouveauTexte = Lignes[0]; // clear the NouveauTexte variable and add the title line
+        NouveauTexte += Lignes[1]; // add the time line
+    //    NouveauTexte += "<table>";
+        for (i = 2; i < Lignes.length; i++) { // start with third line as the 2 first line allready proccessed
+            if  (Lignes[i].includes("HeaderRow")) { 
+                            q = i;
+            }
+             if  (Lignes[i].includes("HeaderRow") || hr == 1) { // if header TR or inside the header TR
+                if  (Lignes[i].includes("<td ")) {
+                    if  (Lignes[i].includes("class=")) { // add rnkh_font class to TD
+                        Lignes[i] = Lignes[i].replace(/ class="/i, ' class="rnkh_font ')
+                    } else {
+                        Lignes[i] = Lignes[i].replace(/<td /i, '<td  class="rnkh_font" ')
+                    }
+                } 
+                if  (Lignes[i].includes('id="Id_Categorie"')) { // find the category TD in the header
+                    catLine = i - q;
+                } else if (Lignes[i].includes('id="Id_Ecart1erCategorie"') && useCategory == "no") {// find the diff with category leader TD in the header
+                    diffCatLeaderLine = i - q;
+                } else if (Lignes[i].includes('id="Id_Ecart1er"') && useCategory == "yes") {// find the diff with overall leader TD in the header
+                    diffLeaderLine = i - q;
+                } else {
+                headerRow += Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor").replace(/<td/i, "<th").replace(/<\/td/i, "</th") + '\r\n'; // clean and add the line
+                hr = 1;
+                }
+                if (Lignes[i].substring(0, 4) == "</tr") {
+                    hr = 0;
+          //          NouveauTexte += headerRow + '\r\n';
+                }
+            
+            } else {
+                if (Lignes[i].substring(0, 3) == "<tr") {
+                    qq = i;
+       //     console.log("qq1 " + qq);
+                    tempLine += Lignes[i].replace(/OddRow/i, "rnk_bkcolor").replace(/EvenRow/i, "rnk_bkcolor") + '\r\n';
+                    notHeaderTR = 1; // mark that we inside a TR (not header TR)
+                } else if (Lignes[i].substring(0, 4) == "</tr") {
+                    notHeaderTR = 0; // mark that we finished the TR (not header TR)
+                    tempLine += Lignes[i] + '\r\n';
+                } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) {
+                    cc = qq + catLine;
+                    dcl = qq + diffCatLeaderLine;
+                    dco = qq + diffLeaderLine;
+                    if (i == cc && catLine != 0) { // if category TD
+                        if (useCategory == "yes") { // display as category or all
+                            catName = Lignes[i].substring(Lignes[i].indexOf(">")+1,Lignes[i].lastIndexOf("<")); // find the category name and NOT adding the category line
+       //     console.log("catName " + catName);
+                        }
+                    } else if (i == dcl && useCategory == "no" && diffCatLeaderLine != 0) {  // find the the diff with category leader line and NOT adding the line
+                        continue
+                    } else if (i == dco && useCategory == "yes" && diffLeaderLine != 0) {  // find the the diff with overall leader line and NOT adding the line
+                        continue
+                    } else {
+                    tempLine += Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>00:/i, '>') + '\r\n'; // clean and add the line
+                    }
+                    for (g = 1; g < 10; g++) {     // iterate trough the classes/category and find the category the copmetitor is in, can delete when using resultsByCategory and the competitor category determinded by category colmun               
+                        if (Lignes[i].includes("Class"+g)) {
+                            Classx = g;
+                        }
+                    }
+                } 
+  //          console.log(tempLine);
+                if (notHeaderTR == 0) {
+                            opt = category[Classx] + tempLine;
+                            category[Classx] = opt;
+                            categoryName[Classx] = catName;
+                            
+                            if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
+                                opt1 = tempLine;
+                            } else {
+                                opt1 = resultsByCategory[catName] + tempLine;
+                            }
+                            
+                            resultsByCategory[catName] = opt1;
+                            
+                            tempLine = "";
+                            opt = "";
+                            opt1 = "";
+                //          console.log(category[Classx]);
+                }
+            }
+        }  // end for
+        } // end if check for more the 5 lines
+      //  console.log(resultsByCategory);
+     //   console.log(category);
+     //   console.log(categoryName);
+
+//    NouveauTexte += '<table>\r\n'
+//    for (g = 0; g < 10; g++) {
+//        opt = category[g];
+//        if (opt != "") {
+        //    opt = refactor(opt); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
+//        NouveauTexte += '<td colspan="99" class="title_font">' + categoryName[g] + '</td>\r\n' + headerRow + '\r\n' + opt + '\r\n';
+//        }
+//    }    
+//    NouveauTexte += "</table>";
+
+        
+        var sortedObj = sortObjKeysAlphabetically(resultsByCategory);
+        NouveauTexte += '<table>\r\n'
+        for(var key in sortedObj) {
+            opt1 = sortedObj[key];
+            if (opt1 != "") {
+            //    opt1 = refactor(opt1); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
+                if (key == 'undefined' || catName == null || catName == "&nbsp;") {
+                    key = "כללי";
+                }
+                NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + headerRow + '\r\n' + opt1.replace(/undefined/ig, "") + '\r\n';
+            }
+        }    
+        NouveauTexte += "</table>";
+                
+        
+    return NouveauTexte
+    };
+        
+    
+    function sortObjKeysAlphabetically(obj) {
+        var ordered = {};
+        Object.keys(obj).sort().forEach(function(key) {
+        ordered[key] = obj[key];
+        });
+        return ordered;
+        };
+ 
+
+    function refactor(classic) {
+        var rePos = "";
+        var retf = "";
+        d = -1;
+        f = 1;
+        var j;
+
+        rePos = classic.split("\r\n");
+        for (j = 0; j < rePos.length; j++) {
+            if (rePos[j].substring(0, 3) == "<tr") {
+                d = j + 1;
+            }
+            if (d == j) {
+                retf += rePos[j].replace(/>.*</i, ">"+f+"<");
+                f++;
+            } else {
+                retf += rePos[j];
+            }
+        }
+        return retf
+    };
+    
+    function Change() {
+        var Num, Index;
+        if (document.forms["Changement"].chkChangement.checked) {
+            Index = UrlRefresh.indexOf(".");
+            Num = parseInt(UrlRefresh.substring(1, Index)) + 1;
+            if (Num > MaxNum) Num = 1;
+            UrlRefresh = "p" + Num + ".html";
+            UrlChange = 1;
+            fct = function() {
+                Change()
+            };
+            TimerChange = setTimeout(fct, Changement)
+        } else if (TimerChange) clearTimeout(TimerChange)
+    };
+
+    function AfficherImageZoom(a, b) {
+        "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
+    };
+</script>
+    <!-- read race header from raceheader.txt 
+<script>
+        function populatePre(url) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById('raceheader').textContent = this.responseText;
+            };
+            xhttp.open('GET', url);
+            xhttp.send();
+        }
+        populatePre('raceheader.txt');
+</script>
+ -->
