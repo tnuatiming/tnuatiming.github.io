@@ -66,19 +66,18 @@
     function ExtraireClassementReduitNew(Texte) {
         var i;
         var Lignes, sLignes;
-        var opt3; // can delete all opt in code  when using resultsByCategory
-        var NouveauTexte;
-        var addLineXXX;
-        var addHeaderLineXXX;
+        var opt3 = ""; // can delete all opt in code  when using resultsByCategory
+        var NouveauTexte = "";
+        var addLine = "";
+        var addHeaderLine = "";
         notHeaderTR = 0;
-        hr = 0; // 1 if inside the header TR
-        q = 0; // used to find the pesent line in the TR for finding category, diff with leader etc lines 
-        var catNameB = "&nbsp;";
-        var resultsByCategoryB = [];
-        var headerLineArrayXXX = [];
-        var headerLineArrayYYY = [];
-        var lineArrayXXX = [];
-        kk = 1;
+        HeaderTR = 0; // 1 if inside the header TR
+        var catName = "&nbsp;";
+        var resultsByCategory = [];
+        var headerLineArray = [];
+        var prototypeLineArray = [];
+        var lineArray = [];
+        td = 1;
 
         Texte = Texte.split('<table');
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5);
@@ -94,180 +93,178 @@
 
         for (i = 0; i < Lignes.length; i++) { // start with third line as the 2 first line allready proccessed
             if  (Lignes[i].includes("HeaderRow")) { 
-                            hr = 1;
-                            q = i;
+                            HeaderTR = 1;
 
-                    headerLineArrayXXX["start"]  =  Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/HeaderRow/i, "rnkh_bkcolor"); 
-                    headerLineArrayYYY.push("start");
+                    headerLineArray["start"]  =  Lignes[i].replace(/ width="(\w+)"/i, "").replace(/ align="(\w+)"/i, "").replace('HeaderRow', "rnkh_bkcolor"); 
+                    prototypeLineArray.push("start");
                      
             }
-             if  (Lignes[i].includes("HeaderRow") || hr == 1) { // if header TR or inside the header TR
+             if  (Lignes[i].includes("HeaderRow") || HeaderTR == 1) { // if header TR or inside the header TR
                              
-               
-                if  (Lignes[i].includes("<td ")) {
-                    if  (Lignes[i].includes("class=")) { // add rnkh_font class to header TD
-                        Lignes[i] = Lignes[i].replace(/ class="/i, ' class="rnkh_font ')
-                    } else {
-                        Lignes[i] = Lignes[i].replace(/<td /i, '<td class="rnkh_font" ')
-                    }
-                } 
-                
                  if  (Lignes[i].includes("<td ")) { // add header TD lines and set variables
 
+                    if  (Lignes[i].includes("class=")) { // add rnkh_font class to header TD
+                        Lignes[i] = Lignes[i].replace(' class="', ' class="rnkh_font ')
+                    } else {
+                        Lignes[i] = Lignes[i].replace('<td ', '<td class="rnkh_font" ')
+                    }
+                     
                     var tts = Lignes[i].substring(Lignes[i].indexOf(' id="')+4).split('"')[1];  // get the ID value
 
-                    headerLineArrayXXX[tts]  = (Lignes[i].replace(/ width=".*"/i, "").replace(/ align=".*"/i, "").replace(/<td/i, "<th").replace(/<\/td/i, "</th"));  // clean and add the line
-                    headerLineArrayYYY.push(tts);
+                    headerLineArray[tts]  = (Lignes[i].replace(/ width="(\w+)"/i, "").replace(/ align="(\w+)"/i, "").replace('<td', "<th").replace('</td', "</th"));  // clean and add the line
+                    prototypeLineArray.push(tts);
                 }
                 
                 if (Lignes[i].substring(0, 4) == "</tr") {
-                    hr = 0;
+                    HeaderTR = 0;
 
-                    headerLineArrayXXX["finish"]  =  Lignes[i];             
-                    headerLineArrayYYY.push("finish");
+                    headerLineArray["finish"]  =  Lignes[i];             
+                    prototypeLineArray.push("finish");
 
-                    //   console.log(headerLineArrayXXX);
-                     //  console.log(headerLineArrayYYY);
+                    //   console.log(headerLineArray);
+                     //  console.log(prototypeLineArray);
 
                     if (useCategory == "yes") {
-                    
-                        addHeaderLineXXX = headerLineArrayXXX["start"] 
-                        //   + headerLineArrayXXX["Id_PositionTourPrec"] 
-                        + headerLineArrayXXX["Id_Position"] 
-                        + headerLineArrayXXX["Id_Numero"] 
-                        + headerLineArrayXXX["Id_Nom"] 
-                        + headerLineArrayXXX["Id_NbTour"] 
-                        + headerLineArrayXXX["Id_TpsTour"] 
-                        + headerLineArrayXXX["Id_MeilleurTour"] 
-                        + headerLineArrayXXX["Id_TpsCumule"] 
-                        + headerLineArrayXXX["Id_Ecart1erCategorie"] 
-                        + headerLineArrayXXX["finish"];
+
+                        addHeaderLine = headerLineArray["start"] 
+                        
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+                            
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                                
+                                addHeaderLine += headerLineArray[prototypeLineArray[y]];
+
+                            }
+                        }
 
                     } else if (useCategory == "no") {
 
-                        addHeaderLineXXX = headerLineArrayXXX["start"] 
-                        + headerLineArrayXXX["Id_PositionTourPrec"] 
-                        + headerLineArrayXXX["Id_Position"] 
-                        + headerLineArrayXXX["Id_Numero"] 
-                        + headerLineArrayXXX["Id_Nom"] 
-                        + headerLineArrayXXX["Id_NbTour"] 
-                        + headerLineArrayXXX["Id_TpsTour"] 
-                        + headerLineArrayXXX["Id_MeilleurTour"] 
-                        + headerLineArrayXXX["Id_TpsCumule"] 
-                        + headerLineArrayXXX["Id_Ecart1er"] 
-                        + headerLineArrayXXX["finish"];
-                    }
+                        addHeaderLine = headerLineArray["start"] 
+                        
+                        if (prototypeLineArray.includes("Id_PositionTourPrec")) {
+                            addHeaderLine += headerLineArray["Id_PositionTourPrec"];
+                        }
+                        
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+                            
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                                
+                                addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
-                   //   console.log('addHeaderLine\r\n'+addHeaderLine);
-        
+                            }
+                        }
+
+                    }
+                      //console.log('addHeaderLine\r\n' + addHeaderLine);
                 }
 
             } else {  // end header and check other lines
                 if (Lignes[i].substring(0, 3) == "<tr") {
                                     
-                    lineArrayXXX[headerLineArrayYYY[0]] = Lignes[i].replace(/ class="/i, ' class="rnk_bkcolor ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "");
+                    lineArray[prototypeLineArray[0]] = Lignes[i].replace(' class="', ' class="rnk_bkcolor ').replace(/ align="(\w+)"/i, "");
                     
                     notHeaderTR = 1; // mark that we inside a TR (not header TR)
                     
                 } else if (Lignes[i].substring(0, 4) == "</tr") {
                 
-                    lineArrayXXX[headerLineArrayYYY[headerLineArrayYYY.length - 1]] = Lignes[i];  // add end TR line
+                    lineArray[prototypeLineArray[prototypeLineArray.length - 1]] = Lignes[i];  // add end TR line
 
                     notHeaderTR = 0; // mark that we finished the TR (other then header TR)
 
                 } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) { //check if inside a TR which is not the header TR
 
-                    lineArrayXXX[headerLineArrayYYY[kk]] = Lignes[i].replace(/ class="/i, ' class="rnk_font ').replace(/ align="right"/i, "").replace(/ align="left"/i, "").replace(/ align="center"/i, "").replace(/>00:/i, '>');
-                    kk += 1;
+                    lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace(/ align="(\w+)"/i, "").replace('>00:', '>');
+                    td += 1;
                 } 
 
                 if (notHeaderTR == 0) {
 
-                    if (useCategory == "yes" && lineArrayXXX["Id_Categorie"]) {
+                    if (useCategory == "yes" && lineArray["Id_Categorie"]) {
 
-                        catNameB = lineArrayXXX["Id_Categorie"].substring(lineArrayXXX["Id_Categorie"].indexOf(">")+1,lineArrayXXX["Id_Categorie"].lastIndexOf("<"));  // get the category value
+                        catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
                     }
 
-                    if (lineArrayXXX["Id_PositionTourPrec"] && lineArrayXXX["Id_TpsCumule"] && lineArrayXXX["Id_Position"]) {
+                    if (lineArray["Id_PositionTourPrec"] && lineArray["Id_TpsCumule"] && lineArray["Id_Position"]) {
 
-                        var timeInfoB = lineArrayXXX["Id_TpsCumule"].substring(lineArrayXXX["Id_TpsCumule"].indexOf(">")+1,lineArrayXXX["Id_TpsCumule"].lastIndexOf("<")); // get the time value
+                        var timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
                         
-                        var positionB = lineArrayXXX["Id_Position"].substring(lineArrayXXX["Id_Position"].indexOf(">")+1,lineArrayXXX["Id_Position"].lastIndexOf("<"));  // get the position value
+                        var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<"));  // get the position value
 
-                        var positionPrevB = lineArrayXXX["Id_PositionTourPrec"].substring(lineArrayXXX["Id_PositionTourPrec"].indexOf(">")+1,lineArrayXXX["Id_PositionTourPrec"].lastIndexOf("<"));  // get the previous lap position value
+                        var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<"));  // get the previous lap position value
 
                         if (positionPrevB > positionB &&  timeInfoB != "-") {
-                                lineArrayXXX["Id_PositionTourPrec"] = lineArrayXXX["Id_PositionTourPrec"].replace(/>.+</i, '>&uarr;<').replace(/ class="/i, ' class="up rnk_font ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&uarr;<').replace(' class="', ' class="up rnk_font ');
                         } else if (positionPrevB < positionB &&  timeInfoB != "-") {
-                                lineArrayXXX["Id_PositionTourPrec"] = lineArrayXXX["Id_PositionTourPrec"].replace(/>.+</i, '>&darr;<').replace(/ class="/i, ' class="down rnk_font ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&darr;<').replace(' class="', ' class="down rnk_font ');
                         } else {
-                                lineArrayXXX["Id_PositionTourPrec"] = lineArrayXXX["Id_PositionTourPrec"].replace(/>.+</i, '>&harr;<');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&harr;<');
                         }
                     }    
-                                          // console.log(lineArrayXXX);
+                                          // console.log(lineArray);
                                                                                    
                     if (useCategory == "yes") {
-                    
-                        addLineXXX = lineArrayXXX["start"] 
-                     //   + lineArrayXXX["Id_PositionTourPrec"] 
-                        + lineArrayXXX["Id_Position"] 
-                        + lineArrayXXX["Id_Numero"] 
-                        + lineArrayXXX["Id_Nom"] 
-                        + lineArrayXXX["Id_NbTour"] 
-                        + lineArrayXXX["Id_TpsTour"] 
-                        + lineArrayXXX["Id_MeilleurTour"] 
-                        + lineArrayXXX["Id_TpsCumule"] 
-                        + lineArrayXXX["Id_Ecart1erCategorie"] 
-                        + lineArrayXXX["finish"];
 
-                        
+                        addLine = lineArray["start"] 
+                       
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+                            
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                                
+                                addLine += lineArray[prototypeLineArray[y]];
+
+                            }
+                        }
+
                     } else if (useCategory == "no") {
 
-                        addLineXXX = lineArrayXXX["start"] 
-                        + lineArrayXXX["Id_PositionTourPrec"] 
-                        + lineArrayXXX["Id_Position"] 
-                        + lineArrayXXX["Id_Numero"] 
-                        + lineArrayXXX["Id_Nom"] 
-                        + lineArrayXXX["Id_NbTour"] 
-                        + lineArrayXXX["Id_TpsTour"] 
-                        + lineArrayXXX["Id_MeilleurTour"] 
-                        + lineArrayXXX["Id_TpsCumule"] 
-                        + lineArrayXXX["Id_Ecart1er"] 
-                        + lineArrayXXX["finish"];
+                        addLine = lineArray["start"] 
+                        
+                        if (prototypeLineArray.includes("Id_PositionTourPrec")) {
+                            addLine += lineArray["Id_PositionTourPrec"];
+                        }
+                        
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+                            
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                                
+                                addLine += lineArray[prototypeLineArray[y]];
+
+                            }
+                        }
+                        
                     }
                                           
-                   lineArray = [];
-                    lineArrayXXX = [];
-                    kk = 1; // zero the counter
+                    lineArray = [];
+                    td = 1; // zero the counter
                     
-                    if (typeof resultsByCategoryB[catNameB] == 'undefined' && resultsByCategoryB[catNameB] == null) {
-                        opt3 = addLineXXX;
+                    if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
+                        opt3 = addLine;
                     } else {
-                        opt3 = resultsByCategoryB[catNameB] + addLineXXX;
+                        opt3 = resultsByCategory[catName] + addLine;
                     }
                     
-                    resultsByCategoryB[catNameB] = opt3;
+                    resultsByCategory[catName] = opt3;
                     
-                    addLineXXX = "";
+                    addLine = "";
                     opt3 = "";
  
                 } // end notHeaderTR == 0
             }// end other lines
         }  // end for
         } // end if check for more the 5 lines
-        //console.log(resultsByCategoryB);
+        //console.log(resultsByCategory);
         
 
-        var sortedObj = sortObjKeysAlphabetically(resultsByCategoryB);
+        var sortedObj = sortObjKeysAlphabetically(resultsByCategory);
         NouveauTexte += '<table>\r\n'
         for(var key in sortedObj) {
             opt3 = sortedObj[key];
             if (opt3 != "") {
             //    opt1 = refactor(opt1); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
-                if (key == 'undefined' || catNameB == null || catNameB == "&nbsp;") {
+                if (key == 'undefined' || catName == null || catName == "&nbsp;") {
                     key = "כללי";
                 }
-                NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + addHeaderLineXXX + '\r\n' + opt3.replace(/undefined/ig, "") + '\r\n';
+                NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + addHeaderLine + '\r\n' + opt3.replace(/undefined/ig, "") + '\r\n';
             }
         }    
         NouveauTexte += "</table>";
