@@ -67,7 +67,7 @@
     function ExtraireClassementReduitNew(Texte) {
         var i;
         var Lignes, sLignes;
-        var opt3 = ""; // can delete all opt in code  when using resultsByCategory
+        var opt3 = "";
         var NouveauTexte = "";
         var addLine = "";
         var addHeaderLine = "";
@@ -87,33 +87,33 @@
         Lignes = Texte[1].split("\r\n");
    //     console.log(Lignes.length);
 
-        if  (Lignes.length > 5) { // check to see if we have more the 5 lines which mean we have a full page from elite and not one edited for disply
+        if  (Lignes.length > 5) { // check to see if we have more the 5 lines which mean we have a full page from elite and not one edited for display
 
         NouveauTexte = sLignes[0]; // clear the NouveauTexte variable and add the title line
         NouveauTexte += sLignes[1]; // add the time line
 
-        for (i = 0; i < Lignes.length; i++) { // start with third line as the 2 first line allready proccessed
+        for (i = 0; i < Lignes.length; i++) { // start building the prototype for header and competitor text
             if  (Lignes[i].includes("HeaderRow")) { 
                             HeaderTR = 1;
 
-                    headerLineArray["start"]  =  Lignes[i].replace(/ width="(\w+)"/i, "").replace(/ align="(\w+)"/i, "").replace('HeaderRow', "rnkh_bkcolor"); 
+                    headerLineArray["start"]  =  Lignes[i].replace(/ width="\w+"/i, "").replace(/ align="\w+"/i, "").replace('HeaderRow', "rnkh_bkcolor"); 
                     prototypeLineArray.push("start");
                      
             }
              if  (Lignes[i].includes("HeaderRow") || HeaderTR == 1) { // if header TR or inside the header TR
                              
-                 if  (Lignes[i].includes("<td ")) { // add header TD lines and set variables
+                 if  (Lignes[i].includes("<td ")) { // add header TD lines and set variables, the header cells are still TD here
 
                     if  (Lignes[i].includes("class=")) { // add rnkh_font class to header TD
-                        Lignes[i] = Lignes[i].replace(' class="', ' class="rnkh_font ')
+                        Lignes[i] = Lignes[i].replace(/ class="([^"]+)/i, ' class="rnkh_font $1')
                     } else {
                         Lignes[i] = Lignes[i].replace('<td ', '<td class="rnkh_font" ')
                     }
                      
-                    var tts = Lignes[i].substring(Lignes[i].indexOf(' id="')+4).split('"')[1];  // get the ID value
+                    var lineId = Lignes[i].substring(Lignes[i].indexOf(' id="')+4).split('"')[1];  // get the ID value
 
-                    headerLineArray[tts]  = (Lignes[i].replace(/ width="(\w+)"/i, "").replace(/ align="(\w+)"/i, "").replace('<td', "<th").replace('</td', "</th"));  // clean and add the line
-                    prototypeLineArray.push(tts);
+                    headerLineArray[lineId]  = (Lignes[i].replace(/ width="\w+"/i, "").replace(/ align="\w+"/i, "").replace('<td', "<th").replace('</td', "</th"));  // clean, change to TH and add the line
+                    prototypeLineArray.push(lineId);
                 }
                 
                 if (Lignes[i].substring(0, 4) == "</tr") {
@@ -125,6 +125,7 @@
                     //   console.log(headerLineArray);
                      //  console.log(prototypeLineArray);
 
+                    // building the header text
                     if (useCategory == "yes") {
 
                         addHeaderLine = headerLineArray["start"] 
@@ -159,26 +160,26 @@
                       //console.log('addHeaderLine\r\n' + addHeaderLine);
                 }
 
-            } else {  // end header and check other lines
+            } else {  // end header and check other lines (competitor)
                 if (Lignes[i].substring(0, 3) == "<tr") {
                                     
-                    lineArray[prototypeLineArray[0]] = Lignes[i].replace(' class="', ' class="rnk_bkcolor ').replace(/ align="(\w+)"/i, "");
+                    lineArray[prototypeLineArray[0]] = Lignes[i].replace(' class="', ' class="rnk_bkcolor ').replace(/ align="\w+"/i, "");
                     
-                    notHeaderTR = 1; // mark that we inside a TR (not header TR)
+                    notHeaderTR = 1; // mark that we inside a competitor TR (not header TR)
                     
                 } else if (Lignes[i].substring(0, 4) == "</tr") {
                 
                     lineArray[prototypeLineArray[prototypeLineArray.length - 1]] = Lignes[i];  // add end TR line
 
-                    notHeaderTR = 0; // mark that we finished the TR (other then header TR)
+                    notHeaderTR = 0; // mark that we finished the competitor TR (other then header TR)
 
                 } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) { //check if inside a TR which is not the header TR
 
-                    lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace(/ align="(\w+)"/i, "").replace('>00:', '>');
+                    lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace(/ align="\w+"/i, "").replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
                     td += 1;
                 } 
 
-                if (notHeaderTR == 0) {
+                if (notHeaderTR == 0) { // start building the competitor text
 
                     if (useCategory == "yes" && lineArray["Id_Categorie"]) {
 
@@ -202,7 +203,8 @@
                         }
                     }    
                                           // console.log(lineArray);
-                                                                                   
+                     
+                     // assamble the competitor text
                     if (useCategory == "yes") {
 
                         addLine = lineArray["start"] 
@@ -238,6 +240,7 @@
                     lineArray = [];
                     td = 1; // zero the counter
                     
+                    // adding the finished competitor text to the array (by category)
                     if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
                         opt3 = addLine;
                     } else {
@@ -256,7 +259,7 @@
         //console.log(resultsByCategory);
         
 
-        var sortedObj = sortObjKeysAlphabetically(resultsByCategory);
+        var sortedObj = sortObjKeysAlphabetically(resultsByCategory); // sort by category name
         NouveauTexte += '<table>\r\n'
         for(var key in sortedObj) {
             opt3 = sortedObj[key];
@@ -301,17 +304,3 @@
     };
 
 </script>
-
-    <!-- read race header from raceheader.txt 
-<script>
-        function populatePre(url) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onload = function () {
-                document.getElementById('raceheader').textContent = this.responseText;
-            };
-            xhttp.open('GET', url);
-            xhttp.send();
-        }
-        populatePre('raceheader.txt');
-</script>
- -->

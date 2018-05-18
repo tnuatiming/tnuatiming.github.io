@@ -490,7 +490,7 @@ Status 12,DNS,center</code></pre></li>
     </table>
 </div>
 
-<p class="c0"><span>** יתכן ו-start time לא יופיע בכפתור הימני בעכבר. יש לבחור בתפריט Competitors > Assign starting schedules. יש לבחור start time לפי ההיט, לבחור את כל המתחרים (ctrl-a) Apply ולאשר.</span></p>
+<p class="c0"><span>** יתכן ו-start time לא יופיע בכפתור הימני בעכבר. יש לבחור בתפריט Competitors > Assign starting schedules. יש לבחור start time לפי ההיט, לבחור את כל המתחרים Apply , ctrl-a ולאשר.</span></p>
 
     <p class="c1"><span><img alt="image991.png" src="/manual/images/image991.png"></span></p>
 
@@ -574,7 +574,7 @@ Status 12,DNS,center</code></pre></li>
 
     <p class="c1"><span><img alt="image72.png" src="/manual/images/image72.png"></span></p>
  
-    <p class="c0">שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל. בנוסף, יש לוודא ששורת "פער" (Diff. with leader) ושורת "פער מראשון" (Diff. with leader cat) מופיעות. כדי לאפשר את תצוגת ההתקדמות (חצים) יש להוסיף את השדה הריק )Prev. lap pos.(.</p>
+    <p class="c0">שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל. בנוסף, יש לוודא ששורת "פער" (Diff. with leader) ושורת "פער מראשון" (Diff. with leader cat) מופיעות. כדי לאפשר את תצוגת ההתקדמות (חצים) יש להוסיף את השדה הריק (Prev. lap pos.).</p>
 
     <p class="c1"><span><img alt="image73.png" src="/manual/images/image73.png"></span></p>
  
