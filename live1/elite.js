@@ -132,7 +132,7 @@
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -149,7 +149,7 @@
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -204,11 +204,11 @@
                         var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<"));  // get the previous lap position value
 
                         if (positionPrevB > positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&uarr;<').replace(' class="', ' class="up rnk_font ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&uarr;<').replace(' class="', ' class="up ');
                         } else if (positionPrevB < positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&darr;<').replace(' class="', ' class="down rnk_font ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&darr;<').replace(' class="', ' class="down ');
                         } else {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&harr;<');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&harr;<').replace(' class="', ' class="same ');
                         }
                     }    
                                           // console.log(lineArray);
@@ -220,7 +220,7 @@
                        
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" ) {
                                 
                                 addLine += lineArray[prototypeLineArray[y]];
 
@@ -237,7 +237,7 @@
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie"&& prototypeLineArray[y] != "Id_Ecart1erCategorie" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" ) {
                                 
                                 addLine += lineArray[prototypeLineArray[y]];
 
