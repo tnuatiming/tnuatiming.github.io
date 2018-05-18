@@ -542,9 +542,15 @@ td.comment_font {
     color: #fff;    
     text-shadow: none;
 }
-*/
 
 #live td:nth-of-type(2) {
+    font-weight: 700;
+    background-color: rgba(37, 37, 37, 0.5);
+    color:#fff;
+    text-shadow: none;
+}
+*/
+#live td.highlight {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
     color:#fff;

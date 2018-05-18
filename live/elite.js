@@ -175,8 +175,17 @@
 
                 } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) { //check if inside a TR which is not the header TR
 
-                    lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace(/ align="\w+"/i, "").replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+                    if (prototypeLineArray[td] == 'Id_Numero') { // change number cell css
+                    
+                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="highlight rnk_font ').replace(/ align="\w+"/i, "").replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+
+                    } else {
+                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace(/ align="\w+"/i, "").replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+                        
+                    }
+                    
                     td += 1;
+
                 } 
 
                 if (notHeaderTR == 0) { // start building the competitor text
