@@ -204,14 +204,66 @@
                         var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<"));  // get the previous lap position value
 
                         if (positionPrevB > positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&uarr;<').replace(' class="', ' class="up ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9650;<').replace(' class="', ' class="green ');
                         } else if (positionPrevB < positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&darr;<').replace(' class="', ' class="down ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9660;<').replace(' class="', ' class="red ');
                         } else {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&harr;<').replace(' class="', ' class="same ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&nbsp;<').replace(' class="', ' class="black ');
                         }
                     }    
-                                          // console.log(lineArray);
+
+                    
+                    if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
+
+                        if (lineArray["Id_Image"].includes("_Status10")) {
+                            
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="yellow ');
+
+                        } else if (lineArray["Id_Image"].includes("_Status11")) {
+                        
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="yellow ');
+                            
+                        } else if (lineArray["Id_Image"].includes("_Status12")) {
+                        
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="yellow ');
+                            
+                        } else if (lineArray["Id_Image"].includes("_Status")) {
+                        
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="yellow ');
+                            
+                        } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
+
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="green ');
+                            
+                        } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
+
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9617;<').replace(' class="', ' class="black rotate ');
+                            
+                        } else if (lineArray["Id_Image"].includes("_MinusPosition")) {
+
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9660;<').replace(' class="', ' class="red ');
+                            
+                        } else if (lineArray["Id_Image"].includes("_PlusPosition")) {
+
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9650;<').replace(' class="', ' class="green ');
+                            
+                        } else {
+                             
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&nbsp;<').replace(' class="', ' class="black ');
+                           
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    // console.log(lineArray);
                      
                      // assamble the competitor text
                     if (useCategory == "yes") {

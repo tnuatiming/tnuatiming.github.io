@@ -567,17 +567,28 @@ td.comment_font {
     color: #0000ff;
     font-weight: 700;
 }
-#live td.up {
+#live td.green {
     color: green;
     font-weight: 700;
 }
-#live td.down {
+#live td.yellow {
+    color: yellow;
+    font-weight: 700;
+}
+#live td.white {
+    color: white;
+    font-weight: 700;
+}
+#live td.red {
     color: red;
     font-weight: 700;
 }
-#live td.same {
+#live td.black {
     color: #222;
     font-weight: 700;
+}
+#live td.rotate {
+    transform: rotate(90deg);
 }
 
 
