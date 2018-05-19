@@ -1,4 +1,4 @@
-<!-- 20180518 - array refactoring, with all, category select, arrows for advancment -->
+<!-- 20180518 - array refactoring, with all, category select, arrows for advancement -->
 
 <!-- tag heuer live timing -->
 
@@ -66,37 +66,40 @@
 
     function ExtraireClassementReduitNew(Texte) {
         var i;
-        var Lignes, sLignes;
+        var Lignes;
         var opt3 = "";
-        var NouveauTexte = "";
-        var addLine = "";
-        var addHeaderLine = "";
+        var NouveauTexte = ""; // the finished text for display
         notHeaderTR = 0;
         HeaderTR = 0; // 1 if inside the header TR
-        var catName = "&nbsp;";
+        var catName = "&nbsp;"; //competitor category
         var resultsByCategory = [];
-        var headerLineArray = [];
-        var prototypeLineArray = [];
-        var lineArray = [];
+        var headerLineArray = []; // header used for building the final text
+        var prototypeLineArray = []; // array with all line ID in order {0:start, 1:Id_Position, ......}
+        var lineArray = []; // array from the curent competitor
         td = 1;
+        var addHeaderLine = ""; // header text
+        var addLine = ""; // curent competitor text
 
-        Texte = Texte.split('<table');
-        Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5);
+        Texte = Texte.split('<table'); // split the text to title/time and the table
+        Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Texte[1]);
-        sLignes = Texte[0].split("\r\n");
         Lignes = Texte[1].split("\r\n");
    //     console.log(Lignes.length);
 
         if  (Lignes.length > 5) { // check to see if we have more the 5 lines which mean we have a full page from elite and not one edited for display
 
-        NouveauTexte = sLignes[0]; // clear the NouveauTexte variable and add the title line
-        NouveauTexte += sLignes[1]; // add the time line
+        NouveauTexte = Texte[0]; // clear the NouveauTexte variable and add the title and time lines
 
-        for (i = 0; i < Lignes.length; i++) { // start building the prototype for header and competitor text
+        for (i = 0; i < Lignes.length; i++) { 
+
+            Lignes[i] = Lignes[i].replace('>#N/A<', '>&nbsp;<').replace(/ width="\w+"/i, "").replace(/ align="\w+"/i, ""); // clean the line
+
+        // start building the prototype for header and competitor text
+
             if  (Lignes[i].includes("HeaderRow")) { 
                             HeaderTR = 1;
 
-                    headerLineArray["start"]  =  Lignes[i].replace(/ width="\w+"/i, "").replace(/ align="\w+"/i, "").replace('HeaderRow', "rnkh_bkcolor"); 
+                    headerLineArray["start"]  =  Lignes[i].replace('HeaderRow', "rnkh_bkcolor"); 
                     prototypeLineArray.push("start");
                      
             }
@@ -112,7 +115,7 @@
                      
                     var lineId = Lignes[i].substring(Lignes[i].indexOf(' id="')+4).split('"')[1];  // get the ID value
 
-                    headerLineArray[lineId]  = (Lignes[i].replace(/ width="\w+"/i, "").replace(/ align="\w+"/i, "").replace('<td', "<th").replace('</td', "</th"));  // clean, change to TH and add the line
+                    headerLineArray[lineId]  = (Lignes[i].replace('<td', "<th").replace('</td', "</th"));  // clean, change to TH and add the line
                     prototypeLineArray.push(lineId);
                 }
                 
@@ -163,7 +166,7 @@
             } else {  // end header and check other lines (competitor)
                 if (Lignes[i].substring(0, 3) == "<tr") {
                                     
-                    lineArray[prototypeLineArray[0]] = Lignes[i].replace(' class="', ' class="rnk_bkcolor ').replace(/ align="\w+"/i, "");
+                    lineArray[prototypeLineArray[0]] = Lignes[i].replace(' class="', ' class="rnk_bkcolor ');
                     
                     notHeaderTR = 1; // mark that we inside a competitor TR (not header TR)
                     
@@ -177,10 +180,10 @@
 
                     if (prototypeLineArray[td] == 'Id_Numero') { // change number cell css
                     
-                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="highlight rnk_font ').replace(/ align="\w+"/i, "").replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="highlight rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
 
                     } else {
-                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace(/ align="\w+"/i, "").replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
                         
                     }
                     
@@ -253,16 +256,7 @@
                            
                         }
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                                        
                     // console.log(lineArray);
                      
                      // assamble the competitor text
