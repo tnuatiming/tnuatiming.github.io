@@ -202,7 +202,7 @@
 
                         var timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
                         
-                        var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clea penalty indicator
+                        var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
 
                         var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the previous lap position value
 
@@ -220,19 +220,19 @@
 
                         if (lineArray["Id_Image"].includes("_Status10")) {
                             
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ');
 
                         } else if (lineArray["Id_Image"].includes("_Status11")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ');
                             
                         } else if (lineArray["Id_Image"].includes("_Status12")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ');
                             
                         } else if (lineArray["Id_Image"].includes("_Status")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ');
                             
                         } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
 

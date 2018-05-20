@@ -220,19 +220,19 @@
 
                         if (lineArray["Id_Image"].includes("_Status10")) {
                             
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ');
 
                         } else if (lineArray["Id_Image"].includes("_Status11")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ');
                             
                         } else if (lineArray["Id_Image"].includes("_Status12")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ');
                             
                         } else if (lineArray["Id_Image"].includes("_Status")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="yellow ');
+                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ');
                             
                         } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
 

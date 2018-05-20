@@ -568,11 +568,11 @@ td.comment_font {
     font-weight: 700;
 }
 #live td.green {
-    color: green;
+    color: #00843d;
     font-weight: 700;
 }
 #live td.yellow {
-    color: yellow;
+    color: #fedd00;
     font-weight: 700;
 }
 #live td.white {
@@ -580,11 +580,19 @@ td.comment_font {
     font-weight: 700;
 }
 #live td.red {
-    color: red;
+    color: #c8102e;
+    font-weight: 700;
+}
+#live td.blue {
+    color: #41b6e6;
+    font-weight: 700;
+}
+#live td.orange {
+    color: #ff8200;
     font-weight: 700;
 }
 #live td.black {
-    color: #222;
+    color: #2d2926;
     font-weight: 700;
 }
 #live td.rotate {
