@@ -11,6 +11,7 @@
     MaxNum = 1;
     ClassementReduit = 1;
     ClassementReduitXpremier = 10;
+    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the advancement arrow between Loads 
 
     var useCategory = "yes";
 
@@ -77,6 +78,8 @@
         var prototypeLineArray = []; // array with all line ID in order {0:start, 1:Id_Position, ......}
         var lineArray = []; // array from the curent competitor
         td = 1;
+        ppp = 0;
+        nom = 0;
         var addHeaderLine = ""; // header text
         var addLine = ""; // curent competitor text
 
@@ -124,6 +127,8 @@
 
                     headerLineArray["finish"]  =  Lignes[i];             
                     prototypeLineArray.push("finish");
+                    
+                    headerLineArray["Id_Arrow"]  = '<th class="rnkh_font" id="Id_Arrow">&nbsp;</th>';            
 
                     //   console.log(headerLineArray);
                      //  console.log(prototypeLineArray);
@@ -132,10 +137,11 @@
                     if (useCategory == "yes") {
 
                         addHeaderLine = headerLineArray["start"] 
-                        
+                        addHeaderLine += headerLineArray["Id_Arrow"] 
+
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -145,14 +151,15 @@
                     } else if (useCategory == "no") {
 
                         addHeaderLine = headerLineArray["start"] 
-                        
-                        if (prototypeLineArray.includes("Id_PositionTourPrec")) {
-                            addHeaderLine += headerLineArray["Id_PositionTourPrec"];
-                        }
+                        addHeaderLine += headerLineArray["Id_Arrow"] 
+
+              //          if (prototypeLineArray.includes("Id_PositionTourPrec")) {
+               //             addHeaderLine += headerLineArray["Id_PositionTourPrec"];
+               //         }
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -193,28 +200,55 @@
 
                 if (notHeaderTR == 0) { // start building the competitor text
 
+                    lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                    
                     if (useCategory == "yes" && lineArray["Id_Categorie"]) {
 
                         catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
                     }
 
-                    if (lineArray["Id_PositionTourPrec"] && lineArray["Id_TpsCumule"] && lineArray["Id_Position"]) {
-
+                    if (lineArray["Id_TpsCumule"]) {
                         var timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
-                        
+                    }
+                    
+                    if (lineArray["Id_PositionTourPrec"] && lineArray["Id_Position"]) { // FIXME aperently Id_PositionTourPrec doesn't mean what i tought it mean...
+
                         var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
 
                         var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the previous lap position value
 
                         if (positionPrevB > positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9650;<').replace(' class="', ' class="green ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9650;<').replace(' class="', ' class="blue ');
                         } else if (positionPrevB < positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9660;<').replace(' class="', ' class="red ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9660;<').replace(' class="', ' class="blue ');
                         } else {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&nbsp;<').replace(' class="', ' class="black ');
+                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&nbsp;<').replace(' class="', ' class="blue ');
                         }
                     }    
 
+                    // advancement arrow prep
+                    if (lineArray["Id_Position"]) { 
+                        ppp = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+                    if (lineArray["Id_Numero"]) { 
+                        nom = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+                    
+                    if (ppp > 0 && nom > 0 &&  timeInfoB != "-") { // advancement arrow calc
+                    
+                        if (positionArray[nom]) {
+
+                            if (ppp > positionArray[nom]) {
+                                lineArray["Id_Arrow"] = '<td class="red rnk_font ">&#9660;</td>';
+                            } else if (ppp < positionArray[nom]) {
+                                lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
+                            } else {
+                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                           }
+                        }
+                        
+                        positionArray[nom] = ppp;// update array with current position for next Load calc
+                    }
                     
                     if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
 
@@ -263,10 +297,10 @@
                     if (useCategory == "yes") {
 
                         addLine = lineArray["start"] 
-                       
+                        addLine += lineArray["Id_Arrow"] 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" ) {
                                 
                                 addLine += lineArray[prototypeLineArray[y]];
 
@@ -276,14 +310,14 @@
                     } else if (useCategory == "no") {
 
                         addLine = lineArray["start"] 
-                        
-                        if (prototypeLineArray.includes("Id_PositionTourPrec")) {
-                            addLine += lineArray["Id_PositionTourPrec"];
-                        }
+                        addLine += lineArray["Id_Arrow"] 
+            //            if (prototypeLineArray.includes("Id_PositionTourPrec")) {
+            //                addLine += lineArray["Id_PositionTourPrec"];
+            //            }
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_PositionTourPrec" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" ) {
                                 
                                 addLine += lineArray[prototypeLineArray[y]];
 
@@ -294,6 +328,8 @@
                                           
                     lineArray = [];
                     td = 1; // zero the counter
+                    ppp = 0;
+                    nom = 0;
                     
                     // adding the finished competitor text to the array (by category)
                     if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {

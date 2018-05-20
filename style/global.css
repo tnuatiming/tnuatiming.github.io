@@ -599,7 +599,6 @@ td.comment_font {
     transform: rotate(90deg);
 }
 
-
 #live tr.OddRow:hover, #live tr.EvenRow:hover {
     background: #fc3;
 }
@@ -1171,6 +1170,26 @@ padding-right: 10%;
     animation-name: fadeIn;
 }
 
+@-webkit-keyframes fadeOut {
+    0% {opacity: 1;}
+    25% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    25% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
 @media (min-width: 1025px) {
     
     .navigation ul {
