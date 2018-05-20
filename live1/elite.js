@@ -81,6 +81,7 @@
         td = 1;
         ppp = 0;
         nom = 0;
+        timeInfoB = "-";
         var addHeaderLine = ""; // header text
         var addLine = ""; // curent competitor text
 
@@ -201,7 +202,8 @@
 
                 if (notHeaderTR == 0) { // start building the competitor text
 
-                    lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                  //  lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                    lineArray["Id_Arrow"] = '<td class="rnk_font ">&nbsp;</td>';
                     
                     if (useCategory == "yes" && lineArray["Id_Categorie"]) {
 
@@ -209,7 +211,7 @@
                     }
 
                     if (lineArray["Id_TpsCumule"]) {
-                        var timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
+                        timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
                     }
                     
                     // advancement arrow prep
@@ -236,6 +238,17 @@
                         }
                     }    
 
+                    if (timeInfoB != "-") { // fadeOut if info changed
+
+                        if (timeInfoB != timeArray[nom]) {
+                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                                lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"].replace(' class="', ' class="fadeIn ');                       
+                        }
+                        
+                        timeArray[nom] = timeInfoB;// update array with current time for next Load calc
+                    }
+                    
+                    
                     
                     if (ppp > 0 && nom > 0 &&  timeInfoB != "-") { // advancement arrow calc
                     
@@ -246,22 +259,12 @@
                             } else if (ppp < positionArray[nom]) {
                                 lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
                             } else {
-                                lineArray["Id_Arrow"] = '<td class="green rnk_font ">&nbsp;</td>';
+                    //            lineArray["Id_Arrow"] = '<td class="green rnk_font ">&nbsp;</td>';
+                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
                            }
                         }
-                        
                         positionArray[nom] = ppp;// update array with current position for next Load calc
                     }
-                    
-                    if (timeInfoB != "-") { // fadeOut if info changed
-
-                        if (timeInfoB != timeArray[nom]) {
-                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
-                                lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"].replace(' class="', ' class="fadeIn ');                       }
-                        
-                        timeArray[nom] = timeInfoB;// update array with current time for next Load calc
-                    }
-                    
                     
                     
                     if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
@@ -344,6 +347,7 @@
                     td = 1; // zero the counter
                     ppp = 0;
                     nom = 0;
+                    timeInfoB = "-";
                     
                     // adding the finished competitor text to the array (by category)
                     if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
