@@ -92,7 +92,7 @@
 
         for (i = 0; i < Lignes.length; i++) { 
 
-            Lignes[i] = Lignes[i].replace('>#N/A<', '>&nbsp;<').replace(/ width="\w+"/i, "").replace(/ align="\w+"/i, ""); // clean the line
+            Lignes[i] = Lignes[i].replace('>#N/A<', '>&nbsp;<').replace('(C)', 'P').replace(/ width="\w+"/i, "").replace(/ align="\w+"/i, ""); // clean the line
 
         // start building the prototype for header and competitor text
 
@@ -202,9 +202,9 @@
 
                         var timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
                         
-                        var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<"));  // get the position value
+                        var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clea penalty indicator
 
-                        var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<"));  // get the previous lap position value
+                        var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the previous lap position value
 
                         if (positionPrevB > positionB &&  timeInfoB != "-") {
                                 lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9650;<').replace(' class="', ' class="green ');
