@@ -1137,10 +1137,6 @@ padding-right: 10%;
 }
 
 .animated {
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;        
     background:rgba(240,240,240,0.9);
 }
 /*
@@ -1168,6 +1164,10 @@ padding-right: 10%;
 .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;        
 }
 
 @-webkit-keyframes fadeOut {

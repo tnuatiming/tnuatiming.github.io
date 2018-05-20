@@ -12,6 +12,7 @@
     ClassementReduit = 1;
     ClassementReduitXpremier = 10;
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the advancement arrow between Loads 
+    var timeArray = []; // array with the previous time. updated every Load, used to show the advancement arrow between Loads 
 
     var useCategory = "yes";
 
@@ -211,6 +212,15 @@
                         var timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
                     }
                     
+                    // advancement arrow prep
+                    if (lineArray["Id_Position"]) { 
+                        ppp = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+                    if (lineArray["Id_Numero"]) { 
+                        nom = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+
+                    
                     if (lineArray["Id_PositionTourPrec"] && lineArray["Id_Position"]) { // FIXME aperently Id_PositionTourPrec doesn't mean what i tought it mean...
 
                         var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
@@ -226,13 +236,6 @@
                         }
                     }    
 
-                    // advancement arrow prep
-                    if (lineArray["Id_Position"]) { 
-                        ppp = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
-                    if (lineArray["Id_Numero"]) { 
-                        nom = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
                     
                     if (ppp > 0 && nom > 0 &&  timeInfoB != "-") { // advancement arrow calc
                     
@@ -243,12 +246,23 @@
                             } else if (ppp < positionArray[nom]) {
                                 lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
                             } else {
-                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                                lineArray["Id_Arrow"] = '<td class="green rnk_font ">&nbsp;</td>';
                            }
                         }
                         
                         positionArray[nom] = ppp;// update array with current position for next Load calc
                     }
+                    
+                    if (timeInfoB != "-") { // fadeOut if info changed
+
+                        if (timeInfoB != timeArray[nom]) {
+                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                                lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"].replace(' class="', ' class="fadeIn ');                       }
+                        
+                        timeArray[nom] = timeInfoB;// update array with current time for next Load calc
+                    }
+                    
+                    
                     
                     if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
 
