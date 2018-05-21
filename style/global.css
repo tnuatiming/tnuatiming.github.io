@@ -557,6 +557,7 @@ td.comment_font {
     background-color: rgba(37, 37, 37, 0.5);
     color:#fff;
     text-shadow: none;
+    background-clip: padding-box;    
 }
 #live td.BestTimeOverall {
     color: #ff0000;
