@@ -146,7 +146,7 @@
 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -160,7 +160,7 @@
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -261,41 +261,26 @@
 
                         if (lineArray["Id_Image"].includes("_Status10")) {
                             
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
 
                         } else if (lineArray["Id_Image"].includes("_Status11")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
                             
                         } else if (lineArray["Id_Image"].includes("_Status12")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
                             
                         } else if (lineArray["Id_Image"].includes("_Status")) {
                         
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
                             
-                        } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
+                        }  else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
 
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="green ');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9617;<').replace(' class="', ' class="black rotate ').replace(/fadeOut/ig, '');
                             
-                        } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
-
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9617;<').replace(' class="', ' class="black rotate ');
-                            
-                        } else if (lineArray["Id_Image"].includes("_MinusPosition")) {
-
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9660;<').replace(' class="', ' class="red ');
-                            
-                        } else if (lineArray["Id_Image"].includes("_PlusPosition")) {
-
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&#9650;<').replace(' class="', ' class="green ');
-                            
-                        } else {
-                             
-                            lineArray["Id_Image"] = lineArray["Id_Image"].replace(/>.+</i, '>&nbsp;<').replace(' class="', ' class="black ');
-                           
-                        }
+                    } 
+                        
                     }
                                         
                     // console.log(lineArray);
@@ -307,7 +292,7 @@
                         addLine += lineArray["Id_Arrow"] 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image" ) {
                                 
                                 addLine += lineArray[prototypeLineArray[y]];
 
@@ -321,7 +306,7 @@
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" ) {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image" ) {
                                 
                                 addLine += lineArray[prototypeLineArray[y]];
 
