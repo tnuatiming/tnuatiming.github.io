@@ -7,16 +7,19 @@
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
     Rafraichir = 30000;
-    Changement = 90000;
+    Changement = 60000;
     MaxNum = 1;
     ClassementReduit = 1;
     ClassementReduitXpremier = 10;
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the advancement arrow between Loads 
     var timeArray = []; // array with the previous time. updated every Load, used to show the advancement arrow between Loads 
-
+    
     var useCategory = "yes";
-
+    
     function category(choice){
+        
+        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+        
         useCategory = choice;
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
@@ -154,10 +157,6 @@
 
                         addHeaderLine = headerLineArray["start"] 
                         addHeaderLine += headerLineArray["Id_Arrow"] 
-
-              //          if (prototypeLineArray.includes("Id_PositionTourPrec")) {
-               //             addHeaderLine += headerLineArray["Id_PositionTourPrec"];
-               //         }
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
@@ -205,6 +204,10 @@
                   //  lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
                     lineArray["Id_Arrow"] = '<td class="rnk_font ">&nbsp;</td>';
                     
+                    if (lineArray["Id_Numero"]) { 
+                        nom = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+
                     if (useCategory == "yes" && lineArray["Id_Categorie"]) {
 
                         catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
@@ -215,28 +218,19 @@
                     }
                     
                     // advancement arrow prep
-                    if (lineArray["Id_Position"]) { 
-                        ppp = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
-                    if (lineArray["Id_Numero"]) { 
-                        nom = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
 
                     
-                    if (lineArray["Id_PositionTourPrec"] && lineArray["Id_Position"]) { // FIXME aperently Id_PositionTourPrec doesn't mean what i tought it mean...
-
-                        var positionB = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-
-                        var positionPrevB = lineArray["Id_PositionTourPrec"].substring(lineArray["Id_PositionTourPrec"].indexOf(">")+1,lineArray["Id_PositionTourPrec"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the previous lap position value
-
-                        if (positionPrevB > positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9650;<').replace(' class="', ' class="blue ');
-                        } else if (positionPrevB < positionB &&  timeInfoB != "-") {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&#9660;<').replace(' class="', ' class="blue ');
-                        } else {
-                                lineArray["Id_PositionTourPrec"] = lineArray["Id_PositionTourPrec"].replace(/>.+</i, '>&nbsp;<').replace(' class="', ' class="blue ');
-                        }
-                    }    
+                    if (lineArray["Id_Position"] && useCategory == "no") { 
+                            ppp = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+                 
+                    if (lineArray["Id_PositionCategorie"] && useCategory == "yes") { 
+                            ppp = lineArray["Id_PositionCategorie"].substring(lineArray["Id_PositionCategorie"].indexOf(">")+1,lineArray["Id_PositionCategorie"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+                    
+                    
+                    
+                    
 
                     if (timeInfoB != "-") { // fadeOut if info changed
 
@@ -250,19 +244,20 @@
                     
                     
                     
-                    if (ppp > 0 && nom > 0 &&  timeInfoB != "-") { // advancement arrow calc
+                    if (ppp > 0 && nom > 0 && timeInfoB != "-") { // advancement arrow calc
                     
                         if (positionArray[nom]) {
 
-                            if (ppp > positionArray[nom]) {
+                            if (positionArray[nom] < ppp) {
                                 lineArray["Id_Arrow"] = '<td class="red rnk_font ">&#9660;</td>';
-                            } else if (ppp < positionArray[nom]) {
+                            } else if (positionArray[nom] > ppp) {
                                 lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
                             } else {
                     //            lineArray["Id_Arrow"] = '<td class="green rnk_font ">&nbsp;</td>';
                                 lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
                            }
                         }
+                        console.log("nom: " + nom + ",ppp: " + ppp + ", positionArray:" + positionArray[nom]);
                         positionArray[nom] = ppp;// update array with current position for next Load calc
                     }
                     
@@ -328,9 +323,6 @@
 
                         addLine = lineArray["start"] 
                         addLine += lineArray["Id_Arrow"] 
-            //            if (prototypeLineArray.includes("Id_PositionTourPrec")) {
-            //                addLine += lineArray["Id_PositionTourPrec"];
-            //            }
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
