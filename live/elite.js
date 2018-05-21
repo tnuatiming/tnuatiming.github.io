@@ -261,26 +261,39 @@
 
                         if (lineArray["Id_Image"].includes("_Status10")) {
                             
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
 
                         } else if (lineArray["Id_Image"].includes("_Status11")) {
                         
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
                             
                         } else if (lineArray["Id_Image"].includes("_Status12")) {
                         
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
                             
                         } else if (lineArray["Id_Image"].includes("_Status")) {
                         
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ').replace(/fadeOut/ig, '');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
                             
-                        }  else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
+                        } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
 
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9617;<').replace(' class="', ' class="black rotate ').replace(/fadeOut/ig, '');
+                      //      lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9617;<').replace(' class="', ' class="black rotate ').replace(/fadeOut/ig, '');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9873;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
                             
-                    } 
-                        
+                        } else if (lineArray["Id_Image"].includes("_MaximumTime")) {
+
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9201;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
+                            
+                        } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
+
+                            
+                        } else if (lineArray["Id_Image"].includes("_MinusPosition")) {
+
+                            
+                        } else if (lineArray["Id_Image"].includes("_PlusPosition")) {
+
+                            
+                        }
                     }
                                         
                     // console.log(lineArray);
