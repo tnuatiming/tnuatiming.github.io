@@ -82,8 +82,8 @@
         var prototypeLineArray = []; // array with all line ID in order {0:start, 1:Id_Position, ......}
         var lineArray = []; // array from the curent competitor
         td = 1;
-        ppp = 0;
-        nom = 0;
+        competitorPosition = 0;
+        competitorNumber = 0;
         timeInfoB = "-";
         var addHeaderLine = ""; // header text
         var addLine = ""; // curent competitor text
@@ -205,7 +205,7 @@
                     lineArray["Id_Arrow"] = '<td class="rnk_font ">&nbsp;</td>';
                     
                     if (lineArray["Id_Numero"]) { 
-                        nom = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                        competitorNumber = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
                     }
 
                     if (useCategory == "yes" && lineArray["Id_Categorie"]) {
@@ -219,32 +219,32 @@
                     
                     // advancement arrow prep
                     if (lineArray["Id_Position"] && useCategory == "no") { 
-                            ppp = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                            competitorPosition = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
                     }
                  
                     if (lineArray["Id_PositionCategorie"] && useCategory == "yes") { 
-                            ppp = lineArray["Id_PositionCategorie"].substring(lineArray["Id_PositionCategorie"].indexOf(">")+1,lineArray["Id_PositionCategorie"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                            competitorPosition = lineArray["Id_PositionCategorie"].substring(lineArray["Id_PositionCategorie"].indexOf(">")+1,lineArray["Id_PositionCategorie"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
                     }
                     
                     // blink changed
                     if (timeInfoB != "-") { 
 
-                        if (timeInfoB != timeArray[nom]) {
+                        if (timeInfoB != timeArray[competitorNumber]) {
                                 lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>'; // fadeOut green dot if info changed
                                 lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                       
                         }
                         
-                        timeArray[nom] = timeInfoB;// update array with current time for next Load calc
+                        timeArray[competitorNumber] = timeInfoB;// update array with current time for next Load calc
                     }
                     
-                    if (ppp > 0 && nom > 0 && timeInfoB != "-") { // advancement arrow calc
+                    if (competitorPosition > 0 && competitorNumber > 0 && timeInfoB != "-") { // advancement arrow calc
                     
-                        if (positionArray[nom]) {
+                        if (positionArray[competitorNumber]) {
 
-                            if (positionArray[nom] < ppp) {
+                            if (positionArray[competitorNumber] < competitorPosition) {
                                 lineArray["Id_Arrow"] = '<td class="red rnk_font ">&#9660;</td>';
                                 lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                      
-                            } else if (positionArray[nom] > ppp) {
+                            } else if (positionArray[competitorNumber] > competitorPosition) {
                                 lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
                                 lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                       
                             } else {
@@ -252,8 +252,8 @@
                                 lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
                            }
                         }
-                        // console.log("nom: " + nom + ",ppp: " + ppp + ", positionArray:" + positionArray[nom]);
-                        positionArray[nom] = ppp;// update array with current position for next Load calc
+                        // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
+                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
                     }
                     
                     
@@ -330,8 +330,8 @@
                                           
                     lineArray = [];
                     td = 1; // zero the counter
-                    ppp = 0;
-                    nom = 0;
+                    competitorPosition = 0;
+                    competitorNumber = 0;
                     timeInfoB = "-";
                     
                     // adding the finished competitor text to the array (by category)
