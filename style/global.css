@@ -552,6 +552,14 @@ td.comment_font {
     text-shadow: none;
 }
 */
+
+#live td.rnk_font img {
+    display:block; 
+    margin: auto; 
+    width:18px; 
+    height:12px;
+}
+
 #live td.highlight {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);

@@ -1,4 +1,5 @@
-<!-- 20180518 - array refactoring, with all, category select, arrows for advancement -->
+<!-- 20180518 - array refactoring with all/category toggle, display arrows for position change -->
+<!-- 20180522 - add fades and competitor info on arrows display -->
 
 <!-- tag heuer live timing -->
 
@@ -11,11 +12,11 @@
     MaxNum = 1;
     ClassementReduit = 1;
     ClassementReduitXpremier = 10;
-    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the advancement arrow between Loads 
-    var timeArray = []; // array with the previous time. updated every Load, used to show the advancement arrow between Loads 
+    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
+    var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
-    var tableClass = "fadeIn";
+    var tableClass = " fadeIn";
 
     function category(choice){
         
@@ -30,7 +31,7 @@
             document.getElementById("displayAllButton").style.display = "none";        
         }
 
-        tableClass = "fadeIn"; // make the table fadeIn on change
+        tableClass = " fadeIn"; // make the table fadeIn on change
         
         Load('p1.html', 'result');
     };
@@ -65,16 +66,9 @@
             }
         };
         
-        
-        
         xhr.open("GET", url + "?r=" + Math.random(), true);
         xhr.send(null);
         fct = function() {
-            
-            
-
-            
-            
             Load(url, target)
         };
         TimerLoad = setTimeout(fct, Rafraichir)
@@ -95,7 +89,7 @@
         td = 1;
         competitorPosition = 0;
         competitorNumber = 0;
-        timeInfoB = "-";
+        competitorLaps = 0;
         var addHeaderLine = ""; // header text
         var addLine = ""; // curent competitor text
 
@@ -224,11 +218,11 @@
                         catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
                     }
 
-                    if (lineArray["Id_TpsCumule"]) {
-                        timeInfoB = lineArray["Id_TpsCumule"].substring(lineArray["Id_TpsCumule"].indexOf(">")+1,lineArray["Id_TpsCumule"].lastIndexOf("<")); // get the time value
+                    if (lineArray["Id_NbTour"]) {
+                        competitorLaps = lineArray["Id_NbTour"].substring(lineArray["Id_NbTour"].indexOf(">")+1,lineArray["Id_NbTour"].lastIndexOf("<")); // get the time value
                     }
                     
-                    // advancement arrow prep
+                    // position change arrow prep
                     if (lineArray["Id_Position"] && useCategory == "no") { 
                             competitorPosition = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
                     }
@@ -238,17 +232,17 @@
                     }
                     
                     // blink changed
-                    if (timeInfoB != "-") { 
+                    if (competitorLaps != "0") { 
 
-                        if (timeInfoB != timeArray[competitorNumber]) {
+                        if (competitorLaps != lapsArray[competitorNumber]) {
                                 lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>'; // fadeOut green dot if info changed
                                 lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                       
                         }
                         
-                        timeArray[competitorNumber] = timeInfoB;// update array with current time for next Load calc
+                        lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
                     }
                     
-                    if (competitorPosition > 0 && competitorNumber > 0 && timeInfoB != "-") { // advancement arrow calc
+                    if (competitorPosition > 0 && competitorNumber > 0 && lineArray["Id_NbTour"]) { // position change arrow calc
                     
                         if (positionArray[competitorNumber]) {
 
@@ -266,7 +260,6 @@
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
                         positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
                     }
-                    
                     
                     if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
 
@@ -288,8 +281,8 @@
                             
                         } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
 
-                      //      lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9617;<').replace(' class="', ' class="black rotate ').replace(/fadeOut/ig, '');
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9873;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
+                  //          lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9873;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '><img src="Images/_Stop.png"><').replace(/fadeOut|green|red|orange/ig, '');
                             
                         } else if (lineArray["Id_Image"].includes("_MaximumTime")) {
 
@@ -343,7 +336,7 @@
                     td = 1; // zero the counter
                     competitorPosition = 0;
                     competitorNumber = 0;
-                    timeInfoB = "-";
+                    competitorLaps = 0;
                     
                     // adding the finished competitor text to the array (by category)
                     if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
@@ -365,7 +358,7 @@
         
 
         var sortedObj = sortObjKeysAlphabetically(resultsByCategory); // sort by category name
-        NouveauTexte += '<table class="line_color ' + tableClass + '">\r\n'
+        NouveauTexte += '<table class="line_color' + tableClass + '">\r\n'
         for(var key in sortedObj) {
             opt3 = sortedObj[key];
             if (opt3 != "") {

@@ -573,8 +573,17 @@ Status 12,DNS,center</code></pre></li>
 
     <p class="c1"><span><img alt="image72.png" src="/manual/images/image72.png"></span></p>
  
-    <p class="c0">יש לוודא ששתי שורות ה"מקום" (כללי וקטגוריה), שתיהן צריכות להיות ראשונות. שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל. בנוסף, יש לוודא ששורת "פער" (Diff. with leader) ושורת "פער" (Diff. with leader cat) מופיעות. ולבסוף יש להוסיף את שורת Image המשמשת להצגת הסטטוס של המתחרה. </p>
+    <div>
+    <ul>
+    <li>שתי שורות ה"מקום" (כללי וקטגוריה), שתיהן צריכות להיות ראשונות.</li>
+    <li>שורת "הקפות" חייבת להופיע</li>
+    <li>שתי שורות ה"פער" (כללי וקטגוריה), שתיהן צריכות להיות אחרונות (Diff. with leader, Diff. with leader cat).</li>
+    <li>שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל.</li>
+    <li>שורת "Image" המשמשת להצגת הסטטוס של המתחרה.</li>
 
+    
+    </ul>
+    </div>
     <p class="c1"><span><img alt="image73.png" src="/manual/images/image73.png"></span></p>
  
     <p class="c1"><span><img alt="image74.png" src="/manual/images/image74.png"></span></p>
