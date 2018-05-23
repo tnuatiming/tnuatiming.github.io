@@ -426,23 +426,23 @@ td.comment_font {
 }
 
 #live .btn {
-  position: relative;
+    position: relative;
+    cursor:pointer;
+    display: block;
+    margin: 30px auto;
+    padding: 0;
 
-  display: block;
-  margin: 30px auto;
-  padding: 0;
+    overflow: hidden;
 
-  overflow: hidden;
-
-  border-width: 0;
-  outline: none;
- /* border-radius: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-  */
-  background-color: #2ecc71;
-  color: #ecf0f1;
-  
-  transition: background-color .3s;
+    border-width: 0;
+    outline: none;
+    /* border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    */
+    background-color: #2ecc71;
+    color: #ecf0f1;
+    
+    transition: background-color .3s;
 }
 
 #live .btn:hover, #live .btn:focus {

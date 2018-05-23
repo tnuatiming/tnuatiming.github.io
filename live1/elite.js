@@ -15,7 +15,8 @@
     var timeArray = []; // array with the previous time. updated every Load, used to show the advancement arrow between Loads 
     
     var useCategory = "yes";
-    
+    var tableClass = "fadeIn";
+
     function category(choice){
         
         positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
@@ -28,6 +29,8 @@
             document.getElementById("displayCatButton").style.display = "block";        
             document.getElementById("displayAllButton").style.display = "none";        
         }
+
+        tableClass = "fadeIn"; // make the table fadeIn on change
         
         Load('p1.html', 'result');
     };
@@ -61,9 +64,17 @@
  //               document.getElementById("categoryOrAll").style.display = "none";
             }
         };
+        
+        
+        
         xhr.open("GET", url + "?r=" + Math.random(), true);
         xhr.send(null);
         fct = function() {
+            
+            
+
+            
+            
             Load(url, target)
         };
         TimerLoad = setTimeout(fct, Rafraichir)
@@ -354,7 +365,7 @@
         
 
         var sortedObj = sortObjKeysAlphabetically(resultsByCategory); // sort by category name
-        NouveauTexte += '<table>\r\n'
+        NouveauTexte += '<table class="line_color ' + tableClass + '">\r\n'
         for(var key in sortedObj) {
             opt3 = sortedObj[key];
             if (opt3 != "") {
@@ -366,7 +377,9 @@
             }
         }    
         NouveauTexte += "</table>";
-        
+
+        tableClass = ""; // remove the fadeIn after first load
+
     return NouveauTexte
     };
         
