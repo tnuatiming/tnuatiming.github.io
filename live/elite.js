@@ -92,7 +92,7 @@
         competitorLaps = 0;
         var addHeaderLine = ""; // header text
         var addLine = ""; // curent competitor text
-
+        
         Texte = Texte.split('<table'); // split the text to title/time and the table
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Texte[1]);
@@ -220,6 +220,20 @@
 
                     if (lineArray["Id_NbTour"]) {
                         competitorLaps = lineArray["Id_NbTour"].substring(lineArray["Id_NbTour"].indexOf(">")+1,lineArray["Id_NbTour"].lastIndexOf("<")); // get the time value
+
+                             if (!(lineArray["Id_Image"].includes("_CheckeredFlag"))) {
+
+                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>'; // fadeOut green dot if info changed
+
+                            }
+                        
+                        if (competitorLaps != lapsArray[competitorNumber]) { 
+                            
+
+                            lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                       
+                        }
+                        
+                        lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
                     }
                     
                     // position change arrow prep
@@ -231,16 +245,6 @@
                             competitorPosition = lineArray["Id_PositionCategorie"].substring(lineArray["Id_PositionCategorie"].indexOf(">")+1,lineArray["Id_PositionCategorie"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
                     }
                     
-                    // blink changed
-                    if (competitorLaps != "0") { 
-
-                        if (competitorLaps != lapsArray[competitorNumber]) {
-                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>'; // fadeOut green dot if info changed
-                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                       
-                        }
-                        
-                        lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
-                    }
                     
                     if (competitorPosition > 0 && competitorNumber > 0 && lineArray["Id_NbTour"]) { // position change arrow calc
                     
@@ -251,10 +255,8 @@
                                 lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                      
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
-                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                       
+                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line
                             } else {
-                    //            lineArray["Id_Arrow"] = '<td class="green rnk_font ">&nbsp;</td>';
-                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
                            }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
@@ -281,8 +283,7 @@
                             
                         } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
 
-                  //          lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9873;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '><img src="Images/_Stop.png"><').replace(/fadeOut|green|red|orange/ig, '');
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(' class="', ' class="finished ');
                             
                         } else if (lineArray["Id_Image"].includes("_MaximumTime")) {
 
@@ -337,7 +338,6 @@
                     competitorPosition = 0;
                     competitorNumber = 0;
                     competitorLaps = 0;
-                    
                     // adding the finished competitor text to the array (by category)
                     if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
                         opt3 = addLine;
