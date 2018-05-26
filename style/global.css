@@ -449,58 +449,20 @@ td.comment_font {
   background-color: #27ae60;
 }
 
-#live .btn > * {
-  position: relative;
-}
-
-#live .btn span {
-  display: block;
-  padding: 12px 24px;
-}
-
-#live .btn:before {
-  content: "";
-  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  
-  display: block;
-  width: 0;
-  padding-top: 0;
-    
-  border-radius: 100%;
-  
-  background-color: rgba(236, 240, 241, .3);
-  
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-#live .btn:active:before {
-  width: 120%;
-  padding-top: 120%;
-  
-  transition: width .2s ease-out, padding-top .2s ease-out;
-}
-
 #live .btn.red {
-  background-color: #e74c3c;
+    background-color: #e74c3c;
 }
 
 #live .btn.red:hover, .btn.red:focus {
-  background-color: #c0392b;
+    background-color: #c0392b;
 }
 
 #live .btn.blue {
-  background-color: #2196f3;
+    background-color: #2196f3;
 }
 
 #live .btn.blue:hover, .btn.blue:focus {
-  background-color: #1a78c2;
+    background-color: #1a78c2;
 }
 
 #live  td.title_font {
@@ -521,6 +483,10 @@ td.comment_font {
 #live .EvenRow {
     background-color:  rgba(224,224,224,0.8);
     color: #111;
+}
+
+#live tr.OddRow:hover, #live tr.EvenRow:hover {
+    background: #fc3;
 }
 
 /*.OddRow .elite_no {
@@ -553,11 +519,8 @@ td.comment_font {
 }
 */
 
-#live td.rnk_font img {
-    display:block; 
-    margin: auto; 
-    width:18px; 
-    height:12px;
+#live #Id_Arrow {
+    min-width: 20px;
 }
 
 #live td.highlight {
@@ -567,11 +530,50 @@ td.comment_font {
     text-shadow: none;
     background-clip: padding-box;    
 }
+#live td.blackCat {
+    font-weight: 700;
+    background-color: #111;
+    color:#fff;
+}
+#live td.redCat {
+    font-weight: 700;
+    background-color: #ff0000;
+    color:#fff;
+}
+#live td.yellowCat {
+    font-weight: 700;
+    background-color: #ffff00;
+    color:#111;
+}
+#live td.greenCat {
+    font-weight: 700;
+    background-color: #92d050;
+    color:#fff;
+}
+#live td.pinkCat {
+    font-weight: 700;
+    background-color: #cc66ff;
+    color:#111;
+}
+#live td.orangeCat {
+    font-weight: 700;
+    background-color: #ffc000;
+    color:#111;
+}
+#live td.blueCat {
+    font-weight: 700;
+    background-color: #00b0f0;
+    color:#111;
+}
+#live td.whiteCat {
+    font-weight: 700;
+    background-color: #fff;
+    color:#111;
+}
 #live td.BestTimeOverall {
     color: #ff0000;
     font-weight: 700;
 }
-
 #live td.BestTime {
     color: #0000ff;
     font-weight: 700;
@@ -603,20 +605,16 @@ td.comment_font {
     color: #2d2926;
     font-weight: 700;
 }
+#live td.finished {
+    background-image: url("/live/Images/_Stop.png");
+    background-position: center center;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    min-width: 20px;
+}
 #live td.rotate {
     transform: rotate(90deg);
 }
-
-#live tr.OddRow:hover, #live tr.EvenRow:hover {
-    background: #fc3;
-}
-#live td.finished {
-        background-image: url("/live/Images/_Stop.png");
-        background-position: center center;
-        background-size: 60% 60%;
-        background-repeat: no-repeat;
-
-    }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
 /*

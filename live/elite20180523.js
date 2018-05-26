@@ -1,6 +1,5 @@
 <!-- 20180518 - array refactoring with all/category toggle, display arrows for position change -->
 <!-- 20180522 - add fades and competitor info on arrows display -->
-<!-- 20180523 - add competitor number color/background according to category -->
 
 <!-- tag heuer live timing -->
 
@@ -83,7 +82,6 @@
         notHeaderTR = 0;
         HeaderTR = 0; // 1 if inside the header TR
         var catName = "&nbsp;"; //competitor category
-        var catName1 = "&nbsp;"; //competitor category
         var resultsByCategory = [];
         var headerLineArray = []; // header used for building the final text
         var prototypeLineArray = []; // array with all line ID in order {0:start, 1:Id_Position, ......}
@@ -195,10 +193,7 @@
 
                     if (prototypeLineArray[td] == 'Id_Numero') { // change number cell css
                     
-                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
-
-                        // removed for competitor number category color                        
-                      //  lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="highlight rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="highlight rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
 
                     } else {
                         lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
@@ -213,55 +208,14 @@
 
                   //  lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
                     lineArray["Id_Arrow"] = '<td class="rnk_font ">&nbsp;</td>';
+                    
+                    if (lineArray["Id_Numero"]) { 
+                        competitorNumber = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
 
                     if (useCategory == "yes" && lineArray["Id_Categorie"]) {
 
                         catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
-                    }
-
-                    // color competitor number according to category
-                    if (lineArray["Id_Categorie"]) {
-
-                        catName1 = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
-                    }
-                    
-                    if (lineArray["Id_Numero"]) { 
-                        competitorNumber = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-
-                        if (catName1.toUpperCase().includes("E1") || catName1.toUpperCase().includes("MX2") || catName1.toUpperCase().includes("רוקיז")) {
-                            
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blackCat ').replace(/Class\d+/, '');    
-                        
-                        } else if (catName1.toUpperCase().includes("E2")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="redCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("E3") || catName1.toUpperCase().includes("פתוחה")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="yellowCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("C1") || catName1.toUpperCase().includes("C2") || catName1.toUpperCase().includes("C3") || catName1.toUpperCase().includes("עממית")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="greenCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("סניור") || catName1.toUpperCase().includes("נשים")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="pinkCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("סופר ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blueCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="orangeCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("מתחילים") || catName1.toUpperCase().includes("MX1")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="whiteCat ').replace(/Class\d+/, '');    
-                            
-                        } else {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="highlight ');    
-                            
-                        }
-                        
-                        
-                        
-                        
-                        
                     }
 
                     if (lineArray["Id_NbTour"]) {
@@ -322,10 +276,6 @@
                         } else if (lineArray["Id_Image"].includes("_Status12")) {
                         
                             lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_Status2")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>NQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
                             
                         } else if (lineArray["Id_Image"].includes("_Status")) {
                         
