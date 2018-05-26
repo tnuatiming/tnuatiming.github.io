@@ -1,6 +1,7 @@
 <!-- 20180518 - array refactoring with all/category toggle, display arrows for position change -->
 <!-- 20180522 - add fades and competitor info on arrows display -->
 <!-- 20180523 - add competitor number color/background according to category -->
+<!-- 20180527 - add message uploading -->
 
 <!-- tag heuer live timing -->
 
@@ -72,8 +73,22 @@
         fct = function() {
             Load(url, target)
         };
+        populatePre('uploadMsg.txt'); // upload message
         TimerLoad = setTimeout(fct, Rafraichir)
     };
+
+    // fn to upload messages
+    function populatePre(url) {
+        var xhr1 = new XMLHttpRequest();
+        xhr1.onreadystatechange = function () {
+            if (xhr1.readyState == 4 && xhr1.status == 200) {
+                document.getElementById('updates').innerHTML = xhr1.responseText;
+            }
+        };
+        xhr1.open('GET', url);
+        xhr1.send();
+    };
+
 
     function ExtraireClassementReduitNew(Texte) {
         var i;
@@ -424,6 +439,7 @@
         tableClass = ""; // remove the fadeIn after first load
 
     return NouveauTexte
+
     };
         
     function sortObjKeysAlphabetically(obj) {
