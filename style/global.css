@@ -11,6 +11,7 @@
 
 
 html {
+    background:rgba(240,240,240,1);
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 100%;
@@ -1165,7 +1166,7 @@ padding-right: 10%;
     order: 2;
 }
 
-.animated {
+.full-bg {
     background:rgba(240,240,240,0.9);
 }
 /*
@@ -1428,8 +1429,8 @@ padding-right: 10%;
 
 @media (max-width: 767px) {
     
-.full-bg{
-        background-color: #f0f0f0;
+.full-bg {
+        background-color: background: rgba(240,240,240,1);
     }    
 
     #races .season {
@@ -1442,7 +1443,7 @@ padding-right: 10%;
 
 @media (min-width: 768px) {
     
-    body#home .full-bg{
+    body#home {
         background-image: url("/images/4752751.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1451,7 +1452,7 @@ padding-right: 10%;
         background-size: cover;
     }
 
-    body#home-english .full-bg{
+    body#home-english {
         background-image: url("/images/4752751.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1460,7 +1461,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#races .full-bg{
+    body#races {
         background-image: url("/images/478466.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1469,7 +1470,7 @@ padding-right: 10%;
         background-size: cover;    
     }
     
-    body#live .full-bg{
+    body#live {
         background-image: url("/images/10854828.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1478,7 +1479,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race .full-bg{
+    body#race {
         background-image: url("/images/4074271.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1487,7 +1488,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.enduro .full-bg{
+    body#race.enduro {
         background-image: url("/images/enduro.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1496,7 +1497,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.motocross .full-bg{
+    body#race.motocross {
         background-image: url("/images/motocross.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1505,7 +1506,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.supermoto .full-bg{
+    body#race.supermoto {
         background-image: url("/images/supermoto.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1514,7 +1515,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.superbike .full-bg{
+    body#race.superbike {
         background-image: url("/images/superbike.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1523,7 +1524,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.allmountain .full-bg{
+    body#race.allmountain {
         background-image: url("/images/allmountain.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1532,7 +1533,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.gymkhana .full-bg{
+    body#race.gymkhana {
         background-image: url("/images/gymkhana.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1541,7 +1542,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.rally .full-bg, body#race.baja .full-bg{
+    body#race.rally , body#race.baja {
         background-image: url("/images/rally.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1550,7 +1551,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.karting .full-bg{
+    body#race.karting {
         background-image: url("/images/kart.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1559,7 +1560,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.rallysprint .full-bg{
+    body#race.rallysprint {
         background-image: url("/images/rallysprint.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1568,7 +1569,7 @@ padding-right: 10%;
         background-size: cover;
     }
     
-    body#race.running .full-bg{
+    body#race.running {
         background-image: url("/images/running.jpg");
         background-color: #f0f0f0;
         background-position: center center;
@@ -1577,7 +1578,7 @@ padding-right: 10%;
         background-size: cover;
     }
 
-    body#race.timeattack .full-bg{
+    body#race.timeattack {
         background-image: url("/images/timeattack.jpg");
         background-color: #f0f0f0;
         background-position: center center;
