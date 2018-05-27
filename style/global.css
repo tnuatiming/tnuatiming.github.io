@@ -304,6 +304,10 @@ th.rnkh_font {
     color: #ff0000;
 }
 */
+span#name, span#rund, span#date {
+    float: right;
+    width: 20%;
+}
 
 #live #ImageZoom {
     width: auto;
