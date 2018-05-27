@@ -184,6 +184,7 @@ table::before, table::after {
     color: #111;
     font-weight: 400; 
     text-shadow: none;
+    white-space: nowrap;
 /*    text-shadow: 0 1px 2px white;*/
 }
 
@@ -229,24 +230,7 @@ table::before, table::after {
     text-shadow: none;
 }
 
-/*category     background-color: rgba(245,245,245,0.5);*/
-#live tr.bkcolor td.title_font, #race tr.bkcolor td.title_font {
-    color:#fff;
-    font-weight: 700;
-}
-
-/*category     background-color: rgba(245,245,245,0.5);*/
-#race .no_num_color td.title_font {
-    color: #666;
-    font-weight: 700;
-}
-
 /*table header*/
-.rnkh_bkcolor {
-    color:#fff;
-    background: rgba(0,0,0,0.5);
-    font-weight: 700;
-}
 /*
 tr.rnkh_bkcolor {
     position: -webkit-sticky;  
@@ -254,7 +238,10 @@ tr.rnkh_bkcolor {
     top: -1px;
 }*/
 
-#race .comment_font {
+#race td.comment_font {
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
     color: #800000;/*maroon*/
     text-shadow: 0 1px 2px white;
     padding-top: 10px;
@@ -272,9 +259,6 @@ tr.rnkh_bkcolor {
 }
 
 /*elite v3 table*/
-.main_table a {
-    display:none;
-}
 
 td img {
     height: 1.5em;
@@ -301,41 +285,25 @@ td, th {
     border-collapse: collapse;
  /*    font-size: 0.8em;*/
 }
-
-td.rnk_font, th.rnkh_font {
- /*    border: 1px solid #fff;*/
-    white-space: nowrap;
-}
     
+tr.rnkh_bkcolor {
+    background:none;
+    color:#fff;
+    font-weight: 700;
+}    
+
 th.rnkh_font {
   background: rgba(118,116,114,1); /*same as rgba(0,0,0,.5) with out alpha transperancy*/
 /*  position: -webkit-sticky;
   position: sticky;
   top: 0px;*/
 }
-
-tr.rnkh_bkcolor {
-    background:none;
-}    
  
-td.comment_font {
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-}
 /* 
 #race td.rnk_font.penalty {
     color: #ff0000;
 }
 */
-
-#live .main_content {
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-}
-
-
 
 #live #ImageZoom {
     width: auto;
@@ -344,36 +312,94 @@ td.comment_font {
     max-height: 80%;
 }
 
+#live #raceheader h1 {
+    color: #58585a;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    margin: 5px 0;
+    vertical-align: middle;
+    flex: 0 1 auto;
+}
+
+#live #categoryOrAll {
+    width: 100%;
+ /*   overflow:hidden;*/
+    display:none;
+    flex: 0 1 auto;
+}
+
+#live #categoryOrAll button {
+    float: right;
+    font-size: 1.1em;
+    padding: 0 10px;
+    margin: 0 20px;
+}
+
+#live #displayCatButton {
+    display:none;
+}
+
+#live .btn {
+    position: relative;
+    cursor:pointer;
+    display: block;
+    margin: 30px auto;
+    padding: 0;
+  /*  overflow: hidden;*/
+    border-width: 0;
+    outline: none;
+    /* border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    */
+    background-color: #2ecc71;
+    color: #ecf0f1;
+    transition: background-color .3s;
+}
+
+#live .btn:hover, #live .btn:focus {
+    background-color: #27ae60;
+}
+
+#live .btn.red {
+    background-color: #e74c3c;
+}
+
+#live .btn.red:hover, .btn.red:focus {
+    background-color: #c0392b;
+}
+
+#live .btn.blue {
+    background-color: #2196f3;
+}
+
+#live .btn.blue:hover, .btn.blue:focus {
+    background-color: #1a78c2;
+}
+
+#live #result {
+    width: 100%;
+/*    overflow:hidden;*/
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
 #live #Title {
     display: block;
     vertical-align: middle;
     font-weight: 700;
-    font-size: 1.5em;
+    font-size: 1.0em;
     color: rgba(0,0,0,0.5);
-    margin: 5px 0 5px 0;
+    margin: 5px 0;
     flex: 0 1 auto;
-}
-
-#live tr.rnkh_bkcolor {
-    color:#fff;
-    background: rgba(0,0,0,0.5);
-    font-weight: 700;
 }
 
 #live #Title img {
     height: 24px;
     vertical-align: middle;
     margin: 0 16px;
-}
-
-#live #raceheader h1 {
-    color: #58585a;
-    font-size: 1.5em;
-    font-weight: 700;
-    text-align: center;
-    margin: 10px;
-    vertical-align: middle;
-    flex: 0 1 auto;
 }
 
 #live #Time {
@@ -406,78 +432,15 @@ td.comment_font {
     flex: 0 0 auto;
     padding-left: 10px;
 }
-#live #categoryOrAll {
-    width: 100%;
- /*   overflow:hidden;*/
-    display:none;
-    flex: 0 1 auto;
-}
-#live #result {
-    width: 100%;
-/*    overflow:hidden;*/
-    flex: 0 1 auto;
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
+
+#live table {
+    flex: 0 0 100%;
 }
 
-#live #updates {
-    flex: 1 1 100%;
-}
-
-#live #categoryOrAll button {
-    float: right;
-    font-size: 1.1em;
-    padding: 0 10px;
-    margin: 0 20px;
-}
-
-#live #displayCatButton {
-    display:none;
-}
-
-#live .btn {
-    position: relative;
-    cursor:pointer;
-    display: block;
-    margin: 30px auto;
-    padding: 0;
-
-  /*  overflow: hidden;*/
-
-    border-width: 0;
-    outline: none;
-    /* border-radius: 2px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    */
-    background-color: #2ecc71;
-    color: #ecf0f1;
-    
-    transition: background-color .3s;
-}
-
-#live .btn:hover, #live .btn:focus {
-  background-color: #27ae60;
-}
-
-#live .btn.red {
-    background-color: #e74c3c;
-}
-
-#live .btn.red:hover, .btn.red:focus {
-    background-color: #c0392b;
-}
-
-#live .btn.blue {
-    background-color: #2196f3;
-}
-
-#live .btn.blue:hover, .btn.blue:focus {
-    background-color: #1a78c2;
-}
-
-#live  td.title_font {
-    padding-top: 0;
+#live tr.rnkh_bkcolor {
+    color:#fff;
+    background: rgba(0,0,0,0.5);
+    font-weight: 700;
 }
 
 #live .HeaderRow {
@@ -498,10 +461,6 @@ td.comment_font {
 
 #live tr.OddRow:hover, #live tr.EvenRow:hover {
     background: #fc3;
-}
-
-#live table {
-    flex: 0 0 100%;
 }
 
 #live #Id_Arrow {
@@ -555,14 +514,7 @@ td.comment_font {
     background-color: #fff;
     color:#111;
 }
-#live td.BestTimeOverall {
-    color: #ff0000;
-    font-weight: 700;
-}
-#live td.BestTime {
-    color: #0000ff;
-    font-weight: 700;
-}
+
 #live td.green {
     color: #00843d;
     font-weight: 700;
@@ -599,6 +551,15 @@ td.comment_font {
 }
 #live td.rotate {
     transform: rotate(90deg);
+}
+
+#live td.BestTimeOverall {
+    color: #ff0000;
+    font-weight: 700;
+}
+#live td.BestTime {
+    color: #0000ff;
+    font-weight: 700;
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
@@ -643,7 +604,9 @@ td.comment_font {
 /*#live td.Class9 {border-right: 6px solid #c0c0c0;}/*silver arrow*/
 /*hass #6c0000, mercedes #00cfba, */
 
-
+#live #updates {
+    flex: 1 1 100%;
+}
 
 #live #Message {
     color: rgba(0,0,0,.5);
@@ -652,6 +615,7 @@ td.comment_font {
 }
 
 .full-bg {
+    background:rgba(240,240,240,0.9);
     min-height: 100%;
     width: 100%;
     padding: constant(safe-area-inset-top) constant(safe-area-inset-right) constant(safe-area-inset-bottom) constant(safe-area-inset-left); /*iphone x notch*/ 
@@ -1019,11 +983,12 @@ a.logo_text{
         -ms-flex: 1 0 auto;
             flex: 1 0 auto;
 /*    display:table;    fixes not expending to the size of the content (table)*/
-}
-
-#live .main_content {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
     text-align: center;
 }
+
 /*
 #races .main_content {
 padding-right: 10%;
@@ -1150,9 +1115,6 @@ padding-right: 10%;
     order: 2;
 }
 
-.full-bg {
-    background:rgba(240,240,240,0.9);
-}
 /*
 #races .animated, #live .animated {
     background:rgba(255,255,255,0.9);
@@ -1209,13 +1171,12 @@ padding-right: 10%;
     .navigation ul {
         margin-left: 60px;
     }
- #races .season {
-    column-count: 3;
-    column-fill: balance;
-    width: 95%;
-    margin-right: 0;
-}
-   
+    #races .season {
+        column-count: 3;
+        column-fill: balance;
+        width: 95%;
+        margin-right: 0;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -1374,9 +1335,6 @@ padding-right: 10%;
     .main_content {
         margin-top: 170px;
     }   */ 
-    td.title_font {
-        font-size: 1.2em;
-    }
 /*    
     td.rnk_font, th.rnkh_font {
         border: 1px solid #fff;
@@ -1390,12 +1348,6 @@ padding-right: 10%;
         background-color: #f0f0f0;
     }
 */    
-    td.comment_font {
-        border-bottom: none;
-        border-left: none;
-        border-right: none;
-    }
-
     #home .left {
         display:none;
     }
