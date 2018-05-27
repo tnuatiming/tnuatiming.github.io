@@ -329,6 +329,14 @@ td.comment_font {
 }
 */
 
+#live .main_content {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+
+
 #live #ImageZoom {
     width: auto;
     height: auto;
@@ -343,6 +351,7 @@ td.comment_font {
     font-size: 1.5em;
     color: rgba(0,0,0,0.5);
     margin: 5px 0 5px 0;
+    flex: 0 1 auto;
 }
 
 #live tr.rnkh_bkcolor {
@@ -351,68 +360,69 @@ td.comment_font {
     font-weight: 700;
 }
 
-
 #live #Title img {
     height: 24px;
     vertical-align: middle;
     margin: 0 16px;
 }
 
-#live p#raceheader {
+#live #raceheader h1 {
     color: #58585a;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 700;
     text-align: center;
-    margin: 5px 20px;
+    margin: 10px;
     vertical-align: middle;
-}
-
-#live #live_header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.live_header_image {
-    height: 24px;
-    margin: auto 5px;
-}
-
-#live #ImageHeader {
-    margin: 0 auto 16px auto;
-}
-
-#live #ImageFooter {
-    margin: 16px auto 0 auto;
+    flex: 0 1 auto;
 }
 
 #live #Time {
-    margin: 0 auto 0 auto;
+    margin: 5px 0;
+    padding: 0 16px;
     font-size: 1em;
     font-weight: 700;
-    text-align: right;
+    text-align: left;
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: row;
 }
 
 #live #DayTime {
     color: rgba(0,0,0,.5);
-    float: left;
-    margin-left: 16px;
+    order: 3;
+    flex: 1 1 auto;
 }
 
 #live #ElapsedTime {
     color: #008000;
-    margin-right: 16px;
+    order: 2;
+    flex: 0 0 auto;
+    padding-left: 10px;
 }
 
 #live #RemainingTime {
     color: #800000;
-    float: right;
+    order: 1;
+    flex: 0 0 auto;
+    padding-left: 10px;
 }
 #live #categoryOrAll {
     width: 100%;
-    overflow:hidden;
+ /*   overflow:hidden;*/
     display:none;
+    flex: 0 1 auto;
+}
+#live #result {
+    width: 100%;
+/*    overflow:hidden;*/
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+#live #updates {
+    flex: 1 1 100%;
 }
 
 #live #categoryOrAll button {
@@ -433,7 +443,7 @@ td.comment_font {
     margin: 30px auto;
     padding: 0;
 
-    overflow: hidden;
+  /*  overflow: hidden;*/
 
     border-width: 0;
     outline: none;
@@ -490,35 +500,9 @@ td.comment_font {
     background: #fc3;
 }
 
-/*.OddRow .elite_no {
-    font-weight: 700;
-    background-color: rgba(37, 37, 37, 0.5);
-    color: #fff;
+#live table {
+    flex: 0 0 100%;
 }
-.EvenRow .elite_no {
-    font-weight: 700;
-    background-color: rgba(80, 80, 80, 0.5);
-    color: #fff;
-}
-
-#live td {
-    border: 1px solid #fff;
-}
-
-#live .elite_no {
-    font-weight: 700;
-    background-color: rgba(37, 37, 37, 0.5);
-    color: #fff;    
-    text-shadow: none;
-}
-
-#live td:nth-of-type(2) {
-    font-weight: 700;
-    background-color: rgba(37, 37, 37, 0.5);
-    color:#fff;
-    text-shadow: none;
-}
-*/
 
 #live #Id_Arrow {
     min-width: 20px;
@@ -1242,6 +1226,9 @@ padding-right: 10%;
      body, .full-bg{
         background: #f0f0f0;
     }*/
+    table {
+        font-size: 0.8em;
+    }
 
     .page {
         width: 98%;
@@ -1438,6 +1425,9 @@ padding-right: 10%;
         column-fill: balance;
         width: 100%;
         margin-right: 0;
+    }
+    table {
+        font-size: 0.7em;
     }
 }
 
