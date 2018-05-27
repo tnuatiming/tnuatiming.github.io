@@ -338,7 +338,6 @@ span#name, span#rund, span#date {
 }
 
 #live #categoryOrAll button {
-    float: right;
     font-size: 1.1em;
     padding: 0 10px;
     margin: 0 20px;
@@ -1056,7 +1055,6 @@ padding-right: 10%;
 }
 
 .next-race {
-    float: right;
     text-align: right;
     width: 100%;
     clear: both;
