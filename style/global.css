@@ -905,7 +905,6 @@ a.logo_text{
     text-decoration: none;
     text-transform: uppercase;
     text-shadow: none;
-    font-size: 1em;
     vertical-align: middle;
     text-decoration: none;
     border-bottom: 6px #ccc solid;
@@ -982,11 +981,12 @@ a.logo_text{
 }
 
 .main_content {
-/*    margin-bottom: 50px;*/
+/*    margin-bottom: 50px;    
+    overflow-x: auto;
+*/
     margin-top: 25px;
     text-align: right;
     width: 100%;
-    overflow-x: auto;
     -webkit-flex: 1 0 auto;
         -ms-flex: 1 0 auto;
             flex: 1 0 auto;
@@ -1036,15 +1036,23 @@ padding-right: 10%;
     padding: 0 5px;
 }
 
+#home .homeInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
 #home .right {
-    float: right;
-    width: 45%;
+    order: 1;
+    flex: 0 0 auto;
 }
 
 #home .left {
-    float: left;
-    width: 50%;
+    order: 2;
     margin: 20px 0;
+    flex: 0 0 auto;
+    max-width: 45%;
 }
 
 .next-race {
@@ -1313,15 +1321,6 @@ padding-right: 10%;
         border-bottom: none;
     }
 
-    .logo_main {
-        margin-top: 10px;
-  /*      margin-right: 10px;*/
-    }
-
-    .logo {
-        font-size: 60px;
-   }
-
     .logo li, .css3-blink {
         -webkit-transition-property: none !important;
         transition-property: none !important;
@@ -1361,7 +1360,6 @@ padding-right: 10%;
     }
     
     #home .right{
-        float: right;
         width: 100%;
     }
     
@@ -1386,8 +1384,45 @@ padding-right: 10%;
         width: 100%;
         margin-right: 0;
     }
-    table {
+    table, .mail, .copyright, #raceheader h1, .navigation a {
         font-size: 0.7em;
+    }    
+    h2, li {
+        font-size: 1em;
+    }
+    .logo_main {
+        height: 50px;
+  /*      margin-right: 10px;*/
+    }
+    .logo_image {
+        margin: 0 10px;
+        height:40px;
+  /*      margin-right: 10px;*/
+    }
+    a.main_logo svg {
+        height:50px;
+    }
+
+    .logo {
+        font-size: 40px;
+        max-height:40px;
+   }
+
+   .logo li:nth-child(1) {
+        margin: 0 0 0 -5px;
+    }
+   .logo li:nth-child(2) {
+        margin: -5px 0 0;
+    }
+   .logo li:nth-child(3) {
+        margin: 0 0 0 -5px;
+    }
+   .logo li:nth-child(4) {
+        margin: -5px 0 0;
+    }
+    .logo li {
+        width: 10px;
+        height: 10px;
     }
 }
 
