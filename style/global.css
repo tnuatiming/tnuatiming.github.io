@@ -1,11 +1,15 @@
 /*
 * colors:
-* yellow #ffcc33
-* red #cc3333
-* dark red #800000
-* base gray #58585A > #222
-* light gray #8f8f8f > #666
-* 
+* yellow #ffcc33 (255,204,51)
+* red #cc3333 (204,51,51)
+* dark red #800000 (128,0,0)
+* base gray #585858  (88,88,88) > #222
+* light gray #8f8f8f (143,143,143) > #666
+* black #191919 (25,25,25)
+* dark gray #464646 (70,70,70)
+* very light gray #C7C7C7 (199,199,199)
+
+
 * @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);
 
@@ -60,7 +64,7 @@ a:active,a:hover,a:focus {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.6em;
     color: #222;
     letter-spacing: 1px;
     text-shadow: 0 2px 3px #fff;
@@ -72,7 +76,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
     color: #666;
     text-shadow: 0 2px 3px #fff;
     text-decoration: none;
@@ -151,7 +155,6 @@ table {
 /*    font-size: 0.9em;
     line-height: 2em;*/
     white-space: nowrap;
-    font-size: 1em;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -165,7 +168,7 @@ table.no_num_color {
 
 .big_table {
     font-size: 0.8em;
-    overflow-x:auto;
+ /*   overflow-x:auto;*/
     width: 100%;
 }
 .big_table th.rnkh_font {
@@ -189,11 +192,11 @@ table::before, table::after {
 }
 
 #live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
-    background: rgba(208,208,208,0.8);
+    background: rgba(208,208,208,0.7);
 }
 
 #live tr.rnk_bkcolor:nth-of-type(even), #race tr.rnk_bkcolor:nth-of-type(even) {
-    background: rgba(224,224,224,0.8);
+    background: rgba(187,187,187,0.7);
 }
 
 #live tr.rnk_bkcolor:nth-of-type(odd):hover, #live tr.rnk_bkcolor:nth-of-type(even):hover ,#race tr.rnk_bkcolor:nth-of-type(odd):hover, #race tr.rnk_bkcolor:nth-of-type(even):hover {
@@ -201,7 +204,7 @@ table::before, table::after {
 }
 
 #race td.subtitle_font {
-    background: rgba(0,0,0,0.15);
+    background: rgba(143,143,143,0.7);
     color:#151B8D;
     font-weight: 400;
 }
@@ -272,18 +275,19 @@ td img {
 
 td.title_font {
     color: #333;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 700;
-    padding-top: 10px;
     text-shadow: none;
-/*    text-shadow: 0 1px 2px white;*/
+/*    padding-top: 10px;
+    text-shadow: 0 1px 2px white;*/
 }
 
 td, th {
     text-align: center;
     vertical-align: middle;
     border-collapse: collapse;
- /*    font-size: 0.8em;*/
+    font-size: 1em;
+/*    font-size: 0.8em;*/
 }
     
 tr.rnkh_bkcolor {
@@ -338,7 +342,7 @@ span#name, span#rund, span#date {
 }
 
 #live #categoryOrAll button {
-    font-size: 1.1em;
+    font-size: 1em;
     padding: 0 10px;
     margin: 0 20px;
 }
@@ -397,7 +401,7 @@ span#name, span#rund, span#date {
     display: block;
     vertical-align: middle;
     font-weight: 700;
-    font-size: 1.0em;
+    font-size: 1.2em;
     color: rgba(0,0,0,0.5);
     margin: 5px 0;
     flex: 0 1 auto;
@@ -410,7 +414,7 @@ span#name, span#rund, span#date {
 }
 
 #live #Time {
-    margin: 5px 0;
+    margin: 0;
     padding: 0 16px;
     font-size: 1em;
     font-weight: 700;
@@ -457,12 +461,12 @@ span#name, span#rund, span#date {
 }
 
 #live .OddRow {
-    background-color: rgba(208,208,208,0.8);
+    background-color: rgba(208,208,208,0.7);
     color: #111;
 }
 
 #live .EvenRow {
-    background-color:  rgba(224,224,224,0.8);
+    background-color:  rgba(187,187,187,0.7);
     color: #111;
 }
 
@@ -471,7 +475,7 @@ span#name, span#rund, span#date {
 }
 
 #live #Id_Arrow {
-    min-width: 20px;
+    min-width: 2em;
 }
 
 #live td.highlight {
@@ -617,7 +621,7 @@ span#name, span#rund, span#date {
 
 #live #Message {
     color: rgba(0,0,0,.5);
-    font-size: 1.1em;
+    font-size: 1em;
     display:none;
 }
 
@@ -1371,8 +1375,15 @@ padding-right: 10%;
 }*/
 
 @media (max-width: 767px) {
-    
-.full-bg {
+
+    body {
+        font-size: calc(1vw + 1vh + .5vmin);
+        line-height: calc(1vw + 1vh + 2vmin);
+/*        font-size: calc(16px + 1vw);
+         line-height: calc(1.1em + 0.5vw);
+ */
+    }    
+    .full-bg {
         background-color: background: rgba(240,240,240,1);
     }    
 
@@ -1382,12 +1393,18 @@ padding-right: 10%;
         width: 100%;
         margin-right: 0;
     }
-    table, .mail, .copyright, #raceheader h1, .navigation a {
+    .big_table {
+        font-size: 0.6em;
+    }
+    table, .mail, .copyright, #live #raceheader h1, .navigation a, #live #Time, #live #Title, #live #categoryOrAll button {
         font-size: 0.7em;
     }    
     h2, li {
         font-size: 1em;
     }
+.navigation li {
+    min-width: 7em;
+}
     .logo_main {
         height: 50px;
   /*      margin-right: 10px;*/
