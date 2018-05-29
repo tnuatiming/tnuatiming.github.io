@@ -75,6 +75,10 @@ h1 {
     padding-left: 40%;
 }
 
+#races p {
+    padding: 0;
+}
+
 h2 {
     font-size: 1.4em;
     color: #666;
@@ -108,10 +112,11 @@ h3 {
     padding: 0;
 }
 
-p {
+#home p {
     color: #222;
     text-align: right;
     font-size: 1.2em;
+    padding: 0 10px;
 }
 
 img {
@@ -130,17 +135,13 @@ ul {
     list-style-type: none;
 }
 
-#races .main_content ul {
-margin-right: 30px;
-}
-
 li {
     color: #222;
     text-align: right;
     margin: 10px;
     text-shadow: 0px 2px 3px #FFF;
     list-style-type: none;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 ul.history li {
@@ -165,15 +166,15 @@ table {
 table.no_num_color {
     margin-top: 10px;
 }
-
+/*
 .big_table {
     font-size: 0.8em;
- /*   overflow-x:auto;*/
     width: 100%;
+ /*   overflow-x:auto;
 }
 .big_table th.rnkh_font {
     white-space: pre-wrap;
-}
+}*/
 
 table::before, table::after {
     content: "";
@@ -257,7 +258,7 @@ tr.rnkh_bkcolor {
 
 #race .erlier_races p {
     color: #aaa;
-    margin:0;
+    margin: 0;
     font-size: 1em;
 }
 
@@ -275,7 +276,7 @@ td img {
 
 td.title_font {
     color: #333;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 700;
     text-shadow: none;
 /*    padding-top: 10px;
@@ -363,15 +364,22 @@ span#name, span#rund, span#date {
     /* border-radius: 2px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
     */
-    background-color: #2ecc71;
+    background-color: #767472;
     color: #ecf0f1;
     transition: background-color .3s;
 }
 
 #live .btn:hover, #live .btn:focus {
-    background-color: #27ae60;
+    background-color: #52514f;
 }
 
+#live .btn.green {
+    background-color: #2ecc71;
+}
+
+#live .btn.green:hover, .btn.green:focus {
+    background-color: #27ae60;
+}
 #live .btn.red {
     background-color: #e74c3c;
 }
@@ -388,6 +396,14 @@ span#name, span#rund, span#date {
     background-color: #1a78c2;
 }
 
+#live .btn.gray {
+    background-color: #767472;
+}
+
+#live .btn.gray:hover, .btn.gray:focus {
+    background-color: #52514f;
+}
+
 #live #result {
     width: 100%;
 /*    overflow:hidden;*/
@@ -401,7 +417,7 @@ span#name, span#rund, span#date {
     display: block;
     vertical-align: middle;
     font-weight: 700;
-    font-size: 1.2em;
+    font-size: 1em;
     color: rgba(0,0,0,0.5);
     margin: 5px 0;
     flex: 0 1 auto;
@@ -472,10 +488,6 @@ span#name, span#rund, span#date {
 
 #live tr.OddRow:hover, #live tr.EvenRow:hover {
     background: #fc3;
-}
-
-#live #Id_Arrow {
-    min-width: 2em;
 }
 
 #live td.highlight {
@@ -684,7 +696,14 @@ span#name, span#rund, span#date {
     opacity: 0.7;
     border: none;
 }
-
+.logoNav {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;  
+    -webkit-flex-direction: row;  
+        -ms-flex-direction: row;  
+            flex-direction: row;
+}
 /*logo*/
 
 .logo_main {
@@ -700,16 +719,36 @@ span#name, span#rund, span#date {
     -webkit-flex-direction: row;  
         -ms-flex-direction: row;  
             flex-direction: row;
-    margin-bottom: 15px;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: flex-start;
+            justify-content: flex-start;
 }
 
 .logo_image {
-    margin: 10px;
+    margin: 10px 0 10px 10px;
     order: 1;
 }
 
 .logo_text {
+    width: 235px;
     order: 2;
+    max-width: 220px;
+    text-align: right;
+    z-index: 1000;
+}
+
+a.logo_text{
+    border-bottom: none;
+}
+
+.logo_tiny svg{
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+}
+
+.logo_tiny, .logo_main a:hover {
+    border-bottom: none;
 }
 
 a.main_logo {
@@ -817,26 +856,6 @@ a.main_logo {
     100% {opacity: 0;}
 }
 
-.logo_text {
-    width: 40%;
-    max-width: 220px;
-    text-align: right;
-    z-index: 1000;
-}
-
-a.logo_text{
-    border-bottom: none;
-}
-
-.logo_tiny svg{
-    width: 16px;
-    height: 16px;
-    margin-top: 3px;
-}
-
-.logo_tiny, .logo_main a:hover {
-    border-bottom: none;
-}
 
 /*navigation*/
 
@@ -845,16 +864,17 @@ a.logo_text{
         -ms-flex-order: 3;
             order: 3;
     text-align: left;
-    margin-top: -100px;
+/*    margin-top: -100px;*/
     -webkit-flex-grow: 2;
         -ms-flex-positive: 2;
             flex-grow: 2;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    align-self: center;
 }
 
 .navigation ul {
@@ -879,7 +899,6 @@ a.logo_text{
     margin-right: 1px;
     border-right: 1px solid #ccc;*/
     white-space: nowrap ;
-    min-width: 9em;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -1042,7 +1061,7 @@ padding-right: 10%;
 #home .homeInfo {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     
 }
 
@@ -1218,11 +1237,24 @@ padding-right: 10%;
         width: 100%;
         margin: 0 auto;
     }*/
+.logoNav {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;  
+    -webkit-flex-direction: column;  
+        -ms-flex-direction: column;  
+            flex-direction: column;
+}
+    .logo_main {
+        order: 1;
+        margin-bottom: 15px;
+    }
     
     .navigation {
         margin-top: 0;
         margin-left: 0;
         justify-content: space-around;
+        order: 2;
     }
     .navigation ul {
         /*   margin: 0 10px 10px 0;*/
@@ -1319,7 +1351,7 @@ padding-right: 10%;
     }
 
     .navigation a:link, .navigation a:visited {
-        padding: 10px 30px;
+        padding: 10px;
         border-bottom: none;
     }
 
@@ -1392,19 +1424,29 @@ padding-right: 10%;
         column-fill: balance;
         width: 100%;
         margin-right: 0;
-    }
+    }/*
     .big_table {
         font-size: 0.6em;
-    }
-    table, .mail, .copyright, #live #raceheader h1, .navigation a, #live #Time, #live #Title, #live #categoryOrAll button {
+    }*/
+    h2, li, #live #raceheader h1, .navigation a, #live #Time, #live #categoryOrAll button {
+            font-size: 1em;
+        }    
+    table, .mail, .copyright {
         font-size: 0.7em;
     }    
-    h2, li {
-        font-size: 1em;
+    #live #Id_Arrow {
+        min-width: 2em;
     }
-.navigation li {
-    min-width: 7em;
-}
+    #live #Title img {
+        height: 16px;
+        margin: 0 10px;
+    }
+    #live #Title {
+        font-size: 0.8em;
+    }
+    .navigation li {
+   /*     min-width: 33%;*/
+    }
     .logo_main {
         height: 50px;
   /*      margin-right: 10px;*/
