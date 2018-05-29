@@ -13,6 +13,9 @@
 * @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);
 
+* {
+    box-sizing: border-box;
+}
 
 html {
     background:rgba(240,240,240,1);
@@ -176,12 +179,6 @@ table.no_num_color {
     white-space: pre-wrap;
 }*/
 
-table::before, table::after {
-    content: "";
-    display: table;
-    width: 100%;
-    margin: 0 auto;
-}
 
 /*race resulte page*/
 #race td.rnk_font, #live td.rnk_font {
@@ -315,7 +312,6 @@ th.rnkh_font {
     height: 0;
 }
 span#name, span#rund, span#date {
-    flex: 0 1 auto;
 }
 
 #live #ImageZoom {
@@ -332,14 +328,12 @@ span#name, span#rund, span#date {
     text-align: center;
     margin: 5px 0;
     vertical-align: middle;
-    flex: 0 1 auto;
 }
 
 #live #categoryOrAll {
     width: 100%;
  /*   overflow:hidden;*/
     display:none;
-    flex: 0 1 auto;
 }
 
 #live #categoryOrAll button {
@@ -407,7 +401,6 @@ span#name, span#rund, span#date {
 #live #result {
     width: 100%;
 /*    overflow:hidden;*/
-    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
     align-content: flex-start;
@@ -420,7 +413,6 @@ span#name, span#rund, span#date {
     font-size: 1em;
     color: rgba(0,0,0,0.5);
     margin: 5px 0;
-    flex: 0 1 auto;
 }
 
 #live #Title img {
@@ -435,7 +427,6 @@ span#name, span#rund, span#date {
     font-size: 1em;
     font-weight: 700;
     text-align: left;
-    flex: 0 1 auto;
     display: flex;
     flex-direction: row;
 }
@@ -443,25 +434,21 @@ span#name, span#rund, span#date {
 #live #DayTime {
     color: rgba(0,0,0,.5);
     order: 3;
-    flex: 1 1 auto;
 }
 
 #live #ElapsedTime {
     color: #008000;
     order: 2;
-    flex: 0 0 auto;
     padding-left: 10px;
 }
 
 #live #RemainingTime {
     color: #800000;
     order: 1;
-    flex: 0 0 auto;
     padding-left: 10px;
 }
 
 #live table {
-    flex: 0 0 100%;
 }
 
 #live tr.rnkh_bkcolor {
@@ -628,7 +615,6 @@ span#name, span#rund, span#date {
 /*hass #6c0000, mercedes #00cfba, */
 
 #live #updates {
-    flex: 1 1 100%;
 }
 
 #live #Message {
@@ -669,19 +655,11 @@ span#name, span#rund, span#date {
     width: 100%;
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
 /*language*/
 .language {
     display: block;
     text-align: left;
-    -webkit-flex: 1 100%;
-        -ms-flex: 1 100%;
-            flex: 1 100%;
 }
 
 .language a:link,.language a:visited {
@@ -865,9 +843,6 @@ a.main_logo {
             order: 3;
     text-align: left;
 /*    margin-top: -100px;*/
-    -webkit-flex-grow: 2;
-        -ms-flex-positive: 2;
-            flex-grow: 2;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -951,9 +926,9 @@ a.main_logo {
 }
 
 .home-icon, .race-icon, .live-icon {
-    max-width: 0.8em;
-    max-height: 0.8em;
-    padding: 0 4px;
+    width: 1.5em;
+    height: 1.5em;
+    padding: 10px 4px 0 4px;
 }
 
 #home .navigation a.home,
@@ -1009,14 +984,13 @@ a.main_logo {
     margin-top: 25px;
     text-align: right;
     width: 100%;
-    -webkit-flex: 1 0 auto;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
 /*    display:table;    fixes not expending to the size of the content (table)*/
     display: flex;
     flex-direction: column;
     align-content: flex-start;
     text-align: center;
+  flex: 1 0 auto;
+    
 }
 
 /*
@@ -1048,11 +1022,6 @@ padding-right: 10%;
     clear: both;
 }
 
-.group:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
 .content {
     padding: 0 5px;
@@ -1067,13 +1036,11 @@ padding-right: 10%;
 
 #home .right {
     order: 1;
-    flex: 0 0 auto;
 }
 
 #home .left {
     order: 2;
     margin: 20px 0;
-    flex: 0 0 auto;
     max-width: 45%;
 }
 
