@@ -85,7 +85,8 @@
                 document.getElementById('updates').innerHTML = xhr1.responseText;
             }
         };
-        xhr1.open('GET', url);
+    //    xhr1.open("GET", url + Math.random(), true);
+        xhr1.open('GET', url, true);
         xhr1.send();
     };
 

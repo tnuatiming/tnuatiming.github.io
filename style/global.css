@@ -342,7 +342,8 @@ span#name, span#rund, span#date {
     flex-direction: row;
     justify-content: flex-end;
     flex-wrap: nowrap;
-    
+    align-items: center;
+    align-content: center;
 }
 
 #live #categoryOrAll {
@@ -350,8 +351,8 @@ span#name, span#rund, span#date {
     flex-grow: 0;
     order: 1;
     align-self: flex-start;
-    margin: auto 10px;
     vertical-align: middle;
+    margin: auto 5px;
     padding: 0;
 }
 
@@ -360,7 +361,7 @@ span#name, span#rund, span#date {
     order: 2;
     text-align: right;
     align-self: flex-end;
-    margin: auto 10px;
+    margin: auto 5px;
     padding: 0;
 }
 
@@ -371,6 +372,7 @@ span#name, span#rund, span#date {
 #live #categoryOrAll button {
     font-size: 1em;
     padding: 0 10px;
+    white-space: nowrap;
 }
 
 #live #displayCatButton {
@@ -712,7 +714,6 @@ span#name, span#rund, span#date {
 /*logo*/
 
 .logo_main {
-    flex-grow: 1;
     order: 2;
     display: flex;  
     flex-direction: row;
@@ -855,6 +856,7 @@ a.main_logo {
 /*navigation*/
 
 .navigation {
+    flex-grow: 1;
     order: 3;
     text-align: left;
     /*    margin-top: -100px;*/
