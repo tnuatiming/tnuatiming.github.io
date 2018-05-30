@@ -147,6 +147,10 @@ li {
     font-size: 1em;
 }
 
+.history {
+    align-self:flex-start;
+}
+
 ul.history li {
     list-style-type: disc;
 }
@@ -245,12 +249,13 @@ tr.rnkh_bkcolor {
     border-right: none;
     color: #800000;/*maroon*/
     text-shadow: 0 1px 2px white;
-    padding-top: 10px;
+    padding: 5px 0;
     /*text-align: right;*/
 }
 
 #race .erlier_races {
     margin-top: 20px;
+    align-self:flex-start;
 }
 
 #race .erlier_races p {
@@ -285,6 +290,7 @@ td, th {
     vertical-align: middle;
     border-collapse: collapse;
     font-size: 1em;
+    padding-right: 0;
 /*    font-size: 0.8em;*/
 }
     
@@ -329,17 +335,42 @@ span#name, span#rund, span#date {
     margin: 5px 0;
     vertical-align: middle;
 }
-
-#live #categoryOrAll {
+#live #buttonInfo {
     width: 100%;
  /*   overflow:hidden;*/
-    display:none;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    
+}
+
+#live #categoryOrAll {
+ /*   overflow:hidden;*/
+    flex-grow: 0;
+    order: 1;
+    align-self: flex-start;
+    margin: auto 10px;
+    vertical-align: middle;
+    padding: 0;
+}
+
+#live #updates {
+    flex-grow: 1;
+    order: 2;
+    text-align: right;
+    align-self: flex-end;
+    margin: auto 10px;
+    padding: 0;
+}
+
+#live #updates p {
+    margin: 0;
 }
 
 #live #categoryOrAll button {
     font-size: 1em;
     padding: 0 10px;
-    margin: 0 20px;
 }
 
 #live #displayCatButton {
@@ -350,7 +381,7 @@ span#name, span#rund, span#date {
     position: relative;
     cursor:pointer;
     display: block;
-    margin: 30px auto;
+    margin: 5px;
     padding: 0;
   /*  overflow: hidden;*/
     border-width: 0;
@@ -418,34 +449,41 @@ span#name, span#rund, span#date {
 #live #Title img {
     height: 24px;
     vertical-align: middle;
-    margin: 0 16px;
+    margin: 0 10px;
 }
 
 #live #Time {
     margin: 0;
-    padding: 0 16px;
+    padding: 0 5px;
     font-size: 1em;
     font-weight: 700;
-    text-align: left;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 #live #DayTime {
     color: rgba(0,0,0,.5);
     order: 3;
+    padding: 0 5px;
+    flex-grow: 1;
+    text-align: left;
 }
 
 #live #ElapsedTime {
     color: #008000;
     order: 2;
-    padding-left: 10px;
+    padding: 0 5px;
+    flex-grow: 1;
+    text-align: right;
 }
 
 #live #RemainingTime {
     color: #800000;
     order: 1;
-    padding-left: 10px;
+    padding: 0 5px;
+    flex-grow: 0;
+    text-align: right;
 }
 
 #live table {
@@ -614,8 +652,6 @@ span#name, span#rund, span#date {
 /*#live td.Class9 {border-right: 6px solid #c0c0c0;}/*silver arrow*/
 /*hass #6c0000, mercedes #00cfba, */
 
-#live #updates {
-}
 
 #live #Message {
     color: rgba(0,0,0,.5);
@@ -635,17 +671,12 @@ span#name, span#rund, span#date {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
- /*   overflow: hidden;
-    padding-bottom: 0;  height of your footer */
     min-height: 100vh; /* will cover the 100% of viewport */
-    display: block;
-/*    position: relative;*/
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
+ /*   overflow: hidden;
+    padding-bottom: 0;  height of your footer 
+    position: relative;*/
 }
 /*
 .page > * {
@@ -675,31 +706,17 @@ span#name, span#rund, span#date {
     border: none;
 }
 .logoNav {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;  
-    -webkit-flex-direction: row;  
-        -ms-flex-direction: row;  
-            flex-direction: row;
+    flex-direction: row;
 }
 /*logo*/
 
 .logo_main {
-    -webkit-flex-grow: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    -webkit-order: 2;
-        -ms-flex-order: 2;
-            order: 2;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    flex-grow: 1;
+    order: 2;
     display: flex;  
-    -webkit-flex-direction: row;  
-        -ms-flex-direction: row;  
-            flex-direction: row;
-    -webkit-justify-content: flex-start;
-        -ms-flex-pack: flex-start;
-            justify-content: flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .logo_image {
@@ -838,27 +855,17 @@ a.main_logo {
 /*navigation*/
 
 .navigation {
-    -webkit-order: 3;
-        -ms-flex-order: 3;
-            order: 3;
+    order: 3;
     text-align: left;
-/*    margin-top: -100px;*/
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    /*    margin-top: -100px;*/
     display: flex;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
     align-self: center;
 }
 
 .navigation ul {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    flex-direction: row;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -895,7 +902,7 @@ a.main_logo {
     padding: 10px;
     font-weight: 700;
     color: #222;
-    background-color: #f0f0f0;
+    background-color: #e8e8e8;
     display: block;
     width: auto;
     /*    overflow: hidden;*/
@@ -926,6 +933,7 @@ a.main_logo {
 }
 
 .home-icon, .race-icon, .live-icon {
+    display: none;
     width: 1.5em;
     height: 1.5em;
     padding: 10px 4px 0 4px;
@@ -980,23 +988,18 @@ a.main_logo {
 .main_content {
 /*    margin-bottom: 50px;    
     overflow-x: auto;
-*/
-    margin-top: 25px;
+    display:table;    fixes not expending to the size of the content (table)*/
+    margin-top: 15px;
     text-align: right;
     width: 100%;
-/*    display:table;    fixes not expending to the size of the content (table)*/
     display: flex;
     flex-direction: column;
     align-content: flex-start;
     text-align: center;
-  flex: 1 0 auto;
-    
+    flex: 1 0 auto;
+    justify-content: flex-start;
+    align-items: center;
 }
-
-/*
-#races .main_content {
-padding-right: 10%;
-}*/
 
 #races .season {
     column-count: 2;
@@ -1031,7 +1034,7 @@ padding-right: 10%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
+    align-self:flex-start;
 }
 
 #home .right {
@@ -1064,12 +1067,8 @@ padding-right: 10%;
 
 .header {
     width: 100%;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;  
-    -webkit-flex-direction: column;  
-        -ms-flex-direction: column;  
-            flex-direction: column;
+    flex-direction: column;
 }
 
 .footer {
@@ -1082,16 +1081,9 @@ padding-right: 10%;
     width: 100%;
     margin-top: 10px;
     border-top: 1px #666 solid;
-    -webkit-align-self:flex-end;
-        -ms-flex-item-align:end;
-            align-self:flex-end;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    align-self:flex-end;
     display: flex;  
-    -webkit-flex-direction: row-reverse;  
-        -ms-flex-direction: row-reverse;  
-            flex-direction: row-reverse;
-    -webkit-flex-shrink: 0;
+    flex-direction: row-reverse;
     flex-shrink: 0;
 }
 
@@ -1101,9 +1093,7 @@ padding-right: 10%;
     font-size: 1em;
     margin: 0;
     padding: 0;
-    -webkit-flex-grow: 2;
-        -ms-flex-positive: 2;
-            flex-grow: 2;
+    flex-grow: 2;
 }
 
 .copyright {
@@ -1205,12 +1195,8 @@ padding-right: 10%;
         margin: 0 auto;
     }*/
 .logoNav {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;  
-    -webkit-flex-direction: column;  
-        -ms-flex-direction: column;  
-            flex-direction: column;
+     display: flex;  
+    flex-direction: column;
 }
     .logo_main {
         order: 1;
@@ -1226,11 +1212,7 @@ padding-right: 10%;
     .navigation ul {
         /*   margin: 0 10px 10px 0;*/
         width: 100%;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
         flex-direction: row;
         justify-content: center;
         margin: 0 auto;
@@ -1318,11 +1300,11 @@ padding-right: 10%;
     }
 
     .navigation a:link, .navigation a:visited {
-        padding: 10px;
+        padding: 5px 10px;
         border-bottom: none;
     }
 
-    .logo li, .css3-blink {
+    .logo li {
         -webkit-transition-property: none !important;
         transition-property: none !important;
         -webkit-transform: none !important;
@@ -1331,31 +1313,6 @@ padding-right: 10%;
         animation: none !important;
     }    
 
-/*
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: #f0f0f0;
-        padding-bottom: 10px;
-    }
-
-    .main_content {
-        margin-top: 170px;
-    }   */ 
-/*    
-    td.rnk_font, th.rnkh_font {
-        border: 1px solid #fff;
-    }
-    
-    #live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
-        background-color: #e0e0e0;
-    }
-    
-    #live tr.rnk_bkcolor:nth-of-type(even), #race tr.rnk_bkcolor:nth-of-type(even){
-        background-color: #f0f0f0;
-    }
-*/    
     #home .left {
         display:none;
     }
@@ -1363,15 +1320,7 @@ padding-right: 10%;
     #home .right{
         width: 100%;
     }
-    
 }
-/*@media (max-width: 731px)        {
-    #races .sport {
-        -webkit-flex: 100%;
-        -ms-flex: 100%;
-        flex: 100%;
-    }
-}*/
 
 @media (max-width: 767px) {
 
@@ -1395,7 +1344,7 @@ padding-right: 10%;
     .big_table {
         font-size: 0.6em;
     }*/
-    h2, li, #live #raceheader h1, .navigation a, #live #Time, #live #categoryOrAll button {
+    h2, li, #live #raceheader h1, .navigation a, #live #categoryOrAll button {
             font-size: 1em;
         }    
     table, .mail, .copyright {
@@ -1408,7 +1357,7 @@ padding-right: 10%;
         height: 16px;
         margin: 0 10px;
     }
-    #live #Title {
+    #live #Title, #live #Time {
         font-size: 0.8em;
     }
     .navigation li {
@@ -1452,148 +1401,77 @@ padding-right: 10%;
 
 @media (min-width: 768px) {
     
-    body#home {
+    body {
         background-image: url("/images/4752751.jpg");
         background-color: #f0f0f0;
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+    }
+    
+    body#home {
+        background-image: url("/images/4752751.jpg");
     }
 
     body#home-english {
         background-image: url("/images/4752751.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#races {
         background-image: url("/images/478466.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;    
     }
     
     body#live {
         background-image: url("/images/10854828.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race {
         background-image: url("/images/4074271.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.enduro {
         background-image: url("/images/enduro.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.motocross {
         background-image: url("/images/motocross.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.supermoto {
         background-image: url("/images/supermoto.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.superbike {
         background-image: url("/images/superbike.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.allmountain {
         background-image: url("/images/allmountain.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.gymkhana {
         background-image: url("/images/gymkhana.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.rally , body#race.baja {
         background-image: url("/images/rally.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.karting {
         background-image: url("/images/kart.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.rallysprint {
         background-image: url("/images/rallysprint.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
     
     body#race.running {
         background-image: url("/images/running.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
 
     body#race.timeattack {
         background-image: url("/images/timeattack.jpg");
-        background-color: #f0f0f0;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
     }
 /*
     #live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
