@@ -383,7 +383,7 @@ span#name, span#rund, span#date {
     position: relative;
     cursor:pointer;
     display: block;
-    margin: 5px;
+    margin: 0 5px;
     padding: 0;
   /*  overflow: hidden;*/
     border-width: 0;
@@ -593,7 +593,7 @@ span#name, span#rund, span#date {
     font-weight: 700;
 }
 #live td.finished {
-    background-image: url("/live/Images/_Stop.png");
+    background-image: url("/live/Images/_CheckeredFlag.png");
     background-position: center center;
     background-size: 50% 50%;
     background-repeat: no-repeat;
