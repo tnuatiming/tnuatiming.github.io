@@ -15,19 +15,26 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
     background:rgba(240,240,240,1);
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     height: 100%;
     width: 100%;
+    font-size: 16px;
+    direction: rtl;
+    line-height: 1.5;
+    text-align: center;
+    font-family: 'Noto Sans Hebrew', 'Open Sans Hebrew', sans-serif;
     -webkit-font-smoothing: antialiased;
+    vertical-align: baseline;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     margin: 0;
     padding: 0;
+    border: 0;
     display: table;  /*  fixes html/body not expending to the size of the content (table)*/
 /*    position: relative;*/
 }
@@ -39,12 +46,6 @@ body {
     padding: 0;
     margin: 0;
 /*    position: relative;*/
-    direction: rtl;
-    line-height: 1.5;
-    text-align: center;
-    font-family: 'Noto Sans Hebrew', 'Open Sans Hebrew', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    vertical-align: baseline;
     border: 0;
 /*    min-width: -webkit-min-content;
     min-width: -moz-min-content;
@@ -76,6 +77,10 @@ h1 {
 
 #races h1 {
     padding-left: 40%;
+}
+
+#races h2 {
+    margin: 0 10px 0 0;
 }
 
 #races p {
@@ -119,7 +124,7 @@ h3 {
     color: #222;
     text-align: right;
     font-size: 1.2em;
-    padding: 0 10px;
+    margin-right: 10px;
 }
 
 img {
@@ -136,6 +141,7 @@ ul {
     color: #222;
     text-align: right;
     list-style-type: none;
+    margin-right: 20px;
 }
 
 li {
@@ -149,6 +155,7 @@ li {
 
 .history {
     align-self:flex-start;
+    margin-right: 20px;
 }
 
 ul.history li {
@@ -254,7 +261,6 @@ tr.rnkh_bkcolor {
 }
 
 #race .erlier_races {
-    margin-top: 20px;
     align-self:flex-start;
 }
 
@@ -1326,7 +1332,7 @@ a.main_logo {
 
 @media (max-width: 767px) {
 
-    body {
+    html {
         font-size: calc(1vw + 1vh + .5vmin);
         line-height: calc(1vw + 1vh + 2vmin);
 /*        font-size: calc(16px + 1vw);
