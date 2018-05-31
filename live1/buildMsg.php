@@ -10,19 +10,29 @@
 $msg = htmlspecialchars($_POST['message']);
 date_default_timezone_set('Asia/Jerusalem');
 $time = date("H:i");
- 
+$blink = "";    
+$timeMsg = "";
+$style = "";
+
+if ($_POST['blink']) {
+    $blink = ' class="css3-blink"';
+}
+
+if ($_POST['time']) {
+    $timeMsg = '<span class="msgTime" style="font-weight: 700;">'.$time.' - </span>';
+}
+
+if ($_POST['red']) {
+    $style = ' style="background-color:red; color:white;"';
+}
+
 
 if (empty($msg)) {
     $html = '&nbsp;';
     echo "message cleared";
 } else {
-    if ($_POST['time']) {
-        $html = '<p><span class="msgTime" style="font-weight: 700;">'.$time.'</span> - <span class="msgInfo">'.$msg.'</span></p>';
-    echo "uploading message: ".$html;
-    } else {
-        $html = '<p></span><span class="msgInfo">'.$msg.'</span></p>';
+        $html = '<p'.$blink.$style.'>'.$timeMsg.'<span class="msgInfo">'.$msg.'</span></p>';
         echo "uploading message: ".$html;
-    }
 }
 
 $myfile = fopen("uploadMsg.txt", "w") or die("Unable to open file!"); // make the file
