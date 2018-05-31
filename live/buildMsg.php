@@ -16,8 +16,13 @@ if (empty($msg)) {
     $html = '&nbsp;';
     echo "message cleared";
 } else {
-    $html = '<p><span class="msgTime" style="font-weight: 700;">'.$time.'</span> - <span class="msgInfo">'.$msg.'</span></p>';
+    if ($_POST['time']) {
+        $html = '<p><span class="msgTime" style="font-weight: 700;">'.$time.'</span> - <span class="msgInfo">'.$msg.'</span></p>';
     echo "uploading message: ".$html;
+    } else {
+        $html = '<p></span><span class="msgInfo">'.$msg.'</span></p>';
+        echo "uploading message: ".$html;
+    }
 }
 
 $myfile = fopen("uploadMsg.txt", "w") or die("Unable to open file!"); // make the file
