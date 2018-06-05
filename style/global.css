@@ -124,7 +124,7 @@ h3 {
     color: #222;
     text-align: right;
     font-size: 1.2em;
-    margin-right: 10px;
+    margin: 10px;
 }
 
 img {
@@ -360,6 +360,7 @@ span#name, span#rund, span#date {
     vertical-align: middle;
     margin: auto 5px;
     padding: 0;
+    display:none;
 }
 
 #live #updates {
@@ -1043,6 +1044,7 @@ a.main_logo {
     flex-direction: row;
     justify-content: space-between;
     align-self:flex-start;
+    margin: 10px;
 }
 
 #home .right {
