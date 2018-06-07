@@ -769,7 +769,7 @@
                 
                 
             // start building the table    
-         NouveauTexte += '<table class="line_color' + tableClass + '">' + addHeaderLine;
+         NouveauTexte += '<table class="line_color' + tableClass + '">';
                // sort the array to get the postions of the competitors, by category, laps and finalt time
                  if (useCategory == "no") {
                     allArray.sort(function(a, b){return b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
@@ -835,7 +835,11 @@
             opt3 = allArray[l][key];
        // console.log("key: " + key + "value:" + opt3 + '\r\n');
 
-
+            if (key == "start" && allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+                NouveauTexte += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + addHeaderLine;
+            } else if (key == "start" && allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+                NouveauTexte += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + addHeaderLine;
+            }
 
             if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != 'undefined' && key != null && key != "&nbsp;") {
                 if (key == "Id_Numero") {
@@ -884,7 +888,7 @@
 
  //   dddd = ffff + gggg;
  //   console.log(ms2TimeString(dddd)); // milliseconds
-   //     console.log(NouveauTexte);
+  //      console.log(NouveauTexte);
 
     return NouveauTexte
 
