@@ -200,16 +200,17 @@ table.no_num_color {
 /*    text-shadow: 0 1px 2px white;*/
 }
 
-#live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
+#race tr.rnk_bkcolor:nth-of-type(odd) {
     background: rgba(208,208,208,0.7);
 }
 
-#live tr.rnk_bkcolor:nth-of-type(even), #race tr.rnk_bkcolor:nth-of-type(even) {
+#race tr.rnk_bkcolor:nth-of-type(even) {
     background: rgba(187,187,187,0.7);
 }
 
-#live tr.rnk_bkcolor:nth-of-type(odd):hover, #live tr.rnk_bkcolor:nth-of-type(even):hover ,#race tr.rnk_bkcolor:nth-of-type(odd):hover, #race tr.rnk_bkcolor:nth-of-type(even):hover {
+#live tr.rnk_bkcolor:hover, #race tr.rnk_bkcolor:hover {
     background: #ffcc33;
+    z-index: 1000;
 }
 
 #race td.subtitle_font {
@@ -376,6 +377,10 @@ span#name, span#rund, span#date {
     padding: 0 5px;
 }
 
+#live .msgInfo, #live .msgTime{
+    font-weight: 700;
+}
+
 #live #categoryOrAll button {
     font-size: 1em;
     padding: 0 10px;
@@ -518,10 +523,6 @@ span#name, span#rund, span#date {
 #live .EvenRow {
     background-color:  rgba(187,187,187,0.7);
     color: #111;
-}
-
-#live tr.OddRow:hover, #live tr.EvenRow:hover {
-    background: #fc3;
 }
 
 #live td.highlight {

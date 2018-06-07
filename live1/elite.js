@@ -2,6 +2,7 @@
 <!-- 20180522 - add fades and competitor info on arrows display -->
 <!-- 20180523 - add competitor number color/background according to category -->
 <!-- 20180527 - add message uploading -->
+<!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
 
 <!-- tag heuer live timing -->
 
@@ -19,6 +20,8 @@
     
     var useCategory = "yes";
     var tableClass = " fadeIn";
+        
+    var text2;
 
     function category(choice){
         
@@ -35,14 +38,15 @@
 
         tableClass = " fadeIn"; // make the table fadeIn on change
         
-        Load('p1.html', 'result');
+        Load('https://tnuatiming.com/live1/livea/p1.html', 'result');
     };
 
     function Load(url, target) {
+        live2('https://tnuatiming.com/live1/liveb/p1.html')
         var xhr;
         var fct;
-        if (UrlChange) url = UrlRefresh;
-        else UrlRefresh = url;
+        if (UrlChange) url = 'https://tnuatiming.com/live1/livea/p1.html';
+        else UrlRefresh = 'https://tnuatiming.com/live1/livea/p1.html';
         UrlChange = 0;
         if (TimerLoad) clearTimeout(TimerLoad);
         try {
@@ -68,14 +72,30 @@
             }
         };
         
-        xhr.open("GET", url + "?r=" + Math.random(), true);
+        xhr.open("GET", 'https://tnuatiming.com/live1/livea/p1.html' + "?r=" + Math.random(), true);
         xhr.send(null);
         fct = function() {
-            Load(url, target)
+            Load('https://tnuatiming.com/live1/livea/p1.html', target)
         };
         populatePre('uploadMsg.txt'); // upload message
+        live2('https://tnuatiming.com/live1/liveb/p1.html');
         TimerLoad = setTimeout(fct, Rafraichir)
     };
+
+    function live2(url) {
+
+        var xhr2 = new XMLHttpRequest();
+        xhr2.onreadystatechange = function () {
+            if (xhr2.readyState == 4 && xhr2.status == 200) {
+                text2 = xhr2.responseText;
+            }
+        };
+    //    xhr2.open("GET", url + Math.random(), true);
+        xhr2.open('GET', url, true);
+        xhr2.send();
+    };
+
+
 
     // fn to upload messages
     function populatePre(url) {
@@ -110,6 +130,7 @@
         competitorLaps = 0;
         var addHeaderLine = ""; // header text
         var addLine = ""; // curent competitor text
+        var allArray = new Array();
         
         Texte = Texte.split('<table'); // split the text to title/time and the table
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -165,11 +186,11 @@
                     if (useCategory == "yes") {
 
                         addHeaderLine = headerLineArray["start"] 
-                        addHeaderLine += headerLineArray["Id_Arrow"] 
+                      //  addHeaderLine += headerLineArray["Id_Arrow"] 
 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_MeilleurTour" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -179,11 +200,11 @@
                     } else if (useCategory == "no") {
 
                         addHeaderLine = headerLineArray["start"] 
-                        addHeaderLine += headerLineArray["Id_Arrow"] 
+                  //      addHeaderLine += headerLineArray["Id_Arrow"] 
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_MeilleurTour" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -373,7 +394,7 @@
                     if (useCategory == "yes") {
 
                         addLine = lineArray["start"] 
-                        addLine += lineArray["Id_Arrow"] 
+                //        addLine += lineArray["Id_Arrow"] 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
                             if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image" ) {
@@ -386,7 +407,7 @@
                     } else if (useCategory == "no") {
 
                         addLine = lineArray["start"] 
-                        addLine += lineArray["Id_Arrow"] 
+                   //     addLine += lineArray["Id_Arrow"] 
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
@@ -398,7 +419,21 @@
                         }
                         
                     }
-                                          
+                     
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+
+                                lineArray[prototypeLineArray[y]] = lineArray[prototypeLineArray[y]].substring(lineArray[prototypeLineArray[y]].indexOf(">")+1,lineArray[prototypeLineArray[y]].lastIndexOf("<")).trim();
+                        }
+                     
+                     if (competitorNumber > 0) {
+                         
+                          if (lineArray["Id_TpsCumule"] != "-") {
+                         lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);
+                          }
+                         
+                        allArray.push(lineArray); 
+                     }
+                     
                     lineArray = [];
                     td = 1; // zero the counter
                     competitorPosition = 0;
@@ -423,26 +458,456 @@
         //console.log(resultsByCategory);
         
 
-        var sortedObj = sortObjKeysAlphabetically(resultsByCategory); // sort by category name
-        NouveauTexte += '<table class="line_color' + tableClass + '">\r\n'
-        for(var key in sortedObj) {
-            opt3 = sortedObj[key];
-            if (opt3 != "") {
+    //    var sortedObj = sortObjKeysAlphabetically(resultsByCategory); // sort by category name
+    //    NouveauTexte += '<table class="line_color' + tableClass + '">\r\n'
+    //    for(var key in sortedObj) {
+    //        opt3 = sortedObj[key];
+     //       if (opt3 != "") {
             //    opt1 = refactor(opt1); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
-                if (key == 'undefined' || catName == null || catName == "&nbsp;") {
-                    key = "כללי";
+    //            if (key == 'undefined' || catName == null || catName == "&nbsp;") {
+    //                key = "כללי";
+    //            }
+    //            NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + addHeaderLine + '\r\n' + opt3.replace(/undefined/ig, "") + '\r\n';
+    //        }
+    //    }    
+    //    NouveauTexte += "</table>";
+
+     //   tableClass = ""; // remove the fadeIn after first load
+                     
+        
+
+        
+        
+        
+          //      console.log(text2);
+
+        
+        
+        
+        
+        text2 = text2.split('<table'); // split the text to title/time and the table
+        text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(text2[1]);
+        Lignes = text2[1].split("\r\n");
+   //     console.log(Lignes.length);
+
+        if  (Lignes.length > 5) { // check to see if we have more the 5 lines which mean we have a full page from elite and not one edited for display
+
+
+        for (i = 0; i < Lignes.length; i++) { 
+        
+
+                
+                            if (Lignes[i].substring(0, 3) == "<tr") {
+                                    
+                    lineArray[prototypeLineArray[0]] = Lignes[i].replace(' class="', ' class="rnk_bkcolor ');
+                    
+                    notHeaderTR = 1; // mark that we inside a competitor TR (not header TR)
+                    
+                } else if (Lignes[i].substring(0, 4) == "</tr") {
+                
+                    lineArray[prototypeLineArray[prototypeLineArray.length - 1]] = Lignes[i];  // add end TR line
+
+                    notHeaderTR = 0; // mark that we finished the competitor TR (other then header TR)
+
+                } else if (Lignes[i].substring(0, 3) == "<td" && notHeaderTR == 1) { //check if inside a TR which is not the header TR
+
+                    if (prototypeLineArray[td] == 'Id_Numero') { // change number cell css
+                    
+                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+
+                        // removed for competitor number category color                        
+                      //  lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="highlight rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+
+                    } else {
+                        lineArray[prototypeLineArray[td]] = Lignes[i].replace(' class="', ' class="rnk_font ').replace('>00:', '>'); // clean TD and remove the first 00: (hours) if present
+                        
+                    }
+                    
+                    td += 1;
+
+                } 
+
+                if (notHeaderTR == 0) { // start building the competitor text
+
+                  //  lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
+                    lineArray["Id_Arrow"] = '<td class="rnk_font ">&nbsp;</td>';
+
+                    if (useCategory == "yes" && lineArray["Id_Categorie"]) {
+
+                        catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
+                    }
+
+                    // color competitor number according to category
+                    if (lineArray["Id_Categorie"]) {
+
+                        catName1 = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
+                    }
+                    
+                    if (lineArray["Id_Numero"]) { 
+                        competitorNumber = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+
+                        if (catName1.toUpperCase().includes("E1") || catName1.toUpperCase().includes("MX2") || catName1.toUpperCase().includes("רוקיז")) {
+                            
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blackCat ').replace(/Class\d+/, '');    
+                        
+                        } else if (catName1.toUpperCase().includes("E2")) {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="redCat ').replace(/Class\d+/, '');    
+                            
+                        } else if (catName1.toUpperCase().includes("E3") || catName1.toUpperCase().includes("פתוחה")) {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="yellowCat ').replace(/Class\d+/, '');    
+                            
+                        } else if (catName1.toUpperCase().includes("C1") || catName1.toUpperCase().includes("C2") || catName1.toUpperCase().includes("C3") || catName1.toUpperCase().includes("עממית")) {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="greenCat ').replace(/Class\d+/, '');    
+                            
+                        } else if (catName1.toUpperCase().includes("סניור") || catName1.toUpperCase().includes("נשים")) {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="pinkCat ').replace(/Class\d+/, '');    
+                            
+                        } else if (catName1.toUpperCase().includes("סופר ג'וניור")) {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blueCat ').replace(/Class\d+/, '');    
+                            
+                        } else if (catName1.toUpperCase().includes("ג'וניור")) {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="orangeCat ').replace(/Class\d+/, '');    
+                            
+                        } else if (catName1.toUpperCase().includes("מתחילים") || catName1.toUpperCase().includes("MX1")) {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="whiteCat ').replace(/Class\d+/, '');    
+                            
+                        } else {
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="highlight ');    
+                            
+                        }
+                        
+                        
+                        
+                        
+                        
+                    }
+
+                    if (lineArray["Id_NbTour"]) {
+                        competitorLaps = lineArray["Id_NbTour"].substring(lineArray["Id_NbTour"].indexOf(">")+1,lineArray["Id_NbTour"].lastIndexOf("<")); // get the time value
+
+                             if (!(lineArray["Id_Image"].includes("_CheckeredFlag"))) {
+
+                                lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>'; // fadeOut green dot if info changed
+
+                            }
+                        
+                        if (competitorLaps != lapsArray[competitorNumber]) { 
+                            
+
+                            lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                       
+                        }
+                        
+                        lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
+                    }
+                    
+                    // position change arrow prep
+                    if (lineArray["Id_Position"] && useCategory == "no") { 
+                            competitorPosition = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+                 
+                    if (lineArray["Id_PositionCategorie"] && useCategory == "yes") { 
+                            competitorPosition = lineArray["Id_PositionCategorie"].substring(lineArray["Id_PositionCategorie"].indexOf(">")+1,lineArray["Id_PositionCategorie"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
+                    }
+                    
+                    
+                    if (competitorPosition > 0 && competitorNumber > 0 && lineArray["Id_NbTour"]) { // position change arrow calc
+                    
+                        if (positionArray[competitorNumber]) {
+
+                            if (positionArray[competitorNumber] < competitorPosition) {
+                                lineArray["Id_Arrow"] = '<td class="red rnk_font ">&#9660;</td>';
+                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                      
+                            } else if (positionArray[competitorNumber] > competitorPosition) {
+                                lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
+                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line
+                            } else {
+                           }
+                        }
+                        // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
+                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
+                    }
+                    
+                    if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
+
+                        if (lineArray["Id_Image"].includes("_Status10")) {
+                            
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
+
+                        } else if (lineArray["Id_Image"].includes("_Status11")) {
+                        
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
+                            
+                        } else if (lineArray["Id_Image"].includes("_Status12")) {
+                        
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
+                            
+                        } else if (lineArray["Id_Image"].includes("_Status2")) {
+                        
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>NQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
+                            
+                        } else if (lineArray["Id_Image"].includes("_Status")) {
+                        
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
+                            
+                        } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
+
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(' class="', ' class="finished ');
+                            
+                        } else if (lineArray["Id_Image"].includes("_MaximumTime")) {
+
+                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9201;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
+                            
+                        } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
+
+                            
+                        } else if (lineArray["Id_Image"].includes("_MinusPosition")) {
+
+                            
+                        } else if (lineArray["Id_Image"].includes("_PlusPosition")) {
+
+                            
+                        }
+                    }
+                                        
+                    // console.log(lineArray);
+                     
+                     // assamble the competitor text
+                    if (useCategory == "yes") {
+
+                        addLine = lineArray["start"] 
+                 //       addLine += lineArray["Id_Arrow"] 
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+                            
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image" ) {
+                                
+                                addLine += lineArray[prototypeLineArray[y]];
+
+                            }
+                        }
+
+                    } else if (useCategory == "no") {
+
+                        addLine = lineArray["start"] 
+                //        addLine += lineArray["Id_Arrow"] 
+                        
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+                            
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image" ) {
+                                
+                                addLine += lineArray[prototypeLineArray[y]];
+
+                            }
+                        }
+                        
+                    }
+                     
+                        for (var y = 0; y < prototypeLineArray.length; y++) {
+
+                                lineArray[prototypeLineArray[y]] = lineArray[prototypeLineArray[y]].substring(lineArray[prototypeLineArray[y]].indexOf(">")+1,lineArray[prototypeLineArray[y]].lastIndexOf("<")).trim();
+                        }
+                     
+                          if (lineArray["Id_TpsCumule"] != "-") {
+                         lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);
+                          }
+                         
+                         for (var h = 0; h < allArray.length; h++) {
+             //           allArray[h]["Id_Arrow"] = "-";
+
+                            // add the laps and time from the 2 speicals
+                          if (lineArray["Id_Numero"] == allArray[h]["Id_Numero"]) {
+                              // update last lap ( if laps even use the 2 speical lap)
+                              if (allArray[h]["Id_NbTour"] % 2 == 0 && allArray[h]["Id_NbTour"] > 0) {
+                                  
+                                  allArray[h]["Id_TpsTour"] = lineArray["Id_TpsTour"]
+                              }
+                                                            
+ 
+                              if (allArray[h]["Id_TpsCumule"] !="-" && lineArray["Id_TpsCumule"] !="-") {
+                              allArray[h]["Id_TpsCumule"] = allArray[h]["Id_TpsCumule"] + lineArray["Id_TpsCumule"];
+
+                            }
+                              
+                              if (allArray[h]["Id_NbTour"] !="-" && lineArray["Id_NbTour"] !="-") {
+                              allArray[h]["Id_NbTour"] = Number(allArray[h]["Id_NbTour"]) + Number(lineArray["Id_NbTour"]);
+                              }
+                              
+                              
+                          }
+                             
+                        }
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                     
+                    lineArray = [];
+                    td = 1; // zero the counter
+                    competitorPosition = 0;
+                    competitorNumber = 0;
+                    competitorLaps = 0;
+                    // adding the finished competitor text to the array (by category)
+                    if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
+                        opt3 = addLine;
+                    } else {
+                        opt3 = resultsByCategory[catName] + addLine;
+                    }
+                    
+                    resultsByCategory[catName] = opt3;
+                    
+                    addLine = "";
+                    opt3 = "";
+ 
+                } // end notHeaderTR == 0
+                 
+        }        
+                
+        }
+                
+                
+            // start building the table    
+         NouveauTexte += '<table class="line_color' + tableClass + '">' + addHeaderLine;
+               // sort the array to get the postions of the competitors, by category, laps and finalt time
+                 if (useCategory == "no") {
+                    allArray.sort(function(a, b){return b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
+                } else if (useCategory == "yes") {
+                    allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
                 }
-                NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + addHeaderLine + '\r\n' + opt3.replace(/undefined/ig, "") + '\r\n';
+
+                // fix the position fields of the competitors
+                            var m = 0;
+                            var prevCompCat = ""
+                            
+                             for (var l = 0; l < allArray.length; l++) {
+
+
+                 if (useCategory == "no") {
+                                allArray[l]["Id_Position"] = l+1;
+                 } else if (useCategory == "yes") {
+ 
+                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["Id_Position"] = m;
+                 }
+
+                           if (allArray[l]["Id_Position"] == 1) {
+                                var leaderTime = allArray[l]["Id_TpsCumule"];
+                                var leaderLaps = allArray[l]["Id_NbTour"];
+                            }
+
+
+
+               //                 if ((allArray[l]["Id_Position"]) % 2 == 0) {
+                                if (l % 2 == 0) {
+                                    allArray[l]["start"] = '<tr class="fadeIn rnk_bkcolor EvenRow">';
+                                } else {
+                                    allArray[l]["start"] = '<tr class="fadeIn rnk_bkcolor OddRow">';
+                                }
+                                    // fix the diff fields of the competitors
+                                var competitorLaps = allArray[l]["Id_NbTour"];
+
+                                if (competitorLaps < leaderLaps && competitorLaps > 0) {
+                                    allArray[l]["Id_Ecart1er"] = (leaderLaps - competitorLaps) + " הקפות";
+                                } else if (competitorLaps == leaderLaps) {
+                                    var competitorTime = allArray[l]["Id_TpsCumule"];
+                                    if (competitorTime != leaderTime) {
+                                    allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
+                                    } else {
+                                    allArray[l]["Id_Ecart1er"] = "-";
+                                    }
+                                } else {
+                                    allArray[l]["Id_Ecart1er"] = "-";
+                                }
+                            // convert back to time
+                            if (allArray[l]["Id_TpsCumule"] != "-") {  
+                                allArray[l]["Id_TpsCumule"] = ms2TimeString(allArray[l]["Id_TpsCumule"]);
+                            }
+
+                                
+        for(var key in allArray[l]) {
+            opt3 = allArray[l][key];
+       // console.log("key: " + key + "value:" + opt3 + '\r\n');
+
+
+
+            if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != 'undefined' && key != null && key != "&nbsp;") {
+                if (key == "Id_Numero") {
+                    NouveauTexte += '<td class="rnk_font highlight ">' + opt3 + '</td>';
+                } else if (key == "start" || key == "finish") {
+
+                    NouveauTexte +=  opt3;
+                } else {
+                    NouveauTexte += '<td class="rnk_font ">' + opt3 + '</td>';
+                }
+                
+                
+                
             }
         }    
+                               
+                        }
+     //   console.log(allArray);
+
+    
+    
+
+
+
         NouveauTexte += "</table>";
 
         tableClass = ""; // remove the fadeIn after first load
+ 
+        
+        
+        
+        
+        
+        
+        
+        //  console.log("53 " + allArray[53]["Id_Position"]);
+  //  console.log("14 " + allArray[14]["Id_Categorie"]);
+
+ //   ffff = allArray[707]["Id_TpsTour"].substring(allArray[707]["Id_TpsTour"].indexOf(">")+1,allArray[707]["Id_TpsTour"].lastIndexOf("<")).trim();
+ //   console.log("707 " + ffff);
+ //   gggg = allArray[53]["Id_TpsTour"].substring(allArray[53]["Id_TpsTour"].indexOf(">")+1,allArray[53]["Id_TpsTour"].lastIndexOf("<")).trim();
+  //  console.log(timeString2ms(gggg));
+  //  gggg = timeString2ms(gggg);
+ //   console.log(timeString2ms(ffff));
+ //   ffff = timeString2ms(ffff);
+
+ //   dddd = ffff + gggg;
+ //   console.log(ms2TimeString(dddd)); // milliseconds
+   //     console.log(NouveauTexte);
 
     return NouveauTexte
 
     };
         
+    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
+        return a=a.split('.'), // optimized
+        b=a[1]*1||0, // optimized
+        a=a[0].split(':'),
+        b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+    };
+
+    function ms2TimeString(a,k,s,m,h){
+        return k=a%1e3, // optimized by konijn
+        s=a/1e3%60|0,
+        m=a/6e4%60|0,
+        h=a/36e5%24|0,
+        (h?(h<10?'0'+h:h)+':':'')+ // optimized
+        (m<10?0:'')+m+':'+  // optimized
+        (s<10?0:'')+s+'.'+ // optimized
+        (k<100?k<10?'00':0:'')+k // optimized
+    };
+
     function sortObjKeysAlphabetically(obj) {
         var ordered = {};
         Object.keys(obj).sort().forEach(function(key) {

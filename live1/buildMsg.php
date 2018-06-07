@@ -19,7 +19,7 @@ if ($_POST['blink']) {
 }
 
 if ($_POST['time']) {
-    $timeMsg = '<span class="msgTime" style="font-weight: 700;">'.$time.' - </span>';
+    $timeMsg = '<span class="msgTime">'.$time.' - </span>';
 }
 
 if ($_POST['red']) {
