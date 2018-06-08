@@ -120,11 +120,10 @@
         HeaderTR = 0; // 1 if inside the header TR
         var catName = "&nbsp;"; //competitor category
         var catName1 = "&nbsp;"; //competitor category
-        var resultsByCategory = [];
         var headerLineArray = []; // header used for building the final text
         var prototypeLineArray = []; // array with all line ID in order {0:start, 1:Id_Position, ......}
         var lineArray = []; // array from the curent competitor
-        td = 1;
+        td = 1; // starts with 1 beacuse 0 is "start"
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
@@ -190,7 +189,7 @@
 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_MeilleurTour" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_MeilleurTour" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Image") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -204,7 +203,7 @@
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
-                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_MeilleurTour" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image") {
+                            if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_MeilleurTour" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Image") {
                                 
                                 addHeaderLine += headerLineArray[prototypeLineArray[y]];
 
@@ -247,57 +246,9 @@
                 } 
 
                 if (notHeaderTR == 0) { // start building the competitor text
-
-                  //  lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
-                    lineArray["Id_Arrow"] = '<td class="rnk_font ">&nbsp;</td>';
-
-                    if (useCategory == "yes" && lineArray["Id_Categorie"]) {
-
-                        catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
-                    }
-
-                    // color competitor number according to category
-                    if (lineArray["Id_Categorie"]) {
-
-                        catName1 = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
-                    }
                     
                     if (lineArray["Id_Numero"]) { 
                         competitorNumber = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-
-                        if (catName1.toUpperCase().includes("E1") || catName1.toUpperCase().includes("MX2") || catName1.toUpperCase().includes("רוקיז")) {
-                            
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blackCat ').replace(/Class\d+/, '');    
-                        
-                        } else if (catName1.toUpperCase().includes("E2")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="redCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("E3") || catName1.toUpperCase().includes("פתוחה")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="yellowCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("C1") || catName1.toUpperCase().includes("C2") || catName1.toUpperCase().includes("C3") || catName1.toUpperCase().includes("עממית")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="greenCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("סניור") || catName1.toUpperCase().includes("נשים")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="pinkCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("סופר ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blueCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="orangeCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("מתחילים") || catName1.toUpperCase().includes("MX1")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="whiteCat ').replace(/Class\d+/, '');    
-                            
-                        } else {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="highlight ');    
-                            
-                        }
-                        
-                        
-                        
-                        
                         
                     }
 
@@ -319,101 +270,26 @@
                         lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
                     }
                     
-                    // position change arrow prep
-                    if (lineArray["Id_Position"] && useCategory == "no") { 
-                            competitorPosition = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
-                 
-                    if (lineArray["Id_PositionCategorie"] && useCategory == "yes") { 
-                            competitorPosition = lineArray["Id_PositionCategorie"].substring(lineArray["Id_PositionCategorie"].indexOf(">")+1,lineArray["Id_PositionCategorie"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
-                    
-                    
-                    if (competitorPosition > 0 && competitorNumber > 0 && lineArray["Id_NbTour"]) { // position change arrow calc
-                    
-                        if (positionArray[competitorNumber]) {
-
-                            if (positionArray[competitorNumber] < competitorPosition) {
-                                lineArray["Id_Arrow"] = '<td class="red rnk_font ">&#9660;</td>';
-                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                      
-                            } else if (positionArray[competitorNumber] > competitorPosition) {
-                                lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
-                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line
-                            } else {
-                           }
-                        }
-                        // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
-                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
-                    }
-                    
-                    if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
-
-                        if (lineArray["Id_Image"].includes("_Status10")) {
-                            
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-
-                        } else if (lineArray["Id_Image"].includes("_Status11")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_Status12")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_Status2")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>NQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_Status")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
-
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(' class="', ' class="finished ');
-                            
-                        } else if (lineArray["Id_Image"].includes("_MaximumTime")) {
-
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9201;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
-
-                            
-                        } else if (lineArray["Id_Image"].includes("_MinusPosition")) {
-
-                            
-                        } else if (lineArray["Id_Image"].includes("_PlusPosition")) {
-
-                            
-                        }
-                    }
                                         
                     // console.log(lineArray);
                      
                      // assamble the competitor text
                     if (useCategory == "yes") {
-
-                        addLine = lineArray["start"] 
-                //        addLine += lineArray["Id_Arrow"] 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
                             if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image" ) {
                                 
-                                addLine += lineArray[prototypeLineArray[y]];
 
                             }
                         }
 
                     } else if (useCategory == "no") {
 
-                        addLine = lineArray["start"] 
-                   //     addLine += lineArray["Id_Arrow"] 
                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
                             if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image" ) {
                                 
-                                addLine += lineArray[prototypeLineArray[y]];
 
                             }
                         }
@@ -439,45 +315,12 @@
                     competitorPosition = 0;
                     competitorNumber = 0;
                     competitorLaps = 0;
-                    // adding the finished competitor text to the array (by category)
-                    if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
-                        opt3 = addLine;
-                    } else {
-                        opt3 = resultsByCategory[catName] + addLine;
-                    }
-                    
-                    resultsByCategory[catName] = opt3;
-                    
-                    addLine = "";
-                    opt3 = "";
  
                 } // end notHeaderTR == 0
             }// end other lines
         }  // end for
         } // end if check for more the 5 lines
-        //console.log(resultsByCategory);
-        
-
-    //    var sortedObj = sortObjKeysAlphabetically(resultsByCategory); // sort by category name
-    //    NouveauTexte += '<table class="line_color' + tableClass + '">\r\n'
-    //    for(var key in sortedObj) {
-    //        opt3 = sortedObj[key];
-     //       if (opt3 != "") {
-            //    opt1 = refactor(opt1); // re issue pos number in category, comment out line if not needed (for ex: when you get the cat pos from elite live).
-    //            if (key == 'undefined' || catName == null || catName == "&nbsp;") {
-    //                key = "כללי";
-    //            }
-    //            NouveauTexte += '<td colspan="99" class="title_font">' + key + '</td>\r\n' + addHeaderLine + '\r\n' + opt3.replace(/undefined/ig, "") + '\r\n';
-    //        }
-    //    }    
-    //    NouveauTexte += "</table>";
-
-     //   tableClass = ""; // remove the fadeIn after first load
-                     
-        
-
-        
-        
+         
         
           //      console.log(text2);
 
@@ -530,58 +373,11 @@
 
                 if (notHeaderTR == 0) { // start building the competitor text
 
-                  //  lineArray["Id_Arrow"] = '<td class="green fadeOut rnk_font ">&#9679;</td>';
-                    lineArray["Id_Arrow"] = '<td class="rnk_font ">&nbsp;</td>';
-
-                    if (useCategory == "yes" && lineArray["Id_Categorie"]) {
-
-                        catName = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
-                    }
-
-                    // color competitor number according to category
-                    if (lineArray["Id_Categorie"]) {
-
-                        catName1 = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
-                    }
-                    
                     if (lineArray["Id_Numero"]) { 
                         competitorNumber = lineArray["Id_Numero"].substring(lineArray["Id_Numero"].indexOf(">")+1,lineArray["Id_Numero"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-
-                        if (catName1.toUpperCase().includes("E1") || catName1.toUpperCase().includes("MX2") || catName1.toUpperCase().includes("רוקיז")) {
-                            
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blackCat ').replace(/Class\d+/, '');    
-                        
-                        } else if (catName1.toUpperCase().includes("E2")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="redCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("E3") || catName1.toUpperCase().includes("פתוחה")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="yellowCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("C1") || catName1.toUpperCase().includes("C2") || catName1.toUpperCase().includes("C3") || catName1.toUpperCase().includes("עממית")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="greenCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("סניור") || catName1.toUpperCase().includes("נשים")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="pinkCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("סופר ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blueCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="orangeCat ').replace(/Class\d+/, '');    
-                            
-                        } else if (catName1.toUpperCase().includes("מתחילים") || catName1.toUpperCase().includes("MX1")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="whiteCat ').replace(/Class\d+/, '');    
-                            
-                        } else {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="highlight ');    
-                            
-                        }
-                        
-                        
-                        
-                        
                         
                     }
+           
 
                     if (lineArray["Id_NbTour"]) {
                         competitorLaps = lineArray["Id_NbTour"].substring(lineArray["Id_NbTour"].indexOf(">")+1,lineArray["Id_NbTour"].lastIndexOf("<")); // get the time value
@@ -601,101 +397,28 @@
                         lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
                     }
                     
-                    // position change arrow prep
-                    if (lineArray["Id_Position"] && useCategory == "no") { 
-                            competitorPosition = lineArray["Id_Position"].substring(lineArray["Id_Position"].indexOf(">")+1,lineArray["Id_Position"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
-                 
-                    if (lineArray["Id_PositionCategorie"] && useCategory == "yes") { 
-                            competitorPosition = lineArray["Id_PositionCategorie"].substring(lineArray["Id_PositionCategorie"].indexOf(">")+1,lineArray["Id_PositionCategorie"].lastIndexOf("<")).replace(/\D/i, '').trim();  // get the position value and clean penalty indicator
-                    }
-                    
-                    
-                    if (competitorPosition > 0 && competitorNumber > 0 && lineArray["Id_NbTour"]) { // position change arrow calc
-                    
-                        if (positionArray[competitorNumber]) {
 
-                            if (positionArray[competitorNumber] < competitorPosition) {
-                                lineArray["Id_Arrow"] = '<td class="red rnk_font ">&#9660;</td>';
-                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line                      
-                            } else if (positionArray[competitorNumber] > competitorPosition) {
-                                lineArray["Id_Arrow"] = '<td class="green rnk_font ">&#9650;</td>';
-                                lineArray["start"] = lineArray["start"].replace(' class="', ' class="fadeIn '); // blink the competitor line
-                            } else {
-                           }
-                        }
-                        // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
-                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
-                    }
-                    
-                    if (lineArray["Id_Image"]) { // clean the image (competitor info) TD
-
-                        if (lineArray["Id_Image"].includes("_Status10")) {
-                            
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNF<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-
-                        } else if (lineArray["Id_Image"].includes("_Status11")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DSQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_Status12")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>DNS<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_Status2")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>NQ<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_Status")) {
-                        
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9679;<').replace(' class="', ' class="orange ').replace(/fadeOut|green|red|black/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_CheckeredFlag")) {
-
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(' class="', ' class="finished ');
-                            
-                        } else if (lineArray["Id_Image"].includes("_MaximumTime")) {
-
-                            lineArray["Id_Arrow"] = lineArray["Id_Arrow"].replace(/>.+</i, '>&#9201;<').replace(' class="', ' class="black ').replace(/fadeOut|green|red|orange/ig, '');
-                            
-                        } else if (lineArray["Id_Image"].includes("_TrackPassing")) {
-
-                            
-                        } else if (lineArray["Id_Image"].includes("_MinusPosition")) {
-
-                            
-                        } else if (lineArray["Id_Image"].includes("_PlusPosition")) {
-
-                            
-                        }
-                    }
                                         
                     // console.log(lineArray);
                      
                      // assamble the competitor text
                     if (useCategory == "yes") {
 
-                        addLine = lineArray["start"] 
-                 //       addLine += lineArray["Id_Arrow"] 
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
                             if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1er" && prototypeLineArray[y] != "Id_Position" && prototypeLineArray[y] != "Id_Image" ) {
                                 
-                                addLine += lineArray[prototypeLineArray[y]];
 
                             }
                         }
 
                     } else if (useCategory == "no") {
 
-                        addLine = lineArray["start"] 
-                //        addLine += lineArray["Id_Arrow"] 
-                        
+                         
                         for (var y = 0; y < prototypeLineArray.length; y++) {
                             
                             if (prototypeLineArray[y] != "start" && prototypeLineArray[y] != "Id_Arrow" && prototypeLineArray[y] != "Id_Categorie" && prototypeLineArray[y] != "Id_Ecart1erCategorie" && prototypeLineArray[y] != "Id_PositionCategorie" && prototypeLineArray[y] != "Id_Image" ) {
                                 
-                                addLine += lineArray[prototypeLineArray[y]];
 
                             }
                         }
@@ -749,18 +472,7 @@
                     competitorPosition = 0;
                     competitorNumber = 0;
                     competitorLaps = 0;
-                    // adding the finished competitor text to the array (by category)
-                    if (typeof resultsByCategory[catName] == 'undefined' && resultsByCategory[catName] == null) {
-                        opt3 = addLine;
-                    } else {
-                        opt3 = resultsByCategory[catName] + addLine;
-                    }
-                    
-                    resultsByCategory[catName] = opt3;
-                    
-                    addLine = "";
-                    opt3 = "";
- 
+  
                 } // end notHeaderTR == 0
                  
         }        
@@ -833,17 +545,49 @@
                                 
         for(var key in allArray[l]) {
             opt3 = allArray[l][key];
-       // console.log("key: " + key + "value:" + opt3 + '\r\n');
-
+            if (opt3.toString().substring(0, 3) == "00:") {
+                opt3 = opt3.substr(3);
+            }
+            if (opt3.toString().substring(0, 1) == "0" && key != "Id_NbTour" && key != "Id_Numero") {
+                opt3 = opt3.substr(1);
+            }
+            // add category name header and table header
             if (key == "start" && allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
                 NouveauTexte += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + addHeaderLine;
             } else if (key == "start" && allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                 NouveauTexte += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + addHeaderLine;
             }
 
-            if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != 'undefined' && key != null && key != "&nbsp;") {
+            if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 if (key == "Id_Numero") {
-                    NouveauTexte += '<td class="rnk_font highlight ">' + opt3 + '</td>';
+                        
+                    var opt4 = allArray[l]["Id_Categorie"];
+                    
+                    if (useCategory == "no") {
+                        
+                        if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font blackCat ">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("E2")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font redCat ">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font yellowCat ">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font greenCat ">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font pinkCat ">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font blueCat ">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("ג'וניור")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font orangeCat ">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font whiteCat ">' + opt3 + '</td>';
+                        }
+
+                    } else {
+                            NouveauTexte += '<td title="' + opt4 + '" class="rnk_font highlight ">' + opt3 + '</td>';
+                    }
+
+
                 } else if (key == "start" || key == "finish") {
 
                     NouveauTexte +=  opt3;
@@ -851,44 +595,17 @@
                     NouveauTexte += '<td class="rnk_font ">' + opt3 + '</td>';
                 }
                 
-                
-                
             }
         }    
                                
                         }
      //   console.log(allArray);
 
-    
-    
-
-
-
         NouveauTexte += "</table>";
 
         tableClass = ""; // remove the fadeIn after first load
  
-        
-        
-        
-        
-        
-        
-        
-        //  console.log("53 " + allArray[53]["Id_Position"]);
-  //  console.log("14 " + allArray[14]["Id_Categorie"]);
-
- //   ffff = allArray[707]["Id_TpsTour"].substring(allArray[707]["Id_TpsTour"].indexOf(">")+1,allArray[707]["Id_TpsTour"].lastIndexOf("<")).trim();
- //   console.log("707 " + ffff);
- //   gggg = allArray[53]["Id_TpsTour"].substring(allArray[53]["Id_TpsTour"].indexOf(">")+1,allArray[53]["Id_TpsTour"].lastIndexOf("<")).trim();
-  //  console.log(timeString2ms(gggg));
-  //  gggg = timeString2ms(gggg);
- //   console.log(timeString2ms(ffff));
- //   ffff = timeString2ms(ffff);
-
- //   dddd = ffff + gggg;
- //   console.log(ms2TimeString(dddd)); // milliseconds
-  //      console.log(NouveauTexte);
+   //      console.log(NouveauTexte);
 
     return NouveauTexte
 
