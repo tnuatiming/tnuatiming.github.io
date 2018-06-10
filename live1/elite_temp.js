@@ -239,6 +239,8 @@
                     if (lineArray["Id_Categorie"]) {
 
                         catName1 = lineArray["Id_Categorie"].substring(lineArray["Id_Categorie"].indexOf(">")+1,lineArray["Id_Categorie"].lastIndexOf("<"));  // get the category value
+                    } else {
+                        catName1 = "&nbsp;";
                     }
                     
                     if (lineArray["Id_Numero"]) { 
@@ -246,34 +248,33 @@
 
                         if (catName1.toUpperCase().includes("E1") || catName1.toUpperCase().includes("MX2") || catName1.toUpperCase().includes("רוקיז")) {
                             
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blackCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="blackCat ').replace(/Class\d+/, '');    
                         
                         } else if (catName1.toUpperCase().includes("E2")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="redCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="redCat ').replace(/Class\d+/, '');    
                             
                         } else if (catName1.toUpperCase().includes("E3") || catName1.toUpperCase().includes("פתוחה")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="yellowCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="yellowCat ').replace(/Class\d+/, '');    
                             
                         } else if (catName1.toUpperCase().includes("C1") || catName1.toUpperCase().includes("C2") || catName1.toUpperCase().includes("C3") || catName1.toUpperCase().includes("עממית")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="greenCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="greenCat ').replace(/Class\d+/, '');    
                             
                         } else if (catName1.toUpperCase().includes("סניור") || catName1.toUpperCase().includes("נשים")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="pinkCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="pinkCat ').replace(/Class\d+/, '');    
                             
                         } else if (catName1.toUpperCase().includes("סופר ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="blueCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="blueCat ').replace(/Class\d+/, '');    
                             
                         } else if (catName1.toUpperCase().includes("ג'וניור")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="orangeCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="orangeCat ').replace(/Class\d+/, '');    
                             
                         } else if (catName1.toUpperCase().includes("מתחילים") || catName1.toUpperCase().includes("MX1")) {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="whiteCat ').replace(/Class\d+/, '');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="whiteCat ').replace(/Class\d+/, '');    
                             
                         } else {
-                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' class="highlight ');    
+                            lineArray["Id_Numero"] = lineArray["Id_Numero"].replace(' class="', ' title="' + catName1 + '" class="highlight ');    
                             
                         }
-                        
                         
                         
                         
