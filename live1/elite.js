@@ -20,7 +20,7 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
-    var tableClass = " fadeIn";
+    var tableClass = "fadeIn ";
         
     var text2;
 
@@ -37,17 +37,16 @@
             document.getElementById("displayAllButton").style.display = "none";        
         }
 
-        tableClass = " fadeIn"; // make the table fadeIn on change
+        tableClass = "fadeIn "; // make the table fadeIn on change
         
-        Load('https://tnuatiming.com/live1/livea/p1.html', 'result');
+        Load('p1.html', 'result');
     };
 
     function Load(url, target) {
-        live2('https://tnuatiming.com/live1/liveb/p1.html')
         var xhr;
         var fct;
-        if (UrlChange) url = 'https://tnuatiming.com/live1/livea/p1.html';
-        else UrlRefresh = 'https://tnuatiming.com/live1/livea/p1.html';
+        if (UrlChange) url = UrlRefresh;
+        else UrlRefresh = url;
         UrlChange = 0;
         if (TimerLoad) clearTimeout(TimerLoad);
         try {
@@ -73,30 +72,14 @@
             }
         };
         
-        xhr.open("GET", 'https://tnuatiming.com/live1/livea/p1.html' + "?r=" + Math.random(), true);
+        xhr.open("GET", url + "?r=" + Math.random(), true);
         xhr.send(null);
         fct = function() {
-            Load('https://tnuatiming.com/live1/livea/p1.html', target)
+            Load(url, target)
         };
         populatePre('uploadMsg.txt'); // upload message
-        live2('https://tnuatiming.com/live1/liveb/p1.html');
         TimerLoad = setTimeout(fct, Rafraichir)
     };
-
-    function live2(url) {
-
-        var xhr2 = new XMLHttpRequest();
-        xhr2.onreadystatechange = function () {
-            if (xhr2.readyState == 4 && xhr2.status == 200) {
-                text2 = xhr2.responseText;
-            }
-        };
-        xhr2.open("GET", url + "?r=" + Math.random(), true);
-    //    xhr2.open('GET', url, true);
-        xhr2.send(null);
-    };
-
-
 
     // fn to upload messages
     function populatePre(url) {
@@ -145,53 +128,10 @@
 
 
 
-
-
-        var lines2;
-        var textx = text2;
-
-        textx = textx.split('<table'); // split the text to title/time and the table
-        textx[1] = textx[1].substring(textx[1].indexOf("<tr"),textx[1].lastIndexOf("</tr>")+5); // clean the table text
-  //      console.log(textx[1]);
-        lines2 = textx[1].split("\r\n");
-        textx = [];
-
         
         var finalTexte = Texte[0]; // clear the finalTexte variable and add the title and time lines
 
-
-
-        for (b = 0; b < lines2.length; b++) { 
            
-            if (lines2[b].includes('<td id="Id_')) {
-                var id = (lines2[b].substring(lines2[b].indexOf(' id="')+4).split('"')[1]);
-                hhhPro2.push(id);
-            } else if (lines2[b].includes("OddRow") || lines2[b].includes("EvenRow")) {
-                ttt = 1;
-            } else if (lines2[b].includes("</tr>") && ttt == 1) {
-                ttt = 0;
-                allArray2.push(lineArray2); 
-               lineArray2 = [];
-                pp = 0;
-            } else if (lines2[b].includes("<td ") && ttt == 1) {
-                lineArray2[hhhPro2[pp]] = lines2[b].substring(lines2[b].indexOf(">")+1,lines2[b].lastIndexOf("<"));
-                if (hhhPro2[pp] == "Id_TpsCumule" && lineArray2[hhhPro2[pp]] != "-" ) {
-                    
-                    lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
-
-                }
-                pp += 1;
-        //                console.log(lineArray2);
-
-            }
-            
-        }
-         // console.log(allArray2);
-
-            
-            
-            
-            
         for (b = 0; b < lines.length; b++) { 
            
             if (lines[b].includes('<td id="Id_')) {
@@ -211,11 +151,6 @@
                 pp = 0;
             } else if (lines[b].includes("<td ") && ttt == 1) {
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
-                if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
-                    
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-
-                }
                 
                 pp += 1;
       //    console.log(lineArray);
@@ -231,145 +166,41 @@
      //             console.log(qqq);
       //   console.log(hhhPro2);
          //                console.log(allArray);
+          
+         // MAGIC sort the array after the merge to get new results
+        if (useCategory == "yes") {
+            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
+        }
+         
 
           
-         
-         
 
-        for (b = 0; b < allArray.length; b++) { 
-            for (a = 0; a < allArray2.length; a++) { 
-
-
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != "-" && allArray2[a]["Id_TpsCumule"] != "-") {
-                    
-                    allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
-                }
-            
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
-                    
-                    allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
-                }
-            
-
-                
-                
-                
-                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
-                     
-                      // reorder laps as elite3 does somthing wrong with the order
-                    if (allArray2[a]["Id_TpsTour3"] != "-") {
-                        allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour3"];
-                        allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour2"];
-                        allArray[b].Id_lap6 = allArray2[a]["Id_TpsTour1"];
-                    } else if (allArray2[a]["Id_TpsTour2"] != "-") {
-                        allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour2"];
-                        allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour1"];
-                        allArray[b].Id_lap6 = "-";
-                    } else if (allArray2[a]["Id_TpsTour1"] != "-") {
-                        allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour1"];
-                        allArray[b].Id_lap4 = "-";
-                        allArray[b].Id_lap6 = "-";
-                    } else {
-                        allArray[b].Id_lap2 = "-";
-                        allArray[b].Id_lap4 = "-";
-                        allArray[b].Id_lap6 = "-";
-                    }
-                     
-                }
-               
-                      // reorder laps as elite3 does somthing wrong with the order
-                if (allArray[b]["Id_TpsTour3"] != "-") {
-                    allArray[b].Id_lap1 = allArray[b]["Id_TpsTour3"];
-                    allArray[b].Id_lap3 = allArray[b]["Id_TpsTour2"];
-                    allArray[b].Id_lap5 = allArray[b]["Id_TpsTour1"];
-                } else if (allArray[b]["Id_TpsTour2"] != "-") {
-                    allArray[b].Id_lap1 = allArray[b]["Id_TpsTour2"];
-                    allArray[b].Id_lap3 = allArray[b]["Id_TpsTour1"];
-                    allArray[b].Id_lap5 = "-";
-                } else if (allArray[b]["Id_TpsTour1"] != "-") {
-                    allArray[b].Id_lap1 = allArray[b]["Id_TpsTour1"];
-                    allArray[b].Id_lap3 = "-";
-                    allArray[b].Id_lap5 = "-";
-                } else {
-                    allArray[b].Id_lap1 = "-";
-                    allArray[b].Id_lap3 = "-";
-                    allArray[b].Id_lap5 = "-";
-                }
-                
-                 
-            } 
-        }
-         // delete the secound array
-         allArray2 = [];
-         
-         // MAGIC sort the array after the merge to get new results
-        if (useCategory == "no") {
-            allArray.sort(function(a, b){return b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
-        } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
-        }
-         
-         
-
-         
-    // fix the position fields of the competitors and start building the final table
-            var m = 0;
-            var prevCompCat = ""
-
-            finalTexte += '<table class="line_color">';
+            finalTexte += '<table class="' + tableClass + 'line_color">';
             
             for (var l = 0; l < allArray.length; l++) {
 
-                 if (useCategory == "no") {
-                    allArray[l]["Id_Position"] = l+1;
-                 } else if (useCategory == "yes") {
- 
-                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
-                        m += 1;
-                     } else {
-                         m = 1;
-                      prevCompCat = allArray[l]["Id_Categorie"];
-                    }
-                    allArray[l]["Id_Position"] = m;
-                 }
 
-                           if (allArray[l]["Id_Position"] == 1) {
-                                var leaderTime = allArray[l]["Id_TpsCumule"];
-                                var leaderLaps = allArray[l]["Id_NbTour"];
-                            }
+                            if (allArray[l]["Id_Ecart1er"] != "-") {  
 
-            // //   //                 if ((allArray[l]["Id_Position"]) % 2 == 0) {
-                   //             if (l % 2 == 0) {
-                   //                 allArray[l]["start"] = '<tr class="fadeIn rnk_bkcolor EvenRow">';
-                   //             } else {
-                   //                 allArray[l]["start"] = '<tr class="fadeIn rnk_bkcolor OddRow">';
-                    //            }
-                                    // fix the diff fields of the competitors
-                                var competitorLaps = allArray[l]["Id_NbTour"];
-
-                                if (competitorLaps < leaderLaps && competitorLaps > 0) {
-                                    allArray[l]["Id_Ecart1er"] = (leaderLaps - competitorLaps) + " הקפות";
-                                } else if (competitorLaps == leaderLaps) {
-                                    var competitorTime = allArray[l]["Id_TpsCumule"];
-                                    if (competitorTime != leaderTime) {
-                                    allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
-
-                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
+                                     if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
                                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
                                     }
                                     if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0") {
                                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
                                     }
-                                     
-                                    } else {
-                                    allArray[l]["Id_Ecart1er"] = "-";
+                            }
+                 
+                            if (allArray[l]["Id_Ecart1erCategorie"] != "-") {  
+
+                                     if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 3) == "00:") {
+                                        allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(3);
                                     }
-                                } else {
-                                    allArray[l]["Id_Ecart1er"] = "-";
-                                }
-                            // convert back to time
+                                    if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 1) == "0") {
+                                        allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(1);
+                                    }
+                            }
+                 
                             if (allArray[l]["Id_TpsCumule"] != "-") {  
-                                allArray[l]["Id_TpsCumule"] = ms2TimeString(allArray[l]["Id_TpsCumule"]);
 
                                 
                                 if (allArray[l]["Id_TpsCumule"].toString().substring(0, 3) == "00:") {
@@ -395,51 +226,60 @@
             headerText1 += '<th class="rnkh_font" id="Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Numero">מספר</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Nom">שם</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_lap1">הקפה 1</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_lap2">הקפה 2</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_lap3">הקפה 3</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_lap4">הקפה 4</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_lap5">הקפה 5</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_lap6">הקפה 6</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_TpsTour">הקפה אחרונה</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
             headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">פער</th>';
+            if (useCategory == "yes") {
+                headerText1 += '<th class="rnkh_font" id="Id_Ecart1erCategorie">פער</th>';
+            } else if (useCategory == "no") {
+                headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">פער</th>';
+            }
 
         
         headerText1 += '</tr>';
       //   console.log(headerText1);
       //          console.log(temp);
 
-                            
-       
-
-        
-
-        
-        
-        
+         
                              // position change arrow prep
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
-                    allArray[l]["Id_Arrow"] = "&#9679;";
-                    
+                            if (allArray[l]["Id_Image"].includes("_Status10")) {
+                                allArray[l]["Id_Arrow"] = "DNF";
+                            } else if (allArray[l]["Id_Image"].includes("_Status11")) {
+                                allArray[l]["Id_Arrow"] = "DSQ";
+                            } else if (allArray[l]["Id_Image"].includes("_Status12")) {
+                                allArray[l]["Id_Arrow"] = "DNS";
+                            } else if (allArray[l]["Id_Image"].includes("_Status2")) {
+                                allArray[l]["Id_Arrow"] = "NQ";
+                            } else if (allArray[l]["Id_Image"].includes("_Status")) {
+                                allArray[l]["Id_Arrow"] = "&#9733;";
+                            } else if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
+                                allArray[l]["Id_Arrow"] = "&nbsp;";
+                            } else {
+                                 allArray[l]["Id_Arrow"] = "&#9679;";
+                            }
+                          
+                          
+                          
                     if (allArray[l]["Id_Position"]) { 
                             competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
                     }
-                     
+
+                    var positionChanged = "";
+                    
                     if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"]) { // position change arrow calc
                     
                         if (positionArray[competitorNumber]) {
 
                             if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = "&#9660;"; // down :(
+                                positionChanged = "fadeIn";
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 allArray[l]["Id_Arrow"] = "&#9650;"; // up :)
-                            } else if (allArray[l]["Id_Image"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "&#9733;";
-                            } else {
-                                 allArray[l]["Id_Arrow"] = "&#9679;"; // same :|
-                          }
+                                positionChanged = "fadeIn";
+                            }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
                         positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
@@ -447,55 +287,21 @@
        
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
             // add category name header and table header
-            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+            if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {
                 finalTexte += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                 finalTexte += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
 
                 if (l % 2 == 0) {
-                finalTexte += '<tr class="fadeIn rnk_bkcolor OddRow">';
+                finalTexte += '<tr class="' + positionChanged + ' rnk_bkcolor OddRow">';
                 } else {
-                finalTexte += '<tr class="fadeIn rnk_bkcolor EvenRow">';
+                finalTexte += '<tr class="' + positionChanged + ' rnk_bkcolor EvenRow">';
                     
                 }
        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+         
         
     //        for(var key in allArray[l]) {
     //        var opt3 = allArray[l][key];
@@ -524,6 +330,10 @@
                     
                     finalTexte += '<td class="' + checkeredFlag + 'green rnk_font fadeOut">&#9679;</td>';
                     
+                } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { // green
+                    
+                    finalTexte += '<td class="' + checkeredFlag + 'rnk_font">&nbsp;</td>';
+                    
                 } else {
 
                     finalTexte += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
@@ -531,10 +341,12 @@
                 }
                 
                 
-                
-                finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
-
-                
+                if (useCategory == "yes") {
+                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
+                } else if (useCategory == "no") {
+                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                }
+            
                 
        //         if (key == "Id_Numero") {
                     var opt3 = allArray[l]["Id_Numero"];                        
@@ -558,6 +370,8 @@
                             finalTexte += '<td title="' + opt4 + '" class="rnk_font orangeCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
                             finalTexte += '<td title="' + opt4 + '" class="rnk_font whiteCat ">' + opt3 + '</td>';
+                        } else {
+                            finalTexte += '<td title="' + opt4 + '" class="rnk_font highlight ">' + opt3 + '</td>';
                         }
 
                     } else {
@@ -570,17 +384,14 @@
       //          }
                  
                 finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_TpsTour"] + '</td>';
+                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_MeilleurTour"] + '</td>';
                 finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>';
- 
-                
-                
+                if (useCategory == "yes") {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
+                } else if (useCategory == "no") {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>';
+                }
                 
                 
                 
@@ -601,7 +412,7 @@
      
 
          
-         
+<!-- 
     var headerText = '<tr class="rnkh_bkcolor">';
         for (var key in hhh) { 
 
@@ -639,34 +450,17 @@
    //         console.log(mainText);
 
             
-             
-               console.log(allArray);
+-->             
+         //      console.log(allArray);
 
-         //         console.log(finalTexte);
+         //    console.log(finalTexte);
       
-            
+    tableClass = "";
             
     return finalTexte
 
     };
         
-    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
-        return a=a.split('.'), // optimized
-        b=a[1]*1||0, // optimized
-        a=a[0].split(':'),
-        b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
-    };
-
-    function ms2TimeString(a,k,s,m,h){
-        return k=a%1e3, // optimized by konijn
-        s=a/1e3%60|0,
-        m=a/6e4%60|0,
-        h=a/36e5%24|0,
-        (h?(h<10?'0'+h:h)+':':'')+ // optimized
-        (m<10?0:'')+m+':'+  // optimized
-        (s<10?0:'')+s+'.'+ // optimized
-        (k<100?k<10?'00':0:'')+k // optimized
-    };
 
 
     function sortObjKeysAlphabetically(obj) {
