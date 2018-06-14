@@ -222,7 +222,7 @@
    //     }          
 
     // hard coded header for now
-            headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Numero">מספר</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Nom">שם</th>';
@@ -254,7 +254,13 @@
                             } else if (allArray[l]["Id_Image"].includes("_Status2")) {
                                 allArray[l]["Id_Arrow"] = "NQ";
                             } else if (allArray[l]["Id_Image"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "&#9733;";
+                                allArray[l]["Id_Arrow"] = "&#10033;";
+                            } else if (allArray[l]["Id_Image"].includes("_MaximumTime")) {
+                                allArray[l]["Id_Arrow"] = "&#9201;";
+                            } else if (allArray[l]["Id_Image"].includes("_PlusPosition")) {
+                                allArray[l]["Id_Arrow"] = "&#9650;";
+                            } else if (allArray[l]["Id_Image"].includes("_MinusPosition")) {
+                                allArray[l]["Id_Arrow"] = "&#9660;";
                             } else if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
                                 allArray[l]["Id_Arrow"] = "&nbsp;";
                             } else {
@@ -355,27 +361,27 @@
                     if (useCategory == "no") {
                         
                         if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font blackCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blackCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E2")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font redCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font redCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font yellowCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font greenCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font pinkCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font blueCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("ג'וניור")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font orangeCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat ">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font whiteCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat ">' + opt3 + '</td>';
                         } else {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font highlight ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight ">' + opt3 + '</td>';
                         }
 
                     } else {
-                            finalTexte += '<td title="' + opt4 + '" class="rnk_font highlight ">' + opt3 + '</td>';
+                            finalTexte += '<td class="rnk_font highlight ">' + opt3 + '</td>';
                     }
 
 
