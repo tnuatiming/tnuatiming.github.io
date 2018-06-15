@@ -621,6 +621,22 @@
         a=a[0].split(':'),
         b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
     };
+// another option to convert
+    function timeToMs(time) {// time(HH:MM:SS.mss)
+        a=time.split('.');
+        mss=a[1];
+        b=a[0].split(':');
+        if (b[2]) {
+            c=b[0]*3600+b[1]*60+b[2]*1;
+        } else if (b[1]) {
+            c=b[0]*60+b[1]*1;
+        } else if (b[0]) {
+            c=b[0]*1;
+        } else {
+            c = 0;
+        }
+    return (c+mss);
+    };
 
     function ms2TimeString(a,k,s,m,h){
         return k=a%1e3, // optimized by konijn
@@ -632,7 +648,23 @@
         (s<10?0:'')+s+'.'+ // optimized
         (k<100?k<10?'00':0:'')+k // optimized
     };
+// another option to convert
+    function msToTime(duration) {
+        var milliseconds = parseInt(duration % 1000),
+            seconds = parseInt((duration / 1000) % 60),
+            minutes = parseInt((duration / (1000 * 60)) % 60),
+            hours = parseInt((duration / (1000 * 60 * 60)) % 24);
 
+        hours = (hours).toString().padStart(2, "0");
+        minutes = (minutes).toString().padStart(2, "0");
+        seconds = (seconds).toString().padStart(2, "0");
+        milliseconds = (milliseconds).toString().padStart(3, "0");
+        if (hours == "00") {
+            return minutes + ":" + seconds + "." + milliseconds;
+        } else {
+            return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+        }
+    };
 
     function sortObjKeysAlphabetically(obj) {
         var ordered = {};
