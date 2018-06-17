@@ -111,10 +111,11 @@
         var allArray = new Array();
         var lineArray2 = new Array();
         var allArray2 = new Array();
+        var bestTime = new Array();
         var ttt = 0;
         var b;
         var pp = 0;
-           
+        var positionChanged = "";
 
         Texte = Texte.split('<table'); // split the text to title/time and the table
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -151,6 +152,14 @@
                 pp = 0;
             } else if (lines[b].includes("<td ") && ttt == 1) {
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
+
+                if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
+                    bestTime[lineArray["Id_Numero"]] = "BestTimeOverall";
+                } else if  (lines[b].includes("BestTime") && hhhPro[pp] == "Id_TpsTour") {
+                    bestTime[lineArray["Id_Numero"]] = "BestTime";
+                } else if  (hhhPro[pp] == "Id_TpsTour") {
+                    bestTime[lineArray["Id_Numero"]] = " ";
+                }
                 
                 pp += 1;
       //    console.log(lineArray);
@@ -212,7 +221,71 @@
                                 
                             }
 
-        var headerText1 = '<tr class="rnkh_bkcolor">';
+
+                            
+                            
+                       // reorder laps as elite3 does somthing wrong with the order (6 laps) NOT FINISHED FIXME
+                       
+                 if (allArray[l]["Id_TpsTour1"]) {      
+                       
+                    if (allArray[l]["Id_TpsTour6"] && allArray[l]["Id_TpsTour6"] != "-") {
+                        allArray[l].Id_lap1 = allArray[l]["Id_TpsTour6"];
+                        allArray[l].Id_lap2 = allArray[l]["Id_TpsTour5"];
+                        allArray[l].Id_lap3 = allArray[l]["Id_TpsTour4"];
+                        allArray[l].Id_lap4 = allArray[l]["Id_TpsTour3"];
+                        allArray[l].Id_lap5 = allArray[l]["Id_TpsTour2"];
+                        allArray[l].Id_lap6 = allArray[l]["Id_TpsTour1"];
+                    } else if (allArray[l]["Id_TpsTour5"] && allArray[l]["Id_TpsTour5"] != "-") {
+                        allArray[l].Id_lap1 = allArray[l]["Id_TpsTour5"];
+                        allArray[l].Id_lap2 = allArray[l]["Id_TpsTour4"];
+                        allArray[l].Id_lap3 = allArray[l]["Id_TpsTour3"];
+                        allArray[l].Id_lap4 = allArray[l]["Id_TpsTour2"];
+                        allArray[l].Id_lap5 = allArray[l]["Id_TpsTour1"];
+                        allArray[l].Id_lap6 = "-";
+                    }  else if (allArray[l]["Id_TpsTour4"] && allArray[l]["Id_TpsTour4"] != "-") {
+                        allArray[l].Id_lap1 = allArray[l]["Id_TpsTour4"];
+                        allArray[l].Id_lap2 = allArray[l]["Id_TpsTour3"];
+                        allArray[l].Id_lap3 = allArray[l]["Id_TpsTour2"];
+                        allArray[l].Id_lap4 = allArray[l]["Id_TpsTour1"];
+                        allArray[l].Id_lap5 = "-";
+                        allArray[l].Id_lap6 = "-";
+                    }  else if (allArray[l]["Id_TpsTour3"] && allArray[l]["Id_TpsTour3"] != "-") {
+                        allArray[l].Id_lap1 = allArray[l]["Id_TpsTour3"];
+                        allArray[l].Id_lap2 = allArray[l]["Id_TpsTour2"];
+                        allArray[l].Id_lap3 = allArray[l]["Id_TpsTour1"];
+                        allArray[l].Id_lap4 = "-";
+                        allArray[l].Id_lap5 = "-";
+                        allArray[l].Id_lap6 = "-";
+                    }  else if (allArray[l]["Id_TpsTour2"] && allArray[l]["Id_TpsTour2"] != "-") {
+                        allArray[l].Id_lap1 = allArray[l]["Id_TpsTour2"];
+                        allArray[l].Id_lap2 = allArray[l]["Id_TpsTour1"];
+                        allArray[l].Id_lap3 = "-";
+                        allArray[l].Id_lap4 = "-";
+                        allArray[l].Id_lap5 = "-";
+                        allArray[l].Id_lap6 = "-";
+                    } else if (allArray[l]["Id_TpsTour1"] != "-") {
+                        allArray[l].Id_lap1 = allArray[l]["Id_TpsTour1"];
+                        allArray[l].Id_lap2 = "-";
+                        allArray[l].Id_lap3 = "-";
+                        allArray[l].Id_lap4 = "-";
+                        allArray[l].Id_lap5 = "-";
+                        allArray[l].Id_lap6 = "-";
+                    } else {
+                        allArray[l].Id_lap1 = "-";
+                        allArray[l].Id_lap2 = "-";
+                        allArray[l].Id_lap3 = "-";
+                        allArray[l].Id_lap4 = "-";
+                        allArray[l].Id_lap5 = "-";
+                        allArray[l].Id_lap6 = "-";
+                    }
+                           
+                 }            
+                            
+                            
+                            
+                            
+                            
+            var headerText1 = '<tr class="rnkh_bkcolor">';
 
    //     for (b = 0; b < qqq.length; b++) { 
    //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
@@ -273,7 +346,7 @@
                             competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
                     }
 
-                    var positionChanged = "";
+                    positionChanged = "";
                     
                     if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"]) { // position change arrow calc
                     
@@ -361,27 +434,27 @@
                     if (useCategory == "no") {
                         
                         if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blackCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E2")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font redCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font redCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("ג'וניור")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
                         } else {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }
 
                     } else {
-                            finalTexte += '<td class="rnk_font highlight ">' + opt3 + '</td>';
+                            finalTexte += '<td class="rnk_font highlight">' + opt3 + '</td>';
                     }
 
 
@@ -390,8 +463,8 @@
       //          }
                  
                 finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_TpsTour"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_MeilleurTour"] + '</td>';
+                finalTexte += '<td class="rnk_font ' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
+                finalTexte += '<td class="rnk_font ' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
                 finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>';
                 if (useCategory == "yes") {
                     finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';

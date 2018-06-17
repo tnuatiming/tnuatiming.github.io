@@ -131,7 +131,7 @@
         var ttt = 0;
         var b;
         var pp = 0;
-           
+        var positionChanged = "";
 
         Texte = Texte.split('<table'); // split the text to title/time and the table
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -417,7 +417,7 @@
                     }
                      
                     if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"]) { // position change arrow calc
-                               var positionChanged = "";
+                    positionChanged = "";
                     
                         if (positionArray[competitorNumber]) {
 
@@ -511,27 +511,27 @@
                     if (useCategory == "no") {
                         
                         if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blackCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E2")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font redCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font redCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("ג'וניור")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
                         } else {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight ">' + opt3 + '</td>';
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }
 
                     } else {
-                            finalTexte += '<td class="rnk_font highlight ">' + opt3 + '</td>';
+                            finalTexte += '<td class="rnk_font highlight">' + opt3 + '</td>';
                     }
 
 
