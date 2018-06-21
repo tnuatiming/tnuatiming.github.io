@@ -572,9 +572,46 @@ span#name, span#rund, span#date {
     background-color: rgba(255, 255, 255, 0.7);
     color:#111;
 }
+#live td.grayCat {
+    font-weight: 700;
+    background-color: rgba(191, 191, 191, 0.7);
+    color:#111;
+}
+@keyframes fadeToGreen {
+    0% {color: #fff;}
+    25% {color: #fff;}
+    100% {color: #00843d;}
+}
+
+#live td.fadeToGreen {
+    animation: fadeToGreen 2s both;
+}
+@keyframes fadeToRed {
+    0% {color: #fff;}
+    25% {color: #fff;}
+    100% {color: #c8102e;}
+}
+
+#live td.fadeToRed {
+    animation: fadeToRed 2s both;
+}
+@keyframes up {
+    0% {transform:translateY(100%);opacity:0;}
+    100% {transform:translateY(0);opacity:1;}
+}
+@keyframes down {
+    0% {transform:translateY(-100%);opacity:0;}
+    100% {transform:translateY(0);opacity:1;}
+}
 
 #live td.green {
+    animation: up 2s both;
     color: #00843d;
+    font-weight: 700;
+}
+#live td.red {
+    animation: down 2s both;
+    color: #c8102e;
     font-weight: 700;
 }
 #live td.yellow {
@@ -582,11 +619,7 @@ span#name, span#rund, span#date {
     font-weight: 700;
 }
 #live td.white {
-    color: white;
-    font-weight: 700;
-}
-#live td.red {
-    color: #c8102e;
+    color: #fff;
     font-weight: 700;
 }
 #live td.blue {

@@ -337,7 +337,7 @@
                             } else if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
                                 allArray[l]["Id_Arrow"] = "&nbsp;";
                             } else {
-                                 allArray[l]["Id_Arrow"] = "&#9679;";
+                                 allArray[l]["Id_Arrow"] = "&#9830;";
                             }
                           
                           
@@ -405,9 +405,9 @@
                     
                     finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">&#9650;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9679;") { // green
+                } else if (allArray[l]["Id_Arrow"] == "&#9830;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font fadeOut">&#9679;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeOut">&#9830;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { // green
                     
@@ -441,14 +441,16 @@
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("ג'וניור מקצועי") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("ג'וניור")) {
+                        } else if (opt4.toUpperCase().includes("ג'וניור") || opt4.toUpperCase().includes("expert")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
+                        } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }

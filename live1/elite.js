@@ -275,7 +275,16 @@
                         allArray[b].Id_lap6 = "-";
                     }
                  
-                    allArray[b].Id_Image2 = allArray2[a]["Id_Image"];    
+                    allArray[b].Id_Image2 = allArray2[a]["Id_Image"];   
+                    
+                    if (allArray[b]["Id_Image"].includes("_Status") || allArray2[a]["Id_Image"].includes("_Status")) {
+                        allArray[b].Id_Status = 1;
+                    } else {
+                        allArray[b].Id_Status = 0;
+                    }
+                    
+                    
+                    
                 }
                
                       // reorder laps as elite3 does somthing wrong with the order
@@ -296,6 +305,11 @@
                     allArray[b].Id_lap3 = "-";
                     allArray[b].Id_lap5 = "-";
                 }
+
+                
+                
+                
+                
                 
                  
             } 
@@ -305,9 +319,9 @@
          
          // MAGIC sort the array after the merge to get new results
         if (useCategory == "no") {
-            allArray.sort(function(a, b){return b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
+            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
         }
          
          
@@ -410,8 +424,26 @@
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
-                    allArray[l]["Id_Arrow"] = "&#9679;";
+                    allArray[l]["Id_Arrow"] = "&#9830;";
                     
+                            if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image2"].includes("_Status10")) {
+                                allArray[l]["Id_Arrow"] = "DNF";
+                            } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image2"].includes("_Status11")) {
+                                allArray[l]["Id_Arrow"] = "DSQ";
+                            } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image2"].includes("_Status12")) {
+                                allArray[l]["Id_Arrow"] = "DNS";
+                            } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image2"].includes("_Status2")) {
+                                allArray[l]["Id_Arrow"] = "NQ";
+                            } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image2"].includes("_Status")) {
+                                allArray[l]["Id_Arrow"] = "&#10033;";
+                            } else {
+                                 allArray[l]["Id_Arrow"] = "&#9830;"; // same :|
+                            }
+
+
+
+
+
                     if (allArray[l]["Id_Position"]) { 
                             competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
                     }
@@ -427,19 +459,8 @@
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 allArray[l]["Id_Arrow"] = "&#9650;"; // up :)
                                 positionChanged = "fadeIn";
-                            } else if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image2"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "DNF";
-                            } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image2"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "DSQ";
-                            } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image2"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "DNS";
-                            } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image2"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "NQ";
-                            } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image2"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "&#10033;";
-                            } else {
-                                 allArray[l]["Id_Arrow"] = "&#9679;"; // same :|
-                          }
+                            }                        
+                            
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
                         positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
@@ -488,9 +509,9 @@
                     
                     finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">&#9650;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9679;") { // green
+                } else if (allArray[l]["Id_Arrow"] == "&#9830;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font fadeOut">&#9679;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeOut">&#9830;</td>';
                     
                 } else {
 
@@ -518,14 +539,16 @@
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("ג'וניור מקצועי") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("ג'וניור")) {
+                        } else if (opt4.toUpperCase().includes("ג'וניור") || opt4.toUpperCase().includes("expert")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
+                        } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }
@@ -605,7 +628,7 @@
 
             
 -->             
-               console.log(allArray);
+             console.log(allArray);
 
          //    console.log(finalTexte);
       
