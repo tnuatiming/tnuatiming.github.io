@@ -154,9 +154,9 @@
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
 
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime[lineArray["Id_Numero"]] = "BestTimeOverall";
+                    bestTime[lineArray["Id_Numero"]] = "fadeIn BestTimeOverall";
                 } else if  (lines[b].includes("BestTime") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime[lineArray["Id_Numero"]] = "BestTime";
+                    bestTime[lineArray["Id_Numero"]] = "fadeIn BestTime";
                 } else if  (hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " ";
                 }

@@ -132,7 +132,9 @@
         var b;
         var pp = 0;
         var positionChanged = "";
-
+        var bestLapComp = 0;
+        var bestLap = "99999999999";
+        
         Texte = Texte.split('<table'); // split the text to title/time and the table
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Texte[1]);
@@ -305,13 +307,24 @@
                     allArray[b].Id_lap3 = "-";
                     allArray[b].Id_lap5 = "-";
                 }
-
+<!--
+                // find best lap VERY SLOW
+                if (allArray[b]["Id_lap1"]!= "-" && allArray[b]["Id_lap1"] < bestLap) {
+                    bestLap = allArray[b]["Id_lap1"];
+                    bestLapComp = allArray[b]["Id_Numero"];
+                }
+                if (allArray[b]["Id_lap2"]!= "-" && allArray[b]["Id_lap2"] < bestLap) {
+                    bestLap = allArray[b]["Id_lap2"];
+                    bestLapComp = allArray[b]["Id_Numero"];
+                }
+                if (allArray[b]["Id_lap3"]!= "-" && allArray[b]["Id_lap3"] < bestLap) {
+                    bestLap = allArray[b]["Id_lap3"];
+                    bestLapComp = allArray[b]["Id_Numero"];
+                }
                 
                 
-                
-                
-                
-                 
+           //     console.log(bestLapComp + "  " + bestLap);
+-->                 
             } 
         }
          // delete the secound array
@@ -628,7 +641,7 @@
 
             
 -->             
-             console.log(allArray);
+        //     console.log(allArray);
 
          //    console.log(finalTexte);
       
