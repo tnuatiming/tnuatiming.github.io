@@ -596,12 +596,20 @@ span#name, span#rund, span#date {
     animation: fadeToRed 2s both;
 }
 @keyframes up {
-    0% {transform:translateY(100%);opacity:0;}
-    100% {transform:translateY(0);opacity:1;}
+    0% {transform:translateY(100%) scale(0.5);opacity:0;}
+    100% {transform:translateY(0) scale(1);opacity:1;}
 }
 @keyframes down {
-    0% {transform:translateY(-100%);opacity:0;}
-    100% {transform:translateY(0);opacity:1;}
+    0% {transform:translateY(-100%) scale(0.5);opacity:0;}
+    100% {transform:translateY(0) scale(1);opacity:1;}
+}
+@keyframes scale {
+    0% {transform:scale(0);opacity:0;}
+    50% {transform:scale(1);opacity:1;}
+    100% {transform:scale(0);opacity:0;}
+}
+#live td.scale {
+    animation: scale 2s both;
 }
 
 #live td.green {
@@ -614,12 +622,12 @@ span#name, span#rund, span#date {
     color: #c8102e;
     font-weight: 700;
 }
-#live td.yellow {
-    color: #fedd00;
-    font-weight: 700;
-}
 #live td.white {
     color: #fff;
+    font-weight: 700;
+}
+#live td.yellow {
+    color: #fedd00;
     font-weight: 700;
 }
 #live td.blue {
@@ -650,6 +658,10 @@ span#name, span#rund, span#date {
 }
 #live td.BestTime {
     color: #0000ff;
+    font-weight: 700;
+}
+#live td.BestTime1 {
+    color: #00008B;
     font-weight: 700;
 }
 

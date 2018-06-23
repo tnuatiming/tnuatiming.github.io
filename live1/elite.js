@@ -134,6 +134,10 @@
         var positionChanged = "";
         var bestLapComp = 0;
         var bestLap = "99999999999";
+        var bestTime2comp = 0;
+        var bestTime2 = 0;
+        var bestTimecomp = 0;
+        var bestTime = 0;
         
         Texte = Texte.split('<table'); // split the text to title/time and the table
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -182,6 +186,11 @@
                     lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
 
                 }
+                if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
+                    bestTime2=lineArray2["Id_TpsTour"];
+                    bestTime2comp=lineArray2["Id_Numero"];
+                }
+                
                 pp += 1;
         //                console.log(lineArray2);
 
@@ -217,6 +226,10 @@
                     
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
 
+                }
+                if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
+                    bestTime=lineArray2["Id_TpsTour"];
+                    bestTimecomp=lineArray2["Id_Numero"];
                 }
                 
                 pp += 1;
@@ -278,6 +291,7 @@
                     }
                  
                     allArray[b].Id_Image2 = allArray2[a]["Id_Image"];   
+                    allArray[b].Id_MeilleurTour2 = allArray2[a]["Id_MeilleurTour"];   
                     
                     if (allArray[b]["Id_Image"].includes("_Status") || allArray2[a]["Id_Image"].includes("_Status")) {
                         allArray[b].Id_Status = 1;
@@ -307,24 +321,6 @@
                     allArray[b].Id_lap3 = "-";
                     allArray[b].Id_lap5 = "-";
                 }
-<!--
-                // find best lap VERY SLOW
-                if (allArray[b]["Id_lap1"]!= "-" && allArray[b]["Id_lap1"] < bestLap) {
-                    bestLap = allArray[b]["Id_lap1"];
-                    bestLapComp = allArray[b]["Id_Numero"];
-                }
-                if (allArray[b]["Id_lap2"]!= "-" && allArray[b]["Id_lap2"] < bestLap) {
-                    bestLap = allArray[b]["Id_lap2"];
-                    bestLapComp = allArray[b]["Id_Numero"];
-                }
-                if (allArray[b]["Id_lap3"]!= "-" && allArray[b]["Id_lap3"] < bestLap) {
-                    bestLap = allArray[b]["Id_lap3"];
-                    bestLapComp = allArray[b]["Id_Numero"];
-                }
-                
-                
-           //     console.log(bestLapComp + "  " + bestLap);
--->                 
             } 
         }
          // delete the secound array
@@ -437,7 +433,7 @@
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
-                    allArray[l]["Id_Arrow"] = "&#9830;";
+                    allArray[l]["Id_Arrow"] = "&#9670;";
                     
                             if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image2"].includes("_Status10")) {
                                 allArray[l]["Id_Arrow"] = "DNF";
@@ -450,7 +446,7 @@
                             } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image2"].includes("_Status")) {
                                 allArray[l]["Id_Arrow"] = "&#10033;";
                             } else {
-                                 allArray[l]["Id_Arrow"] = "&#9830;"; // same :|
+                                 allArray[l]["Id_Arrow"] = "&#9670;"; // same :|
                             }
 
 
@@ -522,9 +518,9 @@
                     
                     finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">&#9650;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9830;") { // white
+                } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeOut">&#9830;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
                     
                 } else {
 
@@ -576,12 +572,51 @@
       //          }
                  
                 finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+
+                
+                if (allArray[l]["Id_lap1"] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
+                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
+                } else if (allArray[l]["Id_lap1"] != "-" && allArray[l]["Id_lap1"] == allArray[l]["Id_MeilleurTour"]) {
+                    finalTexte += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
+                } else {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
+                }
+                if (allArray[l]["Id_lap2"] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
+                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
+                } else if (allArray[l]["Id_lap2"] != "-" && allArray[l]["Id_lap2"] == allArray[l]["Id_MeilleurTour2"]) {
+                    finalTexte += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
+                } else {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
+                }
+                if (allArray[l]["Id_lap3"] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
+                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
+                } else if (allArray[l]["Id_lap3"] != "-" && allArray[l]["Id_lap3"] == allArray[l]["Id_MeilleurTour"]) {
+                    finalTexte += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
+                } else {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
+                }
+                if (allArray[l]["Id_lap4"] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
+                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
+                } else if (allArray[l]["Id_lap4"] != "-" && allArray[l]["Id_lap4"] == allArray[l]["Id_MeilleurTour2"]) {
+                    finalTexte += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
+                } else {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
+                }
+                if (allArray[l]["Id_lap5"] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
+                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
+                } else if (allArray[l]["Id_lap5"] != "-" && allArray[l]["Id_lap5"] == allArray[l]["Id_MeilleurTour"]) {
+                    finalTexte += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
+                } else {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
+                }
+                if (allArray[l]["Id_lap6"] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
+                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+                } else if (allArray[l]["Id_lap6"] != "-" && allArray[l]["Id_lap6"] == allArray[l]["Id_MeilleurTour2"]) {
+                    finalTexte += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+                } else {
+                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+                }
+
                 finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>';
                 finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>';
  

@@ -337,7 +337,7 @@
                             } else if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
                                 allArray[l]["Id_Arrow"] = "&nbsp;";
                             } else {
-                                 allArray[l]["Id_Arrow"] = "&#9830;";
+                                 allArray[l]["Id_Arrow"] = "&#9670;";
                             }
                           
                           
@@ -405,9 +405,9 @@
                     
                     finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">&#9650;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9830;") { // white
+                } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeOut">&#9830;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { // green
                     
