@@ -524,7 +524,17 @@ span#name, span#rund, span#date {
     background-color:  rgba(187,187,187,0.7);
     color: #111;
 }
-
+@keyframes refrash {
+    0% {opacity:1;}
+    25% {opacity:0;}
+    100% {opacity:1;}
+}
+#live tr.up > td:nth-child(n+3) {
+    animation: refrash 1s both;
+}
+#live tr.down > td:nth-child(n+3) {
+    animation: refrash 1s both;
+}
 #live td.highlight {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
@@ -550,7 +560,7 @@ span#name, span#rund, span#date {
 #live td.greenCat {
     font-weight: 700;
     background-color: rgba(146, 208, 80, 0.7);
-    color:#fff;
+    color:#111;
 }
 #live td.pinkCat {
     font-weight: 700;

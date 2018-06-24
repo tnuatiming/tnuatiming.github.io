@@ -154,9 +154,9 @@
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
 
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime[lineArray["Id_Numero"]] = "fadeIn BestTimeOverall";
+                    bestTime[lineArray["Id_Numero"]] = "BestTimeOverall";
                 } else if  (lines[b].includes("BestTime") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime[lineArray["Id_Numero"]] = "fadeIn BestTime";
+                    bestTime[lineArray["Id_Numero"]] = "BestTime";
                 } else if  (hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " ";
                 }
@@ -226,8 +226,37 @@
                             
                        // reorder laps as elite3 does somthing wrong with the order (6 laps) NOT FINISHED FIXME
                        
-                 if (allArray[l]["Id_TpsTour1"]) {      
-                       
+                 if (allArray[l]["Id_TpsTour1"]) { 
+
+
+
+// didnt test if this works
+                    var g = 6; // number of laps
+                    for (q = g; q > 0; q--) { 
+
+                        if (allArray[l]["Id_TpsTour"+q] && allArray[l]["Id_TpsTour"+q] != "-") {
+    
+                            for (z = q; z > 0; z--) { 
+                            for (f = 1; f <= g; f++) { 
+                                    
+                                
+                                if (z > 0) {
+                                allArray[l]["Id_lap"+f] = allArray[l]["Id_TpsTour"+z];
+                                } else {
+                                allArray[l]["Id_lap"+f] = "-";
+                                }
+                                   
+                            }   
+                            }
+                            
+                        } 
+                    }
+                     
+                     
+                     
+                     
+                     
+ /*                      
                     if (allArray[l]["Id_TpsTour6"] && allArray[l]["Id_TpsTour6"] != "-") {
                         allArray[l].Id_lap1 = allArray[l]["Id_TpsTour6"];
                         allArray[l].Id_lap2 = allArray[l]["Id_TpsTour5"];
@@ -278,8 +307,11 @@
                         allArray[l].Id_lap5 = "-";
                         allArray[l].Id_lap6 = "-";
                     }
-                           
-                 }            
+ */                          
+
+                     
+                     
+                }            
                             
                             
                             
@@ -336,6 +368,8 @@
                                 allArray[l]["Id_Arrow"] = "&#9660;";
                             } else if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
                                 allArray[l]["Id_Arrow"] = "&nbsp;";
+                            } else if (allArray[l]["Id_Image"].includes("_TrackPassing")) {
+                                allArray[l]["Id_Arrow"] = "&#9671;"; // same :|
                             } else {
                                  allArray[l]["Id_Arrow"] = "&#9670;";
                             }
@@ -409,7 +443,11 @@
                     
                     finalTexte += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { // green
+                } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
+                    
+                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { 
                     
                     finalTexte += '<td class="' + checkeredFlag + 'rnk_font">&nbsp;</td>';
                     
@@ -493,7 +531,7 @@
      
 
          
-<!-- 
+/* 
     var headerText = '<tr class="rnkh_bkcolor">';
         for (var key in hhh) { 
 
@@ -531,7 +569,7 @@
    //         console.log(mainText);
 
             
--->             
+*/             
          //      console.log(allArray);
 
          //    console.log(finalTexte);
