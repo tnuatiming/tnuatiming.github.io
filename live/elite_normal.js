@@ -387,11 +387,11 @@
                         if (positionArray[competitorNumber]) {
 
                             if (positionArray[competitorNumber] < competitorPosition) {
-                                allArray[l]["Id_Arrow"] = "&#9660;"; // down :(
-                                positionChanged = "fadeIn";
+                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
+                                positionChanged = "down";
                             } else if (positionArray[competitorNumber] > competitorPosition) {
-                                allArray[l]["Id_Arrow"] = "&#9650;"; // up :)
-                                positionChanged = "fadeIn";
+                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
+                                positionChanged = "up";
                             }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
@@ -431,13 +431,13 @@
                 
                 
                 
-                if (allArray[l]["Id_Arrow"] == "&#9660;") { // red
+                if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'red rnk_font">&#9660;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9650;") { // green
+                } else if (allArray[l]["Id_Arrow"].includes("_PlusPosition")) { // green
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">&#9650;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     

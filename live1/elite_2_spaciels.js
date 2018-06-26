@@ -112,24 +112,26 @@
     };
 
 
-    function ExtraireClassementReduitNew(Texte) {
+    function ExtraireClassementReduitNew(text1) {
         var i;
-        var Lignes;
         var lines;
+        var lines2;
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
-        var qqq = new Array();
-        var hhh = new Array();
+//        var qqq = new Array();
+//        var hhh = new Array();
         var hhhPro = new Array();
         var hhhPro2 = new Array();
-        var temp = new Array();
+//        var temp = new Array();
         var lineArray = new Array();
         var allArray = new Array();
         var lineArray2 = new Array();
         var allArray2 = new Array();
         var ttt = 0;
         var b;
+        var a;
+        var id;
         var pp = 0;
         var positionChanged = "";
         var bestLapComp = 0;
@@ -139,38 +141,31 @@
         var bestTimecomp = 0;
         var bestTime = 0;
         
-        Texte = Texte.split('<table'); // split the text to title/time and the table
-        Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
-      //  console.log(Texte[1]);
-        Lignes = Texte[1].split("\r\n");
-   //     console.log(Lignes.length);
+        text1 = text1.split('<table'); // split the text to title/time and the table
+        text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(text1[1]);
 
-        lines = Texte[1].split("\r\n");
+        lines = text1[1].split("\r\n");
         //    console.log(lines.length);
      //   console.log(lines);
 
 
 
-
-
-        var lines2;
-        var textx = text2;
-
-        textx = textx.split('<table'); // split the text to title/time and the table
-        textx[1] = textx[1].substring(textx[1].indexOf("<tr"),textx[1].lastIndexOf("</tr>")+5); // clean the table text
-  //      console.log(textx[1]);
-        lines2 = textx[1].split("\r\n");
-        textx = [];
+        text2 = text2.split('<table'); // split the text to title/time and the table
+        text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
+  //      console.log(text2[1]);
+        lines2 = text2[1].split("\r\n");
+        text2 = [];
 
         
-        var finalTexte = Texte[0]; // clear the finalTexte variable and add the title and time lines
+        var finalText = text1[0]; // clear the finalText variable and add the title and time lines
 
 
 
         for (b = 0; b < lines2.length; b++) { 
            
             if (lines2[b].includes('<td id="Id_')) {
-                var id = (lines2[b].substring(lines2[b].indexOf(' id="')+4).split('"')[1]);
+                id = (lines2[b].substring(lines2[b].indexOf(' id="')+4).split('"')[1]);
                 hhhPro2.push(id);
             } else if (lines2[b].includes("OddRow") || lines2[b].includes("EvenRow")) {
                 ttt = 1;
@@ -200,19 +195,20 @@
          // console.log(allArray2);
 
             
-            
+        ttt = 0;
+        pp = 0;
             
             
         for (b = 0; b < lines.length; b++) { 
            
             if (lines[b].includes('<td id="Id_')) {
-                var id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
-                var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
-                hhh[id] = idName;
-                temp.push(id,idName);
+                id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
                 hhhPro.push(id);
-                qqq.push(temp);
-                temp = [];
+ //               var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
+ //               hhh[id] = idName;
+ //               temp.push(id,idName);
+ //               qqq.push(temp);
+ //               temp = [];
             } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) {
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) {
@@ -291,8 +287,9 @@
                         allArray[b].Id_lap6 = "-";
                     }
                  
-                    allArray[b].Id_Image2 = allArray2[a]["Id_Image"];   
-                    allArray[b].Id_MeilleurTour2 = allArray2[a]["Id_MeilleurTour"];   
+                    allArray[b].Id_Image_2 = allArray2[a]["Id_Image"];   
+                    allArray[b].Id_MeilleurTour_2 = allArray2[a]["Id_MeilleurTour"];   // fastest lap
+             //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
                     
                     if (allArray[b]["Id_Image"].includes("_Status") || allArray2[a]["Id_Image"].includes("_Status")) {
                         allArray[b].Id_Status = 1;
@@ -341,7 +338,7 @@
             var m = 0;
             var prevCompCat = ""
 
-            finalTexte += '<table class="' + tableClass + 'line_color">';
+            finalText += '<table class="' + tableClass + 'line_color">';
             
             for (var l = 0; l < allArray.length; l++) {
 
@@ -367,10 +364,15 @@
                                 var competitorLaps = allArray[l]["Id_NbTour"];
 
                                 if (competitorLaps < leaderLaps && competitorLaps > 0) {
-                                    allArray[l]["Id_Ecart1er"] = (leaderLaps - competitorLaps) + " הקפות";
+                                    if ((leaderLaps - competitorLaps) == "1") {
+                                        allArray[l]["Id_Ecart1er"] = "1 הקפה";
+                                    } else {
+                                        allArray[l]["Id_Ecart1er"] = (leaderLaps - competitorLaps) + " הקפות";
+                                    }
+                                    
                                 } else if (competitorLaps == leaderLaps) {
                                     var competitorTime = allArray[l]["Id_TpsCumule"];
-                                    if (competitorTime != leaderTime) {
+                                    if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) {
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
 
                                     if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
@@ -436,17 +438,17 @@
                     competitorPosition = 0;
                     allArray[l]["Id_Arrow"] = "&#9670;";
                     
-                            if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image2"].includes("_Status10")) {
+                            if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10")) {
                                 allArray[l]["Id_Arrow"] = "DNF";
-                            } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image2"].includes("_Status11")) {
+                            } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
                                 allArray[l]["Id_Arrow"] = "DSQ";
-                            } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image2"].includes("_Status12")) {
+                            } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
                                 allArray[l]["Id_Arrow"] = "DNS";
-                            } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image2"].includes("_Status2")) {
+                            } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
                                 allArray[l]["Id_Arrow"] = "NQ";
-                            } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image2"].includes("_Status")) {
+                            } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
                                 allArray[l]["Id_Arrow"] = "&#10033;";
-                            } else if (allArray[l]["Id_Image"].includes("_TrackPassing") || allArray[l]["Id_Image2"].includes("_TrackPassing")) {
+                            } else if (allArray[l]["Id_Image"].includes("_TrackPassing") || allArray[l]["Id_Image_2"].includes("_TrackPassing")) {
                                 allArray[l]["Id_Arrow"] = "&#9671;"; // same :|
                             } else {
                                  allArray[l]["Id_Arrow"] = "&#9670;";
@@ -466,10 +468,10 @@
                         if (positionArray[competitorNumber]) {
 
                             if (positionArray[competitorNumber] < competitorPosition) {
-                                allArray[l]["Id_Arrow"] = "&#9660;"; // down :(
+                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
                                 positionChanged = "down";
                             } else if (positionArray[competitorNumber] > competitorPosition) {
-                                allArray[l]["Id_Arrow"] = "&#9650;"; // up :)
+                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
                                 positionChanged = "up";
                             }                        
                             
@@ -483,15 +485,15 @@
         
             // add category name header and table header
             if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
-                finalTexte += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-                finalTexte += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
+                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
 
                 if (l % 2 == 0) {
-                finalTexte += '<tr class="' + positionChanged + ' rnk_bkcolor OddRow">';
+                finalText += '<tr class="' + positionChanged + ' rnk_bkcolor OddRow">';
                 } else {
-                finalTexte += '<tr class="' + positionChanged + ' rnk_bkcolor EvenRow">';
+                finalText += '<tr class="' + positionChanged + ' rnk_bkcolor EvenRow">';
                     
                 }
        
@@ -504,7 +506,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image2"].includes("_CheckeredFlag")) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag")) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -513,31 +515,31 @@
                 
                 
                 
-                if (allArray[l]["Id_Arrow"] == "&#9660;") { // red
+                if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'red rnk_font">&#9660;</td>';
+                    finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9650;") { // green
+                } else if (allArray[l]["Id_Arrow"].includes("_PlusPosition")) { // green
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">&#9650;</td>';
+                    finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
+                    finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
+                    finalText += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
                     
                 } else {
 
-                    finalTexte += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 }
                 
                 
                 
-                finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
 
                 
                 
@@ -548,55 +550,55 @@
                     if (useCategory == "no") {
                         
                         if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E2")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font redCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font redCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("ג'וניור מקצועי") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("ג'וניור") || opt4.toUpperCase().includes("expert")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }
 
                     } else {
-                            finalTexte += '<td class="rnk_font highlight">' + opt3 + '</td>';
+                            finalText += '<td class="rnk_font highlight">' + opt3 + '</td>';
                     }
 
 
       //          } else {
-      //              finalTexte += '<td class="rnk_font ">' + opt3 + '</td>';
+      //              finalText += '<td class="rnk_font ">' + opt3 + '</td>';
       //          }
                  
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';
+                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';
 
 // short version
              for (q = 1; q < 7; q++) { 
                 if (q % 2 == 0) {
                     if (allArray[l]["Id_lap"+q] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
-                        finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
-                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour2"]) {
-                        finalTexte += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"]) {
+                        finalText += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else {
-                        finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     }
                 } else {
                     if (allArray[l]["Id_lap"+q] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
-                        finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
-                        finalTexte += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else {
-                        finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     }
                 }
              }               
@@ -606,52 +608,52 @@
 /*
 // long version
                 if (allArray[l]["Id_lap1"] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
-                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
+                    finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
                 } else if (allArray[l]["Id_lap1"] != "-" && allArray[l]["Id_lap1"] == allArray[l]["Id_MeilleurTour"]) {
-                    finalTexte += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
+                    finalText += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
                 } else {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
+                    finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap1"] + '</td>';
                 }
                 if (allArray[l]["Id_lap2"] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
-                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
-                } else if (allArray[l]["Id_lap2"] != "-" && allArray[l]["Id_lap2"] == allArray[l]["Id_MeilleurTour2"]) {
-                    finalTexte += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
+                    finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
+                } else if (allArray[l]["Id_lap2"] != "-" && allArray[l]["Id_lap2"] == allArray[l]["Id_MeilleurTour_2"]) {
+                    finalText += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
                 } else {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
+                    finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap2"] + '</td>';
                 }
                 if (allArray[l]["Id_lap3"] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
-                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
+                    finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
                 } else if (allArray[l]["Id_lap3"] != "-" && allArray[l]["Id_lap3"] == allArray[l]["Id_MeilleurTour"]) {
-                    finalTexte += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
+                    finalText += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
                 } else {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
+                    finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap3"] + '</td>';
                 }
                 if (allArray[l]["Id_lap4"] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
-                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
-                } else if (allArray[l]["Id_lap4"] != "-" && allArray[l]["Id_lap4"] == allArray[l]["Id_MeilleurTour2"]) {
-                    finalTexte += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
+                    finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
+                } else if (allArray[l]["Id_lap4"] != "-" && allArray[l]["Id_lap4"] == allArray[l]["Id_MeilleurTour_2"]) {
+                    finalText += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
                 } else {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
+                    finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap4"] + '</td>';
                 }
                 if (allArray[l]["Id_lap5"] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
-                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
+                    finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
                 } else if (allArray[l]["Id_lap5"] != "-" && allArray[l]["Id_lap5"] == allArray[l]["Id_MeilleurTour"]) {
-                    finalTexte += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
+                    finalText += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
                 } else {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
+                    finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap5"] + '</td>';
                 }
                 if (allArray[l]["Id_lap6"] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
-                    finalTexte += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
-                } else if (allArray[l]["Id_lap6"] != "-" && allArray[l]["Id_lap6"] == allArray[l]["Id_MeilleurTour2"]) {
-                    finalTexte += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+                    finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+                } else if (allArray[l]["Id_lap6"] != "-" && allArray[l]["Id_lap6"] == allArray[l]["Id_MeilleurTour_2"]) {
+                    finalText += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
                 } else {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
+                    finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap6"] + '</td>';
                 }
 */
 
 
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>';
+                finalText += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>';
  
                 
      //       }
@@ -660,13 +662,13 @@
                 
       //      }    
 
-                    finalTexte += '</tr>';
+                    finalText += '</tr>';
 
                
             }        
          
          
-                finalTexte += '</table>';
+                finalText += '</table>';
      
 
          
@@ -709,13 +711,13 @@
 
             
 */             
-          //   console.log(allArray);
+             console.log(allArray);
 
-         //    console.log(finalTexte);
+         //    console.log(finalText);
       
     tableClass = "";
             
-    return finalTexte
+    return finalText
 
     };
         
