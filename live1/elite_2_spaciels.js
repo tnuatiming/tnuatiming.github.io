@@ -43,8 +43,8 @@
     };
 
     function Load(url, target) {
-        live2('https://tnuatiming.com/live1/liveb/p1.html')
         var xhr;
+        var xhr2;
         var fct;
         if (UrlChange) url = 'https://tnuatiming.com/live1/livea/p1.html';
         else UrlRefresh = 'https://tnuatiming.com/live1/livea/p1.html';
@@ -52,17 +52,26 @@
         if (TimerLoad) clearTimeout(TimerLoad);
         try {
             xhr = new ActiveXObject("Msxml2.XMLHTTP")
+            xhr2 = new ActiveXObject("Msxml2.XMLHTTP")
         } catch (e) {
             try {
                 xhr = new ActiveXObject("Microsoft.XMLHTTP")
+                xhr2 = new ActiveXObject("Microsoft.XMLHTTP")
             } catch (e2) {
                 try {
                     xhr = new XMLHttpRequest
+                    xhr2 = new XMLHttpRequest
                 } catch (e3) {
                     xhr = false
+                    xhr2 = false
                 }
             }
         }
+        xhr2.onreadystatechange = function () {
+            if (xhr2.readyState == 4 && xhr2.status == 200) {
+                text2 = xhr2.responseText;
+            }
+        };
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
@@ -73,28 +82,17 @@
             }
         };
         
+        xhr2.open("GET", 'https://tnuatiming.com/live1/liveb/p1.html' + "?r=" + Math.random(), true);
+        xhr2.send(null);
         xhr.open("GET", 'https://tnuatiming.com/live1/livea/p1.html' + "?r=" + Math.random(), true);
         xhr.send(null);
         fct = function() {
             Load('https://tnuatiming.com/live1/livea/p1.html', target)
         };
         populatePre('uploadMsg.txt'); // upload message
-        live2('https://tnuatiming.com/live1/liveb/p1.html');
         TimerLoad = setTimeout(fct, Rafraichir)
     };
 
-    function live2(url) {
-
-        var xhr2 = new XMLHttpRequest();
-        xhr2.onreadystatechange = function () {
-            if (xhr2.readyState == 4 && xhr2.status == 200) {
-                text2 = xhr2.responseText;
-            }
-        };
-        xhr2.open("GET", url + "?r=" + Math.random(), true);
-    //    xhr2.open('GET', url, true);
-        xhr2.send(null);
-    };
 
 
 
@@ -727,7 +725,20 @@
         a=a[0].split(':'),
         b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
     };
-// another option to convert
+
+    function ms2TimeString(a,k,s,m,h){
+        return k=a%1e3, // optimized by konijn
+        s=a/1e3%60|0,
+        m=a/6e4%60|0,
+        h=a/36e5%24|0,
+        (h?(h<10?'0'+h:h)+':':'')+ // optimized
+        (m<10?0:'')+m+':'+  // optimized
+        (s<10?0:'')+s+'.'+ // optimized
+        (k<100?k<10?'00':0:'')+k // optimized
+    };
+
+/*
+ // another option to convert
     function timeToMs(time) {// time(HH:MM:SS.mss)
         a=time.split('.');
         mss=a[1];
@@ -744,17 +755,7 @@
     return (c+mss);
     };
 
-    function ms2TimeString(a,k,s,m,h){
-        return k=a%1e3, // optimized by konijn
-        s=a/1e3%60|0,
-        m=a/6e4%60|0,
-        h=a/36e5%24|0,
-        (h?(h<10?'0'+h:h)+':':'')+ // optimized
-        (m<10?0:'')+m+':'+  // optimized
-        (s<10?0:'')+s+'.'+ // optimized
-        (k<100?k<10?'00':0:'')+k // optimized
-    };
-// another option to convert
+ 
     function msToTime(duration) {
         var milliseconds = parseInt(duration % 1000),
             seconds = parseInt((duration / 1000) % 60),
@@ -779,7 +780,7 @@
         });
         return ordered;
     };
-     
+*/     
     function Change() {
         var Num, Index;
         if (document.forms["Changement"].chkChangement.checked) {
@@ -794,9 +795,9 @@
             TimerChange = setTimeout(fct, Changement)
         } else if (TimerChange) clearTimeout(TimerChange)
     };
-
+/*
     function AfficherImageZoom(a, b) {
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
-
+*/
 </script>
