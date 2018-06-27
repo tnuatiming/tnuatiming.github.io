@@ -675,8 +675,12 @@ span#name, span#rund, span#date {
     font-weight: 700;
 }
 
-.postionChanged {
+#live img.postionChanged {
     height: 1em;
+    vertical-align: middle;
+}
+#live img.postionSame {
+    height: 0.8em;
     vertical-align: middle;
 }
 

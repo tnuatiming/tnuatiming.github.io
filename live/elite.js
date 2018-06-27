@@ -154,11 +154,11 @@
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
 
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime[lineArray["Id_Numero"]] = "BestTimeOverall";
+                    bestTime[lineArray["Id_Numero"]] = " BestTimeOverall";
                 } else if  (lines[b].includes("BestTime") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime[lineArray["Id_Numero"]] = "BestTime";
+                    bestTime[lineArray["Id_Numero"]] = " BestTime";
                 } else if  (hhhPro[pp] == "Id_TpsTour") {
-                    bestTime[lineArray["Id_Numero"]] = " ";
+                    bestTime[lineArray["Id_Numero"]] = "";
                 }
                 
                 pp += 1;
@@ -226,8 +226,37 @@
                             
                        // reorder laps as elite3 does somthing wrong with the order (6 laps) NOT FINISHED FIXME
                        
-                 if (allArray[l]["Id_TpsTour1"]) {      
-                       
+                 if (allArray[l]["Id_TpsTour1"]) { 
+
+
+
+// didnt test if this works
+                    var g = 6; // number of laps
+                    for (q = g; q > 0; q--) { 
+
+                        if (allArray[l]["Id_TpsTour"+q] && allArray[l]["Id_TpsTour"+q] != "-") {
+    
+                            for (z = q; z > 0; z--) { 
+                            for (f = 1; f <= g; f++) { 
+                                    
+                                
+                                if (z > 0) {
+                                allArray[l]["Id_lap"+f] = allArray[l]["Id_TpsTour"+z];
+                                } else {
+                                allArray[l]["Id_lap"+f] = "-";
+                                }
+                                   
+                            }   
+                            }
+                            
+                        } 
+                    }
+                     
+                     
+                     
+                     
+                     
+ /*                      
                     if (allArray[l]["Id_TpsTour6"] && allArray[l]["Id_TpsTour6"] != "-") {
                         allArray[l].Id_lap1 = allArray[l]["Id_TpsTour6"];
                         allArray[l].Id_lap2 = allArray[l]["Id_TpsTour5"];
@@ -278,8 +307,11 @@
                         allArray[l].Id_lap5 = "-";
                         allArray[l].Id_lap6 = "-";
                     }
-                           
-                 }            
+ */                          
+
+                     
+                     
+                }            
                             
                             
                             
@@ -336,8 +368,10 @@
                                 allArray[l]["Id_Arrow"] = "&#9660;";
                             } else if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
                                 allArray[l]["Id_Arrow"] = "&nbsp;";
+                            } else if (allArray[l]["Id_Image"].includes("_TrackPassing")) {
+                                allArray[l]["Id_Arrow"] = "&#9671;"; // same :|
                             } else {
-                                 allArray[l]["Id_Arrow"] = "&#9679;";
+                                 allArray[l]["Id_Arrow"] = "&#9670;";
                             }
                           
                           
@@ -353,11 +387,14 @@
                         if (positionArray[competitorNumber]) {
 
                             if (positionArray[competitorNumber] < competitorPosition) {
-                                allArray[l]["Id_Arrow"] = "&#9660;"; // down :(
-                                positionChanged = "fadeIn";
+                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
+                                positionChanged = "down ";
                             } else if (positionArray[competitorNumber] > competitorPosition) {
-                                allArray[l]["Id_Arrow"] = "&#9650;"; // up :)
-                                positionChanged = "fadeIn";
+                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
+                                positionChanged = "up ";
+                            } else if (positionArray[competitorNumber] == competitorPosition &&  !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
+                                allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // up :)
+                             //   positionChanged = "same ";
                             }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
@@ -374,9 +411,9 @@
             }
 
                 if (l % 2 == 0) {
-                finalTexte += '<tr class="' + positionChanged + ' rnk_bkcolor OddRow">';
+                finalTexte += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
                 } else {
-                finalTexte += '<tr class="' + positionChanged + ' rnk_bkcolor EvenRow">';
+                finalTexte += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
                     
                 }
        
@@ -397,19 +434,29 @@
                 
                 
                 
-                if (allArray[l]["Id_Arrow"] == "&#9660;") { // red
+                if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'red rnk_font">&#9660;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9650;") { // green
+                } else if (allArray[l]["Id_Arrow"].includes("_PlusPosition")) { // green
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">&#9650;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9679;") { // green
+                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
+                    if (checkeredFlag == "finished ") {
+                        finalText += '<td class="finished white rnk_font">&nbsp;</td>';
+                    } else {
+                        finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
+                    }
+                } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font fadeOut">&#9679;</td>';
+                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { // green
+                } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
+                    
+                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { 
                     
                     finalTexte += '<td class="' + checkeredFlag + 'rnk_font">&nbsp;</td>';
                     
@@ -441,14 +488,16 @@
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("ג'וניור מקצועי") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("ג'וניור")) {
+                        } else if (opt4.toUpperCase().includes("ג'וניור") || opt4.toUpperCase().includes("expert")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
-                        } else if (opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
+                        } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
+                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
+                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else {
                             finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }
@@ -462,14 +511,14 @@
       //              finalTexte += '<td class="rnk_font ">' + opt3 + '</td>';
       //          }
                  
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';
-                finalTexte += '<td class="rnk_font ' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
-                finalTexte += '<td class="rnk_font ' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
-                finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';
+                finalTexte += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
+                finalTexte += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
+                finalTexte += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
                 if (useCategory == "yes") {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
+                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
                 } else if (useCategory == "no") {
-                    finalTexte += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>';
+                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>';
                 }
                 
                 
@@ -491,7 +540,7 @@
      
 
          
-<!-- 
+/* 
     var headerText = '<tr class="rnkh_bkcolor">';
         for (var key in hhh) { 
 
@@ -529,7 +578,7 @@
    //         console.log(mainText);
 
             
--->             
+*/             
          //      console.log(allArray);
 
          //    console.log(finalTexte);

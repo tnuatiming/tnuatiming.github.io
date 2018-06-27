@@ -21,8 +21,8 @@
     
     var useCategory = "yes";
     var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/live1/livea/p1.html";    
-    var url2 = "https://tnuatiming.com/live1/liveb/p1.html";    
+    var url1 = "https://tnuatiming.com/live/race1/p1.html";    
+    var url2 = "https://tnuatiming.com/live/race2/p1.html";    
     var text1;
     var text2;
 
@@ -148,22 +148,21 @@
 
         for (b = 0; b < lines2.length; b++) { 
            
-            if (lines2[b].includes('<td id="Id_')) {
+            if (lines2[b].includes('<td id="Id_')) { // header cell
                 id = (lines2[b].substring(lines2[b].indexOf(' id="')+4).split('"')[1]);
                 hhhPro2.push(id);
-            } else if (lines2[b].includes("OddRow") || lines2[b].includes("EvenRow")) {
+            } else if (lines2[b].includes("OddRow") || lines2[b].includes("EvenRow")) { // competitor line
                 ttt = 1;
-            } else if (lines2[b].includes("</tr>") && ttt == 1) {
+            } else if (lines2[b].includes("</tr>") && ttt == 1) { // end competitor line
                 ttt = 0;
-                allArray2.push(lineArray2); 
+                allArray2.push(lineArray2); // push line to main array
                lineArray2 = [];
                 pp = 0;
-            } else if (lines2[b].includes("<td ") && ttt == 1) {
+            } else if (lines2[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
                 lineArray2[hhhPro2[pp]] = lines2[b].substring(lines2[b].indexOf(">")+1,lines2[b].lastIndexOf("<"));
+                // convert total time to miliseconds
                 if (hhhPro2[pp] == "Id_TpsCumule" && lineArray2[hhhPro2[pp]] != "-" ) {
-                    
                     lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
-
                 }
 /*
                 if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
@@ -171,12 +170,14 @@
                     bestTime2comp=lineArray2["Id_Numero"];
                 }
 */
+                // find best lap overall
                 if (hhhPro2[pp] == "Id_TpsTour1" || hhhPro2[pp] == "Id_TpsTour2" || hhhPro2[pp] == "Id_TpsTour3") {
                     if (lineArray2[hhhPro2[pp]] != "-" && timeString2ms(lineArray2[hhhPro2[pp]]) <= timeString2ms(bestLap2)) {
                     bestLap2 = lineArray2[hhhPro2[pp]];
                     bestLapComp2 = lineArray2["Id_Numero"];
                     }
                 }
+
                 pp += 1;
         //                console.log(lineArray2);
          // console.log("x  "+bestLapComp2+"  "+bestLap2);
@@ -192,7 +193,7 @@
             
         for (b = 0; b < lines.length; b++) { 
            
-            if (lines[b].includes('<td id="Id_')) {
+            if (lines[b].includes('<td id="Id_')) { // header cell
                 id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
                 hhhPro.push(id);
  //               var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
@@ -200,19 +201,18 @@
  //               temp.push(id,idName);
  //               qqq.push(temp);
  //               temp = [];
-            } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) {
+            } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) { // competitor line
                 ttt = 1;
-            } else if (lines[b].includes("</tr>") && ttt == 1) {
+            } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
                 ttt = 0;
-                allArray.push(lineArray); 
+                allArray.push(lineArray); // push line to main array 
                lineArray = [];
                 pp = 0;
-            } else if (lines[b].includes("<td ") && ttt == 1) {
+            } else if (lines[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
+                // convert total time to miliseconds
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
-                    
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-
                 }
 /*
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
@@ -220,12 +220,14 @@
                     bestTimecomp=lineArray["Id_Numero"];
                 }
 */
+                // find best lap overall
                 if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3") {
                     if (lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
                     bestLap = lineArray[hhhPro[pp]];
                     bestLapComp = lineArray["Id_Numero"];
                     }
                 }
+
                 pp += 1;
       //    console.log(lineArray);
        //   console.log(bestLapComp+"  "+bestLap);
@@ -242,14 +244,12 @@
       //   console.log(hhhPro2);
          //                console.log(allArray);
 
-          
-         
-         
+        
 
         for (b = 0; b < allArray.length; b++) { 
             for (a = 0; a < allArray2.length; a++) { 
 
-
+                // calculating total time and total laps from both arrays
                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != "-" && allArray2[a]["Id_TpsCumule"] != "-") {
                     
                     allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
@@ -266,7 +266,7 @@
                 
                  if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                      
-                      // reorder laps as elite3 does somthing wrong with the order
+                      // reorder laps as elite3 does somthing wrong with the order - second array
                     if (allArray2[a]["Id_TpsTour3"] != "-") {
                         allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour3"];
                         allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour2"];
@@ -285,6 +285,7 @@
                         allArray[b].Id_lap6 = "-";
                     }
                  
+                    // transfer fileds from secound array to the first that nedded later, use _2 to mark
                     allArray[b].Id_Image_2 = allArray2[a]["Id_Image"];   
                     allArray[b].Id_MeilleurTour_2 = allArray2[a]["Id_MeilleurTour"];   // fastest lap
              //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
@@ -294,12 +295,9 @@
                     } else {
                         allArray[b].Id_Status = 0;
                     }
-                    
-                    
-                    
-                }
+               }
                
-                      // reorder laps as elite3 does somthing wrong with the order
+                // reorder laps as elite3 does somthing wrong with the order - first array
                 if (allArray[b]["Id_TpsTour3"] != "-") {
                     allArray[b].Id_lap1 = allArray[b]["Id_TpsTour3"];
                     allArray[b].Id_lap3 = allArray[b]["Id_TpsTour2"];
@@ -322,7 +320,7 @@
          // delete the secound array
          allArray2 = [];
          
-         // MAGIC sort the array after the merge to get new results
+         // THE MAGIC - sort the array after the merge to get new results
         if (useCategory == "no") {
             allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
         } else if (useCategory == "yes") {
@@ -340,6 +338,7 @@
             
             for (var l = 0; l < allArray.length; l++) {
 
+                // reasign postion number
                  if (useCategory == "no") {
                     allArray[l]["Id_Position"] = l+1;
                  } else if (useCategory == "yes") {
@@ -370,7 +369,7 @@
                                     
                                 } else if (competitorLaps == leaderLaps) {
                                     var competitorTime = allArray[l]["Id_TpsCumule"];
-                                    if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) {
+                                    if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
 
                                     if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
@@ -430,7 +429,7 @@
 
          
         
-                             // position change arrow prep
+                             // position change arrow/status prep
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
@@ -455,7 +454,7 @@
 
 
 
-
+                    // calculating arrows status
                     if (allArray[l]["Id_Position"]) { 
                             competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
                     }
@@ -488,12 +487,12 @@
                 finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
 
-                if (l % 2 == 0) {
+
+            if (l % 2 == 0) { // start building competitor line
                 finalText += '<tr class="' + positionChanged + ' rnk_bkcolor OddRow">';
-                } else {
+            } else {
                 finalText += '<tr class="' + positionChanged + ' rnk_bkcolor EvenRow">';
-                    
-                }
+            }
        
         
         
@@ -512,7 +511,7 @@
                 
                 
                 
-                
+                // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
                     finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
@@ -537,10 +536,10 @@
                 
                 
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>'; // add postion
 
                 
-                
+        // add and color competitor number        
        //         if (key == "Id_Numero") {
                     var opt3 = allArray[l]["Id_Numero"];                        
                     var opt4 = allArray[l]["Id_Categorie"];
@@ -578,10 +577,10 @@
       //              finalText += '<td class="rnk_font ">' + opt3 + '</td>';
       //          }
                  
-                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';
-
+                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+// adding and coloring the laps and best time
 // short version
-             for (q = 1; q < 7; q++) { 
+             for (q = 1; q < 7; q++) { // q = number of laps + 1
                 if (q % 2 == 0) {
                     if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
                         finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
@@ -650,8 +649,8 @@
 */
 
 
-                finalText += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>';
-                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>';
+                finalText += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
+                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
  
                 
      //       }
