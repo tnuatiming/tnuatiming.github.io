@@ -3,25 +3,20 @@
 <!-- 20180523 - add competitor number color/background according to category -->
 <!-- 20180527 - add message uploading -->
 <!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
-<!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order. 
+<!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
 
 <!-- tag heuer live timing -->
 
 <script type="text/javascript">
-    var TimerLoad, TimerChange;
-    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
-    var UrlRefresh, UrlChange;
-    Rafraichir = 30000;
-    Changement = 60000;
-    MaxNum = 1;
-    ClassementReduit = 1;
-    ClassementReduitXpremier = 10;
+    var TimerLoad;
+    var Rafraichir = 30000;
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
     var tableClass = "fadeIn ";
-        
+    var url = 'https://tnuatiming.com/live1/livea/p1.html';    
+    var url2 = 'https://tnuatiming.com/live1/liveb/p1.html';    
     var text2;
 
     function category(choice){
@@ -39,16 +34,13 @@
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
-        Load('https://tnuatiming.com/live1/livea/p1.html', 'result');
+        Load(url, 'result');
     };
 
     function Load(url, target) {
         var xhr;
         var xhr2;
         var fct;
-        if (UrlChange) url = 'https://tnuatiming.com/live1/livea/p1.html';
-        else UrlRefresh = 'https://tnuatiming.com/live1/livea/p1.html';
-        UrlChange = 0;
         if (TimerLoad) clearTimeout(TimerLoad);
         try {
             xhr = new ActiveXObject("Msxml2.XMLHTTP")
@@ -75,19 +67,18 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                if (ClassementReduit == 0) document.getElementById(target).innerHTML = xhr.responseText;
-                else document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
+                document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText);
  //           } else {
  //               document.getElementById("categoryOrAll").style.display = "none";
             }
         };
         
-        xhr2.open("GET", 'https://tnuatiming.com/live1/liveb/p1.html' + "?r=" + Math.random(), true);
+        xhr2.open("GET", url2 + "?r=" + Math.random(), true);
         xhr2.send(null);
-        xhr.open("GET", 'https://tnuatiming.com/live1/livea/p1.html' + "?r=" + Math.random(), true);
+        xhr.open("GET", url + "?r=" + Math.random(), true);
         xhr.send(null);
         fct = function() {
-            Load('https://tnuatiming.com/live1/livea/p1.html', target)
+            Load(url, target)
         };
         populatePre('uploadMsg.txt'); // upload message
         TimerLoad = setTimeout(fct, Rafraichir)
@@ -134,11 +125,14 @@
         var positionChanged = "";
         var bestLapComp = 0;
         var bestLap = "99999999999";
+        var bestLapComp2 = 0;
+        var bestLap2 = "99999999999";
+/*        
         var bestTime2comp = 0;
         var bestTime2 = 0;
         var bestTimecomp = 0;
         var bestTime = 0;
-        
+*/        
         text1 = text1.split('<table'); // split the text to title/time and the table
         text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(text1[1]);
@@ -179,14 +173,21 @@
                     lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
 
                 }
+/*
                 if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
                     bestTime2=lineArray2["Id_TpsTour"];
                     bestTime2comp=lineArray2["Id_Numero"];
                 }
-                
+*/
+                if (hhhPro2[pp] == "Id_TpsTour1" || hhhPro2[pp] == "Id_TpsTour2" || hhhPro2[pp] == "Id_TpsTour3") {
+                    if (lineArray2[hhhPro2[pp]] != "-" && timeString2ms(lineArray2[hhhPro2[pp]]) <= timeString2ms(bestLap2)) {
+                    bestLap2 = lineArray2[hhhPro2[pp]];
+                    bestLapComp2 = lineArray2["Id_Numero"];
+                    }
+                }
                 pp += 1;
         //                console.log(lineArray2);
-        //  console.log(bestTime2comp+"  "+bestTime2);
+         // console.log("x  "+bestLapComp2+"  "+bestLap2);
             }
             
         }
@@ -221,14 +222,21 @@
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
 
                 }
+/*
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime=lineArray["Id_TpsTour"];
                     bestTimecomp=lineArray["Id_Numero"];
                 }
-                
+*/
+                if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3") {
+                    if (lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
+                    bestLap = lineArray[hhhPro[pp]];
+                    bestLapComp = lineArray["Id_Numero"];
+                    }
+                }
                 pp += 1;
       //    console.log(lineArray);
-       //   console.log(bestTimecomp+"  "+bestTime);
+       //   console.log(bestLapComp+"  "+bestLap);
 
             }
             
@@ -583,7 +591,7 @@
 // short version
              for (q = 1; q < 7; q++) { 
                 if (q % 2 == 0) {
-                    if (allArray[l]["Id_lap"+q] == bestTime2 && allArray[l]["Id_Numero"] == bestTime2comp) {
+                    if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
                         finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"]) {
                         finalText += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
@@ -591,7 +599,7 @@
                         finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     }
                 } else {
-                    if (allArray[l]["Id_lap"+q] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
+                    if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
                         finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
                         finalText += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
@@ -780,7 +788,7 @@
         });
         return ordered;
     };
-*/     
+     
     function Change() {
         var Num, Index;
         if (document.forms["Changement"].chkChangement.checked) {
@@ -795,7 +803,7 @@
             TimerChange = setTimeout(fct, Changement)
         } else if (TimerChange) clearTimeout(TimerChange)
     };
-/*
+
     function AfficherImageZoom(a, b) {
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
