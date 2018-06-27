@@ -8,15 +8,22 @@
 <!-- tag heuer live timing -->
 
 <script type="text/javascript">
-    var TimerLoad;
-    var Rafraichir = 30000;
+    var TimerLoad, TimerChange;
+    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
+    var UrlRefresh, UrlChange;
+    Rafraichir = 45000;
+    Changement = 60000;
+    MaxNum = 1;
+    ClassementReduit = 1;
+    ClassementReduitXpremier = 10;
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
     var tableClass = "fadeIn ";
-    var url = 'https://tnuatiming.com/live1/livea/p1.html';    
-    var url2 = 'https://tnuatiming.com/live1/liveb/p1.html';    
+    var url1 = "https://tnuatiming.com/live1/livea/p1.html";    
+    var url2 = "https://tnuatiming.com/live1/liveb/p1.html";    
+    var text1;
     var text2;
 
     function category(choice){
@@ -34,58 +41,44 @@
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
-        Load(url, 'result');
+        Load(url1, 'result');
     };
 
     function Load(url, target) {
         var xhr;
         var xhr2;
         var fct;
+        if (UrlChange) url = url1;
+        else UrlRefresh = url1;
+        UrlChange = 0;
         if (TimerLoad) clearTimeout(TimerLoad);
-        try {
-            xhr = new ActiveXObject("Msxml2.XMLHTTP")
-            xhr2 = new ActiveXObject("Msxml2.XMLHTTP")
-        } catch (e) {
-            try {
-                xhr = new ActiveXObject("Microsoft.XMLHTTP")
-                xhr2 = new ActiveXObject("Microsoft.XMLHTTP")
-            } catch (e2) {
-                try {
-                    xhr = new XMLHttpRequest
-                    xhr2 = new XMLHttpRequest
-                } catch (e3) {
-                    xhr = false
-                    xhr2 = false
-                }
-            }
-        }
+
+        xhr2 = new XMLHttpRequest;
         xhr2.onreadystatechange = function () {
             if (xhr2.readyState == 4 && xhr2.status == 200) {
                 text2 = xhr2.responseText;
             }
         };
+        xhr2.open("GET", url2 + "?r=" + Math.random(), true);
+        xhr2.send();
+
+        xhr = new XMLHttpRequest;
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText);
- //           } else {
- //               document.getElementById("categoryOrAll").style.display = "none";
+                text1 = xhr.responseText;
+                document.getElementById(target).innerHTML = ExtraireClassementReduitNew();
             }
         };
-        
-        xhr2.open("GET", url2 + "?r=" + Math.random(), true);
-        xhr2.send(null);
-        xhr.open("GET", url + "?r=" + Math.random(), true);
-        xhr.send(null);
+        xhr.open("GET", url1 + "?r=" + Math.random(), true);
+        xhr.send();
+
         fct = function() {
-            Load(url, target)
+            Load(url1, target)
         };
         populatePre('uploadMsg.txt'); // upload message
         TimerLoad = setTimeout(fct, Rafraichir)
     };
-
-
-
 
     // fn to upload messages
     function populatePre(url) {
@@ -100,8 +93,7 @@
         xhr1.send();
     };
 
-
-    function ExtraireClassementReduitNew(text1) {
+    function ExtraireClassementReduitNew() {
         var i;
         var lines;
         var lines2;
@@ -118,10 +110,10 @@
         var lineArray2 = new Array();
         var allArray2 = new Array();
         var ttt = 0;
+        var pp = 0;
         var b;
         var a;
         var id;
-        var pp = 0;
         var positionChanged = "";
         var bestLapComp = 0;
         var bestLap = "99999999999";
@@ -745,6 +737,21 @@
         (k<100?k<10?'00':0:'')+k // optimized
     };
 
+    function Change() {
+        var Num, Index;
+        if (document.forms["Changement"].chkChangement.checked) {
+            Index = UrlRefresh.indexOf(".");
+            Num = parseInt(UrlRefresh.substring(1, Index)) + 1;
+            if (Num > MaxNum) Num = 1;
+            UrlRefresh = "p" + Num + ".html";
+            UrlChange = 1;
+            fct = function() {
+                Change()
+            };
+            TimerChange = setTimeout(fct, Changement)
+        } else if (TimerChange) clearTimeout(TimerChange)
+    };
+
 /*
  // another option to convert
     function timeToMs(time) {// time(HH:MM:SS.mss)
@@ -789,20 +796,6 @@
         return ordered;
     };
      
-    function Change() {
-        var Num, Index;
-        if (document.forms["Changement"].chkChangement.checked) {
-            Index = UrlRefresh.indexOf(".");
-            Num = parseInt(UrlRefresh.substring(1, Index)) + 1;
-            if (Num > MaxNum) Num = 1;
-            UrlRefresh = "p" + Num + ".html";
-            UrlChange = 1;
-            fct = function() {
-                Change()
-            };
-            TimerChange = setTimeout(fct, Changement)
-        } else if (TimerChange) clearTimeout(TimerChange)
-    };
 
     function AfficherImageZoom(a, b) {
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
