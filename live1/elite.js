@@ -80,7 +80,7 @@
         };
         populatePre('uploadMsg.txt'); // upload message
         TimerLoad = setTimeout(fct, Rafraichir);
-        Rafraichir = 45000;
+        Rafraichir = 55000;
     };
 
     // fn to upload messages

@@ -49,24 +49,12 @@
         else UrlRefresh = url;
         UrlChange = 0;
         if (TimerLoad) clearTimeout(TimerLoad);
-        try {
-            xhr = new ActiveXObject("Msxml2.XMLHTTP")
-        } catch (e) {
-            try {
-                xhr = new ActiveXObject("Microsoft.XMLHTTP")
-            } catch (e2) {
-                try {
-                    xhr = new XMLHttpRequest
-                } catch (e3) {
-                    xhr = false
-                }
-            }
-        }
+        
+        xhr = new XMLHttpRequest;
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                if (ClassementReduit == 0) document.getElementById(target).innerHTML = xhr.responseText;
-                else document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
+                document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
  //           } else {
  //               document.getElementById("categoryOrAll").style.display = "none";
             }
@@ -113,7 +101,7 @@
         var allArray2 = new Array();
         var bestTime = new Array();
         var ttt = 0;
-        var b;
+        var b, q, z, f;
         var pp = 0;
         var positionChanged = "";
 
@@ -130,7 +118,7 @@
 
 
         
-        var finalTexte = Texte[0]; // clear the finalTexte variable and add the title and time lines
+        var finalText = Texte[0]; // clear the finalText variable and add the title and time lines
 
            
         for (b = 0; b < lines.length; b++) { 
@@ -184,7 +172,7 @@
 
           
 
-            finalTexte += '<table class="' + tableClass + 'line_color">';
+            finalText += '<table class="' + tableClass + 'line_color">';
             
             for (var l = 0; l < allArray.length; l++) {
 
@@ -229,8 +217,8 @@
                  if (allArray[l]["Id_TpsTour1"]) { 
 
 
-
-// didnt test if this works
+ /*                      
+// didnt test if this works 
                     var g = 6; // number of laps
                     for (q = g; q > 0; q--) { 
 
@@ -251,12 +239,12 @@
                             
                         } 
                     }
+ */                          
                      
                      
                      
                      
                      
- /*                      
                     if (allArray[l]["Id_TpsTour6"] && allArray[l]["Id_TpsTour6"] != "-") {
                         allArray[l].Id_lap1 = allArray[l]["Id_TpsTour6"];
                         allArray[l].Id_lap2 = allArray[l]["Id_TpsTour5"];
@@ -307,7 +295,6 @@
                         allArray[l].Id_lap5 = "-";
                         allArray[l].Id_lap6 = "-";
                     }
- */                          
 
                      
                      
@@ -407,15 +394,15 @@
         
             // add category name header and table header
             if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {
-                finalTexte += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-                finalTexte += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
+                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
 
                 if (l % 2 == 0) {
-                finalTexte += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
                 } else {
-                finalTexte += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
                     
                 }
        
@@ -438,11 +425,11 @@
                 
                 if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_PlusPosition")) { // green
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
                     if (checkeredFlag == "finished ") {
@@ -452,27 +439,27 @@
                     }
                 } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
+                    finalText += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
+                    finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { 
                     
-                    finalTexte += '<td class="' + checkeredFlag + 'rnk_font">&nbsp;</td>';
+                    finalText += '<td class="' + checkeredFlag + 'rnk_font">&nbsp;</td>';
                     
                 } else {
 
-                    finalTexte += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 }
                 
                 
                 if (useCategory == "yes") {
-                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
                 } else if (useCategory == "no") {
-                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
                 }
             
                 
@@ -483,44 +470,44 @@
                     if (useCategory == "no") {
                         
                         if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E2")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font redCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font redCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("ג'וניור מקצועי") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("ג'וניור") || opt4.toUpperCase().includes("expert")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>';
                         } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else {
-                            finalTexte += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }
 
                     } else {
-                            finalTexte += '<td class="rnk_font highlight">' + opt3 + '</td>';
+                            finalText += '<td class="rnk_font highlight">' + opt3 + '</td>';
                     }
 
 
       //          } else {
-      //              finalTexte += '<td class="rnk_font ">' + opt3 + '</td>';
+      //              finalText += '<td class="rnk_font ">' + opt3 + '</td>';
       //          }
                  
-                finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';
-                finalTexte += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
-                finalTexte += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
-                finalTexte += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';
+                finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
+                finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
                 if (useCategory == "yes") {
-                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
                 } else if (useCategory == "no") {
-                    finalTexte += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>';
                 }
                 
                 
@@ -532,13 +519,13 @@
                 
       //      }    
 
-                    finalTexte += '</tr>';
+                    finalText += '</tr>';
 
                
             }        
          
          
-                finalTexte += '</table>';
+                finalText += '</table>';
      
 
          
@@ -583,11 +570,11 @@
 */             
          //      console.log(allArray);
 
-         //    console.log(finalTexte);
+         //    console.log(finalText);
       
     tableClass = "";
             
-    return finalTexte
+    return finalText
 
     };
         
