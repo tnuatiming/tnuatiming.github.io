@@ -392,16 +392,18 @@
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
                                 positionChanged = "up ";
-                            } else if (positionArray[competitorNumber] == competitorPosition &&  !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
-                                allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // up :)
-                             //   positionChanged = "same ";
                             }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
                         positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
                     }
        
-        
+                    // mark on track
+                    if (allArray[l]["Id_Canal"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status"))) {
+                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
+                             //   positionChanged = "same ";
+                    }                        
+         
         
             // add category name header and table header
             if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {

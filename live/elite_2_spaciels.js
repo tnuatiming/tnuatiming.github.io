@@ -11,7 +11,7 @@
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
-    Rafraichir = 45000;
+    Rafraichir = 10000;
     Changement = 60000;
     MaxNum = 1;
     ClassementReduit = 1;
@@ -21,8 +21,8 @@
     
     var useCategory = "yes";
     var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/live/race1/p1.html";    
-    var url2 = "https://tnuatiming.com/live/race2/p1.html";    
+    var url1 = "https://tnuatiming.com/live1/livea/p1.html";    
+    var url2 = "https://tnuatiming.com/live1/liveb/p1.html";    
     var text1;
     var text2;
 
@@ -38,6 +38,8 @@
             document.getElementById("displayCatButton").style.display = "block";        
             document.getElementById("displayAllButton").style.display = "none";        
         }
+        
+        Rafraichir = 10000;
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
@@ -77,7 +79,8 @@
             Load(url1, target)
         };
         populatePre('uploadMsg.txt'); // upload message
-        TimerLoad = setTimeout(fct, Rafraichir)
+        TimerLoad = setTimeout(fct, Rafraichir);
+        Rafraichir = 45000;
     };
 
     // fn to upload messages
@@ -288,6 +291,11 @@
                     // transfer fileds from secound array to the first that nedded later, use _2 to mark
                     allArray[b].Id_Image_2 = allArray2[a]["Id_Image"];   
                     allArray[b].Id_MeilleurTour_2 = allArray2[a]["Id_MeilleurTour"];   // fastest lap
+                    if (allArray[b]["Id_Canal"] == "1" || allArray2[a]["Id_Canal"] == "1") {   // on track
+                        allArray[b].Id_onTrack = "1";
+                    } else {
+                        allArray[b].Id_onTrack = "0";
+                    }
              //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
                     
                     if (allArray[b]["Id_Image"].includes("_Status") || allArray2[a]["Id_Image"].includes("_Status")) {
@@ -322,9 +330,9 @@
          
          // THE MAGIC - sort the array after the merge to get new results
         if (useCategory == "no") {
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule || b.Id_onTrack - a.Id_onTrack});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule});
+            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule || b.Id_onTrack - a.Id_onTrack});
         }
          
          
@@ -459,25 +467,33 @@
                             competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
                     }
                      
-                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"]) { // position change arrow calc
+                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"] && allArray[l]["Id_TpsCumule"] != "-") { // position change arrow calc
                     positionChanged = "";
                     
                         if (positionArray[competitorNumber]) {
 
                             if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
-                                positionChanged = "down";
+                                positionChanged = "down ";
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
-                                positionChanged = "up";
-                            }                        
-                            
+                                positionChanged = "up ";
+//                            } else if (positionArray[competitorNumber] == competitorPosition && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
+//                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
+                             //   positionChanged = "same ";
+//                    }                        
+                                 
+                            }                            
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
                         positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
                     }
        
-         
+                    // mark on track
+                    if (allArray[l]["Id_onTrack"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
+                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
+                             //   positionChanged = "same ";
+                    }                        
         
         
             // add category name header and table header
@@ -489,9 +505,9 @@
 
 
             if (l % 2 == 0) { // start building competitor line
-                finalText += '<tr class="' + positionChanged + ' rnk_bkcolor OddRow">';
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
             } else {
-                finalText += '<tr class="' + positionChanged + ' rnk_bkcolor EvenRow">';
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
             }
        
         
@@ -520,6 +536,12 @@
                     
                     finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
+                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
+                    if (checkeredFlag == "finished ") {
+                        finalText += '<td class="finished white rnk_font">&nbsp;</td>';
+                    } else {
+                        finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
+                    }
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
                     finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
@@ -577,25 +599,25 @@
       //              finalText += '<td class="rnk_font ">' + opt3 + '</td>';
       //          }
                  
-                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
 // adding and coloring the laps and best time
 // short version
              for (q = 1; q < 7; q++) { // q = number of laps + 1
                 if (q % 2 == 0) {
                     if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
-                        finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"]) {
-                        finalText += '<td class="BestTime1 rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="BestTime1 rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else {
-                        finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     }
                 } else {
                     if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
-                        finalText += '<td class="BestTimeOverall rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
-                        finalText += '<td class="BestTime rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="BestTime rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else {
-                        finalText += '<td class="rnk_font ">' + allArray[l]["Id_lap"+q] + '</td>';
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     }
                 }
              }               
@@ -649,8 +671,8 @@
 */
 
 
-                finalText += '<td class="rnk_font ">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
-                finalText += '<td class="rnk_font ">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
  
                 
      //       }
