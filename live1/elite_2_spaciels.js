@@ -122,7 +122,8 @@
         var bestLap = "99999999999";
         var bestLapComp2 = 0;
         var bestLap2 = "99999999999";
-/*        
+        var laps = 6; // number of laps
+        /*        
         var bestTime2comp = 0;
         var bestTime2 = 0;
         var bestTimecomp = 0;
@@ -519,7 +520,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag")) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == laps) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -536,19 +537,22 @@
                     
                     finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
+                }  else if (checkeredFlag == "finished ") { // finished
+                    
+                    finalText += '<td class="finished white rnk_font">&nbsp;</td>';
+                    
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
-                    if (checkeredFlag == "finished ") {
-                        finalText += '<td class="finished white rnk_font">&nbsp;</td>';
-                    } else {
-                        finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
-                    }
+                    
+                    finalText += '<td class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
+
+                    
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
+                    finalText += '<td class="white rnk_font fadeIn">&#9671;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalText += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
+                    finalText += '<td class="white rnk_font scale">&#9670;</td>';
                     
                 } else {
 
@@ -602,7 +606,7 @@
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
 // adding and coloring the laps and best time
 // short version
-             for (q = 1; q < 7; q++) { // q = number of laps + 1
+             for (q = 1; q < (laps+1); q++) { // q = number of laps + 1
                 if (q % 2 == 0) {
                     if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
                         finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';

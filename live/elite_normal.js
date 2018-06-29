@@ -223,7 +223,10 @@
                     for (q = g; q > 0; q--) { 
 
                         if (allArray[l]["Id_TpsTour"+q] && allArray[l]["Id_TpsTour"+q] != "-") {
-    
+                                
+                            
+            /////////????                for (z = q, f = 1; z > 0 && f <= g; z--, f++)  
+
                             for (z = q; z > 0; z--) { 
                             for (f = 1; f <= g; f++) { 
                                     
