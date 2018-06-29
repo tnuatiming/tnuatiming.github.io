@@ -122,7 +122,7 @@
         var bestLap = "99999999999";
         var bestLapComp2 = 0;
         var bestLap2 = "99999999999";
-        var laps = 6; // number of laps
+        var laps = 12; // number of laps
         /*        
         var bestTime2comp = 0;
         var bestTime2 = 0;
@@ -175,7 +175,7 @@
                 }
 */
                 // find best lap overall
-                if (hhhPro2[pp] == "Id_TpsTour1" || hhhPro2[pp] == "Id_TpsTour2" || hhhPro2[pp] == "Id_TpsTour3") {
+                if (hhhPro2[pp] == "Id_TpsTour1" || hhhPro2[pp] == "Id_TpsTour2" || hhhPro2[pp] == "Id_TpsTour3" || hhhPro2[pp] == "Id_TpsTour4" || hhhPro2[pp] == "Id_TpsTour5" || hhhPro2[pp] == "Id_TpsTour6") {
                     if (lineArray2[hhhPro2[pp]] != "-" && timeString2ms(lineArray2[hhhPro2[pp]]) <= timeString2ms(bestLap2)) {
                     bestLap2 = lineArray2[hhhPro2[pp]];
                     bestLapComp2 = lineArray2["Id_Numero"];
@@ -225,7 +225,7 @@
                 }
 */
                 // find best lap overall
-                if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3") {
+                if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3" || hhhPro[pp] == "Id_TpsTour4" || hhhPro[pp] == "Id_TpsTour5" || hhhPro[pp] == "Id_TpsTour6") {
                     if (lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
                     bestLap = lineArray[hhhPro[pp]];
                     bestLapComp = lineArray["Id_Numero"];
@@ -271,22 +271,55 @@
                  if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                      
                       // reorder laps as elite3 does somthing wrong with the order - second array
-                    if (allArray2[a]["Id_TpsTour3"] != "-") {
+                    if (allArray2[a]["Id_TpsTour6"] != "-") {
+                        allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour6"];
+                        allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour5"];
+                        allArray[b].Id_lap6 = allArray2[a]["Id_TpsTour4"];
+                        allArray[b].Id_lap8 = allArray2[a]["Id_TpsTour3"];
+                        allArray[b].Id_lap10 = allArray2[a]["Id_TpsTour2"];
+                        allArray[b].Id_lap12 = allArray2[a]["Id_TpsTour1"];
+                    } else if (allArray2[a]["Id_TpsTour5"] != "-") {
+                        allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour5"];
+                        allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour4"];
+                        allArray[b].Id_lap6 = allArray2[a]["Id_TpsTour3"];
+                        allArray[b].Id_lap8 = allArray2[a]["Id_TpsTour2"];
+                        allArray[b].Id_lap10 = allArray2[a]["Id_TpsTour1"];
+                        allArray[b].Id_lap12 = "-";
+                    } else if (allArray2[a]["Id_TpsTour4"] != "-") {
+                        allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour4"];
+                        allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour3"];
+                        allArray[b].Id_lap6 = allArray2[a]["Id_TpsTour2"];
+                        allArray[b].Id_lap8 = allArray2[a]["Id_TpsTour1"];
+                        allArray[b].Id_lap10 = "-";
+                        allArray[b].Id_lap12 = "-";
+                    } else if (allArray2[a]["Id_TpsTour3"] != "-") {
                         allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour3"];
                         allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour2"];
                         allArray[b].Id_lap6 = allArray2[a]["Id_TpsTour1"];
+                        allArray[b].Id_lap8 = "-";
+                        allArray[b].Id_lap10 = "-";
+                        allArray[b].Id_lap12 = "-";
                     } else if (allArray2[a]["Id_TpsTour2"] != "-") {
                         allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour2"];
                         allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour1"];
                         allArray[b].Id_lap6 = "-";
+                        allArray[b].Id_lap8 = "-";
+                        allArray[b].Id_lap10 = "-";
+                        allArray[b].Id_lap12 = "-";
                     } else if (allArray2[a]["Id_TpsTour1"] != "-") {
                         allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour1"];
                         allArray[b].Id_lap4 = "-";
                         allArray[b].Id_lap6 = "-";
+                        allArray[b].Id_lap8 = "-";
+                        allArray[b].Id_lap10 = "-";
+                        allArray[b].Id_lap12 = "-";
                     } else {
                         allArray[b].Id_lap2 = "-";
                         allArray[b].Id_lap4 = "-";
                         allArray[b].Id_lap6 = "-";
+                        allArray[b].Id_lap8 = "-";
+                        allArray[b].Id_lap10 = "-";
+                        allArray[b].Id_lap12 = "-";
                     }
                  
                     // transfer fileds from secound array to the first that nedded later, use _2 to mark
@@ -307,23 +340,58 @@
                }
                
                 // reorder laps as elite3 does somthing wrong with the order - first array
-                if (allArray[b]["Id_TpsTour3"] != "-") {
-                    allArray[b].Id_lap1 = allArray[b]["Id_TpsTour3"];
-                    allArray[b].Id_lap3 = allArray[b]["Id_TpsTour2"];
-                    allArray[b].Id_lap5 = allArray[b]["Id_TpsTour1"];
-                } else if (allArray[b]["Id_TpsTour2"] != "-") {
-                    allArray[b].Id_lap1 = allArray[b]["Id_TpsTour2"];
-                    allArray[b].Id_lap3 = allArray[b]["Id_TpsTour1"];
-                    allArray[b].Id_lap5 = "-";
-                } else if (allArray[b]["Id_TpsTour1"] != "-") {
-                    allArray[b].Id_lap1 = allArray[b]["Id_TpsTour1"];
-                    allArray[b].Id_lap3 = "-";
-                    allArray[b].Id_lap5 = "-";
-                } else {
-                    allArray[b].Id_lap1 = "-";
-                    allArray[b].Id_lap3 = "-";
-                    allArray[b].Id_lap5 = "-";
-                }
+                    if (allArray[b]["Id_TpsTour6"] != "-") {
+                        allArray[b].Id_lap1 = allArray[b]["Id_TpsTour6"];
+                        allArray[b].Id_lap3 = allArray[b]["Id_TpsTour5"];
+                        allArray[b].Id_lap5 = allArray[b]["Id_TpsTour4"];
+                        allArray[b].Id_lap7 = allArray[b]["Id_TpsTour3"];
+                        allArray[b].Id_lap9 = allArray[b]["Id_TpsTour2"];
+                        allArray[b].Id_lap11 = allArray[b]["Id_TpsTour1"];
+                    } else if (allArray[b]["Id_TpsTour5"] != "-") {
+                        allArray[b].Id_lap1 = allArray[b]["Id_TpsTour5"];
+                        allArray[b].Id_lap3 = allArray[b]["Id_TpsTour4"];
+                        allArray[b].Id_lap5 = allArray[b]["Id_TpsTour3"];
+                        allArray[b].Id_lap7 = allArray[b]["Id_TpsTour2"];
+                        allArray[b].Id_lap9 = allArray[b]["Id_TpsTour1"];
+                        allArray[b].Id_lap11 = "-";
+                    } else if (allArray[b]["Id_TpsTour4"] != "-") {
+                        allArray[b].Id_lap1 = allArray[b]["Id_TpsTour4"];
+                        allArray[b].Id_lap3 = allArray[b]["Id_TpsTour3"];
+                        allArray[b].Id_lap5 = allArray[b]["Id_TpsTour2"];
+                        allArray[b].Id_lap7 = allArray[b]["Id_TpsTour1"];
+                        allArray[b].Id_lap9 = "-";
+                        allArray[b].Id_lap11 = "-";
+                    } else if (allArray[b]["Id_TpsTour3"] != "-") {
+                        allArray[b].Id_lap1 = allArray[b]["Id_TpsTour3"];
+                        allArray[b].Id_lap3 = allArray[b]["Id_TpsTour2"];
+                        allArray[b].Id_lap5 = allArray[b]["Id_TpsTour1"];
+                        allArray[b].Id_lap7 = "-";
+                        allArray[b].Id_lap9 = "-";
+                        allArray[b].Id_lap11 = "-";
+                    } else if (allArray[b]["Id_TpsTour2"] != "-") {
+                        allArray[b].Id_lap1 = allArray[b]["Id_TpsTour2"];
+                        allArray[b].Id_lap3 = allArray[b]["Id_TpsTour1"];
+                        allArray[b].Id_lap5 = "-";
+                        allArray[b].Id_lap7 = "-";
+                        allArray[b].Id_lap9 = "-";
+                        allArray[b].Id_lap11 = "-";
+                    } else if (allArray[b]["Id_TpsTour1"] != "-") {
+                        allArray[b].Id_lap1 = allArray[b]["Id_TpsTour1"];
+                        allArray[b].Id_lap3 = "-";
+                        allArray[b].Id_lap5 = "-";
+                        allArray[b].Id_lap7 = "-";
+                        allArray[b].Id_lap9 = "-";
+                        allArray[b].Id_lap11 = "-";
+                    } else {
+                        allArray[b].Id_lap1 = "-";
+                        allArray[b].Id_lap3 = "-";
+                        allArray[b].Id_lap5 = "-";
+                        allArray[b].Id_lap7 = "-";
+                        allArray[b].Id_lap9 = "-";
+                        allArray[b].Id_lap11 = "-";
+                    }
+                
+                
             } 
         }
          // delete the secound array
@@ -428,6 +496,12 @@
             headerText1 += '<th class="rnkh_font" id="Id_lap4">הקפה 4</th>';
             headerText1 += '<th class="rnkh_font" id="Id_lap5">הקפה 5</th>';
             headerText1 += '<th class="rnkh_font" id="Id_lap6">הקפה 6</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_lap7">הקפה 7</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_lap8">הקפה 8</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_lap9">הקפה 9</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_lap10">הקפה 10</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_lap11">הקפה 11</th>';
+            headerText1 += '<th class="rnkh_font" id="Id_lap12">הקפה 12</th>';
             headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">פער</th>';
 
@@ -520,7 +594,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == laps) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == laps || (!(allArray[l]["Id_Categorie"].includes("E")) && allArray[l]["Id_NbTour"] == (laps-2))) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
