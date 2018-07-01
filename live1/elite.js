@@ -180,10 +180,10 @@
                 if (hhhPro2[pp] == "Id_TpsCumule" && lineArray2[hhhPro2[pp]] != "-" ) {
                     lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
                 }
-                if (hhhPro2[pp] == "Id_Categorie" && typeof lineArray2[hhhPro2[pp]] == 'undefined' ) {
+                if (hhhPro2[pp] == "Id_Categorie" && lineArray2[hhhPro2[pp]] == '&nbsp;' ) {
                     lineArray2[hhhPro2[pp]] = "כללי";   
                 }
-                if (hhhPro2[pp] != "Id_Categorie" && typeof lineArray2[hhhPro2[pp]] == 'undefined' ) {
+                if (hhhPro2[pp] != "Id_Categorie" && lineArray2[hhhPro2[pp]] == 'undefined' ) {
                     lineArray2[hhhPro2[pp]] = "-";   
                 }
 /*
@@ -233,9 +233,9 @@
                 } else {
                     lineArray.Id_penalty = "&nbsp;";
                 }
-                lineArray.Id_Image_2 = "";
-                lineArray.Id_MeilleurTour_2 = "";
-                lineArray.Id_penalty_2 = "";
+                lineArray.Id_Image_2 = "&nbsp;";
+                lineArray.Id_MeilleurTour_2 = "&nbsp;";
+                lineArray.Id_penalty_2 = "&nbsp;";
                 lineArray.Id_lap2 = "-";
                 lineArray.Id_lap4 = "-";
                 lineArray.Id_lap6 = "-";
@@ -256,10 +256,10 @@
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
                 }
-                if (hhhPro[pp] == "Id_Categorie" && typeof lineArray[hhhPro[pp]] == 'undefined' ) {
+                if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
                     lineArray[hhhPro[pp]] = "כללי";   
                 }
-                if (hhhPro[pp] != "Id_Categorie" && typeof lineArray[hhhPro[pp]] == 'undefined' ) {
+                if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
                     lineArray[hhhPro[pp]] = "-";   
                 }
 /*
