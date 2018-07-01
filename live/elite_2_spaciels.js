@@ -4,6 +4,7 @@
 <!-- 20180527 - add message uploading -->
 <!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
 <!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
+<!-- 20180701 - added penalty indicator.  -->
 
 <!-- tag heuer live timing -->
 
@@ -112,6 +113,7 @@
         var allArray = new Array();
         var lineArray2 = new Array();
         var allArray2 = new Array();
+        var penalty = "no";
         var ttt = 0;
         var pp = 0;
         var b;
@@ -159,11 +161,21 @@
                 ttt = 1;
             } else if (lines2[b].includes("</tr>") && ttt == 1) { // end competitor line
                 ttt = 0;
+                if (penalty == "yes") {
+                    lineArray2.Id_penalty = "P";
+                } else {
+                    lineArray2.Id_penalty = "&nbsp;";
+                }
                 allArray2.push(lineArray2); // push line to main array
                lineArray2 = [];
                 pp = 0;
+                penalty = "no";
             } else if (lines2[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
-                lineArray2[hhhPro2[pp]] = lines2[b].substring(lines2[b].indexOf(">")+1,lines2[b].lastIndexOf("<"));
+                if (lines2[b].includes("(C)")) {
+                    penalty = "yes";
+                }
+
+                lineArray2[hhhPro2[pp]] = lines2[b].substring(lines2[b].indexOf(">")+1,lines2[b].lastIndexOf("<")).replace("(C) ", "");
                 // convert total time to miliseconds
                 if (hhhPro2[pp] == "Id_TpsCumule" && lineArray2[hhhPro2[pp]] != "-" ) {
                     lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
@@ -193,7 +205,8 @@
             
         ttt = 0;
         pp = 0;
-            
+        penalty = "no";
+  
             
         for (b = 0; b < lines.length; b++) { 
            
@@ -209,11 +222,21 @@
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
                 ttt = 0;
+                if (penalty == "yes") {
+                    lineArray.Id_penalty = "P";
+                } else {
+                    lineArray.Id_penalty = "&nbsp;";
+                }
                 allArray.push(lineArray); // push line to main array 
                lineArray = [];
                 pp = 0;
+                penalty = "no";
             } else if (lines[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
-                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
+                if (lines[b].includes("(C)")) {
+                    penalty = "yes";
+                }
+
+                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
                 // convert total time to miliseconds
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
@@ -323,8 +346,14 @@
                     }
                  
                     // transfer fileds from secound array to the first that nedded later, use _2 to mark
+                    allArray[b].Id_penalty_2 = allArray2[a]["Id_penalty"];   
                     allArray[b].Id_Image_2 = allArray2[a]["Id_Image"];   
                     allArray[b].Id_MeilleurTour_2 = allArray2[a]["Id_MeilleurTour"];   // fastest lap
+
+                    if (allArray2[a]["Id_penalty"] == "P") {
+                    allArray[b].Id_penalty = "P";   
+                    }
+                    
                     if (allArray[b]["Id_Canal"] == "1" || allArray2[a]["Id_Canal"] == "1") {   // on track
                         allArray[b].Id_onTrack = "1";
                     } else {
@@ -527,11 +556,11 @@
                             } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
                                 allArray[l]["Id_Arrow"] = "NQ";
                             } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "&#10033;";
-                            } else if (allArray[l]["Id_Image"].includes("_TrackPassing") || allArray[l]["Id_Image_2"].includes("_TrackPassing")) {
-                                allArray[l]["Id_Arrow"] = "&#9671;"; // same :|
+                                allArray[l]["Id_Arrow"] = "&#10033;"; // astrix
+                            } else if (allArray[l]["Id_penalty"].includes("P")) {
+                                allArray[l]["Id_Arrow"] = "P"; // penalty
                             } else {
-                                 allArray[l]["Id_Arrow"] = "&#9670;";
+                                 allArray[l]["Id_Arrow"] = "&#9670;"; // BLACK DIAMOND
                             }
 
 
@@ -566,7 +595,7 @@
        
                     // mark on track
                     if (allArray[l]["Id_onTrack"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
-                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
+                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
                              //   positionChanged = "same ";
                     }                        
         
@@ -622,11 +651,15 @@
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalText += '<td class="white rnk_font fadeIn">&#9671;</td>';
+                    finalText += '<td class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;&nbsp;</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == "P") { // white
+                    
+                    finalText += '<td class="white rnk_font fadeIn">P</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalText += '<td class="white rnk_font scale">&#9670;</td>';
+                    finalText += '<td class="white rnk_font scale">&nbsp;&#9670;&nbsp;</td>';
                     
                 } else {
 

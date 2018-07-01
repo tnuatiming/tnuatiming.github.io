@@ -1,46 +1,37 @@
-var cacheName = 'tnuaTimingCache';
-var filesToCache = ['/images/4752751.jpg','/images/logo16.png'];
-
-self.addEventListener('beforeinstallprompt', (evt) => {
-    app.promptEnent = evt;
-    evt.preventDefault();
-    showInstallButton(true);
+// Here comes the install event!
+// This only happens once, when the browser sees this
+// version of the ServiceWorker for the first time.
+self.addEventListener('install', function(event) {
+  // We pass a promise to event.waitUntil to signal how 
+  // long install takes, and if it failed
+  event.waitUntil(
+    // We open a cache…
+    caches.open('simple-sw-v1').then(function(cache) {
+      // And add resources to it
+      return cache.addAll([
+        './images/',
+        '/images/4752751.jpg',
+        '/images/logo16.png'
+      ]);
+    })
+  );
 });
 
-function showA2HSPrompt() {
-    showInstallButton(false);
-    app.promptEnent.prompt();
-    app.promptEnent.userChoice.then(handleA2HSResponse);
-}
-
-    
-self.addEventListener('install', function(e) {
-    e.waitUntil(
-        caches.open(cacheName).then(function(cache) {
-            return cache.addAll(filesToCache);
-        }).then(function() {
-            return self.skipWaiting();
-        })
-    );
-});
-
-self.addEventListener('activate', function(e) {
-  e.waitUntil(
-      caches.keys().then(function(keyList) {
-          return Promise.all(keyList.map(function(key) {
-              if (key !== cacheName) {
-                  return caches.delete(key);
-              }
-          }));
-      })
-    );
-    return self.clients.claim();
-});
-
+// The fetch event happens for the page request with the
+// ServiceWorker's scope, and any request made within that
+// page
 self.addEventListener('fetch', function(event) {
+  // Calling event.respondWith means we're in charge
+  // of providing the response. We pass in a promise
+  // that resolves with a response object
   event.respondWith(
+    // First we look for something in the caches that
+    // matches the request
     caches.match(event.request).then(function(response) {
+      // If we get something, we return it, otherwise
+      // it's null, and we'll pass the request to
+      // fetch, which will use the network.
       return response || fetch(event.request);
     })
   );
-}); 
+});
