@@ -63,7 +63,7 @@
             }
         };
         xhr2.open("GET", url2 + "?r=" + Math.random(), true);
-        xhr2.send();
+        xhr2.send(null);
 
         xhr = new XMLHttpRequest;
         xhr.onreadystatechange = function() {
@@ -74,7 +74,7 @@
             }
         };
         xhr.open("GET", url1 + "?r=" + Math.random(), true);
-        xhr.send();
+        xhr.send(null);
 
         fct = function() {
             Load(url1, target)
@@ -94,7 +94,7 @@
         };
     //    xhr1.open("GET", url + Math.random(), true);
         xhr1.open('GET', url, true);
-        xhr1.send();
+        xhr1.send(null);
     };
 
     function ExtraireClassementReduitNew() {
@@ -180,6 +180,12 @@
                 if (hhhPro2[pp] == "Id_TpsCumule" && lineArray2[hhhPro2[pp]] != "-" ) {
                     lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
                 }
+                if (hhhPro2[pp] == "Id_Categorie" && typeof lineArray2[hhhPro2[pp]] == 'undefined' ) {
+                    lineArray2[hhhPro2[pp]] = "כללי";   
+                }
+                if (hhhPro2[pp] != "Id_Categorie" && typeof lineArray2[hhhPro2[pp]] == 'undefined' ) {
+                    lineArray2[hhhPro2[pp]] = "-";   
+                }
 /*
                 if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
                     bestTime2=lineArray2["Id_TpsTour"];
@@ -227,6 +233,15 @@
                 } else {
                     lineArray.Id_penalty = "&nbsp;";
                 }
+                lineArray.Id_Image_2 = "";
+                lineArray.Id_MeilleurTour_2 = "";
+                lineArray.Id_penalty_2 = "";
+                lineArray.Id_lap2 = "-";
+                lineArray.Id_lap4 = "-";
+                lineArray.Id_lap6 = "-";
+                lineArray.Id_lap8 = "-";
+                lineArray.Id_lap10 = "-";
+                lineArray.Id_lap12 = "-";
                 allArray.push(lineArray); // push line to main array 
                lineArray = [];
                 pp = 0;
@@ -240,6 +255,12 @@
                 // convert total time to miliseconds
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
+                }
+                if (hhhPro[pp] == "Id_Categorie" && typeof lineArray[hhhPro[pp]] == 'undefined' ) {
+                    lineArray[hhhPro[pp]] = "כללי";   
+                }
+                if (hhhPro[pp] != "Id_Categorie" && typeof lineArray[hhhPro[pp]] == 'undefined' ) {
+                    lineArray[hhhPro[pp]] = "-";   
                 }
 /*
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
@@ -651,15 +672,15 @@
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalText += '<td class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;&nbsp;</td>';
+                    finalText += '<td class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "P") { // white
+                } else if (allArray[l]["Id_Arrow"] == "P") { // black
                     
-                    finalText += '<td class="white rnk_font fadeIn">P</td>';
+                    finalText += '<td class="black rnk_font fadeIn">P</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalText += '<td class="white rnk_font scale">&nbsp;&#9670;&nbsp;</td>';
+                    finalText += '<td class="white rnk_font scale">&#9670;</td>';
                     
                 } else {
 
