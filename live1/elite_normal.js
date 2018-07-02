@@ -100,6 +100,10 @@
         var lineArray2 = new Array();
         var allArray2 = new Array();
         var bestTime = new Array();
+        var categoryBestTime = new Array();
+        var numberBestTime = new Array();
+        var nameBestTime = new Array();
+        var category = "&nbsp;";
         var ttt = 0;
         var b, q, z, f;
         var pp = 0;
@@ -135,8 +139,21 @@
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) {
                 ttt = 0;
+
+                // find category best time
+                if (!(lineArray["Id_Categorie"] in categoryBestTime)) {
+                    categoryBestTime[lineArray["Id_Categorie"]] = 99999999;
+                    numberBestTime[lineArray["Id_Categorie"]] = "-";
+                    nameBestTime[lineArray["Id_Categorie"]] = "-";
+                }
+                if (categoryBestTime[lineArray["Id_Categorie"]] > timeString2ms(lineArray["Id_MeilleurTour"]) && lineArray["Id_MeilleurTour"] != "-") {
+                    categoryBestTime[lineArray["Id_Categorie"]] = timeString2ms(lineArray["Id_MeilleurTour"]);
+                    numberBestTime[lineArray["Id_Categorie"]] = lineArray["Id_Numero"];
+                    nameBestTime[lineArray["Id_Categorie"]] = lineArray["Id_Nom"];
+                }
+                
                 allArray.push(lineArray); 
-               lineArray = [];
+                lineArray = [];
                 pp = 0;
             } else if (lines[b].includes("<td ") && ttt == 1) {
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
@@ -397,7 +414,17 @@
         
             // add category name header and table header
             if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {
-                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+
+                if (category == "&nbsp;") {
+                    
+                } else {
+                finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+ms2TimeString(categoryBestTime[category])+'</td></tr>';
+                }
+
+                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;                
+                
+                category = allArray[l]["Id_Categorie"];
+                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                 finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
@@ -527,7 +554,25 @@
                
             }        
          
-         
+                
+            if (useCategory == "yes") {
+                finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+ms2TimeString(categoryBestTime[category])+'</td></tr>';
+            }
+/*         
+         for (var key in categoryBestTime) {
+    
+ //console.log(key+'  '+ms2TimeString(categoryBestTime[key]));
+   
+                    finalText += '<tr>';
+                        finalText += '<td colspan="99" class="comment_font">'+key+' הקפה מהירה: ('+numberBestTime[key]+') '+nameBestTime[key]+' - '+ms2TimeString(categoryBestTime[key])+'</td>';
+                    finalText += '</tr>';
+      
+    
+        }
+*/
+
+
+
                 finalText += '</table>';
      
 
@@ -571,11 +616,14 @@
 
             
 */             
-         //      console.log(allArray);
-
+               console.log(allArray);
          //    console.log(finalText);
       
-    tableClass = "";
+
+
+
+
+tableClass = "";
             
     return finalText
 
@@ -604,6 +652,24 @@
             };
             TimerChange = setTimeout(fct, Changement)
         } else if (TimerChange) clearTimeout(TimerChange)
+    };
+
+    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
+        return a=a.split('.'), // optimized
+        b=a[1]*1||0, // optimized
+        a=a[0].split(':'),
+        b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+    };
+
+    function ms2TimeString(a,k,s,m,h){
+        return k=a%1e3, // optimized by konijn
+        s=a/1e3%60|0,
+        m=a/6e4%60|0,
+        h=a/36e5%24|0,
+        (h?(h<10?'0'+h:h)+':':'')+ // optimized
+        (m<10?0:'')+m+':'+  // optimized
+        (s<10?0:'')+s+'.'+ // optimized
+        (k<100?k<10?'00':0:'')+k // optimized
     };
 
     function AfficherImageZoom(a, b) {

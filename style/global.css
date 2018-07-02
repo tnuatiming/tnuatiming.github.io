@@ -251,7 +251,7 @@ tr.rnkh_bkcolor {
     top: -1px;
 }*/
 
-#race td.comment_font {
+#race td.comment_font, #live td.comment_font {
     border-bottom: none;
     border-left: none;
     border-right: none;
