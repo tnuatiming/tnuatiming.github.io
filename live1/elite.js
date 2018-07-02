@@ -22,8 +22,9 @@
     var useCategory = "yes";
     var tableClass = "fadeIn ";
         
-    var text2;
-
+    var showBestLap = "1";
+    var showIndividualLaps = "1";
+    var showLapsNumber = "1";
     function category(choice){
         
         positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
@@ -141,17 +142,18 @@
                 ttt = 0;
 
                 // find category best time
-                if (!(lineArray["Id_Categorie"] in categoryBestTime)) {
-                    categoryBestTime[lineArray["Id_Categorie"]] = 99999999;
-                    numberBestTime[lineArray["Id_Categorie"]] = "-";
-                    nameBestTime[lineArray["Id_Categorie"]] = "-";
+                if (showBestLap == "1") {
+                    if (!(lineArray["Id_Categorie"] in categoryBestTime)) {
+                        categoryBestTime[lineArray["Id_Categorie"]] = 99999999;
+                        numberBestTime[lineArray["Id_Categorie"]] = "-";
+                        nameBestTime[lineArray["Id_Categorie"]] = "-";
+                    }
+                    if (categoryBestTime[lineArray["Id_Categorie"]] > timeString2ms(lineArray["Id_MeilleurTour"]) && lineArray["Id_MeilleurTour"] != "-") {
+                        categoryBestTime[lineArray["Id_Categorie"]] = timeString2ms(lineArray["Id_MeilleurTour"]);
+                        numberBestTime[lineArray["Id_Categorie"]] = lineArray["Id_Numero"];
+                        nameBestTime[lineArray["Id_Categorie"]] = lineArray["Id_Nom"];
+                    }
                 }
-                if (categoryBestTime[lineArray["Id_Categorie"]] > timeString2ms(lineArray["Id_MeilleurTour"]) && lineArray["Id_MeilleurTour"] != "-") {
-                    categoryBestTime[lineArray["Id_Categorie"]] = timeString2ms(lineArray["Id_MeilleurTour"]);
-                    numberBestTime[lineArray["Id_Categorie"]] = lineArray["Id_Numero"];
-                    nameBestTime[lineArray["Id_Categorie"]] = lineArray["Id_Nom"];
-                }
-                
                 allArray.push(lineArray); 
                 lineArray = [];
                 pp = 0;
@@ -231,7 +233,7 @@
                             
                        // reorder laps as elite3 does somthing wrong with the order (6 laps) NOT FINISHED FIXME
                        
-                 if (allArray[l]["Id_TpsTour1"]) { 
+                 if (allArray[l]["Id_TpsTour1"] && showIndividualLaps == "1") { 
 
 
  /*                      
@@ -338,8 +340,23 @@
             headerText1 += '<th class="rnkh_font" id="Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Numero">מספר</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Nom">שם</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_TpsTour">הקפה אחרונה</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
+            
+            if (showLapsNumber == "1") {
+                headerText1 += '<th class="rnkh_font" id="Id_NbTour">הקפות</th>';
+            }
+            
+            if (showIndividualLaps == "1" && allArray[l]["Id_lap1"]) {
+                headerText1 += '<th class="rnkh_font" id="Id_lap1">הקפה 1</th>';
+                headerText1 += '<th class="rnkh_font" id="Id_lap2">הקפה 2</th>';
+                headerText1 += '<th class="rnkh_font" id="Id_lap3">הקפה 3</th>';
+                headerText1 += '<th class="rnkh_font" id="Id_lap4">הקפה 4</th>';
+                headerText1 += '<th class="rnkh_font" id="Id_lap5">הקפה 5</th>';
+                headerText1 += '<th class="rnkh_font" id="Id_lap6">הקפה 6</th>';
+            } else {
+                headerText1 += '<th class="rnkh_font" id="Id_TpsTour">הקפה אחרונה</th>';
+                headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
+            }
+            
             headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
             if (useCategory == "yes") {
                 headerText1 += '<th class="rnkh_font" id="Id_Ecart1erCategorie">פער</th>';
@@ -415,12 +432,13 @@
             // add category name header and table header
             if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {
 
-                if (category == "&nbsp;") {
-                    
-                } else {
-                finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+ms2TimeString(categoryBestTime[category])+'</td></tr>';
+                if (showBestLap == "1") {
+                    if (category == "&nbsp;") {
+                        
+                    } else {
+                        finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+ms2TimeString(categoryBestTime[category])+'</td></tr>';
+                    }
                 }
-
                 finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;                
                 
                 category = allArray[l]["Id_Categorie"];
@@ -531,8 +549,26 @@
       //          }
                  
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';
-                finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
-                finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
+                if (showLapsNumber == "1") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_NbTour"] + '</td>';
+                }
+
+                if (showIndividualLaps == "1" && allArray[l]["Id_lap1"]) {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_lap1"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_lap2"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_lap3"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_lap4"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_lap5"] + '</td>';
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_lap6"] + '</td>';
+
+                } else {
+
+                    finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
+                    finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
+
+                }
+
+
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
                 if (useCategory == "yes") {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
@@ -555,7 +591,7 @@
             }        
          
                 
-            if (useCategory == "yes") {
+            if (useCategory == "yes" && showBestLap == "1") {
                 finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+ms2TimeString(categoryBestTime[category])+'</td></tr>';
             }
 /*         
