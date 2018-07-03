@@ -21,8 +21,8 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
-    if (localStorage.getItem('Cat')) {
-        useCategory = localStorage.getItem('Cat');
+    if (sessionStorage.getItem('Cat')) {
+        useCategory = sessionStorage.getItem('Cat');
     }
 
     function setButton() {
@@ -49,11 +49,11 @@
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
             document.getElementById("displayAllButton").style.display = "block";        
-            localStorage.setItem('Cat', 'yes');
+            sessionStorage.setItem('Cat', 'yes');
         } else if (useCategory == "no") {
             document.getElementById("displayCatButton").style.display = "block";        
             document.getElementById("displayAllButton").style.display = "none";        
-            localStorage.setItem('Cat', 'no');
+            sessionStorage.setItem('Cat', 'no');
         }
         
         Rafraichir = 10000;

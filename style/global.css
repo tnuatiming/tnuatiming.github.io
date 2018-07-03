@@ -387,6 +387,11 @@ span#name, span#rund, span#date {
     white-space: nowrap;
 }
 
+/*
+#live #displayCatButton {
+    display:none;
+}
+*/
 
 #live .btn {
     position: relative;
