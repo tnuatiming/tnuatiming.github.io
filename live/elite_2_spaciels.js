@@ -21,19 +21,9 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
-    if (sessionStorage.getItem('Cat')) {
-        useCategory = sessionStorage.getItem('Cat');
+    if (sessionStorage.getItem('categoryOrAll')) {
+        useCategory = sessionStorage.getItem('categoryOrAll');
     }
-
-    function setButton() {
-        if (useCategory == "yes") {
-            document.getElementById("displayCatButton").style.display = "none";        
-            document.getElementById("displayAllButton").style.display = "block";        
-        } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").style.display = "block";        
-            document.getElementById("displayAllButton").style.display = "none";        
-        }
-    }    
 
     var tableClass = "fadeIn ";
     var url1 = "https://tnuatiming.com/live/race1/p1.html";    
@@ -47,13 +37,9 @@
         
         useCategory = choice;
         if (useCategory == "yes") {
-            document.getElementById("displayCatButton").style.display = "none";        
-            document.getElementById("displayAllButton").style.display = "block";        
-            sessionStorage.setItem('Cat', 'yes');
+            sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").style.display = "block";        
-            document.getElementById("displayAllButton").style.display = "none";        
-            sessionStorage.setItem('Cat', 'no');
+            sessionStorage.setItem('categoryOrAll', 'no');
         }
         
         Rafraichir = 10000;
@@ -64,6 +50,15 @@
     };
 
     function Load(url, target) {
+
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+
         var xhr;
         var xhr2;
         var fct;
@@ -878,7 +873,7 @@
 
             
 */             
-             console.log(allArray);
+         //    console.log(allArray);
 
          //    console.log(finalText);
       

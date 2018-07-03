@@ -21,20 +21,9 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
-    if (sessionStorage.getItem('Cat')) {
-        useCategory = sessionStorage.getItem('Cat');
-    }
-
-    function setButton() {
-        if (useCategory == "yes") {
-            document.getElementById("displayCatButton").style.display = "none";        
-            document.getElementById("displayAllButton").style.display = "block";        
-        } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").style.display = "block";        
-            document.getElementById("displayAllButton").style.display = "none";        
-        }
+    if (sessionStorage.getItem('categoryOrAll')) {
+        useCategory = sessionStorage.getItem('categoryOrAll');
     }    
-    
     
     var tableClass = "fadeIn ";
         
@@ -47,13 +36,9 @@
         
         useCategory = choice;
         if (useCategory == "yes") {
-            document.getElementById("displayCatButton").style.display = "none";        
-            document.getElementById("displayAllButton").style.display = "block";        
-            sessionStorage.setItem('Cat', 'yes');
+            sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").style.display = "block";        
-            document.getElementById("displayAllButton").style.display = "none";        
-            sessionStorage.setItem('Cat', 'no');
+            sessionStorage.setItem('categoryOrAll', 'no');
         }
 
         tableClass = "fadeIn "; // make the table fadeIn on change
@@ -62,6 +47,15 @@
     };
 
     function Load(url, target) {
+
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+
         var xhr;
         var fct;
         if (UrlChange) url = UrlRefresh;
@@ -670,7 +664,7 @@
 
             
 */             
-               console.log(allArray);
+          //     console.log(allArray);
          //    console.log(finalText);
       
 
