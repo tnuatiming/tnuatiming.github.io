@@ -21,6 +21,20 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
+    if (localStorage.getItem('Cat')) {
+        useCategory = localStorage.getItem('Cat');
+    }
+
+    function setButton() {
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+    }    
+
     var tableClass = "fadeIn ";
     var url1 = "https://tnuatiming.com/live1/livea/p1.html";    
     var url2 = "https://tnuatiming.com/live1/liveb/p1.html";    
@@ -35,9 +49,11 @@
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
             document.getElementById("displayAllButton").style.display = "block";        
+            localStorage.setItem('Cat', 'yes');
         } else if (useCategory == "no") {
             document.getElementById("displayCatButton").style.display = "block";        
             document.getElementById("displayAllButton").style.display = "none";        
+            localStorage.setItem('Cat', 'no');
         }
         
         Rafraichir = 10000;

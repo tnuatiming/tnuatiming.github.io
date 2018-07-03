@@ -3,7 +3,8 @@
 <!-- 20180523 - add competitor number color/background according to category -->
 <!-- 20180527 - add message uploading -->
 <!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
-<!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order. 
+<!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
+<!-- 20180703 - added category best lap. added local storage for category or all button.  -->
 
 <!-- tag heuer live timing -->
 
@@ -20,6 +21,21 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
+    if (localStorage.getItem('Cat')) {
+        useCategory = localStorage.getItem('Cat');
+    }
+
+    function setButton() {
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+    }    
+    
+    
     var tableClass = "fadeIn ";
         
     var showBestLap = "1";
@@ -33,9 +49,11 @@
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
             document.getElementById("displayAllButton").style.display = "block";        
+            localStorage.setItem('Cat', 'yes');
         } else if (useCategory == "no") {
             document.getElementById("displayCatButton").style.display = "block";        
             document.getElementById("displayAllButton").style.display = "none";        
+            localStorage.setItem('Cat', 'no');
         }
 
         tableClass = "fadeIn "; // make the table fadeIn on change
