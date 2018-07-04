@@ -481,7 +481,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps && showIndividualLaps == "1") || (allArray[l]["Id_NbTour"] == (laps-2) && showIndividualLaps == "1" && allArray[l]["Id_Categorie"].includes("מתחילים")) || (allArray[l]["Id_NbTour"] == (laps-1) && showIndividualLaps == "1" && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (showIndividualLaps == "1" && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
