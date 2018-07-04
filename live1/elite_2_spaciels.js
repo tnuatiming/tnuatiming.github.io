@@ -513,7 +513,7 @@
                                     if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
                                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
                                     }
-                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0") {
+                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].includes(":")) {
                                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
                                     }
                                      
@@ -531,7 +531,7 @@
                                 if (allArray[l]["Id_TpsCumule"].toString().substring(0, 3) == "00:") {
                                     allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(3);
                                 }
-                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 1) == "0") {
+                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 1) == "0" && allArray[l]["Id_TpsCumule"].includes(":")) {
                                     allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(1);
                                 }
                                 

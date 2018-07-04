@@ -5,6 +5,7 @@
 <!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
 <!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
 <!-- 20180703 - added category best lap. added local storage for category or all button.  -->
+<!-- 20180704 - added individual laps best lap. added penalty indicator. -->
 
 <!-- tag heuer live timing -->
 
@@ -113,6 +114,8 @@
         var hhhPro = new Array();
         var lineArray = new Array();
         var allArray = new Array();
+        var bestLapComp = 0;
+        var bestLap = "99999999999";
         var bestTime = new Array();
         var categoryBestTime = new Array();
         var numberBestTime = new Array();
@@ -123,7 +126,8 @@
         var pp = 0;
         var positionChanged = "";
         var laps = 6; // number of laps (max 6)
-        
+        var penalty = "no";
+
         Text = Text.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
@@ -132,7 +136,7 @@
         //    console.log(lines.length);
      //   console.log(lines);
 
-        if (Text[0].includes("טסט")) { // will show individuall laps for enduro special test
+        if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             var showIndividualLaps = "1";
             var showLapsNumber = "0";
         }
@@ -153,6 +157,11 @@
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) {
                 ttt = 0;
+                if (penalty == "yes") {
+                    lineArray.Id_penalty = "P";
+                } else {
+                    lineArray.Id_penalty = "&nbsp;";
+                }
 
                 // find category best time
                 if (showBestLap == "1") {
@@ -170,8 +179,14 @@
                 allArray.push(lineArray); 
                 lineArray = [];
                 pp = 0;
+                penalty = "no";
             } else if (lines[b].includes("<td ") && ttt == 1) {
-                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<"));
+
+                if (lines[b].includes("(C)")) {
+                    penalty = "yes";
+                }
+
+                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
 
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " BestTimeOverall";
@@ -179,6 +194,21 @@
                     bestTime[lineArray["Id_Numero"]] = " BestTime";
                 } else if  (hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = "";
+                }
+                // fix category not defined
+                if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
+                    lineArray[hhhPro[pp]] = "כללי";   
+                }
+
+                // find best lap overall
+                if (showIndividualLaps == "1") {
+                
+                    if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3" || hhhPro[pp] == "Id_TpsTour4" || hhhPro[pp] == "Id_TpsTour5" || hhhPro[pp] == "Id_TpsTour6") {
+                        if (lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
+                        bestLap = lineArray[hhhPro[pp]];
+                        bestLapComp = lineArray["Id_Numero"];
+                        }
+                    }
                 }
                 
                 pp += 1;
@@ -205,7 +235,7 @@
                                      if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
                                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
                                     }
-                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0") {
+                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].includes(":")) {
                                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
                                     }
                             }
@@ -215,7 +245,7 @@
                                      if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 3) == "00:") {
                                         allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(3);
                                     }
-                                    if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 1) == "0") {
+                                    if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1erCategorie"].includes(":")) {
                                         allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(1);
                                     }
                             }
@@ -226,7 +256,7 @@
                                 if (allArray[l]["Id_TpsCumule"].toString().substring(0, 3) == "00:") {
                                     allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(3);
                                 }
-                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 1) == "0") {
+                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 1) == "0" && allArray[l]["Id_TpsCumule"].includes(":")) {
                                     allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(1);
                                 }
                                 
@@ -384,29 +414,23 @@
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
-                            if (allArray[l]["Id_Image"].includes("_Status10")) {
-                                allArray[l]["Id_Arrow"] = "DNF";
-                            } else if (allArray[l]["Id_Image"].includes("_Status11")) {
-                                allArray[l]["Id_Arrow"] = "DSQ";
-                            } else if (allArray[l]["Id_Image"].includes("_Status12")) {
-                                allArray[l]["Id_Arrow"] = "DNS";
-                            } else if (allArray[l]["Id_Image"].includes("_Status2")) {
-                                allArray[l]["Id_Arrow"] = "NQ";
-                            } else if (allArray[l]["Id_Image"].includes("_Status")) {
-                                allArray[l]["Id_Arrow"] = "&#10033;";
-                            } else if (allArray[l]["Id_Image"].includes("_MaximumTime")) {
-                                allArray[l]["Id_Arrow"] = "&#9201;";
-                            } else if (allArray[l]["Id_Image"].includes("_PlusPosition")) {
-                                allArray[l]["Id_Arrow"] = "&#9650;";
-                            } else if (allArray[l]["Id_Image"].includes("_MinusPosition")) {
-                                allArray[l]["Id_Arrow"] = "&#9660;";
-                            } else if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
-                                allArray[l]["Id_Arrow"] = "&nbsp;";
-                            } else if (allArray[l]["Id_Image"].includes("_TrackPassing")) {
-                                allArray[l]["Id_Arrow"] = "&#9671;"; // same :|
-                            } else {
-                                 allArray[l]["Id_Arrow"] = "&#9670;";
-                            }
+                    allArray[l]["Id_Arrow"] = "&#9670;";
+
+                    if (allArray[l]["Id_Image"].includes("_Status10")) {
+                        allArray[l]["Id_Arrow"] = "DNF";
+                    } else if (allArray[l]["Id_Image"].includes("_Status11")) {
+                        allArray[l]["Id_Arrow"] = "DSQ";
+                    } else if (allArray[l]["Id_Image"].includes("_Status12")) {
+                        allArray[l]["Id_Arrow"] = "DNS";
+                    } else if (allArray[l]["Id_Image"].includes("_Status2")) {
+                        allArray[l]["Id_Arrow"] = "NQ";
+                    } else if (allArray[l]["Id_Image"].includes("_Status")) {
+                        allArray[l]["Id_Arrow"] = "&#10033;"; // astrix
+                    } else if (allArray[l]["Id_penalty"].includes("P")) {
+                        allArray[l]["Id_Arrow"] = "P"; // penalty
+                    } else {
+                            allArray[l]["Id_Arrow"] = "&#9670;"; // BLACK DIAMOND
+                    }
                           
                           
                           
@@ -434,7 +458,7 @@
        
                     // mark on track
                     if (allArray[l]["Id_Canal"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status"))) {
-                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
+                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
                              //   positionChanged = "same ";
                     }                        
          
@@ -472,7 +496,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (showIndividualLaps == "1" && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == "1" && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -481,6 +505,7 @@
                 
                 
                 
+                // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
                     finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
@@ -489,29 +514,32 @@
                     
                     finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
-                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
-                    if (checkeredFlag == "finished ") {
-                        finalText += '<td class="finished white rnk_font">&nbsp;</td>';
-                    } else {
-                        finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
-                    }
-                } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
+                }  else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td class="' + checkeredFlag + 'white rnk_font scale">&#9670;</td>';
+                    finalText += '<td class="finished white rnk_font">&nbsp;</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
+                    
+                    finalText += '<td class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalText += '<td class="' + checkeredFlag + 'white rnk_font fadeIn">&#9671;</td>';
+                    finalText += '<td class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;</td>';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { 
+                } else if (allArray[l]["Id_Arrow"] == "P") { // black
                     
-                    finalText += '<td class="' + checkeredFlag + 'rnk_font">&nbsp;</td>';
+                    finalText += '<td class="black rnk_font fadeIn">P</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
+                    
+                    finalText += '<td class="white rnk_font scale">&#9670;</td>';
                     
                 } else {
 
                     finalText += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 }
+                
                 
                 
                 if (useCategory == "yes") {
@@ -565,10 +593,24 @@
 
                 if (showIndividualLaps == "1" && allArray[l]["Id_lap1"]) {
 
+        // adding and coloring the laps and best time
+        // short version
+                    for (q = 1; q <= laps; q++) {
+                            if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
+                                finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+                            } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
+                                finalText += '<td class="BestTime rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+                            } else {
+                                finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+                            }
+                    }               
+
+
+/*
                     for (q = 1; q <= laps; q++) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     }
-/*                    
+ /*                   
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap1"] + '</td>';
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap2"] + '</td>';
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap3"] + '</td>';
