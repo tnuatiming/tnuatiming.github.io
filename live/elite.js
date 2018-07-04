@@ -61,9 +61,11 @@
 
         var xhr;
         var fct;
+/*
         if (UrlChange) url = UrlRefresh;
         else UrlRefresh = url;
         UrlChange = 0;
+*/
         if (TimerLoad) clearTimeout(TimerLoad);
         
         xhr = new XMLHttpRequest;
@@ -676,9 +678,7 @@ tableClass = "";
     return finalText
 
     };
-        
-
-
+/*
     function sortObjKeysAlphabetically(obj) {
         var ordered = {};
         Object.keys(obj).sort().forEach(function(key) {
@@ -701,7 +701,7 @@ tableClass = "";
             TimerChange = setTimeout(fct, Changement)
         } else if (TimerChange) clearTimeout(TimerChange)
     };
-
+*/
     function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
         return a=a.split('.'), // optimized
         b=a[1]*1||0, // optimized

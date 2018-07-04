@@ -383,7 +383,7 @@ span#name, span#rund, span#date {
 
 #live #categoryOrAll button {
     font-size: 1em;
-    padding: 0 10px;
+    padding: 2px 10px;
     white-space: nowrap;
 }
 

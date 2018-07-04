@@ -580,8 +580,8 @@ Status 12,DNS,center</code></pre></li>
     <li>שתי שורות ה"פער" (כללי וקטגוריה), שתיהן צריכות להיות אחרונות (Diff. with leader, Diff. with leader cat).</li>
     <li>שורת "קטגוריה" צריכה להופיע על מנת שתצוגת הקטוגוריות תופעל.</li>
     <li>שורת "Image" המשמשת להצגת הסטטוס של המתחרה.</li>
-    <li>שורת "Channel" המשמשת להצגת מתחרה בתוך המסלול.</li>
-    <li>שורות "הקפה 1-6" המשמשות להצגת כל ההקפות בעיקר במרץ ספיישל טסט.</li>
+    <li>שורת "Channel" המשמשת להצגת "מתחרה בתוך המסלול".</li>
+    <li>שורות "הקפה 1-6" המשמשות להצגת כל ההקפות בעיקר במרוץ ספיישל טסט.</li>
 
     
     </ul>
@@ -590,7 +590,7 @@ Status 12,DNS,center</code></pre></li>
  
     <p class="c1"><span><img alt="image74.png" src="/manual/images/image74.png"></span></p>
     
-    <h2 id="C77" class="c4">live timing(old)</h2>
+    <h2 id="C77" class="c4">live timing-old</h2>
     
     <p class="c0">remember to enable the live timing after entering an event</p>
     
@@ -676,7 +676,7 @@ Status 12,DNS,center</code></pre></li>
         &lt;/tr&gt;
         
         &lt;tr class="rnk_bkcolor"&gt;
-            &lt;td colspan="99" class="comment_font"> הקפה מהירה: (54)  דורון וינטר  - 00:59:16.725&lt;/td&gt;
+            &lt;td colspan="99" class="comment_font"> הקפה מהירה: (22)  יוני לוי  - 00:59:16.725&lt;/td&gt;
         &lt;/tr&gt;
         </code></pre>
         </li>
@@ -707,8 +707,8 @@ Status 12,DNS,center</code></pre></li>
     <a class="c1" href="http://tnuatiming.com/images/logo2_full_eng.svg"><span><img alt="logo2_full_eng.svg" src="/images/logo2_full_eng.svg"></span></a><br><br>
     <a class="c1" href="http://tnuatiming.com/live/Images/CheckeredFlag.svg"><span><img alt="CheckeredFlag.svg" src="/live/Images/CheckeredFlag.svg"></span></a><br><br>
     <a id="C101" class="c2" href="http://tnuatiming.com/csv/index.html">תוצאות כקובץ CSV</a>
+    <a id="C101" class="c2" href="https://github.com/tnuatiming/tnuatiming.github.io">https://github.com/tnuatiming/tnuatiming.github.io</a>
     <p class="c0" style="color: lightgray;"><span>p5f123d7a7e</span></p>
-    
     </div>
 </body>
 </html>
