@@ -121,7 +121,8 @@
         var b, q, z, f;
         var pp = 0;
         var positionChanged = "";
-
+        var laps = 6; // number of laps (max 6)
+        
         Texte = Texte.split('<table'); // split the text to title/time and the table
         Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Texte[1]);
@@ -358,12 +359,18 @@
             }
             
             if (showIndividualLaps == "1" && allArray[l]["Id_lap1"]) {
+                
+                for (q = 1; q <= laps; q++) {
+                    headerText1 += '<th class="rnkh_font" id="Id_lap'+q+'">הקפה '+q+'</th>';
+                }
+/*                
                 headerText1 += '<th class="rnkh_font" id="Id_lap1">הקפה 1</th>';
                 headerText1 += '<th class="rnkh_font" id="Id_lap2">הקפה 2</th>';
                 headerText1 += '<th class="rnkh_font" id="Id_lap3">הקפה 3</th>';
                 headerText1 += '<th class="rnkh_font" id="Id_lap4">הקפה 4</th>';
                 headerText1 += '<th class="rnkh_font" id="Id_lap5">הקפה 5</th>';
                 headerText1 += '<th class="rnkh_font" id="Id_lap6">הקפה 6</th>';
+*/
             } else {
                 headerText1 += '<th class="rnkh_font" id="Id_TpsTour">הקפה אחרונה</th>';
                 headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
@@ -474,7 +481,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag")) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps && showIndividualLaps == "1") || (allArray[l]["Id_NbTour"] == (laps-2) && showIndividualLaps == "1" && allArray[l]["Id_Categorie"].includes("מתחילים")) || (allArray[l]["Id_NbTour"] == (laps-1) && showIndividualLaps == "1" && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -566,13 +573,18 @@
                 }
 
                 if (showIndividualLaps == "1" && allArray[l]["Id_lap1"]) {
+
+                    for (q = 1; q <= laps; q++) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+                    }
+/*                    
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap1"] + '</td>';
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap2"] + '</td>';
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap3"] + '</td>';
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap4"] + '</td>';
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap5"] + '</td>';
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_lap6"] + '</td>';
-
+*/
                 } else {
 
                     finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';

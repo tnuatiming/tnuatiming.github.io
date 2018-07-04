@@ -655,7 +655,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == laps || (!(allArray[l]["Id_Categorie"].includes("E")) && allArray[l]["Id_NbTour"] == (laps-2))) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == laps || (!(allArray[l]["Id_Categorie"].toUpperCase().includes("E")) && allArray[l]["Id_NbTour"] == (laps-2))) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -745,7 +745,7 @@
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
 // adding and coloring the laps and best time
 // short version
-             for (q = 1; q < (laps+1); q++) { // q = number of laps + 1
+             for (q = 1; q <= laps; q++) {
                 if (q % 2 == 0) {
                     if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
                         finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
