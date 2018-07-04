@@ -469,8 +469,18 @@
                 if (showBestLap == "1") {
                     if (category == "&nbsp;") {
                         
-                    } else {
-                        finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+ms2TimeString(categoryBestTime[category])+'</td></tr>';
+                        } else if (numberBestTime[category] != "-") {
+
+                        categoryBestTime[category] = ms2TimeString(categoryBestTime[category]);
+                        
+                        if (categoryBestTime[category].toString().substring(0, 3) == "00:") {
+                            categoryBestTime[category] = categoryBestTime[category].substr(3);
+                        }
+                        if (categoryBestTime[category].toString().substring(0, 1) == "0" && categoryBestTime[category].includes(":")) {
+                            categoryBestTime[category] = categoryBestTime[category].substr(1);
+                        }
+
+                        finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+categoryBestTime[category]+'</td></tr>';
                     }
                 }
                 finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;                
@@ -516,7 +526,7 @@
                     
                 }  else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td class="finished white rnk_font">&nbsp;</td>';
+                    finalText += '<td class="finished black rnk_font">'+allArray[l]["Id_penalty"]+'</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
                     
@@ -632,23 +642,26 @@
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>';
                 }
                 
-                
-                
-                
      //       }
-
-                 
                 
       //      }    
 
-                    finalText += '</tr>';
+                finalText += '</tr>';
 
-               
             }        
-         
                 
-            if (useCategory == "yes" && showBestLap == "1") {
-                finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+ms2TimeString(categoryBestTime[category])+'</td></tr>';
+            if (useCategory == "yes" && showBestLap == "1" && numberBestTime[category] != "-") {
+
+                    categoryBestTime[category] = ms2TimeString(categoryBestTime[category]);
+                    
+                    if (categoryBestTime[category].toString().substring(0, 3) == "00:") {
+                        categoryBestTime[category] = categoryBestTime[category].substr(3);
+                    }
+                    if (categoryBestTime[category].toString().substring(0, 1) == "0" && categoryBestTime[category].includes(":")) {
+                        categoryBestTime[category] = categoryBestTime[category].substr(1);
+                    }
+
+                finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+categoryBestTime[category]+'</td></tr>';
             }
 /*         
          for (var key in categoryBestTime) {
