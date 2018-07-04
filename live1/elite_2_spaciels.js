@@ -81,7 +81,7 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                 text1 = xhr.responseText;
-                document.getElementById(target).innerHTML = ExtraireClassementReduitNew();
+                document.getElementById(target).innerHTML = createLiveTable();
             }
         };
         xhr.open("GET", url1 + "?r=" + Math.random(), true);
@@ -108,7 +108,7 @@
         xhr1.send(null);
     };
 
-    function ExtraireClassementReduitNew() {
+    function createLiveTable() {
         var i;
         var lines;
         var lines2;

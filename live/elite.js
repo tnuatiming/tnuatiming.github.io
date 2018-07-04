@@ -9,6 +9,11 @@
 <!-- tag heuer live timing -->
 
 <script type="text/javascript">
+
+    var showBestLap = "1";
+    var showIndividualLaps = "0";
+    var showLapsNumber = "1";
+
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
@@ -21,15 +26,13 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
+
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
     }    
     
     var tableClass = "fadeIn ";
         
-    var showBestLap = "1";
-    var showIndividualLaps = "1";
-    var showLapsNumber = "1";
     function category(choice){
         
         positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
@@ -67,7 +70,7 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                document.getElementById(target).innerHTML = ExtraireClassementReduitNew(xhr.responseText)
+                document.getElementById(target).innerHTML = createLiveTable(xhr.responseText)
  //           } else {
  //               document.getElementById("categoryOrAll").style.display = "none";
             }
@@ -96,22 +99,18 @@
     };
 
 
-    function ExtraireClassementReduitNew(Texte) {
+    function createLiveTable(Text) {
         var i;
-        var Lignes;
         var lines;
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
-        var qqq = new Array();
-        var hhh = new Array();
+  //      var qqq = new Array();
+  //      var hhh = new Array();
+  //      var temp = new Array();
         var hhhPro = new Array();
-        var hhhPro2 = new Array();
-        var temp = new Array();
         var lineArray = new Array();
         var allArray = new Array();
-        var lineArray2 = new Array();
-        var allArray2 = new Array();
         var bestTime = new Array();
         var categoryBestTime = new Array();
         var numberBestTime = new Array();
@@ -123,32 +122,31 @@
         var positionChanged = "";
         var laps = 6; // number of laps (max 6)
         
-        Texte = Texte.split('<table'); // split the text to title/time and the table
-        Texte[1] = Texte[1].substring(Texte[1].indexOf("<tr"),Texte[1].lastIndexOf("</tr>")+5); // clean the table text
-      //  console.log(Texte[1]);
-        Lignes = Texte[1].split("\r\n");
-   //     console.log(Lignes.length);
+        Text = Text.split('<table'); // split the text to title/time and the table
+        Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(Text[1]);
 
-        lines = Texte[1].split("\r\n");
+        lines = Text[1].split("\r\n");
         //    console.log(lines.length);
      //   console.log(lines);
 
+        if (Text[0].includes("טסט")) { // will show individuall laps for enduro special test
+            var showIndividualLaps = "1";
+            var showLapsNumber = "0";
+        }
 
-
-        
-        var finalText = Texte[0]; // clear the finalText variable and add the title and time lines
-
+        var finalText = Text[0]; // clear the finalText variable and add the title and time lines
            
         for (b = 0; b < lines.length; b++) { 
            
             if (lines[b].includes('<td id="Id_')) {
                 var id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
                 var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
-                hhh[id] = idName;
-                temp.push(id,idName);
                 hhhPro.push(id);
-                qqq.push(temp);
-                temp = [];
+        //        hhh[id] = idName;
+       //         temp.push(id,idName);
+        //        qqq.push(temp);
+         //       temp = [];
             } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) {
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) {
@@ -188,21 +186,12 @@
             
         }
 
-     //    console.log(allArray);
-     //    console.log(hhh);
-     //    console.log(hhhPro);
-
-     //             console.log(qqq);
-      //   console.log(hhhPro2);
-         //                console.log(allArray);
-          
+           
          // MAGIC sort the array after the merge to get new results
         if (useCategory == "yes") {
             allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         }
-         
-
-          
+                   
 
             finalText += '<table class="' + tableClass + 'line_color">';
             
