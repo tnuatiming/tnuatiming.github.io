@@ -577,8 +577,7 @@
                 } else {
 
                     finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
-                    finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_MeilleurTour"] + '</td>';
-
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_MeilleurTour"] + '</td>';
                 }
 
 
