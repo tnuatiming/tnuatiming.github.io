@@ -207,7 +207,7 @@ table.no_num_color {
 #race tr.rnk_bkcolor:nth-of-type(even) {
     background: rgba(187,187,187,0.7);
 }
-
+/*#live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) */
 #live tr.rnk_bkcolor:hover, #race tr.rnk_bkcolor:hover {
     background: #ffcc33;
     z-index: 1;
@@ -324,7 +324,12 @@ th.rnkh_font {
     flex-direction: row;
     height: 0;
 }
+
 span#name, span#rund, span#date {
+}
+
+#live #liveTable {
+    width: 100%;
 }
 
 #live #ImageZoom {

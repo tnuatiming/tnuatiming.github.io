@@ -472,7 +472,7 @@
             var m = 0;
             var prevCompCat = ""
 
-            finalText += '<table class="' + tableClass + 'line_color">';
+            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
             
             for (var l = 0; l < allArray.length; l++) {
 
@@ -830,7 +830,7 @@
             }        
          
          
-                finalText += '</table>';
+                finalText += '</table></div>';
      
 
          

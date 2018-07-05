@@ -225,7 +225,7 @@
         }
                    
 
-            finalText += '<table class="' + tableClass + 'line_color">';
+            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
             
             for (var l = 0; l < allArray.length; l++) {
 
@@ -466,24 +466,21 @@
             // add category name header and table header
             if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {
 
-                if (showBestLap == "1") {
-                    if (category == "&nbsp;") {
-                        
-                        } else if (numberBestTime[category] != "-") {
+                if (showBestLap == "1" && category != "&nbsp;" && numberBestTime[category] != "-") {
 
-                        categoryBestTime[category] = ms2TimeString(categoryBestTime[category]);
-                        
-                        if (categoryBestTime[category].toString().substring(0, 3) == "00:") {
-                            categoryBestTime[category] = categoryBestTime[category].substr(3);
-                        }
-                        if (categoryBestTime[category].toString().substring(0, 1) == "0" && categoryBestTime[category].includes(":")) {
-                            categoryBestTime[category] = categoryBestTime[category].substr(1);
-                        }
-
-                        finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+categoryBestTime[category]+'</td></tr>';
+                    categoryBestTime[category] = ms2TimeString(categoryBestTime[category]);
+                    
+                    if (categoryBestTime[category].toString().substring(0, 3) == "00:") {
+                        categoryBestTime[category] = categoryBestTime[category].substr(3);
                     }
+                    if (categoryBestTime[category].toString().substring(0, 1) == "0" && categoryBestTime[category].includes(":")) {
+                        categoryBestTime[category] = categoryBestTime[category].substr(1);
+                    }
+
+                    finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: ('+numberBestTime[category]+') '+nameBestTime[category]+' - '+categoryBestTime[category]+'</td></tr>';
                 }
-                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;                
+            
+            finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;                
                 
                 category = allArray[l]["Id_Categorie"];
                 
@@ -678,7 +675,7 @@
 
 
 
-                finalText += '</table>';
+                finalText += '</table></div>';
      
 
          
