@@ -213,6 +213,17 @@ table.no_num_color {
     z-index: 1;
 }
 
+#live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) {
+    background-image:
+    linear-gradient(
+      #ffcc33,
+      #ffcc33 5%,
+      rgba(0, 0, 0, 0) 5%,
+      rgba(0, 0, 0, 0) 95%,
+      #ffcc33 95%
+    );
+    z-index: 1;
+}
 #race td.subtitle_font {
     background: rgba(143,143,143,0.7);
     color:#151B8D;
