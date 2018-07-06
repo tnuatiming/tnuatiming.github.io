@@ -197,7 +197,7 @@
                 }
                 // fix category not defined
                 if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "כללי";   
+                    lineArray[hhhPro[pp]] = "קטגוריה כללית";   
                 }
 
                 // find best lap overall

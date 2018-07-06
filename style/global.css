@@ -664,6 +664,7 @@ span#name, span#rund, span#date {
 }
 #live td.orange {
     color: #ff8200;
+    font-size: 0.8em;
 }
 #live td.black {
     color: #2d2926;
