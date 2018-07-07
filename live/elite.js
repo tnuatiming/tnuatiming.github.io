@@ -547,12 +547,19 @@
 
                 }
                 
-                
-                
                 if (useCategory == "yes") {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
+                    if (allArray[l]["Id_Image"].includes("_Status")) {
+                        finalText += '<td class="rnk_font"></td>';
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
+                    }
                 } else if (useCategory == "no") {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                    if (allArray[l]["Id_Image"].includes("_Status")) {
+                        finalText += '<td class="rnk_font"></td>';
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                    }
+                    
                 }
             
                 
