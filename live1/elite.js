@@ -466,7 +466,7 @@
             // add category name header and table header
             if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {
 
-                if (showBestLap == "1" && category != "&nbsp;" && numberBestTime[category] != "-") {
+                if (showBestLap == "1" && category != "&nbsp;" && category != "קטגוריה כללית" && numberBestTime[category] != "-") {
 
                     categoryBestTime[category] = ms2TimeString(categoryBestTime[category]);
                     
@@ -647,7 +647,7 @@
 
             }        
                 
-            if (useCategory == "yes" && showBestLap == "1" && numberBestTime[category] != "-") {
+            if (useCategory == "yes" && showBestLap == "1" && numberBestTime[category] != "-" && category != "קטגוריה כללית" && category != "&nbsp;") {
 
                     categoryBestTime[category] = ms2TimeString(categoryBestTime[category]);
                     
