@@ -5,7 +5,8 @@
 <!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
 <!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
 <!-- 20180703 - added category best lap. added local storage for category or all button.  -->
-<!-- 20180704 - added individual laps best lap. added penalty indicator. -->
+<!-- 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. -->
+<!-- 20180709 - added option for cleaning the results for the results page (activated by "results" in folder name). -->
 
 <!-- tag heuer live timing -->
 
@@ -14,6 +15,7 @@
     var showBestLap = "1";
     var showIndividualLaps = "0";
     var showLapsNumber = "1";
+    var cleanResults = "0"; // clean the table for coping to results page
 
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
@@ -127,7 +129,8 @@
         var positionChanged = "";
         var laps = 6; // number of laps (max 6)
         var penalty = "no";
-
+        var dnfCategory = "";
+        
         Text = Text.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
@@ -139,6 +142,10 @@
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             var showIndividualLaps = "1";
             var showLapsNumber = "0";
+        }
+
+        if (Text[0].includes("results")) { // clean table for results page
+            var cleanResults = "1";
         }
 
         var finalText = Text[0]; // clear the finalText variable and add the title and time lines
@@ -370,7 +377,11 @@
    //     }          
 
     // hard coded header for now
-            headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+
+            if (cleanResults != "1") {
+                headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+            }
+
             headerText1 += '<th class="rnkh_font" id="Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Numero">מספר</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Nom">שם</th>';
@@ -488,7 +499,25 @@
                 finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
 
-                if (l % 2 == 0) {
+
+            // DNF/DSQ
+            
+            if (allArray[l]["Id_Image"].includes("_Status10") && useCategory == "yes" && dnfCategory != category && cleanResults == "1") {
+                
+                finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>';
+                dnfCategory = category;
+            } else if (allArray[l]["Id_Image"].includes("_Status11") && useCategory == "yes" && dnfCategory != category && cleanResults == "1") {
+                
+                finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>';
+                dnfCategory = category;
+            } else if (allArray[l]["Id_Image"].includes("_Status12") && useCategory == "yes" && dnfCategory != category && cleanResults == "1") {
+                
+                finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>';
+                dnfCategory = category;
+            }
+            
+            
+            if (l % 2 == 0) {
                 finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
                 } else {
                 finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
@@ -508,11 +537,11 @@
                 } else {
                     var checkeredFlag = "";
                 }
-                
-                
-                
-                
+                 
                 // add and style the status/arrow
+
+            if (cleanResults != "1") {
+                
                 if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
                     finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
@@ -546,6 +575,8 @@
                     finalText += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 }
+                
+            }
                 
                 if (useCategory == "yes") {
                     if (allArray[l]["Id_Image"].includes("_Status")) {

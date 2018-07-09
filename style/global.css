@@ -224,7 +224,7 @@ table.no_num_color {
     );
     z-index: 1;
 }
-#race td.subtitle_font {
+#race td.subtitle_font, #live td.subtitle_font {
     background: rgba(143,143,143,0.7);
     color:#151B8D;
     font-weight: 400;
