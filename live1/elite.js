@@ -130,6 +130,8 @@
         var laps = 6; // number of laps (max 6)
         var penalty = "no";
         var dnfCategory = "";
+        var dnsCategory = "";
+        var dsqCategory = "";
         
         Text = Text.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -445,8 +447,11 @@
                           
                           
                           
-                    if (allArray[l]["Id_Position"]) { 
+                    if (allArray[l]["Id_Position"] && useCategory == "no") { 
                             competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
+                    }
+                    if (allArray[l]["Id_PositionCategorie"] && useCategory == "yes") { 
+                            competitorPosition = allArray[l]["Id_PositionCategorie"];  // get the position value and clean penalty indicator
                     }
 
                     positionChanged = "";
@@ -506,14 +511,14 @@
                 
                 finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>';
                 dnfCategory = category;
-            } else if (allArray[l]["Id_Image"].includes("_Status11") && useCategory == "yes" && dnfCategory != category && cleanResults == "1") {
+            } else if (allArray[l]["Id_Image"].includes("_Status11") && useCategory == "yes" && dsqCategory != category && cleanResults == "1") {
                 
                 finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>';
-                dnfCategory = category;
-            } else if (allArray[l]["Id_Image"].includes("_Status12") && useCategory == "yes" && dnfCategory != category && cleanResults == "1") {
+                dsqCategory = category;
+            } else if (allArray[l]["Id_Image"].includes("_Status12") && useCategory == "yes" && dnsCategory != category && cleanResults == "1") {
                 
                 finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>';
-                dnfCategory = category;
+                dnsCategory = category;
             }
             
             
