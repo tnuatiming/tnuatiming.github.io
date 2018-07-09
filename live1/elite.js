@@ -6,7 +6,7 @@
 <!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
 <!-- 20180703 - added category best lap. added local storage for category or all button.  -->
 <!-- 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. -->
-<!-- 20180709 - added option for cleaning the results for the results page (activated by "results" in folder name). -->
+<!-- 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). -->
 
 <!-- tag heuer live timing -->
 
@@ -142,12 +142,13 @@
      //   console.log(lines);
 
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
-            var showIndividualLaps = "1";
-            var showLapsNumber = "0";
+            showIndividualLaps = "1";
+            showLapsNumber = "0";
         }
 
-        if (Text[0].includes("results")) { // clean table for results page
-            var cleanResults = "1";
+        if (Text[0].includes("+++")) { // clean table for results page
+            cleanResults = "1";
+            Text[0] = Text[0].replace("+++", "");
         }
 
         var finalText = Text[0]; // clear the finalText variable and add the title and time lines
