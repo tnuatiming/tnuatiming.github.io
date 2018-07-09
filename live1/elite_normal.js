@@ -449,10 +449,10 @@
                           
                           
                     if (allArray[l]["Id_Position"] && useCategory == "no") { 
-                            competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
+                            competitorPosition = Number(allArray[l]["Id_Position"]);  // get the position value and clean penalty indicator
                     }
                     if (allArray[l]["Id_PositionCategorie"] && useCategory == "yes") { 
-                            competitorPosition = allArray[l]["Id_PositionCategorie"];  // get the position value and clean penalty indicator
+                            competitorPosition = Number(allArray[l]["Id_PositionCategorie"]);  // get the position value and clean penalty indicator
                     }
 
                     positionChanged = "";

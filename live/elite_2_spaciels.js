@@ -600,7 +600,7 @@
 
                     // calculating arrows status
                     if (allArray[l]["Id_Position"]) { 
-                            competitorPosition = allArray[l]["Id_Position"];  // get the position value and clean penalty indicator
+                            competitorPosition = Number(allArray[l]["Id_Position"]);  // get the position value and clean penalty indicator
                     }
                      
                     if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"] && allArray[l]["Id_TpsCumule"] != "-") { // position change arrow calc
