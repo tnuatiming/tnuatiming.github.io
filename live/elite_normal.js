@@ -127,7 +127,7 @@
         var b, q, z, f;
         var pp = 0;
         var positionChanged = "";
-        var laps = 6; // number of laps (max 6)
+        var laps = 6; // number of laps 
         var penalty = "no";
         var dnfCategory = "";
         var dnsCategory = "";
@@ -240,7 +240,7 @@
             for (var l = 0; l < allArray.length; l++) {
 
 
-                            if (allArray[l]["Id_Ecart1er"] != "-") {  
+                            if (useCategory == "no" && allArray[l]["Id_Ecart1er"] != "-") { // clean diff   
 
                                      if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
                                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
@@ -250,7 +250,7 @@
                                     }
                             }
                  
-                            if (allArray[l]["Id_Ecart1erCategorie"] != "-") {  
+                            if (useCategory == "yes" && allArray[l]["Id_Ecart1erCategorie"] != "-") { // clean diff 
 
                                      if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 3) == "00:") {
                                         allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(3);
@@ -260,7 +260,7 @@
                                     }
                             }
                  
-                            if (allArray[l]["Id_TpsCumule"] != "-") {  
+                            if (allArray[l]["Id_TpsCumule"] != "-") { // clean total time  
 
                                 
                                 if (allArray[l]["Id_TpsCumule"].toString().substring(0, 3) == "00:") {
@@ -275,41 +275,32 @@
 
                             
                             
-                       // reorder laps as elite3 does somthing wrong with the order (6 laps) NOT FINISHED FIXME
-                       
+                       // reorder laps as elite3 does somthing wrong with the order 
                  if (allArray[l]["Id_TpsTour1"] && showIndividualLaps == "1") { 
 
+                    var g = laps; // number of laps
+                    for (q = g; q > -1; q--) { 
 
- /*                      
-// didnt test if this works 
-                    var g = 6; // number of laps
-                    for (q = g; q > 0; q--) { 
-
-                        if (allArray[l]["Id_TpsTour"+q] && allArray[l]["Id_TpsTour"+q] != "-") {
+                        if ((allArray[l]["Id_TpsTour"+q] && allArray[l]["Id_TpsTour"+q] != "-") || q == 0) {
                                 
-                            
-            /////////????                for (z = q, f = 1; z > 0 && f <= g; z--, f++)  
-
-                            for (z = q; z > 0; z--) { 
-                            for (f = 1; f <= g; f++) { 
-                                    
+                            var f = q;
+                            for (z = 1; z <= g; z++)  {
                                 
-                                if (z > 0) {
-                                allArray[l]["Id_lap"+f] = allArray[l]["Id_TpsTour"+z];
+                                if (f > 0) {
+                                    allArray[l]["Id_lap"+z] = allArray[l]["Id_TpsTour"+f];
                                 } else {
-                                allArray[l]["Id_lap"+f] = "-";
+                                    allArray[l]["Id_lap"+z] = "-";
                                 }
-                                   
-                            }   
-                            }
-                            
+                 
+                                f--; 
+                            }     
+                
+                            q = -1;
                         } 
                     }
- */                          
                      
                      
-                     
-                     
+ /*                     
                      
                     if (allArray[l]["Id_TpsTour6"] && allArray[l]["Id_TpsTour6"] != "-") {
                         allArray[l].Id_lap1 = allArray[l]["Id_TpsTour6"];
@@ -361,7 +352,7 @@
                         allArray[l].Id_lap5 = "-";
                         allArray[l].Id_lap6 = "-";
                     }
-
+ */
                      
                      
                 }            
@@ -379,7 +370,7 @@
    //         }
    //     }          
 
-    // hard coded header for now
+    // semi hard coded header
 
             if (cleanResults != "1") {
                 headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
@@ -762,7 +753,7 @@
 
             
 */             
-          //     console.log(allArray);
+               console.log(allArray);
          //    console.log(finalText);
       
 
