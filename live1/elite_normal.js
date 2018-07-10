@@ -150,7 +150,15 @@
             cleanResults = "1";
             Text[0] = Text[0].replace("+++", "");
         }
-
+/*
+        if (Text[0].includes("laps")) { // get number of laps, NOT TESTED
+            var tempLaps, tempIndex;
+            tempIndex = Text[0].indexOf("laps");
+            tempLaps = Text[0].substring(tempIndex, tempIndex+6);
+            laps = Number(tempLaps.replace("laps", ""));
+            Text[0] = Text[0].replace(/laps\d{1,2}/, "");
+        }
+*/
         var finalText = Text[0]; // clear the finalText variable and add the title and time lines
            
         for (b = 0; b < lines.length; b++) { 
