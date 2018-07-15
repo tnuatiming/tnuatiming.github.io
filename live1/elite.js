@@ -30,8 +30,8 @@
     
     var useCategory = "yes";
 
-    if (sessionStorage.getItem('categoryOrAll')) {
-        useCategory = sessionStorage.getItem('categoryOrAll');
+    if (sessionStorage.getItem('useCategory')) {
+        useCategory = sessionStorage.getItem('useCategory');
     }    
     
     var tableClass = "fadeIn ";
@@ -42,9 +42,9 @@
         
         useCategory = choice;
         if (useCategory == "yes") {
-            sessionStorage.setItem('categoryOrAll', 'yes');
+            sessionStorage.setItem('useCategory', 'yes');
         } else if (useCategory == "no") {
-            sessionStorage.setItem('categoryOrAll', 'no');
+            sessionStorage.setItem('useCategory', 'no');
         }
 
         tableClass = "fadeIn "; // make the table fadeIn on change
