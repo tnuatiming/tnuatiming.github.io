@@ -422,8 +422,22 @@
       //   console.log(headerText1);
       //          console.log(temp);
 
-         
-                             // position change arrow prep
+
+         // blink the competitor line when change
+                var refrash = "";
+
+                if (allArray[l]["Id_NbTour"]) {
+                    competitorLaps = allArray[l]["Id_NbTour"]; 
+                
+                    if (competitorLaps != lapsArray[competitorNumber]) { 
+                        
+                        refrash = "refrash "; // blink the competitor line                       
+                    }
+                    
+                    lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
+                }
+        
+        // position change arrow prep
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
@@ -523,9 +537,9 @@
             
             
             if (l % 2 == 0) {
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
+                finalText += '<tr class="' + positionChanged + refrash + 'rnk_bkcolor OddRow">';
                 } else {
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
+                finalText += '<tr class="' + positionChanged + refrash + 'rnk_bkcolor EvenRow">';
                     
                 }
        
