@@ -20,7 +20,7 @@
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
-    Rafraichir = 30000;
+    Rafraichir = 10000;
     Changement = 60000;
     MaxNum = 1;
     ClassementReduit = 1;
@@ -88,6 +88,7 @@
         };
         populatePre('uploadMsg.txt'); // upload message
         TimerLoad = setTimeout(fct, Rafraichir)
+        Rafraichir = 30000;
     };
 
     // fn to upload messages

@@ -27,7 +27,7 @@ html {
     direction: rtl;
     line-height: 1.5;
     text-align: center;
-    font-family: 'Noto Sans Hebrew', 'Open Sans Hebrew', sans-serif;
+    font-family: 'Noto Sans Hebrew', "Noto Sans", 'Open Sans Hebrew', sans-serif;
     -webkit-font-smoothing: antialiased;
     vertical-align: baseline;
     -webkit-text-size-adjust: 100%;
