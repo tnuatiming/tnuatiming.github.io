@@ -8,7 +8,8 @@
 * black #191919 (25,25,25)
 * dark gray #464646 (70,70,70)
 * very light gray #C7C7C7 (199,199,199)
-
+* purple #db2aff best time overall
+* green #36dc18 best time 
 
 * @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);
@@ -212,7 +213,7 @@ table.no_num_color {
     background: #ffcc33;
     z-index: 1;
 }
-
+/*
 #live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) {
     background-image:
     linear-gradient(
@@ -224,6 +225,7 @@ table.no_num_color {
     );
     z-index: 1;
 }
+*/
 #race td.subtitle_font, #live td.subtitle_font {
     background: rgba(143,143,143,0.7);
     color:#151B8D;
@@ -542,21 +544,20 @@ span#name, span#rund, span#date {
     background-color:  rgba(187,187,187,0.7);
     color: #111;
 }
-@keyframes refrash {
+@keyframes refresh {
     0% {opacity:1;}
     25% {opacity:0;}
     100% {opacity:1;}
 }
-#live tr.up > td:nth-child(n+3) {
-    animation: refrash 1s both;
+#live tr.gainedPosition > td:nth-child(n+3) {
+    animation: refresh 1s both;
 }
-#live tr.down > td:nth-child(n+3) {
-    animation: refrash 1s both;
+#live tr.lostPosition > td:nth-child(n+3) {
+    animation: refresh 1s both;
 }
-#live tr.refrash > td:nth-child(n+3) {
-    animation: refrash 1s both;
+#live tr.unChanged > td:nth-child(n+3) {
+    animation: refresh 1s both;
 }
-
 
 #live td.highlight {
     font-weight: 700;
@@ -687,15 +688,18 @@ span#name, span#rund, span#date {
 }
 
 #live td.BestTimeOverall {
-    color: #ff0000;
+/*    color: #ff0000;*/
+    color: #db2aff;
     font-weight: 700;
 }
 #live td.BestTime {
     color: #0000ff;
+/*    color: #36dc18;*/
     font-weight: 700;
 }
 #live td.BestTime1 {
     color: #00008B;
+/*    color: #18dc8e;*/
     font-weight: 700;
 }
 
@@ -768,9 +772,9 @@ td[aria-label]:hover:after {
   right: 100%;
   top: 0;
   white-space: nowrap;
-  z-index: 20px;
+  z-index: 99;
   color: #fff;
-  background: rgba(17, 17, 17, 0.7);
+  background: rgba(17, 17, 17, 1);
 }
 
 .full-bg {

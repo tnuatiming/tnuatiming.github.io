@@ -269,7 +269,7 @@
                                     }
                             }
                  
-                            if (allArray[l]["Id_TpsCumule"] != "-") { // clean total time  
+                            if (typeof allArray[l]["Id_TpsCumule"]  != 'undefined' && allArray[l]["Id_TpsCumule"] != "-") { // clean total time  
 
                                 
                                 if (allArray[l]["Id_TpsCumule"].toString().substring(0, 3) == "00:") {
@@ -423,20 +423,6 @@
       //   console.log(headerText1);
       //          console.log(temp);
 
-
-         // blink the competitor line when change
-                var refrash = "";
-
-                if (allArray[l]["Id_NbTour"]) {
-                    competitorLaps = allArray[l]["Id_NbTour"]; 
-                
-                    if (competitorLaps != lapsArray[competitorNumber]) { 
-                        
-                        refrash = "refrash "; // blink the competitor line                       
-                    }
-                    
-                    lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
-                }
         
         // position change arrow prep
 
@@ -477,18 +463,31 @@
 
                             if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
-                                positionChanged = "down ";
+                                positionChanged = "lostPosition ";
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
-                                positionChanged = "up ";
+                                positionChanged = "gainedPosition ";
                             }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
                         positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
                     }
        
-                    // mark on track
-                    if (allArray[l]["Id_Canal"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status"))) {
+        // blink the competitor line when change
+
+                if (allArray[l]["Id_NbTour"]) {
+                    competitorLaps = allArray[l]["Id_NbTour"]; 
+                
+                    if (competitorLaps != lapsArray[competitorNumber] && positionChanged == "") { 
+                        
+                        positionChanged = "unChanged "; // blink the competitor line                       
+                    }
+                    
+                    lapsArray[competitorNumber] = competitorLaps;// update array with current laps count for next Load calc
+                }
+       
+       // mark on track
+                     if (allArray[l]["Id_Canal"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status"))) {
                         allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
                              //   positionChanged = "same ";
                     }                        
@@ -538,9 +537,9 @@
             
             
             if (l % 2 == 0) {
-                finalText += '<tr class="' + positionChanged + refrash + 'rnk_bkcolor OddRow">';
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
                 } else {
-                finalText += '<tr class="' + positionChanged + refrash + 'rnk_bkcolor EvenRow">';
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
                     
                 }
        
@@ -653,7 +652,12 @@
                  
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';
                 if (showLapsNumber == "1") {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_NbTour"] + '</td>';
+
+                    if (typeof allArray[l]["Id_NbTour"] != 'undefined') {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_NbTour"] + '</td>';
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>';
+                    }                
                 }
 
                 if (showIndividualLaps == "1" && allArray[l]["Id_lap1"]) {
@@ -689,8 +693,12 @@
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_MeilleurTour"] + '</td>';
                 }
 
-
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                } else {
+                    finalText += '<td class="rnk_font">-</td>';
+                }                
+                
                 if (useCategory == "yes") {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
                 } else if (useCategory == "no") {
