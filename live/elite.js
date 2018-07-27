@@ -205,7 +205,12 @@
                     penalty = "yes";
                 }
 
-                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
+                if (typeof lines[b] != 'undefined') {
+                    lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
+                } else {
+                    lineArray[hhhPro[pp]] = "-";
+                }
+                
 
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " BestTimeOverall";
@@ -457,7 +462,7 @@
 
                     positionChanged = "";
                     
-                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"]) { // position change arrow calc
+                    if (competitorPosition > 0 && competitorNumber > 0 && (allArray[l]["Id_TpsTour"] != "-" || allArray[l]["Id_NbTour"] > 0 || allArray[l]["Id_Image"].includes("_TrackPassing"))) { // position change arrow calc
                     
                         if (positionArray[competitorNumber]) {
 
@@ -487,7 +492,7 @@
                 }
        
        // mark on track
-                     if (allArray[l]["Id_Canal"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status"))) {
+                     if ((allArray[l]["Id_Canal"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status"))) || (positionChanged == "" && allArray[l]["Id_Image"].includes("_TrackPassing"))) {
                         allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
                              //   positionChanged = "same ";
                     }                        
