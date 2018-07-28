@@ -387,7 +387,7 @@
     // semi hard coded header
 
             if (cleanResults != "1") {
-                headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+                headerText1 += '<th class="rnkh_font" id="Id_Arrow"></th>';
             }
 
             headerText1 += '<th class="rnkh_font" id="Id_Position">מקום</th>';
@@ -436,15 +436,15 @@
                     allArray[l]["Id_Arrow"] = "&#9670;";
 
                     if (allArray[l]["Id_Image"].includes("_Status10")) {
-                        allArray[l]["Id_Arrow"] = "DNF";
+                        allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
                     } else if (allArray[l]["Id_Image"].includes("_Status11")) {
-                        allArray[l]["Id_Arrow"] = "DSQ";
+                        allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
                     } else if (allArray[l]["Id_Image"].includes("_Status12")) {
-                        allArray[l]["Id_Arrow"] = "DNS";
+                        allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dns.svg" alt="dns">';
                     } else if (allArray[l]["Id_Image"].includes("_Status2")) {
-                        allArray[l]["Id_Arrow"] = "NQ";
+                        allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_nq.svg" alt="nq">';
                     } else if (allArray[l]["Id_Image"].includes("_Status")) {
-                        allArray[l]["Id_Arrow"] = "&#10033;"; // astrix
+                        allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_status.svg" alt="status">'; // astrix
                     } else if (allArray[l]["Id_penalty"].includes("P")) {
                         allArray[l]["Id_Arrow"] = "P"; // penalty
                     } else {
@@ -566,7 +566,11 @@
 
             if (cleanResults != "1") {
                 
-                if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
+                 if (allArray[l]["Id_Arrow"].includes("dnsfq")) { 
+                    
+                    finalText += '<td class="dn rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
                     finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
@@ -574,7 +578,7 @@
                     
                     finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
-                }  else if (checkeredFlag == "finished ") { // finished
+                } else if (checkeredFlag == "finished ") { // finished
                     
                     finalText += '<td class="finished black rnk_font">'+allArray[l]["Id_penalty"]+'</td>';
                     

@@ -711,6 +711,10 @@ span#name, span#rund, span#date {
     height: 1em;
     vertical-align: middle;
 }
+#live img.dnsfq {
+    height: .8em;
+    vertical-align: middle;
+}
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
 /*
