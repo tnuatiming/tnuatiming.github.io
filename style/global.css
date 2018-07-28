@@ -1561,7 +1561,7 @@ a.main_logo {
         background-image: url("/images/supermoto.jpg");
     }
     
-    body#race.superbike {
+    body#race.superbike, body#race.pirelli {
         background-image: url("/images/superbike.jpg");
     }
     

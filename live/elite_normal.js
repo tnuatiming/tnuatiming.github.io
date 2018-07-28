@@ -179,7 +179,7 @@
                 if (penalty == "yes") {
                     lineArray.Id_penalty = "P";
                 } else {
-                    lineArray.Id_penalty = "&nbsp;";
+                    lineArray.Id_penalty = "";
                 }
 
                 // find category best time
@@ -462,7 +462,7 @@
 
                     positionChanged = "";
                     
-                    if (competitorPosition > 0 && competitorNumber > 0 && (allArray[l]["Id_TpsTour"] != "-" || allArray[l]["Id_NbTour"] > 0 || allArray[l]["Id_Image"].includes("_TrackPassing"))) { // position change arrow calc
+                    if (competitorPosition > 0 && competitorNumber >= 0 && (allArray[l]["Id_TpsTour"] != "-" || allArray[l]["Id_NbTour"] > 0 || allArray[l]["Id_Image"].includes("_TrackPassing"))) { // position change arrow calc
                     
                         if (positionArray[competitorNumber]) {
 
@@ -578,9 +578,9 @@
                     
                     finalText += '<td class="finished black rnk_font">'+allArray[l]["Id_penalty"]+'</td>';
                     
-                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
+                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // black
                     
-                    finalText += '<td class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="black rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
