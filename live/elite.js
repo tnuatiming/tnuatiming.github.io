@@ -622,7 +622,7 @@
                     var opt3 = allArray[l]["Id_Numero"];                        
                     var opt4 = allArray[l]["Id_Categorie"];
                     
-                    if (useCategory == "no") {
+                    if (useCategory == "no" && (Text[0].includes("מוטוקרוס") || Text[0].includes("אנדורו"))) {
                         
                         if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
                             finalText += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>';
@@ -646,6 +646,8 @@
                             finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                         }
 
+                    } else if (useCategory == "no") {
+                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
                     } else {
                             finalText += '<td class="rnk_font highlight">' + opt3 + '</td>';
                     }
