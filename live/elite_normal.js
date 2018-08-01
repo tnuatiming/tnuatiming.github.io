@@ -20,7 +20,7 @@
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
-    Rafraichir = 10000;
+    Rafraichir = 2000;
     Changement = 60000;
     MaxNum = 1;
     ClassementReduit = 1;
@@ -585,10 +585,6 @@
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // black
                     
                     finalText += '<td class="black rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
-                    
-                } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
-                    
-                    finalText += '<td class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "P") { // black
                     

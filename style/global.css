@@ -765,20 +765,20 @@ span#name, span#rund, span#date {
     display:none;
 }
 
-td:hover {
-  position: relative;
+#live td[aria-label] {
+    position: relative;
 }
 
 td[aria-label]:hover:after {
-  content: attr(aria-label);
-  padding: 0 8px;
-  position: absolute;
-  right: 100%;
-  top: 0;
-  white-space: nowrap;
-  z-index: 99;
-  color: #fff;
-  background: rgba(17, 17, 17, 1);
+    content: attr(aria-label);
+    padding: 0 8px;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    white-space: nowrap;
+    z-index: 99;
+    color: #fff;
+    background: rgba(17, 17, 17, 1);
 }
 
 .full-bg {
@@ -1565,10 +1565,14 @@ a.main_logo {
         background-image: url("/images/supermoto.jpg");
     }
     
-    body#race.superbike, body#race.pirelli {
-        background-image: url("/images/superbike.jpg");
+    body#race.pirelli {
+        background-image: url("/images/pirelli.jpg");
     }
     
+    body#race.superbike {
+        background-image: url("/images/superbike.jpg");
+    }
+
     body#race.allmountain {
         background-image: url("/images/allmountain.jpg");
     }
