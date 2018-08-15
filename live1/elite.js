@@ -20,7 +20,7 @@
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
-    Rafraichir = 2000;
+    Rafraichir = 10000;
     Changement = 60000;
     MaxNum = 1;
     ClassementReduit = 1;
@@ -220,8 +220,8 @@
                     bestTime[lineArray["Id_Numero"]] = "";
                 }
                 // fix category not defined
-                if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "קטגוריה כללית";   
+                if (hhhPro[pp] == "Id_Categorie" && (lineArray[hhhPro[pp]] == "-" || lineArray[hhhPro[pp]] == "" || lineArray[hhhPro[pp]] == "&nbsp;" || typeof lineArray[hhhPro[pp]] == 'undefined')) {
+                    lineArray[hhhPro[pp]] = "&nbsp;";   
                 }
 
                 // find best lap overall
@@ -244,9 +244,12 @@
 
            
          // MAGIC sort the array after the merge to get new results
-        if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
+        if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
+            allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         }
+    //    if (useCategory == "yes") {
+    //        allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
+    //    }
                    
 
             finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';

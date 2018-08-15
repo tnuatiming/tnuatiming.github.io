@@ -86,7 +86,7 @@
         livereload: true
       },
       site: {
-        files: ['index.html', 'terms.html', '_layouts/*.html', '_posts/*', 'results/*.html', 'style/*', '_includes/*.html', 'live/*.html', 'assets/*', 'english/*.html'],
+        files: ['index.html', 'terms.html', '_layouts/*.html', '_posts/*', 'results/*.html', 'style/*', '_includes/*.html', 'live/*.html', 'live1/*.html', 'assets/*', 'english/*.html'],
         tasks: ['shell:jekyllBuild']
       },
 //      js: {
