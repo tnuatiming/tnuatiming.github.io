@@ -495,10 +495,10 @@
                 }
        
        // mark on track
-                     if ((allArray[l]["Id_Canal"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status"))) || (positionChanged == "" && allArray[l]["Id_Image"].includes("_TrackPassing"))) {
-                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
-                             //   positionChanged = "same ";
-                    }                        
+                if ((positionChanged == "" || positionChanged == "unChanged ") && (allArray[l]["Id_Image"].includes("_TrackPassing") || allArray[l]["Id_Canal"] == "1") && !(allArray[l]["Id_Image"].includes("_Status"))) {
+                    allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
+                        //   positionChanged = "same ";
+                }                        
          
         
             // add category name header and table header
