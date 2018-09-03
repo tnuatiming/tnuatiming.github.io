@@ -7,6 +7,7 @@
 <!-- 20180703 - added category best lap. added local storage for category or all button.  -->
 <!-- 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. -->
 <!-- 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). -->
+<!-- 20180903 - added option for harescramble finish. -->
 
 <!-- tag heuer live timing -->
 
@@ -15,6 +16,7 @@
     var showBestLap = "1";
     var showIndividualLaps = "0";
     var showLapsNumber = "1";
+    var hareScramble = "0";
     var cleanResults = "0"; // clean the table for coping to results page
 
     var TimerLoad, TimerChange;
@@ -145,6 +147,10 @@
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             showIndividualLaps = "1";
             showLapsNumber = "0";
+        }
+
+        if (Text[0].includes("סקרמבל") || Text[0].includes("הייר")) { // will show finished for enduro hareScramble
+            hareScramble = "1";
         }
 
         if (Text[0].includes("+++")) { // clean table for results page
@@ -557,9 +563,28 @@
     //        var opt3 = allArray[l][key];
  
             
-    //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
+
+                // hare scramble
+                var harescrambleFinished = 0;
+                if (hareScramble == "1") {
+                    
+                    if (allArray[l]["Id_Categorie"].toUpperCase().includes("E") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 7200000) {
+                        harescrambleFinished = 1;
+                    } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 3600000) {
+                        harescrambleFinished = 1;
+                    } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניורים")) || (allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניורס מקצועית"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 5400000) {
+                        harescrambleFinished = 1;
+                    } else {
+                        harescrambleFinished = 0;
+                    }
+                    
+                }
+            
+            //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
                 if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == "1" && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+                    var checkeredFlag = "finished ";
+                } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1 ) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
