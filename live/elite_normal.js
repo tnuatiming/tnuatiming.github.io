@@ -572,7 +572,7 @@
                         harescrambleFinished = 1;
                     } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 3600000) {
                         harescrambleFinished = 1;
-                    } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניורים")) || (allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניורס מקצועית"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 5400000) {
+                    } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניורים")) || ((allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניור")) && (allArray[l]["Id_Categorie"].toUpperCase().includes("מקצועי")))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 5400000) {
                         harescrambleFinished = 1;
                     } else {
                         harescrambleFinished = 0;
