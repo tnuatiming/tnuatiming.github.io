@@ -1477,8 +1477,8 @@ a.main_logo {
         min-width: 2em;
     }
     #live #Title img {
-        height: 16px;
-        margin: 0 10px;
+        height: 12px;
+        margin: 0 5px;
     }
     #live #Title, #live #Time {
         font-size: 0.8em;
