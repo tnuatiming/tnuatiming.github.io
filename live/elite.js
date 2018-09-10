@@ -423,7 +423,9 @@
                 headerText1 += '<th class="rnkh_font" id="Id_lap6">הקפה 6</th>';
 */
             } else {
-                headerText1 += '<th class="rnkh_font" id="Id_TpsTour">הקפה אחרונה</th>';
+                if (cleanResults != "1") {
+                    headerText1 += '<th class="rnkh_font" id="Id_TpsTour">הקפה אחרונה</th>';
+                }
                 headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
             }
             
@@ -755,7 +757,9 @@
 */
                 } else {
 
-                    finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
+                    if (cleanResults != "1") {
+                        finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
+                    }
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_MeilleurTour"] + '</td>';
                 }
 
