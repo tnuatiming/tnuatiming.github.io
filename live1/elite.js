@@ -211,7 +211,9 @@
                     penalty = "yes";
                 }
 
-                if (typeof lines[b] != 'undefined') {
+                if ((typeof lines[b] != 'undefined') && (cleanResults == "1")) {
+                    lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "P ");
+                } else if (typeof lines[b] != 'undefined') {
                     lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
                 } else {
                     lineArray[hhhPro[pp]] = "-";
@@ -637,10 +639,33 @@
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
                     }
                 } else if (useCategory == "no") {
-                    if (allArray[l]["Id_Image"].includes("_Status")) {
+                    if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == "1")) {
+                        
+                        
+                        if (allArray[l]["Id_Image"].includes("_Status10")) {
+                            finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>';
+                        } else if (allArray[l]["Id_Image"].includes("_Status11")) {
+                            finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>';
+                        } else if (allArray[l]["Id_Image"].includes("_Status12")) {
+                            finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
+                        } else if (allArray[l]["Id_Image"].includes("_Status2")) {
+                            finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_nq.svg" alt="nq"></td>';
+                        } else if (allArray[l]["Id_Image"].includes("_Status")) {
+                        finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_status.svg" alt="status"></td>'; // astrix
+                        }    
+                        
+                        
+                        
+                    } else if (allArray[l]["Id_Image"].includes("_Status")) {
                         finalText += '<td class="rnk_font"></td>';
                     } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                        
+                        if (allArray[l]["Id_Position"].includes("P")) {
+                            finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_Position"] + '</td>';
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>';
+                        }
+                        
                     }
                     
                 }
@@ -689,7 +714,13 @@
                 if (showLapsNumber == "1") {
 
                     if (typeof allArray[l]["Id_NbTour"] != 'undefined') {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_NbTour"] + '</td>';
+                        
+                        if (allArray[l]["Id_NbTour"].includes("P")) {
+                            finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_NbTour"] + '</td>';
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_NbTour"] + '</td>';
+                        }
+
                     } else {
                         finalText += '<td class="rnk_font">-</td>';
                     }                
@@ -729,7 +760,11 @@
                 }
 
                 if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                    if (allArray[l]["Id_TpsCumule"].includes("P")) {
+                        finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                    }
                 } else {
                     finalText += '<td class="rnk_font">-</td>';
                 }                
