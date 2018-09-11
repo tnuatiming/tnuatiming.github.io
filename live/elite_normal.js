@@ -147,15 +147,22 @@
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             showIndividualLaps = "1";
             showLapsNumber = "0";
+        } else {
+            showIndividualLaps = "0";
+            showLapsNumber = "1";
         }
 
         if (Text[0].includes("סקרמבל") || Text[0].includes("הייר")) { // will show finished for enduro hareScramble
             hareScramble = "1";
+        } else {
+            hareScramble = "0";
         }
 
         if (Text[0].includes("+++")) { // clean table for results page
             cleanResults = "1";
             Text[0] = Text[0].replace("+++", "");
+        } else {
+            cleanResults = "0";
         }
 /*
         if (Text[0].includes("laps")) { // get number of laps, NOT TESTED
