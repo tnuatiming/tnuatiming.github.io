@@ -18,6 +18,10 @@
     var showLapsNumber = "1";
     var hareScramble = "0";
     var cleanResults = "0"; // clean the table for coping to results page
+    
+    var harescrambleFinishE = 7200000; // 2 hours
+    var harescrambleFinishC = 5400000; // 1.5 hours
+    var harescrambleFinishBeginers = 3600000; // 1 hour
 
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
@@ -484,7 +488,7 @@
                     
                     if (competitorPosition > 0 && competitorNumber >= 0 && (allArray[l]["Id_TpsTour"] != "-" || allArray[l]["Id_NbTour"] > 0 || allArray[l]["Id_Image"].includes("_TrackPassing"))) { // position change arrow calc
                     
-                        if (positionArray[competitorNumber]) {
+                        if (positionArray[competitorNumber] && allArray[l]["Id_NbTour"] > 0) {
 
                             if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
@@ -579,11 +583,11 @@
                 var harescrambleFinished = 0;
                 if (hareScramble == "1") {
                     
-                    if (allArray[l]["Id_Categorie"].toUpperCase().includes("E") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 7200000) {
+                    if (allArray[l]["Id_Categorie"].toUpperCase().includes("E") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) {
                         harescrambleFinished = 1;
-                    } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 3600000) {
+                    } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishBeginers) {
                         harescrambleFinished = 1;
-                    } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניורים")) || ((allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניור")) && (allArray[l]["Id_Categorie"].toUpperCase().includes("מקצועי")))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= 5400000) {
+                    } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניורים")) || ((allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניור")) && (allArray[l]["Id_Categorie"].toUpperCase().includes("מקצועי")))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishC) {
                         harescrambleFinished = 1;
                     } else {
                         harescrambleFinished = 0;
@@ -607,7 +611,7 @@
                 
                  if (allArray[l]["Id_Arrow"].includes("dnsfq")) { 
                     
-                    finalText += '<td class="dn rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="dnsfq rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
@@ -642,7 +646,7 @@
             }
                 
                 if (useCategory == "yes") {
-                    if (allArray[l]["Id_Image"].includes("_Status")) {
+                    if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-") {
                         finalText += '<td class="rnk_font"></td>';
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
