@@ -162,6 +162,12 @@
             hareScramble = "0";
         }
 
+        if (Text[0].includes("דירוג") || Text[0].includes("דרוג")) { // will show diffrent colmuns for qualifying
+            qualifying = "1";
+        } else {
+            qualifying = "0";
+        }
+
         if (Text[0].includes("+++")) { // clean table for results page
             cleanResults = "1";
             Text[0] = Text[0].replace("+++", "");
@@ -440,7 +446,9 @@
                 headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
             }
             
-            headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
+            if (qualifying == "0") {
+                headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
+            }
             if (useCategory == "yes") {
                 headerText1 += '<th class="rnkh_font" id="Id_Ecart1erCategorie">פער</th>';
             } else if (useCategory == "no") {
@@ -774,16 +782,18 @@
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_MeilleurTour"] + '</td>';
                 }
 
-                if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
-                    if (allArray[l]["Id_TpsCumule"].includes("P")) {
-                        finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                if (qualifying == "0") {
+                    if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
+                        if (allArray[l]["Id_TpsCumule"].includes("P")) {
+                            finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
+                        }
                     } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>';
-                    }
-                } else {
-                    finalText += '<td class="rnk_font">-</td>';
-                }                
-                
+                        finalText += '<td class="rnk_font">-</td>';
+                    }                
+                }
+                    
                 if (useCategory == "yes") {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1erCategorie"] + '</td>';
                 } else if (useCategory == "no") {
