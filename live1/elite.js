@@ -496,7 +496,7 @@
                     
                     if (competitorPosition > 0 && competitorNumber >= 0 && (allArray[l]["Id_TpsTour"] != "-" || allArray[l]["Id_NbTour"] > 0 || allArray[l]["Id_Image"].includes("_TrackPassing"))) { // position change arrow calc
                     
-                        if (positionArray[competitorNumber] && allArray[l]["Id_NbTour"] > 0) {
+                        if (positionArray[competitorNumber] && (allArray[l]["Id_NbTour"] > 0 || (qualifying == "1" && allArray[l]["Id_TpsTour"] != "-"))) {
 
                             if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
@@ -654,7 +654,7 @@
             }
                 
                 if (useCategory == "yes") {
-                    if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-") {
+                    if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-" || (qualifying == "1" && allArray[l]["Id_TpsTour"] == "-")) {
                         finalText += '<td class="rnk_font"></td>';
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';

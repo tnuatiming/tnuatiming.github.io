@@ -781,6 +781,12 @@ td[aria-label]:hover:after {
     background: rgba(17, 17, 17, 1);
 }
 
+#live #warning {
+    text-align: right;
+    margin-top: 10px;
+    width: 100%;
+}
+
 .full-bg {
     background:rgba(240,240,240,0.9);
     min-height: 100%;
