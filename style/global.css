@@ -341,7 +341,7 @@ th.rnkh_font {
 span#name, span#rund, span#date {
 }
 
-#live #liveTable {
+#live #liveTable ,#live .PreResult, #live #previousResults {
     width: 100%;
 }
 
@@ -518,9 +518,6 @@ span#name, span#rund, span#date {
     padding: 0 5px;
     flex-grow: 0;
     text-align: right;
-}
-
-#live table {
 }
 
 #live tr.rnkh_bkcolor {

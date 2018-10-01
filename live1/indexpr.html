@@ -1,0 +1,55 @@
+---
+layout: default
+body: live
+permalink: /live1/indexpr.html
+place: live timing
+sitemap:
+#  lastmod: 2018-05-11
+  priority: 0.9
+  changefreq: 'weekly'
+  exclude: 'yes'
+---
+<div id="raceheader"><h1>תוצאות בזמן אמת</h1></div>
+
+<div id="buttonInfo">
+    <div id="categoryOrAll">
+        <button id="displayCatButton" class="btn" onClick="category('yes')">לפי קטגוריה</button>
+        <button id="displayAllButton" class="btn" onClick="category('no')">כללי</button>
+    </div>
+        <div id="updates">&nbsp;</div>
+</div>
+<div id="result"></div>
+    
+<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>
+        <div id="previousResults"></div>
+
+
+        
+        
+        
+        <script type="text/javascript">
+
+         function SetValue () {
+            var area = document.getElementById ("message");
+            area.value = document.getElementById("liveTable").innerHTML;
+            area.value = area.value.replace(/fadeIn/g, "");
+            area.value = area.value.replace(/scale/g, "");
+            area.value = area.value.replace(/unChanged/g, "");
+            area.value = area.value.replace(/◆/g, "");
+            area.value = area.value.replace(/<img class=\"postionSame\" src=\"Images\/_TrackPassing.svg\" alt=\"same places\">/g, "");
+       }
+        
+        </script>
+
+
+ 
+<div class="center">
+<h3>upload previos result to live timing</h3><br>
+<form action="buildIndexPr.php" method="post">
+    <input type="button" value="copy results" onclick="SetValue ()"><br/><br/>
+    <textarea rows="20" cols="60" name="message" id="message" ></textarea><br>
+    <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results!<br/><br/>
+    <input type="checkbox" id="deleteLast" name="deleteLast" value="deleteLast"> delete last result<br/><br/>
+    <button type="submit">upload results</button><br>
+</form><br>
+</div>

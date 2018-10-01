@@ -468,9 +468,9 @@
                     allArray[l]["Id_Arrow"] = "&#9670;";
 
                     if (allArray[l]["Id_Image"].includes("_Status10")) {
-                        allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
-                    } else if (allArray[l]["Id_Image"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
+                    } else if (allArray[l]["Id_Image"].includes("_Status11")) {
+                        allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
                     } else if (allArray[l]["Id_Image"].includes("_Status12")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dns.svg" alt="dns">';
                     } else if (allArray[l]["Id_Image"].includes("_Status2")) {
@@ -558,11 +558,11 @@
 
             // DNF/DSQ
             
-            if (allArray[l]["Id_Image"].includes("_Status10") && useCategory == "yes" && dnfCategory != category && cleanResults == "1") {
+            if (allArray[l]["Id_Image"].includes("_Status11") && useCategory == "yes" && dnfCategory != category && cleanResults == "1") {
                 
                 finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>';
                 dnfCategory = category;
-            } else if (allArray[l]["Id_Image"].includes("_Status11") && useCategory == "yes" && dsqCategory != category && cleanResults == "1") {
+            } else if (allArray[l]["Id_Image"].includes("_Status10") && useCategory == "yes" && dsqCategory != category && cleanResults == "1") {
                 
                 finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>';
                 dsqCategory = category;
@@ -663,9 +663,9 @@
                     if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == "1")) {
                         
                         
-                        if (allArray[l]["Id_Image"].includes("_Status10")) {
+                        if (allArray[l]["Id_Image"].includes("_Status11")) {
                             finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>';
-                        } else if (allArray[l]["Id_Image"].includes("_Status11")) {
+                        } else if (allArray[l]["Id_Image"].includes("_Status10")) {
                             finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>';
                         } else if (allArray[l]["Id_Image"].includes("_Status12")) {
                             finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
