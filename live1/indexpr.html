@@ -9,7 +9,68 @@ sitemap:
   changefreq: 'weekly'
   exclude: 'yes'
 ---
-<div id="raceheader"><h1>תוצאות בזמן אמת</h1></div>
+<div id="raceheader"><h1>תוצאות בזמן אמת - ניהול</h1></div>
+
+        
+        
+        <script type="text/javascript">
+
+         function SetValue () {
+            var area = document.getElementById ("results");
+            area.value = document.getElementById("liveTable").innerHTML;
+            area.value = area.value.replace(/<\/tr>/g, "\r\n    </tr>\r\n");
+            area.value = area.value.replace(/<td /g, "\r\n        <td ");
+            area.value = area.value.replace(/<th /g, "\r\n        <th ");
+            area.value = area.value.replace(/<tr/g, "    <tr");
+  //          area.value = area.value.replace(/<tr class=" rnk_bkcolor OddRow">/gi, "    <tr class=\" rnk_bkcolor OddRow\">");
+  //          area.value = area.value.replace(/<tr class=" rnk_bkcolor EvenRow">/gi, "    <tr class=\" rnk_bkcolor EvenRow\">\r\n");
+            area.value = area.value.replace(/<tbody>/gi, "\r\n<tbody>\r\n");
+            area.value = area.value.replace(/<\/tbody>/gi, "<tbody>\r\n");
+            area.value = area.value.replace(/fadeIn/gi, "");
+            area.value = area.value.replace(/scale/gi, "");
+            area.value = area.value.replace(/unChanged/gi, "");
+            area.value = area.value.replace(/◆/g, "");
+            area.value = area.value.replace(/<img class=\"postionSame\" src=\"Images\/_TrackPassing.svg\" alt=\"same places\">/gi, "");
+       }
+        
+        </script>
+<style>
+ 
+.header, .footer {display: none;}
+body {background-color: #dff1ff;}
+.center {border-bottom: 1px dotted; width: 100%;}
+
+ 
+ 
+ 
+</style>
+
+
+
+
+<div class="center">
+<h3>upload previos result to live timing</h3><br>
+<form action="buildIndexPr.php" method="post">
+    <input type="button" value="copy results" onclick="SetValue ()"><br/><br/>
+    <textarea rows="20" cols="60" name="results" id="results" ></textarea><br>
+    <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results<br/><br/>
+    <input type="checkbox" id="deleteLast" name="deleteLast" value="deleteLast"> delete last result<br/><br/>
+    <button type="submit">upload results</button><br>
+</form><br>
+</div><br>
+
+<div class="center">
+<h3>upload messages to live timing</h3><br>
+<form action="buildMsg.php" method="post">
+<input type="text" name="message" id="message"><br>
+<input type="checkbox" id="time" name="time" value="time"> show time of message<br/>
+<input type="checkbox" id="blink" name="blink" value="blink"> blink the message<br/>
+<input type="checkbox" id="red" name="red" value="red"> make it red<br/><br/>
+<button type="submit">upload message</button><br>
+</form><br>
+<p>send empty message to clear</p><br>
+</div>
+
 
 <div id="buttonInfo">
     <div id="categoryOrAll">
@@ -22,39 +83,6 @@ sitemap:
     
 <div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>
         <div id="previousResults"></div>
-        
-        
-        <script type="text/javascript">
 
-         function SetValue () {
-            var area = document.getElementById ("message");
-            area.value = document.getElementById("liveTable").innerHTML;
-            area.value = area.value.replace(/<\/td>/g, "</td>\r\n");
-            area.value = area.value.replace(/<\/th>/g, "</th>\r\n");
-            area.value = area.value.replace(/<\/tr>/g, "    </tr>\r\n");
-            area.value = area.value.replace(/<td /g, "        <td ");
-            area.value = area.value.replace(/<th /g, "        <th ");
-            area.value = area.value.replace(/<tr>/g, "    <tr>\r\n");
-  //          area.value = area.value.replace(/<tr class=" rnk_bkcolor OddRow">/gi, "    <tr class=\" rnk_bkcolor OddRow\">");
-  //          area.value = area.value.replace(/<tr class=" rnk_bkcolor EvenRow">/gi, "    <tr class=\" rnk_bkcolor EvenRow\">\r\n");
-            area.value = area.value.replace(/<tbody>/gi, "\r\n<tbody>\r\n");
-            area.value = area.value.replace(/fadeIn/gi, "");
-            area.value = area.value.replace(/scale/gi, "");
-            area.value = area.value.replace(/unChanged/gi, "");
-            area.value = area.value.replace(/◆/g, "");
-            area.value = area.value.replace(/<img class=\"postionSame\" src=\"Images\/_TrackPassing.svg\" alt=\"same places\">/gi, "");
-       }
-        
-        </script>
 
- 
-<div class="center">
-<h3>upload previos result to live timing</h3><br>
-<form action="buildIndexPr.php" method="post">
-    <input type="button" value="copy results" onclick="SetValue ()"><br/><br/>
-    <textarea rows="20" cols="60" name="message" id="message" ></textarea><br>
-    <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results<br/><br/>
-    <input type="checkbox" id="deleteLast" name="deleteLast" value="deleteLast"> delete last result<br/><br/>
-    <button type="submit">upload results</button><br>
-</form><br>
-</div>
+

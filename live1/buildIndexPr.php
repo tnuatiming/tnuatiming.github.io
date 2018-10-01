@@ -8,8 +8,8 @@
 </head>
 <body>
 <?php
-#$msg = htmlspecialchars($_POST['message']);
-$msg = ($_POST['message']);
+#$msg = htmlspecialchars($_POST['results']);
+$msg = ($_POST['results']);
 date_default_timezone_set('Asia/Jerusalem');
 $time = date("H:i");
 $blink = "";    
@@ -58,7 +58,7 @@ if ($_POST['deleteAll']) {
     #  $html = '';
         echo "result empty";
     } else {
-        $html = "\r\n".'    <div class="PreResult">'."\r\n".$msg."\r\n".'    </div>'."\r\n";
+        $html = "\r\n".'<div class="PreResult">'."\r\n".$msg."\r\n".'</div>'."\r\n";
         echo "uploading previous result: ".$html;
     }
 
