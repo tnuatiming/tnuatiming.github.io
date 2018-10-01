@@ -22,9 +22,6 @@ sitemap:
     
 <div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>
         <div id="previousResults"></div>
-
-
-        
         
         
         <script type="text/javascript">
@@ -32,15 +29,23 @@ sitemap:
          function SetValue () {
             var area = document.getElementById ("message");
             area.value = document.getElementById("liveTable").innerHTML;
-            area.value = area.value.replace(/fadeIn/g, "");
-            area.value = area.value.replace(/scale/g, "");
-            area.value = area.value.replace(/unChanged/g, "");
+            area.value = area.value.replace(/<\/td>/g, "</td>\r\n");
+            area.value = area.value.replace(/<\/th>/g, "</th>\r\n");
+            area.value = area.value.replace(/<\/tr>/g, "    </tr>\r\n");
+            area.value = area.value.replace(/<td /g, "        <td ");
+            area.value = area.value.replace(/<th /g, "        <th ");
+            area.value = area.value.replace(/<tr>/g, "    <tr>\r\n");
+  //          area.value = area.value.replace(/<tr class=" rnk_bkcolor OddRow">/gi, "    <tr class=\" rnk_bkcolor OddRow\">");
+  //          area.value = area.value.replace(/<tr class=" rnk_bkcolor EvenRow">/gi, "    <tr class=\" rnk_bkcolor EvenRow\">\r\n");
+            area.value = area.value.replace(/<tbody>/gi, "\r\n<tbody>\r\n");
+            area.value = area.value.replace(/fadeIn/gi, "");
+            area.value = area.value.replace(/scale/gi, "");
+            area.value = area.value.replace(/unChanged/gi, "");
             area.value = area.value.replace(/◆/g, "");
-            area.value = area.value.replace(/<img class=\"postionSame\" src=\"Images\/_TrackPassing.svg\" alt=\"same places\">/g, "");
+            area.value = area.value.replace(/<img class=\"postionSame\" src=\"Images\/_TrackPassing.svg\" alt=\"same places\">/gi, "");
        }
         
         </script>
-
 
  
 <div class="center">
@@ -48,7 +53,7 @@ sitemap:
 <form action="buildIndexPr.php" method="post">
     <input type="button" value="copy results" onclick="SetValue ()"><br/><br/>
     <textarea rows="20" cols="60" name="message" id="message" ></textarea><br>
-    <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results!<br/><br/>
+    <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results<br/><br/>
     <input type="checkbox" id="deleteLast" name="deleteLast" value="deleteLast"> delete last result<br/><br/>
     <button type="submit">upload results</button><br>
 </form><br>
