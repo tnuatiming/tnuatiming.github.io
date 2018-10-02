@@ -64,7 +64,7 @@ if ($_POST['deleteAll']) {
     $myfile1 = file_get_contents('uploadPr.txt');
     $myfile = fopen("uploadPr.txt", "a") or die("Unable to open file!"); // make the file
 
-    if (strpos($myfile1, 'PreResult') === false) {
+    if ((strpos($myfile1, 'PreResult') === false) and (strpos($myfile1, 'תוצאות קודמות') === false) and (!empty($msg))) {
         fwrite($myfile, "<h1>תוצאות קודמות:</h1>\r\n"); // upload the file
     }
     fwrite($myfile, $html); // upload the file
@@ -73,7 +73,7 @@ if ($_POST['deleteAll']) {
 sleep(5);
 // reload
 echo '<script type="text/javascript">
-           window.location = "https://tnuatiming.com/live1/indexpr.php"
+           window.location = "https://tnuatiming.com/live1/liveadmin.php"
       </script>';
 ?>
 </body>

@@ -394,3 +394,7 @@ Redirect permanent /elite/index.html /manual/index.php
 Redirect permanent /elite /manual/index.php
 RedirectMatch permanent /races/(.*) /results/$1
 Redirect permanent /results/enduro/2015/enduro2015r1.html /results/enduro/2015/enduro2015r2.html
+Redirect permanent /live1/liveadmin.html /live1/liveadmin.php
+Redirect permanent /live/liveadmin.html /live/liveadmin.php
+Redirect permanent /live1/liveadmin /live1/liveadmin.php
+Redirect permanent /live/liveadmin /live/liveadmin.php
