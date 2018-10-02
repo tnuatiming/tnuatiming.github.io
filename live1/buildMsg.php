@@ -42,7 +42,7 @@ fclose($myfile);
 sleep(5);
 // reload
 echo '<script type="text/javascript">
-           window.location = "https://tnuatiming.com/live1/indexpr.html"
+           window.location = "https://tnuatiming.com/live1/indexpr.php"
       </script>';
 //echo '<script type="text/javascript">
 //           window.location = "https://tnuatiming.com/live1/msg.html"
