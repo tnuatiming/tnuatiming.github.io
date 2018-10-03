@@ -52,6 +52,11 @@ if ($_POST['deleteAll']) {
     fwrite($myfile, $html); // upload the file
     fclose($myfile);
     echo "last result deleted";
+} elseif ($_POST['deleteAndUpload']) {
+    $myfile = fopen("uploadPr.txt", "w") or die("Unable to open file!"); // make the file
+    fwrite($myfile, $msg); // upload the file
+    fclose($myfile);
+    echo "delete all and upload: ".$msg;
 } else {
     if (empty($msg)) {
     #  $html = '';

@@ -10,8 +10,9 @@ sitemap:
   changefreq: 'weekly'
   exclude: 'yes'
 ---
-<div id="raceheader"><h1>תוצאות בזמן אמת - ניהול</h1></div>
+<div id="raceheader">
 
+<h1>תוצאות בזמן אמת - ניהול</h1></div>
         
         
         <script type="text/javascript">
@@ -59,14 +60,33 @@ body, body#live, .full-bg {background-image: none; background-color: #dff1ff;}
 <p>send empty message to clear</p><br>
 </div>
 
+<script>
+function loadDoc(url, cFunction) {
+  var xhttp;
+  xhttp=new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cFunction(this);
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+}
+function myFunction(xhttp) {
+  document.getElementById("results").innerHTML =
+  xhttp.responseText;
+}
+</script>
 
 <div class="center">
 <h3>upload previos result to live timing</h3><br>
 <form action="buildIndexPr.php" method="post">
     <input type="button" value="copy live results" onclick="SetValue ()"><br><br>
+    <button type="button" onclick="loadDoc('uploadPr.txt', myFunction)">get previous Results Content</button><br><br>    
     <textarea rows="20" cols="90%" name="results" id="results" ></textarea><br><br>
-    <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results!<br><br>
     <input type="checkbox" id="deleteLast" name="deleteLast" value="deleteLast"> delete last result<br><br>
+    <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results!<br><br>
+    <input type="checkbox" id="deleteAndUpload" name="deleteAndUpload" value="deleteAndUpload"> delete all and clean upload<br><br>
     <button type="submit">upload/delete results</button><br>
 </form><br>
 </div><br>
