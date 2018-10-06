@@ -92,17 +92,18 @@
         fct = function() {
             Load(url, target)
         };
-        populatePre('uploadMsg.txt'); // upload message
+        populatePre('uploadMsg.txt','updates'); // upload message
+  //      populatePre('uploadPr.txt','previousResults'); // upload previousResults
         TimerLoad = setTimeout(fct, Rafraichir)
         Rafraichir = 30000;
     };
 
     // fn to upload messages
-    function populatePre(url) {
+    function populatePre(url, div) {
         var xhr1 = new XMLHttpRequest();
         xhr1.onreadystatechange = function () {
             if (xhr1.readyState == 4 && xhr1.status == 200) {
-                document.getElementById('updates').innerHTML = xhr1.responseText;
+                document.getElementById(div).innerHTML = xhr1.responseText;
             }
         };
     //    xhr1.open("GET", url + Math.random(), true);
