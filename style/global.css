@@ -344,6 +344,19 @@ span#name, span#rund, span#date {
 #live #liveTable ,#live .PreResult, #live #previousResults {
     width: 100%;
 }
+#live #previousResults {
+    margin-top: 10px;
+}
+#live #previousResults h1 {
+    text-align: right;
+    color: #58585a;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 5px 0;
+    padding-top: 10px;
+    vertical-align: middle;
+    border-top: 5px solid #58585a;
+}
 
 #live #ImageZoom {
     width: auto;
