@@ -41,9 +41,17 @@ sitemap:
 .header, .footer {display: none;}
 body, body#live, .full-bg {background-image: none; background-color: #dff1ff;}
 .center {border-bottom: 1px dotted; width: 100%; direction: ltr;}
+.center1 {border-bottom: 1px dotted; width: 100%; direction: rtl; text-align: right}
 h3 {color: blue; text-shadow: none;}
- 
- 
+.center1 h1 {
+    text-align: right;
+    color: #58585a;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 5px 0;
+    padding-top: 10px;
+    vertical-align: middle;
+} 
  
 </style>
 
@@ -92,6 +100,14 @@ function myFunction(xhttp) {
 </div><br>
 
 <br>
+<div class="center1">
+<h1>מהלך המרוץ:</h1>
+<div id="tickerTest">&nbsp;</div>
+
+<br>
+</div>
+<br>
+
 
 <div id="buttonInfo">
     <div id="categoryOrAll">
@@ -100,6 +116,9 @@ function myFunction(xhttp) {
     </div>
         <div id="updates">&nbsp;</div>
 </div>
+
+
+
 <div id="result"></div>
     
 <div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>

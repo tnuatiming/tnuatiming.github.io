@@ -8,6 +8,7 @@
 <!-- 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. -->
 <!-- 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). -->
 <!-- 20180903 - added option for harescramble finish. -->
+<!-- 20181010 - added previous results and race progress ticker. -->
 
 <!-- tag heuer live timing -->
 
@@ -35,7 +36,24 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
+    
+    var ticker = [];  // tickerTest
+    if (sessionStorage.getItem('ticker')) {
+        ticker = JSON.parse(sessionStorage.getItem('ticker'));
+    }      // tickerTest
+    var firstPlace = "";  // tickerTest
+    var firstPass = "1";  // tickerTest
 
+    var eventName = "";  // tickerTest    
+    if (sessionStorage.getItem('eventName')) {
+        eventName = sessionStorage.getItem('eventName');
+    }      // tickerTest
+    var doNotShowInTicker = [];  // tickerTest 
+    if (sessionStorage.getItem('doNotShowInTicker')) {
+        doNotShowInTicker = JSON.parse(sessionStorage.getItem('doNotShowInTicker'));
+    }      // tickerTest
+
+    
     if (sessionStorage.getItem('useCategory')) {
         useCategory = sessionStorage.getItem('useCategory');
     }    
@@ -141,6 +159,9 @@
         var dnsCategory = "";
         var dsqCategory = "";
         
+        const now = new Date();  // tickerTest
+        var time = ('0' + now.getHours()).slice(-2)+ ':' + ('0' + now.getMinutes()).slice(-2);  // tickerTest // adding leading 0 if needed
+        
         Text = Text.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
@@ -148,6 +169,30 @@
         lines = Text[1].split("\r\n");
         //    console.log(lines.length);
      //   console.log(lines);
+
+        // getting the event/race name from header
+        // option 1
+        //var HeaderEventName = Text[0].split('png">')[1]; // tickerTest
+        //HeaderEventName = HeaderEventName.split("<img src=")[0];  // tickerTest
+            // option 2
+            // var HeaderName = Text[0].split('-'); // tickerTest
+            // var HeaderEventName = HeaderName[0].split(">").pop().trim();  // tickerTest
+            // var HeaderRaceName = HeaderName[1].split("<")[0].trim();  // tickerTest
+            // HeaderEventName = HeaderEventName + ' - ' + HeaderRaceName;  // tickerTest
+        // option 3
+        var HeaderName = Text[0].split("\r\n");  // tickerTest
+        var div = document.createElement("div");  // tickerTest
+        div.innerHTML = HeaderName[0];  // tickerTest
+        var HeaderEventName = div.textContent || div.innerText || "";  // tickerTest
+ 
+        
+        if (eventName != HeaderEventName) {  // tickerTest
+            doNotShowInTicker = [];  // tickerTest
+            ticker = [];  // tickerTest
+        }
+        eventName = HeaderEventName;  // tickerTest
+        sessionStorage.setItem('eventName', eventName);  // tickerTest
+
 
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             showIndividualLaps = "1";
@@ -269,7 +314,22 @@
         }
 
            
-         // MAGIC sort the array after the merge to get new results
+var randomComp = Math.floor((Math.random() * (allArray.length)) + 1);  // tickerTest
+ticker.push(time + " - " +  'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' נמצא במקום ' + allArray[randomComp]["Id_Position"]);  // tickerTest
+
+
+ if (firstPass == "1") {
+    firstPlace = allArray[0]["Id_Numero"];  // tickerTest
+ }
+
+if (firstPlace != allArray[0]["Id_Numero"]) {
+    firstPlace = allArray[0]["Id_Numero"];  // tickerTest
+    ticker.push(time + " - " +  'מתחרה מספר ' + allArray[0]["Id_Numero"] + ' עבר למקום הראשון!');  // tickerTest
+
+}  // tickerTest
+           
+           
+           // MAGIC sort the array after the merge to get new results
         if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
             allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         }
@@ -470,8 +530,20 @@
 
                     if (allArray[l]["Id_Image"].includes("_Status10")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
+                        
+                        if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
+                            ticker.push(time + " - " +  'מתחרה מספר ' + allArray[l]["Id_Numero"] + ' נפסל');  // tickerTest
+                            doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
+                        }  // tickerTest
+ 
                     } else if (allArray[l]["Id_Image"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
+                        
+                        if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
+                            ticker.push(time + " - " +  'מתחרה מספר ' + allArray[l]["Id_Numero"] + ' פרש');  // tickerTest
+                            doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
+                        }  // tickerTest
+ 
                     } else if (allArray[l]["Id_Image"].includes("_Status12")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dns.svg" alt="dns">';
                     } else if (allArray[l]["Id_Image"].includes("_Status2")) {
@@ -880,15 +952,46 @@
 
             
 */             
-               console.log(allArray);
+           //    console.log(allArray);
          //    console.log(finalText);
       
 
 
 
 
-tableClass = "";
+    tableClass = "";
+
+    if (document.getElementById("tickerTest")) {  // tickerTest
+
+        tickerInnerHTML = "";
+
+        if (ticker.length > 0) {
+            for (var i = 0; i < ticker.length; i++) {
+                tickerInnerHTML += ticker[i] + '<br>';
+            }
+            document.getElementById("tickerTest").innerHTML = tickerInnerHTML;  // tickerTest
+            var tickerElement = ticker.shift();  // tickerTest
+        } else {
+            document.getElementById("tickerTest").innerHTML = "&nbsp;";  // tickerTest
+        }
+
+        // console.log(tickerElement);  // tickerTest
+        // console.log(ticker);  // tickerTest
+
+    }  // tickerTest               
             
+        sessionStorage.setItem('doNotShowInTicker', JSON.stringify(doNotShowInTicker));  // tickerTest
+        sessionStorage.setItem('ticker', JSON.stringify(ticker));  // tickerTest
+                
+        firstPass = "0";  // tickerTest
+
+    //   if (typeof tickerElement != 'undefined') {
+    //       document.getElementById("tickerTest").innerHTML = time + " - " + tickerElement;  // tickerTest
+    //   } else {
+    //       document.getElementById("tickerTest").innerHTML = "&nbsp;";  // tickerTest
+    //   }
+
+        
     return finalText
 
     };
