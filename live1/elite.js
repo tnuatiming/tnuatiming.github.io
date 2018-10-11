@@ -37,6 +37,8 @@
     
     var useCategory = "yes";
     
+    var option = "1";  // tickerTest
+
     var ticker = [];  // tickerTest
     if (sessionStorage.getItem('ticker')) {
         ticker = JSON.parse(sessionStorage.getItem('ticker'));
@@ -47,6 +49,10 @@
     var eventName = "";  // tickerTest    
     if (sessionStorage.getItem('eventName')) {
         eventName = sessionStorage.getItem('eventName');
+    }      // tickerTest
+    var flag = "";  // tickerTest    
+    if (sessionStorage.getItem('flag')) {
+        flag = sessionStorage.getItem('flag');
     }      // tickerTest
     var doNotShowInTicker = [];  // tickerTest 
     if (sessionStorage.getItem('doNotShowInTicker')) {
@@ -189,10 +195,43 @@
         if (eventName != HeaderEventName) {  // tickerTest
             doNotShowInTicker = [];  // tickerTest
             ticker = [];  // tickerTest
+            flag = "";  // tickerTest
+            firstPlace = "";  // tickerTest
         }
         eventName = HeaderEventName;  // tickerTest
         sessionStorage.setItem('eventName', eventName);  // tickerTest
-
+        
+        
+            if (Text[0].includes("_GreenFlag")) {   // tickerTest
+                if (firstPass == "0" && flag != "green") {
+                    ticker.push(time + ' - ' + 'זינוק');  // tickerTest
+                }
+                flag = "green";
+            } else if (Text[0].includes("_CheckeredFlag")) {
+                if (firstPass == "0" && flag != "checkered") {
+                    ticker.push(time + ' - ' + 'סיום');  // tickerTest
+                }
+                flag = "checkered";
+            } else if (Text[0].includes("_Stop")) {
+                if (firstPass == "0" && flag != "checkered") {
+                    ticker.push(time + ' - ' + 'סיום');  // tickerTest
+                }
+                flag = "checkered";
+            } else if (Text[0].includes("_RedFlag")) {
+                if (firstPass == "0" && flag != "red") {
+                    ticker.push(time + ' - ' + 'דגל אדום');  // tickerTest
+                }
+                flag = "red";
+            } else if (Text[0].includes("_YellowFlag")) {
+                if (firstPass == "0" && flag != "yellow") {
+                    ticker.push(time + ' - ' + 'דגל צהוב');  // tickerTest
+                }
+                flag = "yellow";
+            } else {
+                flag = "";
+            }  // tickerTest
+        
+        
 
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             showIndividualLaps = "1";
@@ -314,20 +353,31 @@
         }
 
            
+  // tickerTest
 var randomComp = Math.floor((Math.random() * (allArray.length)) + 1);  // tickerTest
-ticker.push(time + " - " +  'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' נמצא במקום ' + allArray[randomComp]["Id_Position"]);  // tickerTest
-
-
- if (firstPass == "1") {
-    firstPlace = allArray[0]["Id_Numero"];  // tickerTest
- }
-
-if (firstPlace != allArray[0]["Id_Numero"]) {
-    firstPlace = allArray[0]["Id_Numero"];  // tickerTest
-    ticker.push(time + " - " +  'מתחרה מספר ' + allArray[0]["Id_Numero"] + ' עבר למקום הראשון!');  // tickerTest
-
+switch(option) {  // tickerTest
+    case "1":
+        ticker.push(time + ' - ' + 'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' נמצא במקום ' + allArray[randomComp]["Id_Position"]);  // tickerTest
+        option = "2";
+        break;
+    case "2":
+        ticker.push(time + ' - ' + 'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' הקפה מהירה במקצה ' + allArray[randomComp]["Id_MeilleurTour"]);  // tickerTest
+        option = "3";
+        break;
+    case "3":
+        ticker.push(time + ' - ' + 'דגל אדום');  // tickerTest
+        option = "4";
+        break;
+    case "4":
+        ticker.push(time + ' - ' + allArray[randomComp]["Id_Nom"] + ' (' + allArray[randomComp]["Id_Numero"] + ') עבר למקום הראשון!');  // tickerTest
+        option = "5";
+        break;
+    case "5":
+        ticker.push(time + ' - ' + 'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' פרש');  // tickerTest
+        option = "1";
+        break;
 }  // tickerTest
-           
+
            
            // MAGIC sort the array after the merge to get new results
         if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
@@ -522,6 +572,21 @@ if (firstPlace != allArray[0]["Id_Numero"]) {
       //          console.log(temp);
 
         
+
+if (allArray[l]["Id_Position"] == 1) {   // tickerTest
+
+    if (firstPass == "1" && (Text[0].includes("_GreenFlag") || Text[0].includes("_CheckeredFlag"))) {
+        firstPlace = allArray[l]["Id_Numero"];  // tickerTest
+    }
+
+    if (firstPlace != allArray[l]["Id_Numero"] && allArray[l]["Id_NbTour"] > 0 && (Text[0].includes("_GreenFlag") || Text[0].includes("_CheckeredFlag"))) {
+        firstPlace = allArray[l]["Id_Numero"];  // tickerTest
+        ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עבר למקום הראשון!');  // tickerTest
+    }  // tickerTest
+           
+}  // tickerTest
+
+
         // position change arrow prep
 
                     competitorNumber = allArray[l]["Id_Numero"];
@@ -952,7 +1017,7 @@ if (firstPlace != allArray[0]["Id_Numero"]) {
 
             
 */             
-           //    console.log(allArray);
+               console.log(allArray);
          //    console.log(finalText);
       
 
@@ -982,6 +1047,7 @@ if (firstPlace != allArray[0]["Id_Numero"]) {
             
         sessionStorage.setItem('doNotShowInTicker', JSON.stringify(doNotShowInTicker));  // tickerTest
         sessionStorage.setItem('ticker', JSON.stringify(ticker));  // tickerTest
+        sessionStorage.setItem('flag', flag);  // tickerTest
                 
         firstPass = "0";  // tickerTest
 
