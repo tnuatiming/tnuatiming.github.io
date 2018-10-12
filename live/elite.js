@@ -8,6 +8,7 @@
 <!-- 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. -->
 <!-- 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). -->
 <!-- 20180903 - added option for harescramble finish. -->
+<!-- 20181010 - added previous results and race progress ticker. -->
 
 <!-- tag heuer live timing -->
 
@@ -35,7 +36,33 @@
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
+    
+    var option = "1";  // tickerTest
 
+    var ticker = [];  // tickerTest
+    if (sessionStorage.getItem('ticker')) {
+        ticker = JSON.parse(sessionStorage.getItem('ticker'));
+    }      // tickerTest
+    var firstPlace = "";  // tickerTest
+    var firstPass = "1";  // tickerTest
+    var tickerBestTime = "-";  // tickerTest
+    if (sessionStorage.getItem('tickerBestTime')) {
+        tickerBestTime = sessionStorage.getItem('tickerBestTime');
+    }      // tickerTest
+    var eventName = "";  // tickerTest    
+    if (sessionStorage.getItem('eventName')) {
+        eventName = sessionStorage.getItem('eventName');
+    }      // tickerTest
+    var flag = "";  // tickerTest    
+    if (sessionStorage.getItem('flag')) {
+        flag = sessionStorage.getItem('flag');
+    }      // tickerTest
+    var doNotShowInTicker = [];  // tickerTest 
+    if (sessionStorage.getItem('doNotShowInTicker')) {
+        doNotShowInTicker = JSON.parse(sessionStorage.getItem('doNotShowInTicker'));
+    }      // tickerTest
+
+    
     if (sessionStorage.getItem('useCategory')) {
         useCategory = sessionStorage.getItem('useCategory');
     }    
@@ -93,7 +120,7 @@
             Load(url, target)
         };
         populatePre('uploadMsg.txt','updates'); // upload message
-  //      populatePre('uploadPr.txt','previousResults'); // upload previousResults
+        populatePre('uploadPr.txt','previousResults'); // upload previousResults
         TimerLoad = setTimeout(fct, Rafraichir)
         Rafraichir = 30000;
     };
@@ -140,7 +167,7 @@
         var dnfCategory = "";
         var dnsCategory = "";
         var dsqCategory = "";
-        
+                
         Text = Text.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
@@ -148,6 +175,71 @@
         lines = Text[1].split("\r\n");
         //    console.log(lines.length);
      //   console.log(lines);
+
+        // getting the event/race name from header
+        // option 1
+        //var HeaderEventName = Text[0].split('png">')[1]; // tickerTest
+        //HeaderEventName = HeaderEventName.split("<img src=")[0];  // tickerTest
+            // option 2
+            // var HeaderName = Text[0].split('-'); // tickerTest
+            // var HeaderEventName = HeaderName[0].split(">").pop().trim();  // tickerTest
+            // var HeaderRaceName = HeaderName[1].split("<")[0].trim();  // tickerTest
+            // HeaderEventName = HeaderEventName + ' - ' + HeaderRaceName;  // tickerTest
+        // option 3
+        var HeaderName = Text[0].split("\r\n");  // tickerTest
+        var div = document.createElement("div");  // tickerTest
+        div.innerHTML = HeaderName[0];  // tickerTest
+        var HeaderEventName = div.textContent || div.innerText || "";  // tickerTest
+        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  // tickerTest
+        var time = HeaderName[1].split(':');  // tickerTest
+        time = (time[0].trim()).slice(-2) + ':' + (time[1].trim()).slice(-2);  // tickerTest
+       // get time - option 2 (local browser time) 
+      //  const now = new Date();  // tickerTest
+      //  var time = ('0' + now.getHours()).slice(-2)+ ':' + ('0' + now.getMinutes()).slice(-2);  // tickerTest // adding leading 0 if needed
+        
+        
+
+        if (eventName != HeaderEventName) {  // tickerTest
+            doNotShowInTicker = [];  // tickerTest
+            ticker = [];  // tickerTest
+            flag = "";  // tickerTest
+            firstPlace = "";  // tickerTest
+            tickerBestTime = "-";  // tickerTest
+        }
+        eventName = HeaderEventName;  // tickerTest
+        sessionStorage.setItem('eventName', eventName);  // tickerTest
+        
+        
+            if (Text[0].includes("_GreenFlag")) {   // tickerTest
+                if (firstPass == "0" && flag != "green") {
+                    ticker.push(time + ' - ' + 'זינוק ' + HeaderRaceName);  // tickerTest
+                }
+                flag = "green";
+            } else if (Text[0].includes("_CheckeredFlag")) {
+                if (firstPass == "0" && flag != "checkered") {
+                    ticker.push(time + ' - ' + 'סיום ' + HeaderRaceName);  // tickerTest
+                }
+                flag = "checkered";
+            } else if (Text[0].includes("_Stop")) {
+                if (firstPass == "0" && flag != "checkered") {
+                    ticker.push(time + ' - ' + 'סיום');  // tickerTest
+                }
+                flag = "checkered";
+            } else if (Text[0].includes("_RedFlag")) {
+                if (firstPass == "0" && flag != "red") {
+                    ticker.push(time + ' - ' + 'דגל אדום');  // tickerTest
+                }
+                flag = "red";
+            } else if (Text[0].includes("_YellowFlag")) {
+                if (firstPass == "0" && flag != "yellow") {
+                    ticker.push(time + ' - ' + 'דגל צהוב');  // tickerTest
+                }
+                flag = "yellow";
+            } else {
+                flag = "";
+            }  // tickerTest
+        
+        
 
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             showIndividualLaps = "1";
@@ -240,7 +332,12 @@
 
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " BestTimeOverall";
-                } else if  (lines[b].includes("BestTime") && hhhPro[pp] == "Id_TpsTour") {
+/*                    if (tickerBestTime != lineArray["Id_TpsTour"]) {  // tickerTest
+                        tickerBestTime = lineArray["Id_TpsTour"];  // tickerTest
+                        ticker.push(time + ' - ' + lineArray["Id_Nom"] + ' (' + lineArray["Id_Numero"] + ') הקפה מהירה במקצה ' + tickerBestTime);  // tickerTest
+                    }  // tickerTest
+        console.log(tickerBestTime);
+*/                } else if  (lines[b].includes("BestTime") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " BestTime";
                 } else if  (hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = "";
@@ -268,8 +365,34 @@
             
         }
 
+ /*          
+  // tickerTest
+var randomComp = Math.floor((Math.random() * (allArray.length)) + 1);  // tickerTest
+switch(option) {  // tickerTest
+    case "1":
+        ticker.push(time + ' - ' + 'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' נמצא במקום ' + allArray[randomComp]["Id_Position"]);  // tickerTest
+        option = "2";
+        break;
+    case "2":
+        ticker.push(time + ' - ' + 'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' הקפה מהירה במקצה ' + allArray[randomComp]["Id_MeilleurTour"]);  // tickerTest
+        option = "3";
+        break;
+    case "3":
+        ticker.push(time + ' - ' + 'דגל אדום');  // tickerTest
+        option = "4";
+        break;
+    case "4":
+        ticker.push(time + ' - ' + allArray[randomComp]["Id_Nom"] + ' (' + allArray[randomComp]["Id_Numero"] + ') עבר למקום הראשון!');  // tickerTest
+        option = "5";
+        break;
+    case "5":
+        ticker.push(time + ' - ' + 'מתחרה מספר ' + allArray[randomComp]["Id_Numero"] + ' פרש');  // tickerTest
+        option = "1";
+        break;
+}  // tickerTest
+*/
            
-         // MAGIC sort the array after the merge to get new results
+           // MAGIC sort the array after the merge to get new results
         if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
             allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         }
@@ -462,6 +585,21 @@
       //          console.log(temp);
 
         
+
+if (allArray[l]["Id_Position"] == 1) {   // tickerTest
+
+    if (firstPass == "1" && (Text[0].includes("_GreenFlag") || Text[0].includes("_CheckeredFlag"))) {
+        firstPlace = allArray[l]["Id_Numero"];  // tickerTest
+    }
+
+    if (firstPlace != allArray[l]["Id_Numero"] && allArray[l]["Id_NbTour"] > 0 && (Text[0].includes("_GreenFlag") || Text[0].includes("_CheckeredFlag"))) {
+        firstPlace = allArray[l]["Id_Numero"];  // tickerTest
+        ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עבר למקום הראשון!');  // tickerTest
+    }  // tickerTest
+           
+}  // tickerTest
+
+
         // position change arrow prep
 
                     competitorNumber = allArray[l]["Id_Numero"];
@@ -470,8 +608,20 @@
 
                     if (allArray[l]["Id_Image"].includes("_Status10")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
+                        
+                        if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
+                            ticker.push(time + " - " +  'מתחרה מספר ' + allArray[l]["Id_Numero"] + ' נפסל');  // tickerTest
+                            doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
+                        }  // tickerTest
+ 
                     } else if (allArray[l]["Id_Image"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
+                        
+                        if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
+                            ticker.push(time + " - " +  'מתחרה מספר ' + allArray[l]["Id_Numero"] + ' פרש');  // tickerTest
+                            doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
+                        }  // tickerTest
+ 
                     } else if (allArray[l]["Id_Image"].includes("_Status12")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dns.svg" alt="dns">';
                     } else if (allArray[l]["Id_Image"].includes("_Status2")) {
@@ -502,9 +652,16 @@
                             if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
                                 positionChanged = "lostPosition ";
+                 //               ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') ירד למקום ' + competitorPosition);  // tickerTest
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
                                 positionChanged = "gainedPosition ";
+                                
+                                if (useCategory == "no" && competitorPosition > 1) {  // tickerTest
+                                ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
+                                } else if (useCategory == "yes" && competitorPosition > 1) {
+                                ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
+                                }// tickerTest
                             }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
@@ -781,8 +938,16 @@
                         finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>';
                     }
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_MeilleurTour"] + '</td>';
+                    
                 }
 
+                
+                if (tickerBestTime != allArray[l]["Id_TpsTour"] && bestTime[competitorNumber] == " BestTimeOverall") {  // tickerTest
+                    tickerBestTime = allArray[l]["Id_TpsTour"];  // tickerTest
+                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה במקצה ' + tickerBestTime);  // tickerTest
+                }  // tickerTest
+                                   
+                
                 if (qualifying == "0") {
                     if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
                         if (allArray[l]["Id_TpsCumule"].includes("P")) {
@@ -887,8 +1052,41 @@
 
 
 
-tableClass = "";
+    tableClass = "";
+
+    if (document.getElementById("tickerTest")) {  // tickerTest
+
+        tickerInnerHTML = "";
+
+        if (ticker.length > 0) {
+            for (var i = 0; i < ticker.length; i++) {
+                tickerInnerHTML += ticker[i] + '<br>';
+            }
+            document.getElementById("tickerTest").innerHTML = tickerInnerHTML;  // tickerTest
+            var tickerElement = ticker.shift();  // tickerTest
+        } else {
+            document.getElementById("tickerTest").innerHTML = "&nbsp;";  // tickerTest
+        }
+
+        // console.log(tickerElement);  // tickerTest
+        // console.log(ticker);  // tickerTest
+
+    }  // tickerTest               
             
+        sessionStorage.setItem('doNotShowInTicker', JSON.stringify(doNotShowInTicker));  // tickerTest
+        sessionStorage.setItem('ticker', JSON.stringify(ticker));  // tickerTest
+        sessionStorage.setItem('flag', flag);  // tickerTest
+        sessionStorage.setItem('tickerBestTime', tickerBestTime);  // tickerTest
+
+        firstPass = "0";  // tickerTest
+
+    //   if (typeof tickerElement != 'undefined') {
+    //       document.getElementById("tickerTest").innerHTML = time + " - " + tickerElement;  // tickerTest
+    //   } else {
+    //       document.getElementById("tickerTest").innerHTML = "&nbsp;";  // tickerTest
+    //   }
+
+        
     return finalText
 
     };
