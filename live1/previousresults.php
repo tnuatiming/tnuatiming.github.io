@@ -36,9 +36,9 @@ if ($_POST['time']) {
 }
 
 if ($_POST['deleteAll']) {
-    file_put_contents("uploadPr.txt", "");
+    file_put_contents("previousresults.txt", "");
 } elseif ($_POST['deleteLast']) {
-    $myfile = file_get_contents('uploadPr.txt');
+    $myfile = file_get_contents('previousresults.txt');
     $html = delete_all_between('<div class="PreResult">', '</div>', $myfile);
         
     #  $html = preg_replace('/<table class="line_color">(.*?)</table>/i','',$myfile);
@@ -48,12 +48,12 @@ if ($_POST['deleteAll']) {
     #       $html = str_replace($matches[0],'',$myfile);
     #  }//after printing execution will stops successfully.
     
-    $myfile = fopen("uploadPr.txt", "w") or die("Unable to open file!"); // make the file
+    $myfile = fopen("previousresults.txt", "w") or die("Unable to open file!"); // make the file
     fwrite($myfile, $html); // upload the file
     fclose($myfile);
     echo "last result deleted";
 } elseif ($_POST['deleteAndUpload']) {
-    $myfile = fopen("uploadPr.txt", "w") or die("Unable to open file!"); // make the file
+    $myfile = fopen("previousresults.txt", "w") or die("Unable to open file!"); // make the file
     fwrite($myfile, $msg); // upload the file
     fclose($myfile);
     echo "delete all and upload: ".$msg;
@@ -66,8 +66,8 @@ if ($_POST['deleteAll']) {
         echo "uploading previous result: ".$html;
     }
 
-    $myfile1 = file_get_contents('uploadPr.txt');
-    $myfile = fopen("uploadPr.txt", "a") or die("Unable to open file!"); // make the file
+    $myfile1 = file_get_contents('previousresults.txt');
+    $myfile = fopen("previousresults.txt", "a") or die("Unable to open file!"); // make the file
 
     if ((strpos($myfile1, 'PreResult') === false) and (strpos($myfile1, 'תוצאות קודמות') === false) and (!empty($msg))) {
         fwrite($myfile, "<h1>תוצאות קודמות:</h1>\r\n"); // upload the file
@@ -78,7 +78,7 @@ if ($_POST['deleteAll']) {
 sleep(5);
 // reload
 echo '<script type="text/javascript">
-           window.location = "https://tnuatiming.com/live/liveadmin.php"
+           window.location = "https://tnuatiming.com/live1/liveadmin.php"
       </script>';
 ?>
 </body>

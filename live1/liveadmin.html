@@ -1,7 +1,7 @@
 ---
 layout: default
 body: live
-permalink: /live/liveadmin.php
+permalink: /live1/liveadmin.php
 place: live timing
 protect: true
 sitemap:
@@ -15,7 +15,7 @@ sitemap:
 <h1>תוצאות בזמן אמת - ניהול</h1></div>
         
         
-        <script type="text/javascript">
+        <script>
 
          function SetValue () {
             var area = document.getElementById ("results");
@@ -35,7 +35,22 @@ sitemap:
             area.value = area.value.replace(/<img class=\"postionSame\" src=\"Images\/_TrackPassing.svg\" alt=\"same places\">/gi, "");
        }
         
+
+         function getResults () {
+        populatePre('previousresults.txt','previousResults')
+        document.getElementById("getResults").style.display = "none";        
+        document.getElementById("hideResults").style.display = "block";        
+        
+        }
+         function hideResults () {
+        document.getElementById('previousResults').innerHTML = ''
+        document.getElementById("hideResults").style.display = "none";        
+        document.getElementById("getResults").style.display = "block";        
+        }
+        
         </script>
+
+        
 <style>
  
 .header, .footer {display: none;}
@@ -52,7 +67,14 @@ h3 {color: blue; text-shadow: none;}
     padding-top: 10px;
     vertical-align: middle;
 } 
- 
+button {padding: 5px;} 
+button#hideResults {display: none; margin: 5px; outline: 0; background-color: #767472; color: #ecf0f1; transition: background-color .3s;}        
+button#getResults {display: block; margin: 5px; outline: 0; background-color: #767472; color: #ecf0f1; transition: background-color .3s;}        
+
+
+
+
+
 </style>
 
 
@@ -88,9 +110,10 @@ function myFunction(xhttp) {
 
 <div class="center">
 <h3>upload previos result to live timing</h3><br>
-<form action="buildIndexPr.php" method="post">
-    <input type="button" value="copy live results" onclick="SetValue ()"><br><br>
-    <button type="button" onclick="loadDoc('uploadPr.txt', myFunction)">get previous Results Content</button><br><br>    
+
+<button onclick="SetValue ()">copy live results</button><br><br>
+<form action="previousresults.php" method="post">
+    <button onclick="loadDoc('previousresults.txt', myFunction)">get previous Results Content</button><br><br>    
     <textarea rows="20" cols="90%" name="results" id="results" ></textarea><br><br>
     <input type="checkbox" id="deleteLast" name="deleteLast" value="deleteLast"> delete last result<br><br>
     <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results!<br><br>
@@ -117,12 +140,15 @@ function myFunction(xhttp) {
         <div id="updates">&nbsp;</div>
 </div>
 
-
-
 <div id="result"></div>
     
 <div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>
-        <div id="previousResults"></div>
+        
+<div class="center1">
+    <button class="previousResults" id="getResults" onclick="getResults ()">הצג תוצאות קודמות</button>
+    <button class="previousResults" id="hideResults" onclick="hideResults ()">הסתר תוצאות קודמות</button>
+    <div id="previousResults"></div>
+</div>
 
 
 

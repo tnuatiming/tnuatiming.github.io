@@ -120,7 +120,7 @@
             Load(url, target)
         };
         populatePre('uploadMsg.txt','updates'); // upload message
-        populatePre('uploadPr.txt','previousResults'); // upload previousResults
+     //   populatePre('previousresults.txt','previousResults'); // upload previousResults
         TimerLoad = setTimeout(fct, Rafraichir)
         Rafraichir = 30000;
     };
