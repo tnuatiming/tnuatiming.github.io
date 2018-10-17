@@ -9,7 +9,9 @@
 * dark gray #464646 (70,70,70)
 * very light gray #C7C7C7 (199,199,199)
 * purple #db2aff best time overall
-* green #36dc18 best time 
+* green #36dc18 
+* best time #3EB650 
+* green flag #00843d
 
 * @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);
@@ -703,8 +705,8 @@ span#name, span#rund, span#date {
     font-weight: 700;
 }
 #live td.BestTime {
-    color: #0000ff;
-/*    color: #36dc18;*/
+/*    color: #0000ff;*/
+    color: #3EB650;
     font-weight: 700;
 }
 #live td.BestTime1 {

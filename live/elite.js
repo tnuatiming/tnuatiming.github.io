@@ -192,7 +192,7 @@
         var HeaderEventName = div.textContent || div.innerText || "";  // tickerTest
         var HeaderRaceName = HeaderEventName.split('-')[1].trim();  // tickerTest
         var time = HeaderName[1].split(':');  // tickerTest
-        time = (time[0].trim()).slice(-2) + ':' + (time[1].trim()).slice(-2);  // tickerTest
+        time = ('0' + (time[0].slice(-2)).trim()).slice(-2) + ':' + time[1];  // tickerTest
        // get time - option 2 (local browser time) 
       //  const now = new Date();  // tickerTest
       //  var time = ('0' + now.getHours()).slice(-2)+ ':' + ('0' + now.getMinutes()).slice(-2);  // tickerTest // adding leading 0 if needed
@@ -610,7 +610,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
                         
                         if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
-                            ticker.push(time + " - " +  'מתחרה מספר ' + allArray[l]["Id_Numero"] + ' נפסל');  // tickerTest
+                            ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') נפסל');  // tickerTest
                             doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
                         }  // tickerTest
  
@@ -618,7 +618,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
                         
                         if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
-                            ticker.push(time + " - " +  'מתחרה מספר ' + allArray[l]["Id_Numero"] + ' פרש');  // tickerTest
+                            ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') פרש');  // tickerTest
                             doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
                         }  // tickerTest
  
@@ -944,7 +944,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 
                 if (tickerBestTime != allArray[l]["Id_TpsTour"] && bestTime[competitorNumber] == " BestTimeOverall") {  // tickerTest
                     tickerBestTime = allArray[l]["Id_TpsTour"];  // tickerTest
-                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה במקצה ' + tickerBestTime);  // tickerTest
+                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה - ' + tickerBestTime);  // tickerTest
                 }  // tickerTest
                                    
                 

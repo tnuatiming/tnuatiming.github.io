@@ -35,17 +35,24 @@ sitemap:
             area.value = area.value.replace(/<img class=\"postionSame\" src=\"Images\/_TrackPassing.svg\" alt=\"same places\">/gi, "");
        }
         
-
+        var previousResultsTimerLoad;
+        
          function getResults () {
-        populatePre('previousresults.txt','previousResults')
+        populatePre('previousresults.txt','previousResults');
         document.getElementById("getResults").style.display = "none";        
         document.getElementById("hideResults").style.display = "block";        
+        console.log("reload previous results");
+        previousResultsTimerLoad = setTimeout(getResults, 180000);
         
+        var d = new Date().toLocaleTimeString('en-GB', { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit"});
+        console.log(d + " reload previous results");
+
         }
          function hideResults () {
         document.getElementById('previousResults').innerHTML = ''
         document.getElementById("hideResults").style.display = "none";        
         document.getElementById("getResults").style.display = "block";        
+        clearTimeout(previousResultsTimerLoad);
         }
         
         </script>
@@ -68,8 +75,10 @@ h3 {color: blue; text-shadow: none;}
     vertical-align: middle;
 } 
 button {padding: 5px;} 
-button#hideResults {display: none; margin: 5px; outline: 0; background-color: #767472; color: #ecf0f1; transition: background-color .3s;}        
-button#getResults {display: block; margin: 5px; outline: 0; background-color: #767472; color: #ecf0f1; transition: background-color .3s;}        
+button:hover {background-color: #c5cbcf;} 
+button#hideResults {display: none; margin: 5px; outline: 0; background-color: #767472; color: #ecf0f1; transition: background-color .3s; border: none; padding: 2px 10px; font-size: 1em;}        
+button#getResults {display: block; margin: 5px; outline: 0; background-color: #767472; color: #ecf0f1; transition: background-color .3s; border: none; padding: 2px 10px; font-size: 1em;}        
+button#hideResults:hover, button#getResults:hover { background-color: #52514f; }
 
 
 
@@ -103,18 +112,17 @@ function loadDoc(url, cFunction) {
   xhttp.send();
 }
 function myFunction(xhttp) {
-  document.getElementById("results").innerHTML =
-  xhttp.responseText;
+  document.getElementById("results").innerHTML = xhttp.responseText;
 }
 </script>
 
 <div class="center">
 <h3>upload previos result to live timing</h3><br>
 
-<button onclick="SetValue ()">copy live results</button><br><br>
 <form action="previousresults.php" method="post">
-    <button onclick="loadDoc('previousresults.txt', myFunction)">get previous Results Content</button><br><br>    
+    <button type="button" onclick="loadDoc('previousresults.txt', myFunction)">get previous Results Content</button><br><br>    
     <textarea rows="20" cols="90%" name="results" id="results" ></textarea><br><br>
+    <button type="button" onclick="SetValue ()">copy live results</button><br><br>
     <input type="checkbox" id="deleteLast" name="deleteLast" value="deleteLast"> delete last result<br><br>
     <input type="checkbox" id="deleteAll" name="deleteAll" value="deleteAll"> delete ALL results!<br><br>
     <input type="checkbox" id="deleteAndUpload" name="deleteAndUpload" value="deleteAndUpload"> delete all and clean upload<br><br>
