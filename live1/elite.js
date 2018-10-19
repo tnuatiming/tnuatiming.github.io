@@ -18,6 +18,7 @@
     var showIndividualLaps = "0";
     var showLapsNumber = "1";
     var hareScramble = "0";
+    var rallySprint = "0";
     var cleanResults = "0"; // clean the table for coping to results page
     
     var harescrambleFinishE = 7200000; // 2 hours
@@ -261,6 +262,13 @@
             qualifying = "0";
         }
 
+        if (Text[0].includes("ראלי") && Text[0].includes("ספרינט")) { // will show diffrent colmuns for qualifying
+            var sheet = document.createElement('style');
+            sheet.innerHTML = "#live td.BestTimeOverall {color: #111;font-weight: 400;} #live td.BestTime {color: #111;font-weight: 400;}";
+            document.body.appendChild(sheet);
+            rallySprint = "1";
+        }
+
         if (Text[0].includes("+++")) { // clean table for results page
             cleanResults = "1";
             Text[0] = Text[0].replace("+++", "");
@@ -316,6 +324,8 @@
                 pp = 0;
                 penalty = "no";
             } else if (lines[b].includes("<td ") && ttt == 1) {
+    //            lineArray["Id_Ecart1erCategorie"] = '-';
+    //            lineArray["Id_Image"] = '-';
 
                 if (lines[b].includes("(C)")) {
                     penalty = "yes";
@@ -546,7 +556,7 @@ switch(option) {  // tickerTest
             headerText1 += '<th class="rnkh_font" id="Id_Numero">מספר</th>';
             headerText1 += '<th class="rnkh_font" id="Id_Nom">שם</th>';
             
-            if (showLapsNumber == "1") {
+            if (showLapsNumber == "1" && rallySprint == "0") {
                 headerText1 += '<th class="rnkh_font" id="Id_NbTour">הקפות</th>';
             }
             
@@ -570,7 +580,7 @@ switch(option) {  // tickerTest
                 headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
             }
             
-            if (qualifying == "0") {
+            if (qualifying == "0" && rallySprint == "0") {
                 headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
             }
             if (useCategory == "yes") {
@@ -812,7 +822,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
             }
                 
                 if (useCategory == "yes") {
-                    if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-" || (qualifying == "1" && allArray[l]["Id_TpsTour"] == "-")) {
+                    if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_TpsTour"] == "-" || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-" || (qualifying == "1" && allArray[l]["Id_TpsTour"] == "-")) {
                         finalText += '<td class="rnk_font"></td>';
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>';
@@ -835,7 +845,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                         
                         
                         
-                    } else if (allArray[l]["Id_Image"].includes("_Status")) {
+                    } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_TpsTour"] == "-" || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-" || (qualifying == "1" && allArray[l]["Id_TpsTour"] == "-")) {
                         finalText += '<td class="rnk_font"></td>';
                     } else {
                         
@@ -890,7 +900,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
       //          }
                  
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';
-                if (showLapsNumber == "1") {
+                if (showLapsNumber == "1" && rallySprint == "0") {
 
                     if (typeof allArray[l]["Id_NbTour"] != 'undefined') {
                         
@@ -948,7 +958,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 }  // tickerTest
                                    
                 
-                if (qualifying == "0") {
+                if (qualifying == "0" && rallySprint == "0") {
                     if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
                         if (allArray[l]["Id_TpsCumule"].includes("P")) {
                             finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_TpsCumule"] + '</td>';
@@ -1113,6 +1123,10 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
             TimerChange = setTimeout(fct, Changement)
         } else if (TimerChange) clearTimeout(TimerChange)
     };
+
+    function AfficherImageZoom(a, b) {
+        "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
+    };
 */
     function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
         return a=a.split('.'), // optimized
@@ -1130,10 +1144,6 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
         (m<10?0:'')+m+':'+  // optimized
         (s<10?0:'')+s+'.'+ // optimized
         (k<100?k<10?'00':0:'')+k // optimized
-    };
-
-    function AfficherImageZoom(a, b) {
-        "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
 
 </script>

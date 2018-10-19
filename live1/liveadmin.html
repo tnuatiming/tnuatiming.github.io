@@ -41,7 +41,7 @@ sitemap:
         populatePre('previousresults.txt','previousResults');
         document.getElementById("getResults").style.display = "none";        
         document.getElementById("hideResults").style.display = "block"; 
-        previousResultsTimerLoad = setTimeout(getResults, 180000);
+        previousResultsTimerLoad = setTimeout(getResults, 300000);
         
         var d = new Date().toLocaleTimeString('en-GB', { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit"});
         console.log(d + " reload previous results");
