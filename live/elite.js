@@ -40,7 +40,7 @@
     
     var option = "1";  // tickerTest
     
-    var bestTimeArray =  {};
+    var bestTimeArray = [];
     if (sessionStorage.getItem('bestTimeArray')) {
         bestTimeArray = JSON.parse(sessionStorage.getItem('bestTimeArray'));
     }
@@ -153,15 +153,15 @@
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
-  //      var qqq = new Array();
-  //      var hhh = new Array();
-  //      var temp = new Array();
-        var hhhPro = new Array();
-        var lineArray = new Array();
-        var allArray = new Array();
+  //      var qqq = [];
+  //      var hhh = [];
+  //      var temp = [];
+        var hhhPro = [];
+        var lineArray = [];
+        var allArray = [];
         var bestLapComp = 0;
         var bestLap = "99999999999";
-        var bestTime = new Array();
+        var bestTime = [];
         var category = "&nbsp;";
         var ttt = 0;
         var b, q, z, f;
@@ -210,7 +210,7 @@
             flag = "";  // tickerTest
             firstPlace = "";  // tickerTest
             tickerBestTime = "-";  // tickerTest
-            bestTimeArray = {};
+            bestTimeArray = [];
         }
         eventName = HeaderEventName;  // tickerTest
         sessionStorage.setItem('eventName', eventName);  // tickerTest
@@ -555,44 +555,44 @@ switch(option) {  // tickerTest
     // semi hard coded header
 
             if (cleanResults != "1") {
-                headerText1 += '<th class="rnkh_font" id="Id_Arrow"></th>';
+                headerText1 += '<th class="rnkh_font Id_Arrow"></th>';
             }
 
-            headerText1 += '<th class="rnkh_font" id="Id_Position">מקום</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_Numero">מספר</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_Nom">שם</th>';
+            headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
+            headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
+            headerText1 += '<th class="rnkh_font Id_Nom">שם</th>';
             
             if (showLapsNumber == "1" && rallySprint == "0") {
-                headerText1 += '<th class="rnkh_font" id="Id_NbTour">הקפות</th>';
+                headerText1 += '<th class="rnkh_font Id_NbTour">הקפות</th>';
             }
             
             if (showIndividualLaps == "1" && allArray[l]["Id_lap1"]) {
                 
                 for (q = 1; q <= laps; q++) {
-                    headerText1 += '<th class="rnkh_font" id="Id_lap'+q+'">הקפה '+q+'</th>';
+                    headerText1 += '<th class="rnkh_font Id_lap' + q + '">הקפה ' + q + '</th>';
                 }
 /*                
-                headerText1 += '<th class="rnkh_font" id="Id_lap1">הקפה 1</th>';
-                headerText1 += '<th class="rnkh_font" id="Id_lap2">הקפה 2</th>';
-                headerText1 += '<th class="rnkh_font" id="Id_lap3">הקפה 3</th>';
-                headerText1 += '<th class="rnkh_font" id="Id_lap4">הקפה 4</th>';
-                headerText1 += '<th class="rnkh_font" id="Id_lap5">הקפה 5</th>';
-                headerText1 += '<th class="rnkh_font" id="Id_lap6">הקפה 6</th>';
+                headerText1 += '<th class="rnkh_font Id_lap1">הקפה 1</th>';
+                headerText1 += '<th class="rnkh_font Id_lap2">הקפה 2</th>';
+                headerText1 += '<th class="rnkh_font Id_lap3">הקפה 3</th>';
+                headerText1 += '<th class="rnkh_font Id_lap4">הקפה 4</th>';
+                headerText1 += '<th class="rnkh_font Id_lap5">הקפה 5</th>';
+                headerText1 += '<th class="rnkh_font Id_lap6">הקפה 6</th>';
 */
             } else {
                 if (cleanResults != "1") {
-                    headerText1 += '<th class="rnkh_font" id="Id_TpsTour">הקפה אחרונה</th>';
+                    headerText1 += '<th class="rnkh_font Id_TpsTour">הקפה אחרונה</th>';
                 }
-                headerText1 += '<th class="rnkh_font" id="Id_MeilleurTour">הקפה מהירה</th>';
+                headerText1 += '<th class="rnkh_font Id_MeilleurTour">הקפה מהירה</th>';
             }
             
             if (qualifying == "0" && rallySprint == "0") {
-                headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
+                headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן</th>';
             }
             if (useCategory == "yes") {
-                headerText1 += '<th class="rnkh_font" id="Id_Ecart1erCategorie">פער</th>';
+                headerText1 += '<th class="rnkh_font Id_Ecart1erCategorie">פער</th>';
             } else if (useCategory == "no") {
-                headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">פער</th>';
+                headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
             }
 
         
@@ -1070,7 +1070,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-               console.log(allArray);
+          //     console.log(allArray);
          //    console.log(finalText);
             // console.log(bestTimeArray);
 

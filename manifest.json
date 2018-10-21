@@ -44,8 +44,13 @@
             "type": "image/png"
         }
     ],
-    "start_url": "index.html",
+    "start_url": "/index.html",
     "display": "standalone",
     "theme_color": "#ffcc33",
-    "background_color":"#ffcc33"
+    "background_color":"#ffcc33",
+    "serviceworker": {
+        "src": "service-worker.js",
+        "scope": "/",
+        "update_via_cache": "none"
+ }
 }

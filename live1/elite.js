@@ -40,7 +40,7 @@
     
     var option = "1";  // tickerTest
     
-    var bestTimeArray =  {};
+    var bestTimeArray = [];
     if (sessionStorage.getItem('bestTimeArray')) {
         bestTimeArray = JSON.parse(sessionStorage.getItem('bestTimeArray'));
     }
@@ -153,15 +153,15 @@
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
-  //      var qqq = new Array();
-  //      var hhh = new Array();
-  //      var temp = new Array();
-        var hhhPro = new Array();
-        var lineArray = new Array();
-        var allArray = new Array();
+  //      var qqq = [];
+  //      var hhh = [];
+  //      var temp = [];
+        var hhhPro = [];
+        var lineArray = [];
+        var allArray = [];
         var bestLapComp = 0;
         var bestLap = "99999999999";
-        var bestTime = new Array();
+        var bestTime = [];
         var category = "&nbsp;";
         var ttt = 0;
         var b, q, z, f;
@@ -210,7 +210,7 @@
             flag = "";  // tickerTest
             firstPlace = "";  // tickerTest
             tickerBestTime = "-";  // tickerTest
-            bestTimeArray = {};
+            bestTimeArray = [];
         }
         eventName = HeaderEventName;  // tickerTest
         sessionStorage.setItem('eventName', eventName);  // tickerTest
@@ -1070,7 +1070,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-               console.log(allArray);
+          //     console.log(allArray);
          //    console.log(finalText);
             // console.log(bestTimeArray);
 
