@@ -14,11 +14,6 @@
 
 <script type="text/javascript">
 
-    var showBestLap = "1";
-    var showIndividualLaps = "0";
-    var showLapsNumber = "1";
-    var hareScramble = "0";
-    var rallySprint = "0";
     var cleanResults = "0"; // clean the table for coping to results page
     
     var harescrambleFinishE = 7200000; // 2 hours
@@ -148,6 +143,15 @@
 
 
     function createLiveTable(Text) {
+         
+        var showIndividualLaps = "0";
+        var showLapsNumber = "1";
+        var showBestLap = "1";
+
+        var hareScramble = "0";
+        var rallySprint = "0";
+        var qualifying = "0";
+           
         var i;
         var lines;
         competitorPosition = 0;
@@ -172,7 +176,7 @@
         var dnfCategory = "";
         var dnsCategory = "";
         var dsqCategory = "";
-                
+
         Text = Text.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
@@ -244,27 +248,20 @@
             } else {
                 flag = "";
             }  // tickerTest
-        
-        
+            
 
         if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
             showIndividualLaps = "1";
             showLapsNumber = "0";
-        } else {
-            showIndividualLaps = "0";
-            showLapsNumber = "1";
         }
-
+        
         if (Text[0].includes("סקרמבל") || Text[0].includes("הייר")) { // will show finished for enduro hareScramble
             hareScramble = "1";
-        } else {
-            hareScramble = "0";
         }
 
         if (Text[0].includes("דירוג") || Text[0].includes("דרוג")) { // will show diffrent colmuns for qualifying
             qualifying = "1";
-        } else {
-            qualifying = "0";
+            showBestLap = "0";
         }
 
         if (Text[0].includes("ראלי") && Text[0].includes("ספרינט")) { // will show diffrent colmuns for qualifying
@@ -272,13 +269,12 @@
             sheet.innerHTML = "#live td.BestTimeOverall {color: #111;font-weight: 400;} #live td.BestTime {color: #111;font-weight: 400;}";
             document.body.appendChild(sheet);
             rallySprint = "1";
+            showBestLap = "0";
         }
 
         if (Text[0].includes("+++")) { // clean table for results page
             cleanResults = "1";
             Text[0] = Text[0].replace("+++", "");
-        } else {
-            cleanResults = "0";
         }
 /*
         if (Text[0].includes("laps")) { // get number of laps, NOT TESTED
