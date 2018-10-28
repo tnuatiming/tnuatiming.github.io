@@ -701,12 +701,14 @@ span#name, span#rund, span#date {
 
 #live td.BestTimeOverall {
 /*    color: #ff0000;*/
-    color: #db2aff;
+    background-color: #db2aff;
+    color: #fff;
     font-weight: 700;
 }
 #live td.BestTime {
 /*    color: #0000ff;*/
-    color: #3EB650;
+    background-color: #36dc18;
+    color: #111;
     font-weight: 700;
 }
 #live td.BestTime1 {

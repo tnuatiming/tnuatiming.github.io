@@ -266,7 +266,7 @@
 
         if (Text[0].includes("ראלי") && Text[0].includes("ספרינט")) { // will show diffrent colmuns for qualifying
             var sheet = document.createElement('style');
-            sheet.innerHTML = "#live td.BestTimeOverall {color: #111;font-weight: 400;} #live td.BestTime {color: #111;font-weight: 400;}";
+            sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
             document.body.appendChild(sheet);
             rallySprint = "1";
             showBestLap = "0";
