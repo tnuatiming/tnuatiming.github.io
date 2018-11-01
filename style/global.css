@@ -212,7 +212,7 @@ table.no_num_color {
 }
 /*#live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) */
 #live tr.rnk_bkcolor:hover, #race tr.rnk_bkcolor:hover {
-    background: #ffcc33;
+    background-color: #ffcc33;
     z-index: 1;
 }
 /*
@@ -247,7 +247,7 @@ table.no_num_color {
     font-weight: 400;
     background-color: rgba(0, 0, 0, 0);
     color:#222;
-    text-shadow: 0 1px 2px #fff;
+    text-shadow: none;
 }
 
 /*place column*/ 
@@ -701,20 +701,21 @@ span#name, span#rund, span#date {
 
 #live td.BestTimeOverall {
 /*    color: #ff0000;*/
-    background-color: #db2aff;
+    background-color: rgba(219, 42, 255, .6);
     color: #fff;
     font-weight: 700;
 }
 #live td.BestTime {
 /*    color: #0000ff;*/
-    background-color: #36dc18;
+    background-color: rgba(54, 220, 24, .6);
     color: #111;
-    font-weight: 700;
+    font-weight: 400;
 }
 #live td.BestTime1 {
-    color: #00008B;
+    background-color: rgba(49, 140, 231, .6);
+    color: #111;
 /*    color: #18dc8e;*/
-    font-weight: 700;
+    font-weight: 400;
 }
 
 #live img.postionChanged {
