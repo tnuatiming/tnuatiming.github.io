@@ -133,7 +133,7 @@
         text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(text1[1]);
 
-        lines = text1[1].split("\r\n");
+        lines = text1[1].split("\n");
         //    console.log(lines.length);
      //   console.log(lines);
 

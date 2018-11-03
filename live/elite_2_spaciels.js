@@ -26,8 +26,8 @@
     }
 
     var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/live/race1/p1.html";    
-    var url2 = "https://tnuatiming.com/live/race2/p1.html";    
+    var url1 = "https://tnuatiming.com/live1/livea/p1.html";    
+    var url2 = "https://tnuatiming.com/live1/liveb/p1.html";    
     var text1;
     var text2;
 
@@ -146,7 +146,7 @@
         text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(text1[1]);
 
-        lines = text1[1].split("\r\n");
+        lines = text1[1].split("\n");
         //    console.log(lines.length);
      //   console.log(lines);
 
@@ -155,7 +155,7 @@
         text2 = text2.split('<table'); // split the text to title/time and the table
         text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
   //      console.log(text2[1]);
-        lines2 = text2[1].split("\r\n");
+        lines2 = text2[1].split("\n");
         text2 = [];
 
         
@@ -679,6 +679,7 @@
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
                     
                     finalText += '<td class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
+
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     

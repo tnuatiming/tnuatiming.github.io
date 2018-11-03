@@ -558,17 +558,17 @@ span#name, span#rund, span#date {
 }
 @keyframes refresh {
     0% {opacity:1;}
-    25% {opacity:0;}
+    10% {opacity:0;}
     100% {opacity:1;}
 }
 #live tr.gainedPosition > td:nth-child(n+3) {
-    animation: refresh 1s both;
+    animation: refresh 3s both;
 }
 #live tr.lostPosition > td:nth-child(n+3) {
-    animation: refresh 1s both;
+    animation: refresh 3s both;
 }
 #live tr.unChanged > td:nth-child(n+3) {
-    animation: refresh 1s both;
+    animation: refresh 3s both;
 }
 
 #live td.highlight {

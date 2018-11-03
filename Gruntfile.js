@@ -54,7 +54,7 @@
       },
       files: [{                                   // Dictionary of files 
         cwd: '_site',
-        src: ['**/*.html', '!csv/index.html' ],
+        src: ['**/*.html', '!csv/index.html', '!liveepic/index.html', '!liveepic/p11.html', '!liveepic/p12.html' ],
         dest: '_site',
        expand: true    // 'destination': 'source' 
       }]
