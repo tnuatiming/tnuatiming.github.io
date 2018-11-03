@@ -215,6 +215,7 @@
             tickerBestTime = "-";  // tickerTest
             categoryBestTime = {};
         }
+        
         eventName = HeaderEventName;  // tickerTest
         sessionStorage.setItem('eventName', eventName);  // tickerTest
         
@@ -308,7 +309,7 @@
 
                 // find category best time
                 if (showBestLap == "1") {
-                    if (categoryBestTime[lineArray["Id_Categorie"]] == undefined) {
+                    if (typeof categoryBestTime[lineArray["Id_Categorie"]] == 'undefined') {
                         categoryBestTime[lineArray["Id_Categorie"]] = [Number(99999999),"-","-"];
                     }
                     if (categoryBestTime[lineArray["Id_Categorie"]][0] > timeString2ms(lineArray["Id_MeilleurTour"]) && lineArray["Id_MeilleurTour"] != "-") {
@@ -685,9 +686,9 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
                                 positionChanged = "gainedPosition ";
                                 
-                                if (useCategory == "no" && competitorPosition > 1 && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Position"] <= 5) {  // tickerTest
+                                if (useCategory == "no" && competitorPosition > 1 && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Position"] <= 3) {  // tickerTest
                                 ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
-                                } else if (useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 5) {
+                                } else if (useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
                                 ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
                                 }// tickerTest
                             }
