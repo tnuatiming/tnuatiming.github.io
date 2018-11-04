@@ -558,17 +558,30 @@ span#name, span#rund, span#date {
 }
 @keyframes refresh {
     0% {opacity:1;}
-    10% {opacity:0;}
+    5% {opacity:0;}
+    10% {opacity:1;}
+    15% {opacity:0;}
+    20% {opacity:1;}
+    25% {opacity:0;}
     100% {opacity:1;}
+/*  from {
+    transform: rotateX(0);
+  }
+  to {
+    transform: rotateX(2turn);
+  }
+*/
 }
-#live tr.gainedPosition > td:nth-child(n+3) {
-    animation: refresh 3s both;
+/*#live tr.gainedPosition > td:nth-child(n+3) {*/
+
+#live tr.gainedPosition {
+    animation: refresh 2s both;
 }
-#live tr.lostPosition > td:nth-child(n+3) {
-    animation: refresh 3s both;
+#live tr.lostPosition {
+    animation: refresh 2s both;
 }
-#live tr.unChanged > td:nth-child(n+3) {
-    animation: refresh 3s both;
+#live tr.unChanged {
+    animation: refresh 2s both;
 }
 
 #live td.highlight {

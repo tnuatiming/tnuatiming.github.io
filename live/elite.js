@@ -301,12 +301,13 @@
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) {
                 ttt = 0;
-                if (penalty == "yes") {
+/*                if (penalty == "yes") {
                     lineArray.Id_penalty = "P";
                 } else {
                     lineArray.Id_penalty = "";
                 }
-
+*/                
+                
                 // find category best time
                 if (showBestLap == "1") {
                     if (typeof categoryBestTime[lineArray["Id_Categorie"]] == 'undefined') {
@@ -329,12 +330,23 @@
     //            lineArray["Id_Ecart1erCategorie"] = '-';
     //            lineArray["Id_Image"] = '-';
 
+
                 if (lines[b].includes("(C)")) {
                     penalty = "yes";
                 }
+                // for penalty in cell
+                if (hhhPro[pp] == "Id_Position" || hhhPro[pp] == "Id_NbTour" || hhhPro[pp] == "Id_TpsCumule") {
+                    var fff = hhhPro[pp] + '_Penalty';
+                    if (penalty == "yes") {
+                        lineArray[fff] = "1";
+                    } else {
+                        lineArray[fff] = "0";
+                    }
+                }
 
+                
                 if ((typeof lines[b] != 'undefined') && (cleanResults == "1")) {
-                    lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "P ");
+                    lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", ""); // replace "" with "P " when penalty shown on Id_Arrow
                 } else if (typeof lines[b] != 'undefined') {
                     lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
                 } else {
@@ -657,8 +669,8 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_nq.svg" alt="nq">';
                     } else if (allArray[l]["Id_Image"].includes("_Status")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_status.svg" alt="status">'; // astrix
-                    } else if (allArray[l]["Id_penalty"].includes("P")) {
-                        allArray[l]["Id_Arrow"] = "P"; // penalty
+           //         } else if (allArray[l]["Id_penalty"].includes("P")) {
+           //             allArray[l]["Id_Arrow"] = "P"; // penalty
                     } else {
                             allArray[l]["Id_Arrow"] = "&#9670;"; // BLACK DIAMOND
                     }
@@ -702,7 +714,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 if (allArray[l]["Id_NbTour"]) {
                     competitorLaps = allArray[l]["Id_NbTour"]; 
                 
-                    if (competitorLaps != lapsArray[competitorNumber] && positionChanged == "") { 
+                    if (competitorLaps != lapsArray[competitorNumber] && positionChanged == "" && firstPass == "0") { 
                         
                         positionChanged = "unChanged "; // blink the competitor line                       
                     }
@@ -712,7 +724,8 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
        
        // mark on track
                 if ((positionChanged == "" || positionChanged == "unChanged ") && (allArray[l]["Id_Image"].includes("_TrackPassing") || allArray[l]["Id_Canal"] == "1") && !(allArray[l]["Id_Image"].includes("_Status"))) {
-                    allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
+                    allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
+           //         allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :| + P penalty
                         //   positionChanged = "same ";
                 }                        
          
@@ -817,7 +830,8 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td class="finished black rnk_font">'+allArray[l]["Id_penalty"]+'</td>\n';
+                    finalText += '<td class="finished black rnk_font"></td>\n';
+        //            finalText += '<td class="finished black rnk_font">'+allArray[l]["Id_penalty"]+'</td>\n'; // + P penalty
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // black
                     
@@ -867,8 +881,9 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                         finalText += '<td class="rnk_font"></td>\n';
                     } else {
                         
-                        if (allArray[l]["Id_Position"].includes("P")) {
-                            finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_Position"] + '</td>\n';
+            //            if (allArray[l]["Id_Position"].includes("P")) {
+                        if (allArray[l]["Id_Position_Penalty"] == "1") {
+                            finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_Position"] + '</td>\n';
                         } else {
                             finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>\n';
                         }
@@ -922,8 +937,9 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
                     if (typeof allArray[l]["Id_NbTour"] != 'undefined') {
                         
-                        if (allArray[l]["Id_NbTour"].includes("P")) {
-                            finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_NbTour"] + '</td>\n';
+               //         if (allArray[l]["Id_NbTour"].includes("P")) {
+                        if (allArray[l]["Id_NbTour_Penalty"] == "1") {
+                            finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_NbTour"] + '</td>\n';
                         } else {
                             finalText += '<td class="rnk_font">' + allArray[l]["Id_NbTour"] + '</td>\n';
                         }
@@ -990,8 +1006,9 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 
                 if (qualifying == "0" && rallySprint == "0") {
                     if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
-                        if (allArray[l]["Id_TpsCumule"].includes("P")) {
-                            finalText += '<td class="rnk_font penalty">' + allArray[l]["Id_TpsCumule"] + '</td>\n';
+      //                  if (allArray[l]["Id_TpsCumule"].includes("P")) {
+                        if (allArray[l]["Id_TpsCumule_Penalty"] == "1") {
+                            finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         } else {
                             finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         }
@@ -1094,7 +1111,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-          //     console.log(allArray);
+               console.log(allArray);
          //    console.log(finalText);
 
 
