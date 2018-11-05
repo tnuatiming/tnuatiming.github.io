@@ -1010,6 +1010,9 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
       //                  if (allArray[l]["Id_TpsCumule"].includes("P")) {
                         if (allArray[l]["Id_TpsCumule_Penalty"] == "1" && typeof allArray[l]["Id_PenaliteTpsCumule"] != 'undefined'&& allArray[l]["Id_PenaliteTpsCumule"] != '-') {
+                            if (allArray[l]["Id_PenaliteTpsCumule"].includes(".000")) {
+                                allArray[l]["Id_PenaliteTpsCumule"] = allArray[l]["Id_PenaliteTpsCumule"].replace('.000', '');
+                            }
                             finalText += '<td aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"] + '" class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         } else if (allArray[l]["Id_TpsCumule_Penalty"] == "1") {
                             finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';

@@ -816,14 +816,15 @@ td[aria-label]:hover:after {
 
 td.penalty[aria-label]:hover:after {
     content: attr(aria-label);
-    padding: 0 8px;
+    padding: 0 0;
     position: absolute;
     right: 0;
     top: 0;
     white-space: nowrap;
     z-index: 99;
-    color: red;
+    color: #111;
     background: rgba(240, 240, 240, 1);
+    min-width: 100%;
 }
 
 #live #warning {
