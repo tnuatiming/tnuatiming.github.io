@@ -636,6 +636,11 @@ span#name, span#rund, span#date {
     background-color: rgba(191, 191, 191, 0.7);
     color:#111;
 }
+
+#live td.rnk_font.penalty {
+    color: #8a0000;
+}
+    
 @keyframes fadeToGreen {
     0% {color: #fff;}
     25% {color: #fff;}
@@ -806,6 +811,18 @@ td[aria-label]:hover:after {
     white-space: nowrap;
     z-index: 99;
     color: #fff;
+    background: rgba(17, 17, 17, 1);
+}
+
+td.penalty[aria-label]:hover:after {
+    content: attr(aria-label);
+    padding: 0 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    white-space: nowrap;
+    z-index: 99;
+    color: red;
     background: rgba(17, 17, 17, 1);
 }
 

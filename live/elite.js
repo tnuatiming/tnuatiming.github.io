@@ -9,6 +9,7 @@
 <!-- 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). -->
 <!-- 20180903 - added option for harescramble finish. -->
 <!-- 20181010 - added previous results and race progress ticker. -->
+<!-- 20181105 - added show penalty time on hover. -->
 
 <!-- tag heuer live timing -->
 
@@ -1007,7 +1008,9 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 if (qualifying == "0" && rallySprint == "0") {
                     if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
       //                  if (allArray[l]["Id_TpsCumule"].includes("P")) {
-                        if (allArray[l]["Id_TpsCumule_Penalty"] == "1") {
+                        if (allArray[l]["Id_TpsCumule_Penalty"] == "1" && typeof allArray[l]["Id_PenaliteTpsCumule"] != 'undefined'&& allArray[l]["Id_PenaliteTpsCumule"] != '-') {
+                            finalText += '<td aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"] + '" class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
+                        } else if (allArray[l]["Id_TpsCumule_Penalty"] == "1") {
                             finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         } else {
                             finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>\n';
@@ -1111,7 +1114,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-               console.log(allArray);
+          //     console.log(allArray);
          //    console.log(finalText);
 
 
