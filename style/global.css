@@ -557,20 +557,20 @@ span#name, span#rund, span#date {
     color: #111;
 }
 @keyframes refresh {
-    0% {opacity:1;}
+ /*   0% {opacity:1;}
     5% {opacity:0;}
     10% {opacity:1;}
     15% {opacity:0;}
     20% {opacity:1;}
     25% {opacity:0;}
-    100% {opacity:1;}
-/*  from {
+    100% {opacity:1;}*/
+  from {
     transform: rotateX(0);
   }
   to {
     transform: rotateX(2turn);
   }
-*/
+
 }
 /*#live tr.gainedPosition > td:nth-child(n+3) {*/
 
@@ -823,7 +823,7 @@ td.penalty[aria-label]:hover:after {
     white-space: nowrap;
     z-index: 99;
     color: red;
-    background: rgba(17, 17, 17, 1);
+    background: rgba(240, 240, 240, 1);
 }
 
 #live #warning {

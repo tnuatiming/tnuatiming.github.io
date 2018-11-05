@@ -116,7 +116,8 @@
             }
         };
         
-        xhr.open("GET", url + "?r=" + Math.random(), true);
+    //    xhr.open("GET", url + "?r=" + Math.random(), true);
+        xhr.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
         xhr.send(null);
         fct = function() {
             Load(url, target)
@@ -1114,7 +1115,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-          //     console.log(allArray);
+               console.log(allArray);
          //    console.log(finalText);
 
 
