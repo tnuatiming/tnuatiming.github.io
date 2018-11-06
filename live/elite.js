@@ -154,41 +154,59 @@
             document.getElementById("displayAllButton").style.display = "none";        
         }
 
-        await fetch(url, {cache: "no-store"})
+/*        await fetch(url, {cache: "no-store"})
         .then(res => res.text())
         .then(data => {
             document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-            document.getElementById(target).innerHTML = createLiveTable(data)
+            document.getElementById(target).innerHTML = createLiveTable(data);
         })
         .catch(rejected => {
-            console.log('rejected');
+            console.log('page unavailable');
         });
+*/
+        try {
+            const response = await fetch(url, {cache: "no-store"});
+            document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+            document.getElementById(target).innerHTML = createLiveTable(await response.text());
+        }
+        catch (err) {
+            console.log('results fetch failed', err);
+        }
 
+        try {
+            const response1 = await fetch('uploadMsg.txt', {cache: "no-store"});
+            document.getElementById('updates').innerHTML = (await response1.text());
+        }
+        catch (err) {
+            console.log('msg fetch failed', err);
+        }
+
+
+/*
         await fetch('uploadMsg.txt', {cache: "no-store"})
         .then(res1 => res1.text())
         .then(data1 => {
             document.getElementById('updates').innerHTML = data1;
         })
         .catch(rejected => {
-            console.log('rejected');
+            console.log('page unavailable');
         });
 
-/*        await fetch('previousresults.txt', {cache: "no-store"})
-        .then(res1 => res1.text())
-        .then(data1 => {
-            document.getElementById('previousResults').innerHTML = data1;
+        await fetch('previousresults.txt', {cache: "no-store"})
+        .then(res2 => res2.text())
+        .then(data2 => {
+            document.getElementById('previousResults').innerHTML = data2;
         })
         .catch(rejected => {
-            setTimeout(() => {
-            Load('p1.html', 'result');
-            }, 30000);
+            console.log('page unavailable');
         });
 */ 
  // wait 30 seconds
         await new Promise(resolve => {
             setTimeout(() => {
-            Load('p1.html', 'result');
-            }, 30000);
+            Load(url, target);
+            }, Rafraichir);
+            Rafraichir = 30000;
         });
 
     };
@@ -1184,7 +1202,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-               console.log(allArray);
+          //     console.log(allArray);
          //    console.log(finalText);
 
 
