@@ -87,7 +87,8 @@
         Load('p1.html', 'result');
     };
 
-    function Load(url, target) {
+/*
+     function Load(url, target) {
 
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
@@ -99,11 +100,11 @@
 
         var xhr;
         var fct;
-/*
-        if (UrlChange) url = UrlRefresh;
-        else UrlRefresh = url;
-        UrlChange = 0;
-*/
+
+//        if (UrlChange) url = UrlRefresh;
+//        else UrlRefresh = url;
+//        UrlChange = 0;
+
         if (TimerLoad) clearTimeout(TimerLoad);
         
         xhr = new XMLHttpRequest;
@@ -141,6 +142,71 @@
         xhr1.send();
     };
 
+ */    
+    
+    async function Load(url, target) {
+
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+
+        await fetch(url, {cache: "no-store"})
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+            document.getElementById(target).innerHTML = createLiveTable(data)
+        })
+        .catch(rejected => {
+            console.log('rejected');
+        });
+
+        await fetch('uploadMsg.txt', {cache: "no-store"})
+        .then(res1 => res1.text())
+        .then(data1 => {
+            document.getElementById('updates').innerHTML = data1;
+        })
+        .catch(rejected => {
+            console.log('rejected');
+        });
+
+/*        await fetch('previousresults.txt', {cache: "no-store"})
+        .then(res1 => res1.text())
+        .then(data1 => {
+            document.getElementById('previousResults').innerHTML = data1;
+        })
+        .catch(rejected => {
+            setTimeout(() => {
+            Load('p1.html', 'result');
+            }, 30000);
+        });
+*/ 
+ // wait 30 seconds
+        await new Promise(resolve => {
+            setTimeout(() => {
+            Load('p1.html', 'result');
+            }, 30000);
+        });
+
+    };
+
+/*    
+    // fn to upload messages
+    function populatePre(url, div) {
+        var xhr1 = new XMLHttpRequest();
+        xhr1.onreadystatechange = function () {
+            if (xhr1.readyState == 4 && xhr1.status == 200) {
+                document.getElementById(div).innerHTML = xhr1.responseText;
+            }
+        };
+    //    xhr1.open("GET", url + Math.random(), true);
+        xhr1.open('GET', url, true);
+        xhr1.send();
+    };
+*/
 
     function createLiveTable(Text) {
          
