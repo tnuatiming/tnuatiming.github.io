@@ -166,8 +166,10 @@
 */
         try {
             const response = await fetch(url, {cache: "no-store"});
-            document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-            document.getElementById(target).innerHTML = createLiveTable(await response.text());
+            if (response.ok) {
+                document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                document.getElementById(target).innerHTML = createLiveTable(await response.text());
+            }
         }
         catch (err) {
             console.log('results fetch failed', err);
@@ -175,7 +177,9 @@
 
         try {
             const response1 = await fetch('uploadMsg.txt', {cache: "no-store"});
-            document.getElementById('updates').innerHTML = (await response1.text());
+            if (response1.ok) {
+                document.getElementById('updates').innerHTML = (await response1.text());
+            }
         }
         catch (err) {
             console.log('msg fetch failed', err);
