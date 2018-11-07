@@ -145,6 +145,10 @@
  */    
     
     async function Load(url, target) {
+        
+        var loop;
+        if (TimerLoad) clearTimeout(TimerLoad);
+
 
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
@@ -164,27 +168,56 @@
             console.log('page unavailable');
         });
 */
-        try {
-            const response = await fetch(url, {cache: "no-store"});
-            if (response.ok) {
-                document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                document.getElementById(target).innerHTML = createLiveTable(await response.text());
-            }
-        }
-        catch (err) {
-            console.log('results fetch failed', err);
-        }
+        if (self.fetch) {
 
-        try {
-            const response1 = await fetch('uploadMsg.txt', {cache: "no-store"});
-            if (response1.ok) {
-                document.getElementById('updates').innerHTML = (await response1.text());
+            try {
+                const response = await fetch(url, {cache: "no-store"});
+                if (response.ok) {
+                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById(target).innerHTML = createLiveTable(await response.text());
+                }
             }
-        }
-        catch (err) {
-            console.log('msg fetch failed', err);
-        }
+            catch (err) {
+                console.log('results fetch failed', err);
+            }
 
+            try {
+                const response1 = await fetch('uploadMsg.txt', {cache: "no-store"});
+                if (response1.ok) {
+                    document.getElementById('updates').innerHTML = (await response1.text());
+                }
+            }
+            catch (err) {
+                console.log('msg fetch failed', err);
+            }
+        } else {
+            var xhr;
+            xhr = new XMLHttpRequest;
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById(target).innerHTML = createLiveTable(xhr.responseText)
+    //           } else {
+    //               document.getElementById("categoryOrAll").style.display = "none";
+                }
+            };
+            
+        //    xhr.open("GET", url + "?r=" + Math.random(), true);
+            xhr.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
+            xhr.send(null);
+
+            // upload message
+            var xhr1 = new XMLHttpRequest();
+            xhr1.onreadystatechange = function () {
+                if (xhr1.readyState == 4 && xhr1.status == 200) {
+                    document.getElementById('updates').innerHTML = xhr1.responseText;
+                }
+            };
+        //    xhr1.open("GET", url + Math.random(), true);
+            xhr1.open('GET', 'uploadMsg.txt'  + ((/\?/).test('uploadMsg.txt') ? "&" : "?") + (new Date()).getTime(), true);
+            xhr1.send();
+            
+        }
 
 /*
         await fetch('uploadMsg.txt', {cache: "no-store"})
@@ -204,7 +237,7 @@
         .catch(rejected => {
             console.log('page unavailable');
         });
-*/ 
+ 
  // wait 30 seconds
         await new Promise(resolve => {
             setTimeout(() => {
@@ -212,6 +245,13 @@
             }, Rafraichir);
             Rafraichir = 30000;
         });
+*/
+        loop = function() {
+            Load(url, target);
+        };
+
+        TimerLoad = setTimeout(loop, Rafraichir);
+        Rafraichir = 30000;
 
     };
 
