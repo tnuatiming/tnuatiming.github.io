@@ -190,6 +190,17 @@
             catch (err) {
                 console.log('msg fetch failed', err);
             }
+
+            try {
+                const response2 = await fetch('previousresults.txt', {cache: "no-store"});
+                if (response2.ok) {
+                    document.getElementById('previousResults').innerHTML = (await response2.text());
+                }
+            }
+            catch (err) {
+                console.log('previous results fetch failed', err);
+            }
+            
         } else {
             var xhr;
             xhr = new XMLHttpRequest;
@@ -207,15 +218,10 @@
             xhr.send(null);
 
             // upload message
-            var xhr1 = new XMLHttpRequest();
-            xhr1.onreadystatechange = function () {
-                if (xhr1.readyState == 4 && xhr1.status == 200) {
-                    document.getElementById('updates').innerHTML = xhr1.responseText;
-                }
-            };
-        //    xhr1.open("GET", url + Math.random(), true);
-            xhr1.open('GET', 'uploadMsg.txt'  + ((/\?/).test('uploadMsg.txt') ? "&" : "?") + (new Date()).getTime(), true);
-            xhr1.send();
+            populatePre('uploadMsg.txt','updates');
+
+            // upload previous results            
+            populatePre('previousresults.txt','previousResults');
             
         }
 
@@ -255,7 +261,7 @@
 
     };
 
-/*    
+    
     // fn to upload messages
     function populatePre(url, div) {
         var xhr1 = new XMLHttpRequest();
@@ -265,10 +271,11 @@
             }
         };
     //    xhr1.open("GET", url + Math.random(), true);
+   //     xhr1.open('GET', url  + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
         xhr1.open('GET', url, true);
         xhr1.send();
     };
-*/
+
 
     function createLiveTable(Text) {
          
@@ -276,6 +283,7 @@
         var showLapsNumber = "1";
         var showBestLap = "1";
 
+        var specialTest = "0";
         var hareScramble = "0";
         var rallySprint = "0";
         var qualifying = "0";
@@ -380,11 +388,22 @@
             }  // tickerTest
             
 
-        if (Text[0].includes("טסט")) { // will show individual laps for enduro special test
+        if (Text[0].includes("טסט") || Text[0].includes("ספיישל")) { // will show individual laps for enduro special test
+            specialTest = "1";
             showIndividualLaps = "1";
             showLapsNumber = "0";
         }
         
+        if (Text[0].includes("2 הקפות")) { // will show individual laps for enduro special test
+            showIndividualLaps = "1";
+            showLapsNumber = "0";
+            laps = 2;
+            showBestLap = "0";
+            var sheet = document.createElement('style');
+            sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
+            document.body.appendChild(sheet);
+        }
+
         if (Text[0].includes("סקרמבל") || Text[0].includes("הייר")) { // will show finished for enduro hareScramble
             hareScramble = "1";
         }
@@ -934,9 +953,9 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
             
             //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == "1" && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == "1" && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == "1" && allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (specialTest == "1" && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
                     var checkeredFlag = "finished ";
-                } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1 ) {
+                } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -1246,7 +1265,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-          //     console.log(allArray);
+               console.log(allArray);
          //    console.log(finalText);
 
 

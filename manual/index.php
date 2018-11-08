@@ -441,6 +441,21 @@ Status 12,DNS,center</code></pre></li>
                 <td class="s1" ></td>
             </tr>
             <tr>
+                <td class="s11" >enduro/ rally raid/ baja - 2 stages</td>
+                <td class="s2" >line</td>
+                <td class="s2" >2<br>1</td>
+                <td class="s2" >1<br>1</td>
+                <td class="s2" ></td>
+                <td class="s2" >1<br>2</td>
+                <td class="s2" >4<br>4</td>
+                <td class="s2" >v<br>v</td>
+                <td class="s2" >total laps</td>
+                <td class="s2" >v</td>
+                <td class="s2" ></td>
+                <td class="s1" >green flag near first start</td>
+                <td class="s1" >"line" has 2 start loops and 2 finish loops. stage 1 start on remote and move to stage 2 finish. stage 1 finish and stage 2 start are near so main computer connected to both</td>
+            </tr>
+            <tr>
                 <td class="s11" >time attack</td>
                 <td class="s2" >circuit</td>
                 <td class="s2" ></td>
@@ -591,6 +606,8 @@ Status 12,DNS,center</code></pre></li>
     <p class="c0">אם שם הארוע/מרוץ כולל "היירסקרמבל" או אז יופיע דגל שחמט לפי קטגוריה וזמן המתחרה(שעתיים למקצועית, שעה למתחילים וכו')</p>
 
     <p class="c0">אם שם הארוע/מרוץ כולל "דירוג" או אז יופיעו עמודות מתאימות למקצה דירוג</p>
+
+    <p class="c0">אם שם הארוע/מרוץ כולל "2 הקפות" או אז יופיעו עמודות מתאימות למרוץ ראלי רייד עם 2 הקפות</p>
 
     <p class="c0">בכדי להראות עונשין יש להוסיף את שורת "עונשין - זמן" (total time penalty)</p>
 
