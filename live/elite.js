@@ -458,7 +458,7 @@
 */                
                 
                 // find category best time
-                if (showBestLap == "1") {
+    //            if (showBestLap == "1") {
                     if (typeof categoryBestTime[lineArray["Id_Categorie"]] == 'undefined') {
                         categoryBestTime[lineArray["Id_Categorie"]] = [Number(99999999),"-","-"];
                     }
@@ -470,7 +470,7 @@
                         }  // tickerTest
                         
                     }
-                }
+ //               }
                 allArray.push(lineArray); 
                 lineArray = [];
                 pp = 0;
