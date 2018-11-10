@@ -25,9 +25,9 @@ compilerPackage.grunt(grunt);
       htmlproof: {
         command: 'htmlproofer ./_site --disable-external --check-html'
       },
-      googleClosureCompiler: {
-        command: 'npx google-closure-compiler --compilation_level SIMPLE --js=live1/elite.js --js_output_file=live1/elite.min.js && npx google-closure-compiler --compilation_level SIMPLE --js=live/elite.js --js_output_file=live/elite.min.js'
-      },
+ //     googleClosureCompiler: {
+ //       command: 'npx google-closure-compiler --compilation_level SIMPLE --js=live1/elite.js --js_output_file=live1/elite.min.js && npx google-closure-compiler --compilation_level SIMPLE --js=live/elite.js --js_output_file=live/elite.min.js'
+ //     },
       lftp: {
 //        command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname false ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; rm ./public_html/live/p1.html ; rm ./public_html/live1/p1.html ; exit" | tee "log/lftp_$(date +%Y%m%d_%H%M).log"'
         command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname no ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; exit" | tee "log/lftp.log"'
@@ -35,6 +35,20 @@ compilerPackage.grunt(grunt);
       clean: {
         command: 'rm -r ./_site && rm -r ./jekyll_backup'
       }
+},
+    
+'closure-compiler': {
+    my_target: {
+      files: {
+        'live1/elite.min.js': ['live1/elite.js'],
+        'live/elite.min.js': ['live/elite.js']
+      },
+      options: {
+     //   js: '/node_modules/google-closure-library/**.js',
+      //  manage_closure_dependencies: true,
+        compilation_level: 'SIMPLE'
+      }
+    }
 },
                  
  cssmin: {
@@ -135,20 +149,6 @@ zip_directories: {
 zip: {
       './jekyll_backup/main.zip': ['*', '!id_rsa', '!id_rsa.pub', '.htaccess', '_config.yml', '!password_protect.php']
 },
-    
-'closure-compiler': {
-    my_target: {
-      files: {
-        'live1/elite.min.js': ['live1/elite.js']
-      },
-      options: {
-        js: '/node_modules/google-closure-library/**.js',
-        compilation_level: 'SIMPLE',
-        manage_closure_dependencies: true,
-        language_in: 'ECMASCRIPT5_STRICT'
-      }
-    }
-},
   
 ftp_push: {
     your_target: {
@@ -192,6 +192,7 @@ ftpush: {
 });
 
 require('load-grunt-tasks')(grunt);
+require('google-closure-compiler').grunt(grunt);
 
 grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -214,7 +215,7 @@ grunt.registerTask('csv', ['shell:csvUpdate']);
 grunt.registerTask('htmlproof', ['shell:htmlproof']);
 grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'shell:lftp', 'shell:gitUpdate']);
 grunt.registerTask('backup', ['zip_directories', 'zip']);
-grunt.registerTask('ftp', ['shell:googleClosureCompiler', 'shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'shell:lftp', 'shell:clean']);
+grunt.registerTask('ftp', ['closure-compiler', 'shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'shell:lftp', 'shell:clean']);
 grunt.registerTask('lftp', ['shell:lftp']);
 //  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftp_push']);
 //  grunt.registerTask('upload', ['shell:jekyllBuild', 'replace', 'ftp_push', 'shell:gitUpdate']);
