@@ -1,19 +1,16 @@
-<!-- 20180518 - array refactoring with all/category toggle, display arrows for position change -->
-<!-- 20180522 - add fades and competitor info on arrows display -->
-<!-- 20180523 - add competitor number color/background according to category -->
-<!-- 20180527 - add message uploading -->
-<!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
-<!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
-<!-- 20180703 - added category best lap. added local storage for category or all button.  -->
-<!-- 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. -->
-<!-- 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). -->
-<!-- 20180903 - added option for harescramble finish. -->
-<!-- 20181010 - added previous results and race progress ticker. -->
-<!-- 20181105 - added show penalty time on hover. -->
+// 20180518 - array refactoring with all/category toggle, display arrows for position change 
+// 20180522 - add fades and competitor info on arrows display 
+// 20180523 - add competitor number color/background according to category 
+// 20180527 - add message uploading 
+// 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html 
+// 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  
+// 20180703 - added category best lap. added local storage for category or all button.  
+// 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. 
+// 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). 
+// 20180903 - added option for harescramble finish. 
+// 20181010 - added previous results and race progress ticker. 
+// 20181105 - added show penalty time on hover. 
 
-<!-- tag heuer live timing -->
-
-<script type="text/javascript">
 
     var cleanResults = "0"; // clean the table for coping to results page
     
@@ -36,9 +33,13 @@
     
     var option = "1";  // tickerTest
     
-    var categoryBestTime = {};
-    if (sessionStorage.getItem('categoryBestTime')) {
-        categoryBestTime = JSON.parse(sessionStorage.getItem('categoryBestTime'));
+//    var categoryBestTime = {};
+//    if (sessionStorage.getItem('categoryBestTime')) {
+//        categoryBestTime = JSON.parse(sessionStorage.getItem('categoryBestTime'));
+//    }
+    var categoryBestTimePrevious = {};
+    if (sessionStorage.getItem('categoryBestTimePrevious')) {
+        categoryBestTimePrevious = JSON.parse(sessionStorage.getItem('categoryBestTimePrevious'));
     }
     
     var ticker = [];  // tickerTest
@@ -191,7 +192,7 @@
                 console.log('msg fetch failed', err);
             }
 
-            try {
+/*            try {
                 const response2 = await fetch('previousresults.txt', {cache: "no-store"});
                 if (response2.ok) {
                     document.getElementById('previousResults').innerHTML = (await response2.text());
@@ -200,7 +201,7 @@
             catch (err) {
                 console.log('previous results fetch failed', err);
             }
-            
+*/            
         } else {
             var xhr;
             xhr = new XMLHttpRequest;
@@ -221,7 +222,7 @@
             populatePre('uploadMsg.txt','updates');
 
             // upload previous results            
-            populatePre('previousresults.txt','previousResults');
+        //    populatePre('previousresults.txt','previousResults');
             
         }
 
@@ -342,7 +343,8 @@
       //  const now = new Date();  // tickerTest
       //  var time = ('0' + now.getHours()).slice(-2)+ ':' + ('0' + now.getMinutes()).slice(-2);  // tickerTest // adding leading 0 if needed
         
-        categoryBestTimeTemp = {};
+     //   categoryBestTimeTemp = {};
+    var categoryBestTime = {};
 
 
         if (eventName != HeaderEventName) {  // tickerTest
@@ -351,16 +353,16 @@
             flag = "";  // tickerTest
             firstPlace = "";  // tickerTest
             tickerBestTime = "-";  // tickerTest
-            categoryBestTime = {};
+   //         categoryBestTime = {};
+            categoryBestTimePrevious = {};
         }
         
         eventName = HeaderEventName;  // tickerTest
         sessionStorage.setItem('eventName', eventName);  // tickerTest
         
-        
             if (Text[0].includes("_GreenFlag")) {   // tickerTest
                 if (firstPass == "0" && flag != "green") {
-                    ticker.push(time + ' - ' + 'זינוק ' + HeaderRaceName);  // tickerTest
+                    ticker.push(time + ' - ' + 'זינוק/דגל ירוק ' + HeaderRaceName);  // tickerTest
                 }
                 flag = "green";
             } else if (Text[0].includes("_CheckeredFlag")) {
@@ -388,40 +390,41 @@
             }  // tickerTest
             
 
-        if (Text[0].includes("טסט") || Text[0].includes("ספיישל")) { // will show individual laps for enduro special test
+        if (HeaderName[0].includes("טסט") || HeaderName[0].includes("ספיישל")) { // will show individual laps for enduro special test
             specialTest = "1";
             showIndividualLaps = "1";
             showLapsNumber = "0";
         }
         
-        if (Text[0].includes("2 הקפות")) { // will show individual laps for enduro special test
+        if (HeaderName[0].includes("2 הקפות")) { // will show individual laps for enduro special test
             showIndividualLaps = "1";
             showLapsNumber = "0";
             laps = 2;
             showBestLap = "0";
-            var sheet = document.createElement('style');
+            Text[0] = Text[0].replace("2 הקפות", "");
+/*            var sheet = document.createElement('style');
             sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
             document.body.appendChild(sheet);
-        }
+*/        }
 
-        if (Text[0].includes("סקרמבל") || Text[0].includes("הייר")) { // will show finished for enduro hareScramble
+        if (HeaderName[0].includes("סקרמבל") || HeaderName[0].includes("הייר")) { // will show finished for enduro hareScramble
             hareScramble = "1";
         }
 
-        if (Text[0].includes("דירוג") || Text[0].includes("דרוג")) { // will show diffrent colmuns for qualifying
+        if (HeaderName[0].includes("דירוג") || HeaderName[0].includes("דרוג")) { // will show diffrent colmuns for qualifying
             qualifying = "1";
             showBestLap = "0";
         }
 
-        if (Text[0].includes("ראלי") && Text[0].includes("ספרינט")) { // will show diffrent colmuns for qualifying
-            var sheet = document.createElement('style');
+        if (HeaderName[0].includes("ראלי") && HeaderName[0].includes("ספרינט")) { // will show diffrent colmuns for qualifying
+/*           var sheet = document.createElement('style');
             sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
             document.body.appendChild(sheet);
-            rallySprint = "1";
+*/            rallySprint = "1";
             showBestLap = "0";
         }
 
-        if (Text[0].includes("+++")) { // clean table for results page
+        if (HeaderName[0].includes("+++")) { // clean table for results page
             cleanResults = "1";
             Text[0] = Text[0].replace("+++", "");
         }
@@ -464,11 +467,11 @@
                     }
                     if (categoryBestTime[lineArray["Id_Categorie"]][0] > timeString2ms(lineArray["Id_MeilleurTour"]) && lineArray["Id_MeilleurTour"] != "-") {
                         categoryBestTime[lineArray["Id_Categorie"]] = [Number(timeString2ms(lineArray["Id_MeilleurTour"])),lineArray["Id_Numero"],lineArray["Id_Nom"]];
-                        
-                        if (useCategory == "yes" && lineArray["Id_Categorie"] != "&nbsp;" && lineArray["Id_Nom"] != "???" && firstPass == "0") {  // tickerTest show best time in category in race progress
+/*                        
+                        if (Object.keys(categoryBestTime).length > 1 && useCategory == "yes" && lineArray["Id_Categorie"] != "&nbsp;" && lineArray["Id_Nom"] != "???" && firstPass == "0") {  // tickerTest show best time in category in race progress
                             ticker.push(time + ' - ' + lineArray["Id_Nom"] + ' (' + lineArray["Id_Numero"] + ') הקפה מהירה בקטגוריה ' + lineArray["Id_Categorie"] + ' - <span dir="ltr">' + lineArray["Id_MeilleurTour"] + '</span>');  // tickerTest
                         }  // tickerTest
-                        
+*/                        
                     }
  //               }
                 allArray.push(lineArray); 
@@ -581,7 +584,7 @@ switch(option) {  // tickerTest
 
 
                 
-                
+/*                
  // best time
     var categoryTemp = allArray[l]["Id_Categorie"];
     if (typeof categoryBestTimeTemp[categoryTemp] == "undefined" && allArray[l]["Id_MeilleurTour"] != "-") {
@@ -590,7 +593,7 @@ switch(option) {  // tickerTest
         categoryBestTimeTemp[categoryTemp] = timeString2ms(allArray[l]["Id_MeilleurTour"]);
     }
                
-     
+*/     
                 
                 
                 
@@ -776,11 +779,11 @@ switch(option) {  // tickerTest
         
 
 if (allArray[l]["Id_Position"] == 1) {   // tickerTest
-    if (firstPass == "1" && (Text[0].includes("_GreenFlag") || Text[0].includes("_CheckeredFlag"))) {
+    if (firstPass == "1" && (HeaderName[0].includes("_GreenFlag") || HeaderName[0].includes("_CheckeredFlag"))) {
         firstPlace = allArray[l]["Id_Numero"];  // tickerTest
     }
 
-    if (firstPlace != allArray[l]["Id_Numero"] && allArray[l]["Id_NbTour"] > 0 && (Text[0].includes("_GreenFlag") || Text[0].includes("_CheckeredFlag"))) {
+    if (firstPlace != allArray[l]["Id_Numero"] && allArray[l]["Id_NbTour"] > 0 && (HeaderName[0].includes("_GreenFlag") || HeaderName[0].includes("_CheckeredFlag"))) {
         firstPlace = allArray[l]["Id_Numero"];  // tickerTest
         ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עבר למקום הראשון!');  // tickerTest
     }  // tickerTest
@@ -849,8 +852,10 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                                 
                                 if (useCategory == "no" && competitorPosition > 1 && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Position"] <= 3) {  // tickerTest
                                 ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
-                                } else if (useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
+                                } else if (Object.keys(categoryBestTime).length > 1 && useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
                                 ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
+                                } else if (useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
+                                ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
                                 }// tickerTest
                             }
                         }
@@ -967,36 +972,36 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 
                  if (allArray[l]["Id_Arrow"].includes("dnsfq")) { 
                     
-                    finalText += '<td class="dnsfq rnk_font">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td class="rnk_font dnsfq">' + allArray[l]["Id_Arrow"] + '</td>\n';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
-                    finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td class="' + checkeredFlag + 'rnk_font red">' + allArray[l]["Id_Arrow"] + '</td>\n';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_PlusPosition")) { // green
                     
-                    finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td class="' + checkeredFlag + 'rnk_font green">' + allArray[l]["Id_Arrow"] + '</td>\n';
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td class="finished black rnk_font"></td>\n';
-        //            finalText += '<td class="finished black rnk_font">'+allArray[l]["Id_penalty"]+'</td>\n'; // + P penalty
+                    finalText += '<td class="rnk_font finished black"></td>\n';
+        //            finalText += '<td class="rnk_font finished black">'+allArray[l]["Id_penalty"]+'</td>\n'; // + P penalty
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // black
                     
-                    finalText += '<td class="black rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td class="rnk_font black fadeIn">' + allArray[l]["Id_Arrow"] + '</td>\n';
                     
                 } else if (allArray[l]["Id_Arrow"] == "P") { // black
                     
-                    finalText += '<td class="black rnk_font fadeIn">P</td>\n';
+                    finalText += '<td class="rnk_font black fadeIn">P</td>\n';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
                     
-                    finalText += '<td class="white rnk_font scale">&#9670;</td>\n';
+                    finalText += '<td class="rnk_font white scale">&#9670;</td>\n';
                     
                 } else {
 
-                    finalText += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td class="rnk_font orange">' + allArray[l]["Id_Arrow"] + '</td>\n';
 
                 }
                 
@@ -1046,32 +1051,32 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     var opt3 = allArray[l]["Id_Numero"];                        
                     var opt4 = allArray[l]["Id_Categorie"];
                     
-                    if (useCategory == "no" && (Text[0].includes("מוטוקרוס") || Text[0].includes("אנדורו"))) {
+                    if (useCategory == "no" && (HeaderName[0].includes("מוטוקרוס") || HeaderName[0].includes("אנדורו"))) {
                         
                         if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font blackCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("E2")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font redCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font redCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font yellowCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font greenCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("ג'וניור מקצועי") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font grayCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font grayCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font blueCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font blueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("ג'וניור") || opt4.toUpperCase().includes("expert")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font orangeCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font orangeCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font whiteCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font whiteCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font pinkCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         }
 
                     } else if (useCategory == "no") {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>\n';
+                            finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     } else {
                             finalText += '<td class="rnk_font highlight">' + opt3 + '</td>\n';
                     }
@@ -1103,10 +1108,10 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
         // adding and coloring the laps and best time
         // short version
                     for (q = 1; q <= laps; q++) {
-                            if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
-                                finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>\n';
-                            } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
-                                finalText += '<td class="BestTime rnk_font">' + allArray[l]["Id_lap"+q] + '</td>\n';
+                            if (showBestLap == "1" && allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
+                                finalText += '<td class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>\n';
+                            } else if (showBestLap == "1" && allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
+                                finalText += '<td class="rnk_font BestTime">' + allArray[l]["Id_lap"+q] + '</td>\n';
                             } else {
                                 finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>\n';
                             }
@@ -1134,8 +1139,8 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     
                 }
 
-                
-                if (tickerBestTime != allArray[l]["Id_TpsTour"] && bestTime[competitorNumber] == " BestTimeOverall" && allArray[l]["Id_Nom"] != "???") {  // tickerTest show best time overall in race progress
+                // tickerTest show best time overall in race progress
+                if (tickerBestTime != allArray[l]["Id_TpsTour"] && bestTime[competitorNumber] == " BestTimeOverall" && allArray[l]["Id_Nom"] != "???") {  
                     tickerBestTime = allArray[l]["Id_TpsTour"];  // tickerTest
                     if (firstPass == "0") {
                         ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה - ' + tickerBestTime);  // tickerTest
@@ -1160,7 +1165,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                             if (allArray[l]["Id_PenaliteTpsCumule"].includes(".000")) {
                                 allArray[l]["Id_PenaliteTpsCumule"] = allArray[l]["Id_PenaliteTpsCumule"].replace('.000', '');
                             }
-                            finalText += '<td aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"] + '" class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
+                            finalText += '<td class="rnk_font penalty" aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"] + '">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         } else if (allArray[l]["Id_TpsCumule_Penalty"] == "1") {
                             finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         } else {
@@ -1214,17 +1219,34 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
 
                 finalText += '</table>\n</div>\n';
-     
+/*     
 // make sure category best lap is correct
                for (var key in categoryBestTimeTemp) { 
                    if (categoryBestTimeTemp[key] != categoryBestTime[key][0]) {
                        categoryBestTime[key][0] = categoryBestTimeTemp[key];
                    }
-
-                   
                }
+*/
 
+                if (Object.keys(categoryBestTimePrevious).length > 1 && Object.keys(categoryBestTime).length > 1) {
+                    for (var key in categoryBestTime) { 
+                        if (categoryBestTime[key][0] != categoryBestTimePrevious[key][0] && key != "&nbsp;" && categoryBestTime[key][2] != "???") {  // tickerTest show best time in category in race progress
+
+                                var bestTimeDisplay = ms2TimeString(Number(categoryBestTime[key][0]));
+                                
+                                if (bestTimeDisplay.toString().substring(0, 3) == "00:") {
+                                    bestTimeDisplay = bestTimeDisplay.substr(3);
+                                }
+                                if (bestTimeDisplay.toString().substring(0, 1) == "0" && bestTimeDisplay.includes(":")) {
+                                    bestTimeDisplay = bestTimeDisplay.substr(1);
+                                }
+
+                                ticker.push(time + ' - ' + categoryBestTime[key][2] + ' (' + categoryBestTime[key][1] + ') הקפה מהירה בקטגוריה ' + key + ' - <span dir="ltr">' + bestTimeDisplay + '</span>');  // tickerTest
+                        }  // tickerTest
+                    }
+                }   
                 
+                categoryBestTimePrevious = categoryBestTime;
                 
 /* 
     var headerText = '<tr class="rnkh_bkcolor">';
@@ -1265,7 +1287,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-               console.log(allArray);
+         //      console.log(allArray);
          //    console.log(finalText);
 
 
@@ -1298,7 +1320,8 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
         sessionStorage.setItem('flag', flag);  // tickerTest
         sessionStorage.setItem('tickerBestTime', tickerBestTime);  // tickerTest
 
-        sessionStorage.setItem('categoryBestTime', JSON.stringify(categoryBestTime));
+//        sessionStorage.setItem('categoryBestTime', JSON.stringify(categoryBestTime));
+        sessionStorage.setItem('categoryBestTimePrevious', JSON.stringify(categoryBestTimePrevious));
 
         firstPass = "0";  // tickerTest
 
@@ -1358,4 +1381,3 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
         (k<100?k<10?'00':0:'')+k // optimized
     };
 
-</script>

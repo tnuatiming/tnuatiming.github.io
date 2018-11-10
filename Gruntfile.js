@@ -1,4 +1,7 @@
+
  module.exports = function(grunt) {
+const compilerPackage = require('google-closure-compiler');
+compilerPackage.grunt(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -21,6 +24,9 @@
       },
       htmlproof: {
         command: 'htmlproofer ./_site --disable-external --check-html'
+      },
+      googleClosureCompiler: {
+        command: 'npx google-closure-compiler --compilation_level ADVANCED --warning_level VERBOSE --js=live1/elite.js --js_output_file=live1/elite.min.js && npx google-closure-compiler --compilation_level ADVANCED --warning_level VERBOSE --js=live/elite.js --js_output_file=live/elite.min.js'
       },
       lftp: {
 //        command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname false ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; rm ./public_html/live/p1.html ; rm ./public_html/live1/p1.html ; exit" | tee "log/lftp_$(date +%Y%m%d_%H%M).log"'
@@ -130,8 +136,21 @@ zip: {
       './jekyll_backup/main.zip': ['*', '!id_rsa', '!id_rsa.pub', '.htaccess', '_config.yml', '!password_protect.php']
 },
     
-
-  ftp_push: {
+'closure-compiler': {
+    my_target: {
+      files: {
+        'live1/elite.min.js': ['live1/elite.js']
+      },
+      options: {
+        js: '/node_modules/google-closure-library/**.js',
+        compilation_level: 'SIMPLE',
+        manage_closure_dependencies: true,
+        language_in: 'ECMASCRIPT5_STRICT'
+      }
+    }
+},
+  
+ftp_push: {
     your_target: {
       options: {
 		authKey: "key1",
@@ -195,7 +214,7 @@ grunt.registerTask('csv', ['shell:csvUpdate']);
 grunt.registerTask('htmlproof', ['shell:htmlproof']);
 grunt.registerTask('upload', ['shell:jekyllBuild', 'html', 'css', 'shell:lftp', 'shell:gitUpdate']);
 grunt.registerTask('backup', ['zip_directories', 'zip']);
-grunt.registerTask('ftp', ['shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'shell:lftp', 'shell:clean']);
+grunt.registerTask('ftp', ['shell:googleClosureCompiler', 'shell:csvUpdate', 'zip_directories', 'zip', 'shell:jekyllBuild', 'shell:htmlproof', 'html', 'css', 'shell:lftp', 'shell:clean']);
 grunt.registerTask('lftp', ['shell:lftp']);
 //  grunt.registerTask('ftp', ['shell:jekyllBuild', 'replace', 'ftp_push']);
 //  grunt.registerTask('upload', ['shell:jekyllBuild', 'replace', 'ftp_push', 'shell:gitUpdate']);

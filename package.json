@@ -4,12 +4,13 @@
   "devDependencies": {},
   "dependencies": {
     "coffeescript": "^2.3.2",
-    "graceful-fs": "^4.1.11",
+    "google-closure-compiler": "^20181028.0.1",
+    "graceful-fs": "^4.1.15",
     "grunt": "^1.0.3",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-htmlmin": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-ftp-push": "^1.2.1",
     "grunt-shell": "^2.1.0",
@@ -17,6 +18,7 @@
     "grunt-zip": "^0.18.1",
     "grunt-zip-directories": "^1.0.1",
     "load-grunt-tasks": "^4.0.0",
-    "minimatch": "^3.0.4"
+    "minimatch": "^3.0.4",
+    "uglify-js": "^3.4.9"
   }
 }
