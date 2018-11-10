@@ -26,7 +26,7 @@ compilerPackage.grunt(grunt);
         command: 'htmlproofer ./_site --disable-external --check-html'
       },
       googleClosureCompiler: {
-        command: 'npx google-closure-compiler --compilation_level ADVANCED --warning_level VERBOSE --js=live1/elite.js --js_output_file=live1/elite.min.js && npx google-closure-compiler --compilation_level ADVANCED --warning_level VERBOSE --js=live/elite.js --js_output_file=live/elite.min.js'
+        command: 'npx google-closure-compiler --compilation_level SIMPLE --js=live1/elite.js --js_output_file=live1/elite.min.js && npx google-closure-compiler --compilation_level SIMPLE --js=live/elite.js --js_output_file=live/elite.min.js'
       },
       lftp: {
 //        command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname false ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; rm ./public_html/live/p1.html ; rm ./public_html/live1/p1.html ; exit" | tee "log/lftp_$(date +%Y%m%d_%H%M).log"'

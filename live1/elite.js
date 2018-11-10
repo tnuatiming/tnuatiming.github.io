@@ -291,9 +291,9 @@
            
         var i;
         var lines;
-        competitorPosition = 0;
-        competitorNumber = 0;
-        competitorLaps = 0;
+        var competitorPosition = 0;
+        var competitorNumber = 0;
+        var competitorLaps = 0;
   //      var qqq = [];
   //      var hhh = [];
   //      var temp = [];
@@ -641,16 +641,16 @@ switch(option) {  // tickerTest
 
                         if ((allArray[l]["Id_TpsTour"+q] && allArray[l]["Id_TpsTour"+q] != "-") || q == 0) {
                                 
-                            var f = q;
+                            var ff = q;
                             for (z = 1; z <= g; z++)  {
                                 
-                                if (f > 0) {
-                                    allArray[l]["Id_lap"+z] = allArray[l]["Id_TpsTour"+f];
+                                if (ff > 0) {
+                                    allArray[l]["Id_lap"+z] = allArray[l]["Id_TpsTour"+ff];
                                 } else {
                                     allArray[l]["Id_lap"+z] = "-";
                                 }
                  
-                                f--; 
+                                ff--; 
                             }     
                 
                             q = -1;
@@ -1295,12 +1295,12 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
     if (document.getElementById("tickerTest")) {  // tickerTest
 
-        tickerInnerHTML = "";
+        var tickerInnerHTML = "";
 
         if (ticker.length > 0) {
             tickerInnerHTML += "<ul>";
-            for (var i = 0; i < ticker.length; i++) {
-                tickerInnerHTML += '<li>' + ticker[i] + '</li>';
+            for (var ii = 0; ii < ticker.length; ii++) {
+                tickerInnerHTML += '<li>' + ticker[ii] + '</li>';
             }
             tickerInnerHTML += "</ul>";
 
