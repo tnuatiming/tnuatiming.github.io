@@ -46,7 +46,8 @@ compilerPackage.grunt(grunt);
       options: {
      //   js: '/node_modules/google-closure-library/**.js',
       //  manage_closure_dependencies: true,
-        compilation_level: 'SIMPLE'
+     //   warning_level: 'VERBOSE',
+        compilation_level: 'SIMPLE' // ADVANCED
       }
     }
 },

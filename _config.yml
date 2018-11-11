@@ -23,6 +23,7 @@ exclude: [
     images/temp,
     images/original,
     images/old,
+    live*/*old*,
     live/Images_old,
     live*/elite.js,
     live*/elite*.js,
