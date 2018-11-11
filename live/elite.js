@@ -11,8 +11,6 @@
 // 20181010 - added previous results and race progress ticker. 
 // 20181105 - added show penalty time on hover. 
 
-
-    var cleanResults = "0"; // clean the table for coping to results page
     
     var harescrambleFinishE = 7200000; // 2 hours
     var harescrambleFinishC = 5400000; // 1.5 hours
@@ -284,12 +282,14 @@
         var showLapsNumber = 1;
         var showBestLap = 1;
 
+        var cleanResults = "0"; // clean the table for copying to results page
+
         var specialTest = 0;
         var hareScramble = 0;
         var rallySprint = 0;
         var qualifying = 0;
            
-        var i;
+        var b, q, z, f, l, j, g, gg, i, ff, ii;
         var lines;
         var competitorPosition = 0;
         var competitorNumber = 0;
@@ -305,7 +305,6 @@
         var bestTime = [];
         var category = "&nbsp;";
         var ttt = 0;
-        var b, q, z, f;
         var pp = 0;
         var positionChanged = "";
         var laps = 6; // number of laps 
@@ -579,7 +578,7 @@ switch(option) {  // tickerTest
 
             finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
             
-            for (var l = 0; l < allArray.length; l++) {
+            for (l = 0; l < allArray.length; l++) {
 
 
 
@@ -636,12 +635,12 @@ switch(option) {  // tickerTest
                        // reorder laps as elite3 does somthing wrong with the order 
                  if (allArray[l]["Id_TpsTour1"] && showIndividualLaps == 1) { 
 
-                    var g = laps; // number of laps
-                    for (q = g; q > -1; q--) { 
+                    g = laps; // number of laps
+                    for (gg = g; gg > -1; gg--) { 
 
-                        if ((allArray[l]["Id_TpsTour"+q] && allArray[l]["Id_TpsTour"+q] != "-") || q == 0) {
+                        if ((allArray[l]["Id_TpsTour"+gg] && allArray[l]["Id_TpsTour"+gg] != "-") || gg == 0) {
                                 
-                            var ff = q;
+                            ff = gg;
                             for (z = 1; z <= g; z++)  {
                                 
                                 if (ff > 0) {
@@ -653,7 +652,7 @@ switch(option) {  // tickerTest
                                 ff--; 
                             }     
                 
-                            q = -1;
+                            gg = -1;
                         } 
                     }
                      
@@ -744,8 +743,8 @@ switch(option) {  // tickerTest
             
             if (showIndividualLaps == 1 && allArray[l]["Id_lap1"]) {
                 
-                for (q = 1; q <= laps; q++) {
-                    headerText1 += '<th class="rnkh_font Id_lap' + q + '">הקפה ' + q + '</th>\n';
+                for (j = 1; j <= laps; j++) {
+                    headerText1 += '<th class="rnkh_font Id_lap' + j + '">הקפה ' + j + '</th>\n';
                 }
 /*                
                 headerText1 += '<th class="rnkh_font Id_lap1">הקפה 1</th>\n';
@@ -1299,7 +1298,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
         if (ticker.length > 0) {
             tickerInnerHTML += "<ul>";
-            for (var ii = 0; ii < ticker.length; ii++) {
+            for (ii = 0; ii < ticker.length; ii++) {
                 tickerInnerHTML += '<li>' + ticker[ii] + '</li>';
             }
             tickerInnerHTML += "</ul>";
