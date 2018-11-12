@@ -481,7 +481,6 @@
     //            lineArray["Id_Ecart1erCategorie"] = '-';
     //            lineArray["Id_Image"] = '-';
 
-
                 if (lines[b].includes("(C)")) {
                     penalty = 1;
                 }
@@ -495,6 +494,9 @@
                     }
                 }
 
+                if (hhhPro[pp] == "Id_Ecart1erCategorie" || hhhPro[pp] == "Id_Ecart1er") {
+                    lines[b] = lines[b].replace(">1 הקפות<", ">1 הקפה<"); 
+                }
                 
                 if ((typeof lines[b] != 'undefined') && (cleanResults == "1")) {
                     lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", ""); // replace "" with "P " when penalty shown on Id_Arrow
@@ -504,7 +506,6 @@
                     lineArray[hhhPro[pp]] = "-";
                 }
                 
-
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " BestTimeOverall";
 /*                    if (tickerBestTime != lineArray["Id_TpsTour"]) {  // tickerTest
