@@ -45,7 +45,7 @@
         ticker = JSON.parse(sessionStorage.getItem('ticker'));
     }      // tickerTest
     var firstPlace = "";  // tickerTest
-    var firstPass = "1";  // tickerTest
+    var firstPass = 1;  // tickerTest
     var tickerBestTime = "-";  // tickerTest
     if (sessionStorage.getItem('tickerBestTime')) {
         tickerBestTime = sessionStorage.getItem('tickerBestTime');
@@ -360,27 +360,27 @@
         sessionStorage.setItem('eventName', eventName);  // tickerTest
         
             if (Text[0].includes("_GreenFlag")) {   // tickerTest
-                if (firstPass == "0" && flag != "green") {
+                if (firstPass == 0 && flag != "green") {
                     ticker.push(time + ' - ' + 'זינוק/דגל ירוק ' + HeaderRaceName);  // tickerTest
                 }
                 flag = "green";
             } else if (Text[0].includes("_CheckeredFlag")) {
-                if (firstPass == "0" && flag != "checkered") {
+                if (firstPass == 0 && flag != "checkered") {
                     ticker.push(time + ' - ' + 'סיום ' + HeaderRaceName);  // tickerTest
                 }
                 flag = "checkered";
             } else if (Text[0].includes("_Stop")) {
-                if (firstPass == "0" && flag != "checkered") {
+                if (firstPass == 0 && flag != "checkered") {
                     ticker.push(time + ' - ' + 'סיום');  // tickerTest
                 }
                 flag = "checkered";
             } else if (Text[0].includes("_RedFlag")) {
-                if (firstPass == "0" && flag != "red") {
+                if (firstPass == 0 && flag != "red") {
                     ticker.push(time + ' - ' + 'דגל אדום');  // tickerTest
                 }
                 flag = "red";
             } else if (Text[0].includes("_YellowFlag")) {
-                if (firstPass == "0" && flag != "yellow") {
+                if (firstPass == 0 && flag != "yellow") {
                     ticker.push(time + ' - ' + 'דגל צהוב');  // tickerTest
                 }
                 flag = "yellow";
@@ -467,7 +467,7 @@
                     if (categoryBestTime[lineArray["Id_Categorie"]][0] > timeString2ms(lineArray["Id_MeilleurTour"]) && lineArray["Id_MeilleurTour"] != "-") {
                         categoryBestTime[lineArray["Id_Categorie"]] = [Number(timeString2ms(lineArray["Id_MeilleurTour"])),lineArray["Id_Numero"],lineArray["Id_Nom"]];
 /*                        
-                        if (Object.keys(categoryBestTime).length > 1 && useCategory == "yes" && lineArray["Id_Categorie"] != "&nbsp;" && lineArray["Id_Nom"] != "???" && firstPass == "0") {  // tickerTest show best time in category in race progress
+                        if (Object.keys(categoryBestTime).length > 1 && useCategory == "yes" && lineArray["Id_Categorie"] != "&nbsp;" && lineArray["Id_Nom"] != "???" && firstPass == 0) {  // tickerTest show best time in category in race progress
                             ticker.push(time + ' - ' + lineArray["Id_Nom"] + ' (' + lineArray["Id_Numero"] + ') הקפה מהירה בקטגוריה ' + lineArray["Id_Categorie"] + ' - <span dir="ltr">' + lineArray["Id_MeilleurTour"] + '</span>');  // tickerTest
                         }  // tickerTest
 */                        
@@ -778,7 +778,7 @@ switch(option) {  // tickerTest
         
 
 if (allArray[l]["Id_Position"] == 1) {   // tickerTest
-    if (firstPass == "1" && (HeaderName[0].includes("_GreenFlag") || HeaderName[0].includes("_CheckeredFlag"))) {
+    if (firstPass == 1 && (HeaderName[0].includes("_GreenFlag") || HeaderName[0].includes("_CheckeredFlag"))) {
         firstPlace = allArray[l]["Id_Numero"];  // tickerTest
     }
 
@@ -867,7 +867,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 if (allArray[l]["Id_NbTour"]) {
                     competitorLaps = allArray[l]["Id_NbTour"]; 
                 
-                    if (competitorLaps != lapsArray[competitorNumber] && positionChanged == "" && firstPass == "0") { 
+                    if (competitorLaps != lapsArray[competitorNumber] && positionChanged == "" && firstPass == 0) { 
                         
                         positionChanged = "unChanged "; // blink the competitor line                       
                     }
@@ -1141,7 +1141,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 // tickerTest show best time overall in race progress
                 if (tickerBestTime != allArray[l]["Id_TpsTour"] && bestTime[competitorNumber] == " BestTimeOverall" && allArray[l]["Id_Nom"] != "???") {  
                     tickerBestTime = allArray[l]["Id_TpsTour"];  // tickerTest
-                    if (firstPass == "0") {
+                    if (firstPass == 0) {
                         ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה - ' + tickerBestTime);  // tickerTest
                     }
                 }  // tickerTest
@@ -1294,6 +1294,10 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
     if (document.getElementById("tickerTest")) {  // tickerTest
 
+        if (firstPass == 1) {
+            ticker = [];
+        }
+
         var tickerInnerHTML = "";
 
         if (ticker.length > 0) {
@@ -1305,6 +1309,12 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             document.getElementById("tickerTest").innerHTML = tickerInnerHTML;  // tickerTest
             var tickerElement = ticker.shift();  // tickerTest
+            if (ticker.length > 5) {
+                tickerElement = ticker.shift();  // tickerTest
+            }
+            if (ticker.length > 10) {
+                tickerElement = ticker.shift();  // tickerTest
+            }
         } else {
             document.getElementById("tickerTest").innerHTML = "&nbsp;";  // tickerTest
         }
@@ -1322,7 +1332,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 //        sessionStorage.setItem('categoryBestTime', JSON.stringify(categoryBestTime));
         sessionStorage.setItem('categoryBestTimePrevious', JSON.stringify(categoryBestTimePrevious));
 
-        firstPass = "0";  // tickerTest
+        firstPass = 0;  // tickerTest
 
     //   if (typeof tickerElement != 'undefined') {
     //       document.getElementById("tickerTest").innerHTML = time + " - " + tickerElement;  // tickerTest

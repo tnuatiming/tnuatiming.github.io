@@ -21,6 +21,11 @@ body {
 .navigation, .logotop, .language, ul.logo, .erlier_races {
     display: none;
 }
+
+#live #buttonInfo {
+    display: none;
+}
+
 tr.rnk_bkcolor:nth-child(odd) {
     background-color: #e0e0e0;
     color: #111;
