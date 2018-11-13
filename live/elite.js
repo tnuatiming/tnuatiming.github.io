@@ -302,6 +302,7 @@
         var allArray = [];
         var bestLapComp = 0;
         var bestLap = "99999999999";
+        var zzz = "99999999999";
         var bestTime = [];
         var category = "&nbsp;";
         var ttt = 0;
@@ -472,6 +473,20 @@
 */                        
                     }
                     
+                    
+                    
+ 
+                if (zzz > timeString2ms(lineArray["Id_MeilleurTour"])) {
+                    zzz = timeString2ms(lineArray["Id_MeilleurTour"]);
+                }
+                
+                
+                
+                   
+                    
+                    
+                    
+                    
 //               }
                 allArray.push(lineArray); 
                 lineArray = [];
@@ -509,6 +524,7 @@
                 
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = " BestTimeOverall";
+                    
 /*                    if (tickerBestTime != lineArray["Id_TpsTour"]) {  // tickerTest
                         tickerBestTime = lineArray["Id_TpsTour"];  // tickerTest
                         ticker.push(time + ' - ' + lineArray["Id_Nom"] + ' (' + lineArray["Id_Numero"] + ') הקפה מהירה במקצה ' + tickerBestTime);  // tickerTest
@@ -519,6 +535,7 @@
                 } else if  (hhhPro[pp] == "Id_TpsTour") {
                     bestTime[lineArray["Id_Numero"]] = "";
                 }
+                
                 // fix category not defined
                 if (hhhPro[pp] == "Id_Categorie" && (lineArray[hhhPro[pp]] == "-" || lineArray[hhhPro[pp]] == "" || lineArray[hhhPro[pp]] == "&nbsp;" || typeof lineArray[hhhPro[pp]] == 'undefined')) {
                     lineArray[hhhPro[pp]] = "&nbsp;";   
@@ -957,7 +974,6 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                         //   positionChanged = "same ";
                 }                        
          
-                    category = allArray[l]["Id_Categorie"];
 
             // add category name header and table header
             if (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes") {
@@ -975,7 +991,8 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: (' + categoryBestTime[category][1] + ') ' + categoryBestTime[category][2] + ' - ' + bestTimeDisplay + '</td></tr>\n';
                 }
             
-           
+            category = allArray[l]["Id_Categorie"];
+
             if (categoryPenalty[category] == 1 && cleanResults == 1) {
                 finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerTextP + '\n';                
             } else {
@@ -1218,21 +1235,21 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 } else {
 
                     if (cleanResults == 0) {
-                        finalText += '<td class="rnk_font' + bestTime[competitorNumber] + '">' + allArray[l]["Id_TpsTour"] + '</td>\n';
+                        finalText += '<td class="rnk_font' + bestTime[allArray[l]["Id_Numero"]] + '">' + allArray[l]["Id_TpsTour"] + '</td>\n';
                     }
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_MeilleurTour"] + '</td>\n';
                     
                 }
 
                 // tickerTest show best time overall in race progress
-                if (tickerBestTime != allArray[l]["Id_TpsTour"] && bestTime[competitorNumber] == " BestTimeOverall" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
-                    tickerBestTime = allArray[l]["Id_TpsTour"];  // tickerTest
+                if (tickerBestTime != zzz && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
+                    tickerBestTime = zzz;  // tickerTest
                     if (firstPass == 0) {
                         ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה - ' + tickerBestTime);  // tickerTest
                     }
                 }  // tickerTest
 
-                
+
  /*               
                 for (var key in categoryBestTime) {  // tickerTest show best time in category in race progress
                     if (useCategory == "yes" && key == category && Number(categoryBestTime[category][0]) > timeString2ms(allArray[l]["Id_MeilleurTour"])) {  // tickerTest
@@ -1399,8 +1416,10 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-         //      console.log(allArray);
+          //     console.log(allArray);
          //    console.log(finalText);
+          //      console.log(bestTime);
+           //     console.log(tickerBestTime);
 
 
     tableClass = "";
