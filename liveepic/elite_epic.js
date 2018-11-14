@@ -1,15 +1,12 @@
-<!-- 20180518 - array refactoring with all/category toggle, display arrows for position change -->
-<!-- 20180522 - add fades and competitor info on arrows display -->
-<!-- 20180523 - add competitor number color/background according to category -->
-<!-- 20180527 - add message uploading -->
-<!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
-<!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
-<!-- 20180701 - added penalty indicator.  -->
-<!-- 20181030 - epic israel version.  -->
+// 20180518 - array refactoring with all/category toggle, display arrows for position change 
+// 20180522 - add fades and competitor info on arrows display 
+// 20180523 - add competitor number color/background according to category 
+// 20180527 - add message uploading 
+// 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html 
+// 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  
+// 20180701 - added penalty indicator.  
+// 20181030 - epic israel version.  
 
-<!-- tag heuer live timing -->
-
-<script type="text/javascript">
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
@@ -27,7 +24,7 @@
     }
 
     var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/live1/p1.html";    
+    var url1 = "https://tnuatiming.com/liveepic/p1.html";    
     var text1;
 
     function category(choice){
@@ -45,10 +42,14 @@
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
-        Load(url1, 'result');
+        Load('p1.html', 'result');
     };
 
-    function Load(url, target) {
+    async function Load(url, target) {
+        
+        var loop;
+        if (TimerLoad) clearTimeout(TimerLoad);
+
 
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
@@ -58,47 +59,125 @@
             document.getElementById("displayAllButton").style.display = "none";        
         }
 
-        var xhr;
-        var fct;
-        if (UrlChange) url = url1;
-        else UrlRefresh = url1;
-        UrlChange = 0;
-        if (TimerLoad) clearTimeout(TimerLoad);
+/*        await fetch(url, {cache: "no-store"})
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+            document.getElementById(target).innerHTML = createLiveTable(data);
+        })
+        .catch(rejected => {
+            console.log('page unavailable');
+        });
+*/
+        if (self.fetch) {
 
-
-        xhr = new XMLHttpRequest;
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                text1 = xhr.responseText;
-                document.getElementById(target).innerHTML = createLiveTable();
+            try {
+                const response = await fetch(url, {cache: "no-store"});
+                if (response.ok) {
+                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById(target).innerHTML = createLiveTable(await response.text());
+                }
             }
-        };
-        xhr.open("GET", url1 + "?r=" + Math.random(), true);
-        xhr.send(null);
+            catch (err) {
+                console.log('results fetch failed', err);
+            }
 
-        fct = function() {
-            Load(url1, target)
-        };
-        populatePre('uploadMsg.txt'); // upload message
-        TimerLoad = setTimeout(fct, Rafraichir);
-        Rafraichir = 55000;
-    };
+            try {
+                const response1 = await fetch('uploadMsg.txt', {cache: "no-store"});
+                if (response1.ok) {
+                    document.getElementById('updates').innerHTML = (await response1.text());
+                }
+            }
+            catch (err) {
+                console.log('msg fetch failed', err);
+            }
 
+/*            try {
+                const response2 = await fetch('previousresults.txt', {cache: "no-store"});
+                if (response2.ok) {
+                    document.getElementById('previousResults').innerHTML = (await response2.text());
+                }
+            }
+            catch (err) {
+                console.log('previous results fetch failed', err);
+            }
+*/            
+        } else {
+            var xhr;
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById(target).innerHTML = createLiveTable(xhr.responseText);
+    //           } else {
+    //               document.getElementById("categoryOrAll").style.display = "none";
+                }
+            };
+            
+        //    xhr.open("GET", url + "?r=" + Math.random(), true);
+            xhr.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
+            xhr.send(null);
+
+            // upload message
+            populatePre('uploadMsg.txt','updates');
+
+            // upload previous results            
+        //    populatePre('previousresults.txt','previousResults');
+            
+        }
+
+/*
+        await fetch('uploadMsg.txt', {cache: "no-store"})
+        .then(res1 => res1.text())
+        .then(data1 => {
+            document.getElementById('updates').innerHTML = data1;
+        })
+        .catch(rejected => {
+            console.log('page unavailable');
+        });
+
+        await fetch('previousresults.txt', {cache: "no-store"})
+        .then(res2 => res2.text())
+        .then(data2 => {
+            document.getElementById('previousResults').innerHTML = data2;
+        })
+        .catch(rejected => {
+            console.log('page unavailable');
+        });
+ 
+ // wait 30 seconds
+        await new Promise(resolve => {
+            setTimeout(() => {
+            Load(url, target);
+            }, Rafraichir);
+            Rafraichir = 30000;
+        });
+*/
+        loop = function() {
+            Load(url, target);
+        };
+
+        TimerLoad = setTimeout(loop, Rafraichir);
+        Rafraichir = 30000;
+
+    }
+
+    
     // fn to upload messages
-    function populatePre(url) {
+    function populatePre(url, div) {
         var xhr1 = new XMLHttpRequest();
         xhr1.onreadystatechange = function () {
             if (xhr1.readyState == 4 && xhr1.status == 200) {
-                document.getElementById('updates').innerHTML = xhr1.responseText;
+                document.getElementById(div).innerHTML = xhr1.responseText;
             }
         };
     //    xhr1.open("GET", url + Math.random(), true);
+   //     xhr1.open('GET', url  + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
         xhr1.open('GET', url, true);
-        xhr1.send(null);
-    };
+        xhr1.send();
+    }
 
-    function createLiveTable() {
+    function createLiveTable(text1) {
         var i;
         var lines;
         competitorPosition = 0;
@@ -587,7 +666,9 @@
 
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
-                finalText += '<td style="background-color:blue;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td style="background-color:lightblue;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
+                } else if (allArray[l]["Id_Categorie"] == "g c" && useCategory == "no") {
+                finalText += '<td style="color:white; background-color:red;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 }
@@ -735,4 +816,3 @@
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
 */
-</script>

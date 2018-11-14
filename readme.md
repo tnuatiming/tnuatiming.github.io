@@ -135,3 +135,26 @@ grunt ftp //building, minifing, backuping, proofing and uploading to live site
 
 grunt git  //updating git repo
 
+### on raspberry pi
+
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo apt-get install ruby-full
+sudo apt-get install nodejs npm
+sudo npm install -g grunt-cli
+npm install grunt
+sudo gem install jekyll
+
+sudo pip3 install beautifulsoup4 (for python csv convert)
+
+and add: , encoding='utf-8' to file options in convert_html_to_csv.py
+and: # -*- coding: utf-8 -*- at the top
+
+change to python3 in Gruntfile.js:
+command: 'python3 convert_html_to_csv.py'
+
+install all packges as above
+
+
+
+

@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                 command: 'python convert_html_to_csv.py'
             },
             htmlproof: {
-                command: 'htmlproofer ./_site --disable-external --check-html'
+                command: 'htmlproofer ./_site --disable-external --check-html --alt-ignore --trace'
             },
         //     googleClosureCompiler: {
         //       command: 'npx google-closure-compiler --compilation_level SIMPLE --js=live1/elite.js --js_output_file=live1/elite.min.js && npx google-closure-compiler --compilation_level SIMPLE --js=live/elite.js --js_output_file=live/elite.min.js'
@@ -38,6 +38,7 @@ module.exports = function(grunt) {
         'closure-compiler': {
             my_target: {
                 files: {
+                    'liveepic/elite.min.js': ['liveepic/elite_epic.js'],
                     'live1/elite.min.js': ['live1/elite.js'],
                     'live/elite.min.js': ['live/elite.js']
                 },

@@ -1,0 +1,598 @@
+
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+<head>
+    <title>תנועה מדידת זמנים עונת – live timing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo">
+    <meta name="description" content="תנועה מדידת זמנים עוסקת במדידת זמנים בארועי ספורט">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffcc33">
+    <meta name="apple-mobile-web-app-title" content="תנועה מדדית זמנים">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="תנועה מדדית זמנים">
+    <meta name="msapplication-TileColor" content="#ffcc33">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffcc33">
+    <link rel="stylesheet" media="all" type="text/css" href="/style/global.css">
+    <link rel="stylesheet" media="print" href="/style/print.css">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים">
+    <meta property="og:title" content="תנועה מדידת זמנים  – live timing">
+    <meta property="og:description" content="live timing">
+    <meta property="og:url" content="http://tnuatiming.com/live1/index.html">
+    <meta property="og:image" content="http://tnuatiming.com/images/logo2_og.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+
+<style>
+table {direction:ltr;}
+</style>
+    <!-- tag heuer live timing -->
+
+<script type="text/javascript">
+    var TimerLoad, TimerChange;
+    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
+    var UrlRefresh, UrlChange;
+    Rafraichir = 10000;
+    Changement = 60000;
+    MaxNum = 1;
+    ClassementReduit = 1;
+    ClassementReduitXpremier = 10;
+    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
+    var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
+    
+    var useCategory = "yes";
+    if (sessionStorage.getItem('categoryOrAll')) {
+        useCategory = sessionStorage.getItem('categoryOrAll');
+    }
+
+    var tableClass = "fadeIn ";
+    var url1 = "https://tnuatiming.com/liveepic/p2.html";    
+    var url2 = "https://tnuatiming.com/liveepic/p3.html";    
+    var text1;
+    var text2;
+
+    function category(choice){
+        
+        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+        
+        useCategory = choice;
+        if (useCategory == "yes") {
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "no") {
+            sessionStorage.setItem('categoryOrAll', 'no');
+        }
+        
+        Rafraichir = 10000;
+
+        tableClass = "fadeIn "; // make the table fadeIn on change
+        
+        Load();
+    };
+
+    function Load() {
+
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").style.display = "none";        
+            document.getElementById("displayAllButton").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").style.display = "block";        
+            document.getElementById("displayAllButton").style.display = "none";        
+        }
+
+        var xhr;
+        var xhr2;
+
+        xhr2 = new XMLHttpRequest;
+        xhr2.onreadystatechange = function () {
+            if (xhr2.readyState == 4 && xhr2.status == 200) {
+                text2 = xhr2.responseText;
+            }
+        };
+        xhr2.open("GET", url2 + ((/\?/).test(url2) ? "&" : "?") + (new Date()).getTime());
+        xhr2.send();
+
+        xhr = new XMLHttpRequest;
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                text1 = xhr.responseText;
+                document.getElementById("result").innerHTML = createLiveTable();
+            }
+        };
+        xhr.open("GET", url1 + ((/\?/).test(url1) ? "&" : "?") + (new Date()).getTime());
+        xhr.send();
+                
+        document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+
+    };
+
+
+    function createLiveTable() {
+        var i;
+        var lines;
+        var lines2;
+        competitorPosition = 0;
+        competitorNumber = 0;
+        competitorLaps = 0;
+//        var qqq = new Array();
+//        var hhh = new Array();
+        var hhhPro = new Array();
+        var hhhPro2 = new Array();
+//        var temp = new Array();
+        var lineArray = new Array();
+        var allArray = new Array();
+        var lineArray2 = new Array();
+        var allArray2 = new Array();
+        var penalty = "no";
+        var ttt = 0;
+        var pp = 0;
+        var b;
+        var a;
+        var id;
+        var positionChanged = "";
+        var bestLapComp = 0;
+        var bestLap = "99999999999";
+        var bestLapComp2 = 0;
+        var bestLap2 = "99999999999";
+        var laps = 12; // number of laps
+        /*        
+        var bestTime2comp = 0;
+        var bestTime2 = 0;
+        var bestTimecomp = 0;
+        var bestTime = 0;
+*/        
+        text1 = text1.split('<table'); // split the text to title/time and the table
+        text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(text1[1]);
+
+        lines = text1[1].split("\n");
+        //    console.log(lines.length);
+
+
+
+        text2 = text2.split('<table'); // split the text to title/time and the table
+        text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
+  //      console.log(text2[1]);
+        lines2 = text2[1].split("\n");
+        text2 = [];
+        
+        var finalText = text1[0]; // clear the finalText variable and add the title and time lines
+
+
+
+        for (b = 0; b < lines2.length; b++) { 
+           
+            if (lines2[b].includes('<th class="rnkh_font Id_')) { // header cell
+                id = (lines2[b].substring(lines2[b].indexOf('_font ')+6).split('"')[0]);
+                hhhPro2.push(id);
+            } else if (lines2[b].includes("OddRow") || lines2[b].includes("EvenRow")) { // competitor line
+                ttt = 1;
+            } else if (lines2[b].includes("</tr>") && ttt == 1) { // end competitor line
+                ttt = 0;
+                if (penalty == "yes") {
+                    lineArray2.Id_penalty = "P";
+                } else {
+                    lineArray2.Id_penalty = "&nbsp;";
+                }
+                allArray2.push(lineArray2); // push line to main array
+               lineArray2 = [];
+                pp = 0;
+                penalty = "no";
+            } else if (lines2[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
+                if (lines2[b].includes("(C)")) {
+                    penalty = "yes";
+                }
+
+                lineArray2[hhhPro2[pp]] = lines2[b].substring(lines2[b].indexOf(">")+1,lines2[b].lastIndexOf("<")).replace("(C) ", "");
+                // convert total time to miliseconds
+                if (hhhPro2[pp] == "Id_TpsCumule" && lineArray2[hhhPro2[pp]] != "-" ) {
+                    lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
+                }
+                if (hhhPro2[pp] == "Id_Categorie" && lineArray2[hhhPro2[pp]] == '&nbsp;' ) {
+                    lineArray2[hhhPro2[pp]] = "כללי";   
+                }
+                if (hhhPro2[pp] != "Id_Categorie" && lineArray2[hhhPro2[pp]] == 'undefined' ) {
+                    lineArray2[hhhPro2[pp]] = "-";   
+                }
+/*
+                if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
+                    bestTime2=lineArray2["Id_TpsTour"];
+                    bestTime2comp=lineArray2["Id_Numero"];
+                }
+*/
+                // find best lap overall
+
+                pp += 1;
+        //                console.log(lineArray2);
+         // console.log("x  "+bestLapComp2+"  "+bestLap2);
+            }
+            
+        }
+          console.log(allArray2);
+
+            
+        ttt = 0;
+        pp = 0;
+        penalty = "no";
+  
+            
+        for (b = 0; b < lines.length; b++) { 
+           
+            if (lines[b].includes('<th class="rnkh_font Id_')) { // header cell
+                id = (lines[b].substring(lines[b].indexOf('_font ')+6).split('"')[0]);
+                hhhPro.push(id);
+ //               var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
+ //               hhh[id] = idName;
+ //               temp.push(id,idName);
+ //               qqq.push(temp);
+ //               temp = [];
+            } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) { // competitor line
+                ttt = 1;
+            } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
+                ttt = 0;
+                if (penalty == "yes") {
+                    lineArray.Id_penalty = "P";
+                } else {
+                    lineArray.Id_penalty = "&nbsp;";
+                }
+
+                lineArray["Id_TpsCumule_2"] = "-";                    
+                lineArray["Id_FinishTime"] = 99999999999;
+
+                
+                allArray.push(lineArray); // push line to main array 
+               lineArray = [];
+                pp = 0;
+                penalty = "no";
+            } else if (lines[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
+                if (lines[b].includes("(C)")) {
+                    penalty = "yes";
+                }
+
+                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
+                // convert total time to miliseconds
+                if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
+                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
+                }
+                if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
+                    lineArray[hhhPro[pp]] = "כללי";   
+                }
+                if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
+                    lineArray[hhhPro[pp]] = "-";   
+                }
+/*
+                if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
+                    bestTime=lineArray["Id_TpsTour"];
+                    bestTimecomp=lineArray["Id_Numero"];
+                }
+*/
+
+                pp += 1;
+      //    console.log(lineArray);
+       //   console.log(bestLapComp+"  "+bestLap);
+
+            }
+            
+        }
+
+      //   console.log(allArray);
+     //    console.log(hhh);
+     //    console.log(hhhPro);
+
+     //             console.log(qqq);
+      //   console.log(hhhPro2);
+                         console.log(allArray);
+
+        for (b = 0; b < allArray.length; b++) { // first and main table
+            for (a = 0; a < allArray2.length; a++) { // secound table
+
+                // calculating total time from both arrays
+
+                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+                    
+                    allArray[b]["Id_TpsCumule_2"] = allArray2[a]["Id_TpsCumule"];
+
+                    
+                    if (allArray[b]["Id_TpsCumule"] != "-" && allArray[b]["Id_TpsCumule_2"] != "-") {
+                        
+                        allArray[b]["Id_FinishTime"] = allArray[b]["Id_TpsCumule"] + allArray[b]["Id_TpsCumule_2"];
+                    }
+            
+                }
+                
+                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+                 }
+            } 
+        }
+         // delete the secound array
+         allArray2 = [];
+                                  
+
+         // THE MAGIC - sort the array after the merge to get new results
+        if (useCategory == "no") {
+            allArray.sort(function(a, b){return a.Id_FinishTime - b.Id_FinishTime});
+        } else if (useCategory == "yes") {
+            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_FinishTime - b.Id_FinishTime});
+        }
+         
+         
+
+         
+    // fix the position fields of the competitors and start building the final table
+            var m = 0;
+            var prevCompCat = ""
+
+            finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
+            
+            for (var l = 0; l < allArray.length; l++) {
+
+                // reasign postion number
+                 if (useCategory == "no") {
+                    allArray[l]["Id_Position"] = l+1;
+                 } else if (useCategory == "yes") {
+ 
+                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["Id_Position"] = m;
+                 }
+
+                           if (allArray[l]["Id_Position"] == 1) {
+                                var leaderTime = allArray[l]["Id_FinishTime"];
+                            }
+
+                                    // fix the diff fields of the competitors
+
+                                    var competitorTime = allArray[l]["Id_FinishTime"];
+                                    if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
+                                    allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
+
+                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
+                                        allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
+                                    }
+                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].includes(":")) {
+                                        allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
+                                    }
+                                     
+                                    } else {
+                                    allArray[l]["Id_Ecart1er"] = "-";
+                                    }
+                               
+                            // convert back to time
+                            if (allArray[l]["Id_TpsCumule"] != "-") {  
+                                allArray[l]["Id_TpsCumule"] = ms2TimeString(allArray[l]["Id_TpsCumule"]);
+
+                                
+                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 3) == "00:") {
+                                    allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(3);
+                                }
+                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 1) == "0" && allArray[l]["Id_TpsCumule"].includes(":")) {
+                                    allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(1);
+                                }
+                                
+                            }
+
+                            if (allArray[l]["Id_TpsCumule_2"] != "-") {  
+                                allArray[l]["Id_TpsCumule_2"] = ms2TimeString(allArray[l]["Id_TpsCumule_2"]);
+
+                                
+                                if (allArray[l]["Id_TpsCumule_2"].toString().substring(0, 3) == "00:") {
+                                    allArray[l]["Id_TpsCumule_2"] = allArray[l]["Id_TpsCumule_2"].substr(3);
+                                }
+                                if (allArray[l]["Id_TpsCumule_2"].toString().substring(0, 1) == "0" && allArray[l]["Id_TpsCumule_2"].includes(":")) {
+                                    allArray[l]["Id_TpsCumule_2"] = allArray[l]["Id_TpsCumule_2"].substr(1);
+                                }
+                                
+                            }
+
+                            
+                            if (allArray[l]["Id_FinishTime"] != 99999999999) {  
+                                allArray[l]["Id_FinishTime"] = ms2TimeString(allArray[l]["Id_FinishTime"]);
+
+                                
+                                if (allArray[l]["Id_FinishTime"].toString().substring(0, 3) == "00:") {
+                                    allArray[l]["Id_FinishTime"] = allArray[l]["Id_FinishTime"].substr(3);
+                                }
+                                if (allArray[l]["Id_FinishTime"].toString().substring(0, 1) == "0" && allArray[l]["Id_FinishTime"].includes(":")) {
+                                    allArray[l]["Id_FinishTime"] = allArray[l]["Id_FinishTime"].substr(1);
+                                }
+                                
+                            }
+
+                            
+                            
+                            
+        var headerText1 = '<tr class="rnkh_bkcolor">\n';
+
+   //     for (b = 0; b < qqq.length; b++) { 
+   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
+   //             temp.push(b);
+   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>\n';
+   //         }
+   //     }          
+
+    // hard coded header for now
+            headerText1 += '<th class="rnkh_font" id="Id_Position">Rank</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_Numero">No.</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_Nom">Rider</th>\n';
+            if (useCategory == "no") {
+                headerText1 += '<th class="rnkh_font" id="Id_Categorie">Category</th>\n';
+            }
+            headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">Stage 1</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_TpsCumule_2">Stage 2</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_FinishTime">Time</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">Gap</th>\n';
+
+        
+        headerText1 += '</tr>\n';
+      //   console.log(headerText1);
+      //          console.log(temp);
+
+         
+        
+        
+            // add category name header and table header
+            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';
+            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
+            }
+
+
+            if (l % 2 == 0) { // start building competitor line
+                finalText += '<tr class="rnk_bkcolor OddRow">\n';
+            } else {
+                finalText += '<tr class="rnk_bkcolor EvenRow">\n';
+            }
+       
+        
+                
+
+                if (allArray[l]["Id_FinishTime"] == 99999999999) {
+                    finalText += '<td class="rnk_font"></td>\n'; // add postion
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>\n'; // add postion
+                }
+                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';// add the name
+
+            if (useCategory == "no") {
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the name
+            }
+
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>\n'; // add total time
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>\n'; // add total time
+                
+                if (allArray[l]["Id_FinishTime"] == 99999999999) {
+                    finalText += '<td class="rnk_font">-</td>\n'; // add total time
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add total time
+                }
+                
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
+ 
+                
+     //       }
+
+                 
+                
+      //      }    
+
+                    finalText += '</tr>\n';
+
+               
+            }        
+         
+         
+                finalText += '</table></div>\n';
+     
+
+                
+             console.log(allArray);
+
+         //    console.log(finalText);
+      
+    tableClass = "";
+            
+    return finalText
+
+    };
+       
+    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
+        return a=a.split('.'), // optimized
+        b=a[1]*1||0, // optimized
+        a=a[0].split(':'),
+        b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+    };
+
+    function ms2TimeString(a,k,s,m,h){
+        return k=a%1e3, // optimized by konijn
+        s=a/1e3%60|0,
+        m=a/6e4%60|0,
+        h=a/36e5%24|0,
+        (h?(h<10?'0'+h:h)+':':'')+ // optimized
+        (m<10?0:'')+m+':'+  // optimized
+        (s<10?0:'')+s+'.'+ // optimized
+        (k<100?k<10?'00':0:'')+k // optimized
+    };
+
+</script>
+</head>
+
+<body onload="Load()" id="live">
+    <div class="full-bg fadeIn">
+        <div class="page">
+            <div class="row header">
+                <div class="row language"><a href="/english/index.html" title="Change language to English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="27" height="19"><clipPath id="t"><path d="M30 15h30v15zv15h-30zh-30v-15zv-15h30z"></path></clipPath><path d="M0 0v30h60v-30z" fill="#00247d"></path><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"></path><path d="M0 0L60 30M60 0L0 30" clip-path="url(#t)" stroke="#cf142b" stroke-width="4"></path><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"></path><path d="M30 0v30M0 15h60" stroke="#cf142b" stroke-width="6"></path></svg></a></div>
+                <div
+                    class="logoNav">
+                    <div class="logo_main">
+                        <div class="logo_image">
+                            <ul class="logo">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <div class="logo_text"><a class="main_logo" href="http://tnuatiming.com/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235 90"><switch><g fill="#58585a"><path d="M188.274 11.634h-8.35V1h30.586q12.656 0 18.15 5.36 5.537 5.318 5.537 17.667v31.508h-11.91V24.202q0-7.03-2.856-9.8-2.855-2.768-9.623-2.768h-9.668V34.66q0 7.648-1.76 12.174-1.713 4.527-5.36 6.636-3.647 2.065-10.59 2.065h-2.99V44.9h.748q3.076 0 4.834-1.098 1.758-1.143 2.505-3.516.747-2.373.747-7.163v-21.49zM169.51 55.535h-28.433V44.9h16.567V24.775q0-5.933-.79-8.438-.792-2.55-2.638-3.603-1.845-1.1-5.405-1.1h-5.228V1h7.47q7.56 0 11.294 2.02 3.736 2.022 5.45 6.636 1.713 4.615 1.713 12.833v33.045zM118.313 1h11.865v54.535h-11.865V1zM56.746 45.91q11.337-.174 17.622-2.24L58.81 1h12.877L84.65 38.352q4.967-4 7.076-12.656Q93.836 17.04 93.836 1h12.216q0 20.96-4.702 32.826-4.658 11.822-15.117 17.403-10.46 5.536-29.487 6.37V45.91zM13.547 55.535H1.682V22.4h11.865v33.135zm34.234 0H35.873V23.85q0-6.723-2.857-9.447-2.856-2.77-9.932-2.77H.803V1H23.83Q36.795 1 42.29 6.316q5.493 5.317 5.493 17.622v31.595z"></path><path d="M223.98 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H220.97v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.385-2.44-4.703-2.44-2.966 0-4.878 2.703-1.91 2.68-3.537 9.448L212.86 89h-4.35l3.01-11.8q1.034-4.107 2.066-6.7l-5.493-8.46h4.768l2.748 4.46q1.714-2.592 3.67-3.735 1.955-1.164 4.7-1.164zM202.27 89h-4.064V65.777h-15.38V62.04h22.806v3.736h-3.362V89zM174.058 62.04h4.043v14.173h-4.042V62.04zM165.62 89h-4.065V65.777h-15.38V62.04h22.807v3.736h-3.362V89zM119.917 65.776h-4.175V62.04h14.568q6.065 0 8.7 2.593 2.638 2.57 2.638 8.57V89h-4.043V73.16q0-4.043-1.648-5.712-1.626-1.67-5.69-1.67h-6.307v12.788q0 4.043-.747 6.262-.725 2.22-2.35 3.208-1.627.967-5.12.967h-.243v-3.735h.374q1.538 0 2.417-.55.88-.57 1.253-1.757.374-1.186.374-3.58V65.775zM102.35 65.95v4.198l-2.396-.813q-1.297.68-1.802 1.275-.506.593-.725 1.428-.22.813-.22 2.065V89h-4.043V74.28q0-2.33.88-3.78.9-1.45 3.03-2.154L89.56 65.82v-4.175l12.79 4.306zM74.597 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H71.588v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.384-2.44-4.702-2.44-2.965 0-4.877 2.703-1.912 2.68-3.538 9.448L63.48 89h-4.352l3.01-11.8q1.033-4.107 2.066-6.7l-5.493-8.46h4.77l2.745 4.46q1.714-2.592 3.67-3.735Q71.85 61.6 74.597 61.6zM53.92 89H41.595v-3.735h8.284V73.62q0-3.516-.374-5.032-.35-1.516-1.208-2.153-.857-.66-2.483-.66h-2.966V62.04h2.834q3.517 0 5.12.99 1.627.966 2.374 3.207.747 2.22.747 6.24V89zM32.146 62.04h4.043v14.173h-4.044V62.04zM24.74 89H1.65V62.04h11.8q6.064 0 8.678 2.593 2.615 2.593 2.615 8.57V89zM5.69 65.777v19.49h14.986V73.157q0-4-1.626-5.69-1.604-1.692-5.647-1.692H5.69z"></path></g><foreignObject width="235" height="90" requiredExtensions="http://example.com/SVGExtensions/EmbeddedXHTML"><img src="/images/logo2.png" width="235" height="90" alt="תנועה מדידת זמנים"></foreignObject></switch></svg></a></div>
+                    </div>
+                    <div class="navigation"><svg style="display:none"><symbol id="live-icon" viewBox="0 0 32 32"><path style="fill-opacity:1" d="M 17,6.03787 17,4 21,4 21,2 C 21,0.89544 20.104563,0 18.999938,0 L 13,0 c -1.104562,0 -2,0.89544 -2,2 l 0,2 4,0 0,2.03787 C 8.287563,6.54844 3,12.15669 3,19 3,26.17969 8.820313,32 16,32 23.179688,32 29,26.17969 29,19 29,12.15675 23.712438,6.5485 17,6.03787 Z m 6.071062,20.03319 C 21.18225,27.95981 18.671125,29 16,29 13.328875,29 10.817688,27.95981 8.928938,26.07106 7.040188,24.18231 6,21.67106 6,19 c 0,-2.67106 1.040188,-5.18231 2.928938,-7.07106 1.81375,-1.81369 4.2015,-2.84431 6.753562,-2.92338 l -0.677437,9.81313 C 14.946943,19.64025 15.394563,20 15.999938,20 16.605313,20 17.053,19.64025 16.994813,18.81869 L 16.317438,9.0055 c 2.552062,0.0791 4.939875,1.10975 6.753625,2.92344 C 24.959813,13.81769 26,16.32894 26,19 c 0,2.67106 -1.040187,5.18231 -2.928937,7.07106 z"></path></symbol><symbol id="home-icon" viewBox="0 0 32 32"><path style="fill-opacity:1" d="m 32,18.5 -6,-6 0,-9 -4,0 0,5 -6,-6 -16,16 0,1 4,0 0,10 10,0 0,-6 4,0 0,6 10,0 0,-10 4,0 z"></path></symbol><symbol id="race-icon" viewBox="0 0 32 32"><path style="fill-opacity:1" d="M 26,6 26,2 6,2 6,6 0,6 0,10 c 0,3.31369 2.6861875,6 6,6 0.627375,0 1.2321875,-0.0964 1.800625,-0.27506 1.4429375,2.06275 3.644,3.55612 6.199375,4.07487 L 14,26 12,26 c -2.2091875,0 -4,1.79081 -4,4 l 16,0 c 0,-2.20919 -1.790813,-4 -4,-4 l -2,0 0,-6.20019 c 2.555375,-0.51875 4.756437,-2.01206 6.199375,-4.07487 C 24.767813,15.90356 25.372625,16 26,16 c 3.313812,0 6,-2.68631 6,-6 L 32,6 26,6 Z M 6,13.625 C 4.0011875,13.625 2.375,11.99881 2.375,10 l 0,-2 L 6,8 6,10 c 0,1.25581 0.2321875,2.45725 0.6548125,3.56462 C 6.44225,13.60356 6.223625,13.625 6,13.625 Z M 29.625,10 c 0,1.99881 -1.626188,3.625 -3.625,3.625 -0.223625,0 -0.44225,-0.0214 -0.654812,-0.0604 C 25.767813,12.45725 26,11.25581 26,10 l 0,-2 3.625,0 0,2 z"></path></symbol></svg>
+                        <ul>
+                            <li><a class="home" href="/index.html"><svg class="home-icon"><use xlink:href="#home-icon"></use></svg><span>עמוד&nbsp;הבית</span></a></li>
+                            <li><a class="races" href="/results/index.html"><svg class="race-icon"><use xlink:href="#race-icon"></use></svg><span>תוצאות&nbsp;מרוצים</span></a></li>
+                            <li class="last"><a class="live" href="/live/index.html"><span class="css3-blink"><span>live&nbsp;timing</span><svg class="live-icon"><use xlink:href="#live-icon"></use></svg></span></a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        <div class="row main_content">
+            <div id="raceheader">
+                <h1>תוצאות בזמן אמת</h1></div>
+            <div id="buttonInfo">
+                <div id="categoryOrAll" style="display: block;"><button id="displayCatButton" class="btn" onclick="category(&quot;yes&quot;)" style="display: none;">לפי קטגוריה</button> <button id="displayAllButton" class="btn" onclick="category(&quot;no&quot;)" style="display: block;">כללי</button></div>
+                <div
+                    id="updates">&nbsp;</div>
+        </div>
+        <div id="result">
+        </div>
+        <div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>
+        <div id="previousResults"></div>
+    </div>
+    <div class="row footer"><a class="mail" href="mailto:119raz@walla.com">רז הימן - 119raz@walla.com</a> <a class="copyright" href="/terms.html">© כל הזכויות שמורות לתנועה מדידת זמנים</a> <a class="logo_tiny" href="http://tnuatiming.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><switch><g style="fill-opacity:1;stroke:none"><circle r="7" transform="matrix(0.86602544,0.49999993,-0.49999993,0.86602544,0,0)" style="fill:#f60" cx="24.284611" cy="-5.9378204"></circle><circle r="7" transform="matrix(-0.86602544,0.49999993,-0.49999993,-0.86602544,0,0)" style="fill:#c00" cx="5.9378204" cy="-24.284611"></circle><circle r="7" transform="matrix(0.2588191,0.96592581,-0.96592581,0.25881909,0,0)" style="fill:#039" cx="33.793804" cy="-33.3913"></circle><circle r="7" transform="matrix(0.86602544,-0.49999993,0.49999993,0.86602544,0,0)" style="fill:#6c3" cx="0.28461337" cy="47.507042"></circle></g><foreignObject width="16" height="16" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><img src="/images/logo16.png" width="16" height="16" alt="לוגו תנועה מדידת זמנים"></foreignObject></switch></svg></a></div>
+    </div>
+    </div>
+    <script>
+        ! function(e, a, t, n, g, c, o) {
+            e.GoogleAnalyticsObject = g, e.ga = e.ga || function() {
+                (e.ga.q = e.ga.q || []).push(arguments)
+            }, e.ga.l = 1 * new Date, c = a.createElement(t), o = a.getElementsByTagName(t)[0], c.async = 1, c.src = "https://www.google-analytics.com/analytics.js", o.parentNode.insertBefore(c, o)
+        }(window, document, "script", 0, "ga"), ga("create", "UA-38104277-1", "auto"), ga("send", "pageview")
+    </script>
+</body>
+
+</html>

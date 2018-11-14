@@ -24,6 +24,7 @@ exclude: [
     images/original,
     images/old,
     live*/*old*,
+    live*/p*.html,
     live/Images_old,
     live*/elite.js,
     live*/elite*.js,
