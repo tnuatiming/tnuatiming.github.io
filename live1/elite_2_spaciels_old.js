@@ -1,12 +1,14 @@
-//  20180518 - array refactoring with all/category toggle, display arrows for position change 
-//  20180522 - add fades and competitor info on arrows display 
-//  20180523 - add competitor number color/background according to category 
-//  20180527 - add message uploading 
-//  20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html 
-//  20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  
-//  20180701 - added penalty indicator.  
+<!-- 20180518 - array refactoring with all/category toggle, display arrows for position change -->
+<!-- 20180522 - add fades and competitor info on arrows display -->
+<!-- 20180523 - add competitor number color/background according to category -->
+<!-- 20180527 - add message uploading -->
+<!-- 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html -->
+<!-- 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  -->
+<!-- 20180701 - added penalty indicator.  -->
 
+<!-- tag heuer live timing -->
 
+<script type="text/javascript">
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
@@ -47,11 +49,7 @@
         Load(url1, 'result');
     };
 
-    async function Load(url, target) {
-        
-        var loop;
-        if (TimerLoad) clearTimeout(TimerLoad);
-
+    function Load(url, target) {
 
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
@@ -61,64 +59,13 @@
             document.getElementById("displayAllButton").style.display = "none";        
         }
 
-/*        await fetch(url, {cache: "no-store"})
-        .then(res => res.text())
-        .then(data => {
-            document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-            document.getElementById(target).innerHTML = createLiveTable(data);
-        })
-        .catch(rejected => {
-            console.log('page unavailable');
-        });
-*/
-        if (self.fetch) {
-
-            try {
-                const response = await fetch(url2, {cache: "no-store"});
-                if (response.ok) {
-                 text2 = await response.text();
-                   
-                }
-            }
-            catch (err) {
-                console.log('results fetch failed', err);
-            }
-
-            try {
-                const response2 = await fetch(url1, {cache: "no-store"});
-                if (response2.ok) {
-                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                    text1 = await response2.text();
-                    document.getElementById(target).innerHTML = createLiveTable(text1);
-                }
-            }
-            catch (err) {
-                console.log('results fetch failed', err);
-            }
-
-            try {
-                const response1 = await fetch('uploadMsg.txt', {cache: "no-store"});
-                if (response1.ok) {
-                    document.getElementById('updates').innerHTML = (await response1.text());
-                }
-            }
-            catch (err) {
-                console.log('msg fetch failed', err);
-            }
-
-/*            try {
-                const response2 = await fetch('previousresults.txt', {cache: "no-store"});
-                if (response2.ok) {
-                    document.getElementById('previousResults').innerHTML = (await response2.text());
-                }
-            }
-            catch (err) {
-                console.log('previous results fetch failed', err);
-            }
-*/            
-        } else {
         var xhr;
         var xhr2;
+        var fct;
+        if (UrlChange) url = url1;
+        else UrlRefresh = url1;
+        UrlChange = 0;
+        if (TimerLoad) clearTimeout(TimerLoad);
 
         xhr2 = new XMLHttpRequest;
         xhr2.onreadystatechange = function () {
@@ -139,45 +86,14 @@
         };
         xhr.open("GET", url1 + "?r=" + Math.random(), true);
         xhr.send(null);
-        }
-        
-        populatePre('uploadMsg.txt'); // upload message
 
-/*
-        await fetch('uploadMsg.txt', {cache: "no-store"})
-        .then(res1 => res1.text())
-        .then(data1 => {
-            document.getElementById('updates').innerHTML = data1;
-        })
-        .catch(rejected => {
-            console.log('page unavailable');
-        });
-
-        await fetch('previousresults.txt', {cache: "no-store"})
-        .then(res2 => res2.text())
-        .then(data2 => {
-            document.getElementById('previousResults').innerHTML = data2;
-        })
-        .catch(rejected => {
-            console.log('page unavailable');
-        });
- 
- // wait 30 seconds
-        await new Promise(resolve => {
-            setTimeout(() => {
-            Load(url, target);
-            }, Rafraichir);
-            Rafraichir = 30000;
-        });
-*/
-        loop = function() {
-            Load(url, target);
+        fct = function() {
+            Load(url1, target)
         };
-
-        TimerLoad = setTimeout(loop, Rafraichir);
-        Rafraichir = 30000;
-
-    }
+        populatePre('uploadMsg.txt'); // upload message
+        TimerLoad = setTimeout(fct, Rafraichir);
+        Rafraichir = 55000;
+    };
 
     // fn to upload messages
     function populatePre(url) {
@@ -190,8 +106,8 @@
     //    xhr1.open("GET", url + Math.random(), true);
         xhr1.open('GET', url, true);
         xhr1.send(null);
-    }
-   
+    };
+
     function createLiveTable() {
         var i;
         var lines;
@@ -1049,3 +965,4 @@
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
 */
+</script>
