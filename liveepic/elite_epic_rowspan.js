@@ -509,11 +509,13 @@
             headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
             headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
+            if (useCategory == "no") {
+                headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+            }            
             headerText1 += '<th class="rnkh_font Id_Nom">מתחרה</th>';
     //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
             if (useCategory == "no") {
-
-            headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+                headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
             }            
             headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן</th>';
       //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
@@ -666,7 +668,7 @@
 
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
-                finalText += '<td rowspan="2" style="color:#111; background-color:#add8e6a6;" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td rowspan="2" style="color:#111; background-color:#add8e6bf;" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["Id_Categorie"] == "g c" && useCategory == "no") {
                 finalText += '<td rowspan="2" style="color:white; background-color:red;" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {

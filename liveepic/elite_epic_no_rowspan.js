@@ -510,13 +510,12 @@
             headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
             headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
-            headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
-            if (useCategory == "no") {
-
-            headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
-            }            
             headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
+            headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
             headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+            if (useCategory == "no") {
+                headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+            }            
             headerText1 += '<th class="rnkh_font Id_FinishTime">זמן כולל</th>';
             headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
 
@@ -673,27 +672,21 @@
                 finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 }
 
-                
-                
-                
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
-                if (useCategory == "no") {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
-                }            
-
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
                     finalText += '<td class="rnk_font">-</td>'; // add time
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add time
                 }
-                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
                 if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
                     finalText += '<td class="rnk_font">-</td>'; // add time
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
                 }
-                
+                if (useCategory == "no") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
+                }            
       //          if (overTheTime == "yes") {
                 // make color change FIXME
 
