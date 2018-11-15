@@ -509,14 +509,14 @@
             headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
             headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
-            headerText1 += '<th class="rnkh_font Id_Nom">מתחרה</th>';
-    //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+            headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
+            headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
             if (useCategory == "no") {
 
             headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
             }            
-            headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן</th>';
-      //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+            headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
+            headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
             headerText1 += '<th class="rnkh_font Id_FinishTime">זמן כולל</th>';
             headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
 
@@ -619,65 +619,68 @@
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"].includes("_Status")) { // orange
                     
-                    finalText += '<td rowspan="2" class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
-                    finalText += '<td rowspan="2" class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_PlusPosition")) { // green
                     
-                    finalText += '<td rowspan="2" class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td rowspan="2" class="finished white rnk_font">&nbsp;</td>';
+                    finalText += '<td class="finished white rnk_font">&nbsp;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
                     
-                    finalText += '<td rowspan="2" class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
 
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalText += '<td rowspan="2" class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;</td>';
+                    finalText += '<td class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "P") { // black
                     
-                    finalText += '<td rowspan="2" class="black rnk_font fadeIn">P</td>';
+                    finalText += '<td class="black rnk_font fadeIn">P</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { // white
                     
-                    finalText += '<td rowspan="2" class="white rnk_font scale">&#9670;</td>';
+                    finalText += '<td class="white rnk_font scale">&#9670;</td>';
                     
                 } else {
 
-                    finalText += '<td rowspan="2" class="black rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td class="black rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 }
                 
                 if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["Id_Classe"] == "blue") {
                 
-                    finalText += '<td rowspan="2" class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
                 } else {
                     
-                    finalText += '<td rowspan="2" class="rnk_font bigFont">' + allArray[l]["Id_Position"] + '</td>'; // add postion
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>'; // add postion
                 }
 
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
-                finalText += '<td rowspan="2" style="color:#111; background-color:#add8e6a6;" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td style="color:#111; background-color:lightblue;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["Id_Categorie"] == "g c" && useCategory == "no") {
-                finalText += '<td rowspan="2" style="color:white; background-color:red;" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td style="color:white; background-color:red;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
-                finalText += '<td rowspan="2" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 }
 
-                if (useCategory == "no") {
-                    finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
-                }            
+                
+                
                 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
+                if (useCategory == "no") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
+                }            
 
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
                     finalText += '<td class="rnk_font">-</td>'; // add time
@@ -685,46 +688,32 @@
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add time
                 }
                 
+                if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
+                    finalText += '<td class="rnk_font">-</td>'; // add time
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
+                }
                 
       //          if (overTheTime == "yes") {
                 // make color change FIXME
 
                 
                 if (allArray[l]["Id_FinishTime"] == 99999999999) {
-                finalText += '<td rowspan="2" class="rnk_font">-</td>'; // add total time
+                finalText += '<td class="rnk_font">-</td>'; // add total time
                 } else {
-                finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
                 }
       //          } else {
-       //             finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
+       //             finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
        //         }
-                finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
      //       }
 
                  
                 
       //      }    
 
-                    finalText += '</tr>\n';
-                    
-            if (l % 2 == 0) { // start building competitor line
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
-            } else {
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
-            }
-                    
-                    
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
-                    
-                    
-                if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
-                    finalText += '<td class="rnk_font">-</td>'; // add time
-                } else {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
-                }
-                    
-                    
-                    finalText += '</tr>\n';
+                    finalText += '</tr>';
 
                
             }        
