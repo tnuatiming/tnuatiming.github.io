@@ -666,7 +666,7 @@
 
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
-                finalText += '<td style="background-color:lightblue;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td style="color:#111; background-color:lightblue;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["Id_Categorie"] == "g c" && useCategory == "no") {
                 finalText += '<td style="color:white; background-color:red;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
