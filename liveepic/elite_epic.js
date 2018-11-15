@@ -610,7 +610,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag")) {
+                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["Id_Image"] != "_Status10") {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -619,7 +619,12 @@
                 
                 
                 // add and style the status/arrow
-                if (allArray[l]["Id_Arrow"].includes("_Status")) { // orange
+                if (allArray[l]["Id_Image"] == "_Status10" || allArray[l]["Id_Image_2"] == "_Status10") {
+                
+                    finalText += '<td rowspan="2" class="lightblue rotate rnk_font">&#9608;</td>';
+
+                    
+                } else if (allArray[l]["Id_Arrow"].includes("_Status")) { // orange
                     
                     finalText += '<td rowspan="2" class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     

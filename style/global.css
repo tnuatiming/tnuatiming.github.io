@@ -698,6 +698,10 @@ span#name, span#rund, span#date {
     color: #41b6e6;
     font-weight: 700;
 }
+#live td.lightblue {
+    color: #add8e6;
+    font-weight: 700;
+}
 #live td.orange {
     color: #ff8200;
     font-size: 0.8em;
