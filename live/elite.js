@@ -1246,8 +1246,18 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 // tickerTest show best time overall in race progress
                 if (tickerBestTime != zzz && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
                     tickerBestTime = zzz;  // tickerTest
+                    
+                    var tickerBestTimeTemp = ms2TimeString(tickerBestTime);
+                    
+                    if (tickerBestTimeTemp.toString().substring(0, 3) == "00:") {
+                        tickerBestTimeTemp = tickerBestTimeTemp.substr(3);
+                    }
+                    if (tickerBestTimeTemp.toString().substring(0, 1) == "0" && tickerBestTimeTemp.includes(":")) {
+                        tickerBestTimeTemp = tickerBestTimeTemp.substr(1);
+                    }
+                    
                     if (firstPass == 0) {
-                        ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה - ' + tickerBestTime);  // tickerTest
+                        ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה - ' + tickerBestTimeTemp);  // tickerTest
                     }
                 }  // tickerTest
 
