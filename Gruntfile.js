@@ -199,7 +199,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     //grunt.loadNpmTasks('grunt-ftpush');
-    grunt.loadNpmTasks('grunt-ftp-push');
+    //grunt.loadNpmTasks('grunt-ftp-push');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-zip-directories');
     grunt.loadNpmTasks('grunt-zip');

@@ -213,7 +213,7 @@ table.no_num_color {
 /*#live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) */
 #live tr.rnk_bkcolor:hover, #race tr.rnk_bkcolor:hover {
     background-color: #ffcc33;
-    z-index: 1;
+    z-index: 999;
 }
 /*
 #live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) {

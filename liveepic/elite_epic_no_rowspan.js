@@ -183,13 +183,13 @@
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
-//        var qqq = new Array();
-//        var hhh = new Array();
-        var hhhPro = new Array();
-//        var temp = new Array();
-        var lineArray = new Array();
-        var allArray = new Array();
-        var allArray2 = new Array();
+//        var qqq = [];
+//        var hhh = [];
+        var hhhPro = [];
+//        var temp = [];
+        var lineArray = [];
+        var allArray = [];
+        var allArray2 = [];
         var penalty = "no";
         var ttt = 0;
         var pp = 0;
@@ -251,10 +251,11 @@
                     lineArray.Id_penalty = "&nbsp;";
                 }
                 
-                if (pair_num == 1) {
+                if (lineArray["Id_Categorie"] == 'חד יומי') {
+                    allArray2.push(lineArray); // push line to main array 
+                } else if (pair_num == 1) {
                     allArray.push(lineArray); // push line to main array 
-                }
-                if (pair_num == 2) {
+                } else if (pair_num == 2) {
                     allArray2.push(lineArray); // push line to main array 
                 }
                lineArray = [];
@@ -325,11 +326,11 @@
             for (a = 0; a < allArray2.length; a++) { 
 
                 // calculating total time and total laps from both arrays
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != 99999999999 && allArray2[a]["Id_TpsCumule"] != 99999999999) {
+/*                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != 99999999999 && allArray2[a]["Id_TpsCumule"] != 99999999999) {
                     
           //          allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
                 }
-            
+*/            
                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
                     
                     allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
@@ -358,8 +359,8 @@
                                     
                                     if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) {
                                         allArray[b]["Id_FinishTime"] = 99999999999;
-                                        allArray[b]["Id_Image"] = "_Status10"; // make DSQ
-                                        allArray[b]["Id_Image_2"] = "_Status10"; // make DSQ
+                                        allArray[b]["Id_Image"] = "_Status5"; // make DSQ
+                                        allArray[b]["Id_Image_2"] = "_Status5"; // make DSQ
                                     }
                                     
                                    
@@ -607,7 +608,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["Id_Image"] != "_Status10") {
+                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["Id_Image"] != "_Status5") {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -616,7 +617,7 @@
                 
                 
                 // add and style the status/arrow
-                if (allArray[l]["Id_Image"] == "_Status10" || allArray[l]["Id_Image_2"] == "_Status10") {
+                if (allArray[l]["Id_Image"] == "_Status5" || allArray[l]["Id_Image_2"] == "_Status5") {
                 
                     finalText += '<td rowspan="2" class="lightblue rotate rnk_font">&#9608;</td>';
 
@@ -670,7 +671,7 @@
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
                 finalText += '<td style="color:#111; background-color:#add8e6bf;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["Id_Categorie"] == "g c" && useCategory == "no") {
+                } else if (allArray[l]["Id_Categorie"] == "סמים קשים" && useCategory == "no") {
                 finalText += '<td style="color:white; background-color:red;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
@@ -718,6 +719,10 @@
          
                 finalText += '</table></div>';
      
+ if (Array.isArray(allArray3) || allArray3.length != 0) {
+ 
+     // build secound table
+}        
 
          
           

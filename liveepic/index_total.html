@@ -727,7 +727,7 @@ table {direction:ltr;}
          
                 finalText += '</table></div>\n';
      
-
+//download(finalText, 'finalText.txt', 'text/plain')
                 
              console.log(allArray);
 
@@ -738,6 +738,16 @@ table {direction:ltr;}
     return finalText
 
     }
+    
+/*    function download(text, name, type) {
+        var a = document.getElementById("a");
+        var file = new Blob([text], {type: type});
+        a.href = URL.createObjectURL(file);
+        a.download = name;
+        a.click();
+        URL.revokeObjectURL(a.href);
+    }   
+*/    
        
     function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
         return a=a.split('.'), // optimized
@@ -799,6 +809,7 @@ table {direction:ltr;}
         </div>
         <div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>
         <div id="previousResults"></div>
+        <a href="" id="a"></a>
     </div>
     <div class="row footer"><a class="mail" href="mailto:119raz@walla.com">רז הימן - 119raz@walla.com</a> <a class="copyright" href="/terms.html">© כל הזכויות שמורות לתנועה מדידת זמנים</a> <a class="logo_tiny" href="http://tnuatiming.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><switch><g style="fill-opacity:1;stroke:none"><circle r="7" transform="matrix(0.86602544,0.49999993,-0.49999993,0.86602544,0,0)" style="fill:#f60" cx="24.284611" cy="-5.9378204"></circle><circle r="7" transform="matrix(-0.86602544,0.49999993,-0.49999993,-0.86602544,0,0)" style="fill:#c00" cx="5.9378204" cy="-24.284611"></circle><circle r="7" transform="matrix(0.2588191,0.96592581,-0.96592581,0.25881909,0,0)" style="fill:#039" cx="33.793804" cy="-33.3913"></circle><circle r="7" transform="matrix(0.86602544,-0.49999993,0.49999993,0.86602544,0,0)" style="fill:#6c3" cx="0.28461337" cy="47.507042"></circle></g><foreignObject width="16" height="16" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><img src="/images/logo16.png" width="16" height="16" alt="לוגו תנועה מדידת זמנים"></foreignObject></switch></svg></a></div>
     </div>
