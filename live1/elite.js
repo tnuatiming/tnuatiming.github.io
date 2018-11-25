@@ -1287,7 +1287,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     }                
 
                     if (typeof allArray[l]["Id_PenaliteTpsCumule"] != 'undefined'&& allArray[l]["Id_PenaliteTpsCumule"] != '-'){
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_PenaliteTpsCumule"].replace('.000', '') + '</td>\n';
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_PenaliteTpsCumule"] + '</td>\n';
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
@@ -1299,7 +1299,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
       //                  if (allArray[l]["Id_TpsCumule"].includes("P")) {
                         if (allArray[l]["Id_TpsCumule_Penalty"] == 1 && typeof allArray[l]["Id_PenaliteTpsCumule"] != 'undefined'&& allArray[l]["Id_PenaliteTpsCumule"] != '-') {
-                            finalText += '<td class="rnk_font penalty" aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"].replace('.000', '') + '">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
+                            finalText += '<td class="rnk_font penalty" aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"] + '">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         } else if (allArray[l]["Id_TpsCumule_Penalty"] == 1) {
                             finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>\n';
                         } else {
