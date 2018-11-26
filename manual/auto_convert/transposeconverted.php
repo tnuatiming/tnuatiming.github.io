@@ -74,9 +74,9 @@ if (!$_POST['donttranspose']) {
 
 $html = "";
 if ($count > 12) { //big table
-    $html .= '<table class="line_color no_num_color big_table">'."\r\n";
+    $html .= '<table class="no_num_color big_table">'."\r\n";
 } else {
-    $html .= '<table class="line_color no_num_color">'."\r\n";
+    $html .= '<table class="no_num_color">'."\r\n";
 }
 $html .= '    <tr>'."\r\n";
 $html .= '        <td colspan="99" class="title_font">מהלך המירוץ</td>'."\r\n";

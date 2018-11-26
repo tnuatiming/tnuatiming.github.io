@@ -81,29 +81,53 @@
 
 </body>
 <script>
-// Mouse over event handler
-$('table.no_num_color').on('mouseover', 'td.rnk_font:not(:first-child)', function() {
-    // Store the hovered cell's text in a variable
-    var textToMatch = $(this).text();
 
-    // Loop through every `td` element
-    $('td.rnk_font:not(:first-child)').each(function() {
-        // Pull selected `td` element's text
-        var text = $(this).text();
+var btn = document.querySelectorAll('.no_num_color')
 
-        // Compare this with initial text and add matching class if it matches
-    if (textToMatch === text && text != "") {
-            $(this).addClass('matching');
+if (btn.length > 0) {
+    btn[0].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseover", function() {
+
+        var compareText = e.innerHTML;
+
+        var divs = btn[0].querySelectorAll('td.rnk_font:not(:first-child)'), i;
+        for (i = 0; i < divs.length; ++i) {
+            var text = divs[i].innerHTML;
+
+            // Compare this with initial text and add matching class if it matches
+            if (compareText === text && text != "") {
+                divs[i].classList.add("matching");
+            }
+        }
+    }));
 }
-    });
-});
+if (btn.length > 1) {
+    btn[1].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseover", function() {
 
-// Mouse out event handler
-// This simply removes the matching styling
-$('table.no_num_color').on('mouseout', 'td.rnk_font:not(:first-child)', function() {
-    $('.matching').removeClass('matching');
-});
+        var compareText = e.innerHTML;
+
+        var divs = btn[1].querySelectorAll('td.rnk_font:not(:first-child)'), i;
+        for (i = 0; i < divs.length; ++i) {
+            var text = divs[i].innerHTML;
+
+            // Compare this with initial text and add matching class if it matches
+            if (compareText === text && text != "") {
+                divs[i].classList.add("matching");
+            }
+        }
+    }));
+}
+
+document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseout", function() {
+
+    var divs = document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)'), i;
+    for (i = 0; i < divs.length; ++i) {
+
+            divs[i].classList.remove("matching");
+    }
+}));
 </script>
+
+
 </html>
 
 
