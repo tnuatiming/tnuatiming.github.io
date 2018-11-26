@@ -211,10 +211,15 @@ table.no_num_color {
     background: rgba(187,187,187,0.7);
 }
 /*#live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) */
-#live tr.rnk_bkcolor:hover, #race tr.rnk_bkcolor:hover {
+#live tr.rnk_bkcolor:hover, #race .line_color tr.rnk_bkcolor:hover {
     background-color: #ffcc33;
     z-index: 999;
 }
+/*#race .no_num_color td.rnk_font:hover, */
+#race .no_num_color td.rnk_font.hover, #race .no_num_color td.rnk_font.matching {
+    background: #ffcc33;
+}
+
 /*
 #live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) {
     background-image:
@@ -235,21 +240,21 @@ table.no_num_color {
 }
 
 /*number column*/
-#race td:nth-of-type(2) {
+#race .line_color td:nth-of-type(2) {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
     color:#fff;
     text-shadow: none;
 }
 
-/*undo number column*/
+/*undo number column
 #race .no_num_color td:nth-of-type(2) {
     font-weight: 400;
     background-color: rgba(0, 0, 0, 0);
     color:#222;
     text-shadow: none;
 }
-
+*/
 /*place column*/ 
 #race .no_num_color td.rnk_font:nth-of-type(1) {
     font-weight: 700;

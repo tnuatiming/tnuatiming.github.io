@@ -41,6 +41,9 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+{% if page.layout == "post" %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% endif %}
 {% if page.body == "live" %}
 <script type="text/javascript">
   {% include_relative elite.min.js %}

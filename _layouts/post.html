@@ -80,6 +80,30 @@
         {% include footer.html %}
 
 </body>
+<script>
+// Mouse over event handler
+$('table.no_num_color').on('mouseover', 'td.rnk_font:not(:first-child)', function() {
+    // Store the hovered cell's text in a variable
+    var textToMatch = $(this).text();
+
+    // Loop through every `td` element
+    $('td.rnk_font:not(:first-child)').each(function() {
+        // Pull selected `td` element's text
+        var text = $(this).text();
+
+        // Compare this with initial text and add matching class if it matches
+    if (textToMatch === text && text != "") {
+            $(this).addClass('matching');
+}
+    });
+});
+
+// Mouse out event handler
+// This simply removes the matching styling
+$('table.no_num_color').on('mouseout', 'td.rnk_font:not(:first-child)', function() {
+    $('.matching').removeClass('matching');
+});
+</script>
 </html>
 
 
