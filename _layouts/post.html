@@ -81,52 +81,34 @@
 
 </body>
 <script>
+    var btn = document.querySelectorAll('.no_num_color');
+    for (let k = 0; k < btn.length; k++) {
 
-var btn = document.querySelectorAll('.no_num_color')
+        btn[k].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseover", function() {
+    
+            var compareText = e.innerHTML;
 
-if (btn.length > 0) {
-    btn[0].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseover", function() {
+            var divs = btn[k].querySelectorAll('td.rnk_font:not(:first-child)');
+            for (i = 0; i < divs.length; ++i) {
+                var text = divs[i].innerHTML;
 
-        var compareText = e.innerHTML;
-
-        var divs = btn[0].querySelectorAll('td.rnk_font:not(:first-child)'), i;
-        for (i = 0; i < divs.length; ++i) {
-            var text = divs[i].innerHTML;
-
-            // Compare this with initial text and add matching class if it matches
-            if (compareText === text && text != "") {
-                divs[i].classList.add("matching");
+                // Compare this with initial text and add matching class if it matches
+                if (compareText === text && text != "") {
+                    divs[i].classList.add("matching");
+                }
             }
-        }
-    }));
-}
-if (btn.length > 1) {
-    btn[1].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseover", function() {
-
-        var compareText = e.innerHTML;
-
-        var divs = btn[1].querySelectorAll('td.rnk_font:not(:first-child)'), i;
-        for (i = 0; i < divs.length; ++i) {
-            var text = divs[i].innerHTML;
-
-            // Compare this with initial text and add matching class if it matches
-            if (compareText === text && text != "") {
-                divs[i].classList.add("matching");
-            }
-        }
-    }));
-}
-
-document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseout", function() {
-
-    var divs = document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)'), i;
-    for (i = 0; i < divs.length; ++i) {
-
-            divs[i].classList.remove("matching");
+        }));
     }
-}));
-</script>
 
+    document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseout", function() {
+
+        var divs = document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)');
+        for (j = 0; j < divs.length; ++j) {
+
+                divs[j].classList.remove("matching");
+        }
+    }));
+</script>
 
 </html>
 
