@@ -1092,7 +1092,17 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
             
             //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-/*                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+                    var checkeredFlag = "finished ";
+                } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
+                    var checkeredFlag = "finished ";
+                } else {
+                    var checkeredFlag = "";
+                }
+
+
+                
+/*                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == lapsX)))) {
                     var checkeredFlag = "finished ";
                 } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
                     var checkeredFlag = "finished ";
@@ -1100,16 +1110,6 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                     var checkeredFlag = "";
                 }
 */
-
-                
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == lapsX)))) {
-                    var checkeredFlag = "finished ";
-                } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
-                    var checkeredFlag = "finished ";
-                } else {
-                    var checkeredFlag = "";
-                }
-
                 // add and style the status/arrow
 
             if (cleanResults == 0) {
