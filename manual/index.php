@@ -138,6 +138,9 @@ tbody tr:hover {
 <li><a href="#C5">ספיישל טסט</a></li>
 <li><a href="#C6">מוטוקרוס או הקפות במסלול סגור</a></li>
 <li><a href="#C7">live timing</a></li>
+    <ul>
+    <li><a href="#C7_1">תצוגת שם הארוע</a></li>
+    </ul>
 <li><a href="#C9">שעון תצוגה</a>
 <li><a href="#C80">הדפסת התוצאות</a>
 <li><a href="#C13">הגדרות GPRS</a>
@@ -581,7 +584,15 @@ Status 12,DNS,center</code></pre></li>
     <h2 id="C7" class="c4">live timing</h2>
         
     <p class="c0">remember to enable the live timing after entering an event</p>
+            
+    <h3 id="C7_1" class="c7">תצוגת שם הארוע</h3>
     
+    <p class="c0">יש להקפיד על שמות נכונים מכיוון שהלייב מוצג בהתאם לסוג המרוץ. שם הארוע כולל את שם התיקיה + שם המרוץ</p>
+
+     <p class="c0">שם התיקיה צריך לכלול את סוג הארוע, מקומו ו/או מספר הסבב: "אנדורו כפר החורש סבב 7". יש להמנע ממקפים ככל שניתן</p>
+    
+    <p class="c0">שם המרוץ צריך לכלול אם זהו מקצה מיוחד כגון מקצה דירוג: "מקצה דירוג" או "היירסקרמבל בוגרים". יש להמנע ממקפים ככל שניתן</p>
+
     <p class="c1"><span><img alt="image71.png" src="/manual/images/image71.png"></span></p>
  
     <p class="c0">יש לודא ש- remote file שונה מ- index.html</p>
@@ -618,7 +629,7 @@ Status 12,DNS,center</code></pre></li>
     
     <h2 id="C77" class="c4">live timing-old</h2>
     
-    <p class="c0">remember to enable the live timing after entering an event</p>
+    <p class="c0">יש לזכור להפעיל מחדש בכל כניסה ל-event</p>
     
     <p class="c1"><span><img alt="image07.png" src="/manual/images/image07.png"></span></p>
  

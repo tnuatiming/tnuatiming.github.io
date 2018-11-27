@@ -81,17 +81,17 @@
 
 </body>
 <script>
+            // find the laps tables
     var btn = document.querySelectorAll('.no_num_color');
     for (let k = 0; k < btn.length; k++) {
-
+            // find the td in laps table and itreare them
         btn[k].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseover", function() {
-    
+                // get the value of the cell we mouseover
             var compareText = e.innerHTML;
-
+                // itreate all td in this table and compare
             var divs = btn[k].querySelectorAll('td.rnk_font:not(:first-child)');
             for (i = 0; i < divs.length; ++i) {
                 var text = divs[i].innerHTML;
-
                 // Compare this with initial text and add matching class if it matches
                 if (compareText === text && text != "") {
                     divs[i].classList.add("matching");
@@ -99,7 +99,7 @@
             }
         }));
     }
-
+                // clear all matching on mouseout
     document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseout", function() {
 
         var divs = document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)');

@@ -10,6 +10,7 @@
 // 20180903 - added option for harescramble finish. 
 // 20181010 - added previous results and race progress ticker. 
 // 20181105 - added show penalty time on hover. 
+// 20181126 - added show only laps needed for category. 
 
     
     var harescrambleFinishE = 7200000; // 2 hours
@@ -309,6 +310,7 @@
         var pp = 0;
         var positionChanged = "";
         var laps = 6; // number of laps 
+        var lapsX = 6;
         var penalty = 0;
         var showPenalty = 0;
         var categoryPenalty = [];
@@ -439,8 +441,16 @@
             Text[0] = Text[0].replace(/laps\d{1,2}/, "");
         }
 */
-        var finalText = Text[0]; // clear the finalText variable and add the title and time lines
-           
+        var flagText = HeaderName[0].match(/Images\/\s*(.*?)\s*\.png/);
+//        console.log(flagText[0]); // Images/_Stop.png
+//        console.log(flagText[1]); // _Stop
+
+        var finalText = '<div id="Title"><img class="flag1" src="' + flagText[0] + '"><h1 id="raceTitle">'+HeaderEventName.replace(" - ", "<br>") + '</h1><img class="flag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        
+        finalText += HeaderName[1];
+        
+//        var finalText = Text[0]; // clear the finalText variable and add the title and time lines
+        
         for (b = 0; b < lines.length; b++) { 
            
             if (lines[b].includes('<td id="Id_')) {
@@ -587,9 +597,11 @@ switch(option) {  // tickerTest
 */
            
            // MAGIC sort the array after the merge to get new results
-        if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
+        if (useCategory == "yes" && HeaderName[0].includes("אנדורו")) { // this sort discreminate aginst empty category so it shown last
+            allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || (b.Id_Categorie.includes("מקצועית"))-(a.Id_Categorie.includes("מקצועית")) || (b.Id_Categorie.includes("עממית"))-(a.Id_Categorie.includes("עממית")) || (b.Id_Categorie.includes("סניורים"))-(a.Id_Categorie.includes("סניורים")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
+        } else if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
             allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
-        }
+        } 
     //    if (useCategory == "yes") {
     //        allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
     //    }
@@ -736,7 +748,23 @@ switch(option) {  // tickerTest
                      
                 }            
                             
-                            
+            if (specialTest == 1 && useCategory == "yes") {
+                if (allArray[l]["Id_Categorie"].includes("מקצועית")) {
+                    lapsX = 6;
+                } else if (allArray[l]["Id_Categorie"].includes("סניורים") || allArray[l]["Id_Categorie"].includes("עממית") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי")) {
+                    lapsX = 5;
+                } else if (allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("סופר ג'וניור")) {
+                    lapsX = 4;
+                } else {
+                    lapsX = 6;
+                }
+                
+                
+            }
+            
+            
+            
+                   
                             
 if (cleanResults == 1) {
                               
@@ -749,7 +777,9 @@ if (cleanResults == 1) {
    //         }
    //     }          
 
-    // semi hard coded header
+
+            
+            // semi hard coded header
 
             if (cleanResults == 0) {
                 headerTextP += '<th class="rnkh_font"></th>\n'; //  Id_Arrow
@@ -765,7 +795,7 @@ if (cleanResults == 1) {
             
             if (showIndividualLaps == 1 && allArray[l]["Id_lap1"]) {
                 
-                for (j = 1; j <= laps; j++) {
+                for (j = 1; j <= lapsX; j++) {
               //      headerTextP += '<th class="rnkh_font Id_lap' + j + '">הקפה ' + j + '</th>\n';
                     headerTextP += '<th class="rnkh_font">הקפה ' + j + '</th>\n';
                 }
@@ -829,7 +859,7 @@ if (cleanResults == 1) {
             
             if (showIndividualLaps == 1 && allArray[l]["Id_lap1"]) {
                 
-                for (j = 1; j <= laps; j++) {
+                for (j = 1; j <= lapsX; j++) {
               //      headerText1 += '<th class="rnkh_font Id_lap' + j + '">הקפה ' + j + '</th>\n';
                     headerText1 += '<th class="rnkh_font">הקפה ' + j + '</th>\n';
                 }
@@ -1062,14 +1092,24 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
             
             //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+/*                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
                     var checkeredFlag = "finished ";
                 } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
                 }
-                 
+*/
+
+                
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == lapsX)))) {
+                    var checkeredFlag = "finished ";
+                } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
+                    var checkeredFlag = "finished ";
+                } else {
+                    var checkeredFlag = "";
+                }
+
                 // add and style the status/arrow
 
             if (cleanResults == 0) {
@@ -1211,7 +1251,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
         // adding and coloring the laps and best time
         // short version
-                    for (q = 1; q <= laps; q++) {
+                    for (q = 1; q <= lapsX; q++) {
                             if (showBestLap == 1 && allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
                                 finalText += '<td class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>\n';
                             } else if (showBestLap == 1 && allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
@@ -1433,7 +1473,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
             
 */             
-               console.log(allArray);
+          //     console.log(allArray);
          //    console.log(finalText);
           //      console.log(bestTime);
            //     console.log(tickerBestTime);

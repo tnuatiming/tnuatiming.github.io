@@ -235,7 +235,7 @@ table.no_num_color {
 */
 #race td.subtitle_font, #live td.subtitle_font {
     background: rgba(143,143,143,0.7);
-    color:#151B8D;
+    color:#0C297F;/*#151B8D*/
     font-weight: 400;
 }
 
@@ -275,7 +275,7 @@ tr.rnkh_bkcolor {
     border-bottom: none;
     border-left: none;
     border-right: none;
-    color: #800000;/*maroon*/
+    color: #8E022F;/*maroon*/
     text-shadow: 0 1px 2px white;
     padding: 5px 0;
     /*text-align: right;*/
@@ -492,7 +492,25 @@ span#name, span#rund, span#date {
 }
 
 #live #Title {
-    display: block;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 10px;
+}
+#live .flag1 {
+    order: 1;
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+#live .flag2 {
+    order: 3;
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+#live #raceTitle {
+    order: 2;
     vertical-align: middle;
     font-weight: 700;
     font-size: 1em;
@@ -500,10 +518,10 @@ span#name, span#rund, span#date {
     margin: 5px 0;
 }
 
+#live #Title {
+}
+
 #live #Title img {
-    height: 24px;
-    vertical-align: middle;
-    margin: 0 10px;
 }
 
 #live #Time {
@@ -643,7 +661,7 @@ span#name, span#rund, span#date {
 }
 
 #live td.rnk_font.penalty {
-    color: #8a0000;
+    color: #8E022F;
 }
     
 @keyframes fadeToGreen {
@@ -1538,7 +1556,7 @@ a.main_logo {
         min-width: 2em;
     }
     #live #Title img {
-        height: 12px;
+        height: 16px;
         margin: 0 5px;
     }
     #live #Title, #live #Time {
