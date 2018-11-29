@@ -20,6 +20,7 @@ a.live:hover, a.live:active {
 .main_content {
     text-align: left;
     margin-bottom: 20px;
+    align-items: flex-start;
 }
 .mail {
 text-align: left;

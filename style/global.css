@@ -38,6 +38,7 @@ html {
     margin: 0;
     padding: 0;
     border: 0;
+    scroll-behavior: smooth;
     display: table;  /*  fixes html/body not expending to the size of the content (table)*/
 /*    position: relative;*/
 }
@@ -66,7 +67,7 @@ a {
 
 a:active,a:hover,a:focus {
     outline: 0;
-    color: #666;
+    color: #58585a;
     border-bottom: 1px dotted;
 }
 
@@ -92,7 +93,7 @@ h1 {
 
 h2 {
     font-size: 1.4em;
-    color: #666;
+    color: #58585a;
     text-shadow: 0 2px 3px #fff;
     text-decoration: none;
     font-weight: 700;
@@ -137,7 +138,7 @@ img {
 }
 
 #race .message {
-    color: #333;
+    color: #222;
 }
 
 ul {
@@ -196,7 +197,7 @@ table.no_num_color {
 
 /*race resulte page*/
 #race td.rnk_font, #live td.rnk_font {
-    color: #111;
+    color: #222;
     font-weight: 400; 
     text-shadow: none;
     white-space: nowrap;
@@ -235,7 +236,7 @@ table.no_num_color {
 */
 #race td.subtitle_font, #live td.subtitle_font {
     background: rgba(143,143,143,0.7);
-    color:#0C297F;/*#151B8D*/
+    color: #0C297F;/*#151B8D*/
     font-weight: 400;
 }
 
@@ -243,7 +244,7 @@ table.no_num_color {
 #race .line_color td:nth-of-type(2) {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
-    color:#fff;
+    color: #fff;
     text-shadow: none;
 }
 
@@ -259,7 +260,7 @@ table.no_num_color {
 #race .no_num_color td.rnk_font:nth-of-type(1) {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
-    color:#fff;
+    color: #fff;
     text-shadow: none;
 }
 
@@ -304,7 +305,7 @@ td img {
 }
 
 td.title_font {
-    color: #333;
+    color: #222;
     font-size: 1.2em;
     font-weight: 700;
     text-shadow: none;
@@ -423,6 +424,7 @@ span#name, span#rund, span#date {
     font-size: 1em;
     padding: 2px 10px;
     white-space: nowrap;
+    font-weight: 700;
 }
 
 /*
@@ -497,24 +499,24 @@ span#name, span#rund, span#date {
     align-items: center;
     margin: 0 10px;
 }
-#live .flag1 {
+#live .TitleFlag1 {
     order: 1;
     height: 32px;
     vertical-align: middle;
     margin: 0 5px;
 }
-#live .flag2 {
+#live .TitleFlag2 {
     order: 3;
     height: 32px;
     vertical-align: middle;
     margin: 0 5px;
 }
-#live #raceTitle {
+#live #TitleH1 {
     order: 2;
     vertical-align: middle;
     font-weight: 700;
     font-size: 1em;
-    color: rgba(0,0,0,0.5);
+    color: #58585a;
     margin: 5px 0;
 }
 
@@ -535,7 +537,7 @@ span#name, span#rund, span#date {
 }
 
 #live #DayTime {
-    color: rgba(0,0,0,.5);
+    color: #58585a;
     order: 3;
     padding: 0 5px;
     flex-grow: 1;
@@ -543,7 +545,7 @@ span#name, span#rund, span#date {
 }
 
 #live #ElapsedTime {
-    color: #008000;
+    color: #00843f;
     order: 2;
     padding: 0 5px;
     flex-grow: 1;
@@ -551,7 +553,7 @@ span#name, span#rund, span#date {
 }
 
 #live #RemainingTime {
-    color: #800000;
+    color: #c8102e;
     order: 1;
     padding: 0 5px;
     flex-grow: 0;
@@ -559,7 +561,7 @@ span#name, span#rund, span#date {
 }
 
 #live tr.rnkh_bkcolor {
-    color:#fff;
+    color: #fff;
     background: rgba(0,0,0,0.5);
     font-weight: 700;
 }
@@ -572,12 +574,12 @@ span#name, span#rund, span#date {
 
 #live .OddRow {
     background-color: rgba(208,208,208,0.7);
-    color: #111;
+    color: #222;
 }
 
 #live .EvenRow {
     background-color:  rgba(187,187,187,0.7);
-    color: #111;
+    color: #222;
 }
 @keyframes refresh {
  /*   0% {opacity:1;}
@@ -610,54 +612,54 @@ span#name, span#rund, span#date {
 #live td.highlight {
     font-weight: 700;
     background-color: rgba(37, 37, 37, 0.5);
-    color:#fff;
+    color: #fff;
     text-shadow: none;
     background-clip: padding-box;    
 }
 #live td.blackCat {
     font-weight: 700;
     background-color: rgba(17, 17, 17, 0.7);
-    color:#fff;
+    color: #fff;
 }
 #live td.redCat {
     font-weight: 700;
     background-color: rgba(255, 0, 0, 0.7);
-    color:#fff;
+    color: #fff;
 }
 #live td.yellowCat {
     font-weight: 700;
     background-color: rgba(255, 255, 0, 0.7);
-    color:#111;
+    color: #222;
 }
 #live td.greenCat {
     font-weight: 700;
     background-color: rgba(146, 208, 80, 0.7);
-    color:#111;
+    color: #222;
 }
 #live td.pinkCat {
     font-weight: 700;
     background-color: rgba(204, 102, 255, 0.7);
-    color:#111;
+    color: #222;
 }
 #live td.orangeCat {
     font-weight: 700;
     background-color: rgba(255, 192, 0, 0.7);
-    color:#111;
+    color: #222;
 }
 #live td.blueCat {
     font-weight: 700;
     background-color: rgba(0, 176, 240, 0.7);
-    color:#111;
+    color: #222;
 }
 #live td.whiteCat {
     font-weight: 700;
     background-color: rgba(255, 255, 255, 0.7);
-    color:#111;
+    color: #222;
 }
 #live td.grayCat {
     font-weight: 700;
     background-color: rgba(191, 191, 191, 0.7);
-    color:#111;
+    color: #222;
 }
 
 #live td.rnk_font.penalty {
@@ -753,12 +755,12 @@ span#name, span#rund, span#date {
 #live td.BestTime {
 /*    color: #0000ff;*/
     background-color: rgba(54, 220, 24, .6);
-    color: #111;
+    color: #222;
     font-weight: 400;
 }
 #live td.BestTime1 {
     background-color: rgba(49, 140, 231, .6);
-    color: #111;
+    color: #222;
 /*    color: #18dc8e;*/
     font-weight: 400;
 }
@@ -820,7 +822,7 @@ span#name, span#rund, span#date {
 
 
 #live #Message {
-    color: rgba(0,0,0,.5);
+    color: #58585a;
     font-size: 1em;
     display:none;
 }
@@ -849,7 +851,7 @@ td.penalty[aria-label]:hover:after {
     top: 0;
     white-space: nowrap;
     z-index: 99;
-    color: #111;
+    color: #222;
     background: rgba(240, 240, 240, 1);
     min-width: 100%;
 }
@@ -1166,7 +1168,7 @@ a.main_logo {
 #race .navigation a.races {
     color: #222;
     /*background-color: #fc3;*/
-    border-bottom: 6px #666 solid;
+    border-bottom: 6px #58585a solid;
 }
 
 #home .navigation a.home:hover,
@@ -1282,7 +1284,7 @@ a.main_logo {
     bottom: 0;*/
     width: 100%;
     margin-top: 10px;
-    border-top: 1px #666 solid;
+    border-top: 1px #58585a solid;
     align-self:flex-end;
     display: flex;  
     flex-direction: row-reverse;
@@ -1534,7 +1536,7 @@ a.main_logo {
  */
     }    
     .full-bg {
-        background-color: background: rgba(240,240,240,1);
+        background-color: rgba(240,240,240,1);
     }    
 
     #races .season {

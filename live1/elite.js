@@ -303,7 +303,7 @@
         var allArray = [];
         var bestLapComp = 0;
         var bestLap = "99999999999";
-        var zzz = "99999999999";
+        var BestTimeTemp = "99999999999";
         var bestTime = [];
         var category = "&nbsp;";
         var ttt = 0;
@@ -336,11 +336,11 @@
             // var HeaderRaceName = HeaderName[1].split("<")[0].trim();  // tickerTest
             // HeaderEventName = HeaderEventName + ' - ' + HeaderRaceName;  // tickerTest
         // option 3
-        var HeaderName = Text[0].split("\n");  // tickerTest
-        var div = document.createElement("div");  // tickerTest
-        div.innerHTML = HeaderName[0];  // tickerTest
-        var HeaderEventName = div.textContent || div.innerText || "";  // tickerTest
-        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  // tickerTest
+        var HeaderName = Text[0].split("\n");  
+        var div = document.createElement("div");  
+        div.innerHTML = HeaderName[0]; 
+        var HeaderEventName = div.textContent || div.innerText || "";  
+        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
         var time = HeaderName[1].split(':');  // tickerTest
         time = ('0' + (time[0].slice(-2)).trim()).slice(-2) + ':' + time[1];  // tickerTest
        // get time - option 2 (local browser time) 
@@ -351,7 +351,7 @@
     var categoryBestTime = {};
 
 
-        if (eventName != HeaderEventName) {  // tickerTest
+        if (eventName != HeaderEventName) {  
             doNotShowInTicker = [];  // tickerTest
             ticker = [];  // tickerTest
             flag = "";  // tickerTest
@@ -445,7 +445,7 @@
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText = '<div id="Title"><img class="flag1" src="' + flagText[0] + '"><h1 id="raceTitle">'+HeaderEventName.replace(" - ", "<br>") + '</h1><img class="flag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText += HeaderName[1];
         
@@ -486,8 +486,8 @@
                     
                     
  
-                if (zzz > timeString2ms(lineArray["Id_MeilleurTour"])) {
-                    zzz = timeString2ms(lineArray["Id_MeilleurTour"]);
+                if (BestTimeTemp > timeString2ms(lineArray["Id_MeilleurTour"])) {
+                    BestTimeTemp = timeString2ms(lineArray["Id_MeilleurTour"]);
                 }
                 
                 
@@ -764,75 +764,9 @@ switch(option) {  // tickerTest
             
             
             
-                   
+    if ((allArray[l]["Id_Position"] == 1 && useCategory == "no") || (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes")) {                   
                             
-if (cleanResults == 1) {
-                              
-            var headerTextP = '<tr class="rnkh_bkcolor">\n';
 
-   //     for (b = 0; b < qqq.length; b++) { 
-   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
-   //             temp.push(b);
-   //         headerTextP += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>\n';
-   //         }
-   //     }          
-
-
-            
-            // semi hard coded header
-
-            if (cleanResults == 0) {
-                headerTextP += '<th class="rnkh_font"></th>\n'; //  Id_Arrow
-            }
-
-            headerTextP += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
-            headerTextP += '<th class="rnkh_font">מספר</th>\n'; // Id_Numero
-            headerTextP += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
-            
-            if (showLapsNumber == 1 && rallySprint == 0) {
-                headerTextP += '<th class="rnkh_font">הקפות</th>\n'; // Id_NbTour
-            }
-            
-            if (showIndividualLaps == 1 && allArray[l]["Id_lap1"]) {
-                
-                for (j = 1; j <= lapsX; j++) {
-              //      headerTextP += '<th class="rnkh_font Id_lap' + j + '">הקפה ' + j + '</th>\n';
-                    headerTextP += '<th class="rnkh_font">הקפה ' + j + '</th>\n';
-                }
-/*                
-                headerTextP += '<th class="rnkh_font Id_lap1">הקפה 1</th>\n';
-                headerTextP += '<th class="rnkh_font Id_lap2">הקפה 2</th>\n';
-                headerTextP += '<th class="rnkh_font Id_lap3">הקפה 3</th>\n';
-                headerTextP += '<th class="rnkh_font Id_lap4">הקפה 4</th>\n';
-                headerTextP += '<th class="rnkh_font Id_lap5">הקפה 5</th>\n';
-                headerTextP += '<th class="rnkh_font Id_lap6">הקפה 6</th>\n';
-*/
-            } else {
-                if (cleanResults == 0) {
-                    headerTextP += '<th class="rnkh_font">הקפה אחרונה</th>\n'; //  Id_TpsTour
-                }
-                headerTextP += '<th class="rnkh_font">הקפה מהירה</th>\n'; // Id_MeilleurTour
-            }
-            
-            if (qualifying == 0 && rallySprint == 0) {
-                headerTextP += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
-            }
-
-                headerTextP += '<th class="rnkh_font">עונשין</th>\n'; // Id_PenaliteTpsCumule
-            
-            if (useCategory == "yes") {
-                headerTextP += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1erCategorie
-            } else if (useCategory == "no") {
-                headerTextP += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
-            }
-
-        
-        headerTextP += '</tr>';
-      //   console.log(headerTextP);
-      //          console.log(temp);
-
-      
-}
                             
             var headerText1 = '<tr class="rnkh_bkcolor">\n';
 
@@ -882,9 +816,9 @@ if (cleanResults == 1) {
                 headerText1 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
             }
 
-//            if (showPenalty == 1 && cleanResults == 1) {
-//                headerText1 += '<th class="rnkh_font">עונשין</th>\n'; // Id_PenaliteTpsCumule
-//            }
+            if (cleanResults == 1 && ((showPenalty == 1 && useCategory == "no") || (categoryPenalty[allArray[l]["Id_Categorie"]] == 1 && useCategory == "yes"))) {
+                headerText1 += '<th class="rnkh_font">עונשין</th>\n'; // Id_PenaliteTpsCumule
+            }
             
             if (useCategory == "yes") {
                 headerText1 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1erCategorie
@@ -897,7 +831,7 @@ if (cleanResults == 1) {
       //   console.log(headerText1);
       //          console.log(temp);
 
-        
+    }        
 
 if (allArray[l]["Id_Position"] == 1) {   // tickerTest
     if (firstPass == 1 && (HeaderName[0].includes("_GreenFlag") || HeaderName[0].includes("_CheckeredFlag"))) {
@@ -1025,20 +959,14 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
 
                 category = allArray[l]["Id_Categorie"];
 
-                if (categoryPenalty[category] == 1 && cleanResults == 1) {
-                    finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerTextP + '\n';                
-                } else {
+
                     finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
-                }  
                 
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                 
-                if (showPenalty == 1 && cleanResults == 1) {
 
-                    finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerTextP + '\n';
-                } else {                
+                
                     finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
-                }
            }
 
 
@@ -1284,8 +1212,8 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 }
 
                 // tickerTest show best time overall in race progress
-                if (tickerBestTime != zzz && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
-                    tickerBestTime = zzz;  // tickerTest
+                if (tickerBestTime != BestTimeTemp && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
+                    tickerBestTime = BestTimeTemp;  // tickerTest
                     
                     var tickerBestTimeTemp = ms2TimeString(tickerBestTime);
                     
@@ -1312,7 +1240,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
    */             
                 
 
-            if (showPenalty == 1 && cleanResults == 1 && (useCategory == "no" || (useCategory == "yes" && categoryPenalty[category] == 1))) {
+            if (showPenalty == 1 && cleanResults == 1 && (useCategory == "no" || (useCategory == "yes" && categoryPenalty[allArray[l]["Id_Categorie"]] == 1))) {
     
                 if (qualifying == 0 && rallySprint == 0) {
                     if (typeof allArray[l]["Id_TpsCumule"] != 'undefined') {
@@ -1474,7 +1402,7 @@ if (allArray[l]["Id_Position"] == 1) {   // tickerTest
             
 */             
           //     console.log(allArray);
-         //    console.log(finalText);
+           //  console.log(categoryPenalty);
           //      console.log(bestTime);
            //     console.log(tickerBestTime);
 
