@@ -1185,7 +1185,7 @@ switch(option) {  // tickerTest
                 }
 
                 // tickerTest show best time overall in race progress
-                if (tickerBestTime != BestTimeTemp && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
+                if (timeString2ms(allArray[l]["Id_MeilleurTour"]) == BestTimeTemp && tickerBestTime != BestTimeTemp && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
                     tickerBestTime = BestTimeTemp;  // tickerTest
                     
                     var tickerBestTimeTemp = ms2TimeString(tickerBestTime);
@@ -1198,7 +1198,7 @@ switch(option) {  // tickerTest
                     }
                     
                     if (firstPass == 0) {
-                        ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה - ' + tickerBestTimeTemp);  // tickerTest
+                        ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה כללית - ' + tickerBestTimeTemp);  // tickerTest
                     }
                 }  // tickerTest
 

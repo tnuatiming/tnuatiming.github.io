@@ -228,11 +228,11 @@ $row = 1;
 $blapinsert = 0;
 $categoryheader = -1;
 
-if ($bigTable > 10) { // check if table has more then 10 colmuns and mark the class
-    $html .= '<table class="line_color big_table">'."\r\n";
-} else {
-    $html .= '<table class="line_color">'."\r\n";
-}
+//if ($bigTable > 10) { // check if table has more then 10 colmuns and mark the class
+//    $html .= '<table class="line_color big_table">'."\r\n";
+//} else {
+//    $html .= '<table class="line_color">'."\r\n";
+//}
 
 if (($handle = fopen($csv_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
@@ -306,8 +306,19 @@ if ($_POST['elite']) { // elite v3
                             $html .= '    </tr>'."\r\n";
                         }
                     }
-// end inserting best lap BEFORE next category header
-                               
+                    
+                    if ($categoryheader >= 0) {
+                        $html .= '</table>'."\r\n";
+                    }
+            // end inserting best lap BEFORE next category header
+                   
+                    if ($bigTable > 10) { // check if table has more then 10 colmuns and mark the class
+                        $html .= '<table class="line_color big_table">'."\r\n";
+                    } else {
+                        $html .= '<table class="line_color">'."\r\n";
+                    }
+
+
                     $html .= '    <tr>'."\r\n";
                     $html .= '        <td colspan="99" class="title_font">'.trim($data[0]).'</td>'."\r\n";
                     $html .= '    </tr>'."\r\n";
