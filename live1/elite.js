@@ -749,7 +749,12 @@ switch(option) {  // tickerTest
                     lapsX = 6;
                 }                
             }
-            
+
+            if (cleanResults == 1) {
+                var slim = "";
+            } else {
+                var slim = " slim";
+            }
             
             if ((allArray[l]["Id_Position"] == 1 && useCategory == "no") || (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes")) {                   
                                                             
@@ -765,11 +770,11 @@ switch(option) {  // tickerTest
         // semi hard coded header
 
                 if (cleanResults == 0) {
-                    headerText1 += '<th class="rnkh_font"></th>\n'; //  Id_Arrow
+                    headerText1 += '<th class="rnkh_font' + slim + '"></th>\n'; //  Id_Arrow
                 }
 
-                headerText1 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
-                headerText1 += '<th class="rnkh_font">מספר</th>\n'; // Id_Numero
+                headerText1 += '<th class="rnkh_font' + slim + '">מקום</th>\n'; //  Id_Position
+                headerText1 += '<th class="rnkh_font' + slim + '">מספר</th>\n'; // Id_Numero
                 headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
                 
                 if (showLapsNumber == 1 && rallySprint == 0) {
@@ -1061,9 +1066,9 @@ switch(option) {  // tickerTest
                 
                 if (useCategory == "yes") {
                     if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_TpsTour"] == "-" || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-" || (qualifying == 1 && allArray[l]["Id_TpsTour"] == "-")) {
-                        finalText += '<td class="rnk_font"></td>\n';
+                        finalText += '<td class="rnk_font' + slim + '"></td>\n';
                     } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
+                        finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
                     }
                 } else if (useCategory == "no") {
                     if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == 1)) {
@@ -1086,9 +1091,9 @@ switch(option) {  // tickerTest
                         
             //            if (allArray[l]["Id_Position"].includes("P")) {
                         if (allArray[l]["Id_Position_Penalty"] == 1) {
-                            finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_Position"] + '</td>\n';
+                            finalText += '<td class="rnk_font penalty' + slim + '">P ' + allArray[l]["Id_Position"] + '</td>\n';
                         } else {
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>\n';
+                            finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_Position"] + '</td>\n';
                         }
                         
                     }

@@ -220,7 +220,9 @@ table.no_num_color {
 #race .no_num_color td.rnk_font.hover, #race .no_num_color td.rnk_font.matching {
     background: #ffcc33;
 }
-
+#race td.rnk_font:nth-child(1), #race th.rnk_font:nth-child(1) {
+    width: 40px;
+}
 /*
 #live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) {
     background-image:
@@ -246,6 +248,7 @@ table.no_num_color {
     background-color: rgba(37, 37, 37, 0.5);
     color: #fff;
     text-shadow: none;
+    width: 50px;
 }
 
 /*undo number column
@@ -776,6 +779,9 @@ span#name, span#rund, span#date {
 #live img.dnsfq {
     height: .8em;
     vertical-align: middle;
+}
+#live td.dnsfq, #live td.black, #live td.white, #live td.orange, #live td.red, #live td.green, #live td.slim {
+    width: 25px;
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
@@ -1544,10 +1550,10 @@ a.main_logo {
         column-fill: balance;
         width: 100%;
         margin-right: 0;
-    }/*
+    }
     .big_table {
         font-size: 0.6em;
-    }*/
+    }
     h2, li, #live #raceheader h1, .navigation a, #live #categoryOrAll button {
             font-size: 1em;
         }    
@@ -1557,12 +1563,21 @@ a.main_logo {
     #live #Id_Arrow {
         min-width: 2em;
     }
+    #live td.dnsfq, #live td.black, #live td.white, #live td.orange, #live td.red, #live td.green, #live td.slim {
+        width: 20px;
+    }
     #live #Title img {
         height: 16px;
         margin: 0 5px;
     }
     #live #Title, #live #Time {
         font-size: 0.8em;
+    }
+    #race  td.rnk_font:nth-child(1), #race  th.rnk_font:nth-child(1) {
+        width: 25px;
+    }
+    #race .line_color td:nth-of-type(2), #race .line_color th:nth-of-type(2) {
+        width: 30px;
     }
     .navigation li {
    /*     min-width: 33%;*/
