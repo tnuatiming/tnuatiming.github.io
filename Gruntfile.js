@@ -40,7 +40,8 @@ module.exports = function(grunt) {
                 files: {
                     'liveepic/elite.min.js': ['liveepic/elite_epic.js'],
                     'live1/elite.min.js': ['live1/elite.js'],
-                    'live/elite.min.js': ['live/elite.js']
+                    'live/elite.min.js': ['live/elite.js'],
+                    '_includes/raceProgress.min.js': ['_includes/raceProgress.js']
                 },
                 options: {
                 //   js: '/node_modules/google-closure-library/**.js',
