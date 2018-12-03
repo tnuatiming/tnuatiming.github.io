@@ -743,7 +743,7 @@ span#name, span#rund, span#date {
     background-position: center center;
     background-size: auto 50%;
     background-repeat: no-repeat;
-    min-width: 20px;
+    min-width: 16px;
 }
 #live td.rotate {
     transform: rotate(90deg);
@@ -780,8 +780,8 @@ span#name, span#rund, span#date {
     height: .8em;
     vertical-align: middle;
 }
-#live td.dnsfq, #live td.black, #live td.white, #live td.orange, #live td.red, #live td.green, #live td.slim {
-    width: 25px;
+#live td.rnk_font.slim {
+    width: 30px;
 }
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
@@ -1535,9 +1535,9 @@ a.main_logo {
 @media (max-width: 767px) {
 
     html {
-        font-size: calc(1vw + 1vh + .5vmin);
+/*        font-size: calc(1vw + 1vh + .5vmin);
         line-height: calc(1vw + 1vh + 2vmin);
-/*        font-size: calc(16px + 1vw);
+        font-size: calc(16px + 1vw);
          line-height: calc(1.1em + 0.5vw);
  */
     }    
@@ -1563,9 +1563,6 @@ a.main_logo {
     #live #Id_Arrow {
         min-width: 2em;
     }
-    #live td.dnsfq, #live td.black, #live td.white, #live td.orange, #live td.red, #live td.green, #live td.slim {
-        width: 20px;
-    }
     #live #Title img {
         height: 16px;
         margin: 0 5px;
@@ -1573,7 +1570,13 @@ a.main_logo {
     #live #Title, #live #Time {
         font-size: 0.8em;
     }
-    #race  td.rnk_font:nth-child(1), #race  th.rnk_font:nth-child(1) {
+    #live td.rnk_font.slim {
+        width: 16px;
+    }
+    #live td, #live th {
+        font-size: 0.8em;
+    }
+    #race td.rnk_font:nth-child(1), #race th.rnk_font:nth-child(1) {
         width: 25px;
     }
     #race .line_color td:nth-of-type(2), #race .line_color th:nth-of-type(2) {
