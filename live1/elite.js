@@ -432,12 +432,12 @@
 
         if (HeaderName[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
-            HeaderEventName = HeaderEventName.replace("+++", "");
+//            HeaderEventName = HeaderEventName.replace("+++", "");
         }
 
         if (HeaderName[0].includes("copilot")) { // clean table for results page
             showCoPilot = 1;
-            HeaderEventName = HeaderEventName.replace("copilot", "");
+//            HeaderEventName = HeaderEventName.replace("copilot", "");
         }
         
         /*
@@ -453,7 +453,7 @@
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>").replace("copilot", "").replace("+++", "") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText += HeaderName[1];
         
@@ -785,8 +785,8 @@ switch(option) {  // tickerTest
                 headerText1 += '<th class="rnkh_font">מספר</th>\n'; // Id_Numero
                 
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
-                    if (allArray[l]["Id_Categorie"].includes('אופנוע') && useCategory == "yes") {
-                        headerText1 += '<th class="rnkh_font">רוכב</th>\n'; // Id_Nom
+                    if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
+                        headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
                     } else {
                         headerText1 += '<th class="rnkh_font">נהג</th>\n'; // Id_Nom
                         headerText1 += '<th class="rnkh_font">נווט</th>\n'; // Id_Licence
@@ -1158,7 +1158,7 @@ switch(option) {  // tickerTest
                  
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';
                 
-                if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנוע')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
+                if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Licence"] + '</td>\n'; //copilot
                 }
                 
