@@ -859,10 +859,11 @@ switch(option) {  // tickerTest
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
                     allArray[l]["Id_Arrow"] = "&#9670;";
-
+                    
+                    var dnsfq = "";
                     if (allArray[l]["Id_Image"].includes("_Status10")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
-                        
+                        dnsfq = "נפסל";
                         if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
                             ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') נפסל');  // tickerTest
                             doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
@@ -870,7 +871,7 @@ switch(option) {  // tickerTest
  
                     } else if (allArray[l]["Id_Image"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
-                        
+                        dnsfq = "לא סיים";
                         if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
                             ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') פרש');  // tickerTest
                             doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
@@ -878,8 +879,10 @@ switch(option) {  // tickerTest
  
                     } else if (allArray[l]["Id_Image"].includes("_Status12")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dns.svg" alt="dns">';
+                        dnsfq = "לא התחיל";
                     } else if (allArray[l]["Id_Image"].includes("_Status2")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_nq.svg" alt="nq">';
+                        dnsfq = "ללא דירוג";
                     } else if (allArray[l]["Id_Image"].includes("_Status")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_status.svg" alt="status">'; // astrix
            //         } else if (allArray[l]["Id_penalty"].includes("P")) {
@@ -1047,7 +1050,7 @@ switch(option) {  // tickerTest
                 
                  if (allArray[l]["Id_Arrow"].includes("dnsfq")) { 
                     
-                    finalText += '<td class="rnk_font dnsfq' + slim + '">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td aria-label="' + dnsfq + '" class="rnk_font dnsfq' + slim + '">' + allArray[l]["Id_Arrow"] + '</td>\n';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
@@ -1059,12 +1062,12 @@ switch(option) {  // tickerTest
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td class="rnk_font finished black' + slim + '"></td>\n';
+                    finalText += '<td aria-label="סיים" class="rnk_font finished black' + slim + '"></td>\n';
         //            finalText += '<td class="rnk_font finished black">'+allArray[l]["Id_penalty"]+'</td>\n'; // + P penalty
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // black
                     
-                    finalText += '<td class="rnk_font black fadeIn' + slim + '">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td aria-label="על המסלול" class="rnk_font black fadeIn' + slim + '">' + allArray[l]["Id_Arrow"] + '</td>\n';
                     
                 } else if (allArray[l]["Id_Arrow"] == "P") { // black
                     
@@ -1089,7 +1092,7 @@ switch(option) {  // tickerTest
                         finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
                     }
                 } else if (useCategory == "no") {
-                    if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == 1)) {
+                    if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == 1)) { // FIXME is this needed? on clean results we dont show id_Arrow, this will never be invoked
                         
                         if (allArray[l]["Id_Image"].includes("_Status11")) {
                             finalText += '<td class="rnk_font' + slim + '"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>\n';
