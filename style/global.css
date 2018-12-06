@@ -783,6 +783,23 @@ span#name, span#rund, span#date {
 #live td.rnk_font.slim {
     width: 30px;
 }
+#live #center1 {
+/*    border-bottom: 1px dotted;*/
+    width: 100%;
+    direction: rtl;
+    text-align: right;
+    display: none;
+}
+
+#live #center1 h1 {
+    text-align: right;
+    color: #58585a;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 5px 0;
+    padding-top: 10px;
+    vertical-align: middle;
+} 
 
 /*#Id_Numero{font-weight: 700; background-color: rgba(0,0,0,0.5); color: #fff;}*/
 /*

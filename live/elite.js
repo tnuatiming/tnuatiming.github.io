@@ -175,6 +175,7 @@
                 const response = await fetch(url, {cache: "no-store"});
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
                     document.getElementById(target).innerHTML = createLiveTable(await response.text());
                 }
             }
@@ -208,6 +209,7 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
                     document.getElementById(target).innerHTML = createLiveTable(xhr.responseText);
     //           } else {
     //               document.getElementById("categoryOrAll").style.display = "none";
