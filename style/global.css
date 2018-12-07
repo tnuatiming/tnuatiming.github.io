@@ -854,7 +854,7 @@ td[aria-label] {
     position: relative;
 }
 
-td[aria-label]:hover:after {
+td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after {
     content: attr(aria-label);
     padding: 0 8px;
     position: absolute;
@@ -866,7 +866,7 @@ td[aria-label]:hover:after {
     background: rgba(17, 17, 17, 1);
 }
 
-td.penalty[aria-label]:hover:after, td:nth-child(1)[aria-label]:hover:after {
+td[aria-label]:hover:after {
     content: attr(aria-label);
     padding: 0 0;
     position: absolute;

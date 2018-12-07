@@ -404,12 +404,13 @@
             showLapsNumber = 0;
         }
         
-        if (HeaderName[0].includes("2 הקפות")) { // will show individual laps for enduro special test
+        if (HeaderName[0].includes("2laps")) { // will show individual laps for enduro special test
             showIndividualLaps = 1;
             showLapsNumber = 0;
             laps = 2;
+            lapsX = 2;
             showBestLap = 0;
-            Text[0] = Text[0].replace("2 הקפות", "");
+//            Text[0] = Text[0].replace("2laps", "");
 /*            var sheet = document.createElement('style');
             sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
             document.body.appendChild(sheet);
@@ -455,7 +456,7 @@
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>").replace("copilot", "").replace("+++", "") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>").replace("copilot", "").replace("+++", "").replace("2laps", "") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText += HeaderName[1];
         
@@ -785,7 +786,7 @@ switch(option) {  // tickerTest
                     headerText1 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
                 }
                 headerText1 += '<th class="rnkh_font">מספר</th>\n'; // Id_Numero
-                
+/*                
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
                     if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
                         headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
@@ -796,6 +797,18 @@ switch(option) {  // tickerTest
                 } else {
                     headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
                 }
+*/                
+                if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && cleanResults == 1) {
+                    if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
+                        headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
+                    } else {
+                        headerText1 += '<th class="rnkh_font">נהג</th>\n'; // Id_Nom
+                        headerText1 += '<th class="rnkh_font">נווט</th>\n'; // Id_Licence
+                    }
+                } else {
+                    headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
+                }
+
                 
                 if (showLapsNumber == 1 && rallySprint == 0) {
                     headerText1 += '<th class="rnkh_font">הקפות</th>\n'; // Id_NbTour
@@ -1161,11 +1174,27 @@ switch(option) {  // tickerTest
       //              finalText += '<td class="rnk_font ">' + opt3 + '</td>\n';
       //          }
                  
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';
-                
+/*                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
                 if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Licence"] + '</td>\n'; //copilot
                 }
+*/
+                //FIXME doesnt work with usecategory no with cleanResults 1(אופנועים doesnt get נווט cell), altough we never need it
+                if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים'))) {
+                    if (cleanResults == 0 && allArray[l]["Id_Licence"] != '&nbsp;') {
+                        finalText += '<td aria-label="נווט: ' + allArray[l]["Id_Licence"] + '" class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n'; //copilot
+                    } else if (cleanResults == 0 && allArray[l]["Id_Licence"] == '&nbsp;') {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Licence"] + '</td>\n'; //copilot
+                    }
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                }
+                
+
+                
                 
                 if (showLapsNumber == 1 && rallySprint == 0) {
 
