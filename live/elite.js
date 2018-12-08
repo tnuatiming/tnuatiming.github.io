@@ -787,6 +787,7 @@ switch(option) {  // tickerTest
                 }
                 headerText1 += '<th class="rnkh_font">מספר</th>\n'; // Id_Numero
 /*                
+        // NOT using aria popup for נווט 
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
                     if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
                         headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
@@ -797,7 +798,8 @@ switch(option) {  // tickerTest
                 } else {
                     headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
                 }
-*/                
+*/
+        // using aria popup for נווט 
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && cleanResults == 1) {
                     if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
                         headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
@@ -884,7 +886,7 @@ switch(option) {  // tickerTest
                             doNotShowInTicker.push(allArray[l]["Id_Numero"]);  // tickerTest
                         }  // tickerTest
  
-                    } else if (allArray[l]["Id_Image"].includes("_Status11")) {
+                    } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
                         dnsfq = "לא סיים";
                         if (!doNotShowInTicker.includes(allArray[l]["Id_Numero"])) {  // tickerTest
@@ -995,7 +997,7 @@ switch(option) {  // tickerTest
 
             // DNF/DSQ
             
-            if (allArray[l]["Id_Image"].includes("_Status11") && useCategory == "yes" && dnfCategory != category && cleanResults == 1) {
+            if ((allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') && useCategory == "yes" && dnfCategory != category && cleanResults == 1) {
                 
                 finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
                 dnfCategory = category;
@@ -1109,7 +1111,7 @@ switch(option) {  // tickerTest
                 } else if (useCategory == "no") {
                     if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == 1)) { // FIXME is this needed? on clean results we dont show id_Arrow, this will never be invoked
                         
-                        if (allArray[l]["Id_Image"].includes("_Status11")) {
+                        if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') {
                             finalText += '<td class="rnk_font' + slim + '"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>\n';
                         } else if (allArray[l]["Id_Image"].includes("_Status10")) {
                             finalText += '<td class="rnk_font' + slim + '"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>\n';
@@ -1174,11 +1176,14 @@ switch(option) {  // tickerTest
       //              finalText += '<td class="rnk_font ">' + opt3 + '</td>\n';
       //          }
                  
-/*                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+/*
+         // NOT using aria popup for נווט 
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
                 if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Licence"] + '</td>\n'; //copilot
                 }
-*/
+
+        // using aria popup for נווט need fixing
                 //FIXME doesnt work with usecategory no with cleanResults 1(אופנועים doesnt get נווט cell), altough we never need it
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים'))) {
                     if (cleanResults == 0 && allArray[l]["Id_Licence"] != '&nbsp;') {
@@ -1192,7 +1197,40 @@ switch(option) {  // tickerTest
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
                 }
-                
+ */               
+        // using aria popup for נווט 
+            if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
+                if (cleanResults == 0) {
+                    if (allArray[l]["Id_Categorie"].includes('אופנועים')) {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                    } else {
+                        if (allArray[l]["Id_Licence"] == '&nbsp;') {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                        } else {
+                            finalText += '<td aria-label="נווט: ' + allArray[l]["Id_Licence"] + '" class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n'; //copilot
+                        }
+                    }
+                } else if (cleanResults == 1) {
+                    if (allArray[l]["Id_Categorie"].includes('אופנועים')) {
+                        if (useCategory == "yes") {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                            finalText += '<td class="rnk_font"></td>\n'; //copilot
+                        }
+                    } else {
+                        if (allArray[l]["Id_Licence"] == '&nbsp;') {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                            finalText += '<td class="rnk_font"></td>\n'; //copilot
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Licence"] + '</td>\n'; //copilot
+                        }
+                    }
+                } 
+            } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+                }
 
                 
                 
