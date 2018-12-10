@@ -316,6 +316,7 @@
         var laps = 6; // number of laps 
         var lapsX = 6;
         var penalty = 0;
+        var linePenalty = 1;
         var showPenalty = 0;
         var categoryPenalty = [];
         var dnfCategory = "";
@@ -507,15 +508,17 @@
             } else if (lines[b].includes("<td ") && ttt == 1) {
     //            lineArray["Id_Ecart1erCategorie"] = '-';
     //            lineArray["Id_Image"] = '-';
+                linePenalty = 0;
 
                 if (lines[b].includes("(C)")) {
                     penalty = 1;
+                    linePenalty = 1;
                     showPenalty = 1;
                 }
                 // for penalty in cell
                 if (hhhPro[pp] == "Id_Position" || hhhPro[pp] == "Id_NbTour" || hhhPro[pp] == "Id_TpsCumule") {
                     var fff = hhhPro[pp] + '_Penalty';
-                    if (penalty == 1) {
+                    if (linePenalty == 1) {
                         lineArray[fff] = 1;
                     } else {
                         lineArray[fff] = 0;
@@ -786,7 +789,7 @@ switch(option) {  // tickerTest
                     headerText1 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
                 }
                 headerText1 += '<th class="rnkh_font">מספר</th>\n'; // Id_Numero
-/*                
+                
         // NOT using aria popup for נווט 
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
                     if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
@@ -798,7 +801,7 @@ switch(option) {  // tickerTest
                 } else {
                     headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
                 }
-*/
+/*
         // using aria popup for נווט 
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && cleanResults == 1) {
                     if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
@@ -810,7 +813,7 @@ switch(option) {  // tickerTest
                 } else {
                     headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
                 }
-
+*/
                 
                 if (showLapsNumber == 1 && rallySprint == 0) {
                     headerText1 += '<th class="rnkh_font">הקפות</th>\n'; // Id_NbTour
@@ -1176,13 +1179,13 @@ switch(option) {  // tickerTest
       //              finalText += '<td class="rnk_font ">' + opt3 + '</td>\n';
       //          }
                  
-/*
+
          // NOT using aria popup for נווט 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
                 if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Licence"] + '</td>\n'; //copilot
                 }
-
+/*
         // using aria popup for נווט need fixing
                 //FIXME doesnt work with usecategory no with cleanResults 1(אופנועים doesnt get נווט cell), altough we never need it
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים'))) {
@@ -1197,7 +1200,7 @@ switch(option) {  // tickerTest
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
                 }
- */               
+               
         // using aria popup for נווט 
             if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
                 if (cleanResults == 0) {
@@ -1231,7 +1234,7 @@ switch(option) {  // tickerTest
             } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
                 }
-
+ */
                 
                 
                 if (showLapsNumber == 1 && rallySprint == 0) {
@@ -1466,7 +1469,7 @@ switch(option) {  // tickerTest
    //         console.log(mainText);
 
 */             
-          //     console.log(allArray);
+            //   console.log(allArray);
            //  console.log(categoryPenalty);
           //      console.log(bestTime);
            //     console.log(tickerBestTime);
