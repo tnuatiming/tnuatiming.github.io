@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         //     },
             lftp: {
         //        command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname false ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; rm ./public_html/live/p1.html ; rm ./public_html/live1/p1.html ; exit" | tee "log/lftp_$(date +%Y%m%d_%H%M).log"'
-                command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname no ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; exit" | tee "log/lftp.log"'
+                command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname no ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ --exclude-glob */2013/* --exclude-glob */2014/* --exclude-glob */2015/* --exclude-glob */2016/* --exclude-glob */2017/* -vvv ./_site/ ./public_html/ ; cache flush ; exit" | tee "log/lftp.log"'
             },
             clean: {
                 command: 'rm -r ./_site && rm -r ./jekyll_backup '
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                 },
                 files: [{                                   // Dictionary of files 
                     cwd: '_site',
-                    src: ['**/*.html', '!csv/index.html', '!liveepic/index.html', '!liveepic/p11.html', '!liveepic/p12.html' ],
+                    src: ['**/*.html', '!csv/index.html', '!liveepic/index.html', '!liveepic/p11.html', '!liveepic/p12.html', '!**/2013/*.html', '!**/2014/*.html', '!**/2015/*.html', '!**/2016/*.html', '!**/2017/*.html' ],
                     dest: '_site',
                 expand: true    // 'destination': 'source' 
                 }]
