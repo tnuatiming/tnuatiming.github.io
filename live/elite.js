@@ -416,6 +416,18 @@
             sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
             document.body.appendChild(sheet);
 */        }
+        
+        if (HeaderName[0].includes("3laps")) { // will show individual laps for enduro special test
+            showIndividualLaps = 1;
+            showLapsNumber = 0;
+            laps = 3;
+            lapsX = 3;
+            showBestLap = 0;
+//            Text[0] = Text[0].replace("3laps", "");
+/*            var sheet = document.createElement('style');
+            sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
+            document.body.appendChild(sheet);
+*/        }
 
         if (HeaderName[0].includes("סקרמבל") || HeaderName[0].includes("הייר")) { // will show finished for enduro hareScramble
             hareScramble = 1;
@@ -457,7 +469,7 @@
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>").replace("copilot", "").replace("+++", "").replace("2laps", "") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>").replace("copilot", "").replace("+++", "").replace("2laps", "").replace("3laps", "") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText += HeaderName[1];
         
