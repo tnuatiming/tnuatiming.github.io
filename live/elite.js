@@ -424,7 +424,7 @@
             showLapsNumber = 0;
             laps = lapsNum;
             lapsX = lapsNum;
-            showBestLap = 0;
+//            showBestLap = 0;
             HeaderEventName = HeaderEventName.replace(lapsNum + "laps", "");
             useThis = 1;
 //            Text[0] = Text[0].replace("3laps", "");
@@ -448,6 +448,10 @@
             HeaderEventName = HeaderEventName.replace("copilot", "");
         }
         
+        if (HeaderName[0].includes("nobestlap")) { // clean table for results page
+            showBestLap = 0;
+            HeaderEventName = HeaderEventName.replace("nobestlap", "");
+        }
         /*
         if (Text[0].includes("laps")) { // get number of laps, NOT TESTED
             var tempLaps, tempIndex;
