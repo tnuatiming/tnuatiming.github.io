@@ -315,6 +315,7 @@
         var positionChanged = "";
         var laps = 6; // number of laps 
         var lapsX = 6;
+        var useThis = 0;
         var penalty = 0;
         var linePenalty = 1;
         var showPenalty = 0;
@@ -404,38 +405,9 @@
             showIndividualLaps = 1;
             showLapsNumber = 0;
         }
-        
-        if (HeaderName[0].includes("2laps")) { // will show individual laps for enduro special test
-            showIndividualLaps = 1;
-            showLapsNumber = 0;
-            laps = 2;
-            lapsX = 2;
-            showBestLap = 0;
-//            Text[0] = Text[0].replace("2laps", "");
-/*            var sheet = document.createElement('style');
-            sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
-            document.body.appendChild(sheet);
-*/        }
-        
-        if (HeaderName[0].includes("3laps")) { // will show individual laps for enduro special test
-            showIndividualLaps = 1;
-            showLapsNumber = 0;
-            laps = 3;
-            lapsX = 3;
-            showBestLap = 0;
-//            Text[0] = Text[0].replace("3laps", "");
-/*            var sheet = document.createElement('style');
-            sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
-            document.body.appendChild(sheet);
-*/        }
 
         if (HeaderName[0].includes("סקרמבל") || HeaderName[0].includes("הייר")) { // will show finished for enduro hareScramble
             hareScramble = 1;
-        }
-
-        if (HeaderName[0].includes("דירוג") || HeaderName[0].includes("דרוג")) { // will show diffrent colmuns for qualifying
-            qualifying = 1;
-            showBestLap = 0;
         }
 
         if (HeaderName[0].includes("ראלי") && HeaderName[0].includes("ספרינט")) { // will show diffrent colmuns for qualifying
@@ -445,15 +417,35 @@
 */            rallySprint = 1;
             showBestLap = 0;
         }
+                
+        if (HeaderName[0].includes("laps")) { // will show individual laps for enduro special test
+            var lapsNum = HeaderName[0].substring(HeaderName[0].indexOf("laps")-1,HeaderName[0].indexOf("laps")); // clean the table text
+            showIndividualLaps = 1;
+            showLapsNumber = 0;
+            laps = lapsNum;
+            lapsX = lapsNum;
+            showBestLap = 0;
+            HeaderEventName = HeaderEventName.replace(lapsNum + "laps", "");
+            useThis = 1;
+//            Text[0] = Text[0].replace("3laps", "");
+/*            var sheet = document.createElement('style');
+            sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
+            document.body.appendChild(sheet);
+*/       }
+
+        if (HeaderName[0].includes("דירוג") || HeaderName[0].includes("דרוג")) { // will show diffrent colmuns for qualifying
+            qualifying = 1;
+            showBestLap = 0;
+        }
 
         if (HeaderName[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
-//            HeaderEventName = HeaderEventName.replace("+++", "");
+            HeaderEventName = HeaderEventName.replace("+++", "");
         }
 
         if (HeaderName[0].includes("copilot")) { // clean table for results page
             showCoPilot = 1;
-//            HeaderEventName = HeaderEventName.replace("copilot", "");
+            HeaderEventName = HeaderEventName.replace("copilot", "");
         }
         
         /*
@@ -469,7 +461,7 @@
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>").replace("copilot", "").replace("+++", "").replace("2laps", "").replace("3laps", "") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h1 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + '</h1><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText += HeaderName[1];
         
@@ -764,7 +756,7 @@ switch(option) {  // tickerTest
                      
                 }            
                             
-            if (specialTest == 1 && useCategory == "yes") {
+            if (specialTest == 1 && useCategory == "yes" && useThis == 0) {
                 if (allArray[l]["Id_Categorie"].includes("מקצועית")) {
                     lapsX = 6;
                 } else if (allArray[l]["Id_Categorie"].includes("סניורים") || allArray[l]["Id_Categorie"].includes("עממית") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי")) {
