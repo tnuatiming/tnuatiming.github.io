@@ -220,8 +220,8 @@ table.no_num_color {
 #race .no_num_color td.rnk_font.hover, #race .no_num_color td.rnk_font.matching {
     background: #ffcc33;
 }
-#race td.rnk_font:nth-child(1), #race th.rnk_font:nth-child(1) {
-    width: 40px;
+#race td.rnk_font:nth-child(-n+2), #race th.rnk_font:nth-child(-n+2) { /*first 2 elements*/
+    width: 5%;
 }
 /*
 #live tr.rnk_bkcolor:hover > td:nth-child(3), #race tr.rnk_bkcolor:hover > td:nth-child(2) {
@@ -248,7 +248,7 @@ table.no_num_color {
     background-color: rgba(37, 37, 37, 0.5);
     color: #fff;
     text-shadow: none;
-    width: 50px;
+/*    width: 50px;*/
 }
 
 /*undo number column
@@ -781,7 +781,7 @@ span#name, span#rund, span#date {
     vertical-align: middle;
 }
 #live td.rnk_font.slim {
-    width: 30px;
+    width: 1%;
 }
 #live #center1 {
 /*    border-bottom: 1px dotted;*/
@@ -1588,21 +1588,24 @@ a.main_logo {
         font-size: 0.8em;
     }
     #live td.rnk_font.slim {
-        width: 16px;
+        width: 1%;
     }
     #live td, #live th {
         font-size: 0.8em;
+    }
+    #race td.rnk_font, #race th.rnkh_font {
+    border-right: 1px solid #fff;
     }
     #live #tickerTest li {
         font-size: 0.8em;
         margin: 10px 0;
     }
-    #race td.rnk_font:nth-child(1), #race th.rnk_font:nth-child(1) {
-        width: 25px;
+/*    #race td.rnk_font:nth-child(1), #race th.rnk_font:nth-child(1) {
+        width: 1%;
     }
     #race .line_color td:nth-of-type(2), #race .line_color th:nth-of-type(2) {
-        width: 30px;
-    }
+        width: 1%;
+    }*/
     .navigation li {
    /*     min-width: 33%;*/
     }

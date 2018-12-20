@@ -41,6 +41,7 @@ module.exports = function(grunt) {
                     'liveepic/elite.min.js': ['liveepic/elite_epic.js'],
                     'live1/elite.min.js': ['live1/elite.js'],
                     'live/elite.min.js': ['live/elite.js'],
+                    '_includes/alignTable.min.js': ['_includes/alignTable.js'],
                     '_includes/raceProgress.min.js': ['_includes/raceProgress.js']
                 },
                 options: {

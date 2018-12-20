@@ -86,6 +86,11 @@
     {% include raceProgress.min.js %}
     </script>
 {% endif %}      
+{% if page.content contains "line_color" %}
+    <script type="text/javascript">
+    {% include alignTable.min.js %}
+    </script>
+{% endif %}      
 
 {% comment %}<!--
 <script type="text/javascript">
