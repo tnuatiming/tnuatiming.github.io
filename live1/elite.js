@@ -27,6 +27,14 @@
     ClassementReduit = 1;
     ClassementReduitXpremier = 10;
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
+    var positionArrayAll = {}; // array with the previous competitor overall position. updated every Load, used to show the position change arrow between Loads 
+    var positionArrayCat = {}; // array with the previous competitor category position. updated every Load, used to show the position change arrow between Loads 
+    if (sessionStorage.getItem('positionArrayAll')) {
+        positionArrayAll = JSON.parse(sessionStorage.getItem('positionArrayAll'));
+    }
+    if (sessionStorage.getItem('positionArrayCat')) {
+        positionArrayCat = JSON.parse(sessionStorage.getItem('positionArrayCat'));
+    }
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
@@ -354,7 +362,7 @@
       //  var time = ('0' + now.getHours()).slice(-2)+ ':' + ('0' + now.getMinutes()).slice(-2);  // tickerTest // adding leading 0 if needed
         
      //   categoryBestTimeTemp = {};
-    var categoryBestTime = {};
+        var categoryBestTime = {};
 
 
         if (eventName != HeaderEventName) {  
@@ -365,6 +373,9 @@
             tickerBestTime = "-";  // tickerTest
    //         categoryBestTime = {};
             categoryBestTimePrevious = {};
+            positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+            positionArrayAll = {}; // array with the previous competitor overall position. updated every Load, used to show the position change arrow between Loads 
+            positionArrayCat = {}; // array with the previous competitor category position. updated every Load, used to show the position change arrow between Loads 
         }
         
         eventName = HeaderEventName;  // tickerTest
@@ -485,7 +496,8 @@
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) {
                 ttt = 0;
-                if (penalty == 1) {
+//                if (penalty == 1) { //FIXME??
+                if (lineArray["Id_TpsCumule_Penalty"] == 1) {
                     categoryPenalty[lineArray["Id_Categorie"]] = 1;
                 }
                 
@@ -868,7 +880,7 @@ switch(option) {  // tickerTest
         //          console.log(temp);
 
             }        
-
+// FIXME do we need this? i think we have this covered below
             if (allArray[l]["Id_Position"] == 1) {   // tickerTest
                 if (firstPass == 1 && (HeaderName[0].includes("_GreenFlag") || HeaderName[0].includes("_CheckeredFlag"))) {
                     firstPlace = allArray[l]["Id_Numero"];  // tickerTest
@@ -876,7 +888,7 @@ switch(option) {  // tickerTest
 
                 if (firstPlace != allArray[l]["Id_Numero"] && allArray[l]["Id_NbTour"] > 0 && (HeaderName[0].includes("_GreenFlag") || HeaderName[0].includes("_CheckeredFlag"))) {
                     firstPlace = allArray[l]["Id_Numero"];  // tickerTest
-                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עבר למקום הראשון!');  // tickerTest
+//                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עבר למקום הראשון!');  // tickerTest
                 }  // tickerTest
                     
             }  // tickerTest
@@ -941,20 +953,46 @@ switch(option) {  // tickerTest
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
                                 positionChanged = "gainedPosition ";
                                 
-                                if (useCategory == "no" && competitorPosition > 1 && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Position"] <= 3) {  // tickerTest
-                                ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
+                                
+                                
+/*                                if (useCategory == "no" && competitorPosition > 1 && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Position"] <= 3) {  // tickerTest
+                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
                                 } else if (Object.keys(categoryBestTime).length > 1 && useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
-                                ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
+                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
                                 } else if (useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
-                                ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
+                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
                                 }// tickerTest
+*/
                             }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
                         positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
                     }
        
-        // blink the competitor line when change
+
+                    // tickerTest
+                    if (Object.keys(categoryBestTime).length > 1  && positionArrayAll[competitorNumber] && positionArrayCat[competitorNumber]) { // we have more the 1 category
+                        
+                        
+                        if (allArray[l]["Id_Position"] <= 3 && allArray[l]["Id_Position"] < positionArrayAll[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0) {  // tickerTest
+                            ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_Position"] + 'כללי');  // tickerTest
+                        } 
+                        if (allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_PositionCategorie"] < positionArrayCat[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != "undefined" && allArray[l]["Id_Categorie"] != "&nbsp;") {
+                            ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_PositionCategorie"] + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
+                        }// tickerTest   
+                                                    
+                    } else { // we have just 1 category
+                        if (allArray[l]["Id_Position"] <= 3 && allArray[l]["Id_Position"] < positionArrayAll[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0) {  // tickerTest
+                            ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_Position"]);  // tickerTest
+                        } 
+                        
+                    } // tickerTest
+                        
+                    positionArrayAll[competitorNumber] = allArray[l]["Id_Position"];// update array with current overall position for next Load calc
+                    positionArrayCat[competitorNumber] = allArray[l]["Id_PositionCategorie"];// update array with current category position for next Load calc
+       
+       
+       // blink the competitor line when change
 
                 if (allArray[l]["Id_NbTour"]) {
                     competitorLaps = allArray[l]["Id_NbTour"]; 
@@ -1117,7 +1155,12 @@ switch(option) {  // tickerTest
                     if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_TpsTour"] == "-" || allArray[l]["Id_NbTour"] == 0 || allArray[l]["Id_NbTour"] == "-" || (qualifying == 1 && allArray[l]["Id_TpsTour"] == "-")) {
                         finalText += '<td class="rnk_font' + slim + '"></td>\n';
                     } else {
-                        finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
+//                        finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
+                        if (allArray[l]["Id_Position_Penalty"] == 1) { // need to be cerfule with this, as position penalty is for overall
+                            finalText += '<td class="rnk_font penalty' + slim + '">P ' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
+                        } else {
+                            finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
+                        }
                     }
                 } else if (useCategory == "no") {
                     if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == 1)) { // FIXME is this needed? on clean results we dont show id_Arrow, this will never be invoked
@@ -1153,13 +1196,33 @@ switch(option) {  // tickerTest
                     var opt3 = allArray[l]["Id_Numero"];                        
                     var opt4 = allArray[l]["Id_Categorie"];
                     
-                    if (useCategory == "no" && (HeaderName[0].includes("מוטוקרוס") || HeaderName[0].includes("אנדורו"))) {
+                    if (useCategory == "no" && HeaderName[0].includes("מוטוקרוס")) {
                         
-                        if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
+                        if (opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
+                            finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
+                        } else if (opt4.toUpperCase().includes("פתוחה")) {
+                            finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        } else if (opt4.toUpperCase().includes("עממית")) {
+                            finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
+                            finalText += '<td class="rnk_font blueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        } else if (opt4.toUpperCase().includes("ג'וניור")) {
+                            finalText += '<td class="rnk_font grayCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        } else if (opt4.toUpperCase().includes("סניור") ||opt4.toUpperCase().includes("SENIOR") || opt4.toUpperCase().includes("MX1")) {
+                            finalText += '<td class="rnk_font whiteCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        } else if (opt4.toUpperCase().includes("נשים")) {
+                            finalText += '<td class="rnk_font pinkCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        } else {
+                            finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        }
+
+                    } else if (useCategory == "no" && HeaderName[0].includes("אנדורו")) {
+                        
+                        if (opt4.toUpperCase().includes("E1")) {
                             finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("E2")) {
                             finalText += '<td class="rnk_font redCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                        } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("פתוחה")) {
+                        } else if (opt4.toUpperCase().includes("E3")) {
                             finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
                             finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
@@ -1167,12 +1230,12 @@ switch(option) {  // tickerTest
                             finalText += '<td class="rnk_font grayCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
                             finalText += '<td class="rnk_font blueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                        } else if (opt4.toUpperCase().includes("ג'וניור") || opt4.toUpperCase().includes("expert")) {
+                        } else if (opt4.toUpperCase().includes("EXPERT")) {
                             finalText += '<td class="rnk_font orangeCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                        } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("MX1")) {
+                        } else if (opt4.toUpperCase().includes("סופר סניור") ||opt4.toUpperCase().includes("מתחילים")) {
                             finalText += '<td class="rnk_font whiteCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                        } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
-                            finalText += '<td class="rnk_font pinkCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        } else if (opt4.toUpperCase().includes("סניור")) {
+                            finalText += '<td class="rnk_font purpleCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         } else {
                             finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                         }
@@ -1477,6 +1540,8 @@ switch(option) {  // tickerTest
    //         console.log(mainText);
 
 */             
+             //   console.log(positionArrayCat);
+             //   console.log(positionArrayAll);
             //   console.log(allArray);
            //  console.log(categoryPenalty);
           //      console.log(bestTime);
@@ -1523,6 +1588,8 @@ switch(option) {  // tickerTest
 
 //        sessionStorage.setItem('categoryBestTime', JSON.stringify(categoryBestTime));
         sessionStorage.setItem('categoryBestTimePrevious', JSON.stringify(categoryBestTimePrevious));
+        sessionStorage.setItem('positionArrayCat', JSON.stringify(positionArrayCat));
+        sessionStorage.setItem('positionArrayAll', JSON.stringify(positionArrayAll));
 
         firstPass = 0;  // tickerTest
 

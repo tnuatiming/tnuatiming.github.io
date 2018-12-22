@@ -664,6 +664,11 @@ span#name, span#rund, span#date {
     background-color: rgba(191, 191, 191, 0.7);
     color: #222;
 }
+#live td.purpleCat {
+    font-weight: 700;
+    background-color: rgba(128, 100, 162, 0.7);
+    color: #222;
+}
 
 #live td.rnk_font.penalty {
     color: #8E022F;
