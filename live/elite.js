@@ -13,6 +13,7 @@
 // 20181126 - added show only laps needed for category and split categories to separate tables. 
 // 20181203 - added coPilot. 
 
+    var cleanResults = 0; // clean the table for copying to results page
     
     var harescrambleFinishE = 7200000; // 2 hours
     var harescrambleFinishC = 5400000; // 1.5 hours
@@ -185,6 +186,7 @@
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
                     document.getElementById(target).innerHTML = createLiveTable(await response.text());
+                    alignTable();
                 }
             }
             catch (err) {
@@ -219,6 +221,7 @@
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
                     document.getElementById(target).innerHTML = createLiveTable(xhr.responseText);
+                    alignTable();
     //           } else {
     //               document.getElementById("categoryOrAll").style.display = "none";
                 }
@@ -295,7 +298,7 @@
         var showBestLap = 1;
         var showCoPilot = 0;
 
-        var cleanResults = 0; // clean the table for copying to results page
+ //       var cleanResults = 0; // clean the table for copying to results page
 
         var specialTest = 0;
         var hareScramble = 0;
@@ -452,7 +455,7 @@
         if (HeaderName[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             HeaderEventName = HeaderEventName.replace("+++", "");
-        }
+        } else cleanResults = 0;
 
         if (HeaderName[0].includes("copilot")) { // clean table for results page
             showCoPilot = 1;
@@ -1657,14 +1660,14 @@ switch(option) {  // tickerTest
         (k<100?k<10?'00':0:'')+k // optimized
     }
 */
-    function timeString2ms(a){// time(HH:MM:SS.mss) 
+    function timeString2ms(a) {// time(HH:MM:SS.mss) 
          a = a.split('.');
         var b = a[1]*1||0;
         a = a[0].split(':');
         return b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3
     }
 
-    function ms2TimeString(a){
+    function ms2TimeString(a) {
         var k = a%1e3; 
         var s = a/1e3%60|0;
         var m = a/6e4%60|0;
@@ -1673,3 +1676,46 @@ switch(option) {  // tickerTest
       //  return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0') + '.' + String(k).padStart(3, '0') 
     }
 
+    function alignTable() {
+        
+        if (cleanResults == 0) {
+            
+            // aligning table colmuns according to number of colmuns
+            var tt = document.querySelectorAll('.line_color');
+
+            for (let kk = 0; kk < tt.length; kk++) {
+
+
+        /*
+                var numCols = 0;
+
+                for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
+
+                    row = tt[kk].rows[ii];
+                    
+                    if (numCols < row.cells.length) { // find max number of colmuns
+                        numCols = row.cells.length;
+                    }
+                    row = null;
+                }
+                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+        */
+                var tds = tt[kk].querySelectorAll('th.rnkh_font');
+
+
+                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+
+                tt[kk].querySelectorAll('td.rnk_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                    element.style.width = ddd + "%";
+                });
+
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                    element.style.width = ddd + "%";
+                });
+        //       console.log(kk + " " + numCols)
+            }
+        }
+    }  
+    
+    
+    
