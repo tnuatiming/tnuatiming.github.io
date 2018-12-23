@@ -26,7 +26,7 @@
     MaxNum = 1;
     ClassementReduit = 1;
     ClassementReduitXpremier = 10;
-    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
+//    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var positionArrayAll = {}; // array with the previous competitor overall position. updated every Load, used to show the position change arrow between Loads 
     var positionArrayCat = {}; // array with the previous competitor category position. updated every Load, used to show the position change arrow between Loads 
     if (sessionStorage.getItem('positionArrayAll')) {
@@ -82,7 +82,7 @@
         
     function category(choice){
         
-        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+//        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
         
         useCategory = choice;
         if (useCategory == "yes") {
@@ -373,7 +373,7 @@
             tickerBestTime = "-";  // tickerTest
    //         categoryBestTime = {};
             categoryBestTimePrevious = {};
-            positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+//            positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
             positionArrayAll = {}; // array with the previous competitor overall position. updated every Load, used to show the position change arrow between Loads 
             positionArrayCat = {}; // array with the previous competitor category position. updated every Load, used to show the position change arrow between Loads 
         }
@@ -940,16 +940,27 @@ switch(option) {  // tickerTest
                     }
 
                     positionChanged = "";
-                    
+
+                    if (allArray[l]["Id_NbTour"] == 0) {
+                        positionArrayAll[competitorNumber] = "999";
+                        positionArrayCat[competitorNumber] = "999";
+                       
+                    }
+                   
                     if (competitorPosition > 0 && competitorNumber >= 0 && (allArray[l]["Id_TpsTour"] != "-" || allArray[l]["Id_NbTour"] > 0 || allArray[l]["Id_Image"].includes("_TrackPassing"))) { // position change arrow calc
                     
-                        if (positionArray[competitorNumber] && (allArray[l]["Id_NbTour"] > 0 || (qualifying == 1 && allArray[l]["Id_TpsTour"] != "-"))) {
+                        if (/*positionArray[competitorNumber] && */(allArray[l]["Id_NbTour"] > 0 || (qualifying == 1 && allArray[l]["Id_TpsTour"] != "-"))) {
 
-                            if (positionArray[competitorNumber] < competitorPosition) {
+                            if ((positionArrayAll[competitorNumber] && useCategory == "no" && positionArrayAll[competitorNumber] < competitorPosition) || (positionArrayCat[competitorNumber] && useCategory == "yes" && positionArrayCat[competitorNumber] < competitorPosition)) {
+
+
+//                            if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
                                 positionChanged = "lostPosition ";
                  //               ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') ירד למקום ' + competitorPosition);  // tickerTest
-                            } else if (positionArray[competitorNumber] > competitorPosition) {
+//                            } else if (positionArray[competitorNumber] > competitorPosition) {
+                            } else if ((positionArrayAll[competitorNumber] && useCategory == "no" && positionArrayAll[competitorNumber] > competitorPosition) || (positionArrayCat[competitorNumber] && useCategory == "yes" && positionArrayCat[competitorNumber] > competitorPosition)) {
+
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
                                 positionChanged = "gainedPosition ";
                                 
@@ -966,7 +977,7 @@ switch(option) {  // tickerTest
                             }
                         }
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
-                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
+//                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
                     }
        
 
@@ -975,9 +986,9 @@ switch(option) {  // tickerTest
                         
                         
                         if (allArray[l]["Id_Position"] <= 3 && allArray[l]["Id_Position"] < positionArrayAll[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0) {  // tickerTest
-                            ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_Position"] + 'כללי');  // tickerTest
+                            ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_Position"] + ' כללי');  // tickerTest
                         } 
-                        if (allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_PositionCategorie"] < positionArrayCat[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != "undefined" && allArray[l]["Id_Categorie"] != "&nbsp;") {
+                        if (allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_PositionCategorie"] < positionArrayCat[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0 && allArray[l]["Id_Categorie"] != "undefined" && allArray[l]["Id_Categorie"] != "&nbsp;") {
                             ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_PositionCategorie"] + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
                         }// tickerTest   
                                                     
@@ -990,7 +1001,6 @@ switch(option) {  // tickerTest
                         
                     positionArrayAll[competitorNumber] = allArray[l]["Id_Position"];// update array with current overall position for next Load calc
                     positionArrayCat[competitorNumber] = allArray[l]["Id_PositionCategorie"];// update array with current category position for next Load calc
-       
        
        // blink the competitor line when change
 
