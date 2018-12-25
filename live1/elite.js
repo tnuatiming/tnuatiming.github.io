@@ -1555,10 +1555,10 @@ switch(option) {  // tickerTest
 */             
              //   console.log(positionArrayCat);
              //   console.log(positionArrayAll);
-            //   console.log(allArray);
            //  console.log(categoryPenalty);
           //      console.log(bestTime);
            //     console.log(tickerBestTime);
+            //   console.log(allArray);
 
     tableClass = "";
 
@@ -1685,7 +1685,6 @@ switch(option) {  // tickerTest
 
             for (let kk = 0; kk < tt.length; kk++) {
 
-
         /*
                 var numCols = 0;
 
@@ -1705,11 +1704,11 @@ switch(option) {  // tickerTest
 
                 var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
 
-                tt[kk].querySelectorAll('td.rnk_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
                 });
 
-                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
                 });
         //       console.log(kk + " " + numCols)

@@ -1598,8 +1598,11 @@ a.main_logo {
     #live td, #live th {
         font-size: 0.8em;
     }
-    #race td.rnk_font, #race th.rnkh_font {
+    #race td.rnk_font, #race th.rnkh_font, #live td.rnk_font, #live th.rnkh_font {
     border-right: 1px solid #fff;
+    }
+    #race td.rnk_font:nth-child(1), #race th.rnkh_font:nth-child(1), #live td.rnk_font:nth-child(-n+2), #live th.rnkh_font:nth-child(1) {
+    border-right: none;
     }
     #live #tickerTest li {
         font-size: 0.8em;
