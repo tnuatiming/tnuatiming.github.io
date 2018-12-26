@@ -18,6 +18,8 @@
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
+    var cleanResults = 0; // disable rowspan and alignTable for TotalIndex
+    
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
@@ -76,6 +78,7 @@
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById(target).innerHTML = createLiveTable(await response.text());
+                    alignTable();
                 }
             }
             catch (err) {
@@ -109,6 +112,7 @@
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById(target).innerHTML = createLiveTable(xhr.responseText);
+                    alignTable();
     //           } else {
     //               document.getElementById("categoryOrAll").style.display = "none";
                 }
@@ -209,6 +213,8 @@
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
+
+
         text1 = text1.split('<table'); // split the text to title/time and the table
         text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(text1[1]);
@@ -218,7 +224,20 @@
      //   console.log(lines);
 
 
+        if (text1[0].includes("+++")) { // clean table for results page
+            cleanResults = 1;
+            text1[0] = text1[0].replace("+++", "");
+        }
         
+        if (cleanResults == 1) {
+            var rowSpan = '';
+            var bigFont = '';
+        } else {
+            var rowSpan = 'rowspan="2" ';
+            var bigFont = ' bigFont';
+        }
+
+
         var finalText = text1[0]; // clear the finalText variable and add the title and time lines
 
 
@@ -511,6 +530,10 @@
             headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
             headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
             headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
+
+
+if (cleanResults == 0) {
+
             if (useCategory == "no") {
                 headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
             }            
@@ -518,6 +541,19 @@
     //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
             headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן</th>';
       //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+
+} else {
+            headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
+            headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
+            headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+            headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+            if (useCategory == "no") {
+                headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+            }            
+    
+}
+
+
             headerText1 += '<th class="rnkh_font Id_FinishTime">זמן כולל</th>';
             headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
 
@@ -593,13 +629,22 @@
                 finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
 
+if (cleanResults == 0) {
 
             if (l % 2 == 0) { // start building competitor line
                 finalText += '<tbody class="line">\n<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
             } else {
                 finalText += '<tbody class="line">\n<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
             }
-       
+} else {
+            if (l % 2 == 0) { // start building competitor line
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
+            } else {
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
+            }
+     
+    
+}
         
         
         
@@ -620,66 +665,66 @@
                 // add and style the status/arrow
                 if (allArray[l]["Id_Image"] == "_Status5" || allArray[l]["Id_Image_2"] == "_Status5") {
                 
-                    finalText += '<td rowspan="2" class="lightblue rotate rnk_font">&#9608;</td>';
+                    finalText += '<td ' + rowSpan + ' class="lightblue rotate rnk_font">&#9608;</td>';
 
                 } else if (allArray[l]["Id_Arrow"].includes("_Status")) { // orange
                     
-                    finalText += '<td rowspan="2" class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td ' + rowSpan + ' class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
-                    finalText += '<td rowspan="2" class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td ' + rowSpan + ' class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_PlusPosition")) { // green
                     
-                    finalText += '<td rowspan="2" class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td ' + rowSpan + ' class="' + checkeredFlag + 'green rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td rowspan="2" class="finished white rnk_font">&nbsp;</td>';
+                    finalText += '<td ' + rowSpan + ' class="finished white rnk_font">&nbsp;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
                     
-                    finalText += '<td rowspan="2" class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td ' + rowSpan + ' class="white rnk_font fadeIn">' + allArray[l]["Id_Arrow"] + '</td>';
 
                     
                 } else if (allArray[l]["Id_Arrow"] == "&#9671;") { // white
                     
-                    finalText += '<td rowspan="2" class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;</td>';
+                    finalText += '<td ' + rowSpan + ' class="white rnk_font fadeIn">'+allArray[l]["Id_penalty"]+'&#9671;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "P") { // black
                     
-                    finalText += '<td rowspan="2" class="black rnk_font fadeIn">P</td>';
+                    finalText += '<td ' + rowSpan + ' class="black rnk_font fadeIn">P</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == "&nbsp;") { // white
                     
-                    finalText += '<td rowspan="2" class="white rnk_font scale">&#9670;</td>';
+                    finalText += '<td ' + rowSpan + ' class="white rnk_font scale">&#9670;</td>';
                     
                 } else {
 
-                    finalText += '<td rowspan="2" class="black rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td ' + rowSpan + ' class="black rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 }
                 
                 if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["Id_Classe"] == "blue") {
                 
-                    finalText += '<td rowspan="2" class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
+                    finalText += '<td ' + rowSpan + ' class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
                 } else {
                     
-                    finalText += '<td rowspan="2" class="rnk_font bigFont">' + allArray[l]["Id_Position"] + '</td>'; // add postion
+                    finalText += '<td ' + rowSpan + ' class="rnk_font ' + bigFont + ' ">' + allArray[l]["Id_Position"] + '</td>'; // add postion
                 }
 
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
-                finalText += '<td rowspan="2" style="color:#111; background-color:#add8e6bf;" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td ' + rowSpan + ' style="color:#111; background-color:#add8e6bf;" class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["Id_Categorie"] == "סמים קשים" && useCategory == "no") {
-                finalText += '<td rowspan="2" style="color:white; background-color:red;" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td ' + rowSpan + ' style="color:white; background-color:red;" class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
-                finalText += '<td rowspan="2" class="rnk_font highlight bigFont">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td ' + rowSpan + ' class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
 
-                if (useCategory == "no") {
-                    finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
+                if (useCategory == "no" && cleanResults == 0) {
+                    finalText += '<td ' + rowSpan + ' class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
                 }            
                 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
@@ -691,19 +736,33 @@
                 }
                 
                 
+                if (cleanResults == 1) {
+                    
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
+                    if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
+                        finalText += '<td class="rnk_font">-</td>'; // add time
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
+                    }
+                    if (useCategory == "no") {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
+                    }            
+                        
+                }
+                
       //          if (overTheTime == "yes") {
                 // make color change FIXME
 
                 
                 if (allArray[l]["Id_FinishTime"] == 99999999999) {
-                finalText += '<td rowspan="2" class="rnk_font">-</td>'; // add total time
+                finalText += '<td ' + rowSpan + ' class="rnk_font">-</td>'; // add total time
                 } else {
-                finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
+                finalText += '<td ' + rowSpan + ' class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
                 }
       //          } else {
-       //             finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
+       //             finalText += '<td ' + rowSpan + ' class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
        //         }
-                finalText += '<td rowspan="2" class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
+                finalText += '<td ' + rowSpan + ' class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
      //       }
 
                  
@@ -712,38 +771,42 @@
 
                     finalText += '</tr>\n';
                     
-            if (l % 2 == 0) { // start building competitor line
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
-            } else {
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
-            }
-                    
-                    
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
-                    
-                    
-                if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
-                    finalText += '<td class="rnk_font">-</td>'; // add time
-                } else {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
-                }
-                    
-                    
-                    finalText += '</tr>\n</tbody>\n';
 
+            if (cleanResults == 0) {        
+                    
+                if (l % 2 == 0) { // start building competitor line
+                    finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
+                } else {
+                    finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
+                }
+                        
+                        
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
+                        
+                        
+                    if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
+                        finalText += '<td class="rnk_font">-</td>'; // add time
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
+                    }
+                        
+                        
+                        finalText += '</tr>\n</tbody>\n';
+                }
                
             }        
          
          
                 finalText += '</table></div>';
      
-
  if (Array.isArray(allArray3) || allArray3.length != 0) {
  
      // build secound table
 }        
+
+         
           
-          //   console.log(allArray);
+             console.log(allArray);
 
          //    console.log(finalText);
       
@@ -786,6 +849,47 @@
         } else if (TimerChange) clearTimeout(TimerChange)
     };
 
+    function alignTable() {
+        
+        if (cleanResults == 0) {
+            
+            // aligning table colmuns according to number of colmuns
+            var tt = document.querySelectorAll('.line_color');
+
+            for (let kk = 0; kk < tt.length; kk++) {
+
+        /*
+                var numCols = 0;
+
+                for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
+
+                    row = tt[kk].rows[ii];
+                    
+                    if (numCols < row.cells.length) { // find max number of colmuns
+                        numCols = row.cells.length;
+                    }
+                    row = null;
+                }
+                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+        */
+                var tds = tt[kk].querySelectorAll('th.rnkh_font');
+
+
+                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+
+                tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
+                    element.style.width = ddd + "%";
+                });
+
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+4)').forEach(function(element) { // all from column 4
+                    element.style.width = ddd + "%";
+                });
+        //       console.log(kk + " " + numCols)
+            }
+        }
+    }  
+    
+    
 /*
  // another option to convert
     function timeToMs(time) {// time(HH:MM:SS.mss)

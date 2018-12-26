@@ -76,6 +76,7 @@
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById(target).innerHTML = createLiveTable(await response.text());
+                    alignTable();
                 }
             }
             catch (err) {
@@ -109,6 +110,7 @@
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById(target).innerHTML = createLiveTable(xhr.responseText);
+                    alignTable();
     //           } else {
     //               document.getElementById("categoryOrAll").style.display = "none";
                 }
@@ -769,6 +771,45 @@
         } else if (TimerChange) clearTimeout(TimerChange)
     };
 
+    function alignTable() {
+        
+            
+            // aligning table colmuns according to number of colmuns
+            var tt = document.querySelectorAll('.line_color');
+
+            for (let kk = 0; kk < tt.length; kk++) {
+
+        /*
+                var numCols = 0;
+
+                for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
+
+                    row = tt[kk].rows[ii];
+                    
+                    if (numCols < row.cells.length) { // find max number of colmuns
+                        numCols = row.cells.length;
+                    }
+                    row = null;
+                }
+                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+        */
+                var tds = tt[kk].querySelectorAll('th.rnkh_font');
+
+
+                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+
+                tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
+                    element.style.width = ddd + "%";
+                });
+
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+4)').forEach(function(element) { // all from column 4
+                    element.style.width = ddd + "%";
+                });
+        //       console.log(kk + " " + numCols)
+            }
+    }  
+    
+    
 /*
  // another option to convert
     function timeToMs(time) {// time(HH:MM:SS.mss)

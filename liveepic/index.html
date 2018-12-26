@@ -14,7 +14,8 @@ sitemap:
     tbody.line {border-bottom: 1px solid #111;}
   /*  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  */
     .bigFont {font-size: 1.5em;}
-    tbody.line:hover {background-color: #ffcc33; z-index: 999;}
+    tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}
+    #live th.rnkh_font:nth-child(-n+3) { /*first 3 elements*/width: 1%;}
 </style>
 
 <div id="raceheader"><h1>תוצאות בזמן אמת</h1></div>

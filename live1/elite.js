@@ -455,8 +455,10 @@
         if (HeaderName[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             HeaderEventName = HeaderEventName.replace("+++", "");
-        } else cleanResults = 0;
-
+        } else {
+            cleanResults = 0;
+        }
+        
         if (HeaderName[0].includes("copilot")) { // clean table for results page
             showCoPilot = 1;
             HeaderEventName = HeaderEventName.replace("copilot", "");

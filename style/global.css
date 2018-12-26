@@ -220,7 +220,7 @@ table.no_num_color {
 #race .no_num_color td.rnk_font.hover, #race .no_num_color td.rnk_font.matching {
     background: #ffcc33;
 }
-#race td.rnk_font:nth-child(-n+2), #race th.rnk_font:nth-child(-n+2) { /*first 2 elements*/
+#race td.rnk_font:nth-child(-n+2), #race th.rnkh_font:nth-child(-n+2) { /*first 2 elements*/
     width: 5%;
 }
 /*
