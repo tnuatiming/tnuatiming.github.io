@@ -379,8 +379,9 @@
                                     
                                     if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) {
                                         allArray[b]["Id_FinishTime"] = 99999999999;
-                                        allArray[b]["Id_Image"] = "_Status5"; // make DSQ
-                                        allArray[b]["Id_Image_2"] = "_Status5"; // make DSQ
+                                        allArray[b]["blue"] = 1; // make blue DSQ
+                                    } else {
+                                        allArray[b]["blue"] = 0; // make blue DSQ
                                     }
                                     
                                    
@@ -654,7 +655,7 @@ if (cleanResults == 0) {
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["Id_Image"] != "_Status5") {
+                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0) {
                     var checkeredFlag = "finished ";
                 } else {
                     var checkeredFlag = "";
@@ -663,14 +664,17 @@ if (cleanResults == 0) {
                 
                 
                 // add and style the status/arrow
-                if (allArray[l]["Id_Image"] == "_Status5" || allArray[l]["Id_Image_2"] == "_Status5") {
-                
-                    finalText += '<td ' + rowSpan + ' class="lightblue rotate rnk_font">&#9608;</td>';
+                if (allArray[l]["Id_Arrow"].includes("dnsfq") && allArray[l]["blue"] == 1) {
+                    finalText += '<td style="background-color:#add8e6;" ' + rowSpan + ' class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
-                } else if (allArray[l]["Id_Arrow"].includes("_Status")) { // orange
+                } else if (allArray[l]["Id_Arrow"].includes("dnsfq")) { // orange
                     
                     finalText += '<td ' + rowSpan + ' class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
+                } else if (allArray[l]["blue"] == 1) {
+                
+                    finalText += '<td ' + rowSpan + ' class="lightblue rotate rnk_font">&#9608;</td>';
+
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
                     finalText += '<td ' + rowSpan + ' class="' + checkeredFlag + 'red rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
