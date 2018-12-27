@@ -528,8 +528,11 @@
    //     }          
 
     // hard coded header for now
-            headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-            headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
+
+          //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+            headerText1 += '<th colspan="2" class="rnkh_font Id_Position">מקום</th>';
+
+
             headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
 
 
@@ -665,7 +668,7 @@ if (cleanResults == 0) {
                 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"].includes("dnsfq") && allArray[l]["blue"] == 1) {
-                    finalText += '<td style="background-color:#add8e6;" ' + rowSpan + ' class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td ' + rowSpan + ' class="orange blued rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 } else if (allArray[l]["Id_Arrow"].includes("dnsfq")) { // orange
                     
@@ -673,7 +676,7 @@ if (cleanResults == 0) {
                     
                 } else if (allArray[l]["blue"] == 1) {
                 
-                    finalText += '<td ' + rowSpan + ' class="lightblue rotate rnk_font">&#9608;</td>';
+                    finalText += '<td ' + rowSpan + ' class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
@@ -874,12 +877,13 @@ if (cleanResults == 0) {
                     }
                     row = null;
                 }
-                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+                var ddd = 90 / (numCols - 3); // 90% divided by number of columns - first 3 column
         */
-                var tds = tt[kk].querySelectorAll('th.rnkh_font');
+                var trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
+                var tds = trs[0].querySelectorAll('th.rnkh_font');
 
 
-                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+                var ddd = 90 / (tds.length - 3); // 90% divided by number of columns - first 3 column
 
                 tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";

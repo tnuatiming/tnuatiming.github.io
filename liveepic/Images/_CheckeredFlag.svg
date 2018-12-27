@@ -18,7 +18,7 @@
    inkscape:export-filename="/home/amir/amirsher.github.io/live/Images/_Stop.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
-   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
    sodipodi:docname="_CheckeredFlag.svg">
   <sodipodi:namedview
      id="base"
@@ -28,8 +28,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.17"
-     inkscape:cx="-278.69521"
-     inkscape:cy="327.62087"
+     inkscape:cx="-458.18239"
+     inkscape:cy="361.8089"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -4228,12 +4228,12 @@
          id="tspan8498">green</tspan><tspan
          sodipodi:role="line"
          x="-144.83389"
-         y="231.13661"
+         y="231.13663"
          style="fill:#c8102e;fill-opacity:1;stroke-width:0.26458332"
          id="tspan8513">red</tspan><tspan
          sodipodi:role="line"
          x="-144.83389"
-         y="244.3658"
+         y="244.36578"
          style="fill:#41b6e6;fill-opacity:1;stroke-width:0.26458332"
          id="tspan8515">blue</tspan><tspan
          sodipodi:role="line"
@@ -4243,14 +4243,19 @@
          id="tspan8507">black</tspan><tspan
          sodipodi:role="line"
          x="-144.83389"
-         y="270.8241"
+         y="270.82413"
          style="fill:#fedd00;fill-opacity:1;stroke-width:0.26458332"
          id="tspan8509">yellow</tspan><tspan
          sodipodi:role="line"
          x="-144.83389"
          y="284.05328"
          style="fill:#ff8200;fill-opacity:1;stroke-width:0.26458332"
-         id="tspan8517">orange</tspan></text>
+         id="tspan8517">orange</tspan><tspan
+         sodipodi:role="line"
+         x="-144.83389"
+         y="297.28244"
+         style="fill:#add8e6;fill-opacity:1;stroke-width:0.26458332"
+         id="tspan1894">lightblue</tspan></text>
     <g
        transform="translate(-6.9468629,-63.406979)"
        id="g13275-9">
@@ -4490,7 +4495,7 @@
          inkscape:connector-curvature="0" />
     </g>
     <rect
-       style="opacity:1;fill:#fedd00;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.47758436;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#add8e6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.47758436;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4541"
        width="31.75"
        height="21.166666"

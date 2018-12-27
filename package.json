@@ -4,7 +4,7 @@
   "devDependencies": {},
   "dependencies": {
     "coffeescript": "^2.3.2",
-    "google-closure-compiler": "^20181125.0.1",
+    "google-closure-compiler": "^20181210.0.0",
     "graceful-fs": "^4.1.15",
     "grunt": "^1.0.3",
     "grunt-contrib-clean": "^2.0.0",
@@ -13,7 +13,7 @@
     "grunt-contrib-htmlmin": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-ftp-push": "^1.2.1",
-    "grunt-shell": "^2.1.0",
+    "grunt-shell": "^3.0.0",
     "grunt-text-replace": "^0.4.0",
     "grunt-zip": "^0.18.1",
     "grunt-zip-directories": "^1.0.1",
