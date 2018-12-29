@@ -690,7 +690,7 @@ switch(option) {  // tickerTest
                                 if (allArray[l]["Id_TpsCumule"].toString().substring(0, 1) == "0" && allArray[l]["Id_TpsCumule"].includes(":")) {
                                     allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(1);
                                 }
-                                
+                                allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].replace(" 00:", " ") // for P
                             }
 
 
@@ -1003,7 +1003,7 @@ switch(option) {  // tickerTest
                         } 
                         
                     } // tickerTest
-                        
+
                     positionArrayAll[competitorNumber] = allArray[l]["Id_Position"];// update array with current overall position for next Load calc
                     positionArrayCat[competitorNumber] = allArray[l]["Id_PositionCategorie"];// update array with current category position for next Load calc
        

@@ -377,7 +377,7 @@
                 lineArray["Id_Classe_2"] = "-";                    
                 lineArray["Id_Classe_3"] = "-";                    
                 lineArray["Id_FinishTimeTotal"] = 99999999999;
-                lineArray["Id_dsq"] = "";
+                lineArray["Id_dnsfq"] = "";
                 
                 allArray.push(lineArray); // push line to main array 
                lineArray = [];
@@ -436,9 +436,20 @@
                 if (allArray[b]["Id_FinishTime"] != "-") {
                     allArray[b]["Id_FinishTimeTotal"] = allArray[b]["Id_FinishTime"];
                 }
-                if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["blue"] == 1) {
-                    allArray[b]["Id_dsq"] = "dsq";
-                }
+
+                    if (allArray[b]["Id_Arrow"].includes('_dsq.svg')) {
+                        allArray[b]["Id_dnsfq"] = "dsq";
+                    } else if (allArray[b]["Id_Arrow"].includes('_dnf.svg')) {
+                        allArray[b]["Id_dnsfq"] = "dnf";
+                    } else if (allArray[b]["Id_Classe"] == "blue"  || allArray[b]["blue"] == 1) {
+                        allArray[b]["Id_dnsfq"] = "blue";
+                    } else if (allArray[b]["Id_FinishTimeTotal"] == 99999999999) {
+                        allArray[b]["Id_dnsfq"] = ""; // ???
+                    }
+                
+ /*               if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+                    allArray[b]["Id_dnsfq"] = "dsq";
+                }*/
             }
         }
          
@@ -467,9 +478,21 @@
                     }
                     
                     if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
-                        if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
-                        allArray[b]["Id_dsq"] = "dsq";
+                    
+                        if (allArray[b]["Id_Arrow"].includes('_dsq.svg') || allArray[b]["Id_Arrow_2"].includes('_dsq.svg')) {
+                            allArray[b]["Id_dnsfq"] = "dsq";
+                        } else if (allArray[b]["Id_Arrow"].includes('_dnf.svg') || allArray[b]["Id_Arrow_2"].includes('_dnf.svg')) {
+                            allArray[b]["Id_dnsfq"] = "dnf";
+                        } else if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["blue"] == 1) {
+                            allArray[b]["Id_dnsfq"] = "blue";
+                        } else if (allArray[b]["Id_FinishTimeTotal"] == 99999999999) {
+                            allArray[b]["Id_dnsfq"] = ""; // ???
                         }
+                   
+                    
+/*                        if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+                        allArray[b]["Id_dnsfq"] = "dsq";
+                        }*/
                     }
                 } 
             }
@@ -505,9 +528,22 @@
                     }
                     
                     if (allArray[b]["Id_Numero"] == allArray3[a]["Id_Numero"]) {
-                        if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_Classe_3"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
-                        allArray[b]["Id_dsq"] = "dsq";
+                    
+                
+                        if (allArray[b]["Id_Arrow"].includes('_dsq.svg') || allArray[b]["Id_Arrow_2"].includes('_dsq.svg') || allArray[b]["Id_Arrow_3"].includes('_dsq.svg')) {
+                            allArray[b]["Id_dnsfq"] = "dsq";
+                        } else if (allArray[b]["Id_Arrow"].includes('_dnf.svg') || allArray[b]["Id_Arrow_2"].includes('_dnf.svg') || allArray[b]["Id_Arrow_3"].includes('_dnf.svg')) {
+                            allArray[b]["Id_dnsfq"] = "dnf";
+                        } else if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_Classe_3"] == "blue" || allArray[b]["blue"] == 1) {
+                            allArray[b]["Id_dnsfq"] = "blue";
+                        } else if (allArray[b]["Id_FinishTimeTotal"] == 99999999999) {
+                            allArray[b]["Id_dnsfq"] = ""; // ???
                         }
+
+                        
+/*                        if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_Classe_3"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+                        allArray[b]["Id_dnsfq"] = "dsq";
+                        }*/
                     }
                 } 
             }
@@ -518,9 +554,9 @@
 
          // THE MAGIC - sort the array after the merge to get new results
         if (useCategory == "no") {
-            allArray.sort(function(a, b){return a.Id_dsq.localeCompare(b.Id_dsq) || a.Id_FinishTime - b.Id_FinishTime});
+            allArray.sort(function(a, b){return a.Id_dnsfq.localeCompare(b.Id_dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_dsq.localeCompare(b.Id_dsq) || a.Id_FinishTime - b.Id_FinishTime});
+            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_dnsfq.localeCompare(b.Id_dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
         }
          
          
@@ -679,7 +715,9 @@
             }
                        
 
-                if (allArray[l]["Id_FinishTimeTotal"] == 99999999999 || allArray[l]["Id_dsq"] == "dsq") {
+                if (allArray[l]["Id_dnsfq"] == "dsq" || allArray[l]["Id_dnsfq"] == "blue") {
+                    finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>\n'; // add postion
+                } else if (allArray[l]["Id_FinishTimeTotal"] == 99999999999 || allArray[l]["Id_dnsfq"] == "dnf") {
                     finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>\n'; // add postion
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>\n'; // add postion

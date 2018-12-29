@@ -183,6 +183,7 @@
 
     function createLiveTable(text1) {
         var i;
+        var raceEnded = 0;
         var lines;
         competitorPosition = 0;
         competitorNumber = 0;
@@ -227,6 +228,10 @@
         if (text1[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             text1[0] = text1[0].replace("+++", "");
+        }
+
+        if (text1[0].includes("_Stop.png") || text1[0].includes("_CheckeredFlag.png")) { // check if race ended
+            raceEnded = 1;
         }
         
         if (cleanResults == 1) {
@@ -292,6 +297,7 @@
                 lineArray.Id_Nom_2 = "&nbsp;";
                 lineArray.Id_Arrow = "&nbsp;";
                 lineArray.Id_Status = 0;
+                lineArray.blue = 0;
                 lineArray.Id_penalty = "&nbsp;";   
 
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
@@ -379,13 +385,18 @@
                                     
                                     if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) {
                                         allArray[b]["Id_FinishTime"] = 99999999999;
-                                        allArray[b]["blue"] = 1; // make blue DSQ
+                                        allArray[b].blue = 1; // make blue DSQ
                                     } else {
-                                        allArray[b]["blue"] = 0; // make blue DSQ
+                                        allArray[b].blue = 0; // make blue DSQ
                                     }
                                     
                                    
                                     
+                                    
+                                } else if (raceEnded == 1 && (allArray[b]["Id_TpsCumule"] == 99999999999 || allArray[b]["Id_TpsCumule_2"] == 99999999999)) {
+                                    
+                                    allArray[b]["Id_FinishTime"] = 99999999999;
+                                    allArray[b].blue = 1; // make blue DSQ
                                     
                                 }
                     }
@@ -401,7 +412,7 @@
                     
              //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
                     
-                    if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status")) {
+                    if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1) {
                         allArray[b].Id_Status = 1;
                     } else {
                         allArray[b].Id_Status = 0;
@@ -415,6 +426,7 @@
          allArray2 = [];
          
          // THE MAGIC - sort the array after the merge to get new results
+         // FIXME Id_Status drops blue competitor to buttom , check if this is what needed
         if (useCategory == "no") {
             allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         } else if (useCategory == "yes") {
@@ -575,6 +587,8 @@ if (cleanResults == 0) {
                     
                     if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
+                    } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
+                        allArray[l]["blue"] = 1; //FIXME
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">';
                     } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
@@ -877,19 +891,19 @@ if (cleanResults == 0) {
                     }
                     row = null;
                 }
-                var ddd = 90 / (numCols - 3); // 90% divided by number of columns - first 3 column
+                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
         */
                 var trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
                 var tds = trs[0].querySelectorAll('th.rnkh_font');
 
 
-                var ddd = 90 / (tds.length - 3); // 90% divided by number of columns - first 3 column
+                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
 
                 tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
                 });
 
-                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+4)').forEach(function(element) { // all from column 4
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
                     element.style.width = ddd + "%";
                 });
         //       console.log(kk + " " + numCols)
