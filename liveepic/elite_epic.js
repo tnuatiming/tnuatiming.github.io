@@ -184,6 +184,7 @@
     function createLiveTable(text1) {
         var i;
         var raceEnded = 0;
+        var doNotShowTime = 0; // dont display individuall time
         var lines;
         competitorPosition = 0;
         competitorNumber = 0;
@@ -228,6 +229,11 @@
         if (text1[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             text1[0] = text1[0].replace("+++", "");
+        }
+
+        if (text1[0].includes("---")) { // clean table for results page
+            doNotShowTime = 1;
+            text1[0] = text1[0].replace("---", "");
         }
 
         if (text1[0].includes("_Stop.png") || text1[0].includes("_CheckeredFlag.png")) { // check if race ended
@@ -555,14 +561,21 @@ if (cleanResults == 0) {
             }            
             headerText1 += '<th class="rnkh_font Id_Nom">מתחרה</th>';
     //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
-            headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן</th>';
-      //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+
+            if (doNotShowTime == 0) {
+                headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן</th>';
+            }
+            //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
 
 } else {
             headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
-            headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
+            if (doNotShowTime == 0) {
+                headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
+            }
             headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
-            headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+            if (doNotShowTime == 0) {
+                headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+            }
             if (useCategory == "no") {
                 headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
             }            
@@ -748,24 +761,38 @@ if (cleanResults == 0) {
                 if (useCategory == "no" && cleanResults == 0) {
                     finalText += '<td ' + rowSpan + ' class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
                 }            
-                
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
 
+                
+                if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0) {
+                    finalText += '<td class="rnk_font"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+                    
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+                }
+                
+         //       finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+
+                
+                
+            if (doNotShowTime == 0) {
+                
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
                     finalText += '<td class="rnk_font">-</td>'; // add time
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add time
                 }
-                
+            }          
                 
                 if (cleanResults == 1) {
                     
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
+            if (doNotShowTime == 0) {
                     if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // add time
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
                     }
+            }
                     if (useCategory == "no") {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
                     }            
@@ -802,21 +829,27 @@ if (cleanResults == 0) {
                     finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
                 }
                         
-                        
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
-                        
-                        
-                    if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
-                        finalText += '<td class="rnk_font">-</td>'; // add time
-                    } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
-                    }
-                        
-                        
-                        finalText += '</tr>\n</tbody>\n';
+                if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
+                    finalText += '<td class="rnk_font"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom_2"] + '</td>';// add the name
+                    
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>';// add the name
                 }
+                        
+     //               finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
+                        
+            if (doNotShowTime == 0) {
+                        
+                if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
+                    finalText += '<td class="rnk_font">-</td>'; // add time
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // add time
+                }
+            }                   
+                finalText += '</tr>\n</tbody>\n';
+            }
                
-            }        
+        }        
          
          
                 finalText += '</table></div>';
