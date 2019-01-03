@@ -1573,7 +1573,7 @@ a.main_logo {
         width: 100%;
         margin-right: 0;
     }
-    .big_table {
+    .big_table, #live .big_table td.rnk_font, #live .big_table th.rnkh_font {
         font-size: 0.6em;
     }
     h2, li, #live #raceheader h1, #live #center1 h1, .navigation a, #live #categoryOrAll button {

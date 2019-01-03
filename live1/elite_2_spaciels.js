@@ -287,8 +287,9 @@
                     bestTime2comp=lineArray2["Id_Numero"];
                 }
 */
-                // find best lap overall
-                if (hhhPro2[pp] == "Id_TpsTour1" || hhhPro2[pp] == "Id_TpsTour2" || hhhPro2[pp] == "Id_TpsTour3" || hhhPro2[pp] == "Id_TpsTour4" || hhhPro2[pp] == "Id_TpsTour5" || hhhPro2[pp] == "Id_TpsTour6") {
+                // find best lap overall        /Id_TpsTour\d+/.test(hhhPro2[pp])
+//                if (hhhPro2[pp] == "Id_TpsTour1" || hhhPro2[pp] == "Id_TpsTour2" || hhhPro2[pp] == "Id_TpsTour3" || hhhPro2[pp] == "Id_TpsTour4" || hhhPro2[pp] == "Id_TpsTour5" || hhhPro2[pp] == "Id_TpsTour6") {
+                if (/Id_TpsTour\d+/.test(hhhPro2[pp])) {
                     if (lineArray2[hhhPro2[pp]] != "-" && timeString2ms(lineArray2[hhhPro2[pp]]) <= timeString2ms(bestLap2)) {
                     bestLap2 = lineArray2[hhhPro2[pp]];
                     bestLapComp2 = lineArray2["Id_Numero"];
@@ -364,7 +365,8 @@
                 }
 */
                 // find best lap overall
-                if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3" || hhhPro[pp] == "Id_TpsTour4" || hhhPro[pp] == "Id_TpsTour5" || hhhPro[pp] == "Id_TpsTour6") {
+//                if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3" || hhhPro[pp] == "Id_TpsTour4" || hhhPro[pp] == "Id_TpsTour5" || hhhPro[pp] == "Id_TpsTour6") {
+                if (/Id_TpsTour\d+/.test(hhhPro[pp])) {
                     if (lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
                     bestLap = lineArray[hhhPro[pp]];
                     bestLapComp = lineArray["Id_Numero"];

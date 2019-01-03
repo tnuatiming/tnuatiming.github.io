@@ -584,7 +584,8 @@
                 // find best lap overall
                 if (showIndividualLaps == 1) {
                 
-                    if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3" || hhhPro[pp] == "Id_TpsTour4" || hhhPro[pp] == "Id_TpsTour5" || hhhPro[pp] == "Id_TpsTour6") {
+//                    if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3" || hhhPro[pp] == "Id_TpsTour4" || hhhPro[pp] == "Id_TpsTour5" || hhhPro[pp] == "Id_TpsTour6") {
+                    if (/Id_TpsTour\d+/.test(hhhPro[pp])) {
                         if (lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
                         bestLap = lineArray[hhhPro[pp]];
                         bestLapComp = lineArray["Id_Numero"];
@@ -1703,6 +1704,9 @@ switch(option) {  // tickerTest
         */
                 var tds = tt[kk].querySelectorAll('th.rnkh_font');
 
+                if (tds.length > 10) {
+                    tt[kk].classList.add("big_table");
+                }
 
                 var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
 

@@ -20,6 +20,9 @@
 */
         var tds = tt[kk].querySelectorAll('th.rnkh_font');
 
+        if (tds.length > 10) {
+            tt[kk].classList.add("big_table");
+        }
 
         var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
 
