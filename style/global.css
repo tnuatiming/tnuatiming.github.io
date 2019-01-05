@@ -193,6 +193,12 @@ table.no_num_color {
 .big_table th.rnkh_font {
     white-space: pre-wrap;
 }*/
+table.big_table {
+    font-size: 0.8em;
+}
+table.huge_table {
+    font-size: 0.6em;
+}
 
 
 /*race resulte page*/
@@ -309,7 +315,7 @@ td img {
 
 td.title_font {
     color: #222;
-    font-size: 1.2em;
+    font-size: 16px;
     font-weight: 700;
     text-shadow: none;
 /*    padding-top: 10px;
@@ -1573,8 +1579,11 @@ a.main_logo {
         width: 100%;
         margin-right: 0;
     }
-    .big_table, #live .big_table td.rnk_font, #live .big_table th.rnkh_font {
-        font-size: 0.6em;
+    table.big_table, #live .big_table td.rnk_font, #live .big_table th.rnkh_font {
+        font-size: 0.5em;
+    }
+    table.huge_table, #live .huge_table td.rnk_font, #live .huge_table th.rnkh_font {
+        font-size: 0.4em;
     }
     h2, li, #live #raceheader h1, #live #center1 h1, .navigation a, #live #categoryOrAll button {
             font-size: 1em;

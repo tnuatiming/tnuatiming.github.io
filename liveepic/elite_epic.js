@@ -930,7 +930,9 @@ if (cleanResults == 0) {
                 var trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
                 var tds = trs[0].querySelectorAll('th.rnkh_font');
 
-                if (tds.length > 10) {
+                if (tds.length > 14) {
+                    tt[kk].classList.add("huge_table");
+                } else if (tds.length > 10) {
                     tt[kk].classList.add("big_table");
                 }
 
