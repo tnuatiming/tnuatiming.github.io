@@ -193,13 +193,6 @@ table.no_num_color {
 .big_table th.rnkh_font {
     white-space: pre-wrap;
 }*/
-table.big_table {
-    font-size: 0.8em;
-}
-table.huge_table {
-    font-size: 0.6em;
-}
-
 
 /*race resulte page*/
 #race td.rnk_font, #live td.rnk_font {
@@ -865,7 +858,7 @@ td[aria-label] {
     position: relative;
 }
 
-td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after {
+td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after, td.purpleCat[aria-label]:hover:after {
     content: attr(aria-label);
     padding: 0 8px;
     position: absolute;
@@ -1247,6 +1240,7 @@ a.main_logo {
 
 .season h1{
     width: 100%;
+    column-span: all;
 }
 
 #races .sport {
@@ -1398,6 +1392,15 @@ a.main_logo {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
+@media (max-width: 1200px) {
+    table.big_table {
+        font-size: 0.8em;
+    }
+    table.huge_table {
+        font-size: 0.6em;
+    }
+}    
+
 @media (min-width: 1025px) {
     
     .navigation ul {

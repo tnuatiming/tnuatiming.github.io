@@ -20,9 +20,9 @@
 */
         var tds = tt[kk].querySelectorAll('th.rnkh_font');
 
-            if (tds.length > 14) {
+            if (tds.length > 15) {
                 tt[kk].classList.add("huge_table");
-            } else if (tds.length > 10) {
+            } else if (tds.length > 11) {
                 tt[kk].classList.add("big_table");
             }
 
