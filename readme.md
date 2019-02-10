@@ -12,31 +12,8 @@ gem list
 
 gem update
 
-gem install jekyll
-
-gem install rdiscount -s http://gemcutter.org // no need anymore, using kramdown
-
 gem install html-proofer
 
-jekyll new myblog
-
-bundle install // no need all the bundle stuff
-
-bundle update
-
-bundle gem install jekyll --pre
-
-bundle exec guard init
-
-guard init livereload // no need, not using guard
-
-(https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
-
-### running
-
-bundle exec jekyll serve
-
-bundle exec guard
  
  
 ### install git
