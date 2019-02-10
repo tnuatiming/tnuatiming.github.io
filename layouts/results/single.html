@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+{{ partial "head.html" . }}
+
+    <body id="race" class="{{ with .Params.category }}{{ . }}{{ end }}">
+
+{{ partial "header.html" . }}
+
+    <h2>{{ .Params.tag }}{{ with .Params.sub }} - {{ . }}{{ end }}</h2>  
+    <h2>{{ with .Params.round }}{{ . }}{{ end }}{{ if ne .Params.noseason "true" }}{{ with .Params.season }} עונת {{ . }} - {{ end }}{{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</h2>        
+
+{{ .Content -}}
+
+{{$title := .Params.title}}
+{{$season := .Params.season}}
+
+{{- if gt (len (where (where .Site.RegularPages "Params.category" .Params.category) "Params.season" .Params.season)) 1 -}}
+
+    <div class="erlier_races"><h2>תוצאות נוספות בעונת {{ $season }}:</h2>
+    <ul>
+
+    {{ range where (where .Site.RegularPages.ByPublishDate.Reverse "Params.category" .Params.category) "Params.season" .Params.season -}}
+
+        {{- if ne $title .Params.title -}}
+            <li><a href="{{ .URL }}">{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</a></li>
+        {{ end }}
+        {{- if eq $title .Params.title -}}
+            <li><p>{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</p></li>
+        {{ end }}
+
+    {{- end}}
+
+    </ul></div>
+
+{{ end }}
+
+    <div id="postInfo"><p><span id="name">{{ .Params.place }}</span></p>
+    <p><span id="rund">{{ .Params.round }}</span></p>
+
+    <p><span id="date">{{ .Date.Format "20060102" }}</span></p></div>
+
+{{ partial "footer.html" . }}
+
+    </body>
+    
+{{ with (in (string .Content) "line_color") }}
+    <script type="text/javascript">for(var tt=document.querySelectorAll(".line_color"),kk=0;kk<tt.length;kk++){var tds=tt[kk].querySelectorAll("th.rnkh_font");15<tds.length?tt[kk].classList.add("huge_table"):11<tds.length&&tt[kk].classList.add("big_table");var ddd=90/(tds.length-2);tt[kk].querySelectorAll("td.rnk_font:nth-child(n+3)").forEach(function(a){a.style.width=ddd+"%"});tt[kk].querySelectorAll("th.rnkh_font:nth-child(n+3)").forEach(function(a){a.style.width=ddd+"%"})};</script>
+{{ end }}      
+{{ with (in (string .Content) "no_num_color") }}
+    <script type="text/javascript">for(var btn=document.querySelectorAll(".no_num_color"),$jscomp$loop$0={$jscomp$loop$prop$k$2:0};$jscomp$loop$0.$jscomp$loop$prop$k$2<btn.length;$jscomp$loop$0={$jscomp$loop$prop$k$2:$jscomp$loop$0.$jscomp$loop$prop$k$2},$jscomp$loop$0.$jscomp$loop$prop$k$2++)btn[$jscomp$loop$0.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)").forEach(function(d){return function(c){return c.addEventListener("mouseover",function(){var e=c.innerHTML,b=btn[d.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)");for(i=0;i<b.length;++i){var a=b[i].innerHTML;e===a&&""!=a&&b[i].classList.add("matching")}})}}($jscomp$loop$0)),btn[$jscomp$loop$0.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)").forEach(function(d){return function(c){return c.addEventListener("click",function(){var e=c.innerHTML,b=btn[d.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)");for(i=0;i<b.length;++i){var a=b[i].innerHTML;if(e===a&&""!=a){switch(Number(a)%9){case 0:a="Beige";break;case 1:a="SkyBlue";break;case 2:a="Plum";break;case 3:a="LightSalmon";break;case 4:a="PaleGreen";break;case 5:a="DarkKhaki";break;case 6:a="IndianRed";break;case 7:a="LemonChiffon";break;case 8:a="MediumAquamarine";break;case 9:a="Lavender";break;default:a="Wheat"}b[i].style.backgroundColor=b[i].style.backgroundColor===a.toLowerCase()?"":a.toLowerCase()}else b[i].style.backgroundColor=""}})}}($jscomp$loop$0));document.querySelectorAll(".no_num_color td.rnk_font:not(:first-child)").forEach(function(d){return d.addEventListener("mouseout",function(){var c=document.querySelectorAll(".no_num_color td.rnk_font:not(:first-child)");for(j=0;j<c.length;++j)c[j].classList.remove("matching")})});</script>
+{{ end }}      
+
+{{/*<!--
+{{ with (in (string .Content) "line_color") }}
+    <script type="text/javascript">
+        {{ partial "alignTable.js" . }}
+    </script>
+{{ end }}      
+{{ with (in (string .Content) "no_num_color") }}
+    <script type="text/javascript">
+        {{ partial "raceProgress.js" . }}
+    </script>
+{{ end }}      
+-->*/}}
+
+</html>

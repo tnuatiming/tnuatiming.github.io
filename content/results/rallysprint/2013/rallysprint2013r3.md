@@ -1,0 +1,400 @@
+---
+title: "rallysprint2013r3"
+date: 2013-11-29
+type: results
+tag: "ראלי ספרינט"
+place: "ערד"
+season: "2013"
+round: "מרוץ 3"
+category: "rallysprint"
+---
+<table class="line_color">
+<tr>
+    <td colspan="99" class="title_font">S8 4X4</td>
+</tr>
+<tr class="rnkh_bkcolor">
+    <th class="rnkh_font">מקום</th>
+    <th class="rnkh_font">מספר</th>
+    <th class="rnkh_font">נהג</th>
+    <th class="rnkh_font">נווט</th>
+    <th class="rnkh_font">מקצה 3</th>
+    <th class="rnkh_font">מקצה 4</th>
+    <th class="rnkh_font">מקצה 5</th>
+    <th class="rnkh_font">זמן</th>
+    <th class="rnkh_font">פער</th>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">1</td>
+    <td class="rnk_font">21</td>
+    <td class="rnk_font">רמי שוכטוביץ</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:44.261</td>
+    <td class="rnk_font">2:43.236</td>
+    <td class="rnk_font">2:43.661</td>
+    <td class="rnk_font">2:43.236</td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">17</td>
+    <td class="rnk_font">נדב ירון</td>
+    <td class="rnk_font">ניר ירון</td>
+    <td class="rnk_font">2:49.072</td>
+    <td class="rnk_font">2:50.442</td>
+    <td class="rnk_font">2:46.474</td>
+    <td class="rnk_font">2:46.474</td>
+    <td class="rnk_font">3.238</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">3</td>
+    <td class="rnk_font">18</td>
+    <td class="rnk_font">קובי כהן</td>
+    <td class="rnk_font">שי אסרף</td>
+    <td class="rnk_font">2:49.113</td>
+    <td class="rnk_font">2:54.006</td>
+    <td class="rnk_font">2:46.819</td>
+    <td class="rnk_font">2:46.819</td>
+    <td class="rnk_font">3.583</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">4</td>
+    <td class="rnk_font">20</td>
+    <td class="rnk_font">חמדה עודה</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:47.256</td>
+    <td class="rnk_font">2:48.921</td>
+    <td class="rnk_font">2:47.256</td>
+    <td class="rnk_font">4.020</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">5</td>
+    <td class="rnk_font">16</td>
+    <td class="rnk_font">אהוד לביא</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:52.663</td>
+    <td class="rnk_font">2:51.903</td>
+    <td class="rnk_font">2:49.388</td>
+    <td class="rnk_font">2:49.388</td>
+    <td class="rnk_font">6.152</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">6</td>
+    <td class="rnk_font">7</td>
+    <td class="rnk_font">רונן אברבוך</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:49.818</td>
+    <td class="rnk_font">2:50.657</td>
+    <td class="rnk_font">2:51.054</td>
+    <td class="rnk_font">2:49.818</td>
+    <td class="rnk_font">6.582</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">7</td>
+    <td class="rnk_font">15</td>
+    <td class="rnk_font">אמיר ברמלי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:01.086</td>
+    <td class="rnk_font">2:57.502</td>
+    <td class="rnk_font">3:04.268</td>
+    <td class="rnk_font">2:57.502</td>
+    <td class="rnk_font">14.266</td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא התחיל - מקצה 3 - DNS</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">9</td>
+    <td class="rnk_font">איל בן ארי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">37</td>
+    <td class="rnk_font">ניר בן ארי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא סיים - מקצה 3 - DNF</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">20</td>
+    <td class="rnk_font">חמדה עודה</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:47.256</td>
+    <td class="rnk_font">2:48.921</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא התחיל - מקצה 4 - DNS</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">9</td>
+    <td class="rnk_font">איל בן ארי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">37</td>
+    <td class="rnk_font">ניר בן ארי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא התחיל - מקצה 5 - DNS</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">9</td>
+    <td class="rnk_font">איל בן ארי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">37</td>
+    <td class="rnk_font">ניר בן ארי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+</table>
+<table class="line_color">
+<tr>
+    <td colspan="99" class="title_font">CUP</td>
+</tr>
+<tr class="rnkh_bkcolor">
+    <th class="rnkh_font">מקום</th>
+    <th class="rnkh_font">מספר</th>
+    <th class="rnkh_font">נהג</th>
+    <th class="rnkh_font">נווט</th>
+    <th class="rnkh_font">מקצה 3</th>
+    <th class="rnkh_font">מקצה 4</th>
+    <th class="rnkh_font">מקצה 5</th>
+    <th class="rnkh_font">זמן</th>
+    <th class="rnkh_font">פער</th>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">1</td>
+    <td class="rnk_font">14</td>
+    <td class="rnk_font">רמי גדיר</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:47.640</td>
+    <td class="rnk_font">2:46.847</td>
+    <td class="rnk_font">2:52.240</td>
+    <td class="rnk_font">2:46.847</td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">12</td>
+    <td class="rnk_font">גבריאל בוזגלו</td>
+    <td class="rnk_font">גידי קרונין</td>
+    <td class="rnk_font">3:29.111</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:26.434</td>
+    <td class="rnk_font">3:26.434</td>
+    <td class="rnk_font">39.587</td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא סיים - מקצה 4 - DNF</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">12</td>
+    <td class="rnk_font">גבריאל בוזגלו</td>
+    <td class="rnk_font">גידי קרונין</td>
+    <td class="rnk_font">3:29.111</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:26.434</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+</table>
+<table class="line_color">
+<tr>
+    <td colspan="99" class="title_font">S6 2X4</td>
+</tr>
+<tr class="rnkh_bkcolor">
+    <th class="rnkh_font">מקום</th>
+    <th class="rnkh_font">מספר</th>
+    <th class="rnkh_font">נהג</th>
+    <th class="rnkh_font">נווט</th>
+    <th class="rnkh_font">מקצה 3</th>
+    <th class="rnkh_font">מקצה 4</th>
+    <th class="rnkh_font">מקצה 5</th>
+    <th class="rnkh_font">זמן</th>
+    <th class="rnkh_font">פער</th>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">1</td>
+    <td class="rnk_font">10</td>
+    <td class="rnk_font">אלון חליווה</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:58.367</td>
+    <td class="rnk_font">2:53.548</td>
+    <td class="rnk_font">2:52.622</td>
+    <td class="rnk_font">2:52.622</td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">8</td>
+    <td class="rnk_font">עופר שוורץ</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:58.959</td>
+    <td class="rnk_font">3:10.040</td>
+    <td class="rnk_font">2:57.300</td>
+    <td class="rnk_font">2:57.300</td>
+    <td class="rnk_font">4.678</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">3</td>
+    <td class="rnk_font">5</td>
+    <td class="rnk_font">ניצן לוי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:04.742</td>
+    <td class="rnk_font">3:04.813</td>
+    <td class="rnk_font">2:58.496</td>
+    <td class="rnk_font">2:58.496</td>
+    <td class="rnk_font">5.874</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">4</td>
+    <td class="rnk_font">13</td>
+    <td class="rnk_font">טוני בורשטיין</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:11.699</td>
+    <td class="rnk_font">3:12.293</td>
+    <td class="rnk_font">3:04.699</td>
+    <td class="rnk_font">3:04.699</td>
+    <td class="rnk_font">12.077</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">5</td>
+    <td class="rnk_font">6</td>
+    <td class="rnk_font">דב ורנר</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:05.831</td>
+    <td class="rnk_font">3:05.407</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:05.407</td>
+    <td class="rnk_font">12.785</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">6</td>
+    <td class="rnk_font">4</td>
+    <td class="rnk_font">אורי כהן</td>
+    <td class="rnk_font">אופיר ליפז</td>
+    <td class="rnk_font">3:07.480</td>
+    <td class="rnk_font">3:06.100</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:06.100</td>
+    <td class="rnk_font">13.478</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">7</td>
+    <td class="rnk_font">3</td>
+    <td class="rnk_font">איתי בורשטיין</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:25.338</td>
+    <td class="rnk_font">3:22.149</td>
+    <td class="rnk_font">3:16.817</td>
+    <td class="rnk_font">3:16.817</td>
+    <td class="rnk_font">24.195</td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא סיים - מקצה 5 - DNF</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">4</td>
+    <td class="rnk_font">אורי כהן</td>
+    <td class="rnk_font">אופיר ליפז</td>
+    <td class="rnk_font">3:07.480</td>
+    <td class="rnk_font">3:06.100</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">6</td>
+    <td class="rnk_font">דב ורנר</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:05.831</td>
+    <td class="rnk_font">3:05.407</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+</table>
+<table class="line_color">
+<tr>
+    <td colspan="99" class="title_font">RZR</td>
+</tr>
+<tr class="rnkh_bkcolor">
+    <th class="rnkh_font">מקום</th>
+    <th class="rnkh_font">מספר</th>
+    <th class="rnkh_font">נהג</th>
+    <th class="rnkh_font">נווט</th>
+    <th class="rnkh_font">מקצה 3</th>
+    <th class="rnkh_font">מקצה 4</th>
+    <th class="rnkh_font">מקצה 5</th>
+    <th class="rnkh_font">זמן</th>
+    <th class="rnkh_font">פער</th>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">1</td>
+    <td class="rnk_font">11</td>
+    <td class="rnk_font">שחף מזרחי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">2:52.675</td>
+    <td class="rnk_font">2:50.977</td>
+    <td class="rnk_font">2:58.347</td>
+    <td class="rnk_font">2:50.977</td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">אבישי חסידי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">3:08.224</td>
+    <td class="rnk_font">3:07.362</td>
+    <td class="rnk_font">3:05.489</td>
+    <td class="rnk_font">3:05.489</td>
+    <td class="rnk_font">14.512</td>
+</tr>
+</table>

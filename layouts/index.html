@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+{{ partial "head.html" . }}
+
+    <body id="home">
+
+{{ partial "header.html" . }}
+
+        <p><a href=/>תנועה מדידת זמנים</a> פועלת תחת <a href="https://tnuatiming.com">חברת תנועה מערכות מחשוב וניווט בע"מ </a>ועוסקת במדידת זמנים בארועי ספורט מוטוריים בעיקר. הפעילות שהחלה בשנת 2009 במתן שרותי מדידת זמנים לליגת האנדורו בישראל התרחבה לענפים נוספים, בינהם<a style= "border-bottom: none;" href="/manual/index.php">:</a></p>
+        <ul class=history>
+            <li>ליגת באחה ישראל  -  מרוצים הקפיים במדבר (צאלים, אשלים, ירוחם ועוד)</li>
+            <li>מבחני מיון לפורמולה ישראל 2012  -  רכבים פרטיים על משטח אספלט במתכונת ג'ימקאנה</li>
+            <li>ליגת ראלי של חברת קרוס קאנטרי  -  קטעי ספיישל לרכבי שטח (שדה תימן)</li>
+            <li>ליגת ראלי ספרינט  -  ספיישל קצר בשטח למכוניות ראלי (קצרין, ערד)</li>
+            <li>ליגת ALL MOUNTAIN  -  מרוצי דאון היל לאופניים בשטח</li>
+            <li>ליגת הסופרמוטו הישראלית</li>
+            <li>ליגת הסופרבייק הישראלית</li>
+            <li>ליגת המוטוקרוס הישראלית</li>
+            <li>ליגת הקארטינג הישראלית</li>
+            <li>ליגת זמן מטרה הישראלית</li>
+        </ul>
+        <p>כמו כן מציעה החברה את שירותיה במבחני דרכים לרכבים ואופנועים עבור אמצעי התקשורת השונים ולגופים המקיימים הדרכות והתנסויות בנהיגה, במסגרת ימי עיון או ימי כיף לעובדים.</p>
+        <div class=homeInfo>
+          <div class=right>
+            <div class=next-race>
+              <h2>תוצאות אחרונות:</h2>
+              <ul>
+
+{{ range first 4 (where .Site.Pages "Params.tag" "!=" nil) }}
+    <li><a href="{{ .URL }}"><span class="sp_tag">{{ .Params.tag }}:</span> {{ with .Params.round }}{{ . }}{{ end }}{{ with .Params.season }} עונת {{ . }}{{ end }} - {{ .Params.place }}</a></li>
+{{ end }}
+
+{{/*<!--
+
+{{ range .Pages }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Date.Format "02-01-2006" }} | {{.Title}}</a>
+        </li>
+    {{ end }}
+             
+-->*/}}
+            
+              </ul>
+            </div><!-- end next-race -->
+            <div class=contact>
+              <h2>יצירת קשר:</h2>
+              <ul>
+                <li>רז הימן</li>
+                <li><a href="mailto:119raz@walla.com">מייל: 119raz&#64;walla.com</a></li>
+              </ul>
+                <!---  <li><a href="tel:+972505562519">טלפון: 972-505-562519+</a></li>-->
+            </div><!-- end contact -->
+          </div><!-- end right -->
+          <div class=left>
+            <img src="/images/095334.jpg" alt="אוהל מדידת זמנים" title="תנועה מדידת זמנים">
+          </div><!-- end left -->
+        </div><!-- end homeInfo -->
+        
+{{/*<!--{{ .Content }}-->*/}}
+
+{{ partial "footer.html" . }}
+ 
+    </body>
+
+    <script>
+        if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                .register('/service-worker.js')
+                .then(function() { console.log("Service Worker Registered"); });
+        }
+    </script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+{{ partial "head.html" . }}
+
+    <body id="races">
+
+ {{ partial "header.html" . -}}
+
+<!-- Groups content according to content section. The ".Key" in this instance will be the section's title. -->
+
+{{- range ($.Site.RegularPages.GroupByParam "season").Reverse -}} <!--  grope by season -->
+
+    {{ $season := .Key -}}
+    
+    <div class="season">
+    <h1 class="season_header">עונת {{ $season }}</h1>
+
+    {{- range $tag, $taxonomy := $.Site.Taxonomies.tag -}} <!-- itreate by tag  -->
+    <!--      {{ len (where $taxonomy.Pages "Params.season" $season) }}-->
+
+        {{- if (len (where $taxonomy.Pages "Params.season" $season)) "!=" 0 -}} <!-- check that tag of season has posts in it  -->
+            <div class="sport"><h2>{{ $tag }}</h2>
+            <ul>
+        {{- end -}}
+        
+        {{- range .Pages -}}
+
+            {{- if (eq .Params.season $season) -}} <!-- if the post in the posts by tag list, is the same season, so show it  -->
+                <li><a href="{{ .URL }}">{{ with .Params.round }}{{ . }} - {{ end }}{{ .Params.place }}</a></li>
+            {{- end -}}
+        
+        {{- end -}}
+
+        {{- if (len (where $taxonomy.Pages "Params.season" $season)) "!=" 0 -}} <!-- check that tag of season has posts in it  -->
+            </ul>
+            </div>
+        {{- end -}}   
+    
+    {{- end -}}
+    </div>
+    
+{{- end -}}
+
+<p><span id="date">last updated: {{ now.Format "2006-1-2 15:04:05"}}</span></p>
+                
+{{ partial "footer.html" . }}
+
+    </body>
+</html>

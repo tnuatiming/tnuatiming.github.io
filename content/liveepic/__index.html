@@ -1,0 +1,37 @@
+---
+type: live
+body: epic
+#permalink: /liveepic/index.html
+place: live timing
+slug: "index"
+---
+
+<style>
+    tbody.line {border-bottom: 1px solid #111;}
+  /*  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  */
+    .bigFont {font-size: 1.5em;}
+    tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}
+    #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) { /*first 3 elements*/width: 3%;}
+    #live td.blued {background-image: url(Images/_LightBlueFlag.png);background-position: center center; background-size: auto 30%; background-repeat: no-repeat; min-width: 16px;}
+    #live td.finished {background-size: auto 30%;}    
+    h1 img {height: 32px; vertical-align: middle; margin: 0 5px;}
+    
+</style>
+
+<div id="raceheader"><h1>תוצאות בזמן אמת</h1></div>
+
+<div id="buttonInfo">
+    <div id="categoryOrAll">
+        <button id="displayCatButton" class="btn" onClick="category('yes')">לפי קטגוריה</button>
+        <button id="displayAllButton" class="btn" onClick="category('no')">כללי</button>
+    </div>
+        <div id="updates">&nbsp;</div>
+</div>
+<div id="result"></div>
+    
+<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>
+
+<div id="previousResults"></div>
+
+<div id="daysTotal"><button class="btn" onclick="location.href='./total.html'" type="button">סיכום כללי</button></div>
+

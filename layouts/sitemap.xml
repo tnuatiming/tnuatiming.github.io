@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {{ range .Site.Pages }}{{ if (eq .Type "results") }}
+    <url>
+        <loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}
+        <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02" ) }}</lastmod>{{ end }}{{ with .Sitemap.ChangeFreq }}
+        <changefreq>{{ . }}</changefreq>{{ end }}{{ if ge .Sitemap.Priority 0.0 }}
+        <priority>{{ .Sitemap.Priority }}</priority>{{ end }}
+    </url>{{ end }}{{ if (.IsHome) }}
+    <url>
+        <loc>https://tnuatiming.com/index.com</loc>{{ if not .Lastmod.IsZero }}
+        <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02" ) }}</lastmod>{{ end }}
+        <changefreq>weekly</changefreq>{{ if ge .Sitemap.Priority 0.0 }}
+        <priority>{{ .Sitemap.Priority }}</priority>{{ end }}
+    </url>
+    <url>
+        <loc>https://tnuatiming.com/live/index.com</loc>{{ if not .Lastmod.IsZero }}
+        <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02" ) }}</lastmod>{{ end }}
+        <changefreq>weekly</changefreq>{{ if ge .Sitemap.Priority 0.0 }}
+        <priority>{{ .Sitemap.Priority }}</priority>{{ end }}
+    </url>
+    <url>
+        <loc>https://tnuatiming.com/results/index.com</loc>{{ if not .Lastmod.IsZero }}
+        <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02" ) }}</lastmod>{{ end }}
+        <changefreq>weekly</changefreq>{{ if ge .Sitemap.Priority 0.0 }}
+        <priority>{{ .Sitemap.Priority }}</priority>{{ end }}
+    </url>{{ end }}{{ end }}  
+    <url>
+        <loc>http://tnuatiming.com/terms.html</loc>
+        <lastmod>2016-01-29</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>
+

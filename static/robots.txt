@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /category/
+Disallow: /season/
+Disallow: /tag/
+Disallow: /temp/
+Disallow: /old/
+Disallow: /manual/
+Disallow: /software/
+Disallow: /header.html
+Disallow: /footer.html
+Disallow: /category.html
+Disallow: /season.html
+Disallow: /tag.html
+Disallow: /results.html
+Sitemap: http://tnuatiming.com/sitemap.xml
+
+

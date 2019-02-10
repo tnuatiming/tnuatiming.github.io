@@ -1,0 +1,47 @@
+baseURL = "https://tnuatiming.com/"
+languageCode = "en-us"
+title = "תנועה מדידת זמנים"
+
+uglyurls = true
+
+disableHugoGeneratorInject = true
+
+enableRobotsTXT = "false"
+
+publishDir = "_site"
+
+disableKinds = ["taxonomy", "taxonomyTerm", "RSS"]
+
+#log = true
+#logFile = "log.txt"
+
+verbose = true
+
+#ignorefiles = [ "static/images/old/.*" ]
+
+#[frontmatter]
+#    date  = [":filename", ":default"]
+#    title = [":filename", ":default"]
+
+#[permalinks]
+#    results = "/:sections/:title/"
+#    top = "/:filename/"
+
+[taxonomies]
+    categories = "category"
+    tags = "tag"
+    seasons = "season"
+  
+[outputs]
+    home = ["HTML"]
+    page = ["HTML"]
+    section = ["HTML"]  
+    taxonomyTerm = ["HTML"]  
+    taxonomy = ["HTML"]
+    
+[sitemap]
+    changefreq = "yearly"
+    priority = 0.5
+    filename = "sitemap.xml"
+
+  

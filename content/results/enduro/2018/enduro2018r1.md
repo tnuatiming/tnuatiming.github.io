@@ -1,0 +1,2285 @@
+---
+title: "enduro2018r1"
+date: 2018-01-26
+type: results
+tag: "אנדורו"
+sub: "היירסקרמבל"
+place: "משאבי שדה"
+season: "2018"
+round: "מרוץ 1"
+category: "enduro"
+---
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">מקצועית E1</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">25</td>
+        <td class="rnk_font">תומר שמש</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">20:44.291</td>
+        <td class="rnk_font">2:07:34.824</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">47</td>
+        <td class="rnk_font">סוף סלע</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:11.654</td>
+        <td class="rnk_font">2:14:15.725</td>
+        <td class="rnk_font">6:40.901</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">61</td>
+        <td class="rnk_font">רון קדשאי</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:50.175</td>
+        <td class="rnk_font">2:15:05.313</td>
+        <td class="rnk_font">7:30.489</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">320</td>
+        <td class="rnk_font">אורן חסון</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:50.352</td>
+        <td class="rnk_font">2:15:41.185</td>
+        <td class="rnk_font">8:06.361</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">אריאל שלי</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">22:22.772</td>
+        <td class="rnk_font">2:16:00.873</td>
+        <td class="rnk_font">8:26.049</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">355</td>
+        <td class="rnk_font">נועם דדון</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:38.637</td>
+        <td class="rnk_font">2:16:05.283</td>
+        <td class="rnk_font">8:30.459</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">94</td>
+        <td class="rnk_font">בר נוב</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:18.401</td>
+        <td class="rnk_font">2:30:02.346</td>
+        <td class="rnk_font">22:27.522</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">212</td>
+        <td class="rnk_font">אמיר וייצמן</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">22:36.249</td>
+        <td class="rnk_font">2:03:08.483</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">88</td>
+        <td class="rnk_font">דן מיה</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">21:44.480</td>
+        <td class="rnk_font penalty">P 2:05:15.720</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font">גיא אוחנה</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">24:41.238</td>
+        <td class="rnk_font">2:14:33.132</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">גיא נורסלע</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">26:11.490</td>
+        <td class="rnk_font">2:15:51.214</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">12</td>
+        <td class="rnk_font">39</td>
+        <td class="rnk_font">שחף מגל</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">26:46.553</td>
+        <td class="rnk_font">2:17:31.939</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">13</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">שי אביגדור</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">27:43.444</td>
+        <td class="rnk_font">2:00:10.452</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">222</td>
+        <td class="rnk_font">אריאל דדיה</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">-</td>
+        <td class="rnk_font">27:15.659</td>
+        <td class="rnk_font">5 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (25) תומר שמש - 20:44.291</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">מקצועית E2</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">נמרוד חמו</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">19:41.635</td>
+        <td class="rnk_font">2:03:14.545</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">דרור כהן</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:53.792</td>
+        <td class="rnk_font">2:13:50.296</td>
+        <td class="rnk_font">10:35.751</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">זיו כרמי</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">20:06.617</td>
+        <td class="rnk_font">2:15:03.939</td>
+        <td class="rnk_font">11:49.394</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">84</td>
+        <td class="rnk_font">סער יעקוב</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:47.078</td>
+        <td class="rnk_font">2:21:04.465</td>
+        <td class="rnk_font">17:49.920</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">315</td>
+        <td class="rnk_font">דודי דדון</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">24:42.131</td>
+        <td class="rnk_font">2:07:09.956</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">103</td>
+        <td class="rnk_font">ברק פולקמר</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">29:14.032</td>
+        <td class="rnk_font">2:35:26.219</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (8) נמרוד חמו - 19:41.635</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">מקצועית E3</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">טל איזנבנד</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21:20.649</td>
+        <td class="rnk_font">2:16:25.869</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">512</td>
+        <td class="rnk_font">שרון נגר</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">24:30.687</td>
+        <td class="rnk_font">2:04:17.720</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">117</td>
+        <td class="rnk_font">חביאר אלחנדרו</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">24:55.436</td>
+        <td class="rnk_font">2:07:32.464</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">707</td>
+        <td class="rnk_font">צוק סלע</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">25:00.751</td>
+        <td class="rnk_font">2:08:51.244</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">ירון לוגסי</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">26:01.067</td>
+        <td class="rnk_font">2:09:47.442</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">122</td>
+        <td class="rnk_font">דניס פורמנוב</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">22:29.143</td>
+        <td class="rnk_font">1:08:40.595</td>
+        <td class="rnk_font">3 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">צחי בן גיגי</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">23:27.667</td>
+        <td class="rnk_font">1:10:05.952</td>
+        <td class="rnk_font">3 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (2) טל איזנבנד - 21:20.649</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">עממית C1</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">74</td>
+        <td class="rnk_font">נוף נקב</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">22:57.446</td>
+        <td class="rnk_font">1:36:15.609</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">33</td>
+        <td class="rnk_font">גיל זרקו</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">23:46.513</td>
+        <td class="rnk_font">1:40:38.317</td>
+        <td class="rnk_font">4:22.708</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">702</td>
+        <td class="rnk_font">גן בן דוד</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:40.583</td>
+        <td class="rnk_font">1:43:56.863</td>
+        <td class="rnk_font">7:41.254</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">149</td>
+        <td class="rnk_font">עמרי בשור</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:29.470</td>
+        <td class="rnk_font">1:44:03.565</td>
+        <td class="rnk_font">7:47.956</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">270</td>
+        <td class="rnk_font">איתי קריצמן</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">23:52.730</td>
+        <td class="rnk_font">1:44:26.451</td>
+        <td class="rnk_font">8:10.842</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">37</td>
+        <td class="rnk_font">גל מיה</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:57.755</td>
+        <td class="rnk_font">1:47:04.503</td>
+        <td class="rnk_font">10:48.894</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">444</td>
+        <td class="rnk_font">טל מיה</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:04.094</td>
+        <td class="rnk_font">1:51:45.217</td>
+        <td class="rnk_font">15:29.608</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">21</td>
+        <td class="rnk_font">יהב פייגין</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:32.633</td>
+        <td class="rnk_font">1:52:00.644</td>
+        <td class="rnk_font">15:45.035</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">110</td>
+        <td class="rnk_font">איתי גרואג</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:09.215</td>
+        <td class="rnk_font">1:53:34.146</td>
+        <td class="rnk_font">17:18.537</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">75</td>
+        <td class="rnk_font">יובל גוטמן</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:41.737</td>
+        <td class="rnk_font">1:54:37.990</td>
+        <td class="rnk_font">18:22.381</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">180</td>
+        <td class="rnk_font">עוז שמשון</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">23:30.420</td>
+        <td class="rnk_font">1:18:43.968</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (74) נוף נקב - 22:57.446</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">עממית C2</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">44</td>
+        <td class="rnk_font">מעין סבי</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">23:07.016</td>
+        <td class="rnk_font">1:37:54.935</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">101</td>
+        <td class="rnk_font">ניר דוד</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">25:27.026</td>
+        <td class="rnk_font">1:47:01.558</td>
+        <td class="rnk_font">9:06.623</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">229</td>
+        <td class="rnk_font">אוהד אביטבול</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:35.717</td>
+        <td class="rnk_font">1:47:02.275</td>
+        <td class="rnk_font">9:07.340</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">700</td>
+        <td class="rnk_font">יוסי בן שטרית</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:11.172</td>
+        <td class="rnk_font">1:49:47.968</td>
+        <td class="rnk_font">11:53.033</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">304</td>
+        <td class="rnk_font">אסף ויסבקר</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:01.182</td>
+        <td class="rnk_font">1:50:16.339</td>
+        <td class="rnk_font">12:21.404</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">353</td>
+        <td class="rnk_font">חן כהן</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:43.637</td>
+        <td class="rnk_font">1:50:18.422</td>
+        <td class="rnk_font">12:23.487</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">53</td>
+        <td class="rnk_font">אסף אביטל</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">28:32.378</td>
+        <td class="rnk_font">2:01:40.016</td>
+        <td class="rnk_font">23:45.081</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">508</td>
+        <td class="rnk_font">ערן אדיר</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">30:41.407</td>
+        <td class="rnk_font">1:33:52.782</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">70</td>
+        <td class="rnk_font">אלירן סבג</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">32:20.230</td>
+        <td class="rnk_font">1:41:02.563</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">28</td>
+        <td class="rnk_font">צחי בני</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">25:46.028</td>
+        <td class="rnk_font">1:25:45.325</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">מיכאל יפרח</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">26:15.730</td>
+        <td class="rnk_font">55:24.589</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="subtitle_font">נפסל - DSQ</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">69</td>
+        <td class="rnk_font">אלעד ששון</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:36.289</td>
+        <td class="rnk_font">1:51:58.314</td>
+        <td class="rnk_font">14:03.379</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (44) מעין סבי - 23:07.016</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">עממית C3</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">517</td>
+        <td class="rnk_font">שלומי אסרף</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:04.830</td>
+        <td class="rnk_font">1:43:55.529</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">98</td>
+        <td class="rnk_font">דורון שלומי</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">29:14.198</td>
+        <td class="rnk_font">1:32:14.914</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">42</td>
+        <td class="rnk_font">אסף שטרית</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">28:37.079</td>
+        <td class="rnk_font">1:33:09.593</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (517) שלומי אסרף - 24:04.830</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">מתחילים</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">179</td>
+        <td class="rnk_font">אורי פרג רואי</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">25:35.633</td>
+        <td class="rnk_font">1:22:33.031</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">32</td>
+        <td class="rnk_font">מוחמד כרמוואי</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">27:15.960</td>
+        <td class="rnk_font">1:25:57.063</td>
+        <td class="rnk_font">3:24.032</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">252</td>
+        <td class="rnk_font">אמיר אילון</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">26:38.430</td>
+        <td class="rnk_font">1:26:03.817</td>
+        <td class="rnk_font">3:30.786</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">142</td>
+        <td class="rnk_font">צח תורגמן</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">29:46.614</td>
+        <td class="rnk_font">1:02:13.303</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">139</td>
+        <td class="rnk_font">עבד אלגני אחמד</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">29:38.743</td>
+        <td class="rnk_font">1:02:15.564</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">722</td>
+        <td class="rnk_font">אייל רחימה</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">30:12.854</td>
+        <td class="rnk_font">1:04:32.677</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">יונתן ויסמן</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">38:37.691</td>
+        <td class="rnk_font">1:18:11.923</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">59</td>
+        <td class="rnk_font">עומר זוהר</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">39:41.883</td>
+        <td class="rnk_font">1:20:41.532</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">202</td>
+        <td class="rnk_font">אסף אדום</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">39:03.494</td>
+        <td class="rnk_font">1:24:14.617</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">326</td>
+        <td class="rnk_font">עידו וולף</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">39:39.971</td>
+        <td class="rnk_font">1:25:47.367</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">89</td>
+        <td class="rnk_font">ישראל בוזגלו</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">27:42.982</td>
+        <td class="rnk_font">58:05.820</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font"></td>
+        <td class="rnk_font">113</td>
+        <td class="rnk_font">אודי בני</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">-</td>
+        <td class="rnk_font">41:05.532</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (179) אורי פרג רואי - 25:35.633</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">סופר סניורים</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">747</td>
+        <td class="rnk_font">דניאל עמר</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">28:24.684</td>
+        <td class="rnk_font">1:31:01.807</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">230</td>
+        <td class="rnk_font">עדו גביש</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">38:57.235</td>
+        <td class="rnk_font">1:23:28.613</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">168</td>
+        <td class="rnk_font">משה ארד</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">40:37.758</td>
+        <td class="rnk_font">1:28:07.703</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">414</td>
+        <td class="rnk_font">אמיר שטיימן</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">41:31.134</td>
+        <td class="rnk_font">1:41:25.603</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">501</td>
+        <td class="rnk_font">נתן פרי טל נאור</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">52:00.079</td>
+        <td class="rnk_font">1:41:56.078</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (747) דניאל עמר - 28:24.684</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">סניורים</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">111</td>
+        <td class="rnk_font">יוסי גוטמן</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:42.893</td>
+        <td class="rnk_font">1:41:22.904</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">121</td>
+        <td class="rnk_font">אוריה כרמלי</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:13.966</td>
+        <td class="rnk_font">1:42:40.129</td>
+        <td class="rnk_font">1:17.225</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">130</td>
+        <td class="rnk_font">אדי קלדס</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">24:28.876</td>
+        <td class="rnk_font">1:42:57.002</td>
+        <td class="rnk_font">1:34.098</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">745</td>
+        <td class="rnk_font">שאולי חמוי</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">25:06.389</td>
+        <td class="rnk_font">1:45:00.730</td>
+        <td class="rnk_font">3:37.826</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">901</td>
+        <td class="rnk_font">עמית גול</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">25:49.663</td>
+        <td class="rnk_font">1:46:37.590</td>
+        <td class="rnk_font">5:14.686</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">71</td>
+        <td class="rnk_font">ברק דודאי</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">25:03.139</td>
+        <td class="rnk_font">1:46:39.770</td>
+        <td class="rnk_font">5:16.866</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">רמי צמח</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">25:07.178</td>
+        <td class="rnk_font">1:47:56.328</td>
+        <td class="rnk_font">6:33.424</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">56</td>
+        <td class="rnk_font">איציק קלנר</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">25:54.589</td>
+        <td class="rnk_font">1:51:42.937</td>
+        <td class="rnk_font">10:20.033</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">519</td>
+        <td class="rnk_font">דרור כהן</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">27:24.087</td>
+        <td class="rnk_font">1:53:08.183</td>
+        <td class="rnk_font">11:45.279</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">930</td>
+        <td class="rnk_font">יעקב כהן</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">27:29.838</td>
+        <td class="rnk_font">1:55:58.500</td>
+        <td class="rnk_font">14:35.596</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">680</td>
+        <td class="rnk_font">שי מגן</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">28:10.521</td>
+        <td class="rnk_font">1:31:30.127</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">12</td>
+        <td class="rnk_font">125</td>
+        <td class="rnk_font">רונן מדיאל</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">26:03.844</td>
+        <td class="rnk_font">1:33:01.624</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">13</td>
+        <td class="rnk_font">771</td>
+        <td class="rnk_font">אלעד שחל</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">27:10.566</td>
+        <td class="rnk_font">1:35:30.845</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">317</td>
+        <td class="rnk_font">ארז זנדברג</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">31:10.054</td>
+        <td class="rnk_font">1:37:11.205</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (121) אוריה כרמלי - 24:13.966</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">ג'וניורס מקצועית</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">108</td>
+        <td class="rnk_font">שי ספקטור</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">26:34.243</td>
+        <td class="rnk_font">1:53:52.526</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">40</td>
+        <td class="rnk_font">רז עידן</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">28:16.283</td>
+        <td class="rnk_font">1:30:08.607</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">460</td>
+        <td class="rnk_font">ענבר זלינגר</td>
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">33:04.409</td>
+        <td class="rnk_font">1:54:37.106</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">440</td>
+        <td class="rnk_font">ניב סבן</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">32:09.255</td>
+        <td class="rnk_font">1:30:51.718</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">114</td>
+        <td class="rnk_font">אלון יוסף</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">1:08:39.297</td>
+        <td class="rnk_font">2:30:03.500</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (108) שי ספקטור - 26:34.243</td>
+    </tr>
+</table>
+<table class="no_num_color">
+    <tr>
+        <td colspan="99" class="title_font">מהלך המירוץ</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">הקפה 1</th>
+        <th class="rnkh_font">הקפה 2</th>
+        <th class="rnkh_font">הקפה 3</th>
+        <th class="rnkh_font">הקפה 4</th>
+        <th class="rnkh_font">הקפה 5</th>
+        <th class="rnkh_font">הקפה 6</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">8</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">25</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">94</td>
+        <td class="rnk_font">25</td>
+        <td class="rnk_font">25</td>
+        <td class="rnk_font">25</td>
+        <td class="rnk_font">25</td>
+        <td class="rnk_font">4</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">25</td>
+        <td class="rnk_font">88</td>
+        <td class="rnk_font">88</td>
+        <td class="rnk_font">47</td>
+        <td class="rnk_font">47</td>
+        <td class="rnk_font">47</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">88</td>
+        <td class="rnk_font">122</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">5</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">122</td>
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">47</td>
+        <td class="rnk_font">61</td>
+        <td class="rnk_font">84</td>
+        <td class="rnk_font">61</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">61</td>
+        <td class="rnk_font">84</td>
+        <td class="rnk_font">61</td>
+        <td class="rnk_font">320</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">61</td>
+        <td class="rnk_font">212</td>
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">15</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">61</td>
+        <td class="rnk_font">84</td>
+        <td class="rnk_font">355</td>
+        <td class="rnk_font">320</td>
+        <td class="rnk_font">355</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">47</td>
+        <td class="rnk_font">122</td>
+        <td class="rnk_font">320</td>
+        <td class="rnk_font">355</td>
+        <td class="rnk_font">2</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">84</td>
+        <td class="rnk_font">84</td>
+        <td class="rnk_font">355</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">84</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">12</td>
+        <td class="rnk_font">212</td>
+        <td class="rnk_font">355</td>
+        <td class="rnk_font">320</td>
+        <td class="rnk_font">74</td>
+        <td class="rnk_font">94</td>
+        <td class="rnk_font">94</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">13</td>
+        <td class="rnk_font">355</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">212</td>
+        <td class="rnk_font">212</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">320</td>
+        <td class="rnk_font">320</td>
+        <td class="rnk_font">212</td>
+        <td class="rnk_font">94</td>
+        <td class="rnk_font">512</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">47</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">44</td>
+        <td class="rnk_font">88</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">16</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">74</td>
+        <td class="rnk_font">74</td>
+        <td class="rnk_font">512</td>
+        <td class="rnk_font">315</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">17</td>
+        <td class="rnk_font">707</td>
+        <td class="rnk_font">707</td>
+        <td class="rnk_font">44</td>
+        <td class="rnk_font">33</td>
+        <td class="rnk_font">117</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">18</td>
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">512</td>
+        <td class="rnk_font">512</td>
+        <td class="rnk_font">707</td>
+        <td class="rnk_font">707</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">19</td>
+        <td class="rnk_font">512</td>
+        <td class="rnk_font">44</td>
+        <td class="rnk_font">94</td>
+        <td class="rnk_font">111</td>
+        <td class="rnk_font">14</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">20</td>
+        <td class="rnk_font">315</td>
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">707</td>
+        <td class="rnk_font">315</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">21</td>
+        <td class="rnk_font">74</td>
+        <td class="rnk_font">94</td>
+        <td class="rnk_font">111</td>
+        <td class="rnk_font">117</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">22</td>
+        <td class="rnk_font">111</td>
+        <td class="rnk_font">180</td>
+        <td class="rnk_font">33</td>
+        <td class="rnk_font">121</td>
+        <td class="rnk_font">39</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">23</td>
+        <td class="rnk_font">44</td>
+        <td class="rnk_font">111</td>
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">130</td>
+        <td class="rnk_font">103</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">24</td>
+        <td class="rnk_font">222</td>
+        <td class="rnk_font">33</td>
+        <td class="rnk_font">315</td>
+        <td class="rnk_font">88</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">25</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font">117</td>
+        <td class="rnk_font">117</td>
+        <td class="rnk_font">14</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">33</td>
+        <td class="rnk_font">315</td>
+        <td class="rnk_font">121</td>
+        <td class="rnk_font">517</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">103</td>
+        <td class="rnk_font">121</td>
+        <td class="rnk_font">130</td>
+        <td class="rnk_font">702</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">28</td>
+        <td class="rnk_font">117</td>
+        <td class="rnk_font">130</td>
+        <td class="rnk_font">180</td>
+        <td class="rnk_font">149</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">29</td>
+        <td class="rnk_font">121</td>
+        <td class="rnk_font">702</td>
+        <td class="rnk_font">745</td>
+        <td class="rnk_font">270</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">30</td>
+        <td class="rnk_font">130</td>
+        <td class="rnk_font">745</td>
+        <td class="rnk_font">702</td>
+        <td class="rnk_font">745</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">31</td>
+        <td class="rnk_font">180</td>
+        <td class="rnk_font">517</td>
+        <td class="rnk_font">149</td>
+        <td class="rnk_font">901</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">32</td>
+        <td class="rnk_font">745</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font">517</td>
+        <td class="rnk_font">71</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">33</td>
+        <td class="rnk_font">125</td>
+        <td class="rnk_font">125</td>
+        <td class="rnk_font">901</td>
+        <td class="rnk_font">101</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">34</td>
+        <td class="rnk_font">702</td>
+        <td class="rnk_font">304</td>
+        <td class="rnk_font">270</td>
+        <td class="rnk_font">229</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">35</td>
+        <td class="rnk_font">517</td>
+        <td class="rnk_font">901</td>
+        <td class="rnk_font">37</td>
+        <td class="rnk_font">37</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">36</td>
+        <td class="rnk_font">901</td>
+        <td class="rnk_font">101</td>
+        <td class="rnk_font">304</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">37</td>
+        <td class="rnk_font">39</td>
+        <td class="rnk_font">149</td>
+        <td class="rnk_font">101</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">38</td>
+        <td class="rnk_font">101</td>
+        <td class="rnk_font">444</td>
+        <td class="rnk_font">71</td>
+        <td class="rnk_font">700</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">39</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">71</td>
+        <td class="rnk_font">39</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">40</td>
+        <td class="rnk_font">304</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">229</td>
+        <td class="rnk_font">304</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">41</td>
+        <td class="rnk_font">71</td>
+        <td class="rnk_font">229</td>
+        <td class="rnk_font">179</td>
+        <td class="rnk_font">353</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">42</td>
+        <td class="rnk_font">40</td>
+        <td class="rnk_font">270</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">39</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">43</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">39</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">56</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">44</td>
+        <td class="rnk_font">149</td>
+        <td class="rnk_font">179</td>
+        <td class="rnk_font">444</td>
+        <td class="rnk_font">444</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">444</td>
+        <td class="rnk_font">37</td>
+        <td class="rnk_font">108</td>
+        <td class="rnk_font">69</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">46</td>
+        <td class="rnk_font">519</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">700</td>
+        <td class="rnk_font">21</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">47</td>
+        <td class="rnk_font">56</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">69</td>
+        <td class="rnk_font">519</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">48</td>
+        <td class="rnk_font">108</td>
+        <td class="rnk_font">108</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font">110</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">49</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">110</td>
+        <td class="rnk_font">21</td>
+        <td class="rnk_font">108</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">50</td>
+        <td class="rnk_font">37</td>
+        <td class="rnk_font">519</td>
+        <td class="rnk_font">353</td>
+        <td class="rnk_font">75</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">51</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">69</td>
+        <td class="rnk_font">519</td>
+        <td class="rnk_font">103</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">52</td>
+        <td class="rnk_font">270</td>
+        <td class="rnk_font">40</td>
+        <td class="rnk_font">28</td>
+        <td class="rnk_font">930</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">53</td>
+        <td class="rnk_font">700</td>
+        <td class="rnk_font">56</td>
+        <td class="rnk_font">56</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">54</td>
+        <td class="rnk_font">42</td>
+        <td class="rnk_font">700</td>
+        <td class="rnk_font">32</td>
+        <td class="rnk_font">53</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">179</td>
+        <td class="rnk_font">103</td>
+        <td class="rnk_font">252</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">56</td>
+        <td class="rnk_font">229</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">110</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">57</td>
+        <td class="rnk_font">89</td>
+        <td class="rnk_font">89</td>
+        <td class="rnk_font">103</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">58</td>
+        <td class="rnk_font">69</td>
+        <td class="rnk_font">21</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">59</td>
+        <td class="rnk_font">110</td>
+        <td class="rnk_font">42</td>
+        <td class="rnk_font">75</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">60</td>
+        <td class="rnk_font">75</td>
+        <td class="rnk_font">32</td>
+        <td class="rnk_font">930</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">61</td>
+        <td class="rnk_font">32</td>
+        <td class="rnk_font">930</td>
+        <td class="rnk_font">53</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">62</td>
+        <td class="rnk_font">930</td>
+        <td class="rnk_font">75</td>
+        <td class="rnk_font">40</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">63</td>
+        <td class="rnk_font">21</td>
+        <td class="rnk_font">252</td>
+        <td class="rnk_font">747</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">64</td>
+        <td class="rnk_font">252</td>
+        <td class="rnk_font">353</td>
+        <td class="rnk_font">680</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">65</td>
+        <td class="rnk_font">508</td>
+        <td class="rnk_font">28</td>
+        <td class="rnk_font">98</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">353</td>
+        <td class="rnk_font">53</td>
+        <td class="rnk_font">125</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">53</td>
+        <td class="rnk_font">680</td>
+        <td class="rnk_font">42</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">68</td>
+        <td class="rnk_font">142</td>
+        <td class="rnk_font">747</td>
+        <td class="rnk_font">508</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">69</td>
+        <td class="rnk_font">139</td>
+        <td class="rnk_font">142</td>
+        <td class="rnk_font">771</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">70</td>
+        <td class="rnk_font">98</td>
+        <td class="rnk_font">139</td>
+        <td class="rnk_font">317</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">71</td>
+        <td class="rnk_font">680</td>
+        <td class="rnk_font">98</td>
+        <td class="rnk_font">70</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">747</td>
+        <td class="rnk_font">508</td>
+        <td class="rnk_font">460</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">73</td>
+        <td class="rnk_font">28</td>
+        <td class="rnk_font">722</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">74</td>
+        <td class="rnk_font">722</td>
+        <td class="rnk_font">317</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">75</td>
+        <td class="rnk_font">317</td>
+        <td class="rnk_font">771</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">76</td>
+        <td class="rnk_font">70</td>
+        <td class="rnk_font">70</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">771</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">78</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">59</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">79</td>
+        <td class="rnk_font">59</td>
+        <td class="rnk_font">460</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">80</td>
+        <td class="rnk_font">113</td>
+        <td class="rnk_font">230</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">81</td>
+        <td class="rnk_font">230</td>
+        <td class="rnk_font">202</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">82</td>
+        <td class="rnk_font">202</td>
+        <td class="rnk_font">326</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">83</td>
+        <td class="rnk_font">460</td>
+        <td class="rnk_font">168</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">84</td>
+        <td class="rnk_font">326</td>
+        <td class="rnk_font">440</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">85</td>
+        <td class="rnk_font">168</td>
+        <td class="rnk_font">414</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">86</td>
+        <td class="rnk_font">501</td>
+        <td class="rnk_font">501</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">87</td>
+        <td class="rnk_font">440</td>
+        <td class="rnk_font">114</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">88</td>
+        <td class="rnk_font">414</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">89</td>
+        <td class="rnk_font">114</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">ג'וניורס מתחילים</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">עומר רוזנבלום</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">3:52.356</td>
+        <td class="rnk_font">40:21.980</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">שקד כהן</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">3:56.717</td>
+        <td class="rnk_font">42:18.666</td>
+        <td class="rnk_font">1:56.686</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">אור זרקו</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">4:00.715</td>
+        <td class="rnk_font">42:33.044</td>
+        <td class="rnk_font">2:11.064</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">ארז מלמן</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">4:13.819</td>
+        <td class="rnk_font">43:43.317</td>
+        <td class="rnk_font">3:21.337</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">ירין כהן</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">4:05.450</td>
+        <td class="rnk_font">42:24.537</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">עידו כהן</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">4:33.280</td>
+        <td class="rnk_font">44:19.420</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">מעיין עוזיאל</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">4:42.942</td>
+        <td class="rnk_font">45:02.339</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">בועז סאסי</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">4:05.551</td>
+        <td class="rnk_font penalty">P 47:13.633</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">רועי שטרן</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">4:05.288</td>
+        <td class="rnk_font penalty">P 40:16.426</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">מעין חמוי</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">4:38.074</td>
+        <td class="rnk_font">40:31.664</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">גיא צמח</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">4:55.217</td>
+        <td class="rnk_font">41:36.965</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">12</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font">ניב הימן</td>
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">4:59.824</td>
+        <td class="rnk_font">40:44.100</td>
+        <td class="rnk_font">3 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (26) עומר רוזנבלום - 3:52.356</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">סופר ג'וניורס</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">אופיר קייסי צמח</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">4:00.114</td>
+        <td class="rnk_font">43:41.163</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">בן אלמגור</td>
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">4:17.412</td>
+        <td class="rnk_font">42:45.078</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">יותם עוזיאל</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">5:09.376</td>
+        <td class="rnk_font">43:55.256</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">איתי שחל</td>
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">5:14.035</td>
+        <td class="rnk_font">40:58.353</td>
+        <td class="rnk_font">3 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">רועי צמח</td>
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">5:39.463</td>
+        <td class="rnk_font">43:07.280</td>
+        <td class="rnk_font">3 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">109</td>
+        <td class="rnk_font">איתי וינברג</td>
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">5:10.121</td>
+        <td class="rnk_font">41:53.789</td>
+        <td class="rnk_font">4 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">48</td>
+        <td class="rnk_font">שי אשכנזי</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">36:26.905</td>
+        <td class="rnk_font">44:12.198</td>
+        <td class="rnk_font">8 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (27) אופיר קייסי צמח - 4:00.114</td>
+    </tr>
+</table>
+<table class="no_num_color">
+    <tr>
+        <td colspan="99" class="title_font">מהלך המירוץ</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">הקפה 1</th>
+        <th class="rnkh_font">הקפה 2</th>
+        <th class="rnkh_font">הקפה 3</th>
+        <th class="rnkh_font">הקפה 4</th>
+        <th class="rnkh_font">הקפה 5</th>
+        <th class="rnkh_font">הקפה 6</th>
+        <th class="rnkh_font">הקפה 7</th>
+        <th class="rnkh_font">הקפה 8</th>
+        <th class="rnkh_font">הקפה 9</th>
+        <th class="rnkh_font">הקפה 10</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+        <td class="rnk_font">26</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">8</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">66</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">27</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">66</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">77</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">9</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">27</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">228</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font">115</td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">12</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font">321</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">13</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font">55</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">48</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font">888</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">16</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font">11</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">17</td>
+        <td class="rnk_font">67</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font">119</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font">72</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">18</td>
+        <td class="rnk_font">45</td>
+        <td class="rnk_font">109</td>
+        <td class="rnk_font">109</td>
+        <td class="rnk_font">109</td>
+        <td class="rnk_font">109</td>
+        <td class="rnk_font">109</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">19</td>
+        <td class="rnk_font">109</td>
+        <td class="rnk_font">48</td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+        <td class="rnk_font"></td>
+    </tr>
+</table>

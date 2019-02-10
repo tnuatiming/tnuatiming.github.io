@@ -1,0 +1,53 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.01 Transitional//EN" "http://www.w3c.org/tr/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head><title>Live Internet</title>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+body {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 62.5%; text-align: center; margin: 1em; background-color: #000000;}
+img {border:0;}
+table {margin: 0 auto 0 auto; font-size: 1.1em; border-collapse: collapse;}
+td {vertical-align: middle; padding: 0 5px 0 5px;}
+td img {height: 1.5em;}
+#Menu a{margin: 0 10px; font-size: 1.4em; color: #0000FF;}
+#Title {font-size: 1.4em; font-weight: bold; color: #FFFFFF; margin: 0 0 0 0;}
+#Title img {height: 1.6em; vertical-align: bottom; margin: 0 1em 0 1em;}
+#ImageHeader {margin: 0 auto 1em auto;}
+#ImageFooter {margin: 1em auto 0 auto;}
+#Time {margin: 0 auto 0.5em auto; font-size: 1.4em; font-weight: bold; text-align: right;}
+#DayTime {color: #FFFF00; float: left}
+#ElapsedTime {color: #00FF00; margin-right: 1em}
+#RemainingTime {color: #FF0000;}
+.HeaderRow {font-weight: bold; background-color: #0000FF; color: #FFFFFF;}
+.OddRow {background-color: #111111; color: #FFFFFF;}
+.EvenRow {background-color: #000000; color: #FFFFFF;}
+.BestTimeOverall {color: #FF00FF; font-weight: bold;}
+.BestTime {color: #00FF00; font-weight: bold;}
+.PitIn {color: #FF0000; font-weight: bold;}
+.PitOut {color: #FFFF00; font-weight: bold;}
+.Class1 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FF0000; padding: 0;}
+.Class2 {border-style: solid; border-width: 0 3px 0 3px; border-color: #00FF00; padding: 0;}
+.Class3 {border-style: solid; border-width: 0 3px 0 3px; border-color: #0000FF; padding: 0;}
+.Class4 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FF00FF; padding: 0;}
+.Class5 {border-style: solid; border-width: 0 3px 0 3px; border-color: #FFFF00; padding: 0;}
+.Class6 {border-style: solid; border-width: 0 3px 0 3px; border-color: #0000FF; padding: 0;}
+.Class7 {border-style: solid; border-width: 0 3px 0 3px; border-color: #800080; padding: 0;}
+.Class8 {border-style: solid; border-width: 0 3px 0 3px; border-color: #808000; padding: 0;}
+.Class9 {border-style: solid; border-width: 0 3px 0 3px; border-color: #008080; padding: 0;}
+#ImageZoom { position:absolute; visibility:hidden; width:auto; height:auto; max-width:100%; max-height:100%; }
+#Message {color: #FFFF00; font-size: 1.1em; }
+-->
+</style>
+<script type="text/javascript">
+var TimerLoad,TimerChange;var MaxNum,Rafraichir,Changement,ClassementReduit,ClassementReduitXpremier;var UrlRefresh,UrlChange;Rafraichir=30000;Changement=90000;MaxNum=1;ClassementReduit=0;ClassementReduitXpremier=10; function Load(url,target){var xhr;var fct;if(UrlChange)url=UrlRefresh;else UrlRefresh=url;UrlChange=0;if(TimerLoad)clearTimeout(TimerLoad);try{xhr=new ActiveXObject("Msxml2.XMLHTTP")}catch(e){try{xhr=new ActiveXObject("Microsoft.XMLHTTP")}catch(e2){try{xhr=new XMLHttpRequest}catch(e3){xhr=false}}}xhr.onreadystatechange=function(){if(xhr.readyState==4&&xhr.status==200)if(ClassementReduit==0)document.getElementById(target).innerHTML=xhr.responseText;else document.getElementById(target).innerHTML=ExtraireClassementReduit(xhr.responseText)}; xhr.open("GET",url+"?r="+Math.random(),true);xhr.send(null);fct=function(){Load(url,target)};TimerLoad=setTimeout(fct,Rafraichir)} function ExtraireClassementReduit(Texte){var i,j,CompteurTD,CompteurTR;var ColPosition,ColNumero,ColNom,ColEcart1er;var Lignes;var NouveauTexte;CompteurTR=0;ColPosition=-1;ColNumero=-1;ColNom=-1;ColEcart1er=-1;Texte=Texte.substring(Texte.indexOf("<tr"));Lignes=Texte.split("\r\n");NouveauTexte='<table width="100%" cellpadding="0" cellspacing="0">';for(i=0;i<Lignes.length;i++)if(Lignes[i].substring(0,3)=="<tr"){NouveauTexte+=Lignes[i];CompteurTD=0}else if(Lignes[i].substring(0,4)=="</tr"){CompteurTR++; if(CompteurTR==ClassementReduitXpremier+1)break}else if(Lignes[i].substring(0,3)=="<td"){if(CompteurTR==0)if(Lignes[i].indexOf("\"Id_Position\"")!=-1){ColPosition=CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}else if(Lignes[i].indexOf("\"Id_Numero\"")!=-1){ColNumero=CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}else if(Lignes[i].indexOf("\"Id_Nom\"")!=-1){ColNom=CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}else{if(Lignes[i].indexOf("\"Id_Ecart1er\"")!=-1){ColEcart1er= CompteurTD;NouveauTexte+=Lignes[i].replace(/ width=".*"/i,"")}}else if(CompteurTD==ColPosition||CompteurTD==ColNumero||CompteurTD==ColNom||CompteurTD==ColEcart1er)NouveauTexte+=Lignes[i];CompteurTD++}NouveauTexte+="</table>";return NouveauTexte} function Change(){var Num,Index;if(document.forms["Changement"].chkChangement.checked){Index=UrlRefresh.indexOf(".");Num=parseInt(UrlRefresh.substring(1,Index))+1;if(Num>MaxNum)Num=1;UrlRefresh="p"+Num+".html";UrlChange=1;fct=function(){Change()};TimerChange=setTimeout(fct,Changement)}else if(TimerChange)clearTimeout(TimerChange)};
+function AfficherImageZoom(a,b){""!=b?(document.getElementById("ImageZoom").src=b,document.getElementById("ImageZoom").style.left=a.clientX+"px",document.getElementById("ImageZoom").style.top=a.clientY+"px",document.getElementById("ImageZoom").style.visibility="visible"):document.getElementById("ImageZoom").style.visibility="hidden"};
+</script>
+</head>
+<body onload="Load('p1.html', 'result');">
+<img id="ImageZoom" src="#" />
+<div id="result"></div>
+<p><a href="http://www.chronelec.com" target="_blank" style="text-decoration: none; color: #999999;"><br><br>Software Elite v3 - www.chronelec.com</a></p>
+</body>
+</html>
+ 

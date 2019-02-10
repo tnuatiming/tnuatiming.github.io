@@ -1,0 +1,186 @@
+---
+title: "rally2016r2"
+date: 2016-10-28
+type: results
+tag: "ראלי"
+place: "לוזית"
+season: "2016"
+category: "rally"
+---
+<table class="line_color">
+<tr>
+    <td colspan="99" class="title_font">CUP</td>
+</tr>
+<tr class="rnkh_bkcolor">
+    <th class="rnkh_font">מקום</th>
+    <th class="rnkh_font">מספר</th>
+    <th class="rnkh_font">נהג</th>
+    <th class="rnkh_font">נווט</th>
+    <th class="rnkh_font">הקפה 1</th>
+    <th class="rnkh_font">הקפה 2</th>
+    <th class="rnkh_font">הקפה 3</th>
+    <th class="rnkh_font">הקפה 4</th>
+    <th class="rnkh_font">זמן</th>
+    <th class="rnkh_font">פער</th>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">1</td>
+    <td class="rnk_font">26</td>
+    <td class="rnk_font">איתי אלון</td>
+    <td class="rnk_font">שלומי בקיש</td>
+    <td class="rnk_font">8:21.685</td>
+    <td class="rnk_font">8:19.883</td>
+    <td class="rnk_font">7:59.893</td>
+    <td class="rnk_font">8:10.941</td>
+    <td class="rnk_font">32:52.402</td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">22</td>
+    <td class="rnk_font">ויקטור קוחניצקי</td>
+    <td class="rnk_font">סטסאס גולדברג</td>
+    <td class="rnk_font">8:41.370</td>
+    <td class="rnk_font">8:21.584</td>
+    <td class="rnk_font">8:21.418</td>
+    <td class="rnk_font">8:27.221</td>
+    <td class="rnk_font">33:51.593</td>
+    <td class="rnk_font">59.191</td>
+</tr>
+</table>
+<table class="line_color">
+<tr>
+    <td colspan="99" class="title_font">Group N</td>
+</tr>
+<tr class="rnkh_bkcolor">
+    <th class="rnkh_font">מקום</th>
+    <th class="rnkh_font">מספר</th>
+    <th class="rnkh_font">נהג</th>
+    <th class="rnkh_font">נווט</th>
+    <th class="rnkh_font">הקפה 1</th>
+    <th class="rnkh_font">הקפה 2</th>
+    <th class="rnkh_font">הקפה 3</th>
+    <th class="rnkh_font">הקפה 4</th>
+    <th class="rnkh_font">זמן</th>
+    <th class="rnkh_font">פער</th>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">1</td>
+    <td class="rnk_font">46</td>
+    <td class="rnk_font">איל בן ארי</td>
+    <td class="rnk_font">אופיר ליפז</td>
+    <td class="rnk_font">7:51.276</td>
+    <td class="rnk_font">7:45.330</td>
+    <td class="rnk_font">7:37.779</td>
+    <td class="rnk_font">7:35.673</td>
+    <td class="rnk_font">30:50.058</td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">50</td>
+    <td class="rnk_font">אדר מלמד</td>
+    <td class="rnk_font">אלכסיי וייסנבלום</td>
+    <td class="rnk_font">7:49.482</td>
+    <td class="rnk_font">7:46.209</td>
+    <td class="rnk_font">8:39.475</td>
+    <td class="rnk_font">7:56.144</td>
+    <td class="rnk_font">32:11.310</td>
+    <td class="rnk_font">1:21.252</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">3</td>
+    <td class="rnk_font">25</td>
+    <td class="rnk_font">רונן אברבוך</td>
+    <td class="rnk_font">ריימונד סרנו</td>
+    <td class="rnk_font">8:43.737</td>
+    <td class="rnk_font">8:22.589</td>
+    <td class="rnk_font">8:05.082</td>
+    <td class="rnk_font">8:03.406</td>
+    <td class="rnk_font">33:14.814</td>
+    <td class="rnk_font">2:24.756</td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא התחיל - הקפה 4 - DNS</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">100</td>
+    <td class="rnk_font">יובל מלמד</td>
+    <td class="rnk_font">מיקי יוחאי</td>
+    <td class="rnk_font">7:55.612</td>
+    <td class="rnk_font">8:09.995</td>
+    <td class="rnk_font">9:15.710</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+</table>
+<table class="line_color">
+<tr>
+    <td colspan="99" class="title_font">T3</td>
+</tr>
+<tr class="rnkh_bkcolor">
+    <th class="rnkh_font">מקום</th>
+    <th class="rnkh_font">מספר</th>
+    <th class="rnkh_font">נהג</th>
+    <th class="rnkh_font">נווט</th>
+    <th class="rnkh_font">הקפה 1</th>
+    <th class="rnkh_font">הקפה 2</th>
+    <th class="rnkh_font">הקפה 3</th>
+    <th class="rnkh_font">הקפה 4</th>
+    <th class="rnkh_font">זמן</th>
+    <th class="rnkh_font">פער</th>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">1</td>
+    <td class="rnk_font">94</td>
+    <td class="rnk_font">שגיא בורשטיין</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">7:45.111</td>
+    <td class="rnk_font">7:39.533</td>
+    <td class="rnk_font">7:41.111</td>
+    <td class="rnk_font">7:32.586</td>
+    <td class="rnk_font">30:38.341</td>
+    <td class="rnk_font"></td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">2</td>
+    <td class="rnk_font">55</td>
+    <td class="rnk_font">רוני פישמן</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">7:59.470</td>
+    <td class="rnk_font">7:45.826</td>
+    <td class="rnk_font">7:37.337</td>
+    <td class="rnk_font">7:36.437</td>
+    <td class="rnk_font">30:59.070</td>
+    <td class="rnk_font">20.729</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font">3</td>
+    <td class="rnk_font">20</td>
+    <td class="rnk_font">דני פרל</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">8:19.727</td>
+    <td class="rnk_font">8:32.664</td>
+    <td class="rnk_font">8:06.275</td>
+    <td class="rnk_font">8:15.653</td>
+    <td class="rnk_font">33:14.319</td>
+    <td class="rnk_font">2:35.978</td>
+</tr>
+<tr>
+    <td colspan="99" class="subtitle_font">לא התחיל - הקפה 2 - DNS</td>
+</tr>
+<tr class="rnk_bkcolor">
+    <td class="rnk_font"></td>
+    <td class="rnk_font">95</td>
+    <td class="rnk_font">שחף מזרחי</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font">7:49.605</td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+    <td class="rnk_font"></td>
+</tr>
+</table>

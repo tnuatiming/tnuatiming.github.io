@@ -1,0 +1,356 @@
+---
+title: "superbike2018r7"
+date: 2018-11-09
+type: results
+tag: "סופרבייק"
+place: "פצאל"
+season: "2018"
+round: "מרוץ 7"
+category: "superbike"
+---
+<table class="line_color">
+        <tr>
+            <td colspan="99" class="title_font">Supersport 1000</td>
+        </tr>
+        <tr class="rnkh_bkcolor">
+            <th class="rnkh_font">מקום</th>
+            <th class="rnkh_font">מספר</th>
+            <th class="rnkh_font">שם</th>
+            <th class="rnkh_font">הקפות</th>
+            <th class="rnkh_font">הקפה מהירה</th>
+            <th class="rnkh_font">זמן</th>
+            <th class="rnkh_font">פער</th>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">1</td>
+            <td class="rnk_font highlight">73</td>
+            <td class="rnk_font">אבי אלבז</td>
+            <td class="rnk_font">27</td>
+            <td class="rnk_font">39.185</td>
+            <td class="rnk_font">38:53.808</td>
+            <td class="rnk_font">-</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">2</td>
+            <td class="rnk_font highlight">95</td>
+            <td class="rnk_font">אלי חן</td>
+            <td class="rnk_font">26</td>
+            <td class="rnk_font">39.760</td>
+            <td class="rnk_font">38:29.209</td>
+            <td class="rnk_font">1 הקפה</td>
+        </tr>
+        <tr>
+            <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font"></td>
+            <td class="rnk_font highlight">11</td>
+            <td class="rnk_font">אלמוג מנגד</td>
+            <td class="rnk_font">9</td>
+            <td class="rnk_font">37.510</td>
+            <td class="rnk_font">5:48.572</td>
+            <td class="rnk_font">18 הקפות</td>
+        </tr>
+        <tr>
+            <td colspan="99" class="comment_font">הקפה מהירה: (11) אלמוג מנגד - 37.510</td>
+        </tr>
+</table>
+<table class="line_color">
+        <tr>
+            <td colspan="99" class="title_font">Supersport 600</td>
+        </tr>
+        <tr class="rnkh_bkcolor">
+            <th class="rnkh_font">מקום</th>
+            <th class="rnkh_font">מספר</th>
+            <th class="rnkh_font">שם</th>
+            <th class="rnkh_font">הקפות</th>
+            <th class="rnkh_font">הקפה מהירה</th>
+            <th class="rnkh_font">זמן</th>
+            <th class="rnkh_font">פער</th>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">1</td>
+            <td class="rnk_font highlight">82</td>
+            <td class="rnk_font">נביל שבסו</td>
+            <td class="rnk_font">27</td>
+            <td class="rnk_font">37.644</td>
+            <td class="rnk_font penalty" aria-label="עונשין: 10">P 38:36.250</td>
+            <td class="rnk_font">-</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">2</td>
+            <td class="rnk_font highlight">77</td>
+            <td class="rnk_font">יוגב הרוש</td>
+            <td class="rnk_font">27</td>
+            <td class="rnk_font">37.830</td>
+            <td class="rnk_font">38:49.228</td>
+            <td class="rnk_font">12.978</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">3</td>
+            <td class="rnk_font highlight">19</td>
+            <td class="rnk_font">ליעד לב</td>
+            <td class="rnk_font">27</td>
+            <td class="rnk_font">39.191</td>
+            <td class="rnk_font">38:53.036</td>
+            <td class="rnk_font">16.786</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">4</td>
+            <td class="rnk_font highlight">1</td>
+            <td class="rnk_font">חיים זנדברג</td>
+            <td class="rnk_font">26</td>
+            <td class="rnk_font">40.101</td>
+            <td class="rnk_font">38:29.372</td>
+            <td class="rnk_font">1 הקפה</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">5</td>
+            <td class="rnk_font highlight">22</td>
+            <td class="rnk_font">אייל חוברה</td>
+            <td class="rnk_font">24</td>
+            <td class="rnk_font">42.127</td>
+            <td class="rnk_font">38:37.951</td>
+            <td class="rnk_font">3 הקפות</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">6</td>
+            <td class="rnk_font highlight">84</td>
+            <td class="rnk_font">ניר ישראל</td>
+            <td class="rnk_font">24</td>
+            <td class="rnk_font">42.513</td>
+            <td class="rnk_font">38:38.562</td>
+            <td class="rnk_font">3 הקפות</td>
+        </tr>
+        <tr>
+            <td colspan="99" class="comment_font">הקפה מהירה: (82) נביל שבסו - 37.644</td>
+        </tr>
+</table>
+<table class="line_color">
+        <tr>
+            <td colspan="99" class="title_font">Supersport 300</td>
+        </tr>
+        <tr class="rnkh_bkcolor">
+            <th class="rnkh_font">מקום</th>
+            <th class="rnkh_font">מספר</th>
+            <th class="rnkh_font">שם</th>
+            <th class="rnkh_font">הקפות</th>
+            <th class="rnkh_font">הקפה מהירה</th>
+            <th class="rnkh_font">זמן</th>
+            <th class="rnkh_font">פער</th>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">1</td>
+            <td class="rnk_font highlight">800</td>
+            <td class="rnk_font">בר לוי</td>
+            <td class="rnk_font">20</td>
+            <td class="rnk_font">41.253</td>
+            <td class="rnk_font">14:01.452</td>
+            <td class="rnk_font">-</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">2</td>
+            <td class="rnk_font highlight">17</td>
+            <td class="rnk_font">חיים זנדברג</td>
+            <td class="rnk_font">20</td>
+            <td class="rnk_font">41.144</td>
+            <td class="rnk_font">14:03.007</td>
+            <td class="rnk_font">1.555</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">3</td>
+            <td class="rnk_font highlight">777</td>
+            <td class="rnk_font">אלי כרמל</td>
+            <td class="rnk_font">20</td>
+            <td class="rnk_font">42.438</td>
+            <td class="rnk_font">14:36.283</td>
+            <td class="rnk_font">34.831</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">4</td>
+            <td class="rnk_font highlight">11</td>
+            <td class="rnk_font">ניב מורן רבין</td>
+            <td class="rnk_font">19</td>
+            <td class="rnk_font">43.028</td>
+            <td class="rnk_font">14:02.488</td>
+            <td class="rnk_font">1 הקפה</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">5</td>
+            <td class="rnk_font highlight">47</td>
+            <td class="rnk_font">אילן ברוורמן</td>
+            <td class="rnk_font">19</td>
+            <td class="rnk_font">42.985</td>
+            <td class="rnk_font">14:03.129</td>
+            <td class="rnk_font">1 הקפה</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">6</td>
+            <td class="rnk_font highlight">6</td>
+            <td class="rnk_font">ניר מרגוליס</td>
+            <td class="rnk_font">19</td>
+            <td class="rnk_font">43.328</td>
+            <td class="rnk_font">14:09.804</td>
+            <td class="rnk_font">1 הקפה</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font">7</td>
+            <td class="rnk_font highlight">888</td>
+            <td class="rnk_font">לוי שמואל</td>
+            <td class="rnk_font">19</td>
+            <td class="rnk_font">43.687</td>
+            <td class="rnk_font">14:13.924</td>
+            <td class="rnk_font">1 הקפה</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font">8</td>
+            <td class="rnk_font highlight">43</td>
+            <td class="rnk_font">תובל ארד</td>
+            <td class="rnk_font">19</td>
+            <td class="rnk_font">43.942</td>
+            <td class="rnk_font">14:25.319</td>
+            <td class="rnk_font">1 הקפה</td>
+        </tr>
+        <tr>
+            <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
+        </tr>
+        <tr class="rnk_bkcolor OddRow">
+            <td class="rnk_font"></td>
+            <td class="rnk_font highlight">80</td>
+            <td class="rnk_font">שירה פרי</td>
+            <td class="rnk_font">5</td>
+            <td class="rnk_font">45.402</td>
+            <td class="rnk_font">4:02.070</td>
+            <td class="rnk_font">15 הקפות</td>
+        </tr>
+        <tr>
+            <td colspan="99" class="subtitle_font">לא התחיל - DNS</td>
+        </tr>
+        <tr class="rnk_bkcolor EvenRow">
+            <td class="rnk_font"></td>
+            <td class="rnk_font highlight">99</td>
+            <td class="rnk_font">יצחק איסוביץ</td>
+            <td class="rnk_font">0</td>
+            <td class="rnk_font">-</td>
+            <td class="rnk_font">-</td>
+            <td class="rnk_font">-</td>
+        </tr>
+        <tr>
+            <td colspan="99" class="comment_font">הקפה מהירה: (17) חיים זנדברג - 41.144</td>
+        </tr>
+</table>
+<table class="fadeIn line_color">
+    <tr>
+        <td colspan="99" class="title_font">חובבים</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor OddRow">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font highlight">33</td>
+        <td class="rnk_font">עמית פוקס</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font">40.220</td>
+        <td class="rnk_font">13:53.020</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor EvenRow">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font highlight">31</td>
+        <td class="rnk_font">חן אביוב</td>
+        <td class="rnk_font">20</td>
+        <td class="rnk_font">40.797</td>
+        <td class="rnk_font">14:01.441</td>
+        <td class="rnk_font">8.421</td>
+    </tr>
+    <tr class="rnk_bkcolor OddRow">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font highlight">18</td>
+        <td class="rnk_font">גל בן דהן</td>
+        <td class="rnk_font">19</td>
+        <td class="rnk_font">42.692</td>
+        <td class="rnk_font">13:56.577</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor EvenRow">
+        <td class="rnk_font">4</td>
+        <td class="rnk_font highlight">74</td>
+        <td class="rnk_font">אלעד איסוביץ</td>
+        <td class="rnk_font">19</td>
+        <td class="rnk_font">43.729</td>
+        <td class="rnk_font">14:09.532</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor OddRow">
+        <td class="rnk_font">5</td>
+        <td class="rnk_font highlight">67</td>
+        <td class="rnk_font">רוסלן נייבלט</td>
+        <td class="rnk_font">19</td>
+        <td class="rnk_font">43.504</td>
+        <td class="rnk_font">14:15.013</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr class="rnk_bkcolor EvenRow">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font highlight">4</td>
+        <td class="rnk_font">גיל ברנשטיין</td>
+        <td class="rnk_font">18</td>
+        <td class="rnk_font">45.580</td>
+        <td class="rnk_font">14:16.265</td>
+        <td class="rnk_font">2 הקפות</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (33) עמית פוקס - 40.220</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">ילדים</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפות</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">זמן</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor OddRow">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font highlight">87</td>
+        <td class="rnk_font">עידו חן</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">53.331</td>
+        <td class="rnk_font">7:21.525</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor EvenRow">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font highlight">17</td>
+        <td class="rnk_font">תומר זנדברג</td>
+        <td class="rnk_font">8</td>
+        <td class="rnk_font">57.113</td>
+        <td class="rnk_font">7:50.899</td>
+        <td class="rnk_font">29.374</td>
+    </tr>
+    <tr class="rnk_bkcolor OddRow">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font highlight">15</td>
+        <td class="rnk_font">עומרי חן</td>
+        <td class="rnk_font">7</td>
+        <td class="rnk_font">1:09.216</td>
+        <td class="rnk_font">8:26.933</td>
+        <td class="rnk_font">1 הקפה</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="comment_font">הקפה מהירה: (87) עידו חן - 53.331</td>
+    </tr>
+</table>

@@ -1,0 +1,26 @@
+{{ with .Params.protect }}
+<?php include("/home/raz/public_html/password_protect.php"); ?>
+{{ end }}
+
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+{{ partial "head.html" . }}
+
+{{ with .Params.body }}
+    <body id="{{ . }}">
+{{ else }}
+    <body id="general">
+{{ end }}
+
+ {{ partial "header.html" . }}
+ 
+
+{{ .Content }}
+
+    
+                
+{{ partial "footer.html" . }}
+
+    </body>
+</html>

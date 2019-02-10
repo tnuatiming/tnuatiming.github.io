@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+{{ partial "head.html" . }}
+
+    <body id="races">
+
+ {{ partial "header.html" . -}}
+
+<!-- Groups content according to content section. The ".Key" in this instance will be the section's title. -->
+
+{{- range (.Site.RegularPages.GroupByParam "season").Reverse -}} <!--  grope by season -->
+
+    <div class="season">
+    <h1 class="season_header">עונת {{ .Key }}</h1>
+
+    {{ range  .Pages.GroupByParam "tag" -}}
+
+            <div class="sport">
+            <h2>{{ .Key }}</h2>
+            <ul>
+        
+        {{- range .Pages.ByPublishDate.Reverse }}
+
+                <li><a title="{{ .Date.Format "2-1-2006" }}{{ with .Params.sub }} - {{ . }}{{ end }}" href="{{ .URL }}">{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }}{{ end }}</a></li>
+        
+        {{- end }}
+
+            </ul>
+        </div>
+    
+    {{ end -}}
+    </div>
+    
+{{- end -}}
+
+<p><span id="date">last updated: {{ now.Format "2006-01-02 15:04:05"}}</span></p>
+                
+{{ partial "footer.html" . }}
+
+    </body>
+</html>

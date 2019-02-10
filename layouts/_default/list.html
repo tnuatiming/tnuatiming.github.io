@@ -1,0 +1,43 @@
+{{ with .Params.protect }}
+<?php include("/home/raz/public_html/password_protect.php"); ?>
+{{ end }}
+
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+{{ partial "head.html" . }}
+
+    <body id="tex">
+
+ {{ partial "header.html" . }}
+ 
+
+{{/*<!--
+<ul>
+{{ range first 4 (where .Site.Pages "Params.tag" "!=" nil) }}
+    <li><a href="{{ .URL }}">{{ .Params.tag }}: {{ with .Params.round }}{{ . }}{{ end }} עונת {{ .Params.season }} - {{ .Params.place }}</a></li>
+{{ end }}
+</ul>
+-->*/}}
+
+{{ range .Pages }}
+    <div style="border: 1px solid black; margin:10px; padding:10px; ">
+        <div style="font-size:20px;">
+            <a href="{{.URL}}">{{.Title}}</a>
+        </div>
+        <div style="color:grey; font-size:16px;">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</div>
+        <div style="color:grey; font-size:16px;">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+        <div style="color:grey; font-size:16px;">{{ if .Params.categories }}<strong>Categories:</strong> {{range .Params.categories}}<a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+        <div style="color:grey; font-size:16px;">{{ if .Params.seasons }}<strong>Seasons:</strong> {{range .Params.season}}<a href="{{ "/seasons/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+
+        <p style="font-size:18px;">{{.Summary}}</p>
+    </div>
+{{ end }}
+     
+     
+     
+    
+                
+{{ partial "footer.html" . }}
+
+    </body>
+</html>

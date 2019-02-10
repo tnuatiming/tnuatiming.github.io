@@ -1,0 +1,28 @@
+<?php include("/home/raz/public_html/password_protect.php"); ?>
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he">
+<head>
+<title>upload messages to live timing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta charset="UTF-8"/>
+<style>
+body {display: flex; justify-content: center; align-items: center;}
+form, .center {text-align: center;}
+button,input {font-size: 1.2em; margin: 10px auto; padding:10px;}
+</style>
+</head>
+
+<body>
+<div class="center">
+<h3>upload messages to live timing</h3><br>
+<form action="buildMsg.php" method="post">
+<input type="text" name="message" id="message"><br>
+<input type="checkbox" id="time" name="time" value="time"> show time of message<br/>
+<input type="checkbox" id="blink" name="blink" value="blink"> blink the message<br/>
+<input type="checkbox" id="red" name="red" value="red"> make it red<br/><br/>
+<button type="submit">upload message</button><br>
+</form><br>
+<p>send empty message to clear</p>
+</div>
+</body>
+</html> 
