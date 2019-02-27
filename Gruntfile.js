@@ -153,13 +153,13 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: './',
                     dest: './_site/hugo_backup',
-                    src: ['*','!hugo_backup','!software','!images','!node_modules','!assets', '!_site', '!manual', '!log', '!archetypes', '!data', '!themes']
+                    src: ['*','!hugo_backup','!static/software','!static/images','!node_modules','!assets', '!_site', '!static/manual', '!log', '!archetypes', '!data', '!themes', '!.git']
                 }]
             }
         },
 
         zip: {
-            './_site/hugo_backup/main.zip': ['*', '!id_rsa', '!id_rsa.pub', '.htaccess', '_config.yml', '!password_protect.php']
+            './_site/hugo_backup/main.zip': ['*', '!.tt', '!id_rsa', '!id_rsa.pub', '.htaccess', '_config.yml', '!password_protect.php']
         },
   
         ftp_push: {

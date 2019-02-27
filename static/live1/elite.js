@@ -18,6 +18,7 @@
     var harescrambleFinishE = 7200000; // 2 hours
     var harescrambleFinishC = 5400000; // 1.5 hours
     var harescrambleFinishBeginers = 3600000; // 1 hour
+    var harescrambleSuperJuniors = 2400000; // 40 minutes
 
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
@@ -1086,6 +1087,8 @@ switch(option) {  // tickerTest
                 } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishBeginers) {
                     harescrambleFinished = 1;
                 } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניורים")) || ((allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניור")) && (allArray[l]["Id_Categorie"].toUpperCase().includes("מקצועי")))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishC) {
+                    harescrambleFinished = 1;
+                } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("סופר ג'וניור") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleSuperJuniors) {
                     harescrambleFinished = 1;
                 } else {
                     harescrambleFinished = 0;
