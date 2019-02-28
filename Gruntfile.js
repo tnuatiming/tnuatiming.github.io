@@ -86,7 +86,7 @@ module.exports = function(grunt) {
                 },
                 files: [{                                   // Dictionary of files 
                     cwd: '_site',
-                    src: ['**/*.html', '!csv/index.html', '!live/p1.html', '!live1/p1.html', '!liveepic/index.html', '!liveepic/p1.html', '!liveepic/stage1/p1.html', '!liveepic/stage2/p1.html', '!liveepic/stage3/p1.html', '!liveepic/p11.html', '!liveepic/p12.html', '!**/2013/*.html', '!**/2014/*.html', '!**/2015/*.html', '!**/2016/*.html', '!**/2017/*.html' ],
+                    src: ['**/*.html', '!csv/index.html', '!live/p1.html', '!live1/p1.html', '!liveepic/index.html', '!liveepic/p1.html', '!liveepic/stage1/p1.html', '!liveepic/stage2/p1.html', '!liveepic/stage3/p1.html', '!liveepic/stage4/p1.html', '!liveepic/p11.html', '!liveepic/p12.html', '!**/2013/*.html', '!**/2014/*.html', '!**/2015/*.html', '!**/2016/*.html', '!**/2017/*.html' ],
                     dest: '_site',
                 expand: true    // 'destination': 'source' 
                 }]
