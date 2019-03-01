@@ -244,10 +244,10 @@
             var rowSpan = '';
             var bigFont = '';
         } else {
-            var rowSpan = '';
-   //         var rowSpan = 'rowspan="2" ';
+            var rowSpan = 'rowspan="2" ';
             var bigFont = ' bigFont';
         }
+
 
         var finalText = text1[0]; // clear the finalText variable and add the title and time lines
 
@@ -662,7 +662,7 @@ if (cleanResults == 0) {
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                 finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
             }
-/*
+
 if (cleanResults == 0) {
 
             if (l % 2 == 0) { // start building competitor line
@@ -676,13 +676,10 @@ if (cleanResults == 0) {
             } else {
                 finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
             }
+     
+    
 }
- */       
-            if (l % 2 == 0) { // start building competitor line
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
-            } else {
-                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
-            }
+        
         
         
     //        for(var key in allArray[l]) {
@@ -768,122 +765,34 @@ if (cleanResults == 0) {
                 }            
 
                 
-
-                if (cleanResults == 0) {
-     //               finalText += '<div class="FirstLine">';
-                    var eeee = '<div class="FirstLine">';
-                    var ffff = '<div class="FirstLine">';
-                    var gggg = '</div>';
-               } else {
-                    
-                    var eeee = '';
-                    var ffff = '';
-                    var gggg = '</td>';
-                }
-                
-                
-                
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0) {
-                    finalText += '<td class="rnk_font">' + eeee + '<img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationality"] != 'undefined') {
  //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                        
-                        if (cleanResults == 0) {
-                                
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
-                        }
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                     }
-                    finalText += gggg;// add the name
+                    finalText += '</td>';// add the name
                     
                 } else {
-                    finalText += '<td class="rnk_font">' + eeee + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationality"] != 'undefined') {
  //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                        if (cleanResults == 0) {
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
-                        }
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                     }
-                    finalText += gggg;// add the name
+                    finalText += '</td>';// add the name
                 }
-
-                if (cleanResults == 0) {
-    //                finalText += '</div>';
-                }
-                
-                
-                
-                
                 
          //       finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
-                if (cleanResults == 0) {
-       //             finalText += '<div class="ScoundLine">';
-                    
-                    
-                    
-                    if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
-                        finalText += '<div class="ScoundLine"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom_2"];// add the name
-                        if (typeof allArray[l]["Id_Nationality_2"] != 'undefined') {
-    //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
-                        }
-                        finalText += '</div></td>';// add the name
-                        
-                    } else {
-                        finalText += '<div class="ScoundLine">' + allArray[l]["Id_Nom_2"];// add the name
-                        if (typeof allArray[l]["Id_Nationality_2"] != 'undefined') {
-    //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
-                        }
-                        finalText += '</div></td>';// add the name
-                    }
-                   
-                    
-                    
-                    
-      //              finalText += '</div>';
-                    
-                }
+
                 
                 
             if (doNotShowTime == 0) {
                 
-                if (cleanResults == 0) {
-     //               finalText += '<div class="FirstLine">';
-                }
-                
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
-                    finalText += '<td class="rnk_font">' + eeee + '-' + gggg; // add time
+                    finalText += '<td class="rnk_font">-</td>'; // add time
                 } else {
-                    finalText += '<td class="rnk_font">' + eeee + allArray[l]["Id_TpsCumule"] + gggg; // add time
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add time
                 }
-
-                if (cleanResults == 0) {
-     //               finalText += '</div>';
-                }
-                
-                
-                
-                 if (cleanResults == 0) {
-     //               finalText += '<div class="ScoundLine">';
-               
-                
-                
-                
-                  if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
-                    finalText += '<div class="ScoundLine">-</div></td>'; // add time
-                } else {
-                    finalText += '<div class="ScoundLine">' + allArray[l]["Id_TpsCumule_2"] + '</div></td>'; // add time
-                }
-              
-                
-                
-                
-                
-                    
-           //         finalText += '</div>';
-                    
-                }
-                
             }          
                 
                 if (cleanResults == 1) {
@@ -891,7 +800,7 @@ if (cleanResults == 0) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"]; // add the name
                     if (typeof allArray[l]["Id_Nationality_2"] != 'undefined') {
  //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
- //                       finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                     }
                     finalText += '</td>';// add the name
                     
@@ -929,7 +838,7 @@ if (cleanResults == 0) {
 
                     finalText += '</tr>\n';
                     
-/*
+
             if (cleanResults == 0) {        
                     
                 if (l % 2 == 0) { // start building competitor line
@@ -967,7 +876,7 @@ if (cleanResults == 0) {
             }                   
                 finalText += '</tr>\n</tbody>\n';
             }
-*/               
+               
         }        
          
          
