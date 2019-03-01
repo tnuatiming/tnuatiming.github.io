@@ -15,7 +15,24 @@ slug: "index"
     #live td.blued {background-image: url(Images/_LightBlueFlag.png);background-position: center center; background-size: auto 30%; background-repeat: no-repeat; min-width: 16px;}
     #live td.finished {background-size: auto 30%;}    
     h1 img {height: 32px; vertical-align: middle; margin: 0 5px;}
-    
+    img.CountryFlag {vertical-align: middle; margin: 0 5px;}
+ 
+    .CountryFlag:before {content: "\00a0";}
+    .CountryFlag {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    vertical-align: middle;
+    margin: 0 5px;
+    }
+    .israel {background-image: url(Images/CountryFlags/israel.svg);}
+    .usa {background-image: url(Images/CountryFlags/usa.svg);}
+    .southafrica {background-image: url(Images/CountryFlags/southafrica.svg);}
+    .swiss {background-image: url(Images/CountryFlags/swiss.svg);}
+
 </style>
 
 <div id="raceheader"><h1>תוצאות בזמן אמת</h1></div>
@@ -33,5 +50,5 @@ slug: "index"
 
 <div id="previousResults"></div>
 
-<div id="daysTotal"><button class="btn" onclick="location.href='./total.html'" type="button">סיכום כללי</button></div>
+<div id="daysTotal"><button style="padding:10px; font-size: 2em; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">סיכום כללי</button></div>
 

@@ -301,6 +301,7 @@
                 lineArray.Id_TpsCumule_2 = 99999999999;
                 lineArray.Id_FinishTime = 99999999999;
                 lineArray.Id_Nom_2 = "&nbsp;";
+                lineArray.Id_Nationality_2 = "&nbsp;";
                 lineArray.Id_Arrow = "&nbsp;";
                 lineArray.Id_Status = 0;
                 lineArray.blue = 0;
@@ -373,6 +374,7 @@
                     allArray[b]["Id_Image_2"] = allArray2[a]["Id_Image"];   
                     allArray[b]["Id_MeilleurTour_2"] = allArray2[a]["Id_MeilleurTour"];   // fastest lap
                     allArray[b]["Id_Nom_2"] = allArray2[a]["Id_Nom"];
+                    allArray[b]["Id_Nationality_2"] = allArray2[a]["Id_Nationality"];
                     allArray[b]["Id_TpsCumule_2"] = allArray2[a]["Id_TpsCumule"];
 
 
@@ -764,10 +766,20 @@ if (cleanResults == 0) {
 
                 
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0) {
-                    finalText += '<td class="rnk_font"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+                    finalText += '<td class="rnk_font"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom"];// add the name
+                    if (typeof allArray[l]["Id_Nationality"] != 'undefined') {
+ //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '"</span>'; // add flag
+                    }
+                    finalText += '</td>';// add the name
                     
                 } else {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"];// add the name
+                    if (typeof allArray[l]["Id_Nationality"] != 'undefined') {
+ //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality"].replace(" ", "").toLowerCase() + '"</span>'; // add flag
+                    }
+                    finalText += '</td>';// add the name
                 }
                 
          //       finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
@@ -785,7 +797,13 @@ if (cleanResults == 0) {
                 
                 if (cleanResults == 1) {
                     
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"]; // add the name
+                    if (typeof allArray[l]["Id_Nationality_2"] != 'undefined') {
+ //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '"</span>'; // add flag
+                    }
+                    finalText += '</td>';// add the name
+                    
             if (doNotShowTime == 0) {
                     if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // add time
@@ -830,10 +848,20 @@ if (cleanResults == 0) {
                 }
                         
                 if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
-                    finalText += '<td class="rnk_font"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom_2"] + '</td>';// add the name
+                    finalText += '<td class="rnk_font"><img style="height:0.9em; vertical-align:middle; padding:0 2px;" src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom_2"];// add the name
+                    if (typeof allArray[l]["Id_Nationality_2"] != 'undefined') {
+ //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '"</span>'; // add flag
+                    }
+                    finalText += '</td>';// add the name
                     
                 } else {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>';// add the name
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"];// add the name
+                    if (typeof allArray[l]["Id_Nationality_2"] != 'undefined') {
+ //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationality_2"].replace(" ", "").toLowerCase() + '"</span>'; // add flag
+                    }
+                    finalText += '</td>';// add the name
                 }
                         
      //               finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // add the name
