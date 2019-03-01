@@ -266,7 +266,8 @@ var TimerLoad, TimerChange;
             lines2 = text2[1].split("\n");
             text2 = [];
         }
-        var finalText = text1[0]; // clear the finalText variable and add the title and time lines
+        var header1 = text1[0].split("\n"); 
+        var finalText = header1[0]; // clear the finalText variable and add the title
 
 
     if (stages == 4) {
