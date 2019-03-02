@@ -828,9 +828,13 @@ var TimerLoad, TimerChange;
                             }
                 }
      
-                            if (allArray[l]["Id_FinishTimeTotal"] != 99999999999) {  
-                                allArray[l]["Id_FinishTimeTotal"] = ms2TimeString(allArray[l]["Id_FinishTimeTotal"]);
-
+                            if (allArray[l]["Id_FinishTimeTotal"] != 99999999999) {
+                                
+                                if (allArray[l]["Id_FinishTimeTotal"] >= 86400000) { // if over 24 hours
+                                    allArray[l]["Id_FinishTimeTotal"] = convertMS(allArray[l]["Id_FinishTimeTotal"]);
+                                } else {
+                                    allArray[l]["Id_FinishTimeTotal"] = ms2TimeString(allArray[l]["Id_FinishTimeTotal"]);
+                                }
                                 
                                 if (allArray[l]["Id_FinishTimeTotal"].toString().substring(0, 3) == "00:") {
                                     allArray[l]["Id_FinishTimeTotal"] = allArray[l]["Id_FinishTimeTotal"].substr(3);
@@ -994,3 +998,18 @@ var TimerLoad, TimerChange;
         (s<10?0:'')+s+'.'+ // optimized
         (k<100?k<10?'00':0:'')+k // optimized
     } 
+
+    function convertMS(milliseconds) { // if over 24 hours
+        var day, hour, minute, seconds,millisecond, time;
+        seconds = Math.floor(milliseconds / 1000);
+        minute = Math.floor(seconds / 60);
+        seconds = seconds % 60;
+        hour = Math.floor(minute / 60);
+        minute = minute % 60;
+        day = Math.floor(hour / 24);
+        hour = hour % 24;
+        millisecond = milliseconds%1e3;
+        
+        time = ((day*24) + hour) + ':' + (minute<10?0:'') + minute + ':' + (seconds<10?0:'') + seconds + ':' + (millisecond<100?millisecond<10?'00':0:'') + millisecond;
+        return time
+    }
