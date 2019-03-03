@@ -307,9 +307,11 @@
                 lineArray.Id_Inter1Ecart1er = 99999999999; // maybe needs to be '-'
                 lineArray.Id_Nom_2 = "&nbsp;";
                 lineArray.Id_Nationalite_2 = "&nbsp;";
+                lineArray.Id_Discipline_2 = "&nbsp;";
                 lineArray.Id_Arrow = "&nbsp;";
                 lineArray.Id_Status = 0;
                 lineArray.blue = 0;
+                lineArray.single = 0;
                 lineArray.Id_penalty = "&nbsp;";   
 
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
@@ -391,10 +393,20 @@
                     if (typeof allArray[b]["Id_Inter1"] == '-') {
                         allArray[b]["Id_Inter1"] = 99999999999;
                     }
+                    if (typeof allArray2[a]["Id_Discipline"] != 'undefined') {
+                        allArray[b]["Id_Discipline_2"] = allArray2[a]["Id_Discipline"];
+                    }
 
  
                     // find finish time and check for 2 minutes diffrance
-                                if (allArray[b]["Id_TpsCumule"] != 99999999999 && allArray[b]["Id_TpsCumule_2"] != 99999999999) {
+                                
+                                if ( allArray[b]["Id_Discipline"] == 'single') {
+                                    allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
+                                    allArray[b]["single"] = 1;
+                                } else if ( allArray[b]["Id_Discipline_2"] == 'single') {
+                                    allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
+                                    allArray[b]["single"] = 1;
+                                } else if (allArray[b]["Id_TpsCumule"] != 99999999999 && allArray[b]["Id_TpsCumule_2"] != 99999999999) {
                                     if (allArray[b]["Id_TpsCumule"] > allArray[b]["Id_TpsCumule_2"]) {
                                         allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
                                     }
@@ -507,9 +519,9 @@
          // THE MAGIC - sort the array after the merge to get new results
          // FIXME Id_Status drops blue competitor to buttom , check if this is what needed
         if (useCategory == "no") {
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
          
          
@@ -871,11 +883,11 @@ if (cleanResults == 0) {
 
                 } else if (allArray[l]["Id_Arrow"].includes("dnsfq")) { // orange
                     
-                    finalText += '<td class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td aria-label="לא סיים/נפסל" class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["blue"] == 1) {
                 
-                    finalText += '<td class="blued rnk_font">&nbsp;</td>'; //&#9608;
+                    finalText += '<td aria-label="כחול" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
@@ -887,7 +899,7 @@ if (cleanResults == 0) {
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td class="finished white rnk_font">&nbsp;</td>';
+                    finalText += '<td aria-label="סיימו" class="finished white rnk_font">&nbsp;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
                     
@@ -912,7 +924,7 @@ if (cleanResults == 0) {
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || (allArray[l]["Id_Inter1Time"] == 99999999999 && allArray[l]["Id_FinishTime"] == 99999999999) || allArray[l]["Id_Classe"] == "blue") {
+                if (allArray[l]["Id_Image"].includes("_Status") || (allArray[l]["Id_Inter1Time"] == 99999999999 && allArray[l]["Id_FinishTime"] == 99999999999) || allArray[l]["Id_Classe"] == "blue" || allArray[l]["single"] == 1) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
                 } else {
@@ -922,7 +934,7 @@ if (cleanResults == 0) {
 
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
-                finalText += '<td class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td title="רוכב מספר כחול" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["Id_Categorie"] == "גברים" && useCategory == "no") {
                 finalText += '<td class="rnk_font redCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
@@ -933,12 +945,21 @@ if (cleanResults == 0) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
                 }            
 
+                var single1 = "";
+                var single2 = "";
+                
+                if (allArray[l]["Id_Discipline_2"] == 'single') {
+                    single2 = "lineThrough";
+                }
+                if (allArray[l]["Id_Discipline"] == 'single') {
+                    single1 = "lineThrough";
+                }
                 
 
                 if (cleanResults == 0) {
      //               finalText += '<div class="FirstLine">';
-                    var eeee = '<div class="FirstLine">';
-                    var ffff = '<div class="SecoundLine">';
+                    var eeee = '<div class="FirstLine ' + single2 + '">';
+                    var ffff = '<div class="SecoundLine ' + single1 + '">';
                     var gggg = '</div>';
                } else {
                     
@@ -948,15 +969,14 @@ if (cleanResults == 0) {
                 }
                 
                 
-                
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0) {
-                    finalText += '<td class="rnk_font">' + eeee + '<span class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font">' + eeee + '<span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
  //                       }
                     }
                     finalText += gggg;// add the name
@@ -966,7 +986,7 @@ if (cleanResults == 0) {
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
     //                    }
                     }
                     finalText += gggg;// add the name
@@ -987,18 +1007,18 @@ if (cleanResults == 0) {
                     
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
-                        finalText += '<div class="SecoundLine"><span class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '"><span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
                     } else {
-                        finalText += '<div class="SecoundLine">' + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '">' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
@@ -1054,10 +1074,10 @@ if (cleanResults == 0) {
                 
                 if (cleanResults == 1) {
                     
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"]; // add the name
+                    finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Nom_2"]; // add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                        finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                        finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                     }
                     finalText += '</td>';// add the name
                     
@@ -1097,7 +1117,7 @@ if (cleanResults == 0) {
                     
                     if (allArray[l]["Id_Inter1blue"] == 1) {
                                                 
-                        finalText += '<td class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                        finalText += '<td title="כחול" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
 
                     
                     } else if (imTheLeaderInter1 == 1) {
@@ -1171,7 +1191,7 @@ if (cleanResults == 0) {
                 }
                         
                 if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
-                    finalText += '<td class="rnk_font"><span class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
+                    finalText += '<td class="rnk_font"><span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
