@@ -8,6 +8,7 @@ var TimerLoad, TimerChange;
     ClassementReduitXpremier = 10;
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
+    var cleanResults = 0;
     
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
@@ -43,7 +44,7 @@ var TimerLoad, TimerChange;
             sessionStorage.setItem('categoryOrAll', 'no');
         }
         
-        Rafraichir = 60000;
+        Rafraichir = 60000; // every 60 seconds
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
@@ -111,6 +112,7 @@ var TimerLoad, TimerChange;
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     text1 = await response.text();
                     document.getElementById("result").innerHTML = createLiveTable();
+                    alignTable();
                 }
             }
             catch (err) {
@@ -163,6 +165,7 @@ var TimerLoad, TimerChange;
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     text1 = xhr.responseText;
                     document.getElementById("result").innerHTML = createLiveTable();
+                    alignTable();
                 }
             };
             xhr.open("GET", url1 + ((/\?/).test(url1) ? "&" : "?") + (new Date()).getTime());
@@ -177,7 +180,7 @@ var TimerLoad, TimerChange;
         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
 
         TimerLoad = setTimeout(loop, Rafraichir);
-        Rafraichir = 60000;
+        Rafraichir = 60000; // every 60 seconds
 
     }
 
@@ -201,6 +204,7 @@ var TimerLoad, TimerChange;
         var pp = 0;
         var a, b, l;
         var id;
+        var NewCategoryHeader = "";
         var positionChanged = "";
         var bestLapComp = 0;
         var bestLap = "99999999999";
@@ -234,6 +238,12 @@ var TimerLoad, TimerChange;
         text1 = text1.split('<table'); // split the text to title/time and the table
         text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(text1[1]);
+
+        if (text1[0].includes("+++")) { // clean table for results page
+            cleanResults = 1;
+            text1[0] = text1[0].replace("+++", "");
+        }
+
 
         lines = text1[1].split("\n");
         //    console.log(lines.length);
@@ -730,7 +740,15 @@ var TimerLoad, TimerChange;
             var m = 0;
             var prevCompCat = ""
 
-            finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
+//            finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
+            
+            if (useCategory == "no") {
+                finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
+            } else {
+
+                finalText += '\n<div id="liveTable">\n';
+            }           
+            
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -885,13 +903,29 @@ var TimerLoad, TimerChange;
 
          
         
-        
+
+
             // add category name header and table header
             if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
-                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+                
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                    finalText += '</table>\n';
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                } else if (l = 0) {
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                }
+                            
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
+//                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
+                    finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
             }
+
+
+
+
+
 
 
             if (l % 2 == 0) { // start building competitor line
@@ -1013,3 +1047,51 @@ var TimerLoad, TimerChange;
         time = ((day*24) + hour) + ':' + (minute<10?0:'') + minute + ':' + (seconds<10?0:'') + seconds + ':' + (millisecond<100?millisecond<10?'00':0:'') + millisecond;
         return time
     }
+    
+    function alignTable() {
+        
+        if (cleanResults == 0) {
+            
+            // aligning table colmuns according to number of colmuns
+            var tt = document.querySelectorAll('.line_color');
+
+            for (let kk = 0; kk < tt.length; kk++) {
+
+        /*
+                var numCols = 0;
+
+                for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
+
+                    row = tt[kk].rows[ii];
+                    
+                    if (numCols < row.cells.length) { // find max number of colmuns
+                        numCols = row.cells.length;
+                    }
+                    row = null;
+                }
+                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+        */
+                var trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
+                var tds = trs[0].querySelectorAll('th.rnkh_font');
+
+                if (tds.length > 15) {
+                    tt[kk].classList.add("huge_table");
+                } else if (tds.length > 11) {
+                    tt[kk].classList.add("big_table");
+                }
+
+                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+
+                tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
+                    element.style.width = ddd + "%";
+                });
+
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                    element.style.width = ddd + "%";
+                });
+        //       console.log(kk + " " + numCols)
+            }
+        }
+    }  
+    
+    

@@ -10,7 +10,7 @@
     var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
-    Rafraichir = 10000;
+    Rafraichir = 60000; // every 60 seconds
     Changement = 60000;
     MaxNum = 1;
     ClassementReduit = 1;
@@ -18,7 +18,7 @@
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
-    var cleanResults = 0; // disable rowspan and alignTable for TotalIndex
+    var cleanResults = 0; // alignTable for TotalIndex
     
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
@@ -40,7 +40,7 @@
             sessionStorage.setItem('categoryOrAll', 'no');
         }
         
-        Rafraichir = 10000;
+        Rafraichir = 60000; // every 60 seconds
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
@@ -162,7 +162,7 @@
         };
 
         TimerLoad = setTimeout(loop, Rafraichir);
-        Rafraichir = 30000;
+        Rafraichir = 60000; // every 60 seconds
 
     }
 
@@ -183,7 +183,8 @@
 
     function createLiveTable(text1) {
         var i;
-        var timeDisplay = 2; // 1 - separate time/gap ; 2 - combined
+        var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined
+        var timeGapDisplayInter1 = 2; // 1 - separate time/gap ; 2 - combined
         var raceEnded = 0;
         var doNotShowTime = 0; // dont display individuall time
         var lines;
@@ -210,7 +211,8 @@
         var bestLapComp2 = 0;
         var bestLap2 = "99999999999";
         var laps = 12; // number of laps
-        /*        
+        var NewCategoryHeader = "";
+/*        
         var bestTime2comp = 0;
         var bestTime2 = 0;
         var bestTimecomp = 0;
@@ -229,7 +231,8 @@
 
         if (text1[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
-            timeDisplay = 1;
+            timeGapDisplay = 1;
+            timeGapDisplayInter1 = 1;
             text1[0] = text1[0].replace("+++", "");
         }
 
@@ -361,7 +364,7 @@
      //    console.log(allArray);
          // console.log(allArray2);
 
-        for (b = 0; b < allArray.length; b++) { 
+        for (b = 0; b < allArray.length; b++) {  // main array
             for (a = 0; a < allArray2.length; a++) { 
 
 /*                // calculating total time and total laps from both arrays
@@ -382,8 +385,12 @@
                     allArray[b]["Id_Nom_2"] = allArray2[a]["Id_Nom"];
                     allArray[b]["Id_Nationalite_2"] = allArray2[a]["Id_Nationalite"];
                     allArray[b]["Id_TpsCumule_2"] = allArray2[a]["Id_TpsCumule"];
-                    allArray[b]["Id_Inter1_2"] = allArray2[a]["Id_Inter1"];
-
+                    if (typeof allArray2[a]["Id_Inter1"] != 'undefined') {
+                        allArray[b]["Id_Inter1_2"] = allArray2[a]["Id_Inter1"];
+                    }
+                    if (typeof allArray[b]["Id_Inter1"] == '-') {
+                        allArray[b]["Id_Inter1"] = 99999999999;
+                    }
 
  
                     // find finish time and check for 2 minutes diffrance
@@ -464,6 +471,13 @@
              //   console.log(Inter1Leader);
                 
                 
+                
+                    //combine class
+                    if (allArray[b]["Id_Classe"] == "blue" || allArray2[a]["Id_Classe"] == "blue") {                    
+                        allArray[b]["Id_Classe"] = "blue";
+                    }
+                
+                
                 }
          
                 
@@ -505,7 +519,15 @@
             var m = 0;
             var prevCompCat = ""
 
-            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
+//            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
+
+            if (useCategory == "no") {
+                finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
+            } else {
+
+                finalText += '\n<div id="liveTable">\n';
+            }           
+
             
             for (var l = 0; l < allArray.length; l++) {
 
@@ -522,6 +544,12 @@
                     }
                     allArray[l]["Id_Position"] = m;
                  }
+
+                 
+                 
+                 
+                 
+// if (allArray[l]["Id_Position"] < 3) { // TV show only 2 competitors
 
                            if (allArray[l]["Id_Position"] == 1) {
                                 var leaderTime = allArray[l]["Id_FinishTime"];
@@ -685,7 +713,10 @@ if (cleanResults == 0) {
                 headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן אישי</th>';
             }
             //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
-                headerText1 += '<th class="rnkh_font Id_Inter1Time">זמן ביניים 1</th>'; // intermediate time
+                headerText1 += '<th class="rnkh_font Id_Inter1Time">זמן ביניים 1</th>'; // intermediate 1 time
+            if (timeGapDisplayInter1 == 1) {
+                headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">פער ביניים 1</th>'; // intermediate 1 time diff
+            }
 
 } else {
             headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
@@ -705,7 +736,7 @@ if (cleanResults == 0) {
 
             headerText1 += '<th class="rnkh_font Id_FinishTime">זמן</th>'; // combined time
             
-            if (timeDisplay == 1) {
+            if (timeGapDisplay == 1) {
                 headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
             }
         
@@ -778,10 +809,25 @@ if (cleanResults == 0) {
         
             // add category name header and table header
             if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
-                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+                
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                    finalText += '</table>\n';
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                } else if (l = 0) {
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                }
+                            
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
+//                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
+                    finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
             }
+            
+            
+            
+            
+            
 /*
 if (cleanResults == 0) {
 
@@ -866,7 +912,7 @@ if (cleanResults == 0) {
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["Id_Classe"] == "blue") {
+                if (allArray[l]["Id_Image"].includes("_Status") || (allArray[l]["Id_Inter1Time"] == 99999999999 && allArray[l]["Id_FinishTime"] == 99999999999) || allArray[l]["Id_Classe"] == "blue") {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
                 } else {
@@ -904,13 +950,13 @@ if (cleanResults == 0) {
                 
                 
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0) {
-                    finalText += '<td class="rnk_font">' + eeee + '<img src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font">' + eeee + '<span class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
- //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+ //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
  //                       }
                     }
                     finalText += gggg;// add the name
@@ -918,9 +964,9 @@ if (cleanResults == 0) {
                 } else {
                     finalText += '<td class="rnk_font">' + eeee + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
- //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+ //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
     //                    }
                     }
                     finalText += gggg;// add the name
@@ -941,18 +987,18 @@ if (cleanResults == 0) {
                     
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
-                        finalText += '<div class="SecoundLine"><img src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine"><span class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
-    //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+    //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
                     } else {
                         finalText += '<div class="SecoundLine">' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
-    //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+    //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                            finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
@@ -1010,8 +1056,8 @@ if (cleanResults == 0) {
                     
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"]; // add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
- //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+ //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                     }
                     finalText += '</td>';// add the name
                     
@@ -1037,7 +1083,7 @@ if (cleanResults == 0) {
                 
                 
                 // intermediate time 1
-                if (timeDisplay == 1) {
+                if (timeGapDisplayInter1 == 1) {
                     if (allArray[l]["Id_Inter1Time"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // add intermediate time
                     } else {
@@ -1047,11 +1093,11 @@ if (cleanResults == 0) {
         //             finalText += '<td class="rnk_font">' + allArray[l]["Id_Inter1Time"] + '</td>'; // add intermediate time
         //         }
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Inter1Ecart1er"] + '</td>'; // add diff
-                } else if (timeDisplay == 2) {
+                } else if (timeGapDisplayInter1 == 2) {
                     
                     if (allArray[l]["Id_Inter1blue"] == 1) {
                                                 
-                        finalText += '<td class="rnk_font"><span class="CountryFlag blueFlag"></span></td>'; // add intermediate blue
+                        finalText += '<td class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
 
                     
                     } else if (imTheLeaderInter1 == 1) {
@@ -1079,7 +1125,7 @@ if (cleanResults == 0) {
                 
                 
                 
-                if (timeDisplay == 1) {
+                if (timeGapDisplay == 1) {
                     if (allArray[l]["Id_FinishTime"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // add total time
                     } else {
@@ -1089,7 +1135,7 @@ if (cleanResults == 0) {
         //             finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
         //         }
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
-                } else if (timeDisplay == 2) {
+                } else if (timeGapDisplay == 2) {
                     if (allArray[l]["Id_Position"] == 1) {
                         if (allArray[l]["Id_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
@@ -1114,7 +1160,7 @@ if (cleanResults == 0) {
       //      }    
 
                     finalText += '</tr>\n';
-                    
+                   
 /*
             if (cleanResults == 0) {        
                     
@@ -1125,18 +1171,18 @@ if (cleanResults == 0) {
                 }
                         
                 if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
-                    finalText += '<td class="rnk_font"><img src="Images/_CheckeredFlag.png" alt="Checkered Flag">' + allArray[l]["Id_Nom_2"];// add the name
+                    finalText += '<td class="rnk_font"><span class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
- //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+ //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                     }
                     finalText += '</td>';// add the name
                     
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"];// add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
- //                       finalText += '<img class="CountryFlag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                        finalText += '<span class="CountryFlag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+ //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
+                        finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
                     }
                     finalText += '</td>';// add the name
                 }
@@ -1153,12 +1199,18 @@ if (cleanResults == 0) {
             }                   
                 finalText += '</tr>\n</tbody>\n';
             }
-*/               
-        }        
+*/
+
+// } // end TV
+
+
+        }        // end for l
          
          
                 finalText += '</table></div>';
-     
+
+ 
+ 
  if (Array.isArray(allArray3) || allArray3.length != 0) {
  
      // build secound table
