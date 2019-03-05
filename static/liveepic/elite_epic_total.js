@@ -217,6 +217,9 @@ var TimerLoad, TimerChange;
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
+        
+        var m, competitorTime, leaderTime, headerText1, prevCompCat;
+        
     if (stages >= 3) {
         var lines3;
         var hhhPro3 = [];
@@ -733,12 +736,51 @@ var TimerLoad, TimerChange;
             allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_dnsfq.localeCompare(b.Id_dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
         }
          
+                            
+// HEADER         
+                            
+                            
+        headerText1 = '<tr class="rnkh_bkcolor">\n';
+
+   //     for (b = 0; b < qqq.length; b++) { 
+   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
+   //             temp.push(b);
+   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>\n';
+   //         }
+   //     }          
+
+    // hard coded header for now
+            headerText1 += '<th class="rnkh_font" id="Id_Position">Rank</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_Numero">No.</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_Nom">Rider 1</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_Nom_2">Rider 2</th>\n';
+            if (useCategory == "no") {
+                headerText1 += '<th class="rnkh_font" id="Id_Categorie">Category</th>\n';
+            }
+            headerText1 += '<th class="rnkh_font" id="Id_FinishTime">Stage 1</th>\n';
+            if (stages >= 2) {
+                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_2">Stage 2</th>\n';
+            }
+            if (stages >= 3) {
+                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_3">Stage 3</th>\n';
+            }
+            if (stages == 4) {
+                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_4">Stage 4</th>\n';
+            }
+            headerText1 += '<th class="rnkh_font" id="Id_FinishTimeTotal">Time</th>\n';
+            headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">Gap</th>\n';
+
+        
+        headerText1 += '</tr>\n';
+      //   console.log(headerText1);
+
          
+// END HEADER         
 
          
     // fix the position fields of the competitors and start building the final table
-            var m = 0;
-            var prevCompCat = ""
+            m = 0;
+            prevCompCat = ""
 
 //            finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
             
@@ -767,12 +809,12 @@ var TimerLoad, TimerChange;
                  }
 
                            if (allArray[l]["Id_Position"] == 1) {
-                                var leaderTime = allArray[l]["Id_FinishTimeTotal"];
+                                leaderTime = allArray[l]["Id_FinishTimeTotal"];
                             }
 
                                     // fix the diff fields of the competitors
 
-                                    var competitorTime = allArray[l]["Id_FinishTimeTotal"];
+                                    competitorTime = allArray[l]["Id_FinishTimeTotal"];
                                     if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
 
@@ -863,45 +905,6 @@ var TimerLoad, TimerChange;
                                 
                             }
 
-                            
-                            
-                            
-        var headerText1 = '<tr class="rnkh_bkcolor">\n';
-
-   //     for (b = 0; b < qqq.length; b++) { 
-   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
-   //             temp.push(b);
-   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>\n';
-   //         }
-   //     }          
-
-    // hard coded header for now
-            headerText1 += '<th class="rnkh_font" id="Id_Position">Rank</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Numero">No.</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Nom">Rider 1</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Nom_2">Rider 2</th>\n';
-            if (useCategory == "no") {
-                headerText1 += '<th class="rnkh_font" id="Id_Categorie">Category</th>\n';
-            }
-            headerText1 += '<th class="rnkh_font" id="Id_FinishTime">Stage 1</th>\n';
-            if (stages >= 2) {
-                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_2">Stage 2</th>\n';
-            }
-            if (stages >= 3) {
-                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_3">Stage 3</th>\n';
-            }
-            if (stages == 4) {
-                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_4">Stage 4</th>\n';
-            }
-            headerText1 += '<th class="rnkh_font" id="Id_FinishTimeTotal">Time</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">Gap</th>\n';
-
-        
-        headerText1 += '</tr>\n';
-      //   console.log(headerText1);
-      //          console.log(temp);
-
-         
         
 
 

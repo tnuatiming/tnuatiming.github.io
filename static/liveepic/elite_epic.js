@@ -20,6 +20,8 @@
     
     var cleanResults = 0; // alignTable for TotalIndex
     
+    var precision = "nottenth"; // "tenth" for 1 digit after the .
+    
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
@@ -182,6 +184,7 @@
     }
 
     function createLiveTable(text1) {
+        var MaximumStageTime = 18000000; // Maximum stage time in miliseconds, 18000000=5hours
         var i;
         var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined
         var timeGapDisplayInter1 = 2; // 1 - separate time/gap ; 2 - combined
@@ -219,6 +222,7 @@
         var bestTime = 0;
 */        
         var Inter1Leader = [];
+        var l, m, leaderInter1Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, imTheLeaderInter1, headerText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag;
 
         text1 = text1.split('<table'); // split the text to title/time and the table
         text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -431,12 +435,21 @@
                                     
                                 }
 
+                                if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) {
+                                    allArray[b]["Id_FinishTime"] = 99999999999;
+                                    allArray[b].blue = 1; // make blue DSQ
+                                }
                 
                 
                 
-                
-                    // find intermediate time and check for 2 minutes diffrance
-                                if (allArray[b]["Id_Inter1"] != 99999999999 && allArray[b]["Id_Inter1_2"] != 99999999999) {
+                    // find intermediate time 1 and check for 2 minutes diffrance
+                                if ( allArray[b]["Id_Discipline"] == 'single') {
+                                    allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
+                                    allArray[b]["single"] = 1;
+                                } else if ( allArray[b]["Id_Discipline_2"] == 'single') {
+                                    allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
+                                    allArray[b]["single"] = 1;
+                                } else if (allArray[b]["Id_Inter1"] != 99999999999 && allArray[b]["Id_Inter1_2"] != 99999999999) {
                                     if (allArray[b]["Id_Inter1"] > allArray[b]["Id_Inter1_2"]) {
                                         allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
                                     }
@@ -525,11 +538,79 @@
         }
          
          
+// HEADER              
+                            
+        headerText1 = '<tr class="rnkh_bkcolor">';
 
+   //     for (b = 0; b < qqq.length; b++) { 
+   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
+   //             temp.push(b);
+   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>';
+   //         }
+   //     }          
+
+    // hard coded header for now
+        if (cleanResults == 0) {
+
+                //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position">מקום</th>';
+        } else {
+                    headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
+        }
+
+                    headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
+
+
+        if (cleanResults == 0) {
+
+                    if (useCategory == "no") {
+                        headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+                    }            
+                    headerText1 += '<th class="rnkh_font Id_Nom">מתחרה</th>';
+            //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+
+                    if (doNotShowTime == 0) {
+                        headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן אישי</th>';
+                    }
+                    //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+                        headerText1 += '<th class="rnkh_font Id_Inter1Time">זמן ביניים 1</th>'; // intermediate 1 time
+                    if (timeGapDisplayInter1 == 1) {
+                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">פער ביניים 1</th>'; // intermediate 1 time diff
+                    }
+
+        } else {
+                    headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
+                    if (doNotShowTime == 0) {
+                        headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
+                    }
+                    headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+                    if (doNotShowTime == 0) {
+                        headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+                    }
+                    if (useCategory == "no") {
+                        headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+                    }            
+            
+        }
+
+
+                    headerText1 += '<th class="rnkh_font Id_FinishTime">זמן</th>'; // combined time
+                    
+                    if (timeGapDisplay == 1) {
+                        headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
+                    }
+                
+        headerText1 += '</tr>';
+        
+        //   console.log(headerText1);
+
+// END HEADER
+ 
          
     // fix the position fields of the competitors and start building the final table
-            var m = 0;
-            var prevCompCat = ""
+            m = 0;
+            prevCompCat = ""
 
 //            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
 
@@ -541,7 +622,7 @@
             }           
 
             
-            for (var l = 0; l < allArray.length; l++) {
+            for (l = 0; l < allArray.length; l++) {
 
                 // reasign postion number
                  if (useCategory == "no") {
@@ -564,28 +645,28 @@
 // if (allArray[l]["Id_Position"] < 3) { // TV show only 2 competitors
 
                            if (allArray[l]["Id_Position"] == 1) {
-                                var leaderTime = allArray[l]["Id_FinishTime"];
-                                var leaderLaps = allArray[l]["Id_NbTour"];
+                                leaderTime = allArray[l]["Id_FinishTime"];
+                                leaderLaps = allArray[l]["Id_NbTour"];
                             }
 
                                     // fix the diff fields of the competitors
-                                var competitorLaps = allArray[l]["Id_NbTour"];
+                                competitorLaps = allArray[l]["Id_NbTour"];
                                 
                                 
                                 if (useCategory == "yes") {
-                                    var leaderInter1Time = Inter1Leader[allArray[l]["Id_Categorie"]];
+                                    leaderInter1Time = Inter1Leader[allArray[l]["Id_Categorie"]];
                                 } else {
-                                    var leaderInter1Time = Inter1Leader["overall"];
+                                    leaderInter1Time = Inter1Leader["overall"];
                                 }
                                 
-                                var imTheLeaderInter1 = 0;
+                                imTheLeaderInter1 = 0;
                                 if (allArray[l]["Id_Inter1Time"] == leaderInter1Time) {
                                     imTheLeaderInter1 = 1;
                                 }
 
                                 // diff on intermediate 1 time
                                 if (allArray[l]["Id_Inter1Time"] != 99999999999) {
-                                    var competitorId_Inter1Time = allArray[l]["Id_Inter1Time"];
+                                    competitorId_Inter1Time = allArray[l]["Id_Inter1Time"];
                                     if (competitorId_Inter1Time != leaderInter1Time && (competitorId_Inter1Time - leaderInter1Time) > 0 && (competitorId_Inter1Time - leaderInter1Time) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Inter1Ecart1er"] = ms2TimeString(competitorId_Inter1Time - leaderInter1Time);
 
@@ -610,7 +691,7 @@
 
                                 // diff on total time
                                 if (competitorLaps == leaderLaps) {
-                                    var competitorTime = allArray[l]["Id_FinishTime"];
+                                    competitorTime = allArray[l]["Id_FinishTime"];
                                     if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
 
@@ -689,74 +770,7 @@
                             }
                             
                             
-                            
-                            
-        var headerText1 = '<tr class="rnkh_bkcolor">';
-
-   //     for (b = 0; b < qqq.length; b++) { 
-   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
-   //             temp.push(b);
-   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>';
-   //         }
-   //     }          
-
-    // hard coded header for now
-if (cleanResults == 0) {
-
-          //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-            headerText1 += '<th colspan="2" class="rnkh_font Id_Position">מקום</th>';
-} else {
-            headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-            headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
-}
-
-            headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
-
-
-if (cleanResults == 0) {
-
-            if (useCategory == "no") {
-                headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
-            }            
-            headerText1 += '<th class="rnkh_font Id_Nom">מתחרה</th>';
-    //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
-
-            if (doNotShowTime == 0) {
-                headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן אישי</th>';
-            }
-            //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
-                headerText1 += '<th class="rnkh_font Id_Inter1Time">זמן ביניים 1</th>'; // intermediate 1 time
-            if (timeGapDisplayInter1 == 1) {
-                headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">פער ביניים 1</th>'; // intermediate 1 time diff
-            }
-
-} else {
-            headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
-            if (doNotShowTime == 0) {
-                headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
-            }
-            headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
-            if (doNotShowTime == 0) {
-                headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
-            }
-            if (useCategory == "no") {
-                headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
-            }            
-    
-}
-
-
-            headerText1 += '<th class="rnkh_font Id_FinishTime">זמן</th>'; // combined time
-            
-            if (timeGapDisplay == 1) {
-                headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
-            }
         
-        headerText1 += '</tr>';
-      //   console.log(headerText1);
-      //          console.log(temp);
-
-         
         
                              // position change arrow/status prep
 
@@ -870,16 +884,16 @@ if (cleanResults == 0) {
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
                 if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0) {
-                    var checkeredFlag = "finished ";
+                    checkeredFlag = "finished ";
                 } else {
-                    var checkeredFlag = "";
+                    checkeredFlag = "";
                 }
                 
                 
                 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"].includes("dnsfq") && allArray[l]["blue"] == 1) {
-                    finalText += '<td class="orange blued rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td aria-label="לא סיים/נפסל" class="orange blued rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 } else if (allArray[l]["Id_Arrow"].includes("dnsfq")) { // orange
                     
@@ -945,8 +959,8 @@ if (cleanResults == 0) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
                 }            
 
-                var single1 = "";
-                var single2 = "";
+                single1 = "";
+                single2 = "";
                 
                 if (allArray[l]["Id_Discipline_2"] == 'single') {
                     single2 = "lineThrough";
@@ -958,18 +972,18 @@ if (cleanResults == 0) {
 
                 if (cleanResults == 0) {
      //               finalText += '<div class="FirstLine">';
-                    var eeee = '<div class="FirstLine ' + single2 + '">';
-                    var ffff = '<div class="SecoundLine ' + single1 + '">';
-                    var gggg = '</div>';
+                    eeee = '<div class="FirstLine ' + single2 + '">';
+                    ffff = '<div class="SecoundLine ' + single1 + '">';
+                    gggg = '</div>';
                } else {
                     
-                    var eeee = '';
-                    var ffff = '';
-                    var gggg = '</td>';
+                    eeee = '';
+                    ffff = '';
+                    gggg = '</td>';
                 }
                 
                 
-                if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0) {
+                if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0 && allArray[l]["single"] == 0) { // only rider 1 finished at this point
                     finalText += '<td class="rnk_font">' + eeee + '<span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
@@ -1006,7 +1020,7 @@ if (cleanResults == 0) {
                     
                     
                     
-                    if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
+                    if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
                         finalText += '<div class="SecoundLine ' + single1 + '"><span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
@@ -1190,7 +1204,7 @@ if (cleanResults == 0) {
                     finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
                 }
                         
-                if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {
+                if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) {
                     finalText += '<td class="rnk_font"><span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
@@ -1250,20 +1264,42 @@ if (cleanResults == 0) {
         
     function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
         return a=a.split('.'), // optimized
-        b=a[1]*1||0, // optimized
+        b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
         a=a[0].split(':'),
         b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
     };
 
     function ms2TimeString(a,k,s,m,h){
-        return k=a%1e3, // optimized by konijn
-        s=a/1e3%60|0,
-        m=a/6e4%60|0,
-        h=a/36e5%24|0,
-        (h?(h<10?'0'+h:h)+':':'')+ // optimized
-        (m<10?0:'')+m+':'+  // optimized
-        (s<10?0:'')+s+'.'+ // optimized
-        (k<100?k<10?'00':0:'')+k // optimized
+        if (precision == "tenth") {
+            return k=a%1e3, // optimized by konijn
+            s=a/1e3%60|0,
+            m=a/6e4%60|0,
+            h=a/36e5%24|0,
+            (h?(h<10?'0'+h:h)+':':'')+ // optimized
+            (m<10?0:'')+m+':'+  // optimized
+            (s<10?0:'')+s+'.'+ // optimized
+            (k<100?k<10?'':'':'')+k // optimized
+        } else {
+            return k=a%1e3, // optimized by konijn
+            s=a/1e3%60|0,
+            m=a/6e4%60|0,
+            h=a/36e5%24|0,
+            (h?(h<10?'0'+h:h)+':':'')+ // optimized
+            (m<10?0:'')+m+':'+  // optimized
+            (s<10?0:'')+s+'.'+ // optimized
+            (k<100?k<10?'00':0:'')+k // optimized
+/*    
+if (k<100){
+  if(k<10){
+    message = '00'
+  }else{
+    message = 0
+  }
+} else {
+  message = ''
+}
+*/    
+        }
     };
 
     function Change() {
