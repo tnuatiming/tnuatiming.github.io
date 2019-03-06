@@ -442,7 +442,7 @@ span#name, span#rund, span#date {
 
 #live .btn {
     position: relative;
-    cursor:pointer;
+/*    cursor:pointer; */
     display: block;
     margin: 0 5px;
     padding: 0;

@@ -120,17 +120,23 @@ sudo apt-get install ruby-full
 sudo apt-get install nodejs npm
 sudo npm install -g grunt-cli
 npm install grunt
+
+sudo apt-get install hugo
+or
 sudo gem install jekyll
 
 sudo pip3 install beautifulsoup4 (for python csv convert)
 
-and add: , encoding='utf-8' to file options in convert_html_to_csv.py
+and add: , encoding='utf-8' to file options in convert_html_to_csv.py and import_posts.py
 and: # -*- coding: utf-8 -*- at the top
 
 change to python3 in Gruntfile.js:
+command: 'python3 import_posts.py'
 command: 'python3 convert_html_to_csv.py'
 
 install all packges as above
+
+may need to remove some files from closure-compiler
 
 ### hugo
 

@@ -18,6 +18,8 @@
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
+    var eventName = "";    
+    
     var cleanResults = 0; // alignTable for TotalIndex
     
     var precision = "nottenth"; // "tenth" for 1 digit after the .
@@ -29,7 +31,7 @@
 
     var tableClass = "fadeIn ";
     var url1 = "https://tnuatiming.com/liveepic/p1.html";    
-    var text1;
+    var Text;
 
     function category(choice){
         
@@ -40,6 +42,18 @@
             sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "no") {
             sessionStorage.setItem('categoryOrAll', 'no');
+        }
+
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");        
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");        
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").disabled = true;
         }
         
         Rafraichir = 60000; // every 60 seconds
@@ -54,7 +68,19 @@
         var loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");        
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");        
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").disabled = true;
+        }
 
+/*
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
             document.getElementById("displayAllButton").style.display = "block";        
@@ -62,6 +88,7 @@
             document.getElementById("displayCatButton").style.display = "block";        
             document.getElementById("displayAllButton").style.display = "none";        
         }
+*/
 
 /*        await fetch(url, {cache: "no-store"})
         .then(res => res.text())
@@ -183,7 +210,7 @@
         xhr1.send();
     }
 
-    function createLiveTable(text1) {
+    function createLiveTable(Text) {
         var MaximumStageTime = 18000000; // Maximum stage time in miliseconds, 18000000=5hours
         var i;
         var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined
@@ -224,28 +251,45 @@
         var Inter1Leader = [];
         var l, m, leaderInter1Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, imTheLeaderInter1, headerText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag;
 
-        text1 = text1.split('<table'); // split the text to title/time and the table
-        text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
-      //  console.log(text1[1]);
+        Text = Text.split('<table'); // split the text to title/time and the table
+        Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(Text[1]);
 
-        lines = text1[1].split("\n");
+        lines = Text[1].split("\n");
         //    console.log(lines.length);
      //   console.log(lines);
 
+        var HeaderName = Text[0].split("\n");  
+        var div = document.createElement("div");  
+        div.innerHTML = HeaderName[0]; 
+        var HeaderEventName = div.textContent || div.innerText || "";  
+        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
+     
+    //    console.log(HeaderEventName);
 
-        if (text1[0].includes("+++")) { // clean table for results page
+        if (eventName != HeaderEventName) {  
+            positionArray = []; 
+            lapsArray = [];
+        }
+        
+        eventName = HeaderEventName;  // tickerTest
+        
+        
+        if (Text[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             timeGapDisplay = 1;
             timeGapDisplayInter1 = 1;
-            text1[0] = text1[0].replace("+++", "");
+            Text[0] = Text[0].replace("+++", "");
+        } else {
+            cleanResults = 0;
         }
 
-        if (text1[0].includes("---")) { // do not show individuall times
+        if (Text[0].includes("---")) { // do not show individuall times
             doNotShowTime = 1;
-            text1[0] = text1[0].replace("---", "");
+            Text[0] = Text[0].replace("---", "");
         }
 
-        if (text1[0].includes("_Stop.png") || text1[0].includes("_CheckeredFlag.png")) { // check if race ended
+        if (Text[0].includes("_Stop.png") || Text[0].includes("_CheckeredFlag.png")) { // check if race ended
             raceEnded = 1;
         }
         
@@ -255,7 +299,7 @@
             var bigFont = ' bigFont';
         }
 
-        var finalText = text1[0]; // clear the finalText variable and add the title and time lines
+        var finalText = Text[0]; // clear the finalText variable and add the title and time lines
 
 
 
@@ -435,6 +479,7 @@
                                     
                                 }
 
+ // make blue if exeed MaximumStageTime, ENABLE after testing
                                 if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) {
                                     allArray[b]["Id_FinishTime"] = 99999999999;
                                     allArray[b].blue = 1; // make blue DSQ
@@ -591,6 +636,10 @@
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
                     }            
+                    headerText1 += '<th class="rnkh_font Id_Inter1Time">זמן ביניים 1</th>'; // intermediate 1 time
+                    if (timeGapDisplayInter1 == 1) {
+                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">פער ביניים 1</th>'; // intermediate 1 time diff
+                    }
             
         }
 
@@ -603,7 +652,7 @@
                 
         headerText1 += '</tr>';
         
-        //   console.log(headerText1);
+       //    console.log(headerText1);
 
 // END HEADER
  
@@ -840,7 +889,7 @@
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
                     finalText += '</table>\n';
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
-                } else if (l = 0) {
+                } else if (l == 0) {
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
                 }
                             
@@ -1006,9 +1055,9 @@ if (cleanResults == 0) {
                     finalText += gggg;// add the name
                 }
 
-                if (cleanResults == 0) {
+    //            if (cleanResults == 0) {
     //                finalText += '</div>';
-                }
+    //            }
                 
                 
                 
@@ -1047,9 +1096,9 @@ if (cleanResults == 0) {
                 
             if (doNotShowTime == 0) {
                 
-                if (cleanResults == 0) {
+      //          if (cleanResults == 0) {
      //               finalText += '<div class="FirstLine">';
-                }
+      //          }
                 
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
                     finalText += '<td class="rnk_font">' + eeee + '-' + gggg; // add time
@@ -1057,9 +1106,9 @@ if (cleanResults == 0) {
                     finalText += '<td class="rnk_font">' + eeee + allArray[l]["Id_TpsCumule"] + gggg; // add time
                 }
 
-                if (cleanResults == 0) {
+      //          if (cleanResults == 0) {
      //               finalText += '</div>';
-                }
+     //           }
                 
                 
                 

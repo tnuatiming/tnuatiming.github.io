@@ -44,6 +44,18 @@ var TimerLoad, TimerChange;
             sessionStorage.setItem('categoryOrAll', 'no');
         }
         
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");        
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");        
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").disabled = true;
+        }
+
         Rafraichir = 60000; // every 60 seconds
 
         tableClass = "fadeIn "; // make the table fadeIn on change
@@ -57,7 +69,19 @@ var TimerLoad, TimerChange;
         var loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");        
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");        
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").disabled = true;
+        }
 
+/*
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").style.display = "none";        
             document.getElementById("displayAllButton").style.display = "block";        
@@ -65,6 +89,7 @@ var TimerLoad, TimerChange;
             document.getElementById("displayCatButton").style.display = "block";        
             document.getElementById("displayAllButton").style.display = "none";        
         }
+*/
 
         if (self.fetch) {
 
@@ -915,7 +940,7 @@ var TimerLoad, TimerChange;
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
                     finalText += '</table>\n';
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
-                } else if (l = 0) {
+                } else if (l == 0) {
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
                 }
                             

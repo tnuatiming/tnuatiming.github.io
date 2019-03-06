@@ -107,14 +107,21 @@ slug: "index"
 
     .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
     .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
+    #live .btn {display: inline-block;}
+    #live #buttonInfo {margin-bottom: 10px;}
+    #live .btn.active {cursor: pointer;filter: opacity(50%);}
+    #live #Title {justify-content: center;}
+    #live h1#Title img {margin: 0 10px;}
+    
+    
 </style>
 
 <div id="raceheader"><h1>תוצאות בזמן אמת</h1></div>
 
 <div id="buttonInfo">
     <div id="categoryOrAll">
-        <button id="displayCatButton" class="btn" onClick="category('yes')">לפי קטגוריה</button>
-        <button id="displayAllButton" class="btn" onClick="category('no')">כללי</button>
+        <span><button id="displayCatButton" class="btn" onClick="category('yes')">לפי קטגוריה</button></span>
+        <span><button id="displayAllButton" class="btn" onClick="category('no')">כללי</button></span>
     </div>
         <div id="updates">&nbsp;</div>
 </div>

@@ -205,7 +205,7 @@ module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
 //    require('google-closure-compiler').grunt(grunt);
-    require('google-closure-compiler').grunt(grunt, {platform: ['native']});
+    require('google-closure-compiler').grunt(grunt, {platform: ['native', 'javascript', 'java']});
 
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
