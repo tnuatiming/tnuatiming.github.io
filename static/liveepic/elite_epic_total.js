@@ -1,3 +1,14 @@
+/*
+1. make "stage1", "stage2", "stage3", "stage4" folders
+2. create the daily stage results with "cleanResults = 2" (you can use +++) and on the כללי view. copy the table and put it in "p1.html" file in corespanding stage folder, make sure to leave the header (tough we only use the one in stage 1).
+3. set "stages = 4" acording to number of stages compleated.
+
+TODO
+phrase the results, so the results page on the web site will be passive
+
+
+*/
+
 var TimerLoad, TimerChange;
     var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
     var UrlRefresh, UrlChange;
@@ -758,7 +769,7 @@ var TimerLoad, TimerChange;
         if (useCategory == "no") {
             allArray.sort(function(a, b){return a.Id_dnsfq.localeCompare(b.Id_dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_dnsfq.localeCompare(b.Id_dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_dnsfq.localeCompare(b.Id_dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
         }
          
                             
