@@ -24,6 +24,10 @@
     
     var precision = "nottenth"; // "tenth" for 1 digit after the .
     
+    var catcat = "None";
+    if (sessionStorage.getItem('catcat')) {
+        useCategory = sessionStorage.getItem('catcat');
+    }
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
@@ -33,27 +37,68 @@
     var url1 = "https://tnuatiming.com/liveepic/p1.html";    
     var Text;
 
-    function category(choice){
+    function category(choice, cat){
         
         positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
         
         useCategory = choice;
+        catcat = cat;
+        if (catcat == "None") {
+            sessionStorage.setItem('catcat', 'None');
+        } else if (catcat == "Men") {
+            sessionStorage.setItem('catcat', 'Men');
+        } else if (catcat == "Women") {
+            sessionStorage.setItem('catcat', 'Women');
+        }
+
+
+
         if (useCategory == "yes") {
             sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "no") {
             sessionStorage.setItem('categoryOrAll', 'no');
         }
 
-        if (useCategory == "yes") {
+        if (useCategory == "yes" && catcat == "Men") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.remove("active");
+            document.getElementById("Men").disabled = true;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Women") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.remove("active");
+            document.getElementById("Women").disabled = true;
+            
+            
+        } else if (useCategory == "yes") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.remove("active");
             document.getElementById("displayCatButton").disabled = true;
-            document.getElementById("displayAllButton").classList.add("active");        
-            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            
+            
         } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").classList.add("active");        
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").classList.remove("active");
             document.getElementById("displayAllButton").disabled = true;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
         }
         
         Rafraichir = 60000; // every 60 seconds
@@ -68,16 +113,46 @@
         var loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
-        if (useCategory == "yes") {
+        if (useCategory == "yes" && catcat == "Men") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.remove("active");
+            document.getElementById("Men").disabled = true;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Women") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.remove("active");
+            document.getElementById("Women").disabled = true;
+            
+            
+        } else if (useCategory == "yes" && catcat == "None") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.remove("active");
             document.getElementById("displayCatButton").disabled = true;
-            document.getElementById("displayAllButton").classList.add("active");        
-            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            
+            
         } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").classList.add("active");        
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").classList.remove("active");
             document.getElementById("displayAllButton").disabled = true;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
         }
 
 /*
@@ -385,8 +460,11 @@
                 }
                 if (hhhPro[pp] == "Id_Numero" && lineArray[hhhPro[pp]] != "-" ) {
                     var pair_num = String(lineArray[hhhPro[pp]]).slice(-1);
-                    lineArray[hhhPro[pp]] = String(lineArray[hhhPro[pp]]).slice(0, -1);
-                }
+                    var main_num = String(lineArray[hhhPro[pp]]).slice(0, -1);
+                    lineArray[hhhPro[pp]] = main_num;
+
+                        lineArray["Id_Numero_Full"] = main_num + '-' + pair_num;
+               }
 /*
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
                     bestTime=lineArray["Id_TpsTour"];
@@ -451,6 +529,7 @@
                     allArray[b]["Id_Image_2"] = allArray2[a]["Id_Image"];   
                     allArray[b]["Id_MeilleurTour_2"] = allArray2[a]["Id_MeilleurTour"];   // fastest lap
                     allArray[b]["Id_Nom_2"] = allArray2[a]["Id_Nom"];
+                    allArray[b]["Id_Numero_Full_2"] = allArray2[a]["Id_Numero_Full"];
                     allArray[b]["Id_Nationalite_2"] = allArray2[a]["Id_Nationalite"];
                     allArray[b]["Id_TpsCumule_2"] = allArray2[a]["Id_TpsCumule"];
                     if (typeof allArray2[a]["Id_Inter1"] != 'undefined') {
@@ -598,8 +677,47 @@
          // THE MAGIC - sort the array after the merge to get new results
          // FIXME Id_Status drops blue competitor to buttom , check if this is what needed
         if (useCategory == "no") {
+            
+            
+ // calculate categorie position
+           
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            m = 0;
+            prevCompCat = ""
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reasign postion number
+ 
+                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["Id_Position_Categorie"] = Number(m);
+
+            }
+ // END calculate categorie position
+           
             allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
         } else if (useCategory == "yes") {
+            
+// calculate overall position
+            
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reasign postion number
+                     allArray[l]["Id_Position_Overall"] = Number(l+1);
+
+            }
+             
+// END calculate overall position
+            
             allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
          
@@ -619,56 +737,60 @@
         if (cleanResults == 0) {
 
                 //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position">מקום</th>';
+                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
         } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">מקום</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
 
-                    headerText1 += '<th class="rnkh_font Id_Numero">מספר</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero">NUM</th>';
 
 
         if (cleanResults == 0) {
 
                     if (useCategory == "no") {
-                        headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+                        headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
                     }            
-                    headerText1 += '<th class="rnkh_font Id_Nom">מתחרה</th>';
+                    headerText1 += '<th class="rnkh_font Id_Nom">Rider</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
 
                     if (doNotShowTime == 0) {
-                        headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן אישי</th>';
+                        headerText1 += '<th class="rnkh_font Id_TpsCumule">Individual Time</th>';
                     }
                     //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
-                        headerText1 += '<th class="rnkh_font Id_Inter1Time">זמן ביניים 1</th>'; // intermediate 1 time
+                        headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                     if (timeGapDisplayInter1 == 1) {
-                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">פער ביניים 1</th>'; // intermediate 1 time diff
+                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 GAP</th>'; // intermediate 1 time diff
                     }
 
         } else {
-                    headerText1 += '<th class="rnkh_font Id_Nom">מתחרה 1</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Num.</th>';
+                    
+                    headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
                     if (doNotShowTime == 0) {
-                        headerText1 += '<th class="rnkh_font Id_TpsCumule">זמן 1</th>';
+                        headerText1 += '<th class="rnkh_font Id_TpsCumule">Time Rider 1</th>';
                     }
-                    headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Num.</th>';
+                    headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2</th>';
                     if (doNotShowTime == 0) {
-                        headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+                        headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time Rider 2</th>';
                     }
                     if (useCategory == "no") {
-                        headerText1 += '<th class="rnkh_font Id_Categorie">קטגוריה</th>';
+                        headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
                     }            
-                    headerText1 += '<th class="rnkh_font Id_Inter1Time">זמן ביניים 1</th>'; // intermediate 1 time
+                    headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                     if (timeGapDisplayInter1 == 1) {
-                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">פער ביניים 1</th>'; // intermediate 1 time diff
+                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 GAP</th>'; // intermediate 1 time diff
                     }
             
         }
 
 
-                    headerText1 += '<th class="rnkh_font Id_FinishTime">זמן</th>'; // combined time
+                    headerText1 += '<th class="rnkh_font Id_FinishTime">TIME</th>'; // combined time
                     
                     if (timeGapDisplay == 1) {
-                        headerText1 += '<th class="rnkh_font Id_Ecart1er">פער</th>';
+                        headerText1 += '<th class="rnkh_font Id_Ecart1er">GAP</th>';
                     }
                 
         headerText1 += '</tr>';
@@ -697,6 +819,7 @@
                 // reasign postion number
                  if (useCategory == "no") {
                     allArray[l]["Id_Position"] = l+1;
+                    allArray[l]["Id_Position_Overall"] = l+1;
                  } else if (useCategory == "yes") {
  
                      if (prevCompCat == allArray[l]["Id_Categorie"]) {
@@ -706,11 +829,12 @@
                       prevCompCat = allArray[l]["Id_Categorie"];
                     }
                     allArray[l]["Id_Position"] = m;
+                    allArray[l]["Id_Position_Categorie"] = m;
                  }
 
                  
                  
-                 
+    if ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no") {
                  
 // if (allArray[l]["Id_Position"] < 3) { // TV show only 2 competitors
 
@@ -916,8 +1040,8 @@
                             
                 finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-//                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
-                    finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
+                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
             }
             
             
@@ -963,15 +1087,15 @@ if (cleanResults == 0) {
                 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"].includes("dnsfq") && allArray[l]["blue"] == 1) {
-                    finalText += '<td aria-label="לא סיים/נפסל" class="orange blued rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td aria-label="DNF/DSQ" class="orange blued rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
 
                 } else if (allArray[l]["Id_Arrow"].includes("dnsfq")) { // orange
                     
-                    finalText += '<td aria-label="לא סיים/נפסל" class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
+                    finalText += '<td aria-label="DNF/DSQ" class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
                 } else if (allArray[l]["blue"] == 1) {
                 
-                    finalText += '<td aria-label="כחול" class="blued rnk_font">&nbsp;</td>'; //&#9608;
+                    finalText += '<td aria-label="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
                 } else if (allArray[l]["Id_Arrow"].includes("_MinusPosition")) { // red
                     
@@ -983,7 +1107,7 @@ if (cleanResults == 0) {
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td aria-label="סיימו" class="finished white rnk_font">&nbsp;</td>';
+                    finalText += '<td aria-label="Finished" class="finished white rnk_font">&nbsp;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // white
                     
@@ -1012,13 +1136,21 @@ if (cleanResults == 0) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
                 } else {
+                    if (cleanResults == 0) {
+
+                        finalText += '<td class="rnk_font"><div>' + allArray[l]["Id_Position_Categorie"] + '</div><div>' + allArray[l]["Id_Position_Overall"] + '</div></td>'; // add postion FIXME for cleanResults == 1
+                        
+                    } else if (cleanResults == 1) {
+                        
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add postion FIXME for cleanResults == 1
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // add postion FIXME for cleanResults == 1
+                    }
                     
-                    finalText += '<td class="rnk_font ' + bigFont + ' ">' + allArray[l]["Id_Position"] + '</td>'; // add postion
                 }
 
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
-                finalText += '<td title="רוכב מספר כחול" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["Id_Categorie"] == "גברים" && useCategory == "no") {
                 finalText += '<td class="rnk_font redCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
@@ -1052,9 +1184,12 @@ if (cleanResults == 0) {
                     gggg = '</td>';
                 }
                 
+                if (cleanResults == 1) {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // add rider 1 number
+                }
                 
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0 && allArray[l]["single"] == 0) { // only rider 1 finished at this point
-                    finalText += '<td class="rnk_font">' + eeee + '<span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font">' + eeee + '<span title="Finished" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
@@ -1091,7 +1226,7 @@ if (cleanResults == 0) {
                     
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
-                        finalText += '<div class="SecoundLine ' + single1 + '"><span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += ffff + '<span title="Finished" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                             finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
@@ -1099,7 +1234,7 @@ if (cleanResults == 0) {
                         finalText += '</div></td>';// add the name
                         
                     } else {
-                        finalText += '<div class="SecoundLine ' + single1 + '">' + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += ffff + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                             finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
@@ -1157,7 +1292,9 @@ if (cleanResults == 0) {
             }          
                 
                 if (cleanResults == 1) {
-                    
+                                            
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // add rider 2 number
+
                     finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Nom_2"]; // add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
@@ -1201,7 +1338,7 @@ if (cleanResults == 0) {
                     
                     if (allArray[l]["Id_Inter1blue"] == 1) {
                                                 
-                        finalText += '<td title="כחול" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                        finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
 
                     
                     } else if (imTheLeaderInter1 == 1) {
@@ -1222,7 +1359,7 @@ if (cleanResults == 0) {
                     
                     if (allArray[l]["Id_Inter1blue"] == 1) {
                                                 
-                        finalText += '<td title="כחול" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                        finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
 
                     
                     } else if (imTheLeaderInter1 == 1) {
@@ -1317,7 +1454,7 @@ if (cleanResults == 0) {
                 }
                         
                 if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) {
-                    finalText += '<td class="rnk_font"><span title="סיים" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
+                    finalText += '<td class="rnk_font"><span title="Finished" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                     if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         finalText += '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
@@ -1349,7 +1486,8 @@ if (cleanResults == 0) {
 
 // } // end TV
 
-
+ } // end show only category X
+         
         }        // end for l
          
          
