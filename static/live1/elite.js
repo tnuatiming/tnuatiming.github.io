@@ -1200,9 +1200,9 @@ switch(option) {  // tickerTest
                     
                     if (opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
                         finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("פתוחה")) {
+                    } else if (opt4.toUpperCase().includes("פתוחה") || opt4.toUpperCase().includes("אקספרט")) {
                         finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("עממית")) {
+                    } else if (opt4.toUpperCase().includes("עממית") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("אנדורו")) {
                         finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
                         finalText += '<td class="rnk_font blueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
