@@ -14,36 +14,48 @@ slug: "tv"
 .full-bg {
     background: #6c3;
 }
-.header, .footer, #raceheader, #live h1#Title, #live p#Time {display: none;}
-#live td.rnk_font, #race td.rnk_font {
+.header, .footer, #raceheader, #live h1#Title, #live p#Time, div#daysTotal {display: none;}
+#live td.rnk_font {
     color: #f0f0f0;
-    font-weight: 400;
+    font-weight: 700;
     text-shadow: none;
     white-space: nowrap;
 }
 #live table.line_color {
     direction: ltr;
-    margin: 400px auto;
+    margin: 600px auto;
     width: 80%;
 }
 #live tr.rnkh_bkcolor {
     color: #fff;
-    background: #39283ecb;
     font-weight: 700;
+    border-bottom: 10px solid #6c3;
+}
+th.rnkh_font {
+    color: #fff;
+    background: #32243fcb;
 }
 #live .OddRow {
-    background-color: #4f4a44cb;
+    background-color: #303030cb;
     color: #f0f0f0;
 }
 
 #live .EvenRow {
-    background-color: #2c2b29cb;
+    background-color: #474747cb;
     color: #f0f0f0;
 }
 td.title_font {
     padding-bottom: 20px;
 }
-
+td, th {
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 10px;
+    line-height: 2;
+}
+#live img.CategoryHeader {
+    height: 5em; 
+}
 
 /*  END TV */
 
@@ -60,10 +72,10 @@ td.title_font {
     }
 }
 
-    tbody.line, tr.rnk_bkcolor {
+  /*    tbody.line, tr.rnk_bkcolor {
         border-bottom: 1px solid #111;
     }
-  /*  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  
+  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  
     #live table.line_color {
         direction: ltr;
         margin-top: 10px;
@@ -191,6 +203,9 @@ td.title_font {
     <div id="categoryOrAll">
         <span><button id="Men" class="btn" onClick="category('yes', 'Men')">Men</button></span>
         <span><button id="Women" class="btn" onClick="category('yes', 'Women')">Women</button></span>
+        <span><button id="Mixed" class="btn" onClick="category('yes', 'Mixed')">Mixed</button></span>
+        <span><button id="Masters" class="btn" onClick="category('yes', 'Masters')">Masters</button></span>
+        <span><button id="Grand" class="btn" onClick="category('yes', 'Grand')">Grand</button></span>
         <span><button id="displayCatButton" class="btn" onClick="category('yes', 'None')">By Category</button></span>
         <span><button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button></span>
     </div>

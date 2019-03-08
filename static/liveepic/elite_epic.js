@@ -70,6 +70,12 @@
             document.getElementById("Men").disabled = true;
             document.getElementById("Women").classList.add("active");
             document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
         } else if (useCategory == "yes" && catcat == "Women") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -79,8 +85,57 @@
             document.getElementById("Men").disabled = false;
             document.getElementById("Women").classList.remove("active");
             document.getElementById("Women").disabled = true;
-            
-            
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Mixed") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.remove("active");
+            document.getElementById("Mixed").disabled = true;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Masters") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.remove("active");
+            document.getElementById("Masters").disabled = true;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Grand") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.remove("active");
+            document.getElementById("Grand").disabled = true;
         } else if (useCategory == "yes") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -90,8 +145,12 @@
             document.getElementById("Men").disabled = false;
             document.getElementById("Women").classList.add("active");
             document.getElementById("Women").disabled = false;
-            
-            
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
         } else if (useCategory == "no") {
             document.getElementById("displayAllButton").classList.remove("active");
             document.getElementById("displayAllButton").disabled = true;
@@ -101,6 +160,12 @@
             document.getElementById("Men").disabled = false;
             document.getElementById("Women").classList.add("active");
             document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
         }
         
         Rafraichir = 60000; // every 60 seconds
@@ -129,6 +194,12 @@
             document.getElementById("Men").disabled = true;
             document.getElementById("Women").classList.add("active");
             document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
         } else if (useCategory == "yes" && catcat == "Women") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -138,9 +209,58 @@
             document.getElementById("Men").disabled = false;
             document.getElementById("Women").classList.remove("active");
             document.getElementById("Women").disabled = true;
-            
-            
-        } else if (useCategory == "yes" && catcat == "None") {
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Mixed") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.remove("active");
+            document.getElementById("Mixed").disabled = true;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Masters") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.remove("active");
+            document.getElementById("Masters").disabled = true;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+        } else if (useCategory == "yes" && catcat == "Grand") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.remove("active");
+            document.getElementById("Grand").disabled = true;
+        } else if (useCategory == "yes") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.remove("active");
@@ -149,8 +269,12 @@
             document.getElementById("Men").disabled = false;
             document.getElementById("Women").classList.add("active");
             document.getElementById("Women").disabled = false;
-            
-            
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
         } else if (useCategory == "no") {
             document.getElementById("displayAllButton").classList.remove("active");
             document.getElementById("displayAllButton").disabled = true;
@@ -160,6 +284,12 @@
             document.getElementById("Men").disabled = false;
             document.getElementById("Women").classList.add("active");
             document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
         }
 
 /*
@@ -442,6 +572,7 @@
                 lineArray.Id_Status = 0;
                 lineArray.blue = 0;
                 lineArray.single = 0;
+                lineArray.laps = 0; // replacing Id_NbTour as it not showing corectly the number of laps. using Id_TpsTour1
                 lineArray.yellow = "";
                 lineArray.Id_penalty = "&nbsp;";   
 
@@ -457,11 +588,14 @@
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
                 }
+                if (hhhPro[pp] == "Id_TpsTour1" && lineArray[hhhPro[pp]] != "-" ) {
+                    lineArray["laps"] = 1;   
+                }
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] == "-" ) {
                     lineArray[hhhPro[pp]] = 99999999999;   
                 }
                 if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "כללי";   
+                    lineArray[hhhPro[pp]] = "&nbsp;";   
                 }
                 if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
                     lineArray[hhhPro[pp]] = "-";   
@@ -512,21 +646,21 @@
           //          allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
                 }
 */            
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
+                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                     
                     
                     
                                 if (allArray[b]["Id_Discipline"] == 'single') {
                                     
-                                    allArray[b]["Id_NbTour"] = 2 * Number(allArray2[b]["Id_NbTour"]); // need to 2* the laps as it 1 rider and not 2 
+                                    allArray[b]["laps"] = 2 * allArray2[b]["laps"]; // need to 2* the laps as it 1 rider and not 2 
                                     
                                 } else if (allArray[a]["Id_Discipline"] == 'single') {
                                     
-                                    allArray[b]["Id_NbTour"] = 2 * Number(allArray[a]["Id_NbTour"]);
+                                    allArray[b]["laps"] = 2 * allArray[a]["laps"];
                                     
-                                } else if (allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
+                                } else {
                     
-                                    allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
+                                    allArray[b]["laps"] = allArray[b]["laps"] + allArray2[a]["laps"];
                                 }
                 }
 
@@ -682,7 +816,7 @@
          allArray2 = [];
          
 
-// FIXME   SORTING WORKS ONLY IF THERE IS ONE LAP. IF THE RACE IS LONGER NEEDED TO ADD "|| b.Id_NbTour - a.Id_NbTour" BEFORE "|| a.Id_FinishTime - b.Id_FinishTime". THIS IS THEORETICAL, NOT CHECKED!!!
+// FIXME   SORTING WORKS ONLY IF THERE IS ONE LAP. IF THE RACE IS LONGER NEEDED TO ADD "|| b.laps - a.laps" BEFORE "|| a.Id_FinishTime - b.Id_FinishTime". THIS IS THEORETICAL, NOT CHECKED!!!
 
          // THE MAGIC - sort the array after the merge to get new results
          // FIXME Id_Status drops blue competitor to buttom , check if this is what needed
@@ -691,7 +825,7 @@
             
  // calculate categorie position
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             m = 0;
             prevCompCat = ""
@@ -711,13 +845,13 @@
             }
  // END calculate categorie position
            
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
         } else if (useCategory == "yes") {
             
 // calculate overall position
             
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -728,7 +862,7 @@
              
 // END calculate overall position
             
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
          
          
@@ -754,7 +888,7 @@
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
 
-                    headerText1 += '<th class="rnkh_font Id_Numero">NUM</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
 
 
         if (cleanResults == 0) {
@@ -762,7 +896,7 @@
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
                     }            
-                    headerText1 += '<th class="rnkh_font Id_Nom">Rider</th>';
+                    headerText1 += '<th class="rnkh_font Id_Nom">Name</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
 
                     if (doNotShowTime == 0) {
@@ -775,13 +909,13 @@
                     }
 
         } else {
-                    headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Num.</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
                     
                     headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
                     if (doNotShowTime == 0) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule">Time Rider 1</th>';
                     }
-                    headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Num.</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Nr</th>';
                     headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2</th>';
                     if (doNotShowTime == 0) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time Rider 2</th>';
@@ -791,16 +925,16 @@
                     }            
                     headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                     if (timeGapDisplayInter1 == 1) {
-                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 GAP</th>'; // intermediate 1 time diff
+                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 Gap</th>'; // intermediate 1 time diff
                     }
             
         }
 
 
-                    headerText1 += '<th class="rnkh_font Id_FinishTime">TIME</th>'; // combined time
+                    headerText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // combined time
                     
                     if (timeGapDisplay == 1) {
-                        headerText1 += '<th class="rnkh_font Id_Ecart1er">GAP</th>';
+                        headerText1 += '<th class="rnkh_font Id_Ecart1er">Gap</th>';
                     }
                 
         headerText1 += '</tr>';
@@ -842,19 +976,18 @@
                     allArray[l]["Id_Position_Categorie"] = m;
                  }
 
-                 
-                 
-    if ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no") {
-                 
- if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 2 competitors
 
+                 
+                 
+                 
+                 
                            if (allArray[l]["Id_Position"] == 1) {
                                 leaderTime = allArray[l]["Id_FinishTime"];
-                                leaderLaps = allArray[l]["Id_NbTour"];
+                                leaderLaps = allArray[l]["laps"];
                             }
 
                                     // fix the diff fields of the competitors
-                                competitorLaps = allArray[l]["Id_NbTour"];
+                                competitorLaps = allArray[l]["laps"];
                                 
                                 
                                 if (useCategory == "yes") {
@@ -1008,7 +1141,7 @@
                             competitorPosition = Number(allArray[l]["Id_Position"]);  // get the position value and clean penalty indicator
                     }
                      
-                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"] && allArray[l]["Id_FinishTime"] != 99999999999) { // position change arrow calc
+                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["laps"] && allArray[l]["Id_FinishTime"] != 99999999999) { // position change arrow calc
                     positionChanged = "";
                     
                         if (positionArray[competitorNumber]) {
@@ -1037,7 +1170,24 @@
                     }                        
 */        
         
-            // add category name header and table header
+
+
+
+
+                 
+                 
+    if (((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")  && epictv == 0) {
+                 
+// if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 2 competitors
+
+
+
+
+
+
+
+
+// add category name header and table header
             if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
                 
@@ -1252,9 +1402,7 @@ if (cleanResults == 0) {
                         finalText += '</div></td>';// add the name
                     }
                    
-                    
-                    
-                    
+                     
       //              finalText += '</div>';
                     
                 }
@@ -1327,10 +1475,6 @@ if (cleanResults == 0) {
                 
       //          if (overTheTime == "yes") {
                 // make color change FIXME
-
-
-                
-                
                 
                 
 // intermediate time 1
@@ -1493,10 +1637,116 @@ if (cleanResults == 0) {
                 finalText += '</tr>\n</tbody>\n';
             }
 */
+ 
 
- } // end TV
+
 
  } // end show only category X
+
+
+
+if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
+    
+    
+    
+ // HEADER for tv            
+                            
+        headerTexttv = '<tr class="rnkh_bkcolor">';
+
+   //     for (b = 0; b < qqq.length; b++) { 
+   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
+   //             temp.push(b);
+   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>';
+   //         }
+   //     }          
+
+        
+                    headerTexttv += '<th class="rnkh_font Id_Position">Rank</th>';
+                    headerTexttv += '<th class="rnkh_font Id_Nom">Name</th>';
+                    headerTexttv += '<th class="rnkh_font Id_Nom">Nation</th>';
+                    headerTexttv += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    headerTexttv += '<th class="rnkh_font Id_FinishTime">Time</th>'; // combined time
+
+                  
+        headerTexttv += '</tr>';
+        
+       //    console.log(headerTexttv);
+
+// END HEADER for tv
+   
+   
+    
+
+            // add category name header and table header
+            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerTexttv;
+                
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                    finalText += '</table>\n';
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                } else if (l == 0) {
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                }
+//                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerTexttv + '\n';                
+                            
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font"><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></td></tr>' + headerTexttv + '\n';
+
+                
+                
+                
+                
+            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerTexttv;
+                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerTexttv + '\n';
+            }
+
+    
+    
+            if (l % 2 == 0) { // start building competitor line
+                finalText += '<tr class="rnk_bkcolor OddRow">';
+            } else {
+                finalText += '<tr class="rnk_bkcolor EvenRow">';
+            }
+    
+    
+    
+ 
+                if (useCategory == "no") {
+
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // add overall position
+                
+                } else {
+                    
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
+                }
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + allArray[l]["yellow"] + '</td>'; // add riders name
+                
+                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
+                
+
+                    if (allArray[l]["Id_Position"] == 1) {
+                        if (allArray[l]["Id_FinishTime"] == 99999999999) {
+                            finalText += '<td class="rnk_font">-</td>'; // add total time
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // add total time
+                        }
+                        
+                    } else {
+                        if (allArray[l]["Id_Ecart1er"] == '-') {
+                            finalText += '<td class="rnk_font">-</td>'; // add diff
+                        } else {
+                            finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
+                        }
+                    }
+
+                
+        finalText += '</tr>\n';
+    
+} // end TV
+
          
         }        // end for l
          
@@ -1579,7 +1829,7 @@ if (k<100){
 
     function alignTable() {
         
-        if (cleanResults == 0) {
+        if (cleanResults == 0 && epictv == 0) {
             
             // aligning table colmuns according to number of colmuns
             var tt = document.querySelectorAll('.line_color');
