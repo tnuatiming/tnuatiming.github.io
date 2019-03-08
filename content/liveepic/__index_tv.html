@@ -1,28 +1,126 @@
 ---
 type: live
-body: total
-subbody: epic
-#permalink: /liveepic/total.html
+body: epic
+media: tv
+#permalink: /liveepic/tv.html
 place: live timing
-slug: "total"
+slug: "tv"
 ---
-<style>
-    #live table.line_color {
-        margin-top: 10px;
-    }
-    
-    #live tr.rnk_bkcolor:hover {
-        background-color: #f0f0f0bf;
-        } 
 
+<style>
+
+/*  TV */
+
+.full-bg {
+    background: #6c3;
+}
+.header, .footer, #raceheader, #live h1#Title, #live p#Time {display: none;}
+#live td.rnk_font, #race td.rnk_font {
+    color: #f0f0f0;
+    font-weight: 400;
+    text-shadow: none;
+    white-space: nowrap;
+}
+#live table.line_color {
+    direction: ltr;
+    margin: 400px auto;
+    width: 80%;
+}
+#live tr.rnkh_bkcolor {
+    color: #fff;
+    background: #39283ecb;
+    font-weight: 700;
+}
+#live .OddRow {
+    background-color: #4f4a44cb;
+    color: #f0f0f0;
+}
+
+#live .EvenRow {
+    background-color: #2c2b29cb;
+    color: #f0f0f0;
+}
+td.title_font {
+    padding-bottom: 20px;
+}
+
+
+/*  END TV */
+
+    #live .btn {margin: 0;}
+
+@media (max-width: 767px) {
+
+    #live #categoryOrAll button {
+        font-size: 0.8em;
+    }
+    #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
+        font-size: 0.8em;
+        padding: 0;
+    }
+}
+
+    tbody.line, tr.rnk_bkcolor {
+        border-bottom: 1px solid #111;
+    }
+  /*  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  
+    #live table.line_color {
+        direction: ltr;
+        margin-top: 10px;
+    }*/
+    .bigFont {
+        font-size: 1.5em;
+    }
+  /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
+
+    #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
+  
+    #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) { /*first 3 elements*/
+        width: 3%;
+    }
+    #live td.blued {
+        background-image: url(Images/_LightBlueFlag.png);
+        background-position: center center; 
+        background-size: auto 30%; 
+        background-repeat: no-repeat; 
+        min-width: 16px;
+    }
+    #live td.finished {
+        background-size: auto 30%;
+    }    
+    #live td.rnk_font.blueCard {
+        color:#111; 
+        background-color:#add8e6bf; 
+        font-weight:700;
+    }
+    #live td.rnk_font.redCard {
+        color:white; 
+        background-color:red; 
+        font-weight:700;
+    }
+    #live td.rnk_font.yellowCard {
+        background-color:#fee300bf; 
+        font-weight:700;
+    }
+    #live td img {
+        height:0.9em; 
+        vertical-align:middle; 
+        padding:0 2px;
+    }
+    .lineThrough {
+        filter: opacity(35%)
+    }
     h1 img {
         height: 32px; 
         vertical-align: middle; 
         margin: 0 5px;
-        }
-    .Flag:before {
-        content: "\00a0";
     }
+    img.Flag {
+        vertical-align: middle; 
+        margin: 0 5px;
+    }
+
+    .Flag:before {content: "\00a0";}
     .Flag {
         background-size: contain;
         background-position: 50%;
@@ -69,22 +167,32 @@ slug: "total"
     .unitedkingdom {background-image: url(Images/CountryFlags/unitedkingdom.svg);}
     .usa {background-image: url(Images/CountryFlags/usa.svg);}
 
+    .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
+    .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
+    .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
+    .YellowShirt {background-image: url(Images/YellowShirt.svg);}
+    .FirstLine {} 
+    .SecoundLine {} 
+
     #live .btn {display: inline-block;}
     #live #buttonInfo {margin-bottom: 10px;}
     #live .btn.active {cursor: pointer;filter: opacity(50%);}
     #live #Title {justify-content: center;}
     #live h1#Title img {margin: 0 10px;}
+
+    #live td div.bold {font-weight:700;}
     
     
 </style>
 
-
-<div id="raceheader"><h1>תוצאות</h1></div>
+<div id="raceheader"><h1>Live Results</h1></div>
 
 <div id="buttonInfo">
     <div id="categoryOrAll">
-        <button id="displayCatButton" class="btn" onClick="category('yes')">לפי קטגוריה</button>
-        <button id="displayAllButton" class="btn" onClick="category('no')">כללי</button>
+        <span><button id="Men" class="btn" onClick="category('yes', 'Men')">Men</button></span>
+        <span><button id="Women" class="btn" onClick="category('yes', 'Women')">Women</button></span>
+        <span><button id="displayCatButton" class="btn" onClick="category('yes', 'None')">By Category</button></span>
+        <span><button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button></span>
     </div>
         <div id="updates">&nbsp;</div>
 </div>
@@ -94,4 +202,5 @@ slug: "total"
 
 <div id="previousResults"></div>
 
+<div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall</button></div>
 

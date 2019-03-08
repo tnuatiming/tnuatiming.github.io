@@ -32,6 +32,8 @@
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
     }
+    
+    var epictv = 0;
 
     var tableClass = "fadeIn ";
     var url1 = "https://tnuatiming.com/liveepic/p1.html";    
@@ -110,6 +112,11 @@
 
     async function Load(url, target) {
         
+        
+        if (document.getElementById('epictv')){
+            epictv = 1;
+        }
+                
         var loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
@@ -435,6 +442,7 @@
                 lineArray.Id_Status = 0;
                 lineArray.blue = 0;
                 lineArray.single = 0;
+                lineArray.yellow = "";
                 lineArray.Id_penalty = "&nbsp;";   
 
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
@@ -532,6 +540,7 @@
                     allArray[b]["Id_Numero_Full_2"] = allArray2[a]["Id_Numero_Full"];
                     allArray[b]["Id_Nationalite_2"] = allArray2[a]["Id_Nationalite"];
                     allArray[b]["Id_TpsCumule_2"] = allArray2[a]["Id_TpsCumule"];
+                    
                     if (typeof allArray2[a]["Id_Inter1"] != 'undefined') {
                         allArray[b]["Id_Inter1_2"] = allArray2[a]["Id_Inter1"];
                     }
@@ -540,6 +549,9 @@
                     }
                     if (typeof allArray2[a]["Id_Discipline"] != 'undefined') {
                         allArray[b]["Id_Discipline_2"] = allArray2[a]["Id_Discipline"];
+                    }
+                    if (allArray[b]["Id_Discipline_2"] == 'yellow' || allArray[b]["Id_Discipline"] == 'yellow') {
+                        allArray[b]["yellow"] = '<span title="Finished" class="Flag YellowShirt"></span>';
                     }
 
  
@@ -610,8 +622,6 @@
                                         allArray[b].Id_Inter1blue = 0; 
                                     }
                                    
-                                    
-                                    
                                 }                
 
                                 
@@ -836,7 +846,7 @@
                  
     if ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no") {
                  
-// if (allArray[l]["Id_Position"] < 3) { // TV show only 2 competitors
+ if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 2 competitors
 
                            if (allArray[l]["Id_Position"] == 1) {
                                 leaderTime = allArray[l]["Id_FinishTime"];
@@ -1138,12 +1148,12 @@ if (cleanResults == 0) {
                 } else {
                     if (cleanResults == 0) {
 
-                        finalText += '<td class="rnk_font"><div>' + allArray[l]["Id_Position_Categorie"] + '</div><div>' + allArray[l]["Id_Position_Overall"] + '</div></td>'; // add postion FIXME for cleanResults == 1
+                        finalText += '<td class="rnk_font"><div>' + allArray[l]["Id_Position_Categorie"] + '</div><div>' + allArray[l]["Id_Position_Overall"] + '</div></td>'; 
                         
                     } else if (cleanResults == 1) {
                         
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add postion FIXME for cleanResults == 1
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // add postion FIXME for cleanResults == 1
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; 
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; 
                     }
                     
                 }
@@ -1151,8 +1161,8 @@ if (cleanResults == 0) {
                 
                 if (allArray[l]["Id_Classe"] == "blue") {
                 finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["Id_Categorie"] == "גברים" && useCategory == "no") {
-                finalText += '<td class="rnk_font redCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                } else if (allArray[l]["yellow"] != "") {
+                finalText += '<td class="rnk_font yellowCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
@@ -1195,7 +1205,7 @@ if (cleanResults == 0) {
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
  //                       }
                     }
                     finalText += gggg;// add the name
@@ -1205,7 +1215,7 @@ if (cleanResults == 0) {
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
     //                    }
                     }
                     finalText += gggg;// add the name
@@ -1229,7 +1239,7 @@ if (cleanResults == 0) {
                         finalText += ffff + '<span title="Finished" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
@@ -1237,7 +1247,7 @@ if (cleanResults == 0) {
                         finalText += ffff + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
@@ -1352,7 +1362,7 @@ if (cleanResults == 0) {
                         if (allArray[l]["Id_Inter1Ecart1er"] == '-') {
                             finalText += '<td class="rnk_font">-</td>'; // add diff
                         } else {
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Inter1Ecart1er"] + '+</td>'; // add diff
+                            finalText += '<td class="rnk_font">+' + allArray[l]["Id_Inter1Ecart1er"] + '</td>'; // add diff
                         }
                     }
                 } else if (timeGapDisplayInter1 == 3) {
@@ -1379,7 +1389,7 @@ if (cleanResults == 0) {
                         if (allArray[l]["Id_Inter1Ecart1er"] == '-') {
                             finalText += '<div>-</div></td>'; // add diff
                         } else {
-                            finalText += '<div>' + allArray[l]["Id_Inter1Ecart1er"] + '+</div></td>'; // add diff
+                            finalText += '<div>+' + allArray[l]["Id_Inter1Ecart1er"] + '</div></td>'; // add diff
                         }
                     }
                 }
@@ -1410,7 +1420,7 @@ if (cleanResults == 0) {
                         if (allArray[l]["Id_Ecart1er"] == '-') {
                             finalText += '<td class="rnk_font">-</td>'; // add diff
                         } else {
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '+</td>'; // add diff
+                            finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
                         }
                     }
                 } else if (timeGapDisplay == 3) {
@@ -1431,7 +1441,7 @@ if (cleanResults == 0) {
                         if (allArray[l]["Id_Ecart1er"] == '-') {
                             finalText += '<div>-</td>'; // add diff
                         } else {
-                            finalText += '<div>' + allArray[l]["Id_Ecart1er"] + '+</td>'; // add diff
+                            finalText += '<div>+' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
                         }
                     }
                 }
@@ -1484,7 +1494,7 @@ if (cleanResults == 0) {
             }
 */
 
-// } // end TV
+ } // end TV
 
  } // end show only category X
          

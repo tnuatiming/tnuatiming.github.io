@@ -525,6 +525,7 @@ span#name, span#rund, span#date {
     font-size: 1em;
     color: #58585a;
     margin: 5px 0;
+    text-align: center;
 }
 
 #live #Title {

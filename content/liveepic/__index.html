@@ -7,6 +7,19 @@ slug: "index"
 ---
 
 <style>
+    #live .btn {margin: 0;}
+
+@media (max-width: 767px) {
+
+    #live #categoryOrAll button {
+        font-size: 0.8em;
+    }
+    #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
+        font-size: 0.8em;
+        padding: 0;
+    }
+}
+
     tbody.line, tr.rnk_bkcolor {
         border-bottom: 1px solid #111;
     }
@@ -19,6 +32,9 @@ slug: "index"
         font-size: 1.5em;
     }
   /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
+
+    #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
+  
     #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) { /*first 3 elements*/
         width: 3%;
     }
@@ -40,6 +56,10 @@ slug: "index"
     #live td.rnk_font.redCard {
         color:white; 
         background-color:red; 
+        font-weight:700;
+    }
+    #live td.rnk_font.yellowCard {
+        background-color:#fee300bf; 
         font-weight:700;
     }
     #live td img {
@@ -110,6 +130,9 @@ slug: "index"
     .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
     .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
     .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
+    .YellowShirt {background-image: url(Images/YellowShirt.svg);}
+    .FirstLine {} 
+    .SecoundLine {} 
 
     #live .btn {display: inline-block;}
     #live #buttonInfo {margin-bottom: 10px;}
