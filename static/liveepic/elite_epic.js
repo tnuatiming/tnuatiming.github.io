@@ -33,11 +33,75 @@
         useCategory = sessionStorage.getItem('categoryOrAll');
     }
     
+    var show = 4; // 1 - intermediate 1, 2 - intermediate 2, 3 - intermediate 3, 4 - finish.
+    if (sessionStorage.getItem('intermediateOrFinish')) {
+        show = sessionStorage.getItem('intermediateOrFinish');
+    }
+   
     var epictv = 0;
 
     var tableClass = "fadeIn ";
     var url1 = "https://tnuatiming.com/liveepic/p1.html";    
     var Text;
+
+
+    function intermediateOrFinish(section){
+        
+        show = section;
+       
+        
+        if (show == 1) {
+            document.getElementById("intermediate1").classList.remove("active");
+            document.getElementById("intermediate1").disabled = true;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+            sessionStorage.setItem('intermediateOrFinish', 'intermediate1');
+        } else if (show == 2) {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.remove("active");
+            document.getElementById("intermediate2").disabled = true;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+            sessionStorage.setItem('intermediateOrFinish', 'intermediate2');
+        } else if (show == 3) {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.remove("active");
+            document.getElementById("intermediate3").disabled = true;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+            sessionStorage.setItem('intermediateOrFinish', 'intermediate3');
+        } else {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.remove("active");
+            document.getElementById("finish").disabled = true;
+            
+            sessionStorage.setItem('intermediateOrFinish', 'finish');
+        }  
+        
+        tableClass = "fadeIn "; // make the table fadeIn on change
+        
+        Load('p1.html', 'result');
+        
+    }
+
 
     function category(choice, cat){
         
@@ -185,6 +249,50 @@
         var loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
+        
+        if (show == 1) {
+            document.getElementById("intermediate1").classList.remove("active");
+            document.getElementById("intermediate1").disabled = true;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+        } else if (show == 2) {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.remove("active");
+            document.getElementById("intermediate2").disabled = true;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+        } else if (show == 3) {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.remove("active");
+            document.getElementById("intermediate3").disabled = true;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+        } else {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.remove("active");
+            document.getElementById("finish").disabled = true;
+            
+        }  
+
+        
         if (useCategory == "yes" && catcat == "Men") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -572,7 +680,6 @@
                 lineArray.Id_Status = 0;
                 lineArray.blue = 0;
                 lineArray.single = 0;
-                lineArray.laps = 0; // replacing Id_NbTour as it not showing corectly the number of laps. using Id_TpsTour1
                 lineArray.yellow = "";
                 lineArray.Id_penalty = "&nbsp;";   
 
@@ -587,9 +694,6 @@
                 // convert total time to miliseconds
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_TpsTour1" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray["laps"] = 1;   
                 }
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] == "-" ) {
                     lineArray[hhhPro[pp]] = 99999999999;   
@@ -652,15 +756,15 @@
                     
                                 if (allArray[b]["Id_Discipline"] == 'single') {
                                     
-                                    allArray[b]["laps"] = 2 * allArray2[b]["laps"]; // need to 2* the laps as it 1 rider and not 2 
+                                    allArray[b]["Id_NbTour"] = 2 * allArray2[b]["Id_NbTour"]; // need to 2* the laps as it 1 rider and not 2 
                                     
                                 } else if (allArray[a]["Id_Discipline"] == 'single') {
                                     
-                                    allArray[b]["laps"] = 2 * allArray[a]["laps"];
+                                    allArray[b]["Id_NbTour"] = 2 * allArray[a]["Id_NbTour"];
                                     
                                 } else {
                     
-                                    allArray[b]["laps"] = allArray[b]["laps"] + allArray2[a]["laps"];
+                                    allArray[b]["Id_NbTour"] = allArray[b]["Id_NbTour"] + allArray2[a]["Id_NbTour"];
                                 }
                 }
 
@@ -809,23 +913,38 @@
                     }
                }
                
-                
+
+               // display result for selected intermediate or finish
+               if (show == 1) {
+                    allArray[b]["Id_FinishTime"] = allArray[b]["Id_Inter1Time"];
+    
+                }
+               
+               
+               
+               
+               
             } 
         }
          // delete the secound array
          allArray2 = [];
          
-
-// FIXME   SORTING WORKS ONLY IF THERE IS ONE LAP. IF THE RACE IS LONGER NEEDED TO ADD "|| b.laps - a.laps" BEFORE "|| a.Id_FinishTime - b.Id_FinishTime". THIS IS THEORETICAL, NOT CHECKED!!!
+// BEGIN SORTING
+         
+         
+// FIXME   SORTING WORKS ONLY IF THERE IS ONE LAP. IF THE RACE IS LONGER NEEDED TO ADD "|| b.Id_NbTour - a.Id_NbTour" BEFORE "|| a.Id_FinishTime - b.Id_FinishTime". THIS IS THEORETICAL, NOT CHECKED!!!, maybe FIXED 
 
          // THE MAGIC - sort the array after the merge to get new results
          // FIXME Id_Status drops blue competitor to buttom , check if this is what needed
+
+         
+    if (show == 1) { // sorting intermediate 1
+
         if (useCategory == "no") {
-            
             
  // calculate categorie position
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             m = 0;
             prevCompCat = ""
@@ -845,13 +964,13 @@
             }
  // END calculate categorie position
            
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
         } else if (useCategory == "yes") {
             
 // calculate overall position
             
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -862,8 +981,62 @@
              
 // END calculate overall position
             
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.laps - a.laps || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
+                    
+                } else { // sorting finish
+         
+         
+         
+         if (useCategory == "no") {
+            
+ // calculate categorie position
+           
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            m = 0;
+            prevCompCat = ""
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reasign postion number
+ 
+                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["Id_Position_Categorie"] = Number(m);
+
+            }
+ // END calculate categorie position
+           
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+        } else if (useCategory == "yes") {
+            
+// calculate overall position
+            
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reasign postion number
+                     allArray[l]["Id_Position_Overall"] = Number(l+1);
+
+            }
+             
+// END calculate overall position
+            
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+        }
+
+                    
+                    
+    } // END "show"
+         
+// END SORTING
          
          
 // HEADER              
@@ -983,11 +1156,11 @@
                  
                            if (allArray[l]["Id_Position"] == 1) {
                                 leaderTime = allArray[l]["Id_FinishTime"];
-                                leaderLaps = allArray[l]["laps"];
+                                leaderLaps = allArray[l]["Id_NbTour"];
                             }
 
                                     // fix the diff fields of the competitors
-                                competitorLaps = allArray[l]["laps"];
+                                competitorLaps = allArray[l]["Id_NbTour"];
                                 
                                 
                                 if (useCategory == "yes") {
@@ -1106,6 +1279,13 @@
                                 
                             }
                             
+
+               // display result for selected intermediate or finish
+               if (show == 1) {
+                    allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Inter1Ecart1er"];
+    
+                }
+               
                             
         
         
@@ -1141,7 +1321,7 @@
                             competitorPosition = Number(allArray[l]["Id_Position"]);  // get the position value and clean penalty indicator
                     }
                      
-                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["laps"] && allArray[l]["Id_FinishTime"] != 99999999999) { // position change arrow calc
+                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"] && allArray[l]["Id_FinishTime"] != 99999999999) { // position change arrow calc
                     positionChanged = "";
                     
                         if (positionArray[competitorNumber]) {
