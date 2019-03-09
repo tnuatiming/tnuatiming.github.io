@@ -93,6 +93,28 @@ div#daysTotal {
     white-space: nowrap
 }
 
+#live #buttonInfo {
+    flex-direction: column;
+    direction: ltr
+}
+
+#live #intermediateOrFinish {
+    flex-grow: 0;
+    order: 1;
+    align-self: flex-start;
+    vertical-align: middle;
+    margin: auto 5px;
+    padding: 0
+}
+
+#live #categoryOrAll button,
+#live #intermediateOrFinish button {
+    font-size: 1em;
+    padding: 2px 10px;
+    white-space: nowrap;
+    font-weight: 700
+}
+
 #live table.line_color {
     direction: ltr;
     margin: 600px auto;
@@ -136,12 +158,21 @@ th {
     height: 5em
 }
 
+.subHeader {
+    font-weight: 400;
+    font-size: 2.2em;
+    padding: 10px 0 30px 0;
+    color: #f0f0f0;
+    line-height: 1
+}
+
 #live .btn {
     margin: 0
 }
 
 @media (max-width:767px) {
-    #live #categoryOrAll button {
+    #live #categoryOrAll button,
+    #live #intermediateOrFinish button {
         font-size: .8em
     }
     #live #DayTime,
@@ -409,88 +440,99 @@ img.Flag {
 #live td div.bold {
     font-weight: 700
 }
-</style>
+            </style>
             <div id="raceheader">
                 <h1>Live Results</h1></div>
             <div id="buttonInfo">
-                <div id="categoryOrAll" style="display:block"><span><button id="Men" class="btn active" onclick="category(&quot;yes&quot;,&quot;Men&quot;)">Men</button></span> <span><button id="Women" class="btn active" onclick="category(&quot;yes&quot;,&quot;Women&quot;)">Women</button></span> <span><button id="Mixed" class="btn active" onclick="category(&quot;yes&quot;,&quot;Mixed&quot;)">Mixed</button></span>                    <span><button id="Masters" class="btn active" onclick="category(&quot;yes&quot;,&quot;Masters&quot;)">Masters</button></span> <span><button id="Grand" class="btn active" onclick="category(&quot;yes&quot;,&quot;Grand&quot;)">Grand</button></span>                    <span><button id="displayCatButton" class="btn" onclick="category(&quot;yes&quot;,&quot;None&quot;)" disabled="">By Category</button></span> <span><button id="displayAllButton" class="btn active" onclick="category(&quot;no&quot;,&quot;None&quot;)">GC</button></span></div>
+                <div id="categoryOrAll" style="display: block;"><span><button id="Men" class="btn active" onclick="category(&quot;yes&quot;,&quot;Men&quot;)">Men</button></span> <span><button id="Women" class="btn active" onclick="category(&quot;yes&quot;,&quot;Women&quot;)">Women</button></span> <span><button id="Mixed" class="btn active" onclick="category(&quot;yes&quot;,&quot;Mixed&quot;)">Mixed</button></span>                    <span><button id="Masters" class="btn active" onclick="category(&quot;yes&quot;,&quot;Masters&quot;)">Masters</button></span> <span><button id="Grand" class="btn active" onclick="category(&quot;yes&quot;,&quot;Grand&quot;)">Grand</button></span>                    <span><button id="displayCatButton" class="btn" onclick="category(&quot;yes&quot;,&quot;None&quot;)" disabled="">By Category</button></span> <span><button id="displayAllButton" class="btn active" onclick="category(&quot;no&quot;,&quot;None&quot;)">GC</button></span></div>
                 <div
-                    id="updates"></div>
+                    id="intermediateOrFinish"><span><button id="intermediate1" class="btn" onclick="intermediateOrFinish(&quot;1&quot;)" disabled="">Intermediate 1</button></span> <span><button id="intermediate2" class="btn active" onclick="intermediateOrFinish(&quot;2&quot;)">Intermediate 2</button></span>                    <span><button id="intermediate3" class="btn active" onclick="intermediateOrFinish(&quot;3&quot;)">Intermediate 3</button></span> <span><button id="finish" class="btn active" onclick="intermediateOrFinish(&quot;4&quot;)">Finish</button></span></div>
+            <div
+                id="updates">
         </div>
-        <div id="result">
-            <h1 id="Title"><img src="Images/_GreenFlag.png" alt="green">Migdal Epic Israel - stage 2<img src="Images/_GreenFlag.png" alt="green"></h1>
-            <p id="Time"><span id="DayTime">03/02/2019 8:56:46 PM</span><span id="ElapsedTime">04:55:37</span><span id="RemainingTime">&nbsp;</span></p>
-            <div id="liveTable">
-                <table class="line_color">
-                    <tbody>
-                        <tr>
-                            <td colspan="99" class="title_font"><img class="CategoryHeader" src="Images/men.svg"></td>
-                        </tr>
-                        <tr class="rnkh_bkcolor">
-                            <th class="rnkh_font Id_Position">Rank</th>
-                            <th class="rnkh_font Id_Nom">Name</th>
-                            <th class="rnkh_font Id_Nom">Nation</th>
-                            <th class="rnkh_font Id_Numero">Nr</th>
-                            <th class="rnkh_font Id_FinishTime">Time</th>
-                        </tr>
-                        <tr class="rnk_bkcolor OddRow">
-                            <td class="rnk_font">1</td>
-                            <td class="rnk_font">Pedro Delgado / Jan Janssen</td>
-                            <td class="rnk_font"><span class="Flag ecuador"></span> <span class="Flag usa"></span></td>
-                            <td class="rnk_font">1</td>
-                            <td class="rnk_font">4:03:44.869</td>
-                        </tr>
-                        <tr class="rnk_bkcolor EvenRow">
-                            <td class="rnk_font">2</td>
-                            <td class="rnk_font">Stephen Roche / Marco Pantani <span title="Finished" class="Flag YellowShirt"></span></td>
-                            <td class="rnk_font"><span class="Flag usa"></span> <span class="Flag israel"></span></td>
-                            <td class="rnk_font">6</td>
-                            <td class="rnk_font">+14:10.484</td>
-                        </tr>
-                        <tr class="rnk_bkcolor OddRow">
-                            <td class="rnk_font">3</td>
-                            <td class="rnk_font">Lucien Petit-Breton / Philippe Thys</td>
-                            <td class="rnk_font"><span class="Flag israel"></span> <span class="Flag southafrica"></span></td>
-                            <td class="rnk_font">4</td>
-                            <td class="rnk_font">+36.434</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="line_color">
-                    <tbody>
-                        <tr>
-                            <td colspan="99" class="title_font"><img class="CategoryHeader" src="Images/women.svg"></td>
-                        </tr>
-                        <tr class="rnkh_bkcolor">
-                            <th class="rnkh_font Id_Position">Rank</th>
-                            <th class="rnkh_font Id_Nom">Name</th>
-                            <th class="rnkh_font Id_Nom">Nation</th>
-                            <th class="rnkh_font Id_Numero">Nr</th>
-                            <th class="rnkh_font Id_FinishTime">Time</th>
-                        </tr>
-                        <tr class="rnk_bkcolor OddRow">
-                            <td class="rnk_font">1</td>
-                            <td class="rnk_font">Ferdinand Kübler / Jacques Anquetil</td>
-                            <td class="rnk_font"><span class="Flag israel"></span> <span class="Flag brazil"></span></td>
-                            <td class="rnk_font">237</td>
-                            <td class="rnk_font">-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    </div>
+    <div id="result">
+        <h1 id="Title"><img src="Images/_GreenFlag.png" alt="green">Migdal Epic Israel - stage 2<img src="Images/_GreenFlag.png" alt="green"></h1>
+        <p id="Time"><span id="DayTime">03/02/2019 8:56:46 PM</span><span id="ElapsedTime">04:55:37</span><span id="RemainingTime">&nbsp;</span></p>
+
+
+        <div id="liveTable">
+            <table class="fadeIn line_color">
+                <tbody>
+                    <tr>
+                        <td colspan="99" class="title_font">
+                            <div><img class="CategoryHeader" src="Images/men.svg"></div>
+                            <div class="subHeader">Results at Intermediate 1</div>
+                        </td>
+                    </tr>
+                    <tr class="rnkh_bkcolor">
+                        <th class="rnkh_font Id_Position">Rank</th>
+                        <th class="rnkh_font Id_Nom">Name</th>
+                        <th class="rnkh_font Id_Nom">Nation</th>
+                        <th class="rnkh_font Id_Numero">Nr</th>
+                        <th class="rnkh_font Id_FinishTime">Time</th>
+                    </tr>
+                    <tr class="rnk_bkcolor OddRow">
+                        <td class="rnk_font">1</td>
+                        <td class="rnk_font">Stephen Roche / Marco Pantani <span title="Finished" class="Flag YellowShirt"></span></td>
+                        <td class="rnk_font"><span class="Flag usa"></span> <span class="Flag israel"></span></td>
+                        <td class="rnk_font">6</td>
+                        <td class="rnk_font">2:01:55.3</td>
+                    </tr>
+                    <tr class="rnk_bkcolor EvenRow">
+                        <td class="rnk_font">2</td>
+                        <td class="rnk_font">Pedro Delgado / Jan Janssen </td>
+                        <td class="rnk_font"><span class="Flag ecuador"></span> <span class="Flag usa"></span></td>
+                        <td class="rnk_font">1</td>
+                        <td class="rnk_font">+1:49.5</td>
+                    </tr>
+                    <tr class="rnk_bkcolor OddRow">
+                        <td class="rnk_font">3</td>
+                        <td class="rnk_font">Lucien Petit-Breton / Philippe Thys </td>
+                        <td class="rnk_font"><span class="Flag israel"></span> <span class="Flag southafrica"></span></td>
+                        <td class="rnk_font">4</td>
+                        <td class="rnk_font">+2:26.0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="fadeIn line_color">
+                <tbody>
+                    <tr>
+                        <td colspan="99" class="title_font">
+                            <div><img class="CategoryHeader" src="Images/women.svg"></div>
+                            <div class="subHeader">Results at Intermediate 1</div>
+                        </td>
+                    </tr>
+                    <tr class="rnkh_bkcolor">
+                        <th class="rnkh_font Id_Position">Rank</th>
+                        <th class="rnkh_font Id_Nom">Name</th>
+                        <th class="rnkh_font Id_Nom">Nation</th>
+                        <th class="rnkh_font Id_Numero">Nr</th>
+                        <th class="rnkh_font Id_FinishTime">Time</th>
+                    </tr>
+                    <tr class="rnk_bkcolor OddRow">
+                        <td class="rnk_font">1</td>
+                        <td class="rnk_font">Ferdinand Kübler / Jacques Anquetil </td>
+                        <td class="rnk_font"><span class="Flag israel"></span> <span class="Flag brazil"></span></td>
+                        <td class="rnk_font">237</td>
+                        <td class="rnk_font">2:05:02.3</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div id="previousResults"></div>
-        <div id="daysTotal" style="width:100%;text-align:right"><button style="padding:10px;margin-top:20px;font-weight:700" class="btn" onclick="location.href=&quot;./total.html&quot;" type="button">overall</button></div>
+    </div>
+    <div id="previousResults"></div>
+    <div id="daysTotal" style="width:100%;text-align:right"><button style="padding:10px;margin-top:20px;font-weight:700" class="btn" onclick="location.href=&quot;./total.html&quot;" type="button">overall</button></div>
     </div>
     <div class="row footer"><a class="mail" href="mailto:119raz@walla.com">רז הימן - 119raz@walla.com</a> <a class="copyright" href="/terms.html">© כל הזכויות שמורות לתנועה מדידת זמנים</a> <a class="logo_tiny" href="http://tnuatiming.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><switch><g style="fill-opacity:1;stroke:none"><circle r="7" transform="matrix(0.86602544,0.49999993,-0.49999993,0.86602544,0,0)" style="fill:#f60" cx="24.284611" cy="-5.9378204"></circle><circle r="7" transform="matrix(-0.86602544,0.49999993,-0.49999993,-0.86602544,0,0)" style="fill:#c00" cx="5.9378204" cy="-24.284611"></circle><circle r="7" transform="matrix(0.2588191,0.96592581,-0.96592581,0.25881909,0,0)" style="fill:#039" cx="33.793804" cy="-33.3913"></circle><circle r="7" transform="matrix(0.86602544,-0.49999993,0.49999993,0.86602544,0,0)" style="fill:#6c3" cx="0.28461337" cy="47.507042"></circle></g><foreignObject width="16" height="16" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><img src="/images/logo16.png" width="16" height="16" alt="לוגו תנועה מדידת זמנים"></foreignObject></switch></svg></a></div>
     </div>
     </div>
     <script>
         ! function(e, a, t, n, g, c, o) {
-            e.GoogleAnalyticsObject = "ga", e.ga = e.ga || function() {
+            e.GoogleAnalyticsObject = g, e.ga = e.ga || function() {
                 (e.ga.q = e.ga.q || []).push(arguments)
             }, e.ga.l = 1 * new Date, c = a.createElement(t), o = a.getElementsByTagName(t)[0], c.async = 1, c.src = "https://www.google-analytics.com/analytics.js", o.parentNode.insertBefore(c, o)
-        }(window, document, "script"), ga("create", "UA-38104277-1", "auto"), ga("set", "anonymizeIp", !0), ga("send", "pageview")
+        }(window, document, "script", 0, "ga"), ga("create", "UA-38104277-1", "auto"), ga("set", "anonymizeIp", !0), ga("send", "pageview")
     </script>
 </body>
 

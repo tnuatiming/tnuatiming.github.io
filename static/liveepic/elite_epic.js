@@ -22,11 +22,11 @@
     
     var cleanResults = 0; // alignTable for TotalIndex
     
-    var precision = "nottenth"; // "tenth" for 1 digit after the .
+    var precision = "tenth"; // "tenth" for 1 digit after the .
     
     var catcat = "None";
     if (sessionStorage.getItem('catcat')) {
-        useCategory = sessionStorage.getItem('catcat');
+        catcat = sessionStorage.getItem('catcat');
     }
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
@@ -39,17 +39,9 @@
     }
    
     var epictv = 0;
-
-    var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/liveepic/p1.html";    
-    var Text;
-
-
-    function intermediateOrFinish(section){
-        
-        show = section;
-       
-        
+    
+    document.addEventListener("DOMContentLoaded", function(event) {
+            
         if (show == 1) {
             document.getElementById("intermediate1").classList.remove("active");
             document.getElementById("intermediate1").disabled = true;
@@ -60,7 +52,6 @@
             document.getElementById("finish").classList.add("active");
             document.getElementById("finish").disabled = false;
             
-            sessionStorage.setItem('intermediateOrFinish', 'intermediate1');
         } else if (show == 2) {
             document.getElementById("intermediate1").classList.add("active");
             document.getElementById("intermediate1").disabled = false;
@@ -71,7 +62,6 @@
             document.getElementById("finish").classList.add("active");
             document.getElementById("finish").disabled = false;
             
-            sessionStorage.setItem('intermediateOrFinish', 'intermediate2');
         } else if (show == 3) {
             document.getElementById("intermediate1").classList.add("active");
             document.getElementById("intermediate1").disabled = false;
@@ -82,7 +72,6 @@
             document.getElementById("finish").classList.add("active");
             document.getElementById("finish").disabled = false;
             
-            sessionStorage.setItem('intermediateOrFinish', 'intermediate3');
         } else {
             document.getElementById("intermediate1").classList.add("active");
             document.getElementById("intermediate1").disabled = false;
@@ -93,38 +82,8 @@
             document.getElementById("finish").classList.remove("active");
             document.getElementById("finish").disabled = true;
             
-            sessionStorage.setItem('intermediateOrFinish', 'finish');
         }  
         
-        tableClass = "fadeIn "; // make the table fadeIn on change
-        
-        Load('p1.html', 'result');
-        
-    }
-
-
-    function category(choice, cat){
-        
-        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
-        
-        useCategory = choice;
-        catcat = cat;
-        if (catcat == "None") {
-            sessionStorage.setItem('catcat', 'None');
-        } else if (catcat == "Men") {
-            sessionStorage.setItem('catcat', 'Men');
-        } else if (catcat == "Women") {
-            sessionStorage.setItem('catcat', 'Women');
-        }
-
-
-
-        if (useCategory == "yes") {
-            sessionStorage.setItem('categoryOrAll', 'yes');
-        } else if (useCategory == "no") {
-            sessionStorage.setItem('categoryOrAll', 'no');
-        }
-
         if (useCategory == "yes" && catcat == "Men") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -140,6 +99,7 @@
             document.getElementById("Masters").disabled = false;
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
+
         } else if (useCategory == "yes" && catcat == "Women") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -155,6 +115,7 @@
             document.getElementById("Masters").disabled = false;
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
+
         } else if (useCategory == "yes" && catcat == "Mixed") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -170,6 +131,7 @@
             document.getElementById("Masters").disabled = false;
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
+
         } else if (useCategory == "yes" && catcat == "Masters") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -185,6 +147,7 @@
             document.getElementById("Masters").disabled = true;
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
+
         } else if (useCategory == "yes" && catcat == "Grand") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -200,6 +163,7 @@
             document.getElementById("Masters").disabled = false;
             document.getElementById("Grand").classList.remove("active");
             document.getElementById("Grand").disabled = true;
+
         } else if (useCategory == "yes") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
@@ -215,6 +179,7 @@
             document.getElementById("Masters").disabled = false;
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
+
         } else if (useCategory == "no") {
             document.getElementById("displayAllButton").classList.remove("active");
             document.getElementById("displayAllButton").disabled = true;
@@ -230,7 +195,209 @@
             document.getElementById("Masters").disabled = false;
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
+
         }
+
+ });   
+
+    var tableClass = "fadeIn ";
+    var url1 = "https://tnuatiming.com/liveepic/p1.html";    
+    var Text;
+
+
+    function intermediateOrFinish(section){
+        
+        show = section;
+
+        if (show == 1) {
+            document.getElementById("intermediate1").classList.remove("active");
+            document.getElementById("intermediate1").disabled = true;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+            sessionStorage.setItem('intermediateOrFinish', '1');
+        } else if (show == 2) {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.remove("active");
+            document.getElementById("intermediate2").disabled = true;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+            sessionStorage.setItem('intermediateOrFinish', '2');
+        } else if (show == 3) {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.remove("active");
+            document.getElementById("intermediate3").disabled = true;
+            document.getElementById("finish").classList.add("active");
+            document.getElementById("finish").disabled = false;
+            
+            sessionStorage.setItem('intermediateOrFinish', '3');
+        } else {
+            document.getElementById("intermediate1").classList.add("active");
+            document.getElementById("intermediate1").disabled = false;
+            document.getElementById("intermediate2").classList.add("active");
+            document.getElementById("intermediate2").disabled = false;
+            document.getElementById("intermediate3").classList.add("active");
+            document.getElementById("intermediate3").disabled = false;
+            document.getElementById("finish").classList.remove("active");
+            document.getElementById("finish").disabled = true;
+            
+            sessionStorage.setItem('intermediateOrFinish', '4');
+        }  
+
+        
+        tableClass = "fadeIn "; // make the table fadeIn on change
+        
+        Load('p1.html', 'result');
+        
+    }
+
+
+    function category(choice, cat){
+        
+        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+        
+        useCategory = choice;
+        catcat = cat;
+
+         if (useCategory == "yes" && catcat == "Men") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.remove("active");
+            document.getElementById("Men").disabled = true;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+
+            sessionStorage.setItem('catcat', 'Men');
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "yes" && catcat == "Women") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.remove("active");
+            document.getElementById("Women").disabled = true;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+
+            sessionStorage.setItem('catcat', 'Women');
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "yes" && catcat == "Mixed") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.remove("active");
+            document.getElementById("Mixed").disabled = true;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+
+            sessionStorage.setItem('catcat', 'Mixed');
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "yes" && catcat == "Masters") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.remove("active");
+            document.getElementById("Masters").disabled = true;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+
+            sessionStorage.setItem('catcat', 'Masters');
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "yes" && catcat == "Grand") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.remove("active");
+            document.getElementById("Grand").disabled = true;
+
+            sessionStorage.setItem('catcat', 'Grand');
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "yes") {
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+
+            sessionStorage.setItem('catcat', 'None');
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "no") {
+            document.getElementById("displayAllButton").classList.remove("active");
+            document.getElementById("displayAllButton").disabled = true;
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("Men").classList.add("active");
+            document.getElementById("Men").disabled = false;
+            document.getElementById("Women").classList.add("active");
+            document.getElementById("Women").disabled = false;
+            document.getElementById("Mixed").classList.add("active");
+            document.getElementById("Mixed").disabled = false;
+            document.getElementById("Masters").classList.add("active");
+            document.getElementById("Masters").disabled = false;
+            document.getElementById("Grand").classList.add("active");
+            document.getElementById("Grand").disabled = false;
+
+            sessionStorage.setItem('catcat', 'None');
+            sessionStorage.setItem('categoryOrAll', 'no');
+        }
+       
         
         Rafraichir = 60000; // every 60 seconds
 
@@ -249,156 +416,6 @@
         var loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
-        
-        if (show == 1) {
-            document.getElementById("intermediate1").classList.remove("active");
-            document.getElementById("intermediate1").disabled = true;
-            document.getElementById("intermediate2").classList.add("active");
-            document.getElementById("intermediate2").disabled = false;
-            document.getElementById("intermediate3").classList.add("active");
-            document.getElementById("intermediate3").disabled = false;
-            document.getElementById("finish").classList.add("active");
-            document.getElementById("finish").disabled = false;
-            
-        } else if (show == 2) {
-            document.getElementById("intermediate1").classList.add("active");
-            document.getElementById("intermediate1").disabled = false;
-            document.getElementById("intermediate2").classList.remove("active");
-            document.getElementById("intermediate2").disabled = true;
-            document.getElementById("intermediate3").classList.add("active");
-            document.getElementById("intermediate3").disabled = false;
-            document.getElementById("finish").classList.add("active");
-            document.getElementById("finish").disabled = false;
-            
-        } else if (show == 3) {
-            document.getElementById("intermediate1").classList.add("active");
-            document.getElementById("intermediate1").disabled = false;
-            document.getElementById("intermediate2").classList.add("active");
-            document.getElementById("intermediate2").disabled = false;
-            document.getElementById("intermediate3").classList.remove("active");
-            document.getElementById("intermediate3").disabled = true;
-            document.getElementById("finish").classList.add("active");
-            document.getElementById("finish").disabled = false;
-            
-        } else {
-            document.getElementById("intermediate1").classList.add("active");
-            document.getElementById("intermediate1").disabled = false;
-            document.getElementById("intermediate2").classList.add("active");
-            document.getElementById("intermediate2").disabled = false;
-            document.getElementById("intermediate3").classList.add("active");
-            document.getElementById("intermediate3").disabled = false;
-            document.getElementById("finish").classList.remove("active");
-            document.getElementById("finish").disabled = true;
-            
-        }  
-
-        
-        if (useCategory == "yes" && catcat == "Men") {
-            document.getElementById("displayAllButton").classList.add("active");
-            document.getElementById("displayAllButton").disabled = false;
-            document.getElementById("displayCatButton").classList.add("active");
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("Men").classList.remove("active");
-            document.getElementById("Men").disabled = true;
-            document.getElementById("Women").classList.add("active");
-            document.getElementById("Women").disabled = false;
-            document.getElementById("Mixed").classList.add("active");
-            document.getElementById("Mixed").disabled = false;
-            document.getElementById("Masters").classList.add("active");
-            document.getElementById("Masters").disabled = false;
-            document.getElementById("Grand").classList.add("active");
-            document.getElementById("Grand").disabled = false;
-        } else if (useCategory == "yes" && catcat == "Women") {
-            document.getElementById("displayAllButton").classList.add("active");
-            document.getElementById("displayAllButton").disabled = false;
-            document.getElementById("displayCatButton").classList.add("active");
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("Men").classList.add("active");
-            document.getElementById("Men").disabled = false;
-            document.getElementById("Women").classList.remove("active");
-            document.getElementById("Women").disabled = true;
-            document.getElementById("Mixed").classList.add("active");
-            document.getElementById("Mixed").disabled = false;
-            document.getElementById("Masters").classList.add("active");
-            document.getElementById("Masters").disabled = false;
-            document.getElementById("Grand").classList.add("active");
-            document.getElementById("Grand").disabled = false;
-        } else if (useCategory == "yes" && catcat == "Mixed") {
-            document.getElementById("displayAllButton").classList.add("active");
-            document.getElementById("displayAllButton").disabled = false;
-            document.getElementById("displayCatButton").classList.add("active");
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("Men").classList.add("active");
-            document.getElementById("Men").disabled = false;
-            document.getElementById("Women").classList.add("active");
-            document.getElementById("Women").disabled = false;
-            document.getElementById("Mixed").classList.remove("active");
-            document.getElementById("Mixed").disabled = true;
-            document.getElementById("Masters").classList.add("active");
-            document.getElementById("Masters").disabled = false;
-            document.getElementById("Grand").classList.add("active");
-            document.getElementById("Grand").disabled = false;
-        } else if (useCategory == "yes" && catcat == "Masters") {
-            document.getElementById("displayAllButton").classList.add("active");
-            document.getElementById("displayAllButton").disabled = false;
-            document.getElementById("displayCatButton").classList.add("active");
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("Men").classList.add("active");
-            document.getElementById("Men").disabled = false;
-            document.getElementById("Women").classList.add("active");
-            document.getElementById("Women").disabled = false;
-            document.getElementById("Mixed").classList.add("active");
-            document.getElementById("Mixed").disabled = false;
-            document.getElementById("Masters").classList.remove("active");
-            document.getElementById("Masters").disabled = true;
-            document.getElementById("Grand").classList.add("active");
-            document.getElementById("Grand").disabled = false;
-        } else if (useCategory == "yes" && catcat == "Grand") {
-            document.getElementById("displayAllButton").classList.add("active");
-            document.getElementById("displayAllButton").disabled = false;
-            document.getElementById("displayCatButton").classList.add("active");
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("Men").classList.add("active");
-            document.getElementById("Men").disabled = false;
-            document.getElementById("Women").classList.add("active");
-            document.getElementById("Women").disabled = false;
-            document.getElementById("Mixed").classList.add("active");
-            document.getElementById("Mixed").disabled = false;
-            document.getElementById("Masters").classList.add("active");
-            document.getElementById("Masters").disabled = false;
-            document.getElementById("Grand").classList.remove("active");
-            document.getElementById("Grand").disabled = true;
-        } else if (useCategory == "yes") {
-            document.getElementById("displayAllButton").classList.add("active");
-            document.getElementById("displayAllButton").disabled = false;
-            document.getElementById("displayCatButton").classList.remove("active");
-            document.getElementById("displayCatButton").disabled = true;
-            document.getElementById("Men").classList.add("active");
-            document.getElementById("Men").disabled = false;
-            document.getElementById("Women").classList.add("active");
-            document.getElementById("Women").disabled = false;
-            document.getElementById("Mixed").classList.add("active");
-            document.getElementById("Mixed").disabled = false;
-            document.getElementById("Masters").classList.add("active");
-            document.getElementById("Masters").disabled = false;
-            document.getElementById("Grand").classList.add("active");
-            document.getElementById("Grand").disabled = false;
-        } else if (useCategory == "no") {
-            document.getElementById("displayAllButton").classList.remove("active");
-            document.getElementById("displayAllButton").disabled = true;
-            document.getElementById("displayCatButton").classList.add("active");
-            document.getElementById("displayCatButton").disabled = false;
-            document.getElementById("Men").classList.add("active");
-            document.getElementById("Men").disabled = false;
-            document.getElementById("Women").classList.add("active");
-            document.getElementById("Women").disabled = false;
-            document.getElementById("Mixed").classList.add("active");
-            document.getElementById("Mixed").disabled = false;
-            document.getElementById("Masters").classList.add("active");
-            document.getElementById("Masters").disabled = false;
-            document.getElementById("Grand").classList.add("active");
-            document.getElementById("Grand").disabled = false;
-        }
 
 /*
         if (useCategory == "yes") {
@@ -569,8 +586,20 @@
         var bestTime = 0;
 */        
         var Inter1Leader = [];
-        var l, m, leaderInter1Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, imTheLeaderInter1, headerText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag;
+        var l, m, leaderInter1Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, imTheLeaderInter1, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull;
 
+
+        if (show == 1) {
+            showFull = 'Intermediate 1';
+        } else if (show == 2) {
+            showFull = 'Intermediate 2';
+        } else if (show == 3) {
+            showFull = 'Intermediate 3';
+        } else {
+            showFull = 'Finish';
+        }
+        
+        
         Text = Text.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
@@ -1179,13 +1208,6 @@
                                     competitorId_Inter1Time = allArray[l]["Id_Inter1Time"];
                                     if (competitorId_Inter1Time != leaderInter1Time && (competitorId_Inter1Time - leaderInter1Time) > 0 && (competitorId_Inter1Time - leaderInter1Time) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Inter1Ecart1er"] = ms2TimeString(competitorId_Inter1Time - leaderInter1Time);
-
-                                    if (allArray[l]["Id_Inter1Ecart1er"].toString().substring(0, 3) == "00:") {
-                                        allArray[l]["Id_Inter1Ecart1er"] = allArray[l]["Id_Inter1Ecart1er"].substr(3);
-                                    }
-                                    if (allArray[l]["Id_Inter1Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Inter1Ecart1er"].includes(":")) {
-                                        allArray[l]["Id_Inter1Ecart1er"] = allArray[l]["Id_Inter1Ecart1er"].substr(1);
-                                    }
                                      
                                     } else {
                                     allArray[l]["Id_Inter1Ecart1er"] = "-";
@@ -1196,22 +1218,12 @@
 
 
 
-
-
-
                                 // diff on total time
                                 if (competitorLaps == leaderLaps) {
                                     competitorTime = allArray[l]["Id_FinishTime"];
                                     if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
 
-                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
-                                        allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
-                                    }
-                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].includes(":")) {
-                                        allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
-                                    }
-                                     
                                     } else {
                                     allArray[l]["Id_Ecart1er"] = "-";
                                     }
@@ -1224,58 +1236,21 @@
                                 
                             if (allArray[l]["Id_Inter1Time"] != 99999999999) {  
                                 allArray[l]["Id_Inter1Time"] = ms2TimeString(allArray[l]["Id_Inter1Time"]);
-
                                 
-                                if (allArray[l]["Id_Inter1Time"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_Inter1Time"] = allArray[l]["Id_Inter1Time"].substr(3);
-                                }
-                                if (allArray[l]["Id_Inter1Time"].toString().substring(0, 1) == "0" && allArray[l]["Id_Inter1Time"].includes(":")) {
-                                    allArray[l]["Id_Inter1Time"] = allArray[l]["Id_Inter1Time"].substr(1);
-                                }
-                                
-                            }
-                                
-                                
-                                
-                                
+                            }                                
                                 
                             if (allArray[l]["Id_FinishTime"] != 99999999999) {  
                                 allArray[l]["Id_FinishTime"] = ms2TimeString(allArray[l]["Id_FinishTime"]);
 
-                                
-                                if (allArray[l]["Id_FinishTime"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_FinishTime"] = allArray[l]["Id_FinishTime"].substr(3);
-                                }
-                                if (allArray[l]["Id_FinishTime"].toString().substring(0, 1) == "0" && allArray[l]["Id_FinishTime"].includes(":")) {
-                                    allArray[l]["Id_FinishTime"] = allArray[l]["Id_FinishTime"].substr(1);
-                                }
-                                
-                            }
-                                
+                            }                                
                                 
                             if (allArray[l]["Id_TpsCumule"] != 99999999999) {  
                                 allArray[l]["Id_TpsCumule"] = ms2TimeString(allArray[l]["Id_TpsCumule"]);
 
-                                
-                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(3);
-                                }
-                                if (allArray[l]["Id_TpsCumule"].toString().substring(0, 1) == "0" && allArray[l]["Id_TpsCumule"].includes(":")) {
-                                    allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].substr(1);
-                                }
-                                
                             }
 
                             if (allArray[l]["Id_TpsCumule_2"] != 99999999999) {  
                                 allArray[l]["Id_TpsCumule_2"] = ms2TimeString(allArray[l]["Id_TpsCumule_2"]);
-
-                                
-                                if (allArray[l]["Id_TpsCumule_2"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_TpsCumule_2"] = allArray[l]["Id_TpsCumule_2"].substr(3);
-                                }
-                                if (allArray[l]["Id_TpsCumule_2"].toString().substring(0, 1) == "0" && allArray[l]["Id_TpsCumule_2"].includes(":")) {
-                                    allArray[l]["Id_TpsCumule_2"] = allArray[l]["Id_TpsCumule_2"].substr(1);
-                                }
                                 
                             }
                             
@@ -1358,7 +1333,7 @@
                  
     if (((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")  && epictv == 0) {
                  
-// if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 2 competitors
+// if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 5 competitors
 
 
 
@@ -1831,7 +1806,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
     
  // HEADER for tv            
                             
-        headerTexttv = '<tr class="rnkh_bkcolor">';
+        TVheaderText1 = '<tr class="rnkh_bkcolor">';
 
    //     for (b = 0; b < qqq.length; b++) { 
    //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
@@ -1841,16 +1816,16 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
    //     }          
 
         
-                    headerTexttv += '<th class="rnkh_font Id_Position">Rank</th>';
-                    headerTexttv += '<th class="rnkh_font Id_Nom">Name</th>';
-                    headerTexttv += '<th class="rnkh_font Id_Nom">Nation</th>';
-                    headerTexttv += '<th class="rnkh_font Id_Numero">Nr</th>';
-                    headerTexttv += '<th class="rnkh_font Id_FinishTime">Time</th>'; // combined time
+                    TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nom">Name</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nom">Nation</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // combined time
 
                   
-        headerTexttv += '</tr>';
+        TVheaderText1 += '</tr>';
         
-       //    console.log(headerTexttv);
+       //    console.log(TVheaderText1);
 
 // END HEADER for tv
    
@@ -1859,7 +1834,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
 
             // add category name header and table header
             if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
-//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerTexttv;
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
                     finalText += '</table>\n';
@@ -1867,17 +1842,17 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
                 } else if (l == 0) {
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
                 }
-//                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerTexttv + '\n';                
+//                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1 + '\n';                
                             
-                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font"><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></td></tr>' + headerTexttv + '\n';
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>' + TVheaderText1 + '\n';
 
                 
                 
                 
                 
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerTexttv;
-                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerTexttv + '\n';
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + TVheaderText1;
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>' + TVheaderText1 + '\n';
             }
 
     
@@ -1952,14 +1927,37 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
 
     };
         
-    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
-        return a=a.split('.'), // optimized
-        b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
-        a=a[0].split(':'),
-        b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+
+    function ms2TimeString(mili){
+        
+        var gfg = ms2TimeStringSub(mili);
+        
+        if (gfg.toString().substring(0, 3) == "00:") {
+            gfg = gfg.substr(3);
+        }
+        if (gfg.toString().substring(0, 1) == "0" && gfg.includes(":")) {
+            gfg = gfg.substr(1);
+        }
+    return gfg
+        
     };
 
-    function ms2TimeString(a,k,s,m,h){
+
+    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
+        if (precision == "tenth") {
+            return a=a.split('.'), // optimized
+            b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
+            a=a[0].split(':'),
+            (b*1e2)+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+        } else {
+            return a=a.split('.'), // optimized
+            b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
+            a=a[0].split(':'),
+            b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+        }        
+    };
+
+    function ms2TimeStringSub(a,k,s,m,h){
         if (precision == "tenth") {
             return k=a%1e3, // optimized by konijn
             s=a/1e3%60|0,
@@ -1968,7 +1966,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
             (h?(h<10?'0'+h:h)+':':'')+ // optimized
             (m<10?0:'')+m+':'+  // optimized
             (s<10?0:'')+s+'.'+ // optimized
-            (k<100?k<10?'':'':'')+k // optimized
+            +(k/1e2) // optimized
         } else {
             return k=a%1e3, // optimized by konijn
             s=a/1e3%60|0,
@@ -1990,21 +1988,6 @@ if (k<100){
 }
 */    
         }
-    };
-
-    function Change() {
-        var Num, Index;
-        if (document.forms["Changement"].chkChangement.checked) {
-            Index = UrlRefresh.indexOf(".");
-            Num = parseInt(UrlRefresh.substring(1, Index)) + 1;
-            if (Num > MaxNum) Num = 1;
-            UrlRefresh = "p" + Num + ".html";
-            UrlChange = 1;
-            fct = function() {
-                Change()
-            };
-            TimerChange = setTimeout(fct, Changement)
-        } else if (TimerChange) clearTimeout(TimerChange)
     };
 
     function alignTable() {
