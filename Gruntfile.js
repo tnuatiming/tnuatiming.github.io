@@ -153,16 +153,17 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: './',
                     dest: './_site/hugo_backup',
-                    src: ['*','!hugo_backup','!static/software','!static/images','!node_modules','!assets', '!_site', '!static/manual', '!log', '!archetypes', '!data', '!themes', '!.git']
+                    src: ['_posts', 'content', 'layouts', '!hugo_backup', 'static/software', 'static/manual', 'static/images', 'static/live', 'static/live1', 'static/liveepic', 'static/livex', 'static/style', 'static/english', '!node_modules','!assets', '!_site', '!log', '!archetypes', '!data', '!themes', '!.git']
                 }]
             }
         },
 
         zip: {
-            './_site/hugo_backup/main.zip': ['*', '!.tt', '!id_rsa', '!id_rsa.pub', '.htaccess', '_config.yml', '!password_protect.php']
+            './_site/hugo_backup/main.zip': ['*', '!.tt', '!id_rsa', '!id_rsa.pub', '.htaccess', '_config.yml', '!password_protect.php', '!.directory'],
+            './_site/hugo_backup/mains.zip': ['static/*', '!static/.directory']
         },
   
-        ftp_push: {
+    ftp_push: {
             your_target: {
                 options: {
                     authKey: "key1",

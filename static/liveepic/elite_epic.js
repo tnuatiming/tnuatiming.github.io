@@ -591,7 +591,7 @@
 */        
         var Inter1Leader = [],Inter2Leader = [], Inter3Leader = [];
 
-        var l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull;
+        var l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue;
 
 
         if (show == 1) {
@@ -716,16 +716,22 @@
                 lineArray.Id_Inter3Ecart1er = 99999999999; // maybe needs to be '-'
                 lineArray.Id_Nom_2 = "&nbsp;";
                 lineArray.Id_Nationalite_2 = "&nbsp;";
-                lineArray.Id_Discipline_2 = "&nbsp;";
                 lineArray.Id_Arrow = "&nbsp;";
                 lineArray.Id_Status = 0;
+                lineArray.oldBlue = 0;
                 lineArray.blue = 0;
+                lineArray.Id_Inter1blue = 0;
+                lineArray.Id_Inter2blue = 0;
+                lineArray.Id_Inter3blue = 0;
                 lineArray.single = 0;
-                lineArray.yellow = "";
+                lineArray.yellow = 0;
                 lineArray.Id_penalty = "&nbsp;";   
 
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
                 // convert intermediate time to miliseconds
+                if (hhhPro[pp] == "Id_Groupe" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
+                    lineArray[hhhPro[pp]] = "";   
+                }
                 if (hhhPro[pp] == "Id_Inter1" && lineArray[hhhPro[pp]] != "-" ) {
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
                 }
@@ -806,23 +812,30 @@
                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                     
                     
-                    
-                                if (allArray[b]["Id_Discipline"] == 'single') {
-                                    
+                                if (allArray[b]["Id_Groupe"].includes('s')) {
+
+                                    allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('s', 's1');
                                     allArray[b]["Id_NbTour"] = 2 * Number(allArray2[b]["Id_NbTour"]); // need to 2* the laps as it 1 rider and not 2 
-                                    
-                                } else if (allArray[a]["Id_Discipline"] == 'single') {
-                                    
-                                    allArray[b]["Id_NbTour"] = 2 * Number(allArray[a]["Id_NbTour"]);
-                                    
+
+                                } else if (allArray2[a]["Id_Groupe"].includes('s')) {
+
+                                    allArray2[a]["Id_Groupe"] = allArray2[a]["Id_Groupe"].replace('s', 's2');
+                                    allArray[b]["Id_NbTour"] = 2 * Number(allArray2[a]["Id_NbTour"]);
+
                                 } else {
                     
                                     allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
                                 }
-                }
 
-                
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+
+                    allArray[b]["Id_Groupe"] = allArray2[a]["Id_Groupe"] + allArray[b]["Id_Groupe"]; // combine blue, single, leader
+
+                    if (allArray[b]["Id_Groupe"].includes('l')) {
+                        
+                        allArray[b]["yellow"] = 1; // mark leader (yellow shirt)
+                        
+                    }                    
+                    
                     
                     // transfer fields from secound array to the first that nedded later, use _2 to mark
                     allArray[b]["Id_Image_2"] = allArray2[a]["Id_Image"];   
@@ -850,20 +863,17 @@
                     if (typeof allArray[b]["Id_Inter3"] == '-') {
                         allArray[b]["Id_Inter3"] = 99999999999;
                     }
-                    if (typeof allArray2[a]["Id_Discipline"] != 'undefined') {
-                        allArray[b]["Id_Discipline_2"] = allArray2[a]["Id_Discipline"];
-                    }
-                    if (allArray[b]["Id_Discipline_2"] == 'yellow' || allArray[b]["Id_Discipline"] == 'yellow') {
-                        allArray[b]["yellow"] = '<span title="Finished" class="Flag YellowShirt"></span>';
-                    }
+ //                   if (typeof allArray2[a]["Id_Discipline"] != 'undefined') {
+ //                       allArray[b]["Id_Discipline_2"] = allArray2[a]["Id_Discipline"];
+ //                   }
 
  
                     // find finish time and check for 2 minutes diffrance
                                 
-                                if (allArray[b]["Id_Discipline"] == 'single') {
+                                if (allArray[b]["Id_Groupe"].includes("s1")) {
                                     allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
                                     allArray[b]["single"] = 1;
-                                } else if ( allArray[b]["Id_Discipline_2"] == 'single') {
+                                } else if ( allArray[b]["Id_Groupe"].includes("s2")) {
                                     allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
                                     allArray[b]["single"] = 1;
                                 } else if (allArray[b]["Id_TpsCumule"] != 99999999999 && allArray[b]["Id_TpsCumule_2"] != 99999999999) {
@@ -900,10 +910,10 @@
                 
                 
                     // find intermediate time 1 and check for 2 minutes diffrance
-                                if ( allArray[b]["Id_Discipline"] == 'single') {
+                                if (allArray[b]["Id_Groupe"].includes("s1")) {
                                     allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
                                     allArray[b]["single"] = 1;
-                                } else if ( allArray[b]["Id_Discipline_2"] == 'single') {
+                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
                                     allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
                                     allArray[b]["single"] = 1;
                                 } else if (allArray[b]["Id_Inter1"] != 99999999999 && allArray[b]["Id_Inter1_2"] != 99999999999) {
@@ -919,10 +929,10 @@
                                     
                                     if (Math.abs(allArray[b]["Id_Inter1"] - allArray[b]["Id_Inter1_2"]) > 120000) { // check more then 2 minutes apart
                          //               allArray[b]["Id_Inter1Time"] = 99999999999;
-                                        allArray[b].blue = 1; // make blue DSQ
+                                        if (show == 4) {
+                                            allArray[b].blue = 1; // make blue DSQ
+                                        }
                                         allArray[b].Id_Inter1blue = 1; // make blue DSQ
-                                    } else {
-                                        allArray[b].Id_Inter1blue = 0; 
                                     }
                                    
                                 }                
@@ -950,11 +960,11 @@
                 
              //   console.log(Inter2Leader);
                 
-                    // find intermediate time 1 and check for 2 minutes diffrance
-                                if ( allArray[b]["Id_Discipline"] == 'single') {
+                    // find intermediate time 2 and check for 2 minutes diffrance
+                                if (allArray[b]["Id_Groupe"].includes("s1")) {
                                     allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
                                     allArray[b]["single"] = 1;
-                                } else if ( allArray[b]["Id_Discipline_2"] == 'single') {
+                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
                                     allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
                                     allArray[b]["single"] = 1;
                                 } else if (allArray[b]["Id_Inter2"] != 99999999999 && allArray[b]["Id_Inter2_2"] != 99999999999) {
@@ -970,10 +980,10 @@
                                     
                                     if (Math.abs(allArray[b]["Id_Inter2"] - allArray[b]["Id_Inter2_2"]) > 120000) { // check more then 2 minutes apart
                        //                 allArray[b]["Id_Inter2Time"] = 99999999999;
-                                        allArray[b].blue = 1; // make blue DSQ
+                                        if (show == 4) {
+                                            allArray[b].blue = 1; // make blue DSQ
+                                        }
                                         allArray[b].Id_Inter2blue = 1; // make blue DSQ
-                                    } else {
-                                        allArray[b].Id_Inter2blue = 0; 
                                     }
                                    
                                 }                
@@ -1001,11 +1011,11 @@
                 
              //   console.log(Inter2Leader);
                 
-                    // find intermediate time 1 and check for 2 minutes diffrance
-                                if ( allArray[b]["Id_Discipline"] == 'single') {
+                    // find intermediate time 3 and check for 2 minutes diffrance
+                                if (allArray[b]["Id_Groupe"].includes("s1")) {
                                     allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
                                     allArray[b]["single"] = 1;
-                                } else if ( allArray[b]["Id_Discipline_2"] == 'single') {
+                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
                                     allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
                                     allArray[b]["single"] = 1;
                                 } else if (allArray[b]["Id_Inter3"] != 99999999999 && allArray[b]["Id_Inter3_2"] != 99999999999) {
@@ -1021,10 +1031,10 @@
                                     
                                     if (Math.abs(allArray[b]["Id_Inter3"] - allArray[b]["Id_Inter3_2"]) > 120000) { // check more then 2 minutes apart
                      //                   allArray[b]["Id_Inter3Time"] = 99999999999;
-                                        allArray[b].blue = 1; // make blue DSQ
+                                        if (show == 4) {
+                                            allArray[b].blue = 1; // make blue DSQ
+                                        }
                                         allArray[b].Id_Inter3blue = 1; // make blue DSQ
-                                    } else {
-                                        allArray[b].Id_Inter3blue = 0; 
                                     }
                                    
                                 }                
@@ -1054,8 +1064,8 @@
 
              
                     //combine class
-                    if (allArray[b]["Id_Classe"] == "blue" || allArray2[a]["Id_Classe"] == "blue") {                    
-                        allArray[b]["Id_Classe"] = "blue";
+                    if (allArray[b]["Id_Groupe"].includes('b') || allArray2[a]["Id_Groupe"].includes('b')) {                    
+                        allArray[b]["oldBlue"] = 1;
                     }
                 
                 
@@ -1113,7 +1123,7 @@
             
  // calculate categorie position
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             m = 0;
             prevCompCat = ""
@@ -1133,13 +1143,13 @@
             }
  // END calculate categorie position
            
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
         } else if (useCategory == "yes") {
             
 // calculate overall position
             
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -1150,7 +1160,7 @@
              
 // END calculate overall position
             
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
                     
     } else if (show == 2) { // sorting intermediate 2
@@ -1159,7 +1169,7 @@
             
  // calculate categorie position
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             m = 0;
             prevCompCat = ""
@@ -1179,13 +1189,13 @@
             }
  // END calculate categorie position
            
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
         } else if (useCategory == "yes") {
             
 // calculate overall position
             
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -1196,7 +1206,7 @@
              
 // END calculate overall position
             
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
                     
     }  else if (show == 3) { // sorting intermediate 3
@@ -1205,7 +1215,7 @@
             
  // calculate categorie position
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             m = 0;
             prevCompCat = ""
@@ -1225,13 +1235,13 @@
             }
  // END calculate categorie position
            
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
         } else if (useCategory == "yes") {
             
 // calculate overall position
             
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -1242,7 +1252,7 @@
              
 // END calculate overall position
             
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
                     
     } else { // sorting finish
@@ -1253,7 +1263,7 @@
             
  // calculate categorie position
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             m = 0;
             prevCompCat = ""
@@ -1273,13 +1283,13 @@
             }
  // END calculate categorie position
            
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
         } else if (useCategory == "yes") {
             
 // calculate overall position
             
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -1290,7 +1300,7 @@
              
 // END calculate overall position
             
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.Id_Classe.localeCompare(b.Id_Classe) || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
         }
 
                     
@@ -1379,11 +1389,11 @@
 
 
                if (show == 1) {
-                    headerText1 += '<th class="rnkh_font Id_FinishTime">Inter. 1</th>'; // intermediate 1 time
+                    headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                 } else if (show == 2) {
-                    headerText1 += '<th class="rnkh_font Id_FinishTime">Inter. 2</th>'; // intermediate 2 time
+                    headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
                 } else if (show == 3) {
-                    headerText1 += '<th class="rnkh_font Id_FinishTime">Inter. 3</th>'; // intermediate 3 time
+                    headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
                 } else {
                     headerText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // combined time
                 }
@@ -1552,14 +1562,27 @@
                                 allArray[l]["Id_TpsCumule_2"] = ms2TimeString(allArray[l]["Id_TpsCumule_2"]);
                             }
                             
-
+                showBlue = 0;
                // display result for selected intermediate or finish
                if (show == 1) {
                     allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Inter1Ecart1er"];
+                    if (allArray[l]["Id_Inter1blue"] == 1) {
+                        showBlue = 1;
+                    }
                 } else if (show == 2) {
                     allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Inter2Ecart1er"];
+                    if (allArray[l]["Id_Inter2blue"] == 1) {
+                        showBlue = 1;
+                    }
                 } else if (show == 3) {
                     allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Inter3Ecart1er"];
+                    if (allArray[l]["Id_Inter3blue"] == 1) {
+                        showBlue = 1;
+                    }
+                } else if (show == 4) {
+                    if (allArray[l]["blue"] == 1) {
+                        showBlue = 1;
+                    }
                 }
                
                             
@@ -1570,7 +1593,7 @@
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
                     
-                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["Id_Classe"] == "blue")) {
+                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
                         allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
                         allArray[l]["blue"] = 1; //FIXME
@@ -1604,10 +1627,10 @@
 
                             if (positionArray[competitorNumber] < competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
-                                positionChanged = "down ";
+                                positionChanged = "lostPosition ";
                             } else if (positionArray[competitorNumber] > competitorPosition) {
                                 allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
-                                positionChanged = "up ";
+                                positionChanged = "gainedPosition ";
 //                            } else if (positionArray[competitorNumber] == competitorPosition && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
 //                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
                              //   positionChanged = "same ";
@@ -1693,7 +1716,7 @@ if (cleanResults == 0) {
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0) {
+                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0 && show == 4) {
                     checkeredFlag = "finished ";
                 } else {
                     checkeredFlag = "";
@@ -1716,7 +1739,7 @@ if (cleanResults == 0) {
                     
                     finalText += '<td aria-label="DNF/DSQ" class="orange rnk_font">' + allArray[l]["Id_Arrow"] + '</td>';
                     
-                } else if (allArray[l]["blue"] == 1) {
+                } else if (showBlue == 1) {
                 
                     finalText += '<td aria-label="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
@@ -1755,7 +1778,7 @@ if (cleanResults == 0) {
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || (allArray[l]["Id_Inter1Time"] == 99999999999 && allArray[l]["Id_Inter2Time"] == 99999999999 && allArray[l]["Id_Inter3Time"] == 99999999999 && allArray[l]["Id_FinishTime"] == 99999999999) || allArray[l]["Id_Classe"] == "blue" || allArray[l]["single"] == 1) {
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show postion if status or no finish time
                 } else {
@@ -1771,10 +1794,17 @@ if (cleanResults == 0) {
                     
                 }
 
+                    if (allArray[l]["yellow"] == 1) {
+                        yellow = '<span title="Finished" class="Flag YellowShirt"></span>';
+                    } else {
+                        yellow = '';
+                    }
+
                 
-                if (allArray[l]["Id_Classe"] == "blue") {
+                
+                if (allArray[l]["oldBlue"] == 1) {
                 finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["yellow"] != "") {
+                } else if (allArray[l]["yellow"] == 1) {
                 finalText += '<td class="rnk_font yellowCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
@@ -1787,10 +1817,10 @@ if (cleanResults == 0) {
                 single1 = "";
                 single2 = "";
                 
-                if (allArray[l]["Id_Discipline_2"] == 'single') {
+                if (allArray[l]["Id_Groupe"].includes("s2")) {
                     single2 = "lineThrough";
                 }
-                if (allArray[l]["Id_Discipline"] == 'single') {
+                if (allArray[l]["Id_Groupe"].includes("s1")) {
                     single1 = "lineThrough";
                 }
                 
@@ -1818,7 +1848,7 @@ if (cleanResults == 0) {
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
  //                       }
                     }
                     finalText += gggg;// add the name
@@ -1828,7 +1858,7 @@ if (cleanResults == 0) {
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
     //                    }
                     }
                     finalText += gggg;// add the name
@@ -1852,7 +1882,7 @@ if (cleanResults == 0) {
                         finalText += ffff + '<span title="Finished" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
@@ -1860,7 +1890,7 @@ if (cleanResults == 0) {
                         finalText += ffff + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + allArray[l]["yellow"]; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
@@ -2244,7 +2274,7 @@ if (show == 4) {
 
 
 
-if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
+if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
     
     
     
@@ -2319,7 +2349,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
                 }
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + allArray[l]["yellow"] + '</td>'; // add riders name
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + yellow + '</td>'; // add riders name
                 
                 finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
 
@@ -2355,7 +2385,6 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["single"] == 0
         } 
 // console.log("all "+positionArray_All_Cat[allArray[l]["Id_Numero"]][0]);
 // console.log("pos "+positionArray_All_Cat[allArray[l]["Id_Numero"]][1]);
-
 
 
     }        // end for l
