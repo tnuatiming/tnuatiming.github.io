@@ -37,7 +37,7 @@ module.exports = function(grunt) {
                 command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname no ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ --exclude-glob .directory --exclude-glob */2013/* --exclude-glob */2014/* --exclude-glob */2015/* --exclude-glob */2016/* --exclude-glob */2017/* -vvv ./_site/ ./public_html/ ; cache flush ; exit" | tee "lftp.log"'
             },
             clean: {
-                command: 'if [ -d "_site" ]; then rm -Rf _site; fi && if [ -d "hugo_backup" ]; then rm -Rf hugo_backup; fi '
+                command: 'if [ -d "_site" ]; then rm -Rf _site; fi && if [ -d "hugo_backup" ]; then rm -Rf hugo_backup; fi  && if [ -d "static/csv" ]; then rm -Rf "static/csv"; fi'
             },
             cleanAfterHugo: {
                 command: 'if [ -f "_site/live.html" ]; then rm "_site/live.html"; fi && if [ -f "_site/live1.html" ]; then rm "_site/live1.html"; fi && if [ -f "_site/liveepic.html" ]; then rm "_site/liveepic.html"; fi && if [ -f "_site/.html" ]; then rm "_site/.html"; fi && if [ -f "_site/.directory" ]; then rm "_site/.directory"; fi  '

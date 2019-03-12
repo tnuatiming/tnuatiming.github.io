@@ -7,6 +7,8 @@ slug: "index"
 ---
 
 <style>
+    .main_content {direction: ltr;}
+
     #live .btn {margin: 0;}
     
     #live #buttonInfo {
@@ -30,6 +32,29 @@ slug: "index"
         white-space: nowrap;
         font-weight: 700;
     }
+
+    #live #DayTime {
+        order: 1;
+        }
+    #live #ElapsedTime {
+        order: 2;
+        }
+    #live #RemainingTime {
+        order: 3;
+        }
+
+td[aria-label]:hover:after {
+    content: attr(aria-label);
+    padding: 0 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    z-index: 99;
+    color: #fff;
+    background: rgba(17, 17, 17, 1);
+    min-width: 100%;
+}
 
 @media (max-width: 767px) {
 
@@ -160,9 +185,16 @@ slug: "index"
     .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
     .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
     .YellowShirt {background-image: url(Images/YellowShirt.svg);}
+    .UCI {background-image: url(Images/uci.svg);}
+
+    .dnf {background-image: url(Images/_dnf.svg);}
+    .dsq {background-image: url(Images/_dsq.svg);}
+    .dns {background-image: url(Images/_dns.svg);}
+
     .FirstLine {} 
     .SecoundLine {} 
-
+    .uci {color: brown;}
+    
     #live .btn {display: inline-block;}
     #live #buttonInfo {margin-bottom: 10px;}
     #live .btn.active {cursor: pointer;filter: opacity(50%);}
@@ -171,7 +203,9 @@ slug: "index"
 
     #live td div.bold {font-weight:700;}
     
-    
+    div#legend {width: 100%; text-align: left;}
+    div#legend ul {width: 100%; text-align: left; float: left;}
+    div#legend li {text-align: left;}
 </style>
 
 <div id="raceheader"><h1>Live Results</h1></div>
@@ -201,4 +235,21 @@ slug: "index"
 <div id="previousResults"></div>
 
 <div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall</button></div>
+
+
+<div id="legend">
+         <ul>
+                <li><span class="Flag YellowShirt"></span> - Epic Israel Leader</li>
+                <li><span class="Flag numberOne"></span> - Intermediate Leader</li>
+                <li><span class="Flag UCI"></span> - UCI Rider</li>
+                <li><span class="Flag CheckeredFlag"></span> - Finished</li>
+                <li><span class="Flag dsq"></span> - Disqualified</li>
+                <li><span class="Flag dnf"></span> - Did Not Finished</li>
+                <li><span class="Flag dns"></span> - Did Not Started</li>
+                <li><span class="Flag blueFlag"></span> - over maximum stage time or separation between team members over 2 minutes</li>
+            </ul>
+  
+
+
+</div>
 

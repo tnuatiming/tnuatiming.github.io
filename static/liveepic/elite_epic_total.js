@@ -8,17 +8,10 @@ phrase the results, so the results page on the web site will be passive
 
 
 */
+    var TimerLoad;
+    var Rafraichir = 60000; // every 60 seconds
 
-var TimerLoad, TimerChange;
-    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
-    var UrlRefresh, UrlChange;
-    Rafraichir = 60000;
-    Changement = 60000;
-    MaxNum = 1;
-    ClassementReduit = 1;
-    ClassementReduitXpremier = 10;
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
-    var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     var cleanResults = 0;
     
     var useCategory = "yes";
@@ -223,9 +216,9 @@ var TimerLoad, TimerChange;
     function createLiveTable() {
         var lines;
         var lines2;
-        competitorPosition = 0;
-        competitorNumber = 0;
-        competitorLaps = 0;
+        var competitorPosition = 0;
+        var competitorNumber = 0;
+        var competitorLaps = 0;
 //        var qqq = [];
 //        var hhh = [];
         var hhhPro = [];

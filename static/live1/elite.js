@@ -292,7 +292,7 @@
     }
 
 
-    function createLiveTable(Text) {
+    function createLiveTable(p1) {
          
         var showIndividualLaps = 0;
         var showLapsNumber = 1;
@@ -336,7 +336,7 @@
         var dnsCategory = "";
         var dsqCategory = "";
 
-        Text = Text.split('<table'); // split the text to title/time and the table
+        Text = p1.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
 

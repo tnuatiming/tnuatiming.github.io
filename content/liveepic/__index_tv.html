@@ -11,7 +11,17 @@ slug: "tv"
 
 /*  TV */
 
-.full-bg {
+body, body#live {
+    background-image: none;
+}
+    
+@media (min-width: 768px) {
+    body, body#live {
+        background-image: none;
+    }
+}
+
+    .full-bg {
     background: #6c3;
 }
 .header, .footer, #raceheader, #live h1#Title, #live p#Time, div#daysTotal {display: none;}
