@@ -315,7 +315,7 @@
   //      var hhh = [];
   //      var temp = [];
         var hhhPro = [];
-        var lineArray = [];
+        var lineArray = {};
         var allArray = [];
         var bestLapComp = 0;
         var bestLap = "99999999999";
@@ -532,7 +532,7 @@
                     
 //               }
                 allArray.push(lineArray); 
-                lineArray = [];
+                lineArray = {};
                 pp = 0;
                 penalty = 0;
             } else if (lines[b].includes("<td ") && ttt == 1) {

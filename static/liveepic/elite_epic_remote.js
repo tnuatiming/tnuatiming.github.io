@@ -38,7 +38,6 @@
     if (sessionStorage.getItem('intermediateOrFinish')) {
         show = sessionStorage.getItem('intermediateOrFinish');
     }
-    var showPrevious = show;// used for empting the array when displaying back intermediate.
    
     var epictv = 0;
     
@@ -423,7 +422,7 @@
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
-//        Load('p1.html', 'result');
+//        Load('j1.html', 'result');
         
         document.getElementById("result").innerHTML = createLiveTable(P1);
         alignTable();
@@ -450,7 +449,7 @@
 /*        await fetch(url, {cache: "no-store"})
         .then(res => res.text())
         .then(data => {
-            document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+            document.getElementById("categoryOrAll").style.display = "block"; // if j1.html exist, display the buttons
             document.getElementById(target).innerHTML = createLiveTable(data);
         })
         .catch(rejected => {
@@ -462,7 +461,7 @@
             try {
                 const response = await fetch(url, {cache: "no-store"});
                 if (response.ok) {
-                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("categoryOrAll").style.display = "block"; // if j1.html exist, display the buttons
                     P1 = await response.text();
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
@@ -497,7 +496,7 @@
             xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("categoryOrAll").style.display = "block"; // if j1.html exist, display the buttons
                     P1 = xhr.responseText;
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
@@ -511,7 +510,7 @@
             xhr.send(null);
 
             // upload message
-       //     populatePre('uploadMsg.txt','updates');
+        //    populatePre('uploadMsg.txt','updates');
 
             // upload previous results            
         //    populatePre('previousresults.txt','previousResults');
@@ -572,6 +571,7 @@
 
     function createLiveTable(p1) {
         
+        
         if (document.getElementById('epictv')){
             epictv = 1;
         }
@@ -586,20 +586,9 @@
         var competitorPosition = 0;
         var competitorNumber = 0;
         var competitorLaps = 0;
-//        var qqq = [];
-//        var hhh = [];
-        var hhhPro = [];
-//        var temp = [];
-        var lineArray = {};
+
         var allArray = [];
-        var allArray2 = [];
-//        var allArray3 = [];
         var penalty = "no";
-        var ttt = 0;
-        var pp = 0;
-        var b;
-        var a;
-        var id;
         var positionChanged = "";
         var bestLapComp = 0;
         var bestLap = "99999999999";
@@ -613,9 +602,9 @@
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
-        var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
+        var Inter1Leader = [],Inter2Leader = [], Inter3Leader = [];
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, main_num, pair_num, blued;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, uci2, main_num, pair_num, blued;
 
 
         if (show == 1) {
@@ -628,20 +617,12 @@
             showFull = 'Finish';
         }
         
-        
-        Text = p1.split('<table'); // split the text to title/time and the table
-        Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
-      //  console.log(Text[1]);
+        allArray = JSON.parse(p1);
 
-        lines = Text[1].split("\n");
-    //  console.log(lines.length);
-     //   console.log(lines);
+        var HeaderName = "ff";  
 
-        var HeaderName = Text[0].split("\n");  
-        var div = document.createElement("div");  
-        div.innerHTML = HeaderName[0]; 
-        var HeaderEventName = div.textContent || div.innerText || "";  
-        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
+        var HeaderEventName = "tt";  
+        var HeaderRaceName = "uu";  
      
     //    console.log(HeaderEventName);
 
@@ -653,515 +634,15 @@
         eventName = HeaderEventName;  // tickerTest
         
         
-        if (Text[0].includes("+++")) { // clean table for results page
-            cleanResults = 1;
-            timeGapDisplay = 1;
-            timeGapDisplayInter = 3;
-            Text[0] = Text[0].replace("+++", "");
-        } else {
-            cleanResults = 0;
-        }
-
-        if (Text[0].includes("---")) { // do not show individuall times
-            doNotShowTime = 1;
-            Text[0] = Text[0].replace("---", "");
-        }
-
-        if (Text[0].includes("_Stop.png") || Text[0].includes("_CheckeredFlag.png")) { // check if race ended
-            raceEnded = 1;
-        }
-        
         if (cleanResults == 1) {
             var bigFont = '';
         } else {
             var bigFont = ' bigFont';
         }
 
-        var finalText = Text[0]; // clear the finalText variable and add the title and time lines
+        var finalText = '<h1>you did it</h1>'; // clear the finalText variable and add the title and time lines
 
 
-
-
-         // console.log(allArray2);
-
-            
-        ttt = 0;
-        pp = 0;
-        penalty = "no";
-  
-            
-        for (b = 0; b < lines.length; b++) { 
-           
-            if (lines[b].includes('<td id="Id_')) { // header cell
-                id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
-                hhhPro.push(id);
- //               var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
- //               hhh[id] = idName;
- //               temp.push(id,idName);
- //               qqq.push(temp);
- //               temp = [];
-            } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) { // competitor line
-                ttt = 1;
-            } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
-                ttt = 0;
-                if (penalty == "yes") {
-                    lineArray.Id_penalty = "P";
-                } else {
-                    lineArray.Id_penalty = "";
-                }
-                
-                if (lineArray["Id_Categorie"] == 'חד יומי') {
- //                   allArray3.push(lineArray); // push line to main array 
-                    console.log('חד יומי');
-               } else if (pair_num == 1) {
-                    allArray.push(lineArray); // push line to main array 
-                } else if (pair_num == 2) {
-                    allArray2.push(lineArray); // push line to main array 
-                }
-
-                lineArray = {};
-                pp = 0;
-                penalty = "no";
-                pair_num = "";
-                main_num = "";
-                
-            } else if (lines[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
-                if (lines[b].includes("(C)")) {
-                    penalty = "yes";
-                }
-                lineArray.Id_Image_2 = "";
-                lineArray.Id_MeilleurTour_2 = "";
-                lineArray.Id_TpsCumule_2 = 99999999999;
-                lineArray.Id_FinishTime = 99999999999;
-                lineArray.Id_Inter1_2 = 99999999999;
-                lineArray.Id_Inter1Time = 99999999999;
-                lineArray.Id_Inter1Ecart1er = 99999999999; // maybe needs to be '-'
-                lineArray.Id_Inter2_2 = 99999999999;
-                lineArray.Id_Inter2Time = 99999999999;
-                lineArray.Id_Inter2Ecart1er = 99999999999; // maybe needs to be '-'
-                lineArray.Id_Inter3_2 = 99999999999;
-                lineArray.Id_Inter3Time = 99999999999;
-                lineArray.Id_Inter3Ecart1er = 99999999999; // maybe needs to be '-'
-                lineArray.Id_Nom_2 = "";
-                lineArray.Id_Nationalite_2 = "";
-                lineArray.Id_Arrow = 0;
-                lineArray.Id_Status = 0;
-                lineArray.oldBlue = 0;
-                lineArray.blue = 0;
-                lineArray.Id_Inter1blue = 0;
-                lineArray.Id_Inter2blue = 0;
-                lineArray.Id_Inter3blue = 0;
-                lineArray.single = 0;
-                lineArray.yellow = 0;
-                lineArray.uci = 0; // 0 - none, 1 - first rider is uci, 2 - secound rider is uci, 3 - both
-                lineArray.Id_penalty = "";   
-
-                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
-                // convert intermediate time to miliseconds
-                if (hhhPro[pp] == "Id_Groupe" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "";   
-                }
-                if (lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "";   
-                }
-                if (hhhPro[pp] == "Id_Inter1" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_Inter1" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                if (hhhPro[pp] == "Id_Inter2" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_Inter2" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                if (hhhPro[pp] == "Id_Inter3" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_Inter3" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                // convert total time to miliseconds
-                if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "";   
-                }
-                if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
-                    lineArray[hhhPro[pp]] = "-";   
-                }
-                if (hhhPro[pp] == "Id_Numero" && lineArray[hhhPro[pp]] != "-" ) {
-                    pair_num = String(lineArray[hhhPro[pp]]).slice(-1);
-                    main_num = String(lineArray[hhhPro[pp]]).slice(0, -1);
-                    lineArray[hhhPro[pp]] = main_num;
-
-                        lineArray["Id_Numero_Full"] = main_num + '-' + pair_num;
-               }
-/*
-                if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime=lineArray["Id_TpsTour"];
-                    bestTimecomp=lineArray["Id_Numero"];
-                }
-*/
-                // find best lap overall
-                    if (hhhPro[pp] == "Id_TpsTour" && lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
-                    bestLap = lineArray[hhhPro[pp]];
-                    bestLapComp = lineArray["Id_Numero"];
-                    }
-
-                pp += 1;
-      //    console.log(lineArray);
-       //   console.log(bestLapComp+"  "+bestLap);
-
-            }
-            
-        }
-
-        lines = '';
-        
-     //    console.log(hhh);
-     //    console.log(hhhPro);
-
-     //             console.log(qqq);
-      //   console.log(hhhPro2);
-         //                console.log(allArray);
-
-     //    console.log(allArray);
-         // console.log(allArray2);
-
-        for (b = 0; b < allArray.length; b++) {  // main array
-            for (a = 0; a < allArray2.length; a++) { 
-
-/*                // calculating total time and total laps from both arrays
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != 99999999999 && allArray2[a]["Id_TpsCumule"] != 99999999999) {
-                    
-          //          allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
-                }
-*/            
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
-                    
-                    
-                                if (allArray[b]["Id_Groupe"].includes('s')) {
-
-                                    allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('s', 's1');
-                                    allArray[b]["Id_NbTour"] = 2 * Number(allArray2[b]["Id_NbTour"]); // need to 2* the laps as it 1 rider and not 2 
-
-                                } else if (allArray2[a]["Id_Groupe"].includes('s')) {
-
-                                    allArray2[a]["Id_Groupe"] = allArray2[a]["Id_Groupe"].replace('s', 's2');
-                                    allArray[b]["Id_NbTour"] = 2 * Number(allArray2[a]["Id_NbTour"]);
-
-                                } else {
-                    
-                                    allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
-                                }
-                                
-                                if (allArray[b]["Id_Groupe"].includes('u') && allArray2[a]["Id_Groupe"].includes('u')) {
-
-                                    allArray[b]["uci"] = 3;
-
-                                } else if (allArray[b]["Id_Groupe"].includes('u') && !(allArray2[a]["Id_Groupe"].includes('u'))) {
-
-                                    allArray[b]["uci"] = 1;
-
-                                } else if (!(allArray[b]["Id_Groupe"].includes('u')) && allArray2[a]["Id_Groupe"].includes('u')) {
-
-                                    allArray[b]["uci"] = 2;
-
-                                }
-
-                    allArray[b]["Id_Groupe"] = allArray2[a]["Id_Groupe"] + allArray[b]["Id_Groupe"]; // combine blue, single, leader
-
-                    if (allArray[b]["Id_Groupe"].includes('l')) {
-                        
-                        allArray[b]["yellow"] = 1; // mark leader (yellow shirt)
-                        
-                    }                    
-                    
-                    
-                    // transfer fields from secound array to the first that nedded later, use _2 to mark
-                    allArray[b]["Id_Image_2"] = allArray2[a]["Id_Image"];   
-                    allArray[b]["Id_MeilleurTour_2"] = allArray2[a]["Id_MeilleurTour"];   // fastest lap
-                    allArray[b]["Id_Nom_2"] = allArray2[a]["Id_Nom"];
-                    allArray[b]["Id_Numero_Full_2"] = allArray2[a]["Id_Numero_Full"];
-                    allArray[b]["Id_Nationalite_2"] = allArray2[a]["Id_Nationalite"];
-                    allArray[b]["Id_TpsCumule_2"] = allArray2[a]["Id_TpsCumule"];
-                    
-                    if (typeof allArray2[a]["Id_Inter1"] != 'undefined') {
-                        allArray[b]["Id_Inter1_2"] = allArray2[a]["Id_Inter1"];
-                    }
-                    if (typeof allArray[b]["Id_Inter1"] == '-') {
-                        allArray[b]["Id_Inter1"] = 99999999999;
-                    }
-                    if (typeof allArray2[a]["Id_Inter2"] != 'undefined') {
-                        allArray[b]["Id_Inter2_2"] = allArray2[a]["Id_Inter2"];
-                    }
-                    if (typeof allArray[b]["Id_Inter2"] == '-') {
-                        allArray[b]["Id_Inter2"] = 99999999999;
-                    }
-                    if (typeof allArray2[a]["Id_Inter3"] != 'undefined') {
-                        allArray[b]["Id_Inter3_2"] = allArray2[a]["Id_Inter3"];
-                    }
-                    if (typeof allArray[b]["Id_Inter3"] == '-') {
-                        allArray[b]["Id_Inter3"] = 99999999999;
-                    }
- //                   if (typeof allArray2[a]["Id_Discipline"] != 'undefined') {
- //                       allArray[b]["Id_Discipline_2"] = allArray2[a]["Id_Discipline"];
- //                   }
-
- 
-                    // find finish time and check for 2 minutes diffrance
-                                
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
-                                    allArray[b]["single"] = 1;
-                                } else if ( allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_TpsCumule"] != 99999999999 && allArray[b]["Id_TpsCumule_2"] != 99999999999) {
-                                    if (allArray[b]["Id_TpsCumule"] > allArray[b]["Id_TpsCumule_2"]) {
-                                        allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
-                                    }
-                                    else if (allArray[b]["Id_TpsCumule"] <= allArray[b]["Id_TpsCumule_2"]) {
-                                        allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
-                                    } else {
-                                        allArray[b]["Id_FinishTime"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
-                                  //      allArray[b]["Id_FinishTime"] = 99999999999;
-                                        allArray[b].blue = 1; // make blue DSQ
-                                    }
-                                   
-                                    
-                                    
-                                } else if (raceEnded == 1 && (allArray[b]["Id_TpsCumule"] == 99999999999 || allArray[b]["Id_TpsCumule_2"] == 99999999999)) {
-                                    
-                                    allArray[b]["Id_FinishTime"] = 99999999999;
-                                    allArray[b].blue = 1; // make blue DSQ
-                                    
-                                }
-
- // make blue if exeed MaximumStageTime, ENABLE after testing
-                                if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) {
-                                    allArray[b]["Id_FinishTime"] = 99999999999;
-                                    allArray[b].blue = 1; // make blue DSQ
-                                }
-                
-                
-                
-                    // find intermediate time 1 and check for 2 minutes diffrance
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Inter1"] != 99999999999 && allArray[b]["Id_Inter1_2"] != 99999999999) {
-                                    if (allArray[b]["Id_Inter1"] > allArray[b]["Id_Inter1_2"]) {
-                                        allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
-                                    }
-                                    else if (allArray[b]["Id_Inter1"] <= allArray[b]["Id_Inter1_2"]) {
-                                        allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
-                                    } else {
-                                        allArray[b]["Id_Inter1Time"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_Inter1"] - allArray[b]["Id_Inter1_2"]) > 120000) { // check more then 2 minutes apart
-                         //               allArray[b]["Id_Inter1Time"] = 99999999999;
-                                        if (show == 4) {
-                                            allArray[b].blue = 1; // make blue DSQ
-                                        }
-                                        allArray[b].Id_Inter1blue = 1; // make blue DSQ
-                                    }
-                                   
-                                }                
-
-                                
-                        // update intermediate 1 leader array 
-                        if (typeof Inter1Leader["overall"] == 'undefined') { // overall
-                            Inter1Leader["overall"] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter1Time"] != 99999999999 && Inter1Leader["overall"] > allArray[b]["Id_Inter1Time"]) {
-                            
-                            Inter1Leader["overall"] = allArray[b]["Id_Inter1Time"];
-                        }
-
-                        if (typeof Inter1Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
-                            Inter1Leader[allArray[b]["Id_Categorie"]] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter1Time"] != 99999999999 && Inter1Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter1Time"]) {
-                            
-                            Inter1Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter1Time"];
-                        }
-                    
-                
-             //   console.log(Inter2Leader);
-                
-                    // find intermediate time 2 and check for 2 minutes diffrance
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Inter2"] != 99999999999 && allArray[b]["Id_Inter2_2"] != 99999999999) {
-                                    if (allArray[b]["Id_Inter2"] > allArray[b]["Id_Inter2_2"]) {
-                                        allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
-                                    }
-                                    else if (allArray[b]["Id_Inter2"] <= allArray[b]["Id_Inter2_2"]) {
-                                        allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
-                                    } else {
-                                        allArray[b]["Id_Inter2Time"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_Inter2"] - allArray[b]["Id_Inter2_2"]) > 120000) { // check more then 2 minutes apart
-                       //                 allArray[b]["Id_Inter2Time"] = 99999999999;
-                                        if (show == 4) {
-                                            allArray[b].blue = 1; // make blue DSQ
-                                        }
-                                        allArray[b].Id_Inter2blue = 1; // make blue DSQ
-                                    }
-                                   
-                                }                
-
-                                
-                        // update intermediate 1 leader array 
-                        if (typeof Inter2Leader["overall"] == 'undefined') { // overall
-                            Inter2Leader["overall"] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter2Time"] != 99999999999 && Inter2Leader["overall"] > allArray[b]["Id_Inter2Time"]) {
-                            
-                            Inter2Leader["overall"] = allArray[b]["Id_Inter2Time"];
-                        }
-
-                        if (typeof Inter2Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
-                            Inter2Leader[allArray[b]["Id_Categorie"]] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter2Time"] != 99999999999 && Inter2Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter2Time"]) {
-                            
-                            Inter2Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter2Time"];
-                        }
-                    
-                
-             //   console.log(Inter2Leader);
-                
-                    // find intermediate time 3 and check for 2 minutes diffrance
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Inter3"] != 99999999999 && allArray[b]["Id_Inter3_2"] != 99999999999) {
-                                    if (allArray[b]["Id_Inter3"] > allArray[b]["Id_Inter3_2"]) {
-                                        allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
-                                    }
-                                    else if (allArray[b]["Id_Inter3"] <= allArray[b]["Id_Inter3_2"]) {
-                                        allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
-                                    } else {
-                                        allArray[b]["Id_Inter3Time"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_Inter3"] - allArray[b]["Id_Inter3_2"]) > 120000) { // check more then 2 minutes apart
-                     //                   allArray[b]["Id_Inter3Time"] = 99999999999;
-                                        if (show == 4) {
-                                            allArray[b].blue = 1; // make blue DSQ
-                                        }
-                                        allArray[b].Id_Inter3blue = 1; // make blue DSQ
-                                    }
-                                   
-                                }                
-
-                                
-                        // update intermediate 1 leader array 
-                        if (typeof Inter3Leader["overall"] == 'undefined') { // overall
-                            Inter3Leader["overall"] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter3Time"] != 99999999999 && Inter3Leader["overall"] > allArray[b]["Id_Inter3Time"]) {
-                            
-                            Inter3Leader["overall"] = allArray[b]["Id_Inter3Time"];
-                        }
-
-                        if (typeof Inter3Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
-                            Inter3Leader[allArray[b]["Id_Categorie"]] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter3Time"] != 99999999999 && Inter3Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter3Time"]) {
-                            
-                            Inter3Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter3Time"];
-                        }
-                    
-                
-             //   console.log(Inter3Leader);
-
-             
-                    //combine class
-                    if (allArray[b]["Id_Groupe"].includes('b') || allArray2[a]["Id_Groupe"].includes('b')) {                    
-                        allArray[b]["oldBlue"] = 1;
-                    }
-                
-                
-                }
-         
-                
-                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
-                     
-
-
-                    if (allArray2[a]["Id_penalty"] == "P") {
-                    allArray[b].Id_penalty = "P";   
-                    }
-                    
-             //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
-                    
-                    if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1) {// FIXME Id_Status drops blue competitor to buttom , check if this is what needed
-                        allArray[b].Id_Status = 1;
-                    } else {
-                        allArray[b].Id_Status = 0;
-                    }
-               }
-               
-
-               // display result for selected intermediate or finish
-               if (show == 1) {
-                    allArray[b]["Id_FinishTime"] = allArray[b]["Id_Inter1Time"];
-                } else if (show == 2) {
-                    allArray[b]["Id_FinishTime"] = allArray[b]["Id_Inter2Time"];
-                } else if (show == 3) {
-                    allArray[b]["Id_FinishTime"] = allArray[b]["Id_Inter3Time"];
-                } 
-               
-               
-               
-               
-               
-            } 
-        }
-         // delete the secound array
-         allArray2 = [];
-         
-
-//  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
-         
-//        var allArrayJ = JSON.stringify(allArray);             
-//        console.log(JSON.parse(allArrayJ));     
-//        download(allArrayJ, 'j1.txt', 'text/plain');    
-         
          
 // BEGIN SORTING
          
@@ -1492,9 +973,7 @@
                  if (useCategory == "no") {
                     allArray[l]["Id_Position"] = l+1;
                     allArray[l]["Id_Position_Overall"] = l+1;
-
-                     
-                } else if (useCategory == "yes") {
+                 } else if (useCategory == "yes") {
  
                      if (prevCompCat == allArray[l]["Id_Categorie"]) {
                         m += 1;
@@ -1504,7 +983,7 @@
                     }
                     allArray[l]["Id_Position"] = m;
                     allArray[l]["Id_Position_Categorie"] = m;
-                }
+                 }
 
                  
                  
@@ -1646,6 +1125,7 @@
                
                             
         
+        
                              // position change arrow/status prep
 
                     competitorNumber = allArray[l]["Id_Numero"];
@@ -1760,10 +1240,10 @@
                 if (allArray[l]["Id_Groupe"].includes("s1")) {
                     single1 = "lineThrough";
                 }
-                if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
+                if (allArray[l]["uci"] == 1) {
                     uci1 = '<span title="UCI Rider" class="Flag UCI"></span>';
                 }
-                if (allArray[l]["uci"] == 2 || allArray[l]["uci"] == 3) {
+                if (allArray[l]["uci_2"] == 1) {
                     uci2 = '<span title="UCI Rider" class="Flag UCI"></span>';
                 }
                 
@@ -2504,66 +1984,19 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_FinishTime
 //console.log("all "+positionArray_All_Cat[allArray[l]["Id_Numero"]][0]);
 // console.log("pos "+positionArray_All_Cat[allArray[l]["Id_Numero"]][1]);
 
-/*
-// order the array for JSON.stringify
-
-        delete allArray[l].Id_Discipline;
-        delete allArray[l].Id_Inter1;
-        delete allArray[l].Id_Inter1_2;
-        delete allArray[l].Id_Inter2;
-        delete allArray[l].Id_Inter2_2;
-        delete allArray[l].Id_Inter3;
-        delete allArray[l].Id_Inter3_2;
-        delete allArray[l].Id_MeilleurTour;
-        delete allArray[l].Id_MeilleurTour_2;
-        delete allArray[l].Id_PenaliteNbTour;
-        delete allArray[l].Id_PenalitePosition;
-        delete allArray[l].Id_PenaliteTpsCumule;
-        delete allArray[l].Id_Position;
-        delete allArray[l].Id_PositionCategorie;
-        delete allArray[l].Id_TpsTour;
-        delete allArray[l].Id_TpsTour1;
-        delete allArray[l].Id_TpsTour2;
-        delete allArray[l].Id_TpsTour3;
-        delete allArray[l].Id_TpsTour4;
-        delete allArray[l].Id_TpsTour5;
-        delete allArray[l].Id_TpsTour6;
-        
-
-
-
-
-const allArrayJ = {};
-Object.keys(allArray[l]).sort().forEach(function(key) {
-    if (allArray[l][key] == '99999999999' || allArray[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
-        allArray[l][key] == '';
-    }
-    allArrayJ[key] = allArray[l][key];
-});
-allArray[l] = allArrayJ;
-*/
 
     }        // end for l
          
          
                 finalText += '</table></div>';
-             
-                
-                console.log(allArray);
-
-        
-//        allArrayJ = JSON.stringify(allArray);             
-//        console.log(JSON.parse(allArrayJ));     
-//        download(allArrayJ, 'j1.txt', 'text/plain');    
 
  
-// if (Array.isArray(allArray3) || allArray3.length != 0) {
- 
-     // build secound table
-//}        
           
+             console.log(allArray);
       //       console.log(finalText);
               
+      //        var allArrayJSON = JSON.stringify(allArray);             
+      //        console.log(JSON.parse(allArrayJSON));     
 
 
     sessionStorage.setItem('positionArray_All_Cat', JSON.stringify(positionArray_All_Cat));
@@ -2571,9 +2004,7 @@ allArray[l] = allArrayJ;
     // allArray = [];
     
     tableClass = "";
-    
-      //  debugger;
-        
+            
     return finalText
 
     };
@@ -2687,15 +2118,7 @@ if (k<100){
         }
     }  
     
-function download(content, fileName, contentType) {
-    var a = document.createElement("a");
-    var file = new Blob([content], {type: contentType});
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-};
-
-
+    
 /*
  // another option to convert
     function timeToMs(time) {// time(HH:MM:SS.mss)

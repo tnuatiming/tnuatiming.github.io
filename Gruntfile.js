@@ -230,6 +230,7 @@ module.exports = function(grunt) {
     grunt.registerTask('upload', ['shell:hugoBuild', 'html', 'css', 'shell:lftp', 'shell:gitUpdate']);
     grunt.registerTask('backup', ['zip_directories', 'zip']);
     grunt.registerTask('ftp', ['shell:clean', 'shell:importPosts', 'shell:csvUpdate', 'zip_directories', 'zip', 'shell:hugo', 'shell:cleanAfterHugo', 'closure-compiler', 'cssmin', 'htmlmin', 'shell:htmlproof', 'shell:lftp', 'shell:clean']);
+    grunt.registerTask('debug', ['shell:clean', 'shell:importPosts', 'shell:hugo', 'shell:cleanAfterHugo', 'shell:htmlproof', 'shell:lftp', 'shell:clean']);
     grunt.registerTask('lftp', ['shell:lftp']);
     //  grunt.registerTask('ftp', ['shell:hugoBuild', 'replace', 'ftp_push']);
     //  grunt.registerTask('upload', ['shell:hugoBuild', 'replace', 'ftp_push', 'shell:gitUpdate']);
