@@ -615,7 +615,7 @@
 */        
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, main_num, pair_num, blued;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, main_num, pair_num, blued, leader;
 
 
         if (show == 1) {
@@ -643,6 +643,7 @@
         var HeaderEventName = div.textContent || div.innerText || "";  
         var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
      
+
     //    console.log(HeaderEventName);
 
         if (eventName != HeaderEventName) {  
@@ -751,6 +752,7 @@
                 lineArray.Id_Inter1blue = 0;
                 lineArray.Id_Inter2blue = 0;
                 lineArray.Id_Inter3blue = 0;
+                lineArray.Id_Finishblue = 0;
                 lineArray.single = 0;
                 lineArray.yellow = 0;
                 lineArray.uci = 0; // 0 - none, 1 - first rider is uci, 2 - secound rider is uci, 3 - both
@@ -936,7 +938,7 @@
                                     
                                     if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
                                   //      allArray[b]["Id_FinishTime"] = 99999999999;
-                                        allArray[b].blue = 1; // make blue DSQ
+                                        allArray[b].Id_Finishblue = 1; // make blue DSQ
                                     }
                                    
                                     
@@ -944,16 +946,20 @@
                                 } else if (raceEnded == 1 && (allArray[b]["Id_TpsCumule"] == 99999999999 || allArray[b]["Id_TpsCumule_2"] == 99999999999)) {
                                     
                                     allArray[b]["Id_FinishTime"] = 99999999999;
-                                    allArray[b].blue = 1; // make blue DSQ
+                                    allArray[b].Id_Finishblue = 1; // make blue DSQ
                                     
                                 }
 
  // make blue if exeed MaximumStageTime, ENABLE after testing
                                 if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) {
                                     allArray[b]["Id_FinishTime"] = 99999999999;
-                                    allArray[b].blue = 1; // make blue DSQ
+                                    allArray[b].Id_Finishblue = 1; // make blue DSQ
                                 }
-                
+
+                                if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
+                                    allArray[b]["blue"] = 1;
+                                }
+               
                 
                 
                     // find intermediate time 1 and check for 2 minutes diffrance
@@ -1645,6 +1651,7 @@
                         showBlue = 1;
                     }
                 } else if (show == 4) {
+                    allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Ecart1er"];
                     if (allArray[l]["blue"] == 1) {
                         showBlue = 1;
                     }
@@ -1656,25 +1663,9 @@
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
-                    
-                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
-                        allArray[l]["Id_Arrow"] = 10;
-                    } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
-                        allArray[l]["blue"] = 1; //FIXME
-                    } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
-                        allArray[l]["Id_Arrow"] = 11;
-                    } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
-                        allArray[l]["Id_Arrow"] = 12;
-                        allArray[l]["blue"] = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
-                        allArray[l]["Id_Arrow"] = 9;
-                    } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
-                        allArray[l]["Id_Arrow"] = 8; // astrix
-                    } else if (allArray[l]["Id_penalty"].includes("P")) {
-                        allArray[l]["Id_Arrow"] = 7; // penalty
-                    }
+                     
 
-                    
+
                     // calculating arrows status
                     
                     positionChanged = "";
@@ -1705,6 +1696,25 @@
                         
                     }
        //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
+
+
+       
+                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
+                        allArray[l]["Id_Arrow"] = 10;
+                    } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
+                        allArray[l]["blue"] = 1; //FIXME
+                    } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
+                        allArray[l]["Id_Arrow"] = 11;
+                    } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
+                        allArray[l]["Id_Arrow"] = 12;
+                        allArray[l]["blue"] = 1;
+                    } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
+                        allArray[l]["Id_Arrow"] = 9;
+                    } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
+                        allArray[l]["Id_Arrow"] = 8; // astrix
+                    } else if (allArray[l]["Id_penalty"].includes("P")) {
+                        allArray[l]["Id_Arrow"] = 7; // penalty
+                    }
 
             
             
@@ -1749,9 +1759,16 @@
         
 
                 if (allArray[l]["yellow"] == 1) {
+                    if (allArray[l]["Id_Categorie"] == 'Women') {
+                    yellow = '<span title="Epic Leader" class="Flag PinkShirt"></span>';
+                    leader = 'pinkCard';
+                    } else {
                     yellow = '<span title="Epic Leader" class="Flag YellowShirt"></span>';
+                    leader = 'yellowCard';
+                    }
                 } else {
                     yellow = '';
+                    leader = '';
                 }
 
 
@@ -1943,11 +1960,11 @@ allArray[l]["Id_Arrow"]
 
                 
                 if (allArray[l]["oldBlue"] == 1) {
-                finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                    finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["yellow"] == 1) {
-                finalText += '<td title="Epic Leader" class="rnk_font yellowCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                    finalText += '<td title="Epic Leader" class="rnk_font ' + leader + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
-                finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                    finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
 
                 if (useCategory == "no" && cleanResults == 0) {
@@ -2510,7 +2527,19 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 //console.log("all "+positionArray_All_Cat[allArray[l]["Id_Numero"]][0]);
 // console.log("pos "+positionArray_All_Cat[allArray[l]["Id_Numero"]][1]);
 
+
 /*
+// get flag image src, DayTime, ElapsedTime, RemainingTime from header
+        var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
+
+        var div1 = document.createElement("div");  
+        div1.innerHTML = HeaderName[1]; 
+        var header2 = div1.getElementsByTagName("span");
+   
+        var DayTime =  header2[0].textContent || div.innerText || "";
+        var ElapsedTime =  header2[1].textContent || div.innerText || "";
+        var RemainingTime =  header2[2].textContent || div.innerText || "";
+
 // order the array for JSON.stringify
 
         delete allArray[l].Id_Discipline;
@@ -2557,12 +2586,20 @@ allArray[l] = allArrayJ;
              
                 
                 console.log(allArray);
+/*                
+        var header = {};
+        header.headerFlag = headerFlag;
+        header.HeaderEventName = HeaderEventName;
+        header.DayTime = DayTime;
+        header.ElapsedTime = ElapsedTime;
+        header.RemainingTime = RemainingTime;
 
-        
-//        allArrayJ = JSON.stringify(allArray);             
-//        console.log(JSON.parse(allArrayJ));     
-//        download(allArrayJ, 'j1.txt', 'text/plain');    
+        allArray.unshift(header); // add the header at the beginning
+        allArrayJ = JSON.stringify(allArray);             
+        download(allArrayJ, 'j1.txt', 'text/plain');    
 
+ //       console.log(JSON.parse(allArrayJ));     
+*/
  
 // if (Array.isArray(allArray3) || allArray3.length != 0) {
  

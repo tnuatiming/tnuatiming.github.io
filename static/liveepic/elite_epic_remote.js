@@ -28,7 +28,7 @@ fix all the crufafel with "Inter1Leader" tables
     
     var eventName = "";    
     
-    var cleanResults = 0; // alignTable for TotalIndex
+//    var cleanResults = 0; // alignTable for TotalIndex
     
     var precision = "tenth"; // "tenth" for 1 digit after the .
     
@@ -612,7 +612,7 @@ fix all the crufafel with "Inter1Leader" tables
 */        
         var Inter1Leader = [],Inter2Leader = [], Inter3Leader = [];
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, uci2, main_num, pair_num, blued;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, uci2, main_num, pair_num, blued, leader;
 
 
         if (show == 1) {
@@ -626,14 +626,24 @@ fix all the crufafel with "Inter1Leader" tables
         }
         
         allArray = JSON.parse(p1);
+        
+        Text = allArray.shift();
 
-        var HeaderName = "ff";  
+        var headerFlag = Text.headerFlag;
+        var HeaderEventName = Text.HeaderEventName;
+        var DayTime = Text.DayTime;
+        var ElapsedTime = Text.ElapsedTime;
+        var RemainingTime = Text.RemainingTime;
 
-        var HeaderEventName = "tt";  
-        var HeaderRaceName = "uu";  
+/*
+        var HeaderName = Text.split("\n");  
+        var div = document.createElement("div");  
+        div.innerHTML = HeaderName[0]; 
+        var HeaderEventName = div.textContent || div.innerText || "";  
+        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
      
     //    console.log(HeaderEventName);
-
+*/
         if (eventName != HeaderEventName) {  
             positionArray_All_Cat = {};
 //            positionArray = []; 
@@ -641,15 +651,24 @@ fix all the crufafel with "Inter1Leader" tables
         
         eventName = HeaderEventName;  // tickerTest
         
-        
-        if (cleanResults == 1) {
-            var bigFont = '';
-        } else {
-            var bigFont = ' bigFont';
+
+        if (HeaderEventName.includes("---")) { // do not show individuall times
+            doNotShowTime = 1;
+            HeaderEventName = HeaderEventName.replace("---", "");
         }
 
-        var finalText = '<h1>you did it</h1>'; // clear the finalText variable and add the title and time lines
+        if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
+            raceEnded = 1;
+        }
+        
+        var bigFont = ' bigFont';
 
+ //       var finalText = Text; // clear the finalText variable and add the title and time lines
+  
+  
+        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + HeaderEventName + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
+
+        
 
              for (b = 0; b < allArray.length; b++) {
 
@@ -740,7 +759,7 @@ fix all the crufafel with "Inter1Leader" tables
                             Inter3Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter3Time"];
                         }
                     
- 
+                    
                // display result for selected intermediate or finish
                if (show == 1) {
                     allArray[b]["Id_Sector_FinishTime"] = allArray[b]["Id_Inter1Time"];
@@ -752,6 +771,8 @@ fix all the crufafel with "Inter1Leader" tables
                     allArray[b]["Id_Sector_FinishTime"] = allArray[b]["Id_FinishTime"];
                 }
                 
+                   
+                allArray[b]["blue"] = 0;
                 
                 if (allArray[b]["Id_Inter1blue"] == 1 && show == 4) {
                    allArray[b]["blue"] = 1;
@@ -762,6 +783,16 @@ fix all the crufafel with "Inter1Leader" tables
                 if (allArray[b]["Id_Inter3blue"] == 1 && show == 4) {
                    allArray[b]["blue"] = 1;
                 }
+                if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
+                   allArray[b]["blue"] = 1;
+                }
+
+                
+                    if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1) {// FIXME Id_Status drops blue competitor to buttom , check if this is what needed
+                        allArray[b].Id_Status = 1;
+                    } else {
+                        allArray[b].Id_Status = 0;
+                    }
                
                  
              }
@@ -989,20 +1020,20 @@ fix all the crufafel with "Inter1Leader" tables
    //     }          
 
     // hard coded header for now
-        if (cleanResults == 0) {
+ //       if (cleanResults == 0) {
 
                 //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
-        } else {
+ /*       } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
-
+*/
                     headerText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
 
 
-        if (cleanResults == 0) {
+ //       if (cleanResults == 0) {
 
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
@@ -1025,7 +1056,7 @@ fix all the crufafel with "Inter1Leader" tables
                     }
                 }
                 
-        } else {
+ /*       } else {
                     headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
                     
                     headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
@@ -1041,22 +1072,22 @@ fix all the crufafel with "Inter1Leader" tables
                         headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
                     }            
 // display intermediate in cleanResults
-/*                if (show == 4) {
+//                if (show == 4) {
 
-                    headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
-                    headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
-                    headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
-                    if (timeGapDisplayInter == 1) {
-                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 Gap</th>'; // intermediate 1 time diff
-                        headerText1 += '<th class="rnkh_font Id_Inter2Ecart1er">Inter. 2 Gap</th>'; // intermediate 2 time diff
-                        headerText1 += '<th class="rnkh_font Id_Inter3Ecart1er">Inter. 3 Gap</th>'; // intermediate 3 time diff
-                    }
-                }
-*/
+//                    headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
+ //                   headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
+//                    headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
+//                    if (timeGapDisplayInter == 1) {
+//                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 Gap</th>'; // intermediate 1 time diff
+//                        headerText1 += '<th class="rnkh_font Id_Inter2Ecart1er">Inter. 2 Gap</th>'; // intermediate 2 time diff
+//                        headerText1 += '<th class="rnkh_font Id_Inter3Ecart1er">Inter. 3 Gap</th>'; // intermediate 3 time diff
+//                    }
+//                }
+
             
         }
 
-
+*/
                if (show == 1) {
                     headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                 } else if (show == 2) {
@@ -1253,6 +1284,7 @@ fix all the crufafel with "Inter1Leader" tables
                         showBlue = 1;
                     }
                 } else if (show == 4) {
+                    allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Ecart1er"];
                     if (allArray[l]["blue"] == 1) {
                         showBlue = 1;
                     }
@@ -1263,25 +1295,7 @@ fix all the crufafel with "Inter1Leader" tables
 
                     competitorNumber = allArray[l]["Id_Numero"];
                     competitorPosition = 0;
-                    
-                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
-                        allArray[l]["Id_Arrow"] = 10;
-                    } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
-                        allArray[l]["blue"] = 1; //FIXME
-                    } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
-                        allArray[l]["Id_Arrow"] = 11;
-                    } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
-                        allArray[l]["Id_Arrow"] = 12;
-                        allArray[l]["blue"] = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
-                        allArray[l]["Id_Arrow"] = 9;
-                    } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
-                        allArray[l]["Id_Arrow"] = 8; // astrix
-                    } else if (allArray[l]["Id_penalty"].includes("P")) {
-                        allArray[l]["Id_Arrow"] = 7; // penalty
-                    }
 
-                    
                     // calculating arrows status
                     
                     positionChanged = "";
@@ -1312,6 +1326,25 @@ fix all the crufafel with "Inter1Leader" tables
                         
                     }
        //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
+
+       
+                    
+                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
+                        allArray[l]["Id_Arrow"] = 10;
+                    } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
+                        allArray[l]["blue"] = 1; //FIXME
+                    } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
+                        allArray[l]["Id_Arrow"] = 11;
+                    } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
+                        allArray[l]["Id_Arrow"] = 12;
+                        allArray[l]["blue"] = 1;
+                    } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
+                        allArray[l]["Id_Arrow"] = 9;
+                    } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
+                        allArray[l]["Id_Arrow"] = 8; // astrix
+                    } else if (allArray[l]["Id_penalty"].includes("P")) {
+                        allArray[l]["Id_Arrow"] = 7; // penalty
+                    }
 
             
             
@@ -1356,9 +1389,16 @@ fix all the crufafel with "Inter1Leader" tables
         
 
                 if (allArray[l]["yellow"] == 1) {
+                    if (allArray[l]["Id_Categorie"] == 'Women') {
+                    yellow = '<span title="Epic Leader" class="Flag PinkShirt"></span>';
+                    leader = 'pinkCard';
+                    } else {
                     yellow = '<span title="Epic Leader" class="Flag YellowShirt"></span>';
+                    leader = 'yellowCard';
+                    }
                 } else {
                     yellow = '';
+                    leader = '';
                 }
 
 
@@ -1381,7 +1421,7 @@ fix all the crufafel with "Inter1Leader" tables
                 }
                 
 
-                if (cleanResults == 0) {
+ /*               if (cleanResults == 0) {
                     eeee = '<div class="FirstLine ' + single2 + '">';
                     ffff = '<div class="SecoundLine ' + single1 + '">';
                     gggg = '</div>';
@@ -1391,7 +1431,7 @@ fix all the crufafel with "Inter1Leader" tables
                     ffff = '';
                     gggg = '</td>';
                 }
-
+*/
                 
                 if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0 && show == 4) {
                     checkeredFlag = "finished ";
@@ -1529,44 +1569,44 @@ allArray[l]["Id_Arrow"]
                 if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
-                    
+/*                    
                     if (cleanResults == 1) {
 
                         finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show  postiion if status or no finish time
                     }
-                    
+*/                    
                 } else {
-                    if (cleanResults == 0) {
+//                    if (cleanResults == 0) {
 
                         finalText += '<td class="rnk_font"><div class="pos">' + allArray[l]["Id_Position_Categorie"] + '</div><div class="pos">' + allArray[l]["Id_Position_Overall"] + '</div></td>'; 
                         
-                    } else if (cleanResults == 1) {
+/*                    } else if (cleanResults == 1) {
                         
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
                     }
-                    
+*/                    
                 }
 
                 
                 if (allArray[l]["oldBlue"] == 1) {
-                finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                    finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["yellow"] == 1) {
-                finalText += '<td title="Epic Leader" class="rnk_font yellowCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                    finalText += '<td title="Epic Leader" class="rnk_font ' + leader + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
-                finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                    finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
 
-                if (useCategory == "no" && cleanResults == 0) {
+                if (useCategory == "no" /*&& cleanResults == 0*/) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
                 }            
-                
+/*                
                 if (cleanResults == 1) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // add rider 1 number
                 }
-                
-                if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0 && allArray[l]["single"] == 0) { // only rider 1 finished at this point
-                    finalText += '<td class="rnk_font">' + eeee + '<span title="Finished" class="Flag CheckeredFlag"></span>' + uci1 + allArray[l]["Id_Nom"];// add the name
+*/                
+                if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 /*&& cleanResults == 0*/ && allArray[l]["single"] == 0) { // only rider 1 finished at this point
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
@@ -1575,17 +1615,17 @@ allArray[l]["Id_Arrow"]
                             finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
  //                       }
                     }
-                    finalText += gggg;// add the name
+                    finalText += '</div>';// add the name
                     
                 } else {
-                    finalText += '<td class="rnk_font">' + eeee + uci1 + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
                             finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
     //                    }
                     }
-                    finalText += gggg;// add the name
+                    finalText += '</div>';// add the name
                 }
 
     //            if (cleanResults == 0) {
@@ -1597,13 +1637,13 @@ allArray[l]["Id_Arrow"]
                 
                 
          //       finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
-                if (cleanResults == 0) {
+//                if (cleanResults == 0) {
        //             finalText += '<div class="SecoundLine">';
                     
                     
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
-                        finalText += ffff + '<span title="Finished" class="Flag CheckeredFlag"></span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                             finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
@@ -1611,7 +1651,7 @@ allArray[l]["Id_Arrow"]
                         finalText += '</div></td>';// add the name
                         
                     } else {
-                        finalText += ffff + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                             finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
@@ -1622,7 +1662,7 @@ allArray[l]["Id_Arrow"]
                      
       //              finalText += '</div>';
                     
-                }
+//                }
                 
                 
             if (doNotShowTime == 0 && show == 4) {
@@ -1632,9 +1672,9 @@ allArray[l]["Id_Arrow"]
       //          }
                 
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
-                    finalText += '<td class="rnk_font">' + eeee + '-' + gggg; // add time
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">-' + '</div>'; // add time
                 } else {
-                    finalText += '<td class="rnk_font">' + eeee + allArray[l]["Id_TpsCumule"] + gggg; // add time
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + allArray[l]["Id_TpsCumule"] + '</div>'; // add time
                 }
 
       //          if (cleanResults == 0) {
@@ -1643,7 +1683,7 @@ allArray[l]["Id_Arrow"]
                 
                 
                 
-                 if (cleanResults == 0) {
+   //              if (cleanResults == 0) {
      //               finalText += '<div class="SecoundLine">';
                
                 
@@ -1662,10 +1702,10 @@ allArray[l]["Id_Arrow"]
                     
            //         finalText += '</div>';
                     
-                }
+//                }
                 
             }          
-                
+/*            
                 if (cleanResults == 1) {
                                             
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // add rider 2 number
@@ -1689,7 +1729,7 @@ allArray[l]["Id_Arrow"]
                     }            
                         
                 }
-                
+*/                
       //          if (overTheTime == "yes") {
                 // make color change FIXME
                 
@@ -1759,7 +1799,7 @@ allArray[l]["Id_Arrow"]
 // END intermediate 1              
 */
                 
-if (show == 4 && cleanResults == 0) {
+if (show == 4 /*&& cleanResults == 0*/) {
 
 // BEGIN intermediate 1
                     if (allArray[l]["Id_Inter1blue"] == 1) {
@@ -2207,7 +2247,7 @@ if (k<100){
 
     function alignTable() {
         
-        if (cleanResults == 0 && epictv == 0) {
+        if (/*cleanResults == 0 &&*/ epictv == 0) {
             
             // aligning table colmuns according to number of colmuns
             var tt = document.querySelectorAll('.line_color');
