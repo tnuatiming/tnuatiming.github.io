@@ -162,11 +162,15 @@
 
 
         if (useCategory == "yes") {
-            document.getElementById("displayCatButton").style.display = "none";        
-            document.getElementById("displayAllButton").style.display = "block";        
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
         } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").style.display = "block";        
-            document.getElementById("displayAllButton").style.display = "none";        
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");
+            document.getElementById("displayAllButton").disabled = true;
         }
 
 /*        await fetch(url, {cache: "no-store"})

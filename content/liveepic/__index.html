@@ -1,9 +1,9 @@
 ---
 type: live
 body: epic
-#permalink: /liveepic/index.html
+#permalink: /liveepic/index1.html
 place: live timing
-slug: "index"
+slug: "index1"
 ---
 
 <style>
@@ -103,18 +103,33 @@ td[aria-label]:hover:after {
         background-color:#add8e6bf; 
         font-weight:700;
     }
+    #live td.rnk_font.DarkBlueCard {
+        color:#111; 
+        background-color:#2f5999ff; 
+        font-weight:700;
+    }
     #live td.rnk_font.redCard {
         color:white; 
         background-color:red; 
         font-weight:700;
     }
     #live td.rnk_font.yellowCard {
-        background-color:#fee300bf; 
+        background-color:#fae100ff; 
         font-weight:700;
     }
     #live td.rnk_font.pinkCard {
         color:white; 
-        background-color:#aa45e7ff; 
+        background-color:#ff1493ff; 
+        font-weight:700;
+    }
+    #live td.rnk_font.greenCard {
+        color:white; 
+        background-color:#427f4dfe; 
+        font-weight:700;
+    }
+    #live td.rnk_font.purpleCard {
+        color:white; 
+        background-color:#412297ff; 
         font-weight:700;
     }
     #live td img {
@@ -191,6 +206,9 @@ td[aria-label]:hover:after {
     .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
     .YellowShirt {background-image: url(Images/YellowShirt.svg);margin: 0;}
     .PinkShirt {background-image: url(Images/PinkShirt.svg);margin: 0;}
+    .GreenShirt {background-image: url(Images/GreenShirt.svg);margin: 0;}
+    .BlueShirt {background-image: url(Images/BlueShirt.svg);margin: 0;}
+    .PurpleShirt {background-image: url(Images/PurpleShirt.svg);margin: 0;}
     .UCI {background-image: url(Images/uci.svg);}
 
     .dnf {background-image: url(Images/_dnf.svg);}
@@ -204,7 +222,15 @@ td[aria-label]:hover:after {
     #live .btn {display: inline-block;}
     #live #buttonInfo {margin-bottom: 10px;}
     #live .btn.active {cursor: pointer;filter: opacity(50%);}
-    #live #Title {justify-content: center;}
+    #live #Title {
+        justify-content: space-evenly;
+        vertical-align: middle;
+        font-weight: 700;
+        font-size: 1em;
+        color: #58585a;
+        margin: 5px 0;
+        text-align: center;    
+    }
     #live h1#Title img {margin: 0 10px;}
 
     #live td div.bold {font-weight:700;}
@@ -218,19 +244,19 @@ td[aria-label]:hover:after {
 
 <div id="buttonInfo">
     <div id="categoryOrAll">
-        <span><button id="Men" class="btn" onClick="category('yes', 'Men')">Men</button></span>
-        <span><button id="Women" class="btn" onClick="category('yes', 'Women')">Women</button></span>
-        <span><button id="Mixed" class="btn" onClick="category('yes', 'Mixed')">Mixed</button></span>
-        <span><button id="Masters" class="btn" onClick="category('yes', 'Masters')">Masters</button></span>
-        <span><button id="Grand" class="btn" onClick="category('yes', 'Grand')">Grand</button></span>
-        <span><button id="displayCatButton" class="btn" onClick="category('yes', 'None')">By Category</button></span>
-        <span><button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button></span>
+        <button id="Men" class="btn" onClick="category('yes', 'Men')">Men</button>
+        <button id="Women" class="btn" onClick="category('yes', 'Women')">Women</button>
+        <button id="Mixed" class="btn" onClick="category('yes', 'Mixed')">Mixed</button>
+        <button id="Masters" class="btn" onClick="category('yes', 'Masters')">Masters</button>
+        <button id="Grand" class="btn" onClick="category('yes', 'Grand')">Grand</button>
+        <button id="displayCatButton" class="btn" onClick="category('yes', 'None')">By Category</button>
+        <button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button>
     </div>
     <div id="intermediateOrFinish">
-        <span><button id="intermediate1" class="btn" onClick="intermediateOrFinish('1')">Intermediate 1</button></span>
-        <span><button id="intermediate2" class="btn" onClick="intermediateOrFinish('2')">Intermediate 2</button></span>
-        <span><button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button></span>
-        <span><button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button></span>
+        <button id="intermediate1" class="btn" onClick="intermediateOrFinish('1')">Intermediate 1</button>
+        <button id="intermediate2" class="btn" onClick="intermediateOrFinish('2')">Intermediate 2</button>
+        <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
+        <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
     </div>
         <div id="updates">&nbsp;</div>
 </div>
@@ -240,7 +266,7 @@ td[aria-label]:hover:after {
 
 <div id="previousResults"></div>
 
-<div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall</button></div>
+<div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall results</button></div>
 
 
 <div id="legend">

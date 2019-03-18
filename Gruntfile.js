@@ -48,6 +48,7 @@ module.exports = function(grunt) {
             my_target: {
                 files: {
                     './_site/liveepic/elite_epic_total.js': ['./_site/liveepic/elite_epic_total.js'],
+                    './_site/liveepic/elite_epic_remote.js': ['./_site/liveepic/elite_epic_remote.js'],
                     './_site/liveepic/elite_epic.js': ['./_site/liveepic/elite_epic.js'],
                     './_site/live1/elite.js': ['./_site/live1/elite.js'],
                     './_site/live/elite.js': ['./_site/live/elite.js']

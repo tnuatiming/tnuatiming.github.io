@@ -463,6 +463,7 @@
                 const response = await fetch(url, {cache: "no-store"});
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = await response.text();
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
@@ -498,6 +499,7 @@
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = xhr.responseText;
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
@@ -615,7 +617,7 @@
 */        
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, main_num, pair_num, blued, leader;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime,  single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard;
 
 
         if (show == 1) {
@@ -678,7 +680,7 @@
             var bigFont = ' bigFont';
         }
 
-        var finalText = Text[0]; // clear the finalText variable and add the title and time lines
+        var finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
 
 
 
@@ -754,7 +756,7 @@
                 lineArray.Id_Inter3blue = 0;
                 lineArray.Id_Finishblue = 0;
                 lineArray.single = 0;
-                lineArray.yellow = 0;
+                lineArray.leader = 0;
                 lineArray.uci = 0; // 0 - none, 1 - first rider is uci, 2 - secound rider is uci, 3 - both
                 lineArray.Id_penalty = "";   
 
@@ -881,7 +883,7 @@
 
                     if (allArray[b]["Id_Groupe"].includes('l')) {
                         
-                        allArray[b]["yellow"] = 1; // mark leader (yellow shirt)
+                        allArray[b]["leader"] = 1; // mark leader (yellow shirt)
                         
                     }                    
                     
@@ -1374,6 +1376,7 @@
          
          
 // HEADER              
+    if (cleanResults == 0) {                            
                             
         headerText1 = '<tr class="rnkh_bkcolor">';
 
@@ -1385,20 +1388,20 @@
    //     }          
 
     // hard coded header for now
-        if (cleanResults == 0) {
+//        if (cleanResults == 0) {
 
                 //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
-        } else {
+/*        } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position_Categorie">CAT</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position_Overall">GC</th>';
         }
-
+*/
                     headerText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
 
 
-        if (cleanResults == 0) {
+ //       if (cleanResults == 0) {
 
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
@@ -1421,7 +1424,7 @@
                     }
                 }
                 
-        } else {
+/*        } else {
                     headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
                     
                     headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
@@ -1437,7 +1440,7 @@
                         headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
                     }            
 // display intermediate in cleanResults
-/*                if (show == 4) {
+                if (show == 4) {
 
                     headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                     headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
@@ -1448,10 +1451,10 @@
                         headerText1 += '<th class="rnkh_font Id_Inter3Ecart1er">Inter. 3 Gap</th>'; // intermediate 3 time diff
                     }
                 }
-*/
+
             
         }
-
+*/
 
                if (show == 1) {
                     headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
@@ -1463,11 +1466,6 @@
                     headerText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // combined time
                 }
 
-        
-        
-        
-        
-        
                     
                     if (timeGapDisplay == 1) {
                         headerText1 += '<th class="rnkh_font Id_Ecart1er">Gap</th>';
@@ -1476,10 +1474,76 @@
         headerText1 += '</tr>';
         
        //    console.log(headerText1);
-
+    }
 // END HEADER
  
-         
+
+        
+        
+// HEADER cleanResults = 1              
+    if (cleanResults == 1) {                            
+        headerText1 = '<tr class="rnkh_bkcolor">';
+
+                headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+                    headerText1 += '<th class="rnkh_font Id_Groupe">status</th>';
+                if (useCategory == "no") {
+                    headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
+                }            
+                headerText1 += '<th class="rnkh_font Id_Position_Categorie">CAT</th>';
+                headerText1 += '<th class="rnkh_font Id_Position_Overall">GC</th>';
+
+                headerText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+
+
+                headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
+                
+                headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
+                headerText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
+                headerText1 += '<th class="rnkh_font UCI">UCI</th>';
+                if (doNotShowTime == 0) {
+                    headerText1 += '<th class="rnkh_font Id_TpsCumule">Time Rider 1</th>';
+                }
+                headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Nr</th>';
+                headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2</th>';
+                headerText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
+                headerText1 += '<th class="rnkh_font UCI">UCI</th>';
+                if (doNotShowTime == 0) {
+                    headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time Rider 2</th>';
+                }
+// display intermediate in cleanResults
+//                if (show == 4) {
+
+//                    headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
+//                    headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
+//                    headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
+//                    if (timeGapDisplayInter == 1) {
+//                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 Gap</th>'; // intermediate 1 time diff
+//                        headerText1 += '<th class="rnkh_font Id_Inter2Ecart1er">Inter. 2 Gap</th>'; // intermediate 2 time diff
+//                        headerText1 += '<th class="rnkh_font Id_Inter3Ecart1er">Inter. 3 Gap</th>'; // intermediate 3 time diff
+//                    }
+//                }
+        
+
+            headerText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // time
+
+
+            if (timeGapDisplay == 1) {
+                headerText1 += '<th class="rnkh_font Id_Ecart1er">Gap</th>';
+            }
+                
+        headerText1 += '</tr>';
+        
+       //    console.log(headerText1);
+    }
+// END HEADER cleanResults = 1
+        
+        
+        
+        
+        
+        
+        
+        
     // fix the position fields of the competitors and start building the final table
             m = 0;
             prevCompCat = ""
@@ -1758,17 +1822,26 @@
 */        
         
 
-                if (allArray[l]["yellow"] == 1) {
+                if (allArray[l]["leader"] == 1) {
                     if (allArray[l]["Id_Categorie"] == 'Women') {
-                    yellow = '<span title="Epic Leader" class="Flag PinkShirt"></span>';
-                    leader = 'pinkCard';
+                    leader = '<span title="Women Leader" class="Flag PinkShirt"></span>';
+                    leaderCard = 'pinkCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Mixed') {
+                    leader = '<span title="Mixed Leader" class="Flag GreenShirt"></span>';
+                    leaderCard = 'greenCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Masters') {
+                    leader = '<span title="Masters Leader" class="Flag BlueShirt"></span>';
+                    leaderCard = 'DarkBlueCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
+                    leaderCard = 'purpleCard';
                     } else {
-                    yellow = '<span title="Epic Leader" class="Flag YellowShirt"></span>';
-                    leader = 'yellowCard';
+                    leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
+                    leaderCard = 'yellowCard';
                     }
                 } else {
-                    yellow = '';
                     leader = '';
+                    leaderCard = '';
                 }
 
 
@@ -1791,17 +1864,6 @@
                 }
                 
 
-                if (cleanResults == 0) {
-                    eeee = '<div class="FirstLine ' + single2 + '">';
-                    ffff = '<div class="SecoundLine ' + single1 + '">';
-                    gggg = '</div>';
-               } else {
-                    
-                    eeee = '';
-                    ffff = '';
-                    gggg = '</td>';
-                }
-
                 
                 if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0 && show == 4) {
                     checkeredFlag = "finished ";
@@ -1809,11 +1871,16 @@
                     checkeredFlag = "";
                 }
                 
+                blued = '';
+                if (allArray[l]["blue"] == 1) {
+                  blued = 'blued ';  
+                }
 
 
                  
-               // build table for web (TV comes later)  
-    if (((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")  && epictv == 0) {
+// MAIN TABLE DATA, build table for web (TV comes later)  
+
+    if (((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")  && epictv == 0 && cleanResults == 0) {
                  
 // if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 5 competitors
 
@@ -1885,10 +1952,6 @@ allArray[l]["Id_Arrow"]
 12 '<img class="dnsfq" src="Images/_dns.svg" alt="dns">'                    
 */                
                 
-                blued = '';
-                if (allArray[l]["blue"] == 1) {
-                  blued = 'blued ';  
-                }
                 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
@@ -1936,66 +1999,65 @@ allArray[l]["Id_Arrow"]
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1) {
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1 || show != 4) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
                     
-                    if (cleanResults == 1) {
-
-                        finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show  postiion if status or no finish time
-                    }
+//                    if (cleanResults == 1) {
+//                        finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show  postiion if status or no finish time
+//                    }
                     
                 } else {
-                    if (cleanResults == 0) {
+//                   if (cleanResults == 0) {
 
                         finalText += '<td class="rnk_font"><div class="pos">' + allArray[l]["Id_Position_Categorie"] + '</div><div class="pos">' + allArray[l]["Id_Position_Overall"] + '</div></td>'; 
                         
-                    } else if (cleanResults == 1) {
-                        
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
-                    }
+//                    } else if (cleanResults == 1) {
+//                        
+//                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
+//                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
+//                    }
                     
                 }
 
                 
                 if (allArray[l]["oldBlue"] == 1) {
                     finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["yellow"] == 1) {
-                    finalText += '<td title="Epic Leader" class="rnk_font ' + leader + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                } else if (allArray[l]["leader"] == 1) {
+                    finalText += '<td title="Epic Leader" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                     finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
 
-                if (useCategory == "no" && cleanResults == 0) {
+                if (useCategory == "no"/* && cleanResults == 0*/) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
                 }            
                 
-                if (cleanResults == 1) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // add rider 1 number
-                }
+//                if (cleanResults == 1) {
+//                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // add rider 1 number
+//                }
                 
-                if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 && cleanResults == 0 && allArray[l]["single"] == 0) { // only rider 1 finished at this point
-                    finalText += '<td class="rnk_font">' + eeee + '<span title="Finished" class="Flag CheckeredFlag"></span>' + uci1 + allArray[l]["Id_Nom"];// add the name
+                if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 /*&& cleanResults == 0 */&& allArray[l]["single"] == 0) { // only rider 1 finished at this point
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
  //                       }
                     }
-                    finalText += gggg;// add the name
+                    finalText += '</div>';// add the name
                     
                 } else {
-                    finalText += '<td class="rnk_font">' + eeee + uci1 + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
     //                    }
                     }
-                    finalText += gggg;// add the name
+                    finalText += '</div>';// add the name
                 }
 
     //            if (cleanResults == 0) {
@@ -2007,24 +2069,24 @@ allArray[l]["Id_Arrow"]
                 
                 
          //       finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
-                if (cleanResults == 0) {
+ //               if (cleanResults == 0) {
        //             finalText += '<div class="SecoundLine">';
                     
                     
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
-                        finalText += ffff + '<span title="Finished" class="Flag CheckeredFlag"></span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
                     } else {
-                        finalText += ffff + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
@@ -2032,7 +2094,7 @@ allArray[l]["Id_Arrow"]
                      
       //              finalText += '</div>';
                     
-                }
+ //               }
                 
                 
             if (doNotShowTime == 0 && show == 4) {
@@ -2042,9 +2104,9 @@ allArray[l]["Id_Arrow"]
       //          }
                 
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
-                    finalText += '<td class="rnk_font">' + eeee + '-' + gggg; // add time
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + '-</div>'; // add time
                 } else {
-                    finalText += '<td class="rnk_font">' + eeee + allArray[l]["Id_TpsCumule"] + gggg; // add time
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + allArray[l]["Id_TpsCumule"] + '</div>'; // add time
                 }
 
       //          if (cleanResults == 0) {
@@ -2053,7 +2115,7 @@ allArray[l]["Id_Arrow"]
                 
                 
                 
-                 if (cleanResults == 0) {
+//                 if (cleanResults == 0) {
      //               finalText += '<div class="SecoundLine">';
                
                 
@@ -2072,11 +2134,11 @@ allArray[l]["Id_Arrow"]
                     
            //         finalText += '</div>';
                     
-                }
+//                }
                 
             }          
                 
-                if (cleanResults == 1) {
+/*                if (cleanResults == 1) {
                                             
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // add rider 2 number
 
@@ -2099,7 +2161,7 @@ allArray[l]["Id_Arrow"]
                     }            
                         
                 }
-                
+*/                
       //          if (overTheTime == "yes") {
                 // make color change FIXME
                 
@@ -2169,7 +2231,7 @@ allArray[l]["Id_Arrow"]
 // END intermediate 1              
 */
                 
-if (show == 4 && cleanResults == 0) {
+if (show == 4) {
 
 // BEGIN intermediate 1
                     if (allArray[l]["Id_Inter1blue"] == 1) {
@@ -2404,7 +2466,182 @@ if (show == 4 && cleanResults == 0) {
 
 
 
- } // end show only category X
+ } // END MAIN TABLE DATA
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ // DATA cleanResults = 1              
+    if (cleanResults == 1) { 
+        
+// add category name header and table header
+            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+                
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                    finalText += '</table>\n';
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                } else if (l == 0) {
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                }
+                            
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
+            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
+                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
+            }
+            
+            
+            
+            if (l % 2 == 0) { // start building competitor line
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor OddRow">';
+            } else {
+                finalText += '<tr class="' + positionChanged + 'rnk_bkcolor EvenRow">';
+            }
+        
+                 
+
+// allArray[l]["Id_Arrow"]                    
+// 0 ''
+
+// 3 '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'
+// 4 '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'
+
+// 7 'P'                    
+// 8 '<img class="dnsfq" src="Images/_status.svg" alt="status">'                    
+// 9 '<img class="dnsfq" src="Images/_nq.svg" alt="nq">'
+// 10 '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">'
+// 11 '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">'
+// 12 '<img class="dnsfq" src="Images/_dns.svg" alt="dns">'                    
+                
+                
+                // add and style the status/arrow
+                if (allArray[l]["Id_Arrow"] == 12) {
+                    finalText += '<td class="rnk_font">DNS</td>';
+
+                } else if (allArray[l]["Id_Arrow"] == 11) {
+                    
+                    finalText += '<td class="rnk_font">DNF</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 10) {
+                    
+                    finalText += '<td class="rnk_font">DSQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 9) {
+                    
+                    finalText += '<td class="rnk_font">NQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 8) {
+                    
+                    finalText += '<td class="rnk_font">*</td>';
+                    
+                } else if (showBlue == 1) {
+                
+                    finalText += '<td class="rnk_font">Blue</td>';
+
+                } else if (checkeredFlag == "finished ") { // finished
+                    
+                    finalText += '<td class="rnk_font">Finished</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 7) { // black
+                    
+                    finalText += '<td class="rnk_font">Penalty</td>';
+                    
+                } else {
+
+                    finalText += '<td class="rnk_font">&nbsp;</td>';
+
+                }
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace('ll', 'l').replace('bb', 'b').replace(/u/g, '') + '</td>'; // status
+                
+                if (useCategory == "no") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // CAT
+                }
+                
+                
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1) {
+                
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
+                    
+
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show  postiion if status or no finish time
+                    
+                } else {
+                        
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
+                    
+                }
+       
+                        
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // Nr
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Rider 1 Nr
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>'; // Rider 1
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nationalite"] + '</td>'; // Nation
+                
+                if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
+                    finalText += '<td class="rnk_font">yes</td>'; // UCI
+                } else {
+                    finalText += '<td class="rnk_font">no</td>'; // UCI
+                }
+                
+                if (doNotShowTime == 0) {
+                    if (allArray[l]["Id_TpsCumule"] == 99999999999) {
+                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 1
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // Time Rider 1
+                    }
+                }
+                 
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Rider 2 Nr
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nationalite_2"] + '</td>'; // Nation
+                
+                if (allArray[l]["uci"] == 2 || allArray[l]["uci"] == 3) {
+                    finalText += '<td class="rnk_font">yes</td>'; // UCI
+                } else {
+                    finalText += '<td class="rnk_font">no</td>'; // UCI
+                }
+                
+                if (doNotShowTime == 0) {
+                    if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
+                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 2
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // Time Rider 2
+                    }
+                }
+                
+                    if (allArray[l]["Id_FinishTime"] == 99999999999) {
+                        finalText += '<td class="rnk_font">-</td>'; // time
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
+                    }
+                
+                if (timeGapDisplay == 1) {
+                    if (allArray[l]["Id_Ecart1er"] == 99999999999) {
+                        finalText += '<td class="rnk_font">-</td>'; // Gap
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
+                    }
+                }
+
+        
+    }
+// END DATA cleanResults = 1
+
+ 
+ 
+ 
+ 
 
 
 
@@ -2483,7 +2720,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
                 }
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + yellow + '</td>'; // add riders name
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
                 finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
 
@@ -2530,6 +2767,8 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 
 /*
 // get flag image src, DayTime, ElapsedTime, RemainingTime from header
+
+    if (cleanResults == 0) {
         var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
 
         var div1 = document.createElement("div");  
@@ -2567,16 +2806,15 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
         delete allArray[l].Id_Sector_Ecart1er;
 
 
-
-
-const allArrayJ = {};
-Object.keys(allArray[l]).sort().forEach(function(key) {
-    if (allArray[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
-        allArray[l][key] == '';
+        const allArrayJ = {};
+        Object.keys(allArray[l]).sort().forEach(function(key) {
+            if (allArray[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
+                allArray[l][key] == '';
+            }
+            allArrayJ[key] = allArray[l][key];
+        });
+        allArray[l] = allArrayJ;
     }
-    allArrayJ[key] = allArray[l][key];
-});
-allArray[l] = allArrayJ;
 */
 
     }        // end for l
@@ -2586,7 +2824,8 @@ allArray[l] = allArrayJ;
              
                 
                 console.log(allArray);
-/*                
+/*  
+    if (cleanResults == 0 && show == 4 && useCategory == "no") {
         var header = {};
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
@@ -2597,9 +2836,10 @@ allArray[l] = allArrayJ;
         allArray.unshift(header); // add the header at the beginning
         allArrayJ = JSON.stringify(allArray);             
         download(allArrayJ, 'j1.txt', 'text/plain');    
-
+    }
  //       console.log(JSON.parse(allArrayJ));     
 */
+
  
 // if (Array.isArray(allArray3) || allArray3.length != 0) {
  
@@ -2733,6 +2973,7 @@ if (k<100){
     
 function download(content, fileName, contentType) {
     var a = document.createElement("a");
+    a.setAttribute("id", "download");
     var file = new Blob([content], {type: contentType});
     a.href = URL.createObjectURL(file);
     a.download = fileName;

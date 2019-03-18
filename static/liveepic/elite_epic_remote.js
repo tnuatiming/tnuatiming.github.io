@@ -470,6 +470,7 @@ fix all the crufafel with "Inter1Leader" tables
                 const response = await fetch(url, {cache: "no-store"});
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if j1.html exist, display the buttons
+                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = await response.text();
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
@@ -505,6 +506,7 @@ fix all the crufafel with "Inter1Leader" tables
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if j1.html exist, display the buttons
+                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = xhr.responseText;
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
@@ -612,7 +614,7 @@ fix all the crufafel with "Inter1Leader" tables
 */        
         var Inter1Leader = [],Inter2Leader = [], Inter3Leader = [];
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, yellow, showBlue, uci1, uci2, main_num, pair_num, blued, leader;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard;
 
 
         if (show == 1) {
@@ -666,7 +668,7 @@ fix all the crufafel with "Inter1Leader" tables
  //       var finalText = Text; // clear the finalText variable and add the title and time lines
   
   
-        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + HeaderEventName + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
+        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + HeaderEventName.replace(" - ", "<br>") + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
 
         
 
@@ -1388,17 +1390,26 @@ fix all the crufafel with "Inter1Leader" tables
 */        
         
 
-                if (allArray[l]["yellow"] == 1) {
+                if (allArray[l]["leader"] == 1) {
                     if (allArray[l]["Id_Categorie"] == 'Women') {
-                    yellow = '<span title="Epic Leader" class="Flag PinkShirt"></span>';
-                    leader = 'pinkCard';
+                    leader = '<span title="Women Leader" class="Flag PinkShirt"></span>';
+                    leaderCard = 'pinkCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Mixed') {
+                    leader = '<span title="Mixed Leader" class="Flag GreenShirt"></span>';
+                    leaderCard = 'greenCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Masters') {
+                    leader = '<span title="Masters Leader" class="Flag BlueShirt"></span>';
+                    leaderCard = 'DarkBlueCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
+                    leaderCard = 'purpleCard';
                     } else {
-                    yellow = '<span title="Epic Leader" class="Flag YellowShirt"></span>';
-                    leader = 'yellowCard';
+                    leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
+                    leaderCard = 'yellowCard';
                     }
                 } else {
-                    yellow = '';
                     leader = '';
+                    leaderCard = '';
                 }
 
 
@@ -1439,10 +1450,15 @@ fix all the crufafel with "Inter1Leader" tables
                     checkeredFlag = "";
                 }
                 
+                blued = '';
+                if (allArray[l]["blue"] == 1) {
+                  blued = 'blued ';  
+                }
 
 
                  
-               // build table for web (TV comes later)  
+// MAIN TABLE DATA, build table for web (TV comes later) 
+
     if (((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")  && epictv == 0) {
                  
 // if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 5 competitors
@@ -1515,10 +1531,6 @@ allArray[l]["Id_Arrow"]
 12 '<img class="dnsfq" src="Images/_dns.svg" alt="dns">'                    
 */                
                 
-                blued = '';
-                if (allArray[l]["blue"] == 1) {
-                  blued = 'blued ';  
-                }
                 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
@@ -1566,7 +1578,7 @@ allArray[l]["Id_Arrow"]
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1) {
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1 || show != 4) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
 /*                    
@@ -1591,8 +1603,8 @@ allArray[l]["Id_Arrow"]
                 
                 if (allArray[l]["oldBlue"] == 1) {
                     finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["yellow"] == 1) {
-                    finalText += '<td title="Epic Leader" class="rnk_font ' + leader + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                } else if (allArray[l]["leader"] == 1) {
+                    finalText += '<td title="Epic Leader" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                     finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
@@ -1612,7 +1624,7 @@ allArray[l]["Id_Arrow"]
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
  //                       }
                     }
                     finalText += '</div>';// add the name
@@ -1622,7 +1634,7 @@ allArray[l]["Id_Arrow"]
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
     //                    }
                     }
                     finalText += '</div>';// add the name
@@ -1646,7 +1658,7 @@ allArray[l]["Id_Arrow"]
                         finalText += '<div class="SecoundLine ' + single1 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
@@ -1654,7 +1666,7 @@ allArray[l]["Id_Arrow"]
                         finalText += '<div class="SecoundLine ' + single1 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + yellow; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
@@ -2034,7 +2046,7 @@ if (show == 4 /*&& cleanResults == 0*/) {
 
 
 
- } // end show only category X
+ } // END MAIN TABLE DATA
 
 
 
@@ -2113,7 +2125,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
                 }
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + yellow + '</td>'; // add riders name
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
                 finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
 
