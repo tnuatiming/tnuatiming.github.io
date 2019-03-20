@@ -43,6 +43,31 @@ slug: "index1"
         order: 3;
         }
 
+    #live td.left, #live th.left {
+        text-align: left;
+    }
+    #live td.right, #live th.right {
+        text-align: right;
+    }
+    #live td.wrap {
+        white-space: normal;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+    #live .team {
+        max-width: 200px;
+        overflow: hidden;
+        text-align: left;
+    }
+    
+#live td.highlight {
+    font-weight: 400;
+    background-color: transparent; 
+    color: #222;
+    /* text-shadow: none; */
+    /* background-clip: padding-box; */
+}
+
 td[aria-label]:hover:after {
     content: attr(aria-label);
     padding: 0 0;
@@ -68,7 +93,9 @@ td[aria-label]:hover:after {
     }
 }
 
-
+#live .team {
+    max-height: 38px;
+}
 
     tbody.line, tr.rnk_bkcolor {
         border-bottom: 1px solid #111;
@@ -83,6 +110,9 @@ td[aria-label]:hover:after {
     }
   /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
 
+    #live td.rnk_font {
+        padding:0 2px; 
+    }
     #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
   
     #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) { /*first 3 elements*/
@@ -132,12 +162,42 @@ td[aria-label]:hover:after {
         background-color:#412297ff; 
         font-weight:700;
     }
+#live span.green {
+    color: #00843d;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #000;
+}
+#live span.yellow {
+    color: #fae100;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #000;
+}
+#live span.blue {
+    color: #41b6e6;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #fff;
+}
+#live span.purple {
+    color: #412297;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #fff;
+}
+#live span.pink {
+    color: #ff1493;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #000;
+}
+#live span.black {
+    color: #222;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #fff;
+}
     #live td img {
         height:0.9em; 
         vertical-align:middle; 
         padding:0 2px;
     }
-    .pos {
+    #live td.rnk_font.pos {
         font-weight:700;
     }
     .lineThrough {

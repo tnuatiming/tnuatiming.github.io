@@ -84,15 +84,6 @@ category: "supermoto"
         <td class="rnk_font">17:45.571</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
-    <tr class="rnk_bkcolor">
-        <td class="rnk_font">8</td>
-        <td class="rnk_font">19</td>
-        <td class="rnk_font">אלעד אליהב</td>
-        <td class="rnk_font">10</td>
-        <td class="rnk_font">1:25.052</td>
-        <td class="rnk_font">18:10.603</td>
-        <td class="rnk_font">2 הקפות</td>
-    </tr>
     <tr>
         <td colspan="99" class="comment_font">הקפה מהירה: (696) לי ברדה - 1:19.902</td>
     </tr>
@@ -154,15 +145,6 @@ category: "supermoto"
         <td class="rnk_font">1:22.866</td>
         <td class="rnk_font">18:22.769</td>
         <td class="rnk_font">57.979</td>
-    </tr>
-    <tr class="rnk_bkcolor">
-        <td class="rnk_font">6</td>
-        <td class="rnk_font">19</td>
-        <td class="rnk_font">אלעד אליהב</td>
-        <td class="rnk_font">11</td>
-        <td class="rnk_font">1:26.023</td>
-        <td class="rnk_font">17:32.204</td>
-        <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor">
         <td class="rnk_font">7</td>

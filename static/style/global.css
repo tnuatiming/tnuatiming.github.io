@@ -740,12 +740,20 @@ span#name, span#rund, span#date {
     color: #fedd00;
     font-weight: 700;
 }
+#live td.darkyellow {
+    color: #fc3;
+    font-weight: 700;
+}
 #live td.blue {
     color: #41b6e6;
     font-weight: 700;
 }
 #live td.lightblue {
     color: #add8e6;
+    font-weight: 700;
+}
+#live td.purple {
+    color: #412297;
     font-weight: 700;
 }
 #live td.orange, #live td.dnsfq {
