@@ -578,7 +578,7 @@
             epictv = 1;
         }
         
-        var MaximumStageTime = 18000000; // Maximum stage time in miliseconds, 18000000=5hours
+        var MaximumStageTime = 21600000; // Maximum stage time in miliseconds, 18000000=5hours, 21600000=6hours
         var i;
         var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLIMENTED IN THE COMPETITOR RESULTS
@@ -1408,21 +1408,21 @@
  //       if (cleanResults == 0) {
 
 //                    headerText1 += '<th class="rnkh_font uci">&nbsp;</th>';
-                    headerText1 += '<th class="rnkh_font Id_Nationalite">&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Numero">&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font left Id_Nom">Riders</th>';
+                    headerText1 += '<th class="rnkh_font Id_Nationalite">&nbsp;</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
 
                     //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
                     headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
                 if (show == 4) {
-                        headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
-                        headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
-                        headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
+                        headerText1 += '<th class="rnkh_font mobile Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
+                        headerText1 += '<th class="rnkh_font mobile Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
+                        headerText1 += '<th class="rnkh_font mobile Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
                     if (timeGapDisplayInter == 1) {
-                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 GAP</th>'; // intermediate 1 time diff
-                        headerText1 += '<th class="rnkh_font Id_Inter2Ecart1er">Inter. 2 GAP</th>'; // intermediate 2 time diff
-                        headerText1 += '<th class="rnkh_font Id_Inter3Ecart1er">Inter. 3 GAP</th>'; // intermediate 3 time diff
+                        headerText1 += '<th class="rnkh_font mobile Id_Inter1Ecart1er">Inter. 1 GAP</th>'; // intermediate 1 time diff
+                        headerText1 += '<th class="rnkh_font mobile Id_Inter2Ecart1er">Inter. 2 GAP</th>'; // intermediate 2 time diff
+                        headerText1 += '<th class="rnkh_font mobile Id_Inter3Ecart1er">Inter. 3 GAP</th>'; // intermediate 3 time diff
                     }
                 }
                 
@@ -2089,11 +2089,6 @@ allArray[l]["Id_Arrow"]
                 }            
 
                 
-                 
-                
-                finalText += '<td class="rnk_font left"><div class="FirstLine"><span title="' + allArray[l]["Id_Nationalite"] + '" class="' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + ' Flag"></span></div><div class="SecoundLine"><span title="' + allArray[l]["Id_Nationalite_2"] + '" class="' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + ' Flag"></span></div></td>'; // add nation
-                    
-
                
                 
 /*                if (allArray[l]["oldBlue"] == 1) {
@@ -2114,19 +2109,24 @@ allArray[l]["Id_Arrow"]
 
                     
                     
-                    if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
-                        finalText += '<div class="SecoundLine ' + single1 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"] + uci2 + leader + markBlue + '</div></td>';// add the name
-                        
-                    } else {
-                        finalText += '<div class="SecoundLine ' + single1 + '">' + allArray[l]["Id_Nom_2"] + uci2 + leader + markBlue + '</div></td>';// add the name
-                    }
+                if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
+                    finalText += '<div class="SecoundLine ' + single1 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + allArray[l]["Id_Nom_2"] + uci2 + leader + markBlue + '</div></td>';// add the name
+                    
+                } else {
+                    finalText += '<div class="SecoundLine ' + single1 + '">' + allArray[l]["Id_Nom_2"] + uci2 + leader + markBlue + '</div></td>';// add the name
+                }
                 
+                 
+                
+                finalText += '<td class="rnk_font left"><div class="FirstLine"><span title="' + allArray[l]["Id_Nationalite"] + '" class="' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + ' Flag"></span></div><div class="SecoundLine"><span title="' + allArray[l]["Id_Nationalite_2"] + '" class="' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + ' Flag"></span></div></td>'; // add nation
+                    
 
-                    if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
-                        finalText += '<td class="rnk_font left">&nbsp;</td>';// add team name
-                    } else {
-                        finalText += '<td class="rnk_font wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
-                    }
+
+                if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
+                    finalText += '<td class="rnk_font left">&nbsp;</td>';// add team name
+                } else {
+                    finalText += '<td class="rnk_font wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
+                }
            //         finalText += '</div>';
                     
 //                }
@@ -2231,9 +2231,9 @@ if (show == 4) {
                     if (allArray[l]["Id_Inter1blue"] == 1) {
                         
                          if (allArray[l]["Id_Inter1Time"] == 99999999999) {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
                         } else {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
 
                             if (allArray[l]["Id_Inter1Ecart1er"] == 99999999999) {
                                 finalText += '<div>-</div></td>'; // add diff
@@ -2246,16 +2246,16 @@ if (show == 4) {
                     
                     } else if (imTheLeaderInter1 == 1) {
                         if (allArray[l]["Id_Inter1Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font">-</td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile">-</td>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
                         }
                         
                     } else {
                         if (allArray[l]["Id_Inter1Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font"><div>-</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div>-</div>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div>'; // add intermediate time
                         }
 
                         if (allArray[l]["Id_Inter1Ecart1er"] == 99999999999) {
@@ -2271,9 +2271,9 @@ if (show == 4) {
                                                 
                         
                          if (allArray[l]["Id_Inter2Time"] == 99999999999) {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
                         } else {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
 
                             if (allArray[l]["Id_Inter2Ecart1er"] == 99999999999) {
                                 finalText += '<div>-</div></td>'; // add diff
@@ -2285,16 +2285,16 @@ if (show == 4) {
                     
                     } else if (imTheLeaderInter2 == 1) {
                         if (allArray[l]["Id_Inter2Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font">-</td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile">-</td>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
                         }
                         
                     } else {
                         if (allArray[l]["Id_Inter2Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font"><div>-</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div>-</div>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div>'; // add intermediate time
                         }
 
                         if (allArray[l]["Id_Inter2Ecart1er"] == 99999999999) {
@@ -2310,9 +2310,9 @@ if (show == 4) {
                                                 
                         
                          if (allArray[l]["Id_Inter3Time"] == 99999999999) {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
                         } else {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
 
                             if (allArray[l]["Id_Inter3Ecart1er"] == 99999999999) {
                                 finalText += '<div>-</div></td>'; // add diff
@@ -2324,16 +2324,16 @@ if (show == 4) {
                     
                     } else if (imTheLeaderInter3 == 1) {
                         if (allArray[l]["Id_Inter3Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font">-</td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile">-</td>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
                         }
                         
                     } else {
                         if (allArray[l]["Id_Inter3Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font"><div>-</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div>-</div>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div>'; // add intermediate time
                         }
 
                         if (allArray[l]["Id_Inter3Ecart1er"] == 99999999999) {
