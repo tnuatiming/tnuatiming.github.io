@@ -586,7 +586,7 @@ fix all the crufafel with "Inter1Leader" tables
             epictv = 1;
         }
         
-        var MaximumStageTime = 18000000; // Maximum stage time in miliseconds, 18000000=5hours
+        var MaximumStageTime = 36000000; // Maximum stage time in miliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
         var i;
         var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLIMENTED IN THE COMPETITOR RESULTS

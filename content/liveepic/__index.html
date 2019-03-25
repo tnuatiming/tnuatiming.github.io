@@ -97,12 +97,12 @@ td[aria-label]:hover:after {
     .mobile {
         display: none;
     }
+    #live .team {
+        max-height: 38px;
+    }
 
 }
 
-#live .team {
-    max-height: 38px;
-}
 
     tbody.line, tr.rnk_bkcolor {
         border-bottom: 1px solid #111;
@@ -112,8 +112,9 @@ td[aria-label]:hover:after {
         direction: ltr;
         margin-top: 10px;
     }
-    .bigFont {
+    #live td.rnk_font.bigFont {
         font-size: 1.5em;
+        font-weight:700;
     }
   /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
 
@@ -169,43 +170,40 @@ td[aria-label]:hover:after {
         background-color:#412297ff; 
         font-weight:700;
     }
-#live span.green {
+#live td.rnk_font.green {
     color: #00843d;
     font-weight: 700;
-    text-shadow: 1px 1px 2px #000;
+/*    text-shadow: 1px 1px 2px #000; */
 }
-#live span.yellow {
+#live td.rnk_font.yellow {
     color: #fae100;
     font-weight: 700;
-    text-shadow: 1px 1px 2px #000;
+/*    text-shadow: 1px 1px 2px #000; */
 }
-#live span.blue {
+#live td.rnk_font.blue {
     color: #41b6e6;
     font-weight: 700;
-    text-shadow: 1px 1px 2px #fff;
+/*    text-shadow: 1px 1px 2px #000; */
 }
-#live span.purple {
+#live td.rnk_font.purple {
     color: #412297;
     font-weight: 700;
-    text-shadow: 1px 1px 2px #fff;
+/*    text-shadow: 1px 1px 2px #000; */
 }
-#live span.pink {
+#live td.rnk_font.pink {
     color: #ff1493;
     font-weight: 700;
-    text-shadow: 1px 1px 2px #000;
+/*    text-shadow: 1px 1px 2px #000; */
 }
-#live span.black {
+#live td.rnk_font.black {
     color: #222;
     font-weight: 700;
-    text-shadow: 1px 1px 2px #fff;
+/*    text-shadow: 1px 1px 2px #000; */
 }
     #live td img {
         height:0.9em; 
         vertical-align:middle; 
         padding:0 2px;
-    }
-    #live td.rnk_font.pos {
-        font-weight:700;
     }
     .lineThrough {
         filter: opacity(35%)
@@ -229,7 +227,7 @@ td[aria-label]:hover:after {
         display: inline-block;
         width: 1.33333333em;
         vertical-align: middle;
-        margin: 0 5px;
+        margin: 0 0.25em;
     }
     
     .australia {background-image: url(Images/CountryFlags/australia.svg);}
@@ -271,19 +269,21 @@ td[aria-label]:hover:after {
     .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
     .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
     .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
-    .YellowShirt {background-image: url(Images/YellowShirt.svg);margin: 0;}
-    .PinkShirt {background-image: url(Images/PinkShirt.svg);margin: 0;}
-    .GreenShirt {background-image: url(Images/GreenShirt.svg);margin: 0;}
-    .BlueShirt {background-image: url(Images/BlueShirt.svg);margin: 0;}
-    .PurpleShirt {background-image: url(Images/PurpleShirt.svg);margin: 0;}
+    .YellowShirt {background-image: url(Images/YellowShirt.svg);}
+    .PinkShirt {background-image: url(Images/PinkShirt.svg);}
+    .GreenShirt {background-image: url(Images/GreenShirt.svg);}
+    .BlueShirt {background-image: url(Images/BlueShirt.svg);}
+    .PurpleShirt {background-image: url(Images/PurpleShirt.svg);}
     .UCI {background-image: url(Images/uci.svg);}
 
     .dnf {background-image: url(Images/_dnf.svg);}
     .dsq {background-image: url(Images/_dsq.svg);}
     .dns {background-image: url(Images/_dns.svg);}
 
-    .FirstLine {} 
-    .SecoundLine {} 
+    .FirstLine {display: flex; justify-content: space-between; } 
+    .SecoundLine {display: flex; justify-content: space-between;} 
+    .number {flex-basis: 16%;}
+    .name {flex-grow: 1; text-align: left; padding-left: 0.25em;}
     .uci {color: brown;}
     
     #live .btn {display: inline-block;}
@@ -300,7 +300,7 @@ td[aria-label]:hover:after {
     }
     #live h1#Title img {margin: 0 10px;}
 
-    #live td div.bold {font-weight:700;}
+    #live td div.bold, #live td.rnk_font.bold {font-weight:700;}
     
     div#legend {width: 100%; text-align: left;}
     div#legend ul {width: 100%; text-align: left; float: left;}
