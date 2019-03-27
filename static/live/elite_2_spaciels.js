@@ -19,6 +19,22 @@
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
     }
+    document.addEventListener("DOMContentLoaded", function() {
+
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");
+            document.getElementById("displayAllButton").disabled = true;
+        }
+
+    });   
+
     var eventName = "";    
     if (sessionStorage.getItem('eventName')) {
         eventName = sessionStorage.getItem('eventName');
@@ -27,14 +43,27 @@
     var tableClass = "fadeIn ";
     var url1 = "https://tnuatiming.com/live/livea/p1.html";    
     var url2 = "https://tnuatiming.com/live/liveb/p1.html";    
-    var text1;
-    var text2;
+    var Text1;
+    var Text2;
 
     function category(choice){
         
         positionArray = {}; // empting the array as the info inside is incorrect due to canging between position/category position.
-        
         useCategory = choice;
+        
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");
+            document.getElementById("displayAllButton").disabled = true;
+        }
+
+        
         if (useCategory == "yes") {
             sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "no") {
@@ -44,8 +73,11 @@
         Rafraichir = 10000;
 
         tableClass = "fadeIn "; // make the table fadeIn on change
+                    
+        document.getElementById("result").innerHTML = createLiveTable();
+//       alignTable();
         
-        Load(url1, 'result');
+//        Load(url1, 'result');
     };
 
     async function Load(url, target) {
@@ -54,13 +86,6 @@
         if (TimerLoad) clearTimeout(TimerLoad);
 
 
-        if (useCategory == "yes") {
-            document.getElementById("displayCatButton").style.display = "none";        
-            document.getElementById("displayAllButton").style.display = "block";        
-        } else if (useCategory == "no") {
-            document.getElementById("displayCatButton").style.display = "block";        
-            document.getElementById("displayAllButton").style.display = "none";        
-        }
 
 /*        await fetch(url, {cache: "no-store"})
         .then(res => res.text())
@@ -77,7 +102,7 @@
             try {
                 const response = await fetch(url2, {cache: "no-store"});
                 if (response.ok) {
-                 text2 = await response.text();
+                 Text2 = await response.text();
                    
                 }
             }
@@ -89,7 +114,7 @@
                 const response2 = await fetch(url1, {cache: "no-store"});
                 if (response2.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                    text1 = await response2.text();
+                    Text1 = await response2.text();
                     document.getElementById(target).innerHTML = createLiveTable();
 //                    alignTable();
                 }
@@ -125,7 +150,7 @@
         xhr2 = new XMLHttpRequest;
         xhr2.onreadystatechange = function () {
             if (xhr2.readyState == 4 && xhr2.status == 200) {
-                text2 = xhr2.responseText;
+                Text2 = xhr2.responseText;
             }
         };
         xhr2.open("GET", url2 + "?r=" + Math.random(), true);
@@ -135,7 +160,7 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                text1 = xhr.responseText;
+                Text1 = xhr.responseText;
                 document.getElementById(target).innerHTML = createLiveTable();
 //                alignTable();
             }
@@ -197,7 +222,7 @@
 */   
     function createLiveTable() {
 
-        var lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag;
+        var text1, text2, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag;
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
@@ -224,7 +249,9 @@
         var bestTime = 0;
 */        
 
-
+        text2 = Text2;
+        text1 = Text1;
+        
         text2 = text2.split('<table'); // split the text to title/time and the table
         text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
   //      console.log(text2[1]);
