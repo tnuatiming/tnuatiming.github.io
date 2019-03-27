@@ -2,25 +2,26 @@
 //  20180522 - add fades and competitor info on arrows display 
 //  20180523 - add competitor number color/background according to category 
 //  20180527 - add message uploading 
-//  20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html 
+//  20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live/livea/p1.html and special 2 live points to: https://tnuatiming.com/live/liveb/p1.html 
 //  20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  
 //  20180701 - added penalty indicator.  
 
 
-    var TimerLoad, TimerChange;
-    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
-    var UrlRefresh, UrlChange;
+    var TimerLoad, Rafraichir;
     Rafraichir = 10000;
-    Changement = 60000;
-    MaxNum = 1;
-    ClassementReduit = 1;
-    ClassementReduitXpremier = 10;
-    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
-    var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
+
+    var positionArray = {}; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
+    if (sessionStorage.getItem('positionArray')) {
+        positionArray = JSON.parse(sessionStorage.getItem('positionArray'));
+    }
     
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
+    }
+    var eventName = "";    
+    if (sessionStorage.getItem('eventName')) {
+        eventName = sessionStorage.getItem('eventName');
     }
 
     var tableClass = "fadeIn ";
@@ -31,7 +32,7 @@
 
     function category(choice){
         
-        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+        positionArray = {}; // empting the array as the info inside is incorrect due to canging between position/category position.
         
         useCategory = choice;
         if (useCategory == "yes") {
@@ -89,7 +90,8 @@
                 if (response2.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     text1 = await response2.text();
-                    document.getElementById(target).innerHTML = createLiveTable(text1);
+                    document.getElementById(target).innerHTML = createLiveTable();
+//                    alignTable();
                 }
             }
             catch (err) {
@@ -135,13 +137,14 @@
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                 text1 = xhr.responseText;
                 document.getElementById(target).innerHTML = createLiveTable();
+//                alignTable();
             }
         };
         xhr.open("GET", url1 + "?r=" + Math.random(), true);
         xhr.send(null);
         }
         
-        populatePre('uploadMsg.txt'); // upload message
+//        populatePre('uploadMsg.txt'); // upload message
 
 /*
         await fetch('uploadMsg.txt', {cache: "no-store"})
@@ -178,7 +181,7 @@
         Rafraichir = 30000;
 
     }
-
+/*
     // fn to upload messages
     function populatePre(url) {
         var xhr1 = new XMLHttpRequest();
@@ -191,29 +194,23 @@
         xhr1.open('GET', url, true);
         xhr1.send(null);
     }
-   
+*/   
     function createLiveTable() {
-        var i;
-        var lines;
-        var lines2;
+
+        var lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag;
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
 //        var qqq = [];
 //        var hhh = [];
         var hhhPro = [];
-        var hhhPro2 = [];
 //        var temp = [];
-        var lineArray = [];
+        var lineArray = {};
         var allArray = [];
-        var lineArray2 = [];
         var allArray2 = [];
         var penalty = "no";
         var ttt = 0;
         var pp = 0;
-        var b;
-        var a;
-        var id;
         var positionChanged = "";
         var bestLapComp = 0;
         var bestLap = "99999999999";
@@ -226,78 +223,101 @@
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
-        text1 = text1.split('<table'); // split the text to title/time and the table
-        text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
-      //  console.log(text1[1]);
-
-        lines = text1[1].split("\n");
-        //    console.log(lines.length);
-     //   console.log(lines);
-
 
 
         text2 = text2.split('<table'); // split the text to title/time and the table
         text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
   //      console.log(text2[1]);
-        lines2 = text2[1].split("\n");
+        lines = text2[1].split("\n");
         text2 = [];
 
+
+        text1 = text1.split('<table'); // split the text to title/time and the table
+        text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(text1[1]);
+
+        var HeaderName = text1[0].split("\n");  
+        var div = document.createElement("div");  
+        div.innerHTML = HeaderName[0]; 
+        var HeaderEventName = div.textContent || div.innerText || "";  
+        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
+
+        var flagText = HeaderName[0].match(/Images\/\s*(.*?)\s*\.png/);
+//        console.log(flagText[0]); // Images/_Stop.png
+//        console.log(flagText[1]); // _Stop
+
+
+        if (eventName != HeaderEventName) {  
+            positionArray = {};
+        }
+
+        eventName = HeaderEventName;
+        sessionStorage.setItem('eventName', eventName);
+
+
+
+
+
+        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + '</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
-        var finalText = text1[0]; // clear the finalText variable and add the title and time lines
+        finalText += HeaderName[1];
+
+        
+//        var finalText = text1[0]; // clear the finalText variable and add the title and time lines
 
 
 
-        for (b = 0; b < lines2.length; b++) { 
+        for (b = 0; b < lines.length; b++) { 
            
-            if (lines2[b].includes('<td id="Id_')) { // header cell
-                id = (lines2[b].substring(lines2[b].indexOf(' id="')+4).split('"')[1]);
-                hhhPro2.push(id);
-            } else if (lines2[b].includes("OddRow") || lines2[b].includes("EvenRow")) { // competitor line
+            if (lines[b].includes('<td id="Id_')) { // header cell
+                id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
+                hhhPro.push(id);
+            } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) { // competitor line
                 ttt = 1;
-            } else if (lines2[b].includes("</tr>") && ttt == 1) { // end competitor line
+            } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
                 ttt = 0;
                 if (penalty == "yes") {
-                    lineArray2.Id_penalty = "P";
+                    lineArray.Id_penalty = "P";
                 } else {
-                    lineArray2.Id_penalty = "&nbsp;";
+                    lineArray.Id_penalty = "&nbsp;";
                 }
-                allArray2.push(lineArray2); // push line to main array
-               lineArray2 = [];
+                allArray2.push(lineArray); // push line to main array
+               lineArray = {};
                 pp = 0;
                 penalty = "no";
-            } else if (lines2[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
-                if (lines2[b].includes("(C)")) {
+            } else if (lines[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
+                if (lines[b].includes("(C)")) {
                     penalty = "yes";
                 }
 
-                lineArray2[hhhPro2[pp]] = lines2[b].substring(lines2[b].indexOf(">")+1,lines2[b].lastIndexOf("<")).replace("(C) ", "");
+                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
                 // convert total time to miliseconds
-                if (hhhPro2[pp] == "Id_TpsCumule" && lineArray2[hhhPro2[pp]] != "-" ) {
-                    lineArray2[hhhPro2[pp]] = timeString2ms(lineArray2[hhhPro2[pp]]);   
+                if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
+                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
                 }
-                if (hhhPro2[pp] == "Id_Categorie" && lineArray2[hhhPro2[pp]] == '&nbsp;' ) {
-                    lineArray2[hhhPro2[pp]] = "כללי";   
+                if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
+                    lineArray[hhhPro[pp]] = "&nbsp;";   
                 }
-                if (hhhPro2[pp] != "Id_Categorie" && lineArray2[hhhPro2[pp]] == 'undefined' ) {
-                    lineArray2[hhhPro2[pp]] = "-";   
+                if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
+                    lineArray[hhhPro[pp]] = "-";   
                 }
 /*
-                if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
-                    bestTime2=lineArray2["Id_TpsTour"];
-                    bestTime2comp=lineArray2["Id_Numero"];
+                if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
+                    bestTime2=lineArray["Id_TpsTour"];
+                    bestTime2comp=lineArray["Id_Numero"];
                 }
 */
-                // find best lap overall        /Id_TpsTour\d+/.test(hhhPro2[pp])
-//                if (hhhPro2[pp] == "Id_TpsTour1" || hhhPro2[pp] == "Id_TpsTour2" || hhhPro2[pp] == "Id_TpsTour3" || hhhPro2[pp] == "Id_TpsTour4" || hhhPro2[pp] == "Id_TpsTour5" || hhhPro2[pp] == "Id_TpsTour6") {
-                if (/Id_TpsTour\d+/.test(hhhPro2[pp])) {
-                    if (lineArray2[hhhPro2[pp]] != "-" && timeString2ms(lineArray2[hhhPro2[pp]]) <= timeString2ms(bestLap2)) {
-                    bestLap2 = lineArray2[hhhPro2[pp]];
-                    bestLapComp2 = lineArray2["Id_Numero"];
+                // find best lap overall        /Id_TpsTour\d+/.test(hhhPro[pp])
+//                if (hhhPro[pp] == "Id_TpsTour1" || hhhPro[pp] == "Id_TpsTour2" || hhhPro[pp] == "Id_TpsTour3" || hhhPro[pp] == "Id_TpsTour4" || hhhPro[pp] == "Id_TpsTour5" || hhhPro[pp] == "Id_TpsTour6") {
+                if (/Id_TpsTour\d+/.test(hhhPro[pp])) {
+                    if (lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap2)) {
+                    bestLap2 = lineArray[hhhPro[pp]];
+                    bestLapComp2 = lineArray["Id_Numero"];
                     }
                 }
 
                 pp += 1;
-        //                console.log(lineArray2);
+        //                console.log(lineArray);
          // console.log("x  "+bestLapComp2+"  "+bestLap2);
             }
             
@@ -308,8 +328,13 @@
         ttt = 0;
         pp = 0;
         penalty = "no";
-  
-            
+        hhhPro = [];
+        lineArray = {};
+
+        lines = text1[1].split("\n");
+        //    console.log(lines.length);
+     //   console.log(lines);
+
         for (b = 0; b < lines.length; b++) { 
            
             if (lines[b].includes('<td id="Id_')) { // header cell
@@ -339,7 +364,7 @@
                 lineArray.Id_lap10 = "-";
                 lineArray.Id_lap12 = "-";
                 allArray.push(lineArray); // push line to main array 
-               lineArray = [];
+               lineArray = {};
                 pp = 0;
                 penalty = "no";
             } else if (lines[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
@@ -353,7 +378,7 @@
                     lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
                 }
                 if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "כללי";   
+                    lineArray[hhhPro[pp]] = "&nbsp;";   
                 }
                 if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
                     lineArray[hhhPro[pp]] = "-";   
@@ -386,7 +411,7 @@
      //    console.log(hhhPro);
 
      //             console.log(qqq);
-      //   console.log(hhhPro2);
+      //   console.log(hhhPro);
          //                console.log(allArray);
 
         
@@ -555,12 +580,12 @@
 
          
     // fix the position fields of the competitors and start building the final table
-            var m = 0;
-            var prevCompCat = ""
+            m = 0;
+            prevCompCat = ""
 
             finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
             
-            for (var l = 0; l < allArray.length; l++) {
+            for (l = 0; l < allArray.length; l++) {
 
                 // reasign postion number
                  if (useCategory == "no") {
@@ -577,12 +602,12 @@
                  }
 
                            if (allArray[l]["Id_Position"] == 1) {
-                                var leaderTime = allArray[l]["Id_TpsCumule"];
-                                var leaderLaps = allArray[l]["Id_NbTour"];
+                                leaderTime = allArray[l]["Id_TpsCumule"];
+                                leaderLaps = allArray[l]["Id_NbTour"];
                             }
 
                                     // fix the diff fields of the competitors
-                                var competitorLaps = allArray[l]["Id_NbTour"];
+                                competitorLaps = allArray[l]["Id_NbTour"];
 
                                 if (competitorLaps < leaderLaps && competitorLaps > 0) {
                                     if ((leaderLaps - competitorLaps) == "1") {
@@ -592,7 +617,7 @@
                                     }
                                     
                                 } else if (competitorLaps == leaderLaps) {
-                                    var competitorTime = allArray[l]["Id_TpsCumule"];
+                                    competitorTime = allArray[l]["Id_TpsCumule"];
                                     if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
 
@@ -742,9 +767,9 @@
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
                 if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == laps || (!(allArray[l]["Id_Categorie"].toUpperCase().includes("E")) && allArray[l]["Id_NbTour"] == (laps-2))) {
-                    var checkeredFlag = "finished ";
+                    checkeredFlag = "finished ";
                 } else {
-                    var checkeredFlag = "";
+                    checkeredFlag = "";
                 }
                 
                 
@@ -792,8 +817,8 @@
                 
         // add and color competitor number        
        //         if (key == "Id_Numero") {
-                    var opt3 = allArray[l]["Id_Numero"];                        
-                    var opt4 = allArray[l]["Id_Categorie"];
+                    opt3 = allArray[l]["Id_Numero"];                        
+                    opt4 = allArray[l]["Id_Categorie"];
                     
                     if (useCategory == "no") {
                         
@@ -959,9 +984,11 @@
 
             
 */             
-         //    console.log(allArray);
+             console.log(allArray);
 
          //    console.log(finalText);
+
+    sessionStorage.setItem('positionArray', JSON.stringify(positionArray));
       
     tableClass = "";
             
@@ -987,20 +1014,48 @@
         (k<100?k<10?'00':0:'')+k // optimized
     };
 
-    function Change() {
-        var Num, Index;
-        if (document.forms["Changement"].chkChangement.checked) {
-            Index = UrlRefresh.indexOf(".");
-            Num = parseInt(UrlRefresh.substring(1, Index)) + 1;
-            if (Num > MaxNum) Num = 1;
-            UrlRefresh = "p" + Num + ".html";
-            UrlChange = 1;
-            fct = function() {
-                Change()
-            };
-            TimerChange = setTimeout(fct, Changement)
-        } else if (TimerChange) clearTimeout(TimerChange)
-    };
+    function alignTable() {
+                    
+            // aligning table colmuns according to number of colmuns
+            var tt = document.querySelectorAll('.line_color');
+
+            for (let kk = 0; kk < tt.length; kk++) {
+
+        /*
+                var numCols = 0;
+
+                for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
+
+                    row = tt[kk].rows[ii];
+                    
+                    if (numCols < row.cells.length) { // find max number of colmuns
+                        numCols = row.cells.length;
+                    }
+                    row = null;
+                }
+                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+        */
+                var trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
+                var tds = trs[0].querySelectorAll('th.rnkh_font');
+
+                if (tds.length > 15) {
+                    tt[kk].classList.add("huge_table");
+                } else if (tds.length > 11) {
+                    tt[kk].classList.add("big_table");
+                }
+
+                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+
+                tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
+                    element.style.width = ddd + "%";
+                });
+
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                    element.style.width = ddd + "%";
+                });
+        //       console.log(kk + " " + numCols)
+            }
+    }  
 
 /*
  // another option to convert
