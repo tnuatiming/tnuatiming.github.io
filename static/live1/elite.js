@@ -45,12 +45,16 @@
     var url2 = "https://tnuatiming.com/live1/liveb/p1.html";    
     var Text1;
     var Text2;
-
+    
+    var firstPass = 1;
+    
     function category(choice){
         
         positionArray = {}; // empting the array as the info inside is incorrect due to canging between position/category position.
         useCategory = choice;
         
+        firstPass = 1;
+    
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").classList.remove("active");
             document.getElementById("displayCatButton").disabled = true;
@@ -446,22 +450,21 @@
         for (b = 0; b < allArray.length; b++) { 
             for (a = 0; a < allArray2.length; a++) { 
 
-                // calculating total time and total laps from both arrays
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != "-" && allArray2[a]["Id_TpsCumule"] != "-") {
-                    
-                    allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
-                }
-            
-                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
-                    
-                    allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
-                }
-            
-
                 
+                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+                     
+                                          
+                    // calculating total time and total laps from both arrays
+                    if (allArray[b]["Id_TpsCumule"] != "-" && allArray2[a]["Id_TpsCumule"] != "-") {
+                        
+                        allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
+                    }
                 
-                
-                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+                    if (allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
+                        
+                        allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
+                    }
+                                 
                      
                       // reorder laps as elite3 does somthing wrong with the order - second array
                     if (allArray2[a]["Id_TpsTour6"] != "-") {
@@ -591,16 +594,17 @@
                     }
                 
                 
-            } 
-        }
-         // delete the secound array
+            } // END for allArray2
+        } // END for allArray
+
+        // delete the secound array
          allArray2 = [];
          
          // THE MAGIC - sort the array after the merge to get new results
         if (useCategory == "no") {
             allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule || b.Id_onTrack - a.Id_onTrack});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule || b.Id_onTrack - a.Id_onTrack});
+            allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") ||  (a.Id_Categorie.includes("ג'וניור"))-(b.Id_Categorie.includes("ג'וניור")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_TpsCumule - b.Id_TpsCumule || b.Id_onTrack - a.Id_onTrack});
         }
          
          
@@ -737,32 +741,35 @@
 
 
                     // calculating arrows status
-                    if (allArray[l]["Id_Position"]) { 
-                            competitorPosition = Number(allArray[l]["Id_Position"]);  // get the position value and clean penalty indicator
-                    }
+                    competitorPosition = Number(allArray[l]["Id_Position"]);  // get the position value and clean penalty indicator
                      
-                    if (competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"] && allArray[l]["Id_TpsCumule"] != "-") { // position change arrow calc
-                    positionChanged = "";
-                    
-                        if (positionArray[competitorNumber]) {
+                    if (firstPass == 0 && competitorPosition > 0 && competitorNumber > 0 && allArray[l]["Id_NbTour"] && allArray[l]["Id_TpsCumule"] != "-") { // position change arrow calc
+                        
+                        positionChanged = "";
 
-                            if (positionArray[competitorNumber] < competitorPosition) {
-                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
-                                positionChanged = "down ";
-                            } else if (positionArray[competitorNumber] > competitorPosition) {
-                                allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
-                                positionChanged = "up ";
+                        if (positionArray[competitorNumber][0] < competitorPosition) {
+                            allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
+                            positionChanged = "lostPosition ";
+                        } else if (positionArray[competitorNumber][0] > competitorPosition) {
+                            allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
+                            positionChanged = "gainedPosition ";
 //                            } else if (positionArray[competitorNumber] == competitorPosition && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
 //                        allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'; // same :|
-                             //   positionChanged = "same ";
+                            //   positionChanged = "same ";
 //                    }                        
-                                 
-                            }                            
+                                
+                        } else if (allArray[l]["Id_NbTour"] != positionArray[competitorNumber][1]) {
+                            
+                            positionChanged = "unChanged ";
                         }
+                    
                         // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
-                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
+                        // positionArray[competitorNumber][0] = competitorPosition;// update array with current position for next Load calc
                     }
-       
+                               
+                               
+                    positionArray[competitorNumber] = [Number(allArray[l]["Id_Position"]), allArray[l]["Id_NbTour"]];// update array with current position and laps for next Load calc
+
                     // mark on track
                     if (allArray[l]["Id_onTrack"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
                         allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
@@ -1013,10 +1020,11 @@
 */             
              console.log(allArray);
 
-         //    console.log(finalText);
+             console.log(positionArray);
 
     sessionStorage.setItem('positionArray', JSON.stringify(positionArray));
-      
+    
+    firstPass = 0;      
     tableClass = "";
             
     return finalText
