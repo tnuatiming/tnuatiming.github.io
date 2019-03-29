@@ -894,7 +894,7 @@ td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.re
 
 td[aria-label]:hover:after {
     content: attr(aria-label);
-    padding: 0 0;
+    padding: 0 4px;
     position: absolute;
     right: 0;
     top: 0;

@@ -886,23 +886,25 @@
             catFirst = allArray[l]["Id_Categorie"];
             
             // DNF/DSQ
-            
-            if ((allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') && useCategory == "yes" && dnfCategory != category && cleanResults == 1) {
-                
-                finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
-                dnfCategory = category;
-            } else if (allArray[l]["Id_Image"].includes("_Status10") && useCategory == "yes" && dsqCategory != category && cleanResults == 1) {
-                
-                finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>\n';
-                dsqCategory = category;
-            } else if (allArray[l]["Id_Image"].includes("_Status12") && useCategory == "yes" && dnsCategory != category && cleanResults == 1) {
-                
-                finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>\n';
-                dnsCategory = category;
-            }
-
             if (cleanResults == 1) {
-                positionChanged = "";
+            
+                if ((allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') && useCategory == "yes" && dnfCategory != category) {
+                    
+                    finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
+                    dnfCategory = category;
+                    
+                } else if (allArray[l]["Id_Image"].includes("_Status10") && useCategory == "yes" && dsqCategory != category) {
+                    
+                    finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>\n';
+                    dsqCategory = category;
+                    
+                } else if (allArray[l]["Id_Image"].includes("_Status12") && useCategory == "yes" && dnsCategory != category) {
+                    
+                    finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>\n';
+                    dnsCategory = category;
+                }
+
+            positionChanged = "";
             }
              
             
@@ -1080,8 +1082,15 @@
                 }
 */
 
-
-                finalText += '<td class="rnk_font">' + allArray[l]["timeP"] + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
+                if (allArray[l]["Id_PenaliteTpsCumule"] != "-" && cleanResults == 0) {
+                    finalText += '<td class="rnk_font penalty" aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"].replace('.000', '') + '">P ' + allArray[l]["Id_TpsCumule"] + '</td>';
+                } else {
+                    finalText += '<td class="rnk_font">' + allArray[l]["timeP"] + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
+                }
+ 
+ 
+ 
+ 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // add diff
  
                 
