@@ -20,15 +20,17 @@
     var harescrambleFinishBeginers = 3600000; // 1 hour
     var harescrambleSuperJuniors = 2400000; // 40 minutes
 
-    var TimerLoad, TimerChange;
-    var MaxNum, Rafraichir, Changement, ClassementReduit, ClassementReduitXpremier;
-    var UrlRefresh, UrlChange;
-    Rafraichir = 10000;
-    Changement = 60000;
-    MaxNum = 1;
-    ClassementReduit = 1;
-    ClassementReduitXpremier = 10;
-//    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
+    var TimerLoad;
+    var Rafraichir = 10000;
+
+//    var TimerChange, MaxNum, Changement, ClassementReduit, ClassementReduitXpremier, UrlRefresh, UrlChange;
+//    MaxNum = 1;
+//    Changement = 60000;
+//    ClassementReduit = 1;
+//    ClassementReduitXpremier = 10;
+
+    
+    //    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var positionArrayAll = {}; // array with the previous competitor overall position. updated every Load, used to show the position change arrow between Loads 
     var positionArrayCat = {}; // array with the previous competitor category position. updated every Load, used to show the position change arrow between Loads 
     if (sessionStorage.getItem('positionArrayAll')) {
@@ -340,6 +342,8 @@
         var dnsCategory = "";
         var dsqCategory = "";
 
+        var idName, id, dnsfq, fff, slim, headerText1, bestTimeDisplay, harescrambleFinished, checkeredFlag, opt3, opt4, key, bestTimeDisplay, tickerBestTimeTemp, tickerElement, tickerInnerHTML;
+        
         Text = p1.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(Text[1]);
@@ -499,8 +503,8 @@
         for (b = 0; b < lines.length; b++) { 
            
             if (lines[b].includes('<td id="Id_')) {
-                var id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
-                var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
+                id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
+                idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
                 hhhPro.push(id);
         //        hhh[id] = idName;
        //         temp.push(id,idName);
@@ -551,7 +555,7 @@
                 }
                 // for penalty in cell
                 if (hhhPro[pp] == "Id_Position" || hhhPro[pp] == "Id_NbTour" || hhhPro[pp] == "Id_TpsCumule") {
-                    var fff = hhhPro[pp] + '_Penalty';
+                    fff = hhhPro[pp] + '_Penalty';
                     if (linePenalty == 1) {
                         lineArray[fff] = 1;
                     } else {
@@ -791,14 +795,14 @@ switch(option) {  // tickerTest
             }
 
             if (cleanResults == 1) {
-                var slim = "";
+                slim = "";
             } else {
-                var slim = " slim";
+                slim = " slim";
             }
             
             if ((allArray[l]["Id_Position"] == 1 && useCategory == "no") || (allArray[l]["Id_PositionCategorie"] == 1 && useCategory == "yes")) {                   
                                                             
-                var headerText1 = '<tr class="rnkh_bkcolor">\n';
+                headerText1 = '<tr class="rnkh_bkcolor">\n';
 
     //     for (b = 0; b < qqq.length; b++) { 
     //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
@@ -905,7 +909,7 @@ switch(option) {  // tickerTest
             competitorPosition = 0;
             allArray[l]["Id_Arrow"] = "&#9670;";
                     
-            var dnsfq = "";
+            dnsfq = "";
             if (allArray[l]["Id_Image"].includes("_Status10")) {
                 allArray[l]["Id_Arrow"] = '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">';
                 dnsfq = "נפסל";
@@ -1031,7 +1035,7 @@ switch(option) {  // tickerTest
 
                 if (category != "&nbsp;") {
                     if (typeof categoryBestTime[category][1] != 'undefined' && showBestLap == 1 && category != "&nbsp;" && category != "קטגוריה כללית" && categoryBestTime[category][1] != "-") {
-                        var bestTimeDisplay = ms2TimeString(Number(categoryBestTime[category][0]));
+                        bestTimeDisplay = ms2TimeString(Number(categoryBestTime[category][0]));
                         
                         if (bestTimeDisplay.toString().substring(0, 3) == "00:") {
                             bestTimeDisplay = bestTimeDisplay.substr(3);
@@ -1083,7 +1087,7 @@ switch(option) {  // tickerTest
     //        var opt3 = allArray[l][key];
  
             // hare scramble
-            var harescrambleFinished = 0;
+            harescrambleFinished = 0;
             if (hareScramble == 1) {
                 
                 if (allArray[l]["Id_Categorie"].toUpperCase().includes("E") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) {
@@ -1102,11 +1106,11 @@ switch(option) {  // tickerTest
         //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
             
             if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
-                var checkeredFlag = "finished ";
+                checkeredFlag = "finished ";
             } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
-                var checkeredFlag = "finished ";
+                checkeredFlag = "finished ";
             } else {
-                var checkeredFlag = "";
+                checkeredFlag = "";
             }
 
 /*                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == lapsX)))) {
@@ -1197,8 +1201,8 @@ switch(option) {  // tickerTest
             }
                 
     //         if (key == "Id_Numero") {
-                var opt3 = allArray[l]["Id_Numero"];                        
-                var opt4 = allArray[l]["Id_Categorie"];
+                opt3 = allArray[l]["Id_Numero"];                        
+                opt4 = allArray[l]["Id_Categorie"];
                 
                 if (useCategory == "no" && HeaderName[0].includes("מוטוקרוס")) {
                     
@@ -1365,7 +1369,7 @@ switch(option) {  // tickerTest
             if (timeString2ms(allArray[l]["Id_MeilleurTour"]) == BestTimeTemp && tickerBestTime != BestTimeTemp && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Categorie"] != '&nbsp;') {  
                 tickerBestTime = BestTimeTemp;  // tickerTest
                 
-                var tickerBestTimeTemp = ms2TimeString(tickerBestTime);
+                tickerBestTimeTemp = ms2TimeString(tickerBestTime);
                 
                 if (tickerBestTimeTemp.toString().substring(0, 3) == "00:") {
                     tickerBestTimeTemp = tickerBestTimeTemp.substr(3);
@@ -1445,7 +1449,7 @@ switch(option) {  // tickerTest
             
             if (useCategory == "yes" && showBestLap == 1 && categoryBestTime[category][1] != "-" && category != "קטגוריה כללית" && category != "&nbsp;") {
 
-                    var bestTimeDisplay = ms2TimeString(Number(categoryBestTime[category][0]));
+                    bestTimeDisplay = ms2TimeString(Number(categoryBestTime[category][0]));
                     
                     if (bestTimeDisplay.toString().substring(0, 3) == "00:") {
                         bestTimeDisplay = bestTimeDisplay.substr(3);
@@ -1489,10 +1493,10 @@ switch(option) {  // tickerTest
         delete categoryBestTime["&nbsp;"];
 
         if (Object.keys(categoryBestTimePrevious).length > 1 && Object.keys(categoryBestTime).length > 1) {
-            for (var key in categoryBestTime) { 
+            for (key in categoryBestTime) { 
                 if (categoryBestTime[key][0] != categoryBestTimePrevious[key][0] && key != "&nbsp;" && categoryBestTime[key][2] != "???") {  // tickerTest show best time in category in race progress
 
-                        var bestTimeDisplay = ms2TimeString(Number(categoryBestTime[key][0]));
+                        bestTimeDisplay = ms2TimeString(Number(categoryBestTime[key][0]));
                         
                         if (bestTimeDisplay.toString().substring(0, 3) == "00:") {
                             bestTimeDisplay = bestTimeDisplay.substr(3);
@@ -1558,7 +1562,7 @@ switch(option) {  // tickerTest
                 ticker = [];
             }
 
-            var tickerInnerHTML = "";
+            tickerInnerHTML = "";
 
             if (ticker.length > 0) {
                 tickerInnerHTML += "<ul>";
@@ -1568,7 +1572,7 @@ switch(option) {  // tickerTest
                 tickerInnerHTML += "</ul>";
 
                 document.getElementById("tickerTest").innerHTML = tickerInnerHTML;  // tickerTest
-                var tickerElement = ticker.shift();  // tickerTest
+                tickerElement = ticker.shift();  // tickerTest
                 if (ticker.length > 5) {
                     tickerElement = ticker.shift();  // tickerTest
                 }
