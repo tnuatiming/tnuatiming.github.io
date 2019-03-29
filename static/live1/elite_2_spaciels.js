@@ -412,6 +412,9 @@
                 lineArray.Id_lap8 = "-";
                 lineArray.Id_lap10 = "-";
                 lineArray.Id_lap12 = "-";
+                if (typeof lineArray.Id_PenaliteTpsCumule == "undefined") {
+                    lineArray.Id_PenaliteTpsCumule = "-"
+                }
                 allArray.push(lineArray); // push line to main array 
                lineArray = {};
                 pp = 0;
@@ -484,11 +487,6 @@
                     if (allArray[b]["Id_TpsCumule"] != "-" && allArray2[a]["Id_TpsCumule"] != "-") {
                         
                         allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
-                    }
-
-                    // add time penalty
-                    if (allArray[b]["Id_PenaliteTpsCumule"] != "-" && allArray[b]["Id_TpsCumule"] != "-") {
-                        allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + timeString2ms(allArray[b]["Id_PenaliteTpsCumule"]);
                     }
 
                     if (allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {

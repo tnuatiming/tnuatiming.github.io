@@ -227,7 +227,7 @@
 */   
     function createLiveTable() {
 
-        var text1, text2, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag, lapsXtemp, timeP, dnsfq;
+        var text, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag, lapsXtemp, timeP, dnsfq;
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
@@ -246,7 +246,6 @@
         var bestLap = "99999999999";
         var bestLapComp2 = 0;
         var bestLap2 = "99999999999";
-        var laps = 12; // number of laps
         var catFirst = '';
         var dnfCategory = "";
         var dnsCategory = "";
@@ -254,6 +253,7 @@
         var category = "&nbsp;";
         var lapsX = 0;
         var cleanResults = 0;     
+        var laps = 12; // number of laps
         var notProLaps = 10;
         var beginnersLaps = 8;
 /*        
@@ -263,21 +263,20 @@
         var bestTime = 0;
 */        
 
-        text2 = Text2;
-        text1 = Text1;
+        text = Text2;
         
-        text2 = text2.split('<table'); // split the text to title/time and the table
-        text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
-  //      console.log(text2[1]);
-        lines = text2[1].split("\n");
-        text2 = [];
+        text = text.split('<table'); // split the text to title/time and the table
+        text[1] = text[1].substring(text[1].indexOf("<tr"),text[1].lastIndexOf("</tr>")+5); // clean the table text
+  //      console.log(text[1]);
+        lines = text[1].split("\n");
 
+        text = Text1;
 
-        text1 = text1.split('<table'); // split the text to title/time and the table
-        text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
-      //  console.log(text1[1]);
+        text = text.split('<table'); // split the text to title/time and the table
+        text[1] = text[1].substring(text[1].indexOf("<tr"),text[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(text[1]);
 
-        var HeaderName = text1[0].split("\n");  
+        var HeaderName = text[0].split("\n");  
         var div = document.createElement("div");  
         div.innerHTML = HeaderName[0]; 
         var HeaderEventName = div.textContent || div.innerText || "";  
@@ -312,7 +311,7 @@
         finalText += HeaderName[1];
 
         
-//        var finalText = text1[0]; // clear the finalText variable and add the title and time lines
+//        var finalText = text[0]; // clear the finalText variable and add the title and time lines
 
 
 
@@ -380,7 +379,7 @@
         hhhPro = [];
         lineArray = {};
 
-        lines = text1[1].split("\n");
+        lines = text[1].split("\n");
         //    console.log(lines.length);
      //   console.log(lines);
 
@@ -412,6 +411,9 @@
                 lineArray.Id_lap8 = "-";
                 lineArray.Id_lap10 = "-";
                 lineArray.Id_lap12 = "-";
+                if (typeof lineArray.Id_PenaliteTpsCumule == "undefined") {
+                    lineArray.Id_PenaliteTpsCumule = "-"
+                }
                 allArray.push(lineArray); // push line to main array 
                lineArray = {};
                 pp = 0;
@@ -484,11 +486,6 @@
                     if (allArray[b]["Id_TpsCumule"] != "-" && allArray2[a]["Id_TpsCumule"] != "-") {
                         
                         allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
-                    }
-
-                    // add time penalty
-                    if (allArray[b]["Id_PenaliteTpsCumule"] != "-" && allArray[b]["Id_TpsCumule"] != "-") {
-                        allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + timeString2ms(allArray[b]["Id_PenaliteTpsCumule"]);
                     }
 
                     if (allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
