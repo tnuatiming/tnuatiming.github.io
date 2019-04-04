@@ -10,6 +10,8 @@
 
     var TimerLoad, Rafraichir;
     Rafraichir = 10000;
+        
+    var cleanResults = 0;     
 
     var positionArray = {}; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     if (sessionStorage.getItem('positionArray')) {
@@ -80,7 +82,7 @@
         tableClass = "fadeIn "; // make the table fadeIn on change
                     
         document.getElementById("result").innerHTML = createLiveTable();
-//       alignTable();
+        alignTable();
         
 //        Load(url1, 'result');
     };
@@ -121,7 +123,7 @@
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     Text1 = await response2.text();
                     document.getElementById(target).innerHTML = createLiveTable();
-//                    alignTable();
+                    alignTable();
                 }
             }
             catch (err) {
@@ -167,7 +169,7 @@
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                 Text1 = xhr.responseText;
                 document.getElementById(target).innerHTML = createLiveTable();
-//                alignTable();
+                alignTable();
             }
         };
         xhr.open("GET", url1 + "?r=" + Math.random(), true);
@@ -227,7 +229,7 @@
 */   
     function createLiveTable() {
 
-        var text1, text2, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag, lapsXtemp, timeP, dnsfq;
+        var text1, text2, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag, lapsXtemp, timeP, dnsfq, headerText1;
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
@@ -247,13 +249,14 @@
         var bestLapComp2 = 0;
         var bestLap2 = "99999999999";
         var laps = 12; // number of laps
-        var catFirst = '';
+        var catFirst = 1;
         var dnfCategory = "";
         var dnsCategory = "";
         var dsqCategory = "";
         var category = "&nbsp;";
-        var lapsX = 0;
-        var cleanResults = 0;     
+        var lapsX = {};
+        lapsX["overAll"] = 0;
+        var proLaps = 12;
         var notProLaps = 10;
         var beginnersLaps = 8;
 /*        
@@ -406,12 +409,9 @@
                 lineArray.Id_Image_2 = "&nbsp;";
                 lineArray.Id_MeilleurTour_2 = "&nbsp;";
                 lineArray.Id_penalty_2 = "&nbsp;";
-                lineArray.Id_lap2 = "-";
-                lineArray.Id_lap4 = "-";
-                lineArray.Id_lap6 = "-";
-                lineArray.Id_lap8 = "-";
-                lineArray.Id_lap10 = "-";
-                lineArray.Id_lap12 = "-";
+                for (i = 1; i <= 12; i++) { 
+                    lineArray["Id_lap" + i] = "-";
+                }
                 if (typeof lineArray.Id_PenaliteTpsCumule == "undefined") {
                     lineArray.Id_PenaliteTpsCumule = "-"
                 }
@@ -479,6 +479,9 @@
             for (a = 0; a < allArray2.length; a++) { 
 
                 lapsXtemp = 0;
+                if (typeof lapsX[allArray[b]["Id_Categorie"]] == 'undefined') {
+                    lapsX[allArray[b]["Id_Categorie"]] = 0;
+                }
                 
                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                      
@@ -494,7 +497,27 @@
                         allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
                     }
                                  
-                      // reorder laps as elite3 does somthing wrong with the order - second array
+
+                    // reorder laps as elite3 does somthing wrong with the order - second array
+                                        
+                                        
+                    for (i = 6; i > 0; i--) { 
+                        
+                        if (allArray2[a]["Id_TpsTour" + i] != "-") {
+                            m = 2;
+                            for (l = i; l > 0; l--) {
+
+                                allArray[b]["Id_lap" + m] = allArray2[a]["Id_TpsTour" + l];
+                                m = m + 2;
+
+                            }
+                            lapsXtemp = i;
+                            i = 0;
+                        }
+                    }                               
+                                 
+ /*                                
+                                 
                     if (allArray2[a]["Id_TpsTour6"] != "-") {
                         allArray[b].Id_lap2 = allArray2[a]["Id_TpsTour6"];
                         allArray[b].Id_lap4 = allArray2[a]["Id_TpsTour5"];
@@ -551,7 +574,7 @@
                         allArray[b].Id_lap10 = "-";
                         allArray[b].Id_lap12 = "-";
                     }
-                 
+*/                 
                     // transfer fileds from secound array to the first that nedded later, use _2 to mark
                     allArray[b].Id_penalty_2 = allArray2[a]["Id_penalty"];   
                     allArray[b].Id_Image_2 = allArray2[a]["Id_Image"];   
@@ -573,9 +596,28 @@
                     } else {
                         allArray[b].Id_Status = 0;
                     }
-               }
                
                 // reorder laps as elite3 does somthing wrong with the order - first array
+                
+                
+                    for (i = 6; i > 0; i--) { 
+                        
+                        if (allArray[b]["Id_TpsTour" + i] != "-") {
+                            m = 1;
+                            for (l = i; l > 0; l--) {
+
+                                allArray[b]["Id_lap" + m] = allArray[b]["Id_TpsTour" + l];
+                                m = m + 2;
+
+                            }
+                            lapsXtemp += i;
+                            i = 0;
+                        }
+                    }                               
+               } // END a == b
+
+               /*                
+                
                     if (allArray[b]["Id_TpsTour6"] != "-") {
                         allArray[b].Id_lap1 = allArray[b]["Id_TpsTour6"];
                         allArray[b].Id_lap3 = allArray[b]["Id_TpsTour5"];
@@ -632,6 +674,7 @@
                         allArray[b].Id_lap9 = "-";
                         allArray[b].Id_lap11 = "-";
                     }
+*/
 /*
             // inflating the table as laps results come in
             for (q = laps; q >= lapsX; q--) { 
@@ -642,8 +685,11 @@
             }
 */            
 
-            if (lapsXtemp > lapsX) {
-                lapsX = lapsXtemp;
+            if (lapsXtemp > lapsX[allArray[b]["Id_Categorie"]]) { // get max laps to show per category
+                lapsX[allArray[b]["Id_Categorie"]] = lapsXtemp;
+            }
+            if (lapsXtemp > lapsX["overAll"]) { // get max laps to show overall
+                lapsX["overAll"] = lapsXtemp;
             }
      //   console.log(lapsX);     
 
@@ -749,8 +795,10 @@
    //     }          
 
             // set laps according to category
-            if (cleanResults == 0) {
-                laps = lapsX;
+            if (useCategory == "yes" && cleanResults == 0) {
+                laps = lapsX[allArray[l]["Id_Categorie"]];
+            } else if (useCategory == "no" && cleanResults == 0) {
+                laps = lapsX["overAll"];
             } else if (useCategory == "yes" && cleanResults == 1) {
 
                 if (allArray[l]["Id_Categorie"].includes('עממית') || allArray[l]["Id_Categorie"].includes("ג'וניור") || allArray[l]["Id_Categorie"].includes('סניורים')) {
@@ -764,7 +812,7 @@
             
             
             // hard coded header for now
-            var headerText1 = '<tr class="rnkh_bkcolor">';
+            headerText1 = '<tr class="rnkh_bkcolor">';
         
             if (cleanResults == 0) {
                 headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
@@ -867,21 +915,20 @@
             
             if (allArray[l]["Id_Position"] == "1" && useCategory == "yes") {
                 
-                if (catFirst != '') {
+                if (catFirst == 0) {
                     finalText += '</table>\n';
                 }
 
-
-                    finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
                                 
-                    category = allArray[l]["Id_Categorie"];
+                category = allArray[l]["Id_Categorie"];
 
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                                 
-                    finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
-           }
+                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
+            }
             
-            catFirst = allArray[l]["Id_Categorie"];
+            catFirst = 0;
             
             // DNF/DSQ
             if (cleanResults == 1) {
@@ -921,7 +968,7 @@
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
                 
-                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == laps || (allArray[l]["Id_Categorie"].includes("מתחילים") && allArray[l]["Id_NbTour"] == beginnersLaps) || ((allArray[l]["Id_Categorie"].includes('עממית') || allArray[l]["Id_Categorie"].includes("ג'וניור") || allArray[l]["Id_Categorie"].includes('סניורים')) && allArray[l]["Id_NbTour"] == notProLaps)) {
+                if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || allArray[l]["Id_Image_2"].includes("_CheckeredFlag") || allArray[l]["Id_NbTour"] == proLaps || (allArray[l]["Id_Categorie"].includes("מתחילים") && allArray[l]["Id_NbTour"] == beginnersLaps) || ((allArray[l]["Id_Categorie"].includes('עממית') || allArray[l]["Id_Categorie"].includes("ג'וניור") || allArray[l]["Id_Categorie"].includes('סניורים')) && allArray[l]["Id_NbTour"] == notProLaps)) {
                     checkeredFlag = "finished ";
                 } else {
                     checkeredFlag = "";
@@ -965,7 +1012,7 @@
                 }
             }     
                 
-                if (allArray[l]["Id_Status"] == 1) {
+                if (allArray[l]["Id_Status"] == 1 || (checkeredFlag != "finished " && flagText[1] == '_Stop') || allArray[l]["Id_NbTour"] == 0) {
                     finalText += '<td class="rnk_font"></td>'; // add postion
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>'; // add postion
@@ -1105,14 +1152,9 @@
          
          
 
-        if (useCategory == "no") {
             finalText += '</table>\n</div>\n';
-        } else {
-            finalText += '</div>\n';
-        }
      
 
-         
 /* 
     var headerText = '<tr class="rnkh_bkcolor">';
         for (var key in hhh) { 
@@ -1154,13 +1196,18 @@
 */             
              console.log(allArray);
 
-      //       console.log(positionArray);
+       //      console.log(positionArray);
 
     sessionStorage.setItem('positionArray', JSON.stringify(positionArray));
     
     firstPass = 0;      
     tableClass = "";
-            
+    
+    if (cleanResults == 0) {
+
+        finalText += '<div><ul><li style="width: fit-content;padding: 2px 5px;background-color: rgba(219,42,255,.6);color: #fff;    text-shadow: none;">הקפה מהירה כללית</li><li style="width: fit-content;padding: 2px 5px;background-color: rgba(54,220,24,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 1</li><li style="width: fit-content;padding: 2px 5px;background-color: rgba(49,140,231,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 2</li></ul></div>';
+    }
+
     return finalText
 
     };
@@ -1184,7 +1231,9 @@
     };
 
     function alignTable() {
-                    
+        
+        if (cleanResults == 0) {
+                        
             // aligning table colmuns according to number of colmuns
             var tt = document.querySelectorAll('.line_color');
 
@@ -1206,24 +1255,35 @@
         */
                 var trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
                 var tds = trs[0].querySelectorAll('th.rnkh_font');
-
+/*
                 if (tds.length > 15) {
                     tt[kk].classList.add("huge_table");
                 } else if (tds.length > 11) {
                     tt[kk].classList.add("big_table");
                 }
+*/
+                tt[kk].classList.add("big_table");
 
                 var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+
+                tt[kk].querySelectorAll('td.rnk_font:nth-child(-n+3)').forEach(function(element) { // first 3 column
+                    element.style.width = "3%";
+                });
+
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(-n+3)').forEach(function(element) { // first 3 column 
+                    element.style.width = "3%";
+                });
 
                 tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
                 });
 
-                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
                 });
         //       console.log(kk + " " + numCols)
             }
+        }
     }  
 
 /*
