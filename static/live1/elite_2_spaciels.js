@@ -585,9 +585,9 @@
                     }
                     
                     if (allArray[b]["Id_Canal"] == "1" || allArray2[a]["Id_Canal"] == "1") {   // on track
-                        allArray[b].Id_onTrack = "1";
+                        allArray[b].Id_onTrack = 1;
                     } else {
-                        allArray[b].Id_onTrack = "0";
+                        allArray[b].Id_onTrack = 0;
                     }
              //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
                     
@@ -815,19 +815,20 @@
             headerText1 = '<tr class="rnkh_bkcolor">';
         
             if (cleanResults == 0) {
-                headerText1 += '<th class="rnkh_font" id="Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+                headerText1 += '<th colspan = "2" class="rnkh_font">&nbsp;מקום&nbsp;</th>\n'; //  Id_Arrow
+            } else {
+                headerText1 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
             }
-            headerText1 += '<th class="rnkh_font" id="Id_Position">מקום</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_Numero">מספר</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_Nom">שם</th>';
+            headerText1 += '<th class="rnkh_font">מספר</th>';
+            headerText1 += '<th class="rnkh_font">שם</th>';
             
             for (q = 1; q <= laps; q++) {
 
-                headerText1 += '<th class="rnkh_font" id="Id_lap' + q + '">הקפה ' + q + '</th>';
+                headerText1 += '<th class="rnkh_font">הקפה ' + q + '</th>';
             }
             
-            headerText1 += '<th class="rnkh_font" id="Id_TpsCumule">זמן</th>';
-            headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">פער</th>';
+            headerText1 += '<th class="rnkh_font">זמן</th>';
+            headerText1 += '<th class="rnkh_font">פער</th>';
 
         
         headerText1 += '</tr>';
@@ -896,7 +897,7 @@
                     positionArray[competitorNumber] = [Number(allArray[l]["Id_Position"]), allArray[l]["Id_NbTour"]];// update array with current position and laps for next Load calc
 
                     // mark on track
-                    if (allArray[l]["Id_onTrack"] == "1" && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
+                    if (allArray[l]["Id_onTrack"] == 1 && positionChanged == "" && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
                         allArray[l]["Id_Arrow"] = '<img class="postionSame" src="Images/_TrackPassing.svg" alt="same places">'+allArray[l]["Id_penalty"]; // same :|
                              //   positionChanged = "same ";
                     }                        
@@ -913,7 +914,7 @@
 
             // add category name header and table header
             
-            if (allArray[l]["Id_Position"] == "1" && useCategory == "yes") {
+            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
                 
                 if (catFirst == 0) {
                     finalText += '</table>\n';
@@ -1063,7 +1064,7 @@
                 if (q % 2 == 0) {
                     if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
                         finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
-                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"]) {
+                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"] && allArray[l]["Id_NbTour"] > 3) {
                         finalText += '<td class="BestTime1 rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
@@ -1071,7 +1072,7 @@
                 } else {
                     if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
                         finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
-                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
+                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && allArray[l]["Id_NbTour"] > 2) {
                         finalText += '<td class="BestTime rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
@@ -1205,7 +1206,7 @@
     
     if (cleanResults == 0) {
 
-        finalText += '<div><ul><li style="width: fit-content;padding: 2px 5px;background-color: rgba(219,42,255,.6);color: #fff;    text-shadow: none;">הקפה מהירה כללית</li><li style="width: fit-content;padding: 2px 5px;background-color: rgba(54,220,24,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 1</li><li style="width: fit-content;padding: 2px 5px;background-color: rgba(49,140,231,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 2</li></ul></div>';
+        finalText += '<div><ul><li style="width: fit-content;padding: 0 5px;background-color: rgba(219,42,255,.6);color: #fff;    text-shadow: none;">הקפה מהירה כללית</li><li style="width: fit-content;padding: 0 5px;background-color: rgba(54,220,24,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 1</li><li style="width: fit-content;padding: 0 5px;background-color: rgba(88,201,241,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 2</li></ul></div>';
     }
 
     return finalText

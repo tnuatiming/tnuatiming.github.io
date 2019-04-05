@@ -788,7 +788,7 @@ span#name, span#rund, span#date {
     font-weight: 400;
 }
 #live td.BestTime1 {
-    background-color: rgba(49, 140, 231, .6);
+    background-color: rgba(88, 201, 241, .6);
     color: #222;
 /*    color: #18dc8e;*/
     font-weight: 400;
@@ -1605,9 +1605,9 @@ a.main_logo {
         margin-right: 0;
     }
     table.big_table, #live .big_table td.rnk_font, #live .big_table th.rnkh_font {
-        font-size: 0.5em;
+        font-size: 0.6em;
     }
-    table.huge_table, #live .huge_table td.rnk_font, #live .huge_table th.rnkh_font {
+    table.huge_table, #live .huge_table td.rnk_font, #live .huge_table th.rnkh_font, #live li {
         font-size: 0.4em;
     }
     h2, li, #live #raceheader h1, #live #center1 h2, .navigation a, #live #categoryOrAll button {
