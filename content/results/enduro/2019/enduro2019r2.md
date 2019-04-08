@@ -216,7 +216,7 @@ category: "enduro"
         <td class="rnk_font">7:19.419</td>
         <td class="rnk_font">11:19.027</td>
         <td class="rnk_font">7:46.505</td>
-        <td class="rnk_font">1:37:13.106</td>
+        <td class="rnk_font penalty">P 1:37:13.106</td>
         <td class="rnk_font">27:49.117</td>
     </tr>
 </table>
@@ -973,7 +973,7 @@ category: "enduro"
         <td class="rnk_font">7:30.428</td>
         <td class="rnk_font">9:28.942</td>
         <td class="rnk_font">7:54.617</td>
-        <td class="rnk_font">1:17:27.930</td>
+        <td class="rnk_font penalty">P 1:17:27.930</td>
         <td class="rnk_font">13:07.030</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -988,7 +988,7 @@ category: "enduro"
         <td class="rnk_font">8:34.669</td>
         <td class="rnk_font">11:36.813</td>
         <td class="rnk_font">9:04.201</td>
-        <td class="rnk_font">1:17:49.763</td>
+        <td class="rnk_font penalty">P 1:17:49.763</td>
         <td class="rnk_font">13:28.863</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -1338,6 +1338,9 @@ category: "enduro"
         <td class="rnk_font">9:44.714</td>
         <td class="rnk_font">1:50:34.459</td>
         <td class="rnk_font">30:46.090</td>
+    </tr>
+    <tr>
+        <td colspan="99" class="subtitle_font">נפסל - DSQ</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
