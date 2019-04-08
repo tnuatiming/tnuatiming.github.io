@@ -678,6 +678,9 @@ switch(option) {  // tickerTest
                 if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].includes(":")) {
                     allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
                 }
+                if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].toString().substring(2, 3) == ".") {
+                    allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
+                }
             }
     
             if (useCategory == "yes" && allArray[l]["Id_Ecart1erCategorie"] != "-") { // clean diff 
@@ -686,6 +689,9 @@ switch(option) {  // tickerTest
                     allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(3);
                 }
                 if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1erCategorie"].includes(":")) {
+                    allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(1);
+                }
+                if (allArray[l]["Id_Ecart1erCategorie"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1erCategorie"].toString().substring(2, 3) == ".") {
                     allArray[l]["Id_Ecart1erCategorie"] = allArray[l]["Id_Ecart1erCategorie"].substr(1);
                 }
             }

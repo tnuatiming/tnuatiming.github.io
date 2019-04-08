@@ -229,7 +229,7 @@
 */   
     function createLiveTable() {
 
-        var text1, text2, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag, lapsXtemp, timeP, dnsfq, headerText1;
+        var text1, text2, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag, lapsXtemp, dnsfq, headerText1;
         competitorPosition = 0;
         competitorNumber = 0;
         competitorLaps = 0;
@@ -409,6 +409,7 @@
                 lineArray.Id_Image_2 = "&nbsp;";
                 lineArray.Id_MeilleurTour_2 = "&nbsp;";
                 lineArray.Id_penalty_2 = "&nbsp;";
+                lineArray.timeP = "";   
                 for (i = 1; i <= 12; i++) { 
                     lineArray["Id_lap" + i] = "-";
                 }
@@ -435,12 +436,8 @@
                 if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
                     lineArray[hhhPro[pp]] = "-";   
                 }
-                if (hhhPro[pp] == "Id_PenaliteTpsCumule" ) {
-                    if (lineArray[hhhPro[pp]] == '-') {
-                        lineArray.timeP = "";   
-                    } else {
-                        lineArray.timeP = "P ";
-                    }
+                if (hhhPro[pp] == "Id_PenaliteTpsCumule" && lineArray[hhhPro[pp]] != '-') {
+                    lineArray.timeP = "P ";
                 }
 /*
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
@@ -490,6 +487,10 @@
                     if (allArray[b]["Id_TpsCumule"] != "-" && allArray2[a]["Id_TpsCumule"] != "-") {
                         
                         allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2[a]["Id_TpsCumule"];
+                        
+                    } else if (allArray[b]["Id_TpsCumule"] == "-" && allArray2[a]["Id_TpsCumule"] != "-") {
+                        
+                        allArray[b]["Id_TpsCumule"] = allArray2[a]["Id_TpsCumule"];
                     }
 
                     if (allArray[b]["Id_NbTour"] != "-" && allArray2[a]["Id_NbTour"] != "-") {
@@ -762,6 +763,9 @@
                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
                     }
                     if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].includes(":")) {
+                        allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
+                    }
+                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].toString().substring(2, 3) == ".") {
                         allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
                     }
                         
