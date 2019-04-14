@@ -44,8 +44,8 @@
     }
 
     var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/live1/livea/p1.html";    
-    var url2 = "https://tnuatiming.com/live1/liveb/p1.html";    
+    var url1 = "https://tnuatiming.com/live1/sp1/p1.html";    
+    var url2 = "https://tnuatiming.com/live1/sp2/p1.html";    
     var Text1;
     var Text2;
     
@@ -248,7 +248,6 @@
         var bestLap = "99999999999";
         var bestLapComp2 = 0;
         var bestLap2 = "99999999999";
-        var laps = 12; // number of laps
         var catFirst = 1;
         var dnfCategory = "";
         var dnsCategory = "";
@@ -256,9 +255,12 @@
         var category = "&nbsp;";
         var lapsX = {};
         lapsX["overAll"] = 0;
+        var laps = 12; // number of laps
         var proLaps = 12;
         var notProLaps = 10;
         var beginnersLaps = 8;
+        var spLaps = 6;
+        var beginners1sp = 0; // do not show individuall laps for מתחילים, use when they do only 1 special. total time will be shown
 /*        
         var bestTime2comp = 0;
         var bestTime2 = 0;
@@ -498,25 +500,43 @@
                         allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2[a]["Id_NbTour"]);
                     }
                                  
+                    // transfer fileds from secound array to the first that nedded later, use _2 to mark
+                    allArray[b].Id_penalty_2 = allArray2[a]["Id_penalty"];   
+                    allArray[b].Id_Image_2 = allArray2[a]["Id_Image"];   
+                    allArray[b].Id_MeilleurTour_2 = allArray2[a]["Id_MeilleurTour"];   // fastest lap
+
+                    if (allArray2[a]["Id_penalty"] == "P") {
+                    allArray[b].Id_penalty = "P";   
+                    }
+                    
+                    if (allArray[b]["Id_Canal"] == "1" || allArray2[a]["Id_Canal"] == "1") {   // on track
+                        allArray[b].Id_onTrack = 1;
+                    } else {
+                        allArray[b].Id_onTrack = 0;
+                    }
+             //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
+                    
+                    if (allArray[b]["Id_Image"].includes("_Status") || allArray2[a]["Id_Image"].includes("_Status")) {
+                        allArray[b].Id_Status = 1;
+                    } else {
+                        allArray[b].Id_Status = 0;
+                    }
 
                     // reorder laps as elite3 does somthing wrong with the order - second array
-                                        
-                                        
-                    for (i = 6; i > 0; i--) { 
-                        
-                        if (allArray2[a]["Id_TpsTour" + i] != "-") {
-                            m = 2;
-                            for (l = i; l > 0; l--) {
+                        for (i = spLaps; i > 0; i--) { 
+                            
+                            if (allArray2[a]["Id_TpsTour" + i] != "-") {
+                                m = 2;
+                                for (l = i; l > 0; l--) {
 
-                                allArray[b]["Id_lap" + m] = allArray2[a]["Id_TpsTour" + l];
-                                m = m + 2;
+                                    allArray[b]["Id_lap" + m] = allArray2[a]["Id_TpsTour" + l];
+                                    m = m + 2;
 
+                                }
+                                lapsXtemp = i;
+                                i = 0;
                             }
-                            lapsXtemp = i;
-                            i = 0;
-                        }
-                    }                               
-                                 
+                        }                               
  /*                                
                                  
                     if (allArray2[a]["Id_TpsTour6"] != "-") {
@@ -576,32 +596,9 @@
                         allArray[b].Id_lap12 = "-";
                     }
 */                 
-                    // transfer fileds from secound array to the first that nedded later, use _2 to mark
-                    allArray[b].Id_penalty_2 = allArray2[a]["Id_penalty"];   
-                    allArray[b].Id_Image_2 = allArray2[a]["Id_Image"];   
-                    allArray[b].Id_MeilleurTour_2 = allArray2[a]["Id_MeilleurTour"];   // fastest lap
-
-                    if (allArray2[a]["Id_penalty"] == "P") {
-                    allArray[b].Id_penalty = "P";   
-                    }
-                    
-                    if (allArray[b]["Id_Canal"] == "1" || allArray2[a]["Id_Canal"] == "1") {   // on track
-                        allArray[b].Id_onTrack = 1;
-                    } else {
-                        allArray[b].Id_onTrack = 0;
-                    }
-             //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
-                    
-                    if (allArray[b]["Id_Image"].includes("_Status") || allArray2[a]["Id_Image"].includes("_Status")) {
-                        allArray[b].Id_Status = 1;
-                    } else {
-                        allArray[b].Id_Status = 0;
-                    }
                
-                // reorder laps as elite3 does somthing wrong with the order - first array
-                
-                
-                    for (i = 6; i > 0; i--) { 
+                // reorder laps as elite3 does somthing wrong with the order - first (main) array                
+                    for (i = spLaps; i > 0; i--) { 
                         
                         if (allArray[b]["Id_TpsTour" + i] != "-") {
                             m = 1;
@@ -614,7 +611,9 @@
                             lapsXtemp += i;
                             i = 0;
                         }
-                    }                               
+                    }   
+                    
+                    
                } // END a == b
 
                /*                
@@ -810,7 +809,7 @@
                 } else if (allArray[l]["Id_Categorie"].includes('מתחילים')) {
                     laps = beginnersLaps;
                 } else {
-                    laps = laps;
+                    laps = proLaps;
                 }
             }
             
@@ -826,11 +825,12 @@
             headerText1 += '<th class="rnkh_font">מספר</th>';
             headerText1 += '<th class="rnkh_font">שם</th>';
             
-            for (q = 1; q <= laps; q++) {
+            if (beginners1sp == 0 || (beginners1sp == 1 && !allArray[l]["Id_Categorie"].includes("B"))) {
+                for (q = 1; q <= laps; q++) {
 
-                headerText1 += '<th class="rnkh_font">הקפה ' + q + '</th>';
+                    headerText1 += '<th class="rnkh_font">הקפה ' + q + '</th>';
+                }
             }
-            
             headerText1 += '<th class="rnkh_font">זמן</th>';
             headerText1 += '<th class="rnkh_font">פער</th>';
 
@@ -936,19 +936,19 @@
             catFirst = 0;
             
             // DNF/DSQ
-            if (cleanResults == 1) {
+            if (cleanResults == 1 && useCategory == "yes") {
             
-                if ((allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') && useCategory == "yes" && dnfCategory != category) {
+                if (allArray[l]["Id_Image"] == "_Status11" && dnfCategory != category) {
                     
                     finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
                     dnfCategory = category;
                     
-                } else if (allArray[l]["Id_Image"].includes("_Status10") && useCategory == "yes" && dsqCategory != category) {
+                } else if (allArray[l]["Id_Image"] == "_Status10" && dsqCategory != category) {
                     
                     finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>\n';
                     dsqCategory = category;
                     
-                } else if (allArray[l]["Id_Image"].includes("_Status12") && useCategory == "yes" && dnsCategory != category) {
+                } else if (allArray[l]["Id_Image"] == "_Status12" && dnsCategory != category) {
                     
                     finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>\n';
                     dnsCategory = category;
@@ -1017,7 +1017,7 @@
                 }
             }     
                 
-                if (allArray[l]["Id_Status"] == 1 || (checkeredFlag != "finished " && flagText[1] == '_Stop') || allArray[l]["Id_NbTour"] == 0) {
+                if (allArray[l]["Id_Status"] == 1 /*|| (checkeredFlag != "finished " && flagText[1] == '_Stop')*/ || allArray[l]["Id_NbTour"] == 0) {
                     finalText += '<td class="rnk_font"></td>'; // add postion
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>'; // add postion
@@ -1064,26 +1064,27 @@
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
 // adding and coloring the laps and best time
 // short version
-             for (q = 1; q <= laps; q++) {
-                if (q % 2 == 0) {
-                    if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
-                        finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
-                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"] && allArray[l]["Id_NbTour"] > 3) {
-                        finalText += '<td class="BestTime1 rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+            if (beginners1sp == 0 || (beginners1sp == 1 && !allArray[l]["Id_Categorie"].includes("B"))) {
+                for (q = 1; q <= laps; q++) {
+                    if (q % 2 == 0) {
+                        if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
+                            finalText += '<td class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>';
+                        } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"] && allArray[l]["Id_NbTour"] > 3) {
+                            finalText += '<td class="rnk_font BestTime1">' + allArray[l]["Id_lap"+q] + '</td>';
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+                        }
                     } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+                        if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
+                            finalText += '<td class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>';
+                        } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && allArray[l]["Id_NbTour"] > 2) {
+                            finalText += '<td class="rnk_font BestTime">' + allArray[l]["Id_lap"+q] + '</td>';
+                        } else {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
+                        }
                     }
-                } else {
-                    if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
-                        finalText += '<td class="BestTimeOverall rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
-                    } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && allArray[l]["Id_NbTour"] > 2) {
-                        finalText += '<td class="BestTime rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
-                    } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
-                    }
-                }
-             }               
-
+                }               
+            }
 
 
 /*

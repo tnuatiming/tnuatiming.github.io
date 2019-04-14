@@ -1064,21 +1064,24 @@ switch(option) {  // tickerTest
            }
 
             // DNF/DSQ
-            
-            if ((allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') && useCategory == "yes" && dnfCategory != category && cleanResults == 1) {
-                
-                finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
-                dnfCategory = category;
-            } else if (allArray[l]["Id_Image"].includes("_Status10") && useCategory == "yes" && dsqCategory != category && cleanResults == 1) {
-                
-                finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>\n';
-                dsqCategory = category;
-            } else if (allArray[l]["Id_Image"].includes("_Status12") && useCategory == "yes" && dnsCategory != category && cleanResults == 1) {
-                
-                finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>\n';
-                dnsCategory = category;
+            if (useCategory == "yes" && cleanResults == 1) {
+                                                                    // auto finish V
+                if ((allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') && dnfCategory != category) {
+                    
+                    finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
+                    dnfCategory = category;
+                    
+                } else if (allArray[l]["Id_Image"].includes("_Status10") && dsqCategory != category) {
+                    
+                    finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>\n';
+                    dsqCategory = category;
+                    
+                } else if (allArray[l]["Id_Image"].includes("_Status12") && dnsCategory != category) {
+                    
+                    finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>\n';
+                    dnsCategory = category;
+                }
             }
-            
             if (cleanResults == 1) {
                 positionChanged = "";
             }

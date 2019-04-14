@@ -1182,8 +1182,10 @@ fix all the crufafel with "Inter1Leader" tables
                                     allArray[l]["Id_Inter1Ecart1er"] = ms2TimeString(competitorId_Inter1Time - leaderInter1Time);
                                      
                                     } else {
-                                    allArray[l]["Id_Inter1Ecart1er"] = 99999999999;
+                                        allArray[l]["Id_Inter1Ecart1er"] = 99999999999;
                                     }
+                                } else {
+                                    allArray[l]["Id_Inter1Ecart1er"] = 99999999999;
                                 }
                                 
 
@@ -1200,8 +1202,10 @@ fix all the crufafel with "Inter1Leader" tables
                                     allArray[l]["Id_Inter2Ecart1er"] = ms2TimeString(competitorId_Inter2Time - leaderInter2Time);
                                      
                                     } else {
-                                    allArray[l]["Id_Inter2Ecart1er"] = 99999999999;
+                                        allArray[l]["Id_Inter2Ecart1er"] = 99999999999;
                                     }
+                                } else {
+                                    allArray[l]["Id_Inter2Ecart1er"] = 99999999999;
                                 }
                                 
 
@@ -1218,8 +1222,10 @@ fix all the crufafel with "Inter1Leader" tables
                                     allArray[l]["Id_Inter3Ecart1er"] = ms2TimeString(competitorId_Inter3Time - leaderInter3Time);
                                      
                                     } else {
-                                    allArray[l]["Id_Inter3Ecart1er"] = 99999999999;
+                                        allArray[l]["Id_Inter3Ecart1er"] = 99999999999;
                                     }
+                                } else {
+                                    allArray[l]["Id_Inter3Ecart1er"] = 99999999999;
                                 }
                                 
 
