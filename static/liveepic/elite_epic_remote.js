@@ -26,6 +26,7 @@ fix all the crufafel with "Inter1Leader" tables
     
 //    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     
+    var cleanResults = 0; // not using, this is just to clean the header
     var eventName = "";    
     
 //    var cleanResults = 0; // alignTable for TotalIndex
@@ -637,7 +638,16 @@ fix all the crufafel with "Inter1Leader" tables
         var ElapsedTime = Text.ElapsedTime;
         var RemainingTime = Text.RemainingTime;
 
-/*
+        if (HeaderEventName.includes("+++")) { // clean table for results page
+            cleanResults = 1;
+            timeGapDisplay = 1;
+            timeGapDisplayInter = 3;
+            HeaderEventName = HeaderEventName.replace("+++", "");
+        } else {
+            cleanResults = 0;
+        }
+
+        /*
         var HeaderName = Text.split("\n");  
         var div = document.createElement("div");  
         div.innerHTML = HeaderName[0]; 
@@ -673,93 +683,201 @@ fix all the crufafel with "Inter1Leader" tables
         
 
              for (b = 0; b < allArray.length; b++) {
+                
+                 allArray[b]["Id_Numero_Full_2"] = allArray[b]["Id_Numero"] + '-2';
+                 allArray[b]["Id_Numero_Full"] = allArray[b]["Id_Numero"] + '-1';
+                 
+                allArray[b].Id_TpsCumule = allArray[b].T;
+                delete allArray[b].T;
+                allArray[b].Id_TpsCumule_2 = allArray[b].T2;
+                delete allArray[b].T2;
 
-                                // convert back to time
-                                
-                            if (allArray[b]["Id_Inter1Time"] != 99999999999) {  
-                                allArray[b]["Id_Inter1Time"] = timeString2ms(allArray[b]["Id_Inter1Time"]);
-                            }                                
-                                
-                            if (allArray[b]["Id_Inter2Time"] != 99999999999) {  
-                                allArray[b]["Id_Inter2Time"] = timeString2ms(allArray[b]["Id_Inter2Time"]);
-                            }                                
-                                
-                            if (allArray[b]["Id_Inter3Time"] != 99999999999) {  
-                                allArray[b]["Id_Inter3Time"] = timeString2ms(allArray[b]["Id_Inter3Time"]);
-                            }                                
-                                
-                            if (allArray[b]["Id_FinishTime"] != 99999999999) {  
-                                allArray[b]["Id_FinishTime"] = timeString2ms(allArray[b]["Id_FinishTime"]);
-                            }                                
-                                
-                            if (allArray[b]["Id_TpsCumule"] != 99999999999) {  
-                                allArray[b]["Id_TpsCumule"] = timeString2ms(allArray[b]["Id_TpsCumule"]);
-                            }
+                allArray[b].Id_Position_Categorie = allArray[b].PC;
+                delete allArray[b].PC;
+                allArray[b].Id_Position_Overall = allArray[b].PO;
+                delete allArray[b].PO;
+                
+                allArray[b].Id_Nationalite_2 = allArray[b].NA2;
+                delete allArray[b].NA2;
+                allArray[b].Id_Nationalite = allArray[b].NA;
+                delete allArray[b].NA;
+                
+                allArray[b].Id_Categorie = allArray[b].C;
+                delete allArray[b].C;
+                allArray[b].Id_FinishTime = allArray[b].F;
+                delete allArray[b].F;
 
-                            if (allArray[b]["Id_TpsCumule_2"] != 99999999999) {  
-                                allArray[b]["Id_TpsCumule_2"] = timeString2ms(allArray[b]["Id_TpsCumule_2"]);
-                            }
+                 
+                // convert 0 to 99999999999
+                if (allArray[b]["Id_Inter1Time"] == 0) {
+                    allArray[b]["Id_Inter1Time"] = 99999999999;
+                }
+                if (allArray[b]["Id_Inter2Time"] == 0) {
+                    allArray[b]["Id_Inter2Time"] = 99999999999;
+                }
+                if (allArray[b]["Id_Inter3Time"] == 0) {
+                    allArray[b]["Id_Inter3Time"] = 99999999999;
+                }
+                if (allArray[b]["Id_Ecart1er"] == 0) {
+                    allArray[b]["Id_Ecart1er"] = 99999999999;
+                }
+                if (allArray[b]["Id_FinishTime"] == 0) {
+                    allArray[b]["Id_FinishTime"] = 99999999999;
+                }
+                if (allArray[b]["Id_Inter1Ecart1er"] == 0) {
+                    allArray[b]["Id_Inter1Ecart1er"] = 99999999999;
+                }
+                if (allArray[b]["Id_Inter2Ecart1er"] == 0) {
+                    allArray[b]["Id_Inter2Ecart1er"] = 99999999999;
+                }
+                if (allArray[b]["Id_Inter3Ecart1er"] == 0) {
+                    allArray[b]["Id_Inter3Ecart1er"] = 99999999999;
+                }
+                if (allArray[b]["Id_TpsCumule"] == 0) {
+                    allArray[b]["Id_TpsCumule"] = 99999999999;
+                }
+                if (allArray[b]["Id_TpsCumule_2"] == 0) {
+                    allArray[b]["Id_TpsCumule_2"] = 99999999999;
+                }
 
-                                
-                        // update intermediate 1 leader array 
-                        if (typeof Inter1Leader["overall"] == 'undefined') { // overall
-                            Inter1Leader["overall"] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter1Time"] != 99999999999 && Inter1Leader["overall"] > allArray[b]["Id_Inter1Time"]) {
-                            
-                            Inter1Leader["overall"] = allArray[b]["Id_Inter1Time"];
-                        }
+                 
+                 
+                // phrase Id_Groupe         
+                 
+                if (allArray[b]["Id_Groupe"].includes('s1')) {
 
-                        if (typeof Inter1Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
-                            Inter1Leader[allArray[b]["Id_Categorie"]] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter1Time"] != 99999999999 && Inter1Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter1Time"]) {
-                            
-                            Inter1Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter1Time"];
-                        }
+                    allArray[b]["single"] = 1;
+
+                } else if (allArray[b]["Id_Groupe"].includes('s2')) {
+
+                    allArray[b]["single"] = 2;
+
+                } else {
+                    allArray[b]["single"] = 0;
+                }
+                
+                if (allArray[b]["Id_Groupe"].includes('u3')) {
+
+                    allArray[b]["uci"] = 3;
+
+                } else if (allArray[b]["Id_Groupe"].includes('u1')) {
+
+                    allArray[b]["uci"] = 1;
+
+                } else if (allArray[b]["Id_Groupe"].includes('u2')) {
+
+                    allArray[b]["uci"] = 2;
+
+                } else {
+                    allArray[b]["uci"] = 0;
+                }
+
+
+                if (allArray[b]["Id_Groupe"].includes('l')) {
                     
-                                 
-                        // update intermediate 1 leader array 
-                        if (typeof Inter2Leader["overall"] == 'undefined') { // overall
-                            Inter2Leader["overall"] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter2Time"] != 99999999999 && Inter2Leader["overall"] > allArray[b]["Id_Inter2Time"]) {
-                            
-                            Inter2Leader["overall"] = allArray[b]["Id_Inter2Time"];
-                        }
-
-                        if (typeof Inter2Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
-                            Inter2Leader[allArray[b]["Id_Categorie"]] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter2Time"] != 99999999999 && Inter2Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter2Time"]) {
-                            
-                            Inter2Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter2Time"];
-                        }
+                    allArray[b]["leader"] = 1; // mark leader (yellow shirt)
+                } else {
+                    allArray[b]["leader"] = 0;
+                }                    
+    
+    
+                if (allArray[b]["Id_Groupe"].includes('b')) {                    
+                    allArray[b]["oldBlue"] = 1;
+                } else {
+                    allArray[b]["oldBlue"] = 0;
+                }
+    
+                    if (allArray[b]["Id_Groupe"].includes('d')) {                    
+                    allArray[b]["Id_Image"] = '_Status10';
+                }
+    
+/*
+                // convert back to time - moved to timing computer
                     
+                if (allArray[b]["Id_Inter1Time"] != 99999999999) {  
+                    allArray[b]["Id_Inter1Time"] = timeString2ms(allArray[b]["Id_Inter1Time"]);
+                }                                
+                    
+                if (allArray[b]["Id_Inter2Time"] != 99999999999) {  
+                    allArray[b]["Id_Inter2Time"] = timeString2ms(allArray[b]["Id_Inter2Time"]);
+                }                                
+                    
+                if (allArray[b]["Id_Inter3Time"] != 99999999999) {  
+                    allArray[b]["Id_Inter3Time"] = timeString2ms(allArray[b]["Id_Inter3Time"]);
+                }                                
+                    
+                if (allArray[b]["Id_FinishTime"] != 99999999999) {  
+                    allArray[b]["Id_FinishTime"] = timeString2ms(allArray[b]["Id_FinishTime"]);
+                }                                
+                    
+                if (allArray[b]["Id_TpsCumule"] != 99999999999) {  
+                    allArray[b]["Id_TpsCumule"] = timeString2ms(allArray[b]["Id_TpsCumule"]);
+                }
 
-                                
-                        // update intermediate 1 leader array 
-                        if (typeof Inter3Leader["overall"] == 'undefined') { // overall
-                            Inter3Leader["overall"] = 99999999999;
-                            
-                        }
-                        if (allArray[b]["Id_Inter3Time"] != 99999999999 && Inter3Leader["overall"] > allArray[b]["Id_Inter3Time"]) {
-                            
-                            Inter3Leader["overall"] = allArray[b]["Id_Inter3Time"];
-                        }
+                if (allArray[b]["Id_TpsCumule_2"] != 99999999999) {  
+                    allArray[b]["Id_TpsCumule_2"] = timeString2ms(allArray[b]["Id_TpsCumule_2"]);
+                }
+*/
+                        
+                // update intermediate 1 leader array 
+                if (typeof Inter1Leader["overall"] == 'undefined') { // overall
+                    Inter1Leader["overall"] = 99999999999;
+                    
+                }
+                if (allArray[b]["Id_Inter1Time"] != 99999999999 && Inter1Leader["overall"] > allArray[b]["Id_Inter1Time"]) {
+                    
+                    Inter1Leader["overall"] = allArray[b]["Id_Inter1Time"];
+                }
 
-                        if (typeof Inter3Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
-                            Inter3Leader[allArray[b]["Id_Categorie"]] = 99999999999;
+                if (typeof Inter1Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
+                    Inter1Leader[allArray[b]["Id_Categorie"]] = 99999999999;
+                    
+                }
+                if (allArray[b]["Id_Inter1Time"] != 99999999999 && Inter1Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter1Time"]) {
+                    
+                    Inter1Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter1Time"];
+                }
+            
                             
-                        }
-                        if (allArray[b]["Id_Inter3Time"] != 99999999999 && Inter3Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter3Time"]) {
-                            
-                            Inter3Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter3Time"];
-                        }
+                // update intermediate 1 leader array 
+                if (typeof Inter2Leader["overall"] == 'undefined') { // overall
+                    Inter2Leader["overall"] = 99999999999;
+                    
+                }
+                if (allArray[b]["Id_Inter2Time"] != 99999999999 && Inter2Leader["overall"] > allArray[b]["Id_Inter2Time"]) {
+                    
+                    Inter2Leader["overall"] = allArray[b]["Id_Inter2Time"];
+                }
+
+                if (typeof Inter2Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
+                    Inter2Leader[allArray[b]["Id_Categorie"]] = 99999999999;
+                    
+                }
+                if (allArray[b]["Id_Inter2Time"] != 99999999999 && Inter2Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter2Time"]) {
+                    
+                    Inter2Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter2Time"];
+                }
+            
+
+                        
+                // update intermediate 1 leader array 
+                if (typeof Inter3Leader["overall"] == 'undefined') { // overall
+                    Inter3Leader["overall"] = 99999999999;
+                    
+                }
+                if (allArray[b]["Id_Inter3Time"] != 99999999999 && Inter3Leader["overall"] > allArray[b]["Id_Inter3Time"]) {
+                    
+                    Inter3Leader["overall"] = allArray[b]["Id_Inter3Time"];
+                }
+
+                if (typeof Inter3Leader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
+                    Inter3Leader[allArray[b]["Id_Categorie"]] = 99999999999;
+                    
+                }
+                if (allArray[b]["Id_Inter3Time"] != 99999999999 && Inter3Leader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Inter3Time"]) {
+                    
+                    Inter3Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter3Time"];
+                }
                     
                     
                // display result for selected intermediate or finish
@@ -790,11 +908,11 @@ fix all the crufafel with "Inter1Leader" tables
                 }
 
                 
-                    if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1) {// FIXME Id_Status drops blue competitor to buttom , check if this is what needed
-                        allArray[b].Id_Status = 1;
-                    } else {
-                        allArray[b].Id_Status = 0;
-                    }
+                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1 || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to buttom , check if this is what needed
+                    allArray[b].Id_Status = 1;
+                } else {
+                    allArray[b].Id_Status = 0;
+                }
                
                  
              }
@@ -1338,16 +1456,18 @@ fix all the crufafel with "Inter1Leader" tables
        
                     
                     if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
-                        allArray[l]["Id_Arrow"] = 10;
+                        allArray[l]["Id_Arrow"] = 10; // DSQ
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
                         allArray[l]["blue"] = 1; //FIXME
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
-                        allArray[l]["Id_Arrow"] = 11;
+                        allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
                         allArray[l]["Id_Arrow"] = 12;
                         allArray[l]["blue"] = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
                         allArray[l]["Id_Arrow"] = 9;
+                    } else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
+                        allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
                         allArray[l]["Id_Arrow"] = 8; // astrix
                     } else if (allArray[l]["Id_penalty"].includes("P")) {
@@ -1424,10 +1544,10 @@ fix all the crufafel with "Inter1Leader" tables
                 uci1 = "";
                 uci2 = "";
                 
-                if (allArray[l]["Id_Groupe"].includes("s2")) {
+                if (allArray[l]["single"] == 2) {
                     single2 = "lineThrough";
                 }
-                if (allArray[l]["Id_Groupe"].includes("s1")) {
+                if (allArray[l]["single"] == 1) {
                     single1 = "lineThrough";
                 }
                 if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
@@ -1584,7 +1704,7 @@ allArray[l]["Id_Arrow"]
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] == 1 || show != 4) {
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 || show != 4) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
 /*                    
