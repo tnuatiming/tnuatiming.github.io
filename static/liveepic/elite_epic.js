@@ -39,7 +39,7 @@
         show = sessionStorage.getItem('intermediateOrFinish');
     }
     var showPrevious = show;// used for empting the array when displaying back intermediate.
-   
+
     var epictv = 0;
     
     document.addEventListener("DOMContentLoaded", function() {
@@ -1057,7 +1057,7 @@
                                 }                
 
                                 
-                        // update intermediate 1 leader array 
+                        // update intermediate 2 leader array 
                         if (typeof Inter2Leader["overall"] == 'undefined') { // overall
                             Inter2Leader["overall"] = 99999999999;
                             
@@ -1108,7 +1108,7 @@
                                 }                
 
                                 
-                        // update intermediate 1 leader array 
+                        // update intermediate 3 leader array 
                         if (typeof Inter3Leader["overall"] == 'undefined') { // overall
                             Inter3Leader["overall"] = 99999999999;
                             
@@ -1779,8 +1779,8 @@
                             positionChanged = "gainedPosition ";
                             
                         }
-                        
                     }
+                    
        //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
 
 
@@ -1853,7 +1853,7 @@
                     } else if (allArray[l]["Id_Categorie"] == 'Masters') {
                     leader = '<span title="Masters Leader" class="Flag BlueShirt"></span>';
                     leaderCard = 'DarkBlueCard';
-                   } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    } else if (allArray[l]["Id_Categorie"] == 'Grand') {
                     leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
                     leaderCard = 'purpleCard';
                     } else {
@@ -2588,14 +2588,15 @@ if (show == 4) {
                 if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
-                    
+                    allArray[l]["Id_Position_Categorie"] = 0; // for upload json, not needed, its for third party
 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show  postiion if status or no finish time
+                    allArray[l]["Id_Position_Overall"] = 0; // for upload json, not needed, its for third party
                     
                 } else {
                         
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
+                    //finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
                     
                 }
        
@@ -2804,6 +2805,10 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 // order the array for JSON.stringify
         
 
+            if (allArray[l]["Id_Arrow"] == 3 || allArray[l]["Id_Arrow"] == 3) { // delete arrow postion as it messes in remote
+                allArray[l]["Id_Arrow"] = 0;
+            }
+            
             if (allArray[l]["Id_Inter1Time"] == 99999999999) {
                 allArray[l]["Id_Inter1Time"] = 0;
             } else {
@@ -2883,16 +2888,20 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
         delete allArray[l].leader; // will be phrased on remote from Id_Groupe
         delete allArray[l].single; // will be phrased on remote from Id_Groupe
         delete allArray[l].uci; // will be phrased on remote from Id_Groupe
+        delete allArray[l].Id_Numero_Full_2;
+        delete allArray[l].Id_Numero_Full;
+        delete allArray[l].Id_Canal;
+        delete allArray[l].Id_Status;
 
 
         allArray[l].T = allArray[l].Id_TpsCumule;
         delete allArray[l].Id_TpsCumule;
-        allArray[l].T2 = allArray[l].Id_TpsCumule_2;
+        allArray[l].TT = allArray[l].Id_TpsCumule_2;
         delete allArray[l].Id_TpsCumule_2;
 
-        allArray[l].PC = allArray[l].Id_Position_Categorie;
+        allArray[l].PC = allArray[l].Id_Position_Categorie; // needed only for third party
         delete allArray[l].Id_Position_Categorie;
-        allArray[l].PO = allArray[l].Id_Position_Overall;
+        allArray[l].PO = allArray[l].Id_Position_Overall; // needed only for third party
         delete allArray[l].Id_Position_Overall;
         
         allArray[l].NA2 = allArray[l].Id_Nationalite_2;
@@ -2902,10 +2911,61 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
         
         allArray[l].C = allArray[l].Id_Categorie;
         delete allArray[l].Id_Categorie;
+        allArray[l].E = allArray[l].Id_Ecart1er;
+        delete allArray[l].Id_Ecart1er;
+        allArray[l].Q = allArray[l].Id_Equipe;
+        delete allArray[l].Id_Equipe;
+
+
         allArray[l].F = allArray[l].Id_FinishTime;
         delete allArray[l].Id_FinishTime;
+        allArray[l].FB = allArray[l].Id_Finishblue;
+        delete allArray[l].Id_Finishblue;
         
-  
+        allArray[l].T1 = allArray[l].Id_Inter1Time;
+        delete allArray[l].Id_Inter1Time;
+        allArray[l].E1 = allArray[l].Id_Inter1Ecart1er;
+        delete allArray[l].Id_Inter1Ecart1er;
+        allArray[l].B1 = allArray[l].Id_Inter1blue;
+        delete allArray[l].Id_Inter1blue;
+        allArray[l].T2 = allArray[l].Id_Inter2Time;
+        delete allArray[l].Id_Inter2Time;
+        allArray[l].E2 = allArray[l].Id_Inter2Ecart1er;
+        delete allArray[l].Id_Inter2Ecart1er;
+        allArray[l].B2 = allArray[l].Id_Inter2blue;
+        delete allArray[l].Id_Inter2blue;
+         allArray[l].T3 = allArray[l].Id_Inter3Time;
+        delete allArray[l].Id_Inter3Time;
+        allArray[l].E3 = allArray[l].Id_Inter3Ecart1er;
+        delete allArray[l].Id_Inter3Ecart1er;
+        allArray[l].B3 = allArray[l].Id_Inter3blue;
+        delete allArray[l].Id_Inter3blue;
+   
+        allArray[l].A = allArray[l].Id_Arrow;
+        delete allArray[l].Id_Arrow;
+        allArray[l].M = allArray[l].Id_Image;
+        delete allArray[l].Id_Image;
+        allArray[l].M2 = allArray[l].Id_Image_2;
+        delete allArray[l].Id_Image_2;
+
+        allArray[l].L = allArray[l].Id_Classe;
+        delete allArray[l].Id_Classe;
+        allArray[l].G = allArray[l].Id_Groupe;
+        delete allArray[l].Id_Groupe;
+        allArray[l].P = allArray[l].Id_penalty;
+        delete allArray[l].Id_penalty;
+
+        allArray[l].R = allArray[l].Id_NbTour;
+        delete allArray[l].Id_NbTour;
+
+        allArray[l].O = allArray[l].Id_Numero;
+        delete allArray[l].Id_Numero;
+        allArray[l].N = allArray[l].Id_Nom;
+        delete allArray[l].Id_Nom;
+        allArray[l].N2 = allArray[l].Id_Nom_2;
+        delete allArray[l].Id_Nom_2;
+
+
         const allArrayJ = {};
         Object.keys(allArray[l]).sort().forEach(function(key) {
             if (allArray[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
@@ -2925,7 +2985,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
                 
                 console.log(allArray);
 /*  
-    if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all, so we can watch diffrent results on timing computer
+    if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch diffrent results on timing computer
         var header = {};
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
@@ -2936,6 +2996,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
         allArray.unshift(header); // add the header at the beginning
         allArrayJ = JSON.stringify(allArray);             
         download(allArrayJ, 'j1.txt', 'text/plain');    
+        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
     }
  //       console.log(JSON.parse(allArrayJ));     
 */

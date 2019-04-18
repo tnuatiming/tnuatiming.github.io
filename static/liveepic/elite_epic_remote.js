@@ -9,8 +9,10 @@
 
 /*
 FIXME
-add "Id_Sector_FinishTime"
-fix all the crufafel with "Inter1Leader" tables
+add "Id_Sector_FinishTime" - maybe fixed?
+fix all the crufafel with "Inter1Leader" tables - maybe fixed?
+enable google compiler for production
+postion arrow needes to be disabled after the prologue
 
 */
 
@@ -26,10 +28,11 @@ fix all the crufafel with "Inter1Leader" tables
     
 //    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     
-    var cleanResults = 0; // not using, this is just to clean the header
     var eventName = "";    
     
-//    var cleanResults = 0; // alignTable for TotalIndex
+    var cleanResults = 0; // not using, this is just to clean the header
+    
+    var prologue;
     
     var precision = "tenth"; // "tenth" for 1 digit after the .
     
@@ -582,7 +585,6 @@ fix all the crufafel with "Inter1Leader" tables
 
     function createLiveTable(p1) {
         
-        
         if (document.getElementById('epictv')){
             epictv = 1;
         }
@@ -613,7 +615,7 @@ fix all the crufafel with "Inter1Leader" tables
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
-        var Inter1Leader = [],Inter2Leader = [], Inter3Leader = [];
+        var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
         var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard;
 
@@ -669,6 +671,12 @@ fix all the crufafel with "Inter1Leader" tables
             HeaderEventName = HeaderEventName.replace("---", "");
         }
 
+        if (HeaderEventName.includes("prologue")) { // do not show individuall times
+            prologue = 1;
+        } else {
+            prologue = 0;
+        }
+
         if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
             raceEnded = 1;
         }
@@ -683,14 +691,11 @@ fix all the crufafel with "Inter1Leader" tables
         
 
              for (b = 0; b < allArray.length; b++) {
-                
-                 allArray[b]["Id_Numero_Full_2"] = allArray[b]["Id_Numero"] + '-2';
-                 allArray[b]["Id_Numero_Full"] = allArray[b]["Id_Numero"] + '-1';
                  
                 allArray[b].Id_TpsCumule = allArray[b].T;
                 delete allArray[b].T;
-                allArray[b].Id_TpsCumule_2 = allArray[b].T2;
-                delete allArray[b].T2;
+                allArray[b].Id_TpsCumule_2 = allArray[b].TT;
+                delete allArray[b].TT;
 
                 allArray[b].Id_Position_Categorie = allArray[b].PC;
                 delete allArray[b].PC;
@@ -704,10 +709,60 @@ fix all the crufafel with "Inter1Leader" tables
                 
                 allArray[b].Id_Categorie = allArray[b].C;
                 delete allArray[b].C;
+                allArray[b].Id_Ecart1er = allArray[b].E;
+                delete allArray[b].E;
+                allArray[b].Id_Equipe = allArray[b].Q;
+                delete allArray[b].Q;
+
+
                 allArray[b].Id_FinishTime = allArray[b].F;
                 delete allArray[b].F;
+                allArray[b].Id_Finishblue = allArray[b].FB;
+                delete allArray[b].FB;
 
-                 
+                allArray[b].Id_Inter1Time = allArray[b].T1;
+                delete allArray[b].T1;
+                allArray[b].Id_Inter1Ecart1er = allArray[b].E1;
+                delete allArray[b].E1;
+                allArray[b].Id_Inter1blue = allArray[b].B1;
+                delete allArray[b].B1;
+                allArray[b].Id_Inter2Time = allArray[b].T2;
+                delete allArray[b].T2;
+                allArray[b].Id_Inter2Ecart1er = allArray[b].E2;
+                delete allArray[b].E2;
+                allArray[b].Id_Inter2blue = allArray[b].B2;
+                delete allArray[b].B2;
+                allArray[b].Id_Inter3Time = allArray[b].T3;
+                delete allArray[b].T3;
+                allArray[b].Id_Inter3Ecart1er = allArray[b].E3;
+                delete allArray[b].E3;
+                allArray[b].Id_Inter3blue = allArray[b].B3;
+                delete allArray[b].B3;
+
+                allArray[b].Id_Arrow = allArray[b].A;
+                delete allArray[b].A;
+                allArray[b].Id_Image = allArray[b].M;
+                delete allArray[b].M;
+                allArray[b].Id_Image_2 = allArray[b].M2;
+                delete allArray[b].M2;
+
+                allArray[b].Id_Classe = allArray[b].L;
+                delete allArray[b].L;
+                allArray[b].Id_Groupe = allArray[b].G;
+                delete allArray[b].G;
+                allArray[b].Id_penalty = allArray[b].P;
+                delete allArray[b].P;
+
+                allArray[b].Id_NbTour = allArray[b].R;
+                delete allArray[b].R;
+                
+                allArray[b].Id_Numero = allArray[b].O;
+                delete allArray[b].O;
+                allArray[b].Id_Nom = allArray[b].N;
+                delete allArray[b].N;
+                allArray[b].Id_Nom_2 = allArray[b].N2;
+                delete allArray[b].N2;
+
                 // convert 0 to 99999999999
                 if (allArray[b]["Id_Inter1Time"] == 0) {
                     allArray[b]["Id_Inter1Time"] = 99999999999;
@@ -740,6 +795,9 @@ fix all the crufafel with "Inter1Leader" tables
                     allArray[b]["Id_TpsCumule_2"] = 99999999999;
                 }
 
+            
+                allArray[b]["Id_Numero_Full_2"] = allArray[b]["Id_Numero"] + '-2';
+                allArray[b]["Id_Numero_Full"] = allArray[b]["Id_Numero"] + '-1';
                  
                  
                 // phrase Id_Groupe         
@@ -839,7 +897,7 @@ fix all the crufafel with "Inter1Leader" tables
                 }
             
                             
-                // update intermediate 1 leader array 
+                // update intermediate 2 leader array 
                 if (typeof Inter2Leader["overall"] == 'undefined') { // overall
                     Inter2Leader["overall"] = 99999999999;
                     
@@ -860,7 +918,7 @@ fix all the crufafel with "Inter1Leader" tables
             
 
                         
-                // update intermediate 1 leader array 
+                // update intermediate 3 leader array 
                 if (typeof Inter3Leader["overall"] == 'undefined') { // overall
                     Inter3Leader["overall"] = 99999999999;
                     
@@ -892,19 +950,11 @@ fix all the crufafel with "Inter1Leader" tables
                 }
                 
                    
-                allArray[b]["blue"] = 0;
                 
-                if (allArray[b]["Id_Inter1blue"] == 1 && show == 4) {
+                if ((allArray[b]["Id_Inter1blue"] == 1 || allArray[b]["Id_Inter2blue"] == 1 || allArray[b]["Id_Inter3blue"] == 1 || allArray[b]["Id_Finishblue"] == 1) && show == 4) {
                    allArray[b]["blue"] = 1;
-                }
-                if (allArray[b]["Id_Inter2blue"] == 1 && show == 4) {
-                   allArray[b]["blue"] = 1;
-                }
-                if (allArray[b]["Id_Inter3blue"] == 1 && show == 4) {
-                   allArray[b]["blue"] = 1;
-                }
-                if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
-                   allArray[b]["blue"] = 1;
+                } else {
+                    allArray[b]["blue"] = 0;
                 }
 
                 
@@ -916,6 +966,11 @@ fix all the crufafel with "Inter1Leader" tables
                
                  
              }
+             
+            console.log('in:')
+             console.log(allArray);
+             
+             
 // BEGIN SORTING
          
          
@@ -947,7 +1002,6 @@ fix all the crufafel with "Inter1Leader" tables
                       prevCompCat = allArray[l]["Id_Categorie"];
                     }
                     allArray[l]["Id_Position_Categorie"] = Number(m);
-
                         
             }
  // END calculate categorie position
@@ -965,8 +1019,6 @@ fix all the crufafel with "Inter1Leader" tables
                 // reasign postion number
                      allArray[l]["Id_Position_Overall"] = Number(l+1);
                     
- 
-
             }
              
 // END calculate overall position
@@ -996,8 +1048,6 @@ fix all the crufafel with "Inter1Leader" tables
                       prevCompCat = allArray[l]["Id_Categorie"];
                     }
                     allArray[l]["Id_Position_Categorie"] = Number(m);
-
- 
                         
             }
  // END calculate categorie position
@@ -1011,7 +1061,6 @@ fix all the crufafel with "Inter1Leader" tables
             allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
-
                 // reasign postion number
                      allArray[l]["Id_Position_Overall"] = Number(l+1);
 
@@ -1035,7 +1084,6 @@ fix all the crufafel with "Inter1Leader" tables
             prevCompCat = ""
             
             for (l = 0; l < allArray.length; l++) {
-
                 // reasign postion number
  
                      if (prevCompCat == allArray[l]["Id_Categorie"]) {
@@ -1046,7 +1094,6 @@ fix all the crufafel with "Inter1Leader" tables
                     }
                     allArray[l]["Id_Position_Categorie"] = Number(m);
                         
-
             }
  // END calculate categorie position
            
@@ -1063,7 +1110,6 @@ fix all the crufafel with "Inter1Leader" tables
                 // reasign postion number
                      allArray[l]["Id_Position_Overall"] = Number(l+1);
                      
-
             }
              
 // END calculate overall position
@@ -1096,7 +1142,6 @@ fix all the crufafel with "Inter1Leader" tables
                     }
                     allArray[l]["Id_Position_Categorie"] = Number(m);
                     
-
             }
  // END calculate categorie position
            
@@ -1113,7 +1158,6 @@ fix all the crufafel with "Inter1Leader" tables
                 // reasign postion number
                      allArray[l]["Id_Position_Overall"] = Number(l+1);
                      
- 
             }
              
 // END calculate overall position
@@ -1140,7 +1184,7 @@ fix all the crufafel with "Inter1Leader" tables
    //     }          
 
     // hard coded header for now
- //       if (cleanResults == 0) {
+//       if (cleanResults == 0) {
 
                 //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
@@ -1176,7 +1220,7 @@ fix all the crufafel with "Inter1Leader" tables
                     }
                 }
                 
- /*       } else {
+/*       } else {
                     headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
                     
                     headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
@@ -1195,7 +1239,7 @@ fix all the crufafel with "Inter1Leader" tables
 //                if (show == 4) {
 
 //                    headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
- //                   headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
+//                    headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
 //                    headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
 //                    if (timeGapDisplayInter == 1) {
 //                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 Gap</th>'; // intermediate 1 time diff
@@ -1218,10 +1262,6 @@ fix all the crufafel with "Inter1Leader" tables
                     headerText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // combined time
                 }
 
-        
-        
-        
-        
         
                     
                     if (timeGapDisplay == 1) {
@@ -1253,8 +1293,10 @@ fix all the crufafel with "Inter1Leader" tables
 
                 // reasign postion number
                  if (useCategory == "no") {
+                     
                     allArray[l]["Id_Position"] = l+1;
                     allArray[l]["Id_Position_Overall"] = l+1;
+                    
                  } else if (useCategory == "yes") {
  
                      if (prevCompCat == allArray[l]["Id_Categorie"]) {
@@ -1449,8 +1491,8 @@ fix all the crufafel with "Inter1Leader" tables
                             positionChanged = "gainedPosition ";
                             
                         }
-                        
                     }
+                    
        //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
 
        
@@ -1684,11 +1726,25 @@ allArray[l]["Id_Arrow"]
 
                 } else if (allArray[l]["Id_Arrow"] == 3) { // red
                     
-                    finalText += '<td class="' + checkeredFlag + 'red rnk_font"><img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places"></td>';
+                    if (prologue == 1) {
+                        
+                        finalText += '<td class="' + checkeredFlag + 'red rnk_font"><img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places"></td>';
+                        
+                    } else {
+
+                        finalText += '<td class="' + checkeredFlag + 'red rnk_font"></td>';
+                    }
                     
                 } else if (allArray[l]["Id_Arrow"] == 4) { // green
                     
-                    finalText += '<td class="' + checkeredFlag + 'green rnk_font"><img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places"></td>';
+                    if (prologue == 1) {
+                        
+                        finalText += '<td class="' + checkeredFlag + 'green rnk_font"><img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places"></td>';
+                        
+                    } else {
+
+                        finalText += '<td class="' + checkeredFlag + 'green rnk_font"></td>';
+                    }
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
@@ -1943,9 +1999,9 @@ if (show == 4 /*&& cleanResults == 0*/) {
                     if (allArray[l]["Id_Inter1blue"] == 1) {
                         
                          if (allArray[l]["Id_Inter1Time"] == 99999999999) {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
                         } else {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
 
                             if (allArray[l]["Id_Inter1Ecart1er"] == 99999999999) {
                                 finalText += '<div>-</div></td>'; // add diff
@@ -1958,16 +2014,16 @@ if (show == 4 /*&& cleanResults == 0*/) {
                     
                     } else if (imTheLeaderInter1 == 1) {
                         if (allArray[l]["Id_Inter1Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font">-</td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile">-</td>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
                         }
                         
                     } else {
                         if (allArray[l]["Id_Inter1Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font"><div>-</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div>-</div>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter1Time"] + '</div>'; // add intermediate time
                         }
 
                         if (allArray[l]["Id_Inter1Ecart1er"] == 99999999999) {
@@ -1983,9 +2039,9 @@ if (show == 4 /*&& cleanResults == 0*/) {
                                                 
                         
                          if (allArray[l]["Id_Inter2Time"] == 99999999999) {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
                         } else {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
 
                             if (allArray[l]["Id_Inter2Ecart1er"] == 99999999999) {
                                 finalText += '<div>-</div></td>'; // add diff
@@ -1997,16 +2053,16 @@ if (show == 4 /*&& cleanResults == 0*/) {
                     
                     } else if (imTheLeaderInter2 == 1) {
                         if (allArray[l]["Id_Inter2Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font">-</td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile">-</td>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
                         }
                         
                     } else {
                         if (allArray[l]["Id_Inter2Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font"><div>-</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div>-</div>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter2Time"] + '</div>'; // add intermediate time
                         }
 
                         if (allArray[l]["Id_Inter2Ecart1er"] == 99999999999) {
@@ -2022,9 +2078,9 @@ if (show == 4 /*&& cleanResults == 0*/) {
                                                 
                         
                          if (allArray[l]["Id_Inter3Time"] == 99999999999) {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>'; // add intermediate blue
                         } else {
-                            finalText += '<td title="Blue Board Rider" class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
+                            finalText += '<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '<span class="Flag blueFlag"></span></div>'; // add intermediate time
 
                             if (allArray[l]["Id_Inter3Ecart1er"] == 99999999999) {
                                 finalText += '<div>-</div></td>'; // add diff
@@ -2036,16 +2092,16 @@ if (show == 4 /*&& cleanResults == 0*/) {
                     
                     } else if (imTheLeaderInter3 == 1) {
                         if (allArray[l]["Id_Inter3Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font">-</td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile">-</td>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div><span class="Flag numberOne"></span></td>'; // add intermediate time
                         }
                         
                     } else {
                         if (allArray[l]["Id_Inter3Time"] == 99999999999) {
-                            finalText += '<td class="rnk_font"><div>-</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div>-</div>'; // add intermediate time
                         } else {
-                            finalText += '<td class="rnk_font"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div>'; // add intermediate time
+                            finalText += '<td class="rnk_font mobile"><div class="bold">' + allArray[l]["Id_Inter3Time"] + '</div>'; // add intermediate time
                         }
 
                         if (allArray[l]["Id_Inter3Ecart1er"] == 99999999999) {
@@ -2067,7 +2123,7 @@ if (show == 4 /*&& cleanResults == 0*/) {
                     if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // add total time
                     } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
+                        finalText += '<td class="rnk_font bold">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
                     }
         //          } else {
         //             finalText += '<td class="rnk_font">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
@@ -2077,7 +2133,7 @@ if (show == 4 /*&& cleanResults == 0*/) {
                     if (allArray[l]["Id_Sector_Ecart1er"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // add diff
                     } else {
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Sector_Ecart1er"] + '</td>'; // add diff
+                        finalText += '<td class="rnk_font">+' + allArray[l]["Id_Sector_Ecart1er"] + '</td>'; // add diff
                     }
         
         
@@ -2088,7 +2144,7 @@ if (show == 4 /*&& cleanResults == 0*/) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
+                            finalText += '<td class="rnk_font bold">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
                         }
                         
                     } else {
@@ -2302,7 +2358,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
                 finalText += '</table></div>';
 
  
-          
+            console.log('out: ')
              console.log(allArray);
       //       console.log(finalText);
               
