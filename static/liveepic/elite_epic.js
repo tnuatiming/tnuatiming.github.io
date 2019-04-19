@@ -22,7 +22,7 @@
     var eventName = "";    
     
     var cleanResults = 0; // alignTable for TotalIndex
-    
+        
     var precision = "tenth"; // "tenth" for 1 digit after the .
     
     var catcat = "None";
@@ -42,8 +42,16 @@
 
     var epictv = 0;
     
+    var rows = 5; // number of rows to display on tv
+    if (sessionStorage.getItem('rows')) {
+        rows = sessionStorage.getItem('rows');
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
             
+        document.getElementById("rows").value = rows;
+        console.log(rows);
+        
         if (show == 1) {
             document.getElementById("intermediate1").classList.remove("active");
             document.getElementById("intermediate1").disabled = true;
@@ -212,7 +220,9 @@
 //        positionArray_All_Cat = {}; // empting the array
 
         show = section;
-
+        rows = Number(document.getElementById("rows").value);
+        sessionStorage.setItem('rows', rows);
+        
         if (show == 1) {
             document.getElementById("intermediate1").classList.remove("active");
             document.getElementById("intermediate1").disabled = true;
@@ -289,8 +299,10 @@
         
         useCategory = choice;
         catcat = cat;
-
-         if (useCategory == "yes" && catcat == "Men") {
+        rows = Number(document.getElementById("rows").value);
+        sessionStorage.setItem('rows', rows);
+        
+        if (useCategory == "yes" && catcat == "Men") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.add("active");
@@ -2668,7 +2680,7 @@ if (show == 4) {
 
 
 
-if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
+if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
     
     
     
@@ -2685,7 +2697,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 
         
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Nom">Name</th>';
+                    TVheaderText1 += '<th style="text-align: left;" class="rnkh_font Id_Nom">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
@@ -2705,6 +2717,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
                     finalText += '</table>\n';
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
                 } else if (l == 0) {
@@ -2743,9 +2756,9 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
                 }
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
+                finalText += '<td style="text-align: left;" class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
-                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
+                finalText += '<td class="rnk_font"><span class="Flag tv ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag tv ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
                 
@@ -2979,7 +2992,10 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 
     }        // end for l
          
-         
+                
+                if (epictv == 1) {
+                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
+                }
                 finalText += '</table></div>';
              
                 
