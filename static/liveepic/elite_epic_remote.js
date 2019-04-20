@@ -16,6 +16,9 @@ postion arrow needes to be disabled after the prologue
 
 */
 
+    var url = 'j1.txt';
+    var target = 'result';
+    
     var TimerLoad;
     var Rafraichir = 60000; // every 60 seconds
 
@@ -53,7 +56,30 @@ postion arrow needes to be disabled after the prologue
 
     var epictv = 0;
     
+    var showTvHeader = 0;
+    if (sessionStorage.getItem('showTvHeader')) {
+        showTvHeader = sessionStorage.getItem('showTvHeader');
+    }
+
+    var rows = 5; // number of rows to display on tv
+    if (sessionStorage.getItem('rows')) {
+        rows = sessionStorage.getItem('rows');
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
+            
+        if (document.getElementById('epictv')){
+            epictv = 1;
+        }
+
+        if (epictv == 1) {
+            document.getElementById("rows").value = rows;
+            if (document.getElementById("showTvHeader").checked) {
+                showTvHeader = 1;
+            } else {
+                showTvHeader = 0;
+            }
+        }
             
         if (show == 1) {
             document.getElementById("intermediate1").classList.remove("active");
@@ -224,6 +250,18 @@ postion arrow needes to be disabled after the prologue
 
         show = section;
 
+        if (epictv == 1) {
+            rows = Number(document.getElementById("rows").value);
+            sessionStorage.setItem('rows', rows);
+            
+            if (document.getElementById("showTvHeader").checked) {
+                showTvHeader = 1;
+            } else {
+                showTvHeader = 0;
+            }
+            sessionStorage.setItem('showTvHeader', showTvHeader);
+        }
+
         if (show == 1) {
             document.getElementById("intermediate1").classList.remove("active");
             document.getElementById("intermediate1").disabled = true;
@@ -300,6 +338,18 @@ postion arrow needes to be disabled after the prologue
         
         useCategory = choice;
         catcat = cat;
+
+        if (epictv == 1) { 
+            rows = Number(document.getElementById("rows").value);
+            sessionStorage.setItem('rows', rows);
+
+            if (document.getElementById("showTvHeader").checked) {
+                showTvHeader = 1;
+            } else {
+                showTvHeader = 0;
+            }
+            sessionStorage.setItem('showTvHeader', showTvHeader);
+        }
 
          if (useCategory == "yes" && catcat == "Men") {
             document.getElementById("displayAllButton").classList.add("active");
@@ -441,7 +491,7 @@ postion arrow needes to be disabled after the prologue
 
     };
 
-    async function Load(url, target) {
+    async function Load() {
         
                     
         var loop;
@@ -559,7 +609,7 @@ postion arrow needes to be disabled after the prologue
         });
 */
         loop = function() {
-            Load(url, target);
+            Load();
         };
 
         TimerLoad = setTimeout(loop, Rafraichir);
@@ -584,10 +634,6 @@ postion arrow needes to be disabled after the prologue
 */
 
     function createLiveTable(p1) {
-        
-        if (document.getElementById('epictv')){
-            epictv = 1;
-        }
         
         var MaximumStageTime = 36000000; // Maximum stage time in miliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
         var i;
@@ -1637,7 +1683,7 @@ postion arrow needes to be disabled after the prologue
             if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
                 
-                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
                     finalText += '</table>\n';
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
                 } else if (l == 0) {
@@ -2232,7 +2278,7 @@ if (show == 4 /*&& cleanResults == 0*/) {
 
 
 
-if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
+if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 'rows' competitors
     
     
     
@@ -2249,7 +2295,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 
         
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Nom">Name</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
@@ -2268,7 +2314,8 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
             if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1;
                 
-                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
+                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
                     finalText += '</table>\n';
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
                 } else if (l == 0) {
@@ -2276,15 +2323,23 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
                 }
 //                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1 + '\n';                
                             
-                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>' + TVheaderText1 + '\n';
+                finalText += '<table class="' + tableClass + 'line_color">\n';
+                
+                if (showTvHeader == 1) {
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
+                }
+                
+                finalText += TVheaderText1 + '\n';
 
                 
                 
-                
-                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+                
+                if (showTvHeader == 1) {
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
+                }
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + TVheaderText1;
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>' + TVheaderText1 + '\n';
+                finalText += TVheaderText1 + '\n';
             }
 
     
@@ -2307,7 +2362,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
                 }
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
                 finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
 
@@ -2354,7 +2409,9 @@ if ((epictv == 1 && allArray[l]["Id_Position"] < 6 && allArray[l]["Id_Sector_Fin
 
     }        // end for l
          
-         
+                if (epictv == 1) {
+                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
+                }
                 finalText += '</table></div>';
 
  

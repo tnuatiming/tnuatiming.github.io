@@ -59,6 +59,8 @@
 {{- if (eq .Params.body "total") }}
     <script src="elite_epic_total.js"></script>
     <style>table{direction:ltr}</style>
+{{ else if (eq .Params.media "tv") }}
+    <script src="elite_epic_remote.js"></script>
 {{ else if (eq .Params.body "epic") }}
     <script src="elite_epic.js"></script>
 {{ else if (eq .Params.body "live") }}

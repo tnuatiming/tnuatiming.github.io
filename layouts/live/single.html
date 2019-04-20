@@ -17,10 +17,10 @@
 {{  else if (eq .Params.body "total") }}
     <body onload="Load()" id="live">
 {{  else if (eq .Params.media "tv") }}
-    <body  onload="Load('p1.html', 'result');" id="live">
+    <body  onload="Load()" id="live">
     <div id="epictv"></div>
 {{ else }}
-    <body  onload="Load('p1.html', 'result');" id="live">
+    <body  onload="Load('p1.html', 'result')" id="live">
 {{ end }}
 
 {{ partial "header.html" . }}

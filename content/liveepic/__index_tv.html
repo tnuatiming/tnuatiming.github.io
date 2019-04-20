@@ -79,10 +79,16 @@ th.rnkh_font {
 td.title_font {
     padding-bottom: 20px;
 }
-td, th {
+th {
     font-weight: 700;
     font-size: 1.5em;
-    padding: 10px;
+    padding: 5px 10px;
+    line-height: 2;
+}
+td {
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 5px 10px;
     line-height: 2;
 }
 #live td span.tv {
@@ -107,7 +113,7 @@ td, th {
     display: inline-block;
     height: 20px;
     background-color: #6c3;
-    margin-left: 35px;
+    margin: 0 35px;
 }
 #live #categoryOrAll span p {
     font-weight: 700; 
@@ -172,6 +178,11 @@ td, th {
         background-color:#fee300bf; 
         font-weight:700;
     }
+    #live td.left, #live th.left {
+        text-align: left;
+    }
+    #live td.right, #live th.right {
+        text-align: right;
     #live td img {
         height:0.9em; 
         vertical-align:middle; 
@@ -278,6 +289,7 @@ td, th {
         <button id="displayCatButton" class="btn" onClick="category('yes', 'None')">By Category</button>
         <button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button>
         <span class="btn"><p>rows:&nbsp;</p><input id="rows" style="width: 30px;" type="text" name="rows"></span>
+        <input type="checkbox" id="showTvHeader" name="showTvHeader" value="header" checked> Header<br>
     </div>
     <div id="intermediateOrFinish">
         <button id="intermediate1" class="btn" onClick="intermediateOrFinish('1')">Intermediate 1</button>
