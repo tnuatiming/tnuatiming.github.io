@@ -115,11 +115,29 @@ td {
     background-color: #6c3;
     margin: 0 35px;
 }
-#live #categoryOrAll span p {
+#live #categoryOrAll label {
     font-weight: 700; 
     display: inline-block;
     height: 18px;
+    color: #ecf0f1;
 }
+#live label.rows {
+    margin-left: 40px; 
+}
+#live input#rows {
+    margin-right: 20px; 
+    transform: scale(1.2);
+}
+#live input#showTvHeader {
+    transform: scale(2);
+}
+#live #result {
+    cursor: none;
+}
+#live tr.rnk_bkcolor {
+    pointer-events: none;
+}
+
 
 /*  END TV */
 
@@ -288,8 +306,8 @@ td {
         <button id="Grand" class="btn" onClick="category('yes', 'Grand')">Grand</button>
         <button id="displayCatButton" class="btn" onClick="category('yes', 'None')">By Category</button>
         <button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button>
-        <span class="btn"><p>rows:&nbsp;</p><input id="rows" style="width: 30px;" type="text" name="rows"></span>
-        <input type="checkbox" id="showTvHeader" name="showTvHeader" value="header" checked> Header<br>
+        <label class="rows">rows:&nbsp;&nbsp;<input id="rows" style="width: 30px;" type="text" name="rows"></label>
+        <label for="showTvHeader"><input type="checkbox" id="showTvHeader" name="showTvHeader" value="header" checked>&nbsp;headers</label>
     </div>
     <div id="intermediateOrFinish">
         <button id="intermediate1" class="btn" onClick="intermediateOrFinish('1')">Intermediate 1</button>

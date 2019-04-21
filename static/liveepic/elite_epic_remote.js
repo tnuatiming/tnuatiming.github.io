@@ -66,8 +66,11 @@ postion arrow needes to be disabled after the prologue
         rows = sessionStorage.getItem('rows');
     }
 
+    
     document.addEventListener("DOMContentLoaded", function() {
             
+    
+    
         if (document.getElementById('epictv')){
             epictv = 1;
         }
@@ -79,6 +82,18 @@ postion arrow needes to be disabled after the prologue
             } else {
                 showTvHeader = 0;
             }
+            
+            const checkbox = document.getElementById('showTvHeader');
+
+            checkbox.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    showTvHeader = 1;
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                } else {
+                    showTvHeader = 0;
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                }
+            });
         }
             
         if (show == 1) {
