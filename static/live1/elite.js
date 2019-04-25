@@ -7,7 +7,7 @@
 // 20180703 - added category best lap. added local storage for category or all button.  
 // 20180704 - added individual laps best lap (activated by "טסט" in folder name). added penalty indicator. 
 // 20180709 - added option for cleaning the results for the results page (activated by "+++" in folder name). 
-// 20180903 - added option for harescramble finish. 
+// 20180903 - added option for hare scramble finish. 
 // 20181010 - added previous results and race progress ticker. 
 // 20181105 - added show penalty time on hover. 
 // 20181126 - added show only laps needed for category and split categories to separate tables. 
@@ -23,6 +23,11 @@
     var TimerLoad;
     var Rafraichir = 10000;
 
+    var url = 'p1.html';
+    var target = 'result';
+
+    var P1;
+
 //    var TimerChange, MaxNum, Changement, ClassementReduit, ClassementReduitXpremier, UrlRefresh, UrlChange;
 //    MaxNum = 1;
 //    Changement = 60000;
@@ -30,6 +35,11 @@
 //    ClassementReduitXpremier = 10;
 
     
+    var positionArray_All_Cat = {}; // array with the previous competitor overall and category position. updated every Load, used to show the position change arrow between Loads 
+    if (sessionStorage.getItem('positionArray_All_Cat')) {
+        positionArray_All_Cat = JSON.parse(sessionStorage.getItem('positionArray_All_Cat'));
+    }
+/*
     //    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var positionArrayAll = {}; // array with the previous competitor overall position. updated every Load, used to show the position change arrow between Loads 
     var positionArrayCat = {}; // array with the previous competitor category position. updated every Load, used to show the position change arrow between Loads 
@@ -39,6 +49,7 @@
     if (sessionStorage.getItem('positionArrayCat')) {
         positionArrayCat = JSON.parse(sessionStorage.getItem('positionArrayCat'));
     }
+*/
     var lapsArray = []; // array with the previous laps count. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
@@ -86,18 +97,37 @@
         
     function category(choice){
         
-//        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+//        positionArray = []; // emptying the array as the info inside is incorrect due to changing between position/category position.
+        
+//        positionArray_All_Cat = {}; // emptying the array
         
         useCategory = choice;
+        
         if (useCategory == "yes") {
             sessionStorage.setItem('useCategory', 'yes');
         } else if (useCategory == "no") {
             sessionStorage.setItem('useCategory', 'no');
         }
 
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");
+            document.getElementById("displayAllButton").disabled = true;
+        }
+
         tableClass = "fadeIn "; // make the table fadeIn on change
         
-        Load('p1.html', 'result');
+        //Load('p1.html', 'result');
+        document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+        document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
+        document.getElementById("result").innerHTML = createLiveTable(P1);
+        alignTable();
     }
 
 /*
@@ -192,7 +222,8 @@
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
-                    document.getElementById(target).innerHTML = createLiveTable(await response.text());
+                    P1 = await response.text();
+                    document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
                 }
             }
@@ -227,7 +258,8 @@
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
-                    document.getElementById(target).innerHTML = createLiveTable(xhr.responseText);
+                    P1 = response.text();
+                    document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
     //           } else {
     //               document.getElementById("categoryOrAll").style.display = "none";
@@ -385,9 +417,12 @@
             tickerBestTime = "-";  // tickerTest
    //         categoryBestTime = {};
             categoryBestTimePrevious = {};
-//            positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
+//            positionArray = []; // emptying the array as the info inside is incorrect due to changing between position/category position.
+/*
             positionArrayAll = {}; // array with the previous competitor overall position. updated every Load, used to show the position change arrow between Loads 
             positionArrayCat = {}; // array with the previous competitor category position. updated every Load, used to show the position change arrow between Loads 
+*/
+            positionArray_All_Cat = {};
         }
         
         eventName = HeaderEventName;  // tickerTest
@@ -433,7 +468,7 @@
             hareScramble = 1;
         }
 
-        if (HeaderName[0].includes("ראלי") && HeaderName[0].includes("ספרינט")) { // will show diffrent colmuns for qualifying
+        if (HeaderName[0].includes("ראלי") && HeaderName[0].includes("ספרינט")) { // will show different columns for qualifying
 /*           var sheet = document.createElement('style');
             sheet.innerHTML = "#live td.BestTimeOverall {background-color: inherit;color: inherit;font-weight: inherit;} #live td.BestTime {background-color: inherit;color: inherit;font-weight: inherit;}";
             document.body.appendChild(sheet);
@@ -460,7 +495,7 @@
             document.body.appendChild(sheet);
 */       }
 
-        if (HeaderName[0].includes("דירוג") || HeaderName[0].includes("דרוג")) { // will show diffrent colmuns for qualifying
+        if (HeaderName[0].includes("דירוג") || HeaderName[0].includes("דרוג")) { // will show different columns for qualifying
             qualifying = 1;
             showBestLap = 0;
         }
@@ -707,7 +742,7 @@ switch(option) {  // tickerTest
                 allArray[l]["Id_TpsCumule"] = allArray[l]["Id_TpsCumule"].replace(" 00:", " ") // for P
             }
                         
-                    // reorder laps as elite3 does somthing wrong with the order 
+                    // reorder laps as elite3 does something wrong with the order 
             if (allArray[l]["Id_TpsTour1"] && showIndividualLaps == 1) { 
 
                 g = laps; // number of laps
@@ -954,6 +989,55 @@ switch(option) {  // tickerTest
                     competitorPosition = Number(allArray[l]["Id_PositionCategorie"]);  // get the position value and clean penalty indicator
             }
 
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                    // calculating arrows status
+                    
+                    positionChanged = "";
+
+                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no") {
+                        
+                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] < allArray[l]["Id_Position"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
+                            allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
+                            positionChanged = "lostPosition ";
+                            
+                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > allArray[l]["Id_Position"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
+                            allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
+                            positionChanged = "gainedPosition ";
+                            
+                        }
+                        
+                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes") {
+                        
+                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] < allArray[l]["Id_PositionCategorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
+                            allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
+                            positionChanged = "lostPosition ";
+                            
+                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > allArray[l]["Id_PositionCategorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
+                            allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'; // up :)
+                            positionChanged = "gainedPosition ";
+                            
+                        }
+                    }
+             
+            
+            
+            
+            
+/*            
             positionChanged = "";
 
             if (allArray[l]["Id_NbTour"] == 0) {
@@ -963,7 +1047,7 @@ switch(option) {  // tickerTest
                    
             if (competitorPosition > 0 && competitorNumber >= 0 && (allArray[l]["Id_TpsTour"] != "-" || allArray[l]["Id_NbTour"] > 0 || allArray[l]["Id_Image"].includes("_TrackPassing"))) { // position change arrow calc
             
-                if (/*positionArray[competitorNumber] && */(allArray[l]["Id_NbTour"] > 0 || (qualifying == 1 && allArray[l]["Id_TpsTour"] != "-"))) {
+                if ((allArray[l]["Id_NbTour"] > 0 || (qualifying == 1 && allArray[l]["Id_TpsTour"] != "-"))) {
 
                     if ((positionArrayAll[competitorNumber] && useCategory == "no" && positionArrayAll[competitorNumber] < competitorPosition) || (positionArrayCat[competitorNumber] && useCategory == "yes" && positionArrayCat[competitorNumber] < competitorPosition)) {
 
@@ -980,41 +1064,44 @@ switch(option) {  // tickerTest
                                 
                                 
                                 
-/*                                if (useCategory == "no" && competitorPosition > 1 && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Position"] <= 3) {  // tickerTest
-                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
-                                } else if (Object.keys(categoryBestTime).length > 1 && useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
-                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
-                                } else if (useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
-                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
-                                }// tickerTest
-*/
+//                                if (useCategory == "no" && competitorPosition > 1 && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_Position"] <= 3) {  // tickerTest
+//                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
+//                                } else if (Object.keys(categoryBestTime).length > 1 && useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
+//                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
+//                                } else if (useCategory == "yes" && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_Categorie"] != "undefined") {
+//                                    ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + competitorPosition);  // tickerTest
+//                                }// tickerTest
+
                     }
                 }
                 // console.log("competitorNumber: " + competitorNumber + ",competitorPosition: " + competitorPosition + ", positionArray:" + positionArray[competitorNumber]);
 //                        positionArray[competitorNumber] = competitorPosition;// update array with current position for next Load calc
             }
-       
+*/       
 
-            // tickerTest
-            if (Object.keys(categoryBestTime).length > 1  && positionArrayAll[competitorNumber] && positionArrayCat[competitorNumber]) { // we have more the 1 category
+
+// tickerTest
+        if (allArray[l]["Id_Numero"] in positionArray_All_Cat) {
+            if (Object.keys(categoryBestTime).length > 1 && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] != undefined && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] != undefined) { // we have more the 1 category
                 
                 
-                if (allArray[l]["Id_Position"] <= 3 && allArray[l]["Id_Position"] < positionArrayAll[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0) {  // tickerTest
+                if (allArray[l]["Id_Position"] <= 3 && allArray[l]["Id_Position"] < positionArray_All_Cat[allArray[l]["Id_Numero"]][0] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0) {  // tickerTest
                     ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_Position"] + ' כללי');  // tickerTest
                 } 
-                if (allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_PositionCategorie"] < positionArrayCat[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0 && allArray[l]["Id_Categorie"] != "undefined" && allArray[l]["Id_Categorie"] != "&nbsp;") {
+                if (allArray[l]["Id_PositionCategorie"] <= 3 && allArray[l]["Id_PositionCategorie"] < positionArray_All_Cat[allArray[l]["Id_Numero"]][1] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0 && allArray[l]["Id_Categorie"] != "undefined" && allArray[l]["Id_Categorie"] != "&nbsp;") {
                     ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_PositionCategorie"] + ' בקטגוריה ' + allArray[l]["Id_Categorie"]);  // tickerTest
                 }// tickerTest   
                                             
-            } else { // we have just 1 category
-                if (allArray[l]["Id_Position"] <= 3 && allArray[l]["Id_Position"] < positionArrayAll[competitorNumber] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0) {  // tickerTest
+            } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] != undefined) { // we have just 1 category
+                if (allArray[l]["Id_Position"] <= 3 && allArray[l]["Id_Position"] < positionArray_All_Cat[allArray[l]["Id_Numero"]][0] && allArray[l]["Id_Nom"] != "???" && allArray[l]["Id_NbTour"] > 0) {  // tickerTest
                     ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') עלה למקום ' + allArray[l]["Id_Position"]);  // tickerTest
                 } 
                 
             } // tickerTest
+        }
 
-            positionArrayAll[competitorNumber] = allArray[l]["Id_Position"];// update array with current overall position for next Load calc
-            positionArrayCat[competitorNumber] = allArray[l]["Id_PositionCategorie"];// update array with current category position for next Load calc
+//            positionArrayAll[competitorNumber] = allArray[l]["Id_Position"];// update array with current overall position for next Load calc
+//            positionArrayCat[competitorNumber] = allArray[l]["Id_PositionCategorie"];// update array with current category position for next Load calc
        
        // blink the competitor line when change
 
@@ -1175,14 +1262,14 @@ switch(option) {  // tickerTest
                     finalText += '<td class="rnk_font' + slim + '"></td>\n';
                 } else {
 //                        finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
-                    if (allArray[l]["Id_Position_Penalty"] == 1) { // need to be cerfule with this, as position penalty is for overall
+                    if (allArray[l]["Id_Position_Penalty"] == 1) { // need to be careful with this, as position penalty is for overall
                         finalText += '<td class="rnk_font penalty' + slim + '">P ' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
                     } else {
                         finalText += '<td class="rnk_font' + slim + '">' + allArray[l]["Id_PositionCategorie"] + '</td>\n';
                     }
                 }
             } else if (useCategory == "no") {
-                if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == 1)) { // FIXME is this needed? on clean results we dont show id_Arrow, this will never be invoked
+                if (allArray[l]["Id_Image"].includes("_Status") && (cleanResults == 1)) { // FIXME is this needed? on clean results we don't show id_Arrow, this will never be invoked
                     
                     if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') {
                         finalText += '<td class="rnk_font' + slim + '"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>\n';
@@ -1275,7 +1362,7 @@ switch(option) {  // tickerTest
             }
 /*
         // using aria popup for נווט need fixing
-                //FIXME doesnt work with usecategory no with cleanResults 1(אופנועים doesnt get נווט cell), altough we never need it
+                //FIXME doesn't work with usecategory no with cleanResults 1(אופנועים doesn't get נווט cell), although we never need it
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים'))) {
                     if (cleanResults == 0 && allArray[l]["Id_Licence"] != '&nbsp;') {
                         finalText += '<td aria-label="נווט: ' + allArray[l]["Id_Licence"] + '" class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n'; //copilot
@@ -1452,6 +1539,30 @@ switch(option) {  // tickerTest
 
             finalText += '</tr>\n';
 
+
+            
+// update competitor previous overall and category position array
+                
+        positionArray_All_Cat[allArray[l]["Id_Numero"]] = [0, 0];
+
+        if (typeof allArray[l]["Id_Position"] != 0) {
+            positionArray_All_Cat[allArray[l]["Id_Numero"]][0] = allArray[l]["Id_Position"];
+        } 
+        if (typeof allArray[l]["Id_PositionCategorie"] != 0) {
+            positionArray_All_Cat[allArray[l]["Id_Numero"]][1] = allArray[l]["Id_PositionCategorie"];
+        } 
+
+//console.log(positionArray_All_Cat[allArray[l]["Id_Numero"]]);
+
+//console.log("all "+positionArray_All_Cat[allArray[l]["Id_Numero"]][0]);
+// console.log("pos "+positionArray_All_Cat[allArray[l]["Id_Numero"]][1]);
+
+            
+            
+            
+            
+            
+            
         } // end for l
             
         if (category != "&nbsp;") {
@@ -1604,8 +1715,9 @@ switch(option) {  // tickerTest
 
 //        sessionStorage.setItem('categoryBestTime', JSON.stringify(categoryBestTime));
         sessionStorage.setItem('categoryBestTimePrevious', JSON.stringify(categoryBestTimePrevious));
-        sessionStorage.setItem('positionArrayCat', JSON.stringify(positionArrayCat));
-        sessionStorage.setItem('positionArrayAll', JSON.stringify(positionArrayAll));
+//        sessionStorage.setItem('positionArrayCat', JSON.stringify(positionArrayCat));
+//        sessionStorage.setItem('positionArrayAll', JSON.stringify(positionArrayAll));
+        sessionStorage.setItem('positionArray_All_Cat', JSON.stringify(positionArray_All_Cat));
 
         firstPass = 0;  // tickerTest
 
@@ -1684,7 +1796,7 @@ switch(option) {  // tickerTest
         
         if (cleanResults == 0) {
             
-            // aligning table colmuns according to number of colmuns
+            // aligning table columns according to number of colmuns
             var tt = document.querySelectorAll('.line_color');
 
             for (let kk = 0; kk < tt.length; kk++) {

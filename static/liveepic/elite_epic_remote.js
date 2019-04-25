@@ -15,7 +15,10 @@ enable google compiler for production
 postion arrow needes to be disabled after the prologue
 
 */
-
+    var useHash = 1;
+    var hash = 'hash.txt';
+    var hashOld = '';
+    
     var url = 'j1.txt';
     var target = 'result';
     
@@ -73,9 +76,7 @@ postion arrow needes to be disabled after the prologue
     
         if (document.getElementById('epictv')){
             epictv = 1;
-        }
 
-        if (epictv == 1) {
             document.getElementById("rows").value = rows;
             if (document.getElementById("showTvHeader").checked) {
                 showTvHeader = 1;
@@ -536,13 +537,49 @@ postion arrow needes to be disabled after the prologue
         if (self.fetch) {
 
             try {
-                const response = await fetch(url, {cache: "no-store"});
-                if (response.ok) {
-                    document.getElementById("categoryOrAll").style.display = "block"; // if j1.html exist, display the buttons
-                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
-                    P1 = await response.text();
-                    document.getElementById(target).innerHTML = createLiveTable(P1);
-                    alignTable();
+                if (useHash == 1) {
+                    const response = await fetch(hash, {cache: "no-store"}); // check if hash changeed, which mean we have a new j1.txt to download
+                    if (response.ok) {
+                        var hashNew = await response.text();
+
+                        if (hashOld != hashNew) {
+                    
+                            console.log('found new hash');
+                            
+                            const response = await fetch(url, {cache: "no-store"});
+                            if (response.ok) {
+                                document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                                document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
+                                P1 = await response.text();
+                                document.getElementById(target).innerHTML = createLiveTable(P1);
+            //                    alignTable();
+                            
+                                hashOld = hashNew;
+                            }
+                            
+                        } else if (typeof P1 != 'undefined') {
+                                
+                            console.log('no new hash');
+                            document.getElementById(target).innerHTML = createLiveTable(P1);
+        //                    alignTable();
+                        }
+                        
+                    } else if (typeof P1 != 'undefined') {
+                            
+                        console.log('no hash on server');
+                            
+                        document.getElementById(target).innerHTML = createLiveTable(P1);
+    //                    alignTable();
+                    }
+                } else {
+                    const response = await fetch(url, {cache: "no-store"});
+                    if (response.ok) {
+                        document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                        document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
+                        P1 = await response.text();
+                        document.getElementById(target).innerHTML = createLiveTable(P1);
+    //                    alignTable();
+                    }
                 }
             }
             catch (err) {
@@ -678,7 +715,7 @@ postion arrow needes to be disabled after the prologue
 */        
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard;
 
 
         if (show == 1) {
@@ -1265,10 +1302,11 @@ postion arrow needes to be disabled after the prologue
                     }            
                     headerText1 += '<th class="rnkh_font Id_Nom">Name</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
-
+/*
                     if (doNotShowTime == 0 && show == 4) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule">Individual Time</th>';
                     }
+*/                    
                     //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
                 if (show == 4) {
                         headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
@@ -1642,10 +1680,21 @@ postion arrow needes to be disabled after the prologue
                 }
 
 
-                single1 = "";
+                finished1 = "";
+                finished2 = "";
+                single1 = ""
                 single2 = "";
                 uci1 = "";
                 uci2 = "";
+                
+                if (allArray[l]["single"] == 0 && show == 4) {
+                    if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999) {      
+                        finished1 = '<span title="Finished" class="Flag CheckeredFlag"></span>';
+                    }
+                    else if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999) {      
+                        finished2 = '<span title="Finished" class="Flag CheckeredFlag"></span>';
+                    }
+                }
                 
                 if (allArray[l]["single"] == 2) {
                     single2 = "lineThrough";
@@ -1763,27 +1812,27 @@ allArray[l]["Id_Arrow"]
                 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
-                    finalText += '<td aria-label="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
+                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
 
                 } else if (allArray[l]["Id_Arrow"] == 11) {
                     
-                    finalText += '<td aria-label="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>';
+                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 10) {
                     
-                    finalText += '<td aria-label="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>';
+                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 9) {
                     
-                    finalText += '<td aria-label="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_nq.svg" alt="nq"></td>';
+                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_nq.svg" alt="nq"></td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
-                    finalText += '<td aria-label="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_status.svg" alt="status"></td>';
+                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_status.svg" alt="status"></td>';
                     
                 } else if (showBlue == 1) {
                 
-                    finalText += '<td aria-label="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
+                    finalText += '<td title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
                 } else if (allArray[l]["Id_Arrow"] == 3) { // red
                     
@@ -1809,7 +1858,7 @@ allArray[l]["Id_Arrow"]
                     
                 } else if (checkeredFlag == "finished ") { // finished
                     
-                    finalText += '<td aria-label="Finished" class="finished white rnk_font">&nbsp;</td>';
+                    finalText += '<td title="Finished" class="finished white rnk_font">&nbsp;</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 7) { // black
                     
@@ -1821,7 +1870,7 @@ allArray[l]["Id_Arrow"]
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 || show != 4) {
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 /*|| show != 4*/) { // enable show != 4, to show postion only on finish
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
 /*                    
@@ -1861,7 +1910,7 @@ allArray[l]["Id_Arrow"]
                 }
 */                
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 /*&& cleanResults == 0*/ && allArray[l]["single"] == 0) { // only rider 1 finished at this point
-                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + uci1 + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + finished1 + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
@@ -1898,7 +1947,7 @@ allArray[l]["Id_Arrow"]
                     
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
-                        finalText += '<div class="SecoundLine ' + single1 + '"><span title="Finished" class="Flag CheckeredFlag"></span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '">' + finished2 + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                             finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
@@ -1919,7 +1968,7 @@ allArray[l]["Id_Arrow"]
                     
 //                }
                 
-                
+/*                
             if (doNotShowTime == 0 && show == 4) {
                 
       //          if (cleanResults == 0) {
@@ -1949,10 +1998,6 @@ allArray[l]["Id_Arrow"]
                 } else {
                     finalText += '<div class="SecoundLine">' + allArray[l]["Id_TpsCumule_2"] + '</div></td>'; // add time
                 }
-              
-                
-                
-                
                 
                     
            //         finalText += '</div>';
@@ -1960,6 +2005,9 @@ allArray[l]["Id_Arrow"]
 //                }
                 
             }          
+*/
+            
+            
 /*            
                 if (cleanResults == 1) {
                                             
