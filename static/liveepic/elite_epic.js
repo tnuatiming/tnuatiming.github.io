@@ -805,6 +805,34 @@
                 }
                 
                 if (lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') {
+                    
+                    delete lineArray.Id_Inter1;
+                    delete lineArray.Id_Inter1_2;
+                    delete lineArray.Id_Inter1Time;
+                    delete lineArray.Id_Inter1Ecart1er;
+                    delete lineArray.Id_Inter2;
+                    delete lineArray.Id_Inter2_2;
+                    delete lineArray.Id_Inter2Time;
+                    delete lineArray.Id_Inter2Ecart1er;
+                    delete lineArray.Id_Inter3;
+                    delete lineArray.Id_Inter3_2;
+                    delete lineArray.Id_Inter3Time;
+                    delete lineArray.Id_Inter3Ecart1er;
+                    delete lineArray.Id_Nationalite;
+                    delete lineArray.Id_Nationalite_2;
+                    delete lineArray.Id_Arrow;
+                    delete lineArray.oldBlue;
+                    delete lineArray.blue;
+                    delete lineArray.Id_Inter1blue;
+                    delete lineArray.Id_Inter2blue;
+                    delete lineArray.Id_Inter3blue;
+                    delete lineArray.Id_Finishblue;
+                    delete lineArray.single;
+                    delete lineArray.leader;
+                    delete lineArray.uci;
+                    delete lineArray.Id_penalty;   
+                    delete lineArray.Id_Groupe;   
+                    
                     if (pair_num == 1) {
                         allArray31.push(lineArray); // push line to main array 
                     } else if (pair_num == 2) {
@@ -830,7 +858,6 @@
                     penalty = "yes";
                 }
                 lineArray.Id_Image_2 = "";
-                lineArray.Id_MeilleurTour_2 = "";
                 lineArray.Id_TpsCumule_2 = 99999999999;
                 lineArray.Id_FinishTime = 99999999999;
                 lineArray.Id_Inter1_2 = 99999999999;
@@ -1004,7 +1031,6 @@
                     
                     // transfer fields from second array to the first that needed later, use _2 to mark
                     allArray[b]["Id_Image_2"] = allArray2[a]["Id_Image"];   
-                    allArray[b]["Id_MeilleurTour_2"] = allArray2[a]["Id_MeilleurTour"];   // fastest lap
                     allArray[b]["Id_Nom_2"] = allArray2[a]["Id_Nom"];
                     allArray[b]["Id_Numero_Full_2"] = allArray2[a]["Id_Numero_Full"];
                     allArray[b]["Id_Nationalite_2"] = allArray2[a]["Id_Nationalite"];
@@ -3009,8 +3035,6 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         delete allArray[l].Id_Inter2_2;
         delete allArray[l].Id_Inter3;
         delete allArray[l].Id_Inter3_2;
-        delete allArray[l].Id_MeilleurTour;
-        delete allArray[l].Id_MeilleurTour_2;
         delete allArray[l].Id_PenaliteNbTour;
         delete allArray[l].Id_PenalitePosition;
         delete allArray[l].Id_PenaliteTpsCumule;
@@ -3121,10 +3145,16 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
     }        // end for l
          
                 
+                
+        if (epictv == 1) {
+            finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
+        }
+        finalText += '</table></div>';
+             
 
                 
                 
-// BEGIN single day    FIXME NOT TESTED!!!
+// BEGIN single day   
     // BEGIN allArray31, 32                
                 
         for (b = 0; b < allArray31.length; b++) {  // main array
@@ -3138,8 +3168,8 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                     allArray31[b]["Id_Nom_2"] = allArray32[a]["Id_Nom"];
                     allArray31[b]["Id_Numero_Full_2"] = allArray32[a]["Id_Numero_Full"];
                     allArray31[b]["Id_TpsCumule_2"] = allArray32[a]["Id_TpsCumule"];
-
- 
+                }
+            }                  // END allArray32
                     // find finish time and check for 2 minutes difference
                                 
                     if (allArray31[b]["Id_TpsCumule"] != 99999999999 && allArray31[b]["Id_TpsCumule_2"] != 99999999999) {
@@ -3168,12 +3198,6 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                         allArray31[b]["Id_Image"] == ("_Status11"); // make DNF
                     }
                
-                
-                    if (allArray32[a]["Id_penalty"] == "P") {
-                    allArray31[b].Id_penalty = "P";   
-                    }
-                    
-             //       allArray31[b].Id_TpsTour_2 = allArray32[a]["Id_TpsTour"];   // last lap
                     
                     if (allArray31[b]["Id_Image"].includes("_Status") || allArray31[b]["Id_Image_2"].includes("_Status") || (raceEnded == 1 && allArray31[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
                         allArray31[b].Id_Status = 1;
@@ -3182,17 +3206,17 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                     }
                 
                 
-                }
+              
          
                
-            }                  // END allArray32
         }                // END allArray31
                 
-                
+
+
 // BEGIN allArray3                
         for (b = 0; b < allArray3.length; b++) {  
 
-            allArray3[b]["Id_FinishTime"] == allArray3[b]["Id_TpsCumule"];
+            allArray3[b]["Id_FinishTime"] = allArray3[b]["Id_TpsCumule"];
                     
             if (allArray3[b]["Id_Image"].includes("_Status") || (raceEnded == 1 && allArray3[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
                 allArray3[b].Id_Status = 1;
@@ -3202,18 +3226,20 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         } // END allArray3
                 
                 
-                
+//  console.log('allArray3:');
+//console.log(allArray3);
+              
                         
                 
                 
                 
                 
-    array3f = allArray3.concat(allArray31); // combine arrays                
+    allArray3f = allArray3.concat(allArray31); // combine arrays                
                 
                 
-    array3 = [];               
-    array31 = [];               
-    array32 = [];               
+    allArray3 = [];               
+    allArray31 = [];               
+    allArray32 = [];               
                
                 
 
@@ -3222,11 +3248,10 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
             allArray3f.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
     
     
+//console.log('allArray3f:');
+//console.log(allArray3f);
   
 //    if (cleanResults == 0) { 
-        
-        m = 0;
-        prevCompCat = ""
         
 
 
@@ -3259,6 +3284,9 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 headerText32 += '</tr>';
 
                 
+            m = 0;
+            prevCompCat = ""
+        
             leaderTime = 0;
             var t = 1;
 
@@ -3310,6 +3338,8 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
             finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
            } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
             finalText3 += '<td class="rnk_font dnsfq">DSQ</td>\n';
+           } else if (allArray3f[l]["Id_Status"] == 1) {
+            finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
            } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
             finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Position"] + '</td>\n';
            }  else {
@@ -3325,16 +3355,18 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
             
             if (allArray3f[l]["Id_FinishTime"] != 99999999999) {  
                 allArray3f[l]["Id_FinishTime"] = ms2TimeString(allArray3f[l]["Id_FinishTime"]);
+                finalText3 += '<td class="rnk_font bold">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';
+            } else {
+                finalText3 += '<td class="rnk_font">-</td>\n';
             }                                
             
-            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';
             
-            if (allArray3f[l]["Id_Ecart1er"] != 99999999999) {  
+            if (allArray3f[l]["Id_Ecart1er"] != 99999999999 && allArray3f[l]["Id_Position"] != 1) {  
                 allArray3f[l]["Id_Ecart1er"] = ms2TimeString(allArray3f[l]["Id_Ecart1er"]);
-            }                                
-            
-            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Ecart1er"] + '</td>\n';
-
+                finalText3 += '<td class="rnk_font">+' + allArray3f[l]["Id_Ecart1er"] + '</td>\n';
+            } else {
+                finalText3 += '<td class="rnk_font">-</td>\n';
+            }
             
             finalText3 += '</tr>\n';
             
@@ -3350,8 +3382,6 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         delete allArray3f[l].Id_Inter2_2;
         delete allArray3f[l].Id_Inter3;
         delete allArray3f[l].Id_Inter3_2;
-        delete allArray3f[l].Id_MeilleurTour;
-        delete allArray3f[l].Id_MeilleurTour_2;
         delete allArray3f[l].Id_PenaliteNbTour;
         delete allArray3f[l].Id_PenalitePosition;
         delete allArray3f[l].Id_PenaliteTpsCumule;
@@ -3396,7 +3426,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
             
             
             
-        }// end for l
+        } // END for l single day
         
         if (m != 0) { // check if we have competitors
             finalText3 += '</table>\n</div>\n';  // close after last category   
@@ -3438,7 +3468,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
 
                
     console.log('single day:');                
-    console.log(array3f);
+    console.log(allArray3f);
                 
      
     
@@ -3454,12 +3484,6 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 
                 
                 
-                
-                if (epictv == 1) {
-                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
-                }
-                finalText += '</table></div>';
-             
                 
                 console.log(allArray);
 /*  
