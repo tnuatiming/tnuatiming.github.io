@@ -801,8 +801,24 @@
                 }
                 
                 if (lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') { // single day
+
                     
                     delete lineArray.Id_penalty;   
+                    delete lineArray.Id_Groupe;   
+                    
+                    if (lineArray["Id_Categorie"] == '&nbsp;' ) {
+                        lineArray["Id_Categorie"] = "";   
+                    } else if (lineArray["Id_Categorie"] == 'undefined' ) {
+                        lineArray["Id_Categorie"] = "-";   
+                    }
+                    
+                    // convert total time to miliseconds
+                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
+                    } else {
+                        lineArray["Id_TpsCumule"] = 99999999999;   
+                    }
+
                     
                     if (pair_num == 1) {
                         allArray31.push(lineArray); // push line to main array 
@@ -3195,20 +3211,19 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                             allArray31[b]["Id_FinishTime"] = 99999999999;
                         }
                         
-                        
                         if (Math.abs(allArray31[b]["Id_TpsCumule"] - allArray31[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
                         //      allArray31[b]["Id_FinishTime"] = 99999999999;
                         // allArray31[b]["Id_Arrow"] == 10; // make DSQ
                         allArray31[b]["Id_Image"] == ("_Status10"); // make DSQ
                         }
                         
-                        
-                        
                     } else if (raceEnded == 1 && (allArray31[b]["Id_TpsCumule"] == 99999999999 || allArray31[b]["Id_TpsCumule_2"] == 99999999999)) {
                         
                         allArray31[b]["Id_FinishTime"] = 99999999999;
                         // allArray31[b]["Id_Arrow"] == 11; // make DNF
                         allArray31[b]["Id_Image"] == ("_Status11"); // make DNF
+                    } else {
+                        allArray31[b]["Id_FinishTime"] = 99999999999;
                     }
                
                     
