@@ -665,7 +665,10 @@
         var lineArray = {};
         var allArray = [];
         var allArray2 = [];
-//        var allArray3 = [];
+        var allArray3 = [];
+        var allArray31 = [];
+        var allArray32 = [];
+        var allArray3f = [];
         var penalty = "no";
         var ttt = 0;
         var pp = 0;
@@ -801,9 +804,15 @@
                     lineArray.Id_penalty = "";
                 }
                 
-                if (lineArray["Id_Categorie"] == 'חד יומי') {
- //                   allArray3.push(lineArray); // push line to main array 
-                    console.log('חד יומי');
+                if (lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') {
+                    if (pair_num == 1) {
+                        allArray31.push(lineArray); // push line to main array 
+                    } else if (pair_num == 2) {
+                        allArray32.push(lineArray); // push line to main array 
+                    } else {
+                        allArray3.push(lineArray); // push line to main array 
+                    }
+                    
                } else if (pair_num == 1) {
                     allArray.push(lineArray); // push line to main array 
                 } else if (pair_num == 2) {
@@ -890,9 +899,13 @@
                 if (hhhPro[pp] == "Id_Numero" && lineArray[hhhPro[pp]] != "-" ) {
                     pair_num = String(lineArray[hhhPro[pp]]).slice(-1);
                     main_num = String(lineArray[hhhPro[pp]]).slice(0, -1);
-                    lineArray[hhhPro[pp]] = main_num;
-
+                    if (pair_num == "1" || pair_num == "2") {
+                        lineArray[hhhPro[pp]] = main_num;
                         lineArray["Id_Numero_Full"] = main_num + '-' + pair_num;
+                    } else {
+                        lineArray["Id_Numero_Full"] = lineArray["Id_Numero"];
+                    }
+
                }
 /*
                 if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
@@ -3107,6 +3120,340 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
 
     }        // end for l
          
+                
+
+                
+                
+// BEGIN single day    FIXME NOT TESTED!!!
+    // BEGIN allArray31, 32                
+                
+        for (b = 0; b < allArray31.length; b++) {  // main array
+            for (a = 0; a < allArray32.length; a++) { 
+
+
+                if (allArray31[b]["Id_Numero"] == allArray32[a]["Id_Numero"]) {
+                     
+                    // transfer fields from second array to the first that needed later, use _2 to mark
+                    allArray31[b]["Id_Image_2"] = allArray32[a]["Id_Image"];   
+                    allArray31[b]["Id_Nom_2"] = allArray32[a]["Id_Nom"];
+                    allArray31[b]["Id_Numero_Full_2"] = allArray32[a]["Id_Numero_Full"];
+                    allArray31[b]["Id_TpsCumule_2"] = allArray32[a]["Id_TpsCumule"];
+
+ 
+                    // find finish time and check for 2 minutes difference
+                                
+                    if (allArray31[b]["Id_TpsCumule"] != 99999999999 && allArray31[b]["Id_TpsCumule_2"] != 99999999999) {
+                        if (allArray31[b]["Id_TpsCumule"] > allArray31[b]["Id_TpsCumule_2"]) {
+                            allArray31[b]["Id_FinishTime"] = Number(allArray31[b]["Id_TpsCumule"]);
+                        }
+                        else if (allArray31[b]["Id_TpsCumule"] <= allArray31[b]["Id_TpsCumule_2"]) {
+                            allArray31[b]["Id_FinishTime"] = Number(allArray31[b]["Id_TpsCumule_2"]);
+                        } else {
+                            allArray31[b]["Id_FinishTime"] = 99999999999;
+                        }
+                        
+                        
+                        if (Math.abs(allArray31[b]["Id_TpsCumule"] - allArray31[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
+                        //      allArray31[b]["Id_FinishTime"] = 99999999999;
+                        // allArray31[b]["Id_Arrow"] == 10; // make DSQ
+                        allArray31[b]["Id_Image"] == ("_Status10"); // make DSQ
+                        }
+                        
+                        
+                        
+                    } else if (raceEnded == 1 && (allArray31[b]["Id_TpsCumule"] == 99999999999 || allArray31[b]["Id_TpsCumule_2"] == 99999999999)) {
+                        
+                        allArray31[b]["Id_FinishTime"] = 99999999999;
+                        // allArray31[b]["Id_Arrow"] == 11; // make DNF
+                        allArray31[b]["Id_Image"] == ("_Status11"); // make DNF
+                    }
+               
+                
+                    if (allArray32[a]["Id_penalty"] == "P") {
+                    allArray31[b].Id_penalty = "P";   
+                    }
+                    
+             //       allArray31[b].Id_TpsTour_2 = allArray32[a]["Id_TpsTour"];   // last lap
+                    
+                    if (allArray31[b]["Id_Image"].includes("_Status") || allArray31[b]["Id_Image_2"].includes("_Status") || (raceEnded == 1 && allArray31[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
+                        allArray31[b].Id_Status = 1;
+                    } else {
+                        allArray31[b].Id_Status = 0;
+                    }
+                
+                
+                }
+         
+               
+            }                  // END allArray32
+        }                // END allArray31
+                
+                
+// BEGIN allArray3                
+        for (b = 0; b < allArray3.length; b++) {  
+
+            allArray3[b]["Id_FinishTime"] == allArray3[b]["Id_TpsCumule"];
+                    
+            if (allArray3[b]["Id_Image"].includes("_Status") || (raceEnded == 1 && allArray3[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
+                allArray3[b].Id_Status = 1;
+            } else {
+                allArray3[b].Id_Status = 0;
+            }
+        } // END allArray3
+                
+                
+                
+                        
+                
+                
+                
+                
+    array3f = allArray3.concat(allArray31); // combine arrays                
+                
+                
+    array3 = [];               
+    array31 = [];               
+    array32 = [];               
+               
+                
+
+    
+    
+            allArray3f.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+    
+    
+  
+//    if (cleanResults == 0) { 
+        
+        m = 0;
+        prevCompCat = ""
+        
+
+
+
+        var flagText = HeaderName[0].match(/Images\/\s*(.*?)\s*\.png/);
+//        console.log(flagText[0]); // Images/_Stop.png
+//        console.log(flagText[1]); // _Stop
+
+        var finalText3 = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        
+        finalText3 += HeaderName[1];
+        finalText3 += '\n<div id="liveTable">\n';
+
+                                                            
+                headerText31 = '<tr class="rnkh_bkcolor">\n';
+                headerText31 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
+                headerText31 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
+                headerText31 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
+                headerText31 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
+                headerText31 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
+                headerText31 += '</tr>';
+
+                headerText32 = '<tr class="rnkh_bkcolor">\n';
+                headerText32 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
+                headerText32 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
+                headerText32 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
+                headerText32 += '<th class="rnkh_font">שם 2</th>\n'; // Id_Nom_2
+                headerText32 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
+                headerText32 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
+                headerText32 += '</tr>';
+
+                
+            leaderTime = 0;
+            var t = 1;
+
+        for (l = 0; l < allArray3f.length; l++) {
+            
+             
+            
+            if (prevCompCat == allArray3f[l]["Id_Categorie"]) {
+                m += 1;
+                
+                if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
+                    allArray3f[l]["Id_Ecart1er"] = allArray3f[l]["Id_FinishTime"] - leaderTime;
+                } else {
+                    allArray3f[l]["Id_Ecart1er"] = 99999999999;
+                }
+                
+            } else {
+                m = 1;
+                prevCompCat = allArray3f[l]["Id_Categorie"];
+                
+                if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
+                    leaderTime = allArray3f[l]["Id_FinishTime"];
+                }
+                
+                if (t == 0) { // skip the first category
+                    
+                    finalText3 += '</table>\n';                
+                }
+
+                t = 0;
+                
+                if (allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                    finalText3 += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td></tr>' + headerText31 + '\n';
+                } else {
+                    finalText3 += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td></tr>' + headerText32 + '\n';
+                }
+            }
+            
+            allArray3f[l]["Id_Position"] = m;
+            
+             if (l % 2 == 0) {
+                finalText3 += '<tr class="rnk_bkcolor OddRow">\n';
+                } else {
+                finalText3 += '<tr class="rnk_bkcolor EvenRow">\n';
+            }
+           
+           
+           if (allArray3f[l]["Id_Image"].includes('_Status10')) {
+            finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
+           } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
+            finalText3 += '<td class="rnk_font dnsfq">DSQ</td>\n';
+           } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
+            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Position"] + '</td>\n';
+           }  else {
+            finalText3 += '<td class="rnk_font"></td>\n';
+           }
+            
+            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Numero"] + '</td>\n';
+            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom"] + '</td>\n';
+            
+            if (!allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom_2"] + '</td>\n';
+            }
+            
+            if (allArray3f[l]["Id_FinishTime"] != 99999999999) {  
+                allArray3f[l]["Id_FinishTime"] = ms2TimeString(allArray3f[l]["Id_FinishTime"]);
+            }                                
+            
+            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';
+            
+            if (allArray3f[l]["Id_Ecart1er"] != 99999999999) {  
+                allArray3f[l]["Id_Ecart1er"] = ms2TimeString(allArray3f[l]["Id_Ecart1er"]);
+            }                                
+            
+            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Ecart1er"] + '</td>\n';
+
+            
+            finalText3 += '</tr>\n';
+            
+            
+            
+            
+            
+/*
+        delete allArray3f[l].Id_Discipline;
+        delete allArray3f[l].Id_Inter1;
+        delete allArray3f[l].Id_Inter1_2;
+        delete allArray3f[l].Id_Inter2;
+        delete allArray3f[l].Id_Inter2_2;
+        delete allArray3f[l].Id_Inter3;
+        delete allArray3f[l].Id_Inter3_2;
+        delete allArray3f[l].Id_MeilleurTour;
+        delete allArray3f[l].Id_MeilleurTour_2;
+        delete allArray3f[l].Id_PenaliteNbTour;
+        delete allArray3f[l].Id_PenalitePosition;
+        delete allArray3f[l].Id_PenaliteTpsCumule;
+//        delete allArray3f[l].Id_Position;
+        delete allArray3f[l].Id_PositionCategorie;
+        delete allArray3f[l].Id_TpsTour;
+        delete allArray3f[l].Id_TpsTour1;
+        delete allArray3f[l].Id_TpsTour2;
+        delete allArray3f[l].Id_TpsTour3;
+        delete allArray3f[l].Id_TpsTour4;
+        delete allArray3f[l].Id_TpsTour5;
+        delete allArray3f[l].Id_TpsTour6;
+        delete allArray3f[l].Id_Sector_FinishTime;
+        delete allArray3f[l].Id_Sector_Ecart1er;
+        delete allArray3f[l].oldBlue; // will be phrased on remote from Id_Groupe
+        delete allArray3f[l].leader; // will be phrased on remote from Id_Groupe
+        delete allArray3f[l].single; // will be phrased on remote from Id_Groupe
+        delete allArray3f[l].uci; // will be phrased on remote from Id_Groupe
+        delete allArray3f[l].Id_Numero_Full_2;
+        delete allArray3f[l].Id_Numero_Full;
+        delete allArray3f[l].Id_Canal;
+        delete allArray3f[l].Id_Arrow;
+//        delete allArray3f[l].Id_Status;
+        delete allArray3f[l].Id_Nationalite;
+        delete allArray3f[l].Id_Nationalite_2;
+
+            
+            
+            
+            
+            
+            
+            const allArrayJ3 = {};
+            Object.keys(allArray3f[l]).sort().forEach(function(key) {
+                if (allArray3f[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
+                    allArray3f[l][key] == '';
+                }
+                allArrayJ3[key] = allArray3f[l][key];
+            });
+            allArray3f[l] = allArrayJ3;
+*/
+            
+            
+            
+        }// end for l
+        
+        if (m != 0) { // check if we have competitors
+            finalText3 += '</table>\n</div>\n';  // close after last category   
+            
+            download(finalText3, 'p3.html', 'text/plain');    // download the html for single day 
+
+        } else {
+            finalText3 += '</div>\n';  // close "liveTable" 
+        }
+/*
+        var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
+
+        var div1 = document.createElement("div");  
+        div1.innerHTML = HeaderName[1]; 
+        var header2 = div1.getElementsByTagName("span");
+   
+        var DayTime =  header2[0].textContent || div.innerText || "";
+        var ElapsedTime =  header2[1].textContent || div.innerText || "";
+        var RemainingTime =  header2[2].textContent || div.innerText || "";
+
+
+        var header = {};
+        header.headerFlag = headerFlag;
+        header.HeaderEventName = HeaderEventName;
+        header.DayTime = DayTime;
+        header.ElapsedTime = ElapsedTime;
+        header.RemainingTime = RemainingTime;
+
+        allArray3f.unshift(header); // add the header at the beginning
+        allArrayJ3 = JSON.stringify(allArray3f);             
+        download(allArrayJ3, 'j3.txt', 'text/plain');    
+        console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt')
+*/
+//    }
+ 
+        
+        //       console.log(JSON.parse(allArrayJ3));     
+
+
+               
+    console.log('single day:');                
+    console.log(array3f);
+                
+     
+    
+    console.log(finalText3);
+    
+    // END single day    
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 if (epictv == 1) {
                     finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
