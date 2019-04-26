@@ -676,10 +676,6 @@
         var a;
         var id;
         var positionChanged = "";
-        var bestLapComp = 0;
-        var bestLap = "99999999999";
-        var bestLapComp2 = 0;
-        var bestLap2 = "99999999999";
         var laps = 12; // number of laps
         var NewCategoryHeader = "";
 /*        
@@ -804,34 +800,9 @@
                     lineArray.Id_penalty = "";
                 }
                 
-                if (lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') {
+                if (lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') { // single day
                     
-                    delete lineArray.Id_Inter1;
-                    delete lineArray.Id_Inter1_2;
-                    delete lineArray.Id_Inter1Time;
-                    delete lineArray.Id_Inter1Ecart1er;
-                    delete lineArray.Id_Inter2;
-                    delete lineArray.Id_Inter2_2;
-                    delete lineArray.Id_Inter2Time;
-                    delete lineArray.Id_Inter2Ecart1er;
-                    delete lineArray.Id_Inter3;
-                    delete lineArray.Id_Inter3_2;
-                    delete lineArray.Id_Inter3Time;
-                    delete lineArray.Id_Inter3Ecart1er;
-                    delete lineArray.Id_Nationalite;
-                    delete lineArray.Id_Nationalite_2;
-                    delete lineArray.Id_Arrow;
-                    delete lineArray.oldBlue;
-                    delete lineArray.blue;
-                    delete lineArray.Id_Inter1blue;
-                    delete lineArray.Id_Inter2blue;
-                    delete lineArray.Id_Inter3blue;
-                    delete lineArray.Id_Finishblue;
-                    delete lineArray.single;
-                    delete lineArray.leader;
-                    delete lineArray.uci;
                     delete lineArray.Id_penalty;   
-                    delete lineArray.Id_Groupe;   
                     
                     if (pair_num == 1) {
                         allArray31.push(lineArray); // push line to main array 
@@ -841,10 +812,122 @@
                         allArray3.push(lineArray); // push line to main array 
                     }
                     
-               } else if (pair_num == 1) {
+               } else if (pair_num == 1) { // to epic main array 
+                   
+                   
+                   
+                    
+                    lineArray.Id_Image_2 = "";
+                    lineArray.Id_TpsCumule_2 = 99999999999;
+                    lineArray.Id_FinishTime = 99999999999;
+                    lineArray.Id_Inter1_2 = 99999999999;
+                    lineArray.Id_Inter1Time = 99999999999;
+                    lineArray.Id_Inter1Ecart1er = 99999999999; // maybe needs to be '-'
+                    lineArray.Id_Inter2_2 = 99999999999;
+                    lineArray.Id_Inter2Time = 99999999999;
+                    lineArray.Id_Inter2Ecart1er = 99999999999; // maybe needs to be '-'
+                    lineArray.Id_Inter3_2 = 99999999999;
+                    lineArray.Id_Inter3Time = 99999999999;
+                    lineArray.Id_Inter3Ecart1er = 99999999999; // maybe needs to be '-'
+                    lineArray.Id_Nom_2 = "";
+                    lineArray.Id_Nationalite_2 = "";
+                    lineArray.Id_Arrow = 0;
+                    lineArray.Id_Status = 0;
+                    lineArray.oldBlue = 0;
+                    lineArray.blue = 0;
+                    lineArray.Id_Inter1blue = 0;
+                    lineArray.Id_Inter2blue = 0;
+                    lineArray.Id_Inter3blue = 0;
+                    lineArray.Id_Finishblue = 0;
+                    lineArray.single = 0;
+                    lineArray.leader = 0;
+                    lineArray.uci = 0; // 0 - none, 1 - first rider is uci, 2 - second rider is uci, 3 - both
+                    lineArray.Id_penalty = "";   
+
+                    if (lineArray["Id_Groupe"] == '&nbsp;') {
+                        lineArray["Id_Groupe"] = "";   
+                    }
+
+                    if (lineArray["Id_Categorie"] == '&nbsp;' ) {
+                        lineArray["Id_Categorie"] = "";   
+                    } else if (lineArray["Id_Categorie"] == 'undefined' ) {
+                        lineArray["Id_Categorie"] = "-";   
+                    }
+                    
+                    // convert intermediate time to miliseconds
+                    if (lineArray["Id_Inter1"] != "-") {
+                        lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
+                    } else {
+                        lineArray["Id_Inter1"] = 99999999999;   
+                    }
+                    if (lineArray["Id_Inter2"] != "-") {
+                        lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
+                    } else {
+                        lineArray["Id_Inter2"] = 99999999999;   
+                    }
+                    if (lineArray["Id_Inter3"] != "-") {
+                        lineArray["Id_Inter3"] = timeString2ms(lineArray["Id_Inter3"]);   
+                    } else {
+                        lineArray["Id_Inter1"] = 99999999999;   
+                    }
+                    
+                    // convert total time to miliseconds
+                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
+                    } else {
+                        lineArray["Id_TpsCumule"] = 99999999999;   
+                    }
+
+                   
+                   
+                   
                     allArray.push(lineArray); // push line to main array 
-                } else if (pair_num == 2) {
+                    
+                } else if (pair_num == 2) { // to epic secoundry array
+                    
+ 
+
+                    
+                    if (lineArray["Id_Groupe"] == '&nbsp;') {
+                        lineArray["Id_Groupe"] = "";   
+                    }
+
+                    if (lineArray["Id_Categorie"] == '&nbsp;' ) {
+                        lineArray["Id_Categorie"] = "";   
+                    } else if (lineArray["Id_Categorie"] == 'undefined' ) {
+                        lineArray["Id_Categorie"] = "-";   
+                    }
+
+                    // convert intermediate time to miliseconds
+                    if (lineArray["Id_Inter1"] != "-") {
+                        lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
+                    } else {
+                        lineArray["Id_Inter1"] = 99999999999;   
+                    }
+                    if (lineArray["Id_Inter2"] != "-") {
+                        lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
+                    } else {
+                        lineArray["Id_Inter2"] = 99999999999;   
+                    }
+                    if (lineArray["Id_Inter3"] != "-") {
+                        lineArray["Id_Inter3"] = timeString2ms(lineArray["Id_Inter3"]);   
+                    } else {
+                        lineArray["Id_Inter1"] = 99999999999;   
+                    }
+                    
+                    // convert total time to miliseconds
+                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
+                    } else {
+                        lineArray["Id_TpsCumule"] = 99999999999;   
+                    }
+                
+                    
+                    
+                    
+                    
                     allArray2.push(lineArray); // push line to main array 
+                    
                 }
 
                 lineArray = {};
@@ -857,98 +940,28 @@
                 if (lines[b].includes("(C)")) {
                     penalty = "yes";
                 }
-                lineArray.Id_Image_2 = "";
-                lineArray.Id_TpsCumule_2 = 99999999999;
-                lineArray.Id_FinishTime = 99999999999;
-                lineArray.Id_Inter1_2 = 99999999999;
-                lineArray.Id_Inter1Time = 99999999999;
-                lineArray.Id_Inter1Ecart1er = 99999999999; // maybe needs to be '-'
-                lineArray.Id_Inter2_2 = 99999999999;
-                lineArray.Id_Inter2Time = 99999999999;
-                lineArray.Id_Inter2Ecart1er = 99999999999; // maybe needs to be '-'
-                lineArray.Id_Inter3_2 = 99999999999;
-                lineArray.Id_Inter3Time = 99999999999;
-                lineArray.Id_Inter3Ecart1er = 99999999999; // maybe needs to be '-'
-                lineArray.Id_Nom_2 = "";
-                lineArray.Id_Nationalite_2 = "";
-                lineArray.Id_Arrow = 0;
-                lineArray.Id_Status = 0;
-                lineArray.oldBlue = 0;
-                lineArray.blue = 0;
-                lineArray.Id_Inter1blue = 0;
-                lineArray.Id_Inter2blue = 0;
-                lineArray.Id_Inter3blue = 0;
-                lineArray.Id_Finishblue = 0;
-                lineArray.single = 0;
-                lineArray.leader = 0;
-                lineArray.uci = 0; // 0 - none, 1 - first rider is uci, 2 - second rider is uci, 3 - both
-                lineArray.Id_penalty = "";   
 
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
-                // convert intermediate time to miliseconds
-                if (hhhPro[pp] == "Id_Groupe" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "";   
-                }
+
                 if (lineArray[hhhPro[pp]] == '&nbsp;' ) {
                     lineArray[hhhPro[pp]] = "";   
                 }
-                if (hhhPro[pp] == "Id_Inter1" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_Inter1" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                if (hhhPro[pp] == "Id_Inter2" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_Inter2" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                if (hhhPro[pp] == "Id_Inter3" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_Inter3" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                // convert total time to miliseconds
-                if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
-                }
-                if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] == "-" ) {
-                    lineArray[hhhPro[pp]] = 99999999999;   
-                }
-                if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
-                    lineArray[hhhPro[pp]] = "";   
-                }
-                if (hhhPro[pp] != "Id_Categorie" && lineArray[hhhPro[pp]] == 'undefined' ) {
-                    lineArray[hhhPro[pp]] = "-";   
-                }
+                
+
                 if (hhhPro[pp] == "Id_Numero" && lineArray[hhhPro[pp]] != "-" ) {
                     pair_num = String(lineArray[hhhPro[pp]]).slice(-1);
                     main_num = String(lineArray[hhhPro[pp]]).slice(0, -1);
+                    
                     if (pair_num == "1" || pair_num == "2") {
                         lineArray[hhhPro[pp]] = main_num;
                         lineArray["Id_Numero_Full"] = main_num + '-' + pair_num;
                     } else {
                         lineArray["Id_Numero_Full"] = lineArray["Id_Numero"];
                     }
-
-               }
-/*
-                if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime=lineArray["Id_TpsTour"];
-                    bestTimecomp=lineArray["Id_Numero"];
                 }
-*/
-                // find best lap overall
-                    if (hhhPro[pp] == "Id_TpsTour" && lineArray[hhhPro[pp]] != "-" && timeString2ms(lineArray[hhhPro[pp]]) <= timeString2ms(bestLap)) {
-                    bestLap = lineArray[hhhPro[pp]];
-                    bestLapComp = lineArray["Id_Numero"];
-                    }
 
                 pp += 1;
       //    console.log(lineArray);
-       //   console.log(bestLapComp+"  "+bestLap);
 
             }
             
