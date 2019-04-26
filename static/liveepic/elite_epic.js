@@ -3269,19 +3269,19 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 headerText31 = '<tr class="rnkh_bkcolor">\n';
                 headerText31 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
                 headerText31 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
-                headerText31 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
+                headerText31 += '<th class="rnkh_font">רוכב</th>\n'; // Id_Nom
                 headerText31 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
                 headerText31 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
-                headerText31 += '</tr>';
+                headerText31 += '</tr>\n';
 
                 headerText32 = '<tr class="rnkh_bkcolor">\n';
                 headerText32 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
                 headerText32 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
-                headerText32 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
-                headerText32 += '<th class="rnkh_font">שם 2</th>\n'; // Id_Nom_2
+                headerText32 += '<th class="rnkh_font">רוכב 1</th>\n'; // Id_Nom
+                headerText32 += '<th class="rnkh_font">רוכב 2</th>\n'; // Id_Nom_2
                 headerText32 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
                 headerText32 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
-                headerText32 += '</tr>';
+                headerText32 += '</tr>\n';
 
                 
             m = 0;
@@ -3319,9 +3319,9 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 t = 0;
                 
                 if (allArray3f[l]["Id_Categorie"].includes('יחיד')) {
-                    finalText3 += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td></tr>' + headerText31 + '\n';
+                    finalText3 += '<table class="line_color fadeIn">\n<tr>\n<td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td>\n</tr>' + headerText31 + '\n';
                 } else {
-                    finalText3 += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td></tr>' + headerText32 + '\n';
+                    finalText3 += '<table class="line_color fadeIn">\n<tr>\n<td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td>\n</tr>' + headerText32 + '\n';
                 }
             }
             
@@ -3346,7 +3346,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
             finalText3 += '<td class="rnk_font"></td>\n';
            }
             
-            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Numero"] + '</td>\n';
+            finalText3 += '<td class="rnk_font highlight">' + allArray3f[l]["Id_Numero"] + '</td>\n';
             finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom"] + '</td>\n';
             
             if (!allArray3f[l]["Id_Categorie"].includes('יחיד')) {
@@ -3472,7 +3472,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 
      
     
-    console.log(finalText3);
+    //console.log(finalText3);
     
     // END single day    
                 
@@ -3482,10 +3482,10 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 
                 
                 
-                
-                
-                
-                console.log(allArray);
+    console.log('epic:');                
+    console.log(allArray);
+    
+    
 /*  
     if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
         var header = {};
@@ -3533,7 +3533,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         if (gfg.toString().substring(0, 3) == "00:") {
             gfg = gfg.substr(3);
         }
-        if (gfg.toString().substring(0, 1) == "0" && gfg.includes(":")) {
+        if (gfg.toString().substring(0, 1) == "0" && gfg.toString().substring(1, 2) != ".") {
             gfg = gfg.substr(1);
         }
     return gfg
