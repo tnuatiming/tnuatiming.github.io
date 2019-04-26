@@ -355,7 +355,7 @@ th.rnkh_font {
 span#name, span#rund, span#date {
 }
 
-#live #liveTable ,#live .PreResult, #live #previousResults {
+#live #liveTable ,#live #liveTableS ,#live .PreResult, #live #previousResults {
     width: 100%;
 }
 #live #previousResults {

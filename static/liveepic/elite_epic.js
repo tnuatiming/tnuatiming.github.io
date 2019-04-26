@@ -821,11 +821,19 @@
 
                     
                     if (pair_num == 1) {
+                        
+                        lineArray.Id_Image_2 = "";
+                        
                         allArray31.push(lineArray); // push line to main array 
+                        
                     } else if (pair_num == 2) {
-                        allArray32.push(lineArray); // push line to main array 
+                        
+                        allArray32.push(lineArray); // push line to main array
+                        
                     } else {
+                        
                         allArray3.push(lineArray); // push line to main array 
+                        
                     }
                     
                } else if (pair_num == 1) { // to epic main array 
@@ -3199,8 +3207,10 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                     allArray31[b]["Id_TpsCumule_2"] = allArray32[a]["Id_TpsCumule"];
                 }
             }                  // END allArray32
-                    // find finish time and check for 2 minutes difference
+                        
+                    allArray31[b]["blue"] = "highlight";
                                 
+                    // find finish time and check for 2 minutes difference
                     if (allArray31[b]["Id_TpsCumule"] != 99999999999 && allArray31[b]["Id_TpsCumule_2"] != 99999999999) {
                         if (allArray31[b]["Id_TpsCumule"] > allArray31[b]["Id_TpsCumule_2"]) {
                             allArray31[b]["Id_FinishTime"] = Number(allArray31[b]["Id_TpsCumule"]);
@@ -3210,24 +3220,25 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                         } else {
                             allArray31[b]["Id_FinishTime"] = 99999999999;
                         }
-                        
+                                                
                         if (Math.abs(allArray31[b]["Id_TpsCumule"] - allArray31[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
                         //      allArray31[b]["Id_FinishTime"] = 99999999999;
                         // allArray31[b]["Id_Arrow"] == 10; // make DSQ
-                        allArray31[b]["Id_Image"] == ("_Status10"); // make DSQ
+                        allArray31[b]["Id_Image"] = ("_Status10"); // make DSQ
+                        allArray31[b]["blue"] = "blueCard"; // make blue
                         }
                         
-                    } else if (raceEnded == 1 && (allArray31[b]["Id_TpsCumule"] == 99999999999 || allArray31[b]["Id_TpsCumule_2"] == 99999999999)) {
+                    } /*else if (raceEnded == 1 && (allArray31[b]["Id_TpsCumule"] == 99999999999 || allArray31[b]["Id_TpsCumule_2"] == 99999999999)) {
                         
                         allArray31[b]["Id_FinishTime"] = 99999999999;
                         // allArray31[b]["Id_Arrow"] == 11; // make DNF
                         allArray31[b]["Id_Image"] == ("_Status11"); // make DNF
-                    } else {
+                    }*/ else {
                         allArray31[b]["Id_FinishTime"] = 99999999999;
                     }
                
                     
-                    if (allArray31[b]["Id_Image"].includes("_Status") || allArray31[b]["Id_Image_2"].includes("_Status") || (raceEnded == 1 && allArray31[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
+                    if (allArray31[b]["Id_Image"].includes("_Status") || allArray31[b]["Id_Image_2"].includes("_Status")/* || (raceEnded == 1 && allArray31[b]["Id_FinishTime"] == 99999999999)*/) {
                         allArray31[b].Id_Status = 1;
                     } else {
                         allArray31[b].Id_Status = 0;
@@ -3245,8 +3256,10 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         for (b = 0; b < allArray3.length; b++) {  
 
             allArray3[b]["Id_FinishTime"] = allArray3[b]["Id_TpsCumule"];
-                    
-            if (allArray3[b]["Id_Image"].includes("_Status") || (raceEnded == 1 && allArray3[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
+            
+            allArray3[b]["blue"] = "highlight";
+            
+            if (allArray3[b]["Id_Image"].includes("_Status")/* || (raceEnded == 1 && allArray3[b]["Id_FinishTime"] == 99999999999)*/) {
                 allArray3[b].Id_Status = 1;
             } else {
                 allArray3[b].Id_Status = 0;
@@ -3288,10 +3301,10 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText3 = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
-        finalText3 += HeaderName[1];
-        finalText3 += '\n<div id="liveTable">\n';
+        finalText3header += HeaderName[1];
+        finalText3 = '\n<div id="liveTableS">\n';
 
                                                             
                 headerText31 = '<tr class="rnkh_bkcolor">\n';
@@ -3363,9 +3376,9 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
            
            
            if (allArray3f[l]["Id_Image"].includes('_Status10')) {
-            finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
-           } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
             finalText3 += '<td class="rnk_font dnsfq">DSQ</td>\n';
+           } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
+            finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
            } else if (allArray3f[l]["Id_Status"] == 1) {
             finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
            } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
@@ -3374,7 +3387,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
             finalText3 += '<td class="rnk_font"></td>\n';
            }
             
-            finalText3 += '<td class="rnk_font highlight">' + allArray3f[l]["Id_Numero"] + '</td>\n';
+            finalText3 += '<td class="rnk_font ' + allArray3f[l]["blue"] + '">' + allArray3f[l]["Id_Numero"] + '</td>\n';
             finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom"] + '</td>\n';
             
             if (!allArray3f[l]["Id_Categorie"].includes('יחיד')) {
@@ -3459,10 +3472,11 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         if (m != 0) { // check if we have competitors
             finalText3 += '</table>\n</div>\n';  // close after last category   
             
-            download(finalText3, 'p3.html', 'text/plain');    // download the html for single day 
+            download((finalText3header + finalText3), 'p3.html', 'text/plain');    // download the html for single day 
+            finalText3 = '<h2>Single Day</h2>\n' + finalText3;
 
         } else {
-            finalText3 += '</div>\n';  // close "liveTable" 
+            finalText3 += '</div>\n';  // close "liveTableS" 
         }
 /*
         var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
@@ -3549,7 +3563,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
     
       //  debugger;
         
-    return finalText
+    return (finalText + finalText3)
 
     };
         
