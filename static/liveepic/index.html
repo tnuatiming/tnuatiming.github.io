@@ -171,19 +171,6 @@ td[aria-label]:hover:after {
     min-width: 100%;
 }
 
-@media (max-width: 767px) {
-
-
-   #live #categoryOrAll button, #live #intermediateOrFinish button {
-        font-size: 0.8em;
-    }
-    #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
-        font-size: 0.8em;
-        padding: 0;
-    }
-}
-
-
 
     tbody.line, tr.rnk_bkcolor {
         border-bottom: 1px solid #111;
@@ -193,7 +180,7 @@ td[aria-label]:hover:after {
         direction: ltr;
         margin-top: 10px;
     }
-    .bigFont {
+    #live td.rnk_font.bigFont {
         font-size: 1.5em;
     }
   /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
@@ -362,6 +349,22 @@ td[aria-label]:hover:after {
     div#legend {width: 100%; text-align: left;}
     div#legend ul {width: 100%; text-align: left; float: left;}
     div#legend li {text-align: left;}
+
+@media (max-width: 767px) {
+
+
+   #live #categoryOrAll button, #live #intermediateOrFinish button {
+        font-size: 0.8em;
+    }
+    #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
+        font-size: 0.8em;
+        padding: 0;
+    }
+    #live td.rnk_font.bigFont {
+        font-size: 1.2em;
+    }
+}
+
 </style>
 
 <div id="raceheader"><h1>Live Results</h1></div>

@@ -2043,8 +2043,10 @@
                     catCol = 'blue';
                 } else if (allArray[l]["Id_Categorie"] == 'Grand') {
                     catCol = 'purple';
-                } else {
+                } else if (allArray[l]["Id_Categorie"] == 'Men'){
                     catCol = 'yellow';
+                } else {
+                    catCol = 'black';
                 }
                 
                 finished1 = "";
@@ -2088,9 +2090,10 @@
                     checkeredFlag = "";
                 }
                 
-                blued = '';
                 if (allArray[l]["blue"] == 1) {
                   blued = 'blued ';  
+                } else {
+                    blued = '';
                 }
                 
                 if (allArray[l]["oldBlue"] == 1) {
@@ -2291,23 +2294,23 @@ allArray[l]["Id_Arrow"]
 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
-                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
+                    finalText += '<td title="DNS" class="redred ' + blued + 'rnk_font">DNS</td>';
 
                 } else if (allArray[l]["Id_Arrow"] == 11) {
                     
-                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>';
+                    finalText += '<td title="DNF" class="redred ' + blued + 'rnk_font">DNF</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 10) {
                     
-                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>';
+                    finalText += '<td title="DSQ" class="redred ' + blued + 'rnk_font">DSQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 9) {
                     
-                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_nq.svg" alt="nq"></td>';
+                    finalText += '<td title="NQ" class="redred ' + blued + 'rnk_font">NQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
-                    finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_status.svg" alt="status"></td>';
+                    finalText += '<td title="*" class="redred ' + blued + 'rnk_font">*</td>';
                     
                 } else if (showBlue == 1) {
                 
