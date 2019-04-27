@@ -1302,6 +1302,7 @@ postion arrow needes to be disabled after the prologue
                     }            
                     headerText1 += '<th class="rnkh_font Id_Nom">Name</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+                    headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
 /*
                     if (doNotShowTime == 0 && show == 4) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule">Individual Time</th>';
@@ -1944,7 +1945,7 @@ allArray[l]["Id_Arrow"]
 //                if (cleanResults == 0) {
        //             finalText += '<div class="SecoundLine">';
                     
-                    
+
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
                         finalText += '<div class="SecoundLine ' + single1 + '">' + finished2 + uci2 + allArray[l]["Id_Nom_2"];// add the name
@@ -1964,7 +1965,13 @@ allArray[l]["Id_Arrow"]
                     }
                    
                      
-      //              finalText += '</div>';
+                    finalText += '<td class="rnk_font wrap">' + allArray[l]["Id_Equipe"] + '</td>'; // add team 
+                    
+                    
+                    
+                    
+                    
+    //              finalText += '</div>';
                     
 //                }
                 
@@ -2101,7 +2108,8 @@ allArray[l]["Id_Arrow"]
                 }
 // END intermediate 1              
 */
-                
+
+                    
 if (show == 4 /*&& cleanResults == 0*/) {
 
 // BEGIN intermediate 1
@@ -2235,7 +2243,7 @@ if (show == 4 /*&& cleanResults == 0*/) {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
                     }
         //          } else {
-        //             finalText += '<td class="rnk_font">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
+        //             finalText += '<td class="rnk_font bold">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
         //         }
 
     
@@ -2504,7 +2512,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         if (gfg.toString().substring(0, 3) == "00:") {
             gfg = gfg.substr(3);
         }
-        if (gfg.toString().substring(0, 1) == "0" && gfg.includes(":")) {
+        if (gfg.toString().substring(0, 1) == "0" && gfg.toString().substring(1, 2) != ".") {
             gfg = gfg.substr(1);
         }
     return gfg

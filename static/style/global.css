@@ -732,6 +732,14 @@ span#name, span#rund, span#date {
     color: #c8102e;
     font-weight: 700;
 }
+#live td.greengreen {
+    color: #00843d;
+    font-weight: 700;
+}
+#live td.redred {
+    color: #c8102e;
+    font-weight: 700;
+}
 #live td.white {
     color: #fff;
     font-weight: 700;
@@ -754,6 +762,10 @@ span#name, span#rund, span#date {
 }
 #live td.purple {
     color: #412297;
+    font-weight: 700;
+}
+#live td.pink {
+    color: #ff1493;
     font-weight: 700;
 }
 #live td.orange, #live td.dnsfq {

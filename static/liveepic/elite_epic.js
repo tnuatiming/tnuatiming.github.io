@@ -1095,79 +1095,85 @@
  //                       allArray[b]["Id_Discipline_2"] = allArray2[a]["Id_Discipline"];
  //                   }
 
- 
-                    // find finish time and check for 2 minutes difference
-                                
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
-                                    allArray[b]["single"] = 1;
-                                } else if ( allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
-                                    allArray[b]["single"] = 2;
-                                } else if (allArray[b]["Id_TpsCumule"] != 99999999999 && allArray[b]["Id_TpsCumule_2"] != 99999999999) {
-                                    if (allArray[b]["Id_TpsCumule"] > allArray[b]["Id_TpsCumule_2"]) {
-                                        allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
-                                    }
-                                    else if (allArray[b]["Id_TpsCumule"] <= allArray[b]["Id_TpsCumule_2"]) {
-                                        allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
-                                    } else {
-                                        allArray[b]["Id_FinishTime"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
-                                  //      allArray[b]["Id_FinishTime"] = 99999999999;
-                                        allArray[b].Id_Finishblue = 1; // make blue DSQ
-                                    }
-                                   
-                                    
-                                    
-                                } else if (raceEnded == 1 && (allArray[b]["Id_TpsCumule"] == 99999999999 || allArray[b]["Id_TpsCumule_2"] == 99999999999)) {
-                                    
-                                    allArray[b]["Id_FinishTime"] = 99999999999;
-                                    allArray[b].Id_Finishblue = 1; // make blue DSQ
-                                    
-                                }
+                    if (allArray2[a]["Id_penalty"] == "P") {
+                        allArray[b].Id_penalty = "P";   
+                    }
+                    
+            } // END for a
+
+
+            // find finish time and check for 2 minutes difference
+                        
+                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                            allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
+                            allArray[b]["single"] = 1;
+                        } else if ( allArray[b]["Id_Groupe"].includes("s2")) {
+                            allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
+                            allArray[b]["single"] = 2;
+                        } else if (allArray[b]["Id_TpsCumule"] != 99999999999 && allArray[b]["Id_TpsCumule_2"] != 99999999999) {
+                            if (allArray[b]["Id_TpsCumule"] > allArray[b]["Id_TpsCumule_2"]) {
+                                allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
+                            }
+                            else if (allArray[b]["Id_TpsCumule"] <= allArray[b]["Id_TpsCumule_2"]) {
+                                allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
+                            } else {
+                                allArray[b]["Id_FinishTime"] = 99999999999;
+                            }
+                            
+                            
+                            if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
+                            //      allArray[b]["Id_FinishTime"] = 99999999999;
+                                allArray[b].Id_Finishblue = 1; // make blue DSQ
+                            }
+                            
+                            
+                            
+                        } else if (raceEnded == 1 && (allArray[b]["Id_TpsCumule"] == 99999999999 || allArray[b]["Id_TpsCumule_2"] == 99999999999)) {
+                            
+                            allArray[b]["Id_FinishTime"] = 99999999999;
+                            allArray[b].Id_Finishblue = 1; // make blue DSQ
+                            
+                        }
 
  // make blue if exceed MaximumStageTime, ENABLE after testing
-                                if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) {
-                                    allArray[b]["Id_FinishTime"] = 99999999999;
-                                    allArray[b].Id_Finishblue = 1; // make blue DSQ
-                                }
+                        if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) {
+                            allArray[b]["Id_FinishTime"] = 99999999999;
+                            allArray[b].Id_Finishblue = 1; // make blue DSQ
+                        }
 
-                                if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
-                                    allArray[b]["blue"] = 1;
-                                }
+                        if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
+                            allArray[b]["blue"] = 1;
+                        }
                
                 
-                
-                    // find intermediate time 1 and check for 2 minutes difference
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
-                                    allArray[b]["single"] = 2;
-                                } else if (allArray[b]["Id_Inter1"] != 99999999999 && allArray[b]["Id_Inter1_2"] != 99999999999) {
-                                    if (allArray[b]["Id_Inter1"] > allArray[b]["Id_Inter1_2"]) {
-                                        allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
-                                    }
-                                    else if (allArray[b]["Id_Inter1"] <= allArray[b]["Id_Inter1_2"]) {
-                                        allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
-                                    } else {
-                                        allArray[b]["Id_Inter1Time"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_Inter1"] - allArray[b]["Id_Inter1_2"]) > 120000) { // check more then 2 minutes apart
-                         //               allArray[b]["Id_Inter1Time"] = 99999999999;
-                                        if (show == 4) {
-                                            allArray[b].blue = 1; // make blue DSQ
-                                        }
-                                        allArray[b].Id_Inter1blue = 1; // make blue DSQ
-                                    }
-                                   
-                                }                
+        
+            // find intermediate time 1 and check for 2 minutes difference
+                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                            allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
+                            allArray[b]["single"] = 1;
+                        } else if (allArray[b]["Id_Groupe"].includes("s2")) {
+                            allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
+                            allArray[b]["single"] = 2;
+                        } else if (allArray[b]["Id_Inter1"] != 99999999999 && allArray[b]["Id_Inter1_2"] != 99999999999) {
+                            if (allArray[b]["Id_Inter1"] > allArray[b]["Id_Inter1_2"]) {
+                                allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
+                            }
+                            else if (allArray[b]["Id_Inter1"] <= allArray[b]["Id_Inter1_2"]) {
+                                allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
+                            } else {
+                                allArray[b]["Id_Inter1Time"] = 99999999999;
+                            }
+                            
+                            
+                            if (Math.abs(allArray[b]["Id_Inter1"] - allArray[b]["Id_Inter1_2"]) > 120000) { // check more then 2 minutes apart
+                    //               allArray[b]["Id_Inter1Time"] = 99999999999;
+                                if (show == 4) {
+                                    allArray[b].blue = 1; // make blue DSQ
+                                }
+                                allArray[b].Id_Inter1blue = 1; // make blue DSQ
+                            }
+                            
+                        }                
 
                                 
                         // update intermediate 1 leader array 
@@ -1192,33 +1198,33 @@
                 
              //   console.log(Inter2Leader);
                 
-                    // find intermediate time 2 and check for 2 minutes difference
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
-                                    allArray[b]["single"] = 2;
-                                } else if (allArray[b]["Id_Inter2"] != 99999999999 && allArray[b]["Id_Inter2_2"] != 99999999999) {
-                                    if (allArray[b]["Id_Inter2"] > allArray[b]["Id_Inter2_2"]) {
-                                        allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
-                                    }
-                                    else if (allArray[b]["Id_Inter2"] <= allArray[b]["Id_Inter2_2"]) {
-                                        allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
-                                    } else {
-                                        allArray[b]["Id_Inter2Time"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_Inter2"] - allArray[b]["Id_Inter2_2"]) > 120000) { // check more then 2 minutes apart
-                       //                 allArray[b]["Id_Inter2Time"] = 99999999999;
-                                        if (show == 4) {
-                                            allArray[b].blue = 1; // make blue DSQ
-                                        }
-                                        allArray[b].Id_Inter2blue = 1; // make blue DSQ
-                                    }
-                                   
-                                }                
+            // find intermediate time 2 and check for 2 minutes difference
+                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                            allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
+                            allArray[b]["single"] = 1;
+                        } else if (allArray[b]["Id_Groupe"].includes("s2")) {
+                            allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
+                            allArray[b]["single"] = 2;
+                        } else if (allArray[b]["Id_Inter2"] != 99999999999 && allArray[b]["Id_Inter2_2"] != 99999999999) {
+                            if (allArray[b]["Id_Inter2"] > allArray[b]["Id_Inter2_2"]) {
+                                allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
+                            }
+                            else if (allArray[b]["Id_Inter2"] <= allArray[b]["Id_Inter2_2"]) {
+                                allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
+                            } else {
+                                allArray[b]["Id_Inter2Time"] = 99999999999;
+                            }
+                            
+                            
+                            if (Math.abs(allArray[b]["Id_Inter2"] - allArray[b]["Id_Inter2_2"]) > 120000) { // check more then 2 minutes apart
+                //                 allArray[b]["Id_Inter2Time"] = 99999999999;
+                                if (show == 4) {
+                                    allArray[b].blue = 1; // make blue DSQ
+                                }
+                                allArray[b].Id_Inter2blue = 1; // make blue DSQ
+                            }
+                            
+                        }                
 
                                 
                         // update intermediate 2 leader array 
@@ -1243,33 +1249,33 @@
                 
              //   console.log(Inter2Leader);
                 
-                    // find intermediate time 3 and check for 2 minutes difference
-                                if (allArray[b]["Id_Groupe"].includes("s1")) {
-                                    allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
-                                    allArray[b]["single"] = 1;
-                                } else if (allArray[b]["Id_Groupe"].includes("s2")) {
-                                    allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
-                                    allArray[b]["single"] = 2;
-                                } else if (allArray[b]["Id_Inter3"] != 99999999999 && allArray[b]["Id_Inter3_2"] != 99999999999) {
-                                    if (allArray[b]["Id_Inter3"] > allArray[b]["Id_Inter3_2"]) {
-                                        allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
-                                    }
-                                    else if (allArray[b]["Id_Inter3"] <= allArray[b]["Id_Inter3_2"]) {
-                                        allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
-                                    } else {
-                                        allArray[b]["Id_Inter3Time"] = 99999999999;
-                                    }
-                                   
-                                    
-                                    if (Math.abs(allArray[b]["Id_Inter3"] - allArray[b]["Id_Inter3_2"]) > 120000) { // check more then 2 minutes apart
-                     //                   allArray[b]["Id_Inter3Time"] = 99999999999;
-                                        if (show == 4) {
-                                            allArray[b].blue = 1; // make blue DSQ
-                                        }
-                                        allArray[b].Id_Inter3blue = 1; // make blue DSQ
-                                    }
-                                   
-                                }                
+            // find intermediate time 3 and check for 2 minutes difference
+                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                            allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
+                            allArray[b]["single"] = 1;
+                        } else if (allArray[b]["Id_Groupe"].includes("s2")) {
+                            allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
+                            allArray[b]["single"] = 2;
+                        } else if (allArray[b]["Id_Inter3"] != 99999999999 && allArray[b]["Id_Inter3_2"] != 99999999999) {
+                            if (allArray[b]["Id_Inter3"] > allArray[b]["Id_Inter3_2"]) {
+                                allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
+                            }
+                            else if (allArray[b]["Id_Inter3"] <= allArray[b]["Id_Inter3_2"]) {
+                                allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
+                            } else {
+                                allArray[b]["Id_Inter3Time"] = 99999999999;
+                            }
+                            
+                            
+                            if (Math.abs(allArray[b]["Id_Inter3"] - allArray[b]["Id_Inter3_2"]) > 120000) { // check more then 2 minutes apart
+                //                   allArray[b]["Id_Inter3Time"] = 99999999999;
+                                if (show == 4) {
+                                    allArray[b].blue = 1; // make blue DSQ
+                                }
+                                allArray[b].Id_Inter3blue = 1; // make blue DSQ
+                            }
+                            
+                        }                
 
                                 
                         // update intermediate 3 leader array 
@@ -1296,30 +1302,20 @@
 
              
                     //combine class
-                    if (allArray[b]["Id_Groupe"].includes('b') || allArray2[a]["Id_Groupe"].includes('b')) {                    
+                    if (allArray[b]["Id_Groupe"].includes('b')) {                    
                         allArray[b]["oldBlue"] = 1;
                     }
                 
-                
                 }
          
+
                 
-                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
-                     
-
-
-                    if (allArray2[a]["Id_penalty"] == "P") {
-                    allArray[b].Id_penalty = "P";   
-                    }
-                    
-             //       allArray[b].Id_TpsTour_2 = allArray2[a]["Id_TpsTour"];   // last lap
-                    
-                    if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1 || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
-                        allArray[b].Id_Status = 1;
-                    } else {
-                        allArray[b].Id_Status = 0;
-                    }
-               }
+                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1 || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to bottom , check if this is what needed
+                    allArray[b].Id_Status = 1;
+                } else {
+                    allArray[b].Id_Status = 0;
+                }
+            
                
 
                // display result for selected intermediate or finish
@@ -1337,8 +1333,7 @@
                
                
                
-            } 
-        }
+        } // END for b
          // delete the second array
          allArray2 = [];
          
@@ -1569,8 +1564,8 @@
 
                 //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
 //                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
 /*        } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Position_Categorie">CAT</th>';
@@ -2097,7 +2092,7 @@
 
 
                  
-// MAIN TABLE DATA, build table for web (TV comes later)  
+// MAIN TABLE DATA, build table for web (cleanResults & TV comes later)  
 
     if (((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")  && epictv == 0 && cleanResults == 0) {
                  
@@ -2269,8 +2264,8 @@ allArray[l]["Id_Arrow"]
                     
 //                   finalText += '<td class="rnk_font bigFont fadeIn"><span class="' + catCol + '">&nbsp;' + allArray[l]["Id_Position_Categorie"] + '</span>&nbsp;&nbsp;&nbsp;<span class="black">' + allArray[l]["Id_Position_Overall"] + '&nbsp;</span></td>'; 
                         
-                    finalText += '<td class="rnk_font bigFont fadeIn ' + catCol + '">' + allArray[l]["Id_Position_Categorie"] + '</td>';
                     finalText += '<td class="rnk_font bigFont fadeIn">' + allArray[l]["Id_Position_Overall"] + '</td>'; 
+                    finalText += '<td class="rnk_font bigFont fadeIn ' + catCol + '">' + allArray[l]["Id_Position_Categorie"] + '</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 7) { // black
                     
