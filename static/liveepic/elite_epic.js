@@ -1042,24 +1042,23 @@
                     if (allArray[b]["Id_Groupe"].includes('u') && allArray2[a]["Id_Groupe"].includes('u')) {
 
                         allArray[b]["uci"] = 3;
-                        allArray[b]["Id_Groupe"].replace('u', 'u3');
-                        allArray2[a]["Id_Groupe"].replace('u', '');
+                        allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('u', 'u3');
+                        allArray2[a]["Id_Groupe"] = allArray2[a]["Id_Groupe"].replace('u', '');
 
                     } else if (allArray[b]["Id_Groupe"].includes('u') && !(allArray2[a]["Id_Groupe"].includes('u'))) {
 
                         allArray[b]["uci"] = 1;
-                        allArray[b]["Id_Groupe"].replace('u', 'u1');
+                        allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('u', 'u1');
 
                         
                     } else if (!(allArray[b]["Id_Groupe"].includes('u')) && allArray2[a]["Id_Groupe"].includes('u')) {
 
                         allArray[b]["uci"] = 2;
-                        allArray[b]["Id_Groupe"].replace('u', 'u2');
-                        allArray2[a]["Id_Groupe"].replace('u', '');
+                        allArray2[a]["Id_Groupe"] = allArray2[a]["Id_Groupe"].replace('u', 'u2');
                     }
 
 
-                    if (allArray[b]["Id_Groupe"].includes('l')) {
+                    if (allArray[b]["Id_Groupe"].includes('l') || allArray2[a]["Id_Groupe"].includes('l')) {
                         
                         allArray[b]["leader"] = 1; // mark leader (yellow shirt)
                         
@@ -1072,7 +1071,8 @@
                     }                    
 
                     
-                    allArray[b]["Id_Groupe"] = allArray2[a]["Id_Groupe"] + allArray[b]["Id_Groupe"]; // combine blue, single, leader
+                    allArray[b]["Id_Groupe"] = (allArray2[a]["Id_Groupe"] + allArray[b]["Id_Groupe"]).replace('dd', 'd').replace('ll', 'l').replace('bb', 'b'); // combine blue, single, leader
+
 
                     
                     // transfer fields from second array to the first that needed later, use _2 to mark
@@ -2886,7 +2886,7 @@ if (show == 4) {
                 }
 
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace('dd', 'd').replace('ll', 'l').replace('bb', 'b').replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue') + '</td>'; // status
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue') + '</td>'; // status
                 
                         
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Rider 1 Nr

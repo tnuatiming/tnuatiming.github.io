@@ -1724,6 +1724,7 @@ postion arrow needes to be disabled after the prologue
                 if (allArray[l]["single"] == 1) {
                     single1 = "lineThrough";
                 }
+                
                 if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
                     uci1 = '<span title="UCI Rider" class="Flag UCI"></span>';
                 }
