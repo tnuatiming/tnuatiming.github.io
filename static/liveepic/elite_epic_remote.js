@@ -715,7 +715,7 @@ postion arrow needes to be disabled after the prologue
 */        
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
 
 
         if (show == 1) {
@@ -769,7 +769,7 @@ postion arrow needes to be disabled after the prologue
             HeaderEventName = HeaderEventName.replace("---", "");
         }
 
-        if (HeaderEventName.includes("prologue")) { // do not show individuall times
+        if (HeaderEventName.includes("prologue")) { // prologue
             prologue = 1;
         } else {
             prologue = 0;
@@ -1285,13 +1285,16 @@ postion arrow needes to be disabled after the prologue
 //       if (cleanResults == 0) {
 
                 //  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
+                //  headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
  /*       } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
 */
+                    headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
+
                     headerText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
 
 
@@ -1309,7 +1312,10 @@ postion arrow needes to be disabled after the prologue
                     }
 */                    
                     //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
-                if (show == 4) {
+
+                    
+/*                    
+                    if (show == 4) {
                         headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                         headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
                         headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
@@ -1319,7 +1325,8 @@ postion arrow needes to be disabled after the prologue
                         headerText1 += '<th class="rnkh_font Id_Inter3Ecart1er">Inter. 3 GAP</th>'; // intermediate 3 time diff
                     }
                 }
-                
+*/
+
 /*       } else {
                     headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
                     
@@ -1681,6 +1688,18 @@ postion arrow needes to be disabled after the prologue
                 }
 
 
+                if (allArray[l]["Id_Categorie"] == 'Women') {
+                    catCol = 'pink';
+                } else if (allArray[l]["Id_Categorie"] == 'Mixed') {
+                    catCol = 'greengreen';
+                } else if (allArray[l]["Id_Categorie"] == 'Masters') {
+                    catCol = 'blue';
+                } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    catCol = 'purple';
+                } else {
+                    catCol = 'yellow';
+                }
+
                 finished1 = "";
                 finished2 = "";
                 single1 = ""
@@ -1810,7 +1829,11 @@ allArray[l]["Id_Arrow"]
 12 '<img class="dnsfq" src="Images/_dns.svg" alt="dns">'                    
 */                
                 
-                
+
+
+
+
+/*                
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
                     finalText += '<td title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
@@ -1871,29 +1894,94 @@ allArray[l]["Id_Arrow"]
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 /*|| show != 4*/) { // enable show != 4, to show postion only on finish
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 || show != 4) { // enable show != 4, to show postion only on finish
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
-/*                    
-                    if (cleanResults == 1) {
-
-                        finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show  postiion if status or no finish time
-                    }
-*/                    
+//                    
+//                    if (cleanResults == 1) {
+//
+//                        finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show  postiion if status or no finish time
+//                    }
+                    
                 } else {
 //                    if (cleanResults == 0) {
 
                         finalText += '<td class="rnk_font"><div class="pos">' + allArray[l]["Id_Position_Categorie"] + '</div><div class="pos">' + allArray[l]["Id_Position_Overall"] + '</div></td>'; 
                         
-/*                    } else if (cleanResults == 1) {
-                        
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
-                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
-                    }
-*/                    
+//                    } else if (cleanResults == 1) {
+//                       
+//                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
+//                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall postiion
+//                    }
+                    
                 }
 
+*/
+
+                // add and style the status/arrow
+                if (allArray[l]["Id_Arrow"] == 12) {
+                    finalText += '<td colspan="2" title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
+
+                } else if (allArray[l]["Id_Arrow"] == 11) {
+                    
+                    finalText += '<td colspan="2" title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 10) {
+                    
+                    finalText += '<td colspan="2" title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 9) {
+                    
+                    finalText += '<td colspan="2" title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_nq.svg" alt="nq"></td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 8) {
+                    
+                    finalText += '<td colspan="2" title="DNF/DSQ" class="orange ' + blued + 'rnk_font"><img class="dnsfq" src="Images/_status.svg" alt="status"></td>';
+                    
+                } else if (showBlue == 1) {
                 
+                    finalText += '<td colspan="2" title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
+
+                } else if (allArray[l]["Id_Arrow"] == 3) { // red
+                    
+                    if (prologue == 1) {
+                        
+                        finalText += '<td class="' + checkeredFlag + 'red rnk_font"><img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places"></td>';
+                        
+                    } else {
+
+                        finalText += '<td class="' + checkeredFlag + 'red rnk_font"></td>';
+                    }
+                    
+                } else if (allArray[l]["Id_Arrow"] == 4) { // green
+                    
+                    if (prologue == 1) {
+                        
+                        finalText += '<td class="' + checkeredFlag + 'green rnk_font"><img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places"></td>';
+                        
+                    } else {
+
+                        finalText += '<td class="' + checkeredFlag + 'green rnk_font"></td>';
+                    }
+                    
+                } else if (allArray[l]["Id_Sector_FinishTime"] != 99999999999 /*&& show == 4*/ && allArray[l]["oldBlue"] == 0 && allArray[l]["single"] == 0 && !allArray[l]["Id_Image"].includes("_Status")) { // finished
+                    
+//                   finalText += '<td class="rnk_font bigFont fadeIn"><span class="' + catCol + '">&nbsp;' + allArray[l]["Id_Position_Categorie"] + '</span>&nbsp;&nbsp;&nbsp;<span class="black">' + allArray[l]["Id_Position_Overall"] + '&nbsp;</span></td>'; 
+                        
+                    finalText += '<td class="rnk_font bigFont fadeIn">' + allArray[l]["Id_Position_Overall"] + '</td>'; 
+                    finalText += '<td class="rnk_font bigFont fadeIn ' + catCol + '">' + allArray[l]["Id_Position_Categorie"] + '</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 7) { // black
+                    
+                    finalText += '<td colspan="2" class="black rnk_font fadeIn">P</td>';
+                    
+                } else {
+
+                    finalText += '<td colspan="2" class="white rnk_font fadeIn">&nbsp;</td>'; // &#9671;
+                }
+
+
+
                 if (allArray[l]["oldBlue"] == 1) {
                     finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["leader"] == 1) {
@@ -2109,8 +2197,8 @@ allArray[l]["Id_Arrow"]
 // END intermediate 1              
 */
 
-                    
-if (show == 4 /*&& cleanResults == 0*/) {
+/*                    
+if (show == 4 &&) {
 
 // BEGIN intermediate 1
                     if (allArray[l]["Id_Inter1blue"] == 1) {
@@ -2231,7 +2319,7 @@ if (show == 4 /*&& cleanResults == 0*/) {
 
     
 }
-
+*/
 
 
 // TOTAL TIME & GAP                
@@ -2599,13 +2687,13 @@ if (k<100){
                     tt[kk].classList.add("big_table");
                 }
 
-                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+                var ddd = 88 / (tds.length - 2); // 88% divided by number of columns - first 2 column
 
                 tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
                 });
 
-                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
                 });
         //       console.log(kk + " " + numCols)
