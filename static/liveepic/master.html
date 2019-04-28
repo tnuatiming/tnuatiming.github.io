@@ -183,6 +183,7 @@ td[aria-label]:hover:after {
     }
     #live td.rnk_font.bigFont {
         font-size: 1.5em;
+        min-width: 35px;
     }
   /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
 
@@ -197,12 +198,13 @@ td[aria-label]:hover:after {
     #live td.blued {
         background-image: url(Images/_LightBlueFlag.png);
         background-position: center center; 
-        background-size: auto 30%; 
+        background-size: auto 40%; 
         background-repeat: no-repeat; 
         min-width: 16px;
     }
     #live td.finished {
-        background-size: auto 30%;
+        background-size: auto 40%;
+        min-width: 26px;
     }    
     #live td.rnk_font.blueCard {
         color:#111; 
@@ -245,6 +247,7 @@ td[aria-label]:hover:after {
         text-align: right;
     }
     #live td.rnk_font.wrap {
+        max-width: 200px;
         white-space: normal; 
     }
     #live #liveTableS td.rnk_font:nth-child(-n+3) {
@@ -254,7 +257,7 @@ td[aria-label]:hover:after {
         text-align: center;
     }
     #live div.team {
-        width: 200px;
+        max-width: 200px;
         overflow: hidden;
         text-overflow: ellipsis;
         margin: 0 auto;
@@ -381,11 +384,16 @@ td[aria-label]:hover:after {
         font-size: 0.8em;
         padding: 0;
     }
+    #live td.rnk_font.wrap {
+        max-width: 120px;
+        white-space: nowrap;
+    }    
     #live div.team {
         max-width: 120px;
     }
     #live td.rnk_font.bigFont {
         font-size: 1.2em;
+        min-width: 25px;
     }
 }
 

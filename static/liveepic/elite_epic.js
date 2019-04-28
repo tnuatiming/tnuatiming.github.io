@@ -2294,23 +2294,23 @@ allArray[l]["Id_Arrow"]
 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
-                    finalText += '<td title="DNS" class="redred ' + blued + 'rnk_font">DNS</td>';
+                    finalText += '<td title="DNS" class="' + blued + 'rnk_font">DNS</td>';
 
                 } else if (allArray[l]["Id_Arrow"] == 11) {
                     
-                    finalText += '<td title="DNF" class="redred ' + blued + 'rnk_font">DNF</td>';
+                    finalText += '<td title="DNF" class="' + blued + 'rnk_font">DNF</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 10) {
                     
-                    finalText += '<td title="DSQ" class="redred ' + blued + 'rnk_font">DSQ</td>';
+                    finalText += '<td title="DSQ" class="' + blued + 'rnk_font">DSQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 9) {
                     
-                    finalText += '<td title="NQ" class="redred ' + blued + 'rnk_font">NQ</td>';
+                    finalText += '<td title="NQ" class="' + blued + 'rnk_font">NQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
-                    finalText += '<td title="*" class="redred ' + blued + 'rnk_font">*</td>';
+                    finalText += '<td title="*" class="' + blued + 'rnk_font">*</td>';
                     
                 } else if (showBlue == 1) {
                 
@@ -2416,7 +2416,7 @@ allArray[l]["Id_Arrow"]
 
 
                 if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
-                    finalText += '<td class="rnk_font left">&nbsp;</td>';// add team name
+                    finalText += '<td class="rnk_font">&nbsp;</td>';// add team name
                 } else {
                     finalText += '<td class="rnk_font wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
                 }

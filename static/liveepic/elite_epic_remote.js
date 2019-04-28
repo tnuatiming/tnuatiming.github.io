@@ -1924,48 +1924,48 @@ allArray[l]["Id_Arrow"]
 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
-                    finalText += '<td colspan="2" title="DNS" class="redred ' + blued + 'rnk_font bigFont"><img class="dnsfq" src="Images/_dns.svg" alt="dns"></td>';
+                    finalText += '<td colspan="2" title="DNS" class="black ' + blued + 'rnk_font">DNS</td>';
 
                 } else if (allArray[l]["Id_Arrow"] == 11) {
                     
-                    finalText += '<td colspan="2" title="DNF" class="redred ' + blued + 'rnk_font bigFont"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>';
+                    finalText += '<td colspan="2" title="DNF" class="black ' + blued + 'rnk_font">DNF</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 10) {
                     
-                    finalText += '<td colspan="2" title="DSQ" class="redred ' + blued + 'rnk_font bigFont"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>';
+                    finalText += '<td colspan="2" title="DSQ" class="black ' + blued + 'rnk_font">DSQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 9) {
                     
-                    finalText += '<td colspan="2" title="NQ" class="redred ' + blued + 'rnk_font bigFont"><img class="dnsfq" src="Images/_nq.svg" alt="nq"></td>';
+                    finalText += '<td colspan="2" title="NQ" class="black ' + blued + 'rnk_font">NQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
-                    finalText += '<td colspan="2" title="*" class="redred ' + blued + 'rnk_font bigFont"><img class="dnsfq" src="Images/_status.svg" alt="status"></td>';
+                    finalText += '<td colspan="2" title="*" class="black ' + blued + 'rnk_font">*</td>';
                     
                 } else if (showBlue == 1) {
                 
-                    finalText += '<td colspan="2" title="Blue Board Rider" class="blued rnk_font bigFont">&nbsp;</td>'; //&#9608;
+                    finalText += '<td colspan="2" title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
                 } else if (allArray[l]["Id_Arrow"] == 3) { // red
                     
                     if (prologue == 1) {
                         
-                        finalText += '<td class="' + checkeredFlag + 'red rnk_font"><img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places"></td>';
+                        finalText += '<td colspan="2" class="' + checkeredFlag + 'red rnk_font"><img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places"></td>';
                         
                     } else {
 
-                        finalText += '<td class="' + checkeredFlag + 'red rnk_font"></td>';
+                        finalText += '<td colspan="2" class="' + checkeredFlag + 'red rnk_font"></td>';
                     }
                     
                 } else if (allArray[l]["Id_Arrow"] == 4) { // green
                     
                     if (prologue == 1) {
                         
-                        finalText += '<td class="' + checkeredFlag + 'green rnk_font"><img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places"></td>';
+                        finalText += '<td colspan="2" class="' + checkeredFlag + 'green rnk_font"><img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places"></td>';
                         
                     } else {
 
-                        finalText += '<td class="' + checkeredFlag + 'green rnk_font"></td>';
+                        finalText += '<td colspan="2" class="' + checkeredFlag + 'green rnk_font"></td>';
                     }
                     
                 } else if (allArray[l]["Id_Sector_FinishTime"] != 99999999999 /*&& show == 4*/ && allArray[l]["oldBlue"] == 0 && allArray[l]["single"] == 0 && !allArray[l]["Id_Image"].includes("_Status")) { // finished
@@ -2009,7 +2009,7 @@ allArray[l]["Id_Arrow"]
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
  //                       }
                     }
                     finalText += '</div>';// add the name
@@ -2019,7 +2019,7 @@ allArray[l]["Id_Arrow"]
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
     //                    }
                     }
                     finalText += '</div>';// add the name
@@ -2043,7 +2043,7 @@ allArray[l]["Id_Arrow"]
                         finalText += '<div class="SecoundLine ' + single1 + '">' + finished2 + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
@@ -2051,15 +2051,18 @@ allArray[l]["Id_Arrow"]
                         finalText += '<div class="SecoundLine ' + single1 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>' + leader; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
                    
                      
-                    finalText += '<td class="rnk_font wrap">' + allArray[l]["Id_Equipe"] + '</td>'; // add team 
                     
-                    
+                if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
+                    finalText += '<td class="rnk_font">&nbsp;</td>';// add team name
+                } else {
+                    finalText += '<td class="rnk_font wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
+                }
                     
                     
                     

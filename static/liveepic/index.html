@@ -196,7 +196,7 @@ td[aria-label]:hover:after {
     #live td.blued {
         background-image: url(Images/_LightBlueFlag.png);
         background-position: center center; 
-        background-size: auto 30%; 
+        background-size: auto 50%; 
         background-repeat: no-repeat; 
         min-width: 16px;
     }
@@ -345,6 +345,16 @@ td[aria-label]:hover:after {
     #live h1#Title img {margin: 0 10px;}
 
     #live td div.bold, #live td.rnk_font.bold {font-weight:700;}
+    #live td.rnk_font.wrap {
+        max-width: 200px;
+        white-space: normal; 
+    }
+    #live div.team {
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0 auto;
+    }
     
     div#legend {width: 100%; text-align: left;}
     div#legend ul {width: 100%; text-align: left; float: left;}
@@ -362,6 +372,13 @@ td[aria-label]:hover:after {
     }
     #live td.rnk_font.bigFont {
         font-size: 1.2em;
+    }
+    #live td.rnk_font.wrap {
+        max-width: 120px;
+        white-space: nowrap;
+    }    
+    #live div.team {
+        max-width: 120px;
     }
 }
 
