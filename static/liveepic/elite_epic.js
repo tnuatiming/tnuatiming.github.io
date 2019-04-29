@@ -2293,26 +2293,7 @@ allArray[l]["Id_Arrow"]
                
 
                 // add and style the status/arrow
-                if (allArray[l]["Id_Arrow"] == 12) {
-                    finalText += '<td title="DNS" class="' + blued + 'rnk_font">DNS</td>';
-
-                } else if (allArray[l]["Id_Arrow"] == 11) {
-                    
-                    finalText += '<td title="DNF" class="' + blued + 'rnk_font">DNF</td>';
-                    
-                } else if (allArray[l]["Id_Arrow"] == 10) {
-                    
-                    finalText += '<td title="DSQ" class="' + blued + 'rnk_font">DSQ</td>';
-                    
-                } else if (allArray[l]["Id_Arrow"] == 9) {
-                    
-                    finalText += '<td title="NQ" class="' + blued + 'rnk_font">NQ</td>';
-                    
-                } else if (allArray[l]["Id_Arrow"] == 8) {
-                    
-                    finalText += '<td title="*" class="' + blued + 'rnk_font">*</td>';
-                    
-                } else if (showBlue == 1) {
+               if (showBlue == 1) {
                 
                     finalText += '<td title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
@@ -2352,7 +2333,26 @@ allArray[l]["Id_Arrow"]
 
                 }
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 /*|| show != 4*/) { // enable show != 4, to show postion only on finish
+                if (allArray[l]["Id_Arrow"] == 12) {
+                    finalText += '<td colspan="2" title="DNS" class="rnk_font">DNS</td>';
+
+                } else if (allArray[l]["Id_Arrow"] == 11) {
+                    
+                    finalText += '<td colspan="2" title="DNF" class="rnk_font">DNF</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 10) {
+                    
+                    finalText += '<td colspan="2" title="DSQ" class="rnk_font">DSQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 9) {
+                    
+                    finalText += '<td colspan="2" title="NQ" class="rnk_font">NQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 8) {
+                    
+                    finalText += '<td colspan="2" title="*" class="rnk_font">*</td>';
+                    
+                } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 /*|| show != 4*/) { // enable show != 4, to show postion only on finish
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
