@@ -7,7 +7,7 @@ TODO
 remove all blue board as not needed in total??? (not needed in stage 4, other stages is needed) 
 csv download not tested
 cleanResults == 1 not tested
-
+add dns
 
 */
 //    var TimerLoad;
@@ -296,7 +296,7 @@ cleanResults == 1 not tested
         var bestTime = 0;
 */        
         
-        var m, Text, TextTemp, competitorTime, leaderTime, headerText1, prevCompCat, single1, single2, uci1, uci2;
+        var m, Text, TextTemp, competitorTime, leaderTime, headerText1, prevCompCat, single1, single2, uci1, uci2, bigFont;
         
     if (stages >= 3) {
 //        var lines3;
@@ -1474,7 +1474,11 @@ cleanResults == 1 not tested
 
 
 
-
+            if (cleanResults == 1) {
+                bigFont = '';
+            } else {
+                bigFont = 'bigFont';
+            }
 
 
 
@@ -1486,21 +1490,21 @@ cleanResults == 1 not tested
                        
 
                 if (allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "blue") {
-                    finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dsq.svg" alt="dsq"></td>\n';
+                    finalText += '<td class="rnk_font">DSQ</td>\n';
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dnf") {
-                    finalText += '<td class="rnk_font"><img class="dnsfq" src="Images/_dnf.svg" alt="dnf"></td>\n';
+                    finalText += '<td class="rnk_font">DNF</td>\n';
                 } else if (allArray[l]["single"] != 0) {
-                    finalText += '<td class="rnk_font redred">S</td>\n'; // add postion
+                    finalText += '<td class="rnk_font">S</td>\n'; // add postion
                 } else if (allArray[l]["out"] == 0) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>\n'; // add postion
+                    finalText += '<td class="rnk_font ' + bigFont + '">' + allArray[l]["Id_Position"] + '</td>\n'; // add postion
                 } else {
                     finalText += '<td class="rnk_font"></td>\n'; // add postion
                 }
                 
                  if (allArray[l]["blue"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["blue_4"] == 1) {
-                finalText += '<td style="color:#111; background-color:#add8e6bf;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
-                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
                                
        //         finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';

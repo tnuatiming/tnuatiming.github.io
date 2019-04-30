@@ -84,6 +84,11 @@ slug: "total"
     .dsq {background-image: url(Images/_dsq.svg);}
     .dns {background-image: url(Images/_dns.svg);}
 
+    #live td.rnk_font.blueCard {
+        color:#111; 
+        background-color:#add8e6bf; 
+        font-weight:700;
+    }
     #live td.left, #live th.left {
         text-align: left;
     }
@@ -100,6 +105,10 @@ slug: "total"
         text-overflow: ellipsis;
     }
     #live td.rnk_font.bold {font-weight: 700;}
+    #live td.rnk_font.bigFont {
+        font-size: 1.5em;
+        min-width: 35px;
+    }
 
     #live .btn {display: inline-block;}
     #live #buttonInfo {margin-bottom: 10px;}
@@ -121,6 +130,11 @@ slug: "total"
     #csv {display: none;}
     
 @media (max-width: 767px) {
+
+    #live td.rnk_font.bigFont {
+        font-size: 1.2em;
+        min-width: 25px;
+    }
 
     #live td.rnk_font.wrap {
         max-width: 120px;
@@ -146,10 +160,10 @@ slug: "total"
 <div id="legend">
          <ul>
                 <li><span class="Flag UCI"></span> - UCI Rider</li>
-                <li><span class="redred">S</span> - Single Finisher</li>
-                <li><span class="Flag dsq"></span> - Disqualified</li>
-                <li><span class="Flag dnf"></span> - Did Not Finished</li>
-                <li><span class="Flag dns"></span> - Did Not Started</li>
+                <li>S - Single Finisher</li>
+                <li>DSQ - Disqualified</li>
+                <li>DNF - Did Not Finished</li>
+                <li>DNS - Did Not Started</li>
                 <li><span class="Flag blueFlag"></span> - over maximum stage time or separation between team members over 2 minutes</li>
             </ul>
 </div>
