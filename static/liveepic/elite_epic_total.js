@@ -4,12 +4,14 @@
 3. set "stages = 4" acording to number of stages compleated.
 
 TODO
-phrase the results, so the results page on the web site will be passive
+
+
+
 
 
 */
-    var TimerLoad;
-    var Rafraichir = 60000; // every 60 seconds
+//    var TimerLoad;
+//    var Rafraichir = 60000; // every 60 seconds
 
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     var cleanResults = 0;
@@ -19,24 +21,47 @@ phrase the results, so the results page on the web site will be passive
         useCategory = sessionStorage.getItem('categoryOrAll');
     }
 
+    var precision = "tenth"; // "tenth" for 1 digit after the .
+
     var stages = 4; // day of competition
 
     var tableClass = "fadeIn ";
-    var url1 = "stage1/p1.html";    
-    var text1;
+    var url1 = "t1.txt";    
+    var J1;
+//    var T1;
     if (stages >= 2) {
-        var url2 = "stage2/p1.html";    
-        var text2;    
+        var url2 = "t2.txt";    
+        var J2;    
+//        var T2;    
     }
     if (stages >= 3) {
-        var url3 = "stage3/p1.html";    
-        var text3;
+        var url3 = "t3.txt";    
+        var J3;
+//        var T3;
     }
     if (stages == 4) {
-        var url4 = "stage4/p1.html";    
-        var text4;
+        var url4 = "t4.txt";    
+        var J4;
+//        var T4;
     }
 
+    document.addEventListener("DOMContentLoaded", function() {
+
+        
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");        
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");        
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").disabled = true;
+        }        
+        
+     });
+        
     function category(choice){
         
         positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
@@ -60,18 +85,20 @@ phrase the results, so the results page on the web site will be passive
             document.getElementById("displayAllButton").disabled = true;
         }
 
-        Rafraichir = 60000; // every 60 seconds
+//        Rafraichir = 60000; // every 60 seconds
 
         tableClass = "fadeIn "; // make the table fadeIn on change
         
-        Load();
+//        Load();
+        document.getElementById("result").innerHTML = createLiveTable();
+//        alignTable();
     }
 
 
     async function Load() {
         
-        var loop;
-        if (TimerLoad) clearTimeout(TimerLoad);
+//        var loop;
+//        if (TimerLoad) clearTimeout(TimerLoad);
 
         if (useCategory == "yes") {
             document.getElementById("displayCatButton").classList.remove("active");
@@ -102,7 +129,7 @@ phrase the results, so the results page on the web site will be passive
                     const response = await fetch(url4, {cache: "no-store"});
                     if (response.ok) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                        text4 = await response.text();
+                        J4 = await response.text();
                     }
                 }
                 catch (err) {
@@ -115,7 +142,7 @@ phrase the results, so the results page on the web site will be passive
                     const response = await fetch(url3, {cache: "no-store"});
                     if (response.ok) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                        text3 = await response.text();
+                        J3 = await response.text();
                     }
                 }
                 catch (err) {
@@ -128,7 +155,7 @@ phrase the results, so the results page on the web site will be passive
                     const response = await fetch(url2, {cache: "no-store"});
                     if (response.ok) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                        text2 = await response.text();
+                        J2 = await response.text();
                     }
                 }
                 catch (err) {
@@ -139,9 +166,9 @@ phrase the results, so the results page on the web site will be passive
                 const response = await fetch(url1, {cache: "no-store"});
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                    text1 = await response.text();
+                    J1 = await response.text();
                     document.getElementById("result").innerHTML = createLiveTable();
-                    alignTable();
+//                    alignTable();
                 }
             }
             catch (err) {
@@ -159,7 +186,7 @@ phrase the results, so the results page on the web site will be passive
                 xhr2 = new XMLHttpRequest;
                 xhr2.onreadystatechange = function () {
                     if (xhr2.readyState == 4 && xhr2.status == 200) {
-                        text2 = xhr2.responseText;
+                        J2 = xhr2.responseText;
                     }
                 };
                 xhr2.open("GET", url2 + ((/\?/).test(url2) ? "&" : "?") + (new Date()).getTime());
@@ -170,7 +197,7 @@ phrase the results, so the results page on the web site will be passive
                 xhr3 = new XMLHttpRequest;
                 xhr3.onreadystatechange = function() {
                     if (xhr3.readyState == 4 && xhr3.status == 200) {
-                        text3 = xhr3.responseText;
+                        J3 = xhr3.responseText;
                     }
                 };
                 xhr3.open("GET", url3 + ((/\?/).test(url3) ? "&" : "?") + (new Date()).getTime());
@@ -182,7 +209,7 @@ phrase the results, so the results page on the web site will be passive
                 xhr4 = new XMLHttpRequest;
                 xhr4.onreadystatechange = function() {
                     if (xhr4.readyState == 4 && xhr4.status == 200) {
-                        text4 = xhr4.responseText;
+                        J4 = xhr4.responseText;
                     }
                 };
                 xhr4.open("GET", url4 + ((/\?/).test(url4) ? "&" : "?") + (new Date()).getTime());
@@ -192,9 +219,9 @@ phrase the results, so the results page on the web site will be passive
             xhr = new XMLHttpRequest;
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    text1 = xhr.responseText;
+                    J1 = xhr.responseText;
                     document.getElementById("result").innerHTML = createLiveTable();
-                    alignTable();
+//                    alignTable();
                 }
             };
             xhr.open("GET", url1 + ((/\?/).test(url1) ? "&" : "?") + (new Date()).getTime());
@@ -202,44 +229,44 @@ phrase the results, so the results page on the web site will be passive
             }
 
 
-            loop = function() {
-                Load();
-        };
+//            loop = function() {
+//                Load();
+//        };
         
         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
 
-        TimerLoad = setTimeout(loop, Rafraichir);
-        Rafraichir = 60000; // every 60 seconds
+//        TimerLoad = setTimeout(loop, Rafraichir);
+//        Rafraichir = 60000; // every 60 seconds
 
     }
 
     function createLiveTable() {
-        var lines;
-        var lines2;
+//        var lines;
+//        var lines2;
         var competitorPosition = 0;
         var competitorNumber = 0;
         var competitorLaps = 0;
 //        var qqq = [];
 //        var hhh = [];
-        var hhhPro = [];
-        var hhhPro2 = [];
+//        var hhhPro = [];
+//        var hhhPro2 = [];
 //        var temp = [];
-        var lineArray = [];
+//        var lineArray = [];
         var allArray = [];
-        var lineArray2 = [];
+//        var lineArray2 = [];
         var allArray2 = [];
         var penalty = "no";
         var ttt = 0;
         var pp = 0;
         var a, b, l;
-        var id;
+//        var id;
         var NewCategoryHeader = "";
-        var positionChanged = "";
-        var bestLapComp = 0;
-        var bestLap = "99999999999";
-        var bestLapComp2 = 0;
-        var bestLap2 = "99999999999";
-        var laps = 12; // number of laps
+//        var positionChanged = "";
+//        var bestLapComp = 0;
+//        var bestLap = "99999999999";
+//        var bestLapComp2 = 0;
+//        var bestLap2 = "99999999999";
+//        var laps = 12; // number of laps
         /*        
         var bestTime2comp = 0;
         var bestTime2 = 0;
@@ -247,27 +274,27 @@ phrase the results, so the results page on the web site will be passive
         var bestTime = 0;
 */        
         
-        var m, competitorTime, leaderTime, headerText1, prevCompCat;
+        var m, Text, TextTemp, competitorTime, leaderTime, headerText1, prevCompCat;
         
     if (stages >= 3) {
-        var lines3;
-        var hhhPro3 = [];
-        var lineArray3 = [];
+//        var lines3;
+//        var hhhPro3 = [];
+//        var lineArray3 = [];
         var allArray3 = [];
-        var bestLapComp3 = 0;
-        var bestLap3 = "99999999999";
+//        var bestLapComp3 = 0;
+//        var bestLap3 = "99999999999";
     }
     if (stages == 4) {
-        var lines4;
-        var hhhPro4 = [];
-        var lineArray4 = [];
+//        var lines4;
+//        var hhhPro4 = [];
+//        var lineArray4 = [];
         var allArray4 = [];
-        var bestLapComp4 = 0;
-        var bestLap4 = "99999999999";
+//        var bestLapComp4 = 0;
+//        var bestLap4 = "99999999999";
     }
 
-
-        text1 = text1.split('<table'); // split the text to title/time and the table
+/*
+        text1 = T1.split('<table'); // split the text to title/time and the table
         text1[1] = text1[1].substring(text1[1].indexOf("<tr"),text1[1].lastIndexOf("</tr>")+5); // clean the table text
       //  console.log(text1[1]);
 
@@ -279,9 +306,8 @@ phrase the results, so the results page on the web site will be passive
 
         lines = text1[1].split("\n");
         //    console.log(lines.length);
-
         if (stages == 4) {
-            text4 = text4.split('<table'); // split the text to title/time and the table
+            text4 = T4.split('<table'); // split the text to title/time and the table
             text4[1] = text4[1].substring(text4[1].indexOf("<tr"),text4[1].lastIndexOf("</tr>")+5); // clean the table text
         //  console.log(text4[1]);
 
@@ -291,7 +317,7 @@ phrase the results, so the results page on the web site will be passive
 
 
         if (stages >= 3) {
-            text3 = text3.split('<table'); // split the text to title/time and the table
+            text3 = T3.split('<table'); // split the text to title/time and the table
             text3[1] = text3[1].substring(text3[1].indexOf("<tr"),text3[1].lastIndexOf("</tr>")+5); // clean the table text
         //  console.log(text3[1]);
 
@@ -302,18 +328,123 @@ phrase the results, so the results page on the web site will be passive
 
 
         if (stages >= 2) {
-            text2 = text2.split('<table'); // split the text to title/time and the table
+            text2 = T2.split('<table'); // split the text to title/time and the table
             text2[1] = text2[1].substring(text2[1].indexOf("<tr"),text2[1].lastIndexOf("</tr>")+5); // clean the table text
     //      console.log(text2[1]);
             lines2 = text2[1].split("\n");
             text2 = [];
         }
-        var header1 = text1[0].split("\n"); 
-        var finalText = header1[0]; // clear the finalText variable and add the title
+*/
+//        var header1 = text1[0].split("\n"); 
+//        var finalText = header1[0]; // clear the finalText variable and add the title
 
 
     if (stages == 4) {
+        
+        
+        
+  // BEGIN stage 4
 
+        allArray4 = JSON.parse(J4);
+        
+        TextTemp = allArray4.shift();
+
+             for (b = 0; b < allArray4.length; b++) {
+
+                allArray4[b].Id_FinishTime = allArray4[b].F;
+                delete allArray4[b].F;
+                allArray4[b].Id_Finishblue = allArray4[b].FB;
+                delete allArray4[b].FB;
+
+                allArray4[b].Id_Arrow = allArray4[b].A;
+                delete allArray4[b].A;
+                allArray4[b].Id_Image = allArray4[b].M;
+                delete allArray4[b].M;
+                allArray4[b].Id_Image_2 = allArray4[b].M2;
+                delete allArray4[b].M2;
+
+                allArray4[b].Id_Groupe = allArray4[b].G;
+                delete allArray4[b].G;
+                allArray4[b].Id_penalty = allArray4[b].P;
+                delete allArray4[b].P;
+                
+                allArray4[b].blue = allArray4[b].B;
+                delete allArray4[b].B;
+                
+                allArray4[b].Id_Numero = allArray4[b].O;
+                delete allArray4[b].O;
+
+                // convert 0 to 99999999999
+                if (allArray4[b]["Id_FinishTime"] == 0) {
+                    allArray4[b]["Id_FinishTime"] = 99999999999;
+                }
+                 
+                // phrase Id_Groupe         
+                 
+                if (allArray4[b]["Id_Groupe"].includes('s1')) {
+
+                    allArray4[b]["single"] = 1;
+
+                } else if (allArray4[b]["Id_Groupe"].includes('s2')) {
+
+                    allArray4[b]["single"] = 2;
+
+                } else {
+                    allArray4[b]["single"] = 0;
+                }
+                
+                if (allArray4[b]["Id_Groupe"].includes('l')) {
+                    
+                    allArray4[b]["leader"] = 1; // mark leader (yellow shirt)
+                } else {
+                    allArray4[b]["leader"] = 0;
+                }                    
+    
+    
+                if (allArray4[b]["Id_Groupe"].includes('b')) {                    
+                    allArray4[b]["oldBlue"] = 1;
+                } else {
+                    allArray4[b]["oldBlue"] = 0;
+                }
+    
+                    if (allArray4[b]["Id_Groupe"].includes('d')) {                    
+                    allArray4[b]["Id_Image"] = '_Status10';
+                }
+    
+                
+                   
+                
+                if (allArray4[b]["Id_Finishblue"] == 1) {
+                   allArray4[b]["blue"] = 1;
+                }
+
+                
+                if (allArray4[b]["Id_Image"].includes("_Status") || allArray4[b]["Id_Image_2"].includes("_Status") || allArray4[b]["blue"] == 1 || allArray4[b]["Id_FinishTime"] == 99999999999) {
+                    
+                    allArray4[b].Id_Status = 1;
+                } else {
+                    allArray4[b].Id_Status = 0;
+                }
+               
+        
+                 
+             } // END b
+
+
+// END stage 4        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+/*
         for (b = 0; b < lines4.length; b++) { 
            
             if (lines4[b].includes('<th class="rnkh_font Id_')) { // header cell
@@ -355,12 +486,12 @@ phrase the results, so the results page on the web site will be passive
                         lineArray4["blue"] = 0;                   
                     }
                 }
-/*
-                if (lines4[b].includes("BestTimeOverall") && hhhPro4[pp] == "Id_TpsTour") {
-                    bestTime4=lineArray4["Id_TpsTour"];
-                    bestTime4comp=lineArray4["Id_Numero"];
-                }
-*/
+
+//                if (lines4[b].includes("BestTimeOverall") && hhhPro4[pp] == "Id_TpsTour") {
+//                    bestTime4=lineArray4["Id_TpsTour"];
+//                    bestTime4comp=lineArray4["Id_Numero"];
+//                }
+
                 // find best lap overall
 
                 pp += 1;
@@ -375,10 +506,123 @@ phrase the results, so the results page on the web site will be passive
         ttt = 0;
         pp = 0;
         penalty = "no";
+*/
+                
+        
+        
+        
     }
 
     if (stages >= 3) {
+        
+        
+        
+        
+        
+        
+ // BEGIN stage 3
 
+        allArray3 = JSON.parse(J3);
+        
+        TextTemp = allArray3.shift();
+
+             for (b = 0; b < allArray3.length; b++) {
+
+                allArray3[b].Id_FinishTime = allArray3[b].F;
+                delete allArray3[b].F;
+                allArray3[b].Id_Finishblue = allArray3[b].FB;
+                delete allArray3[b].FB;
+
+                allArray3[b].Id_Arrow = allArray3[b].A;
+                delete allArray3[b].A;
+                allArray3[b].Id_Image = allArray3[b].M;
+                delete allArray3[b].M;
+                allArray3[b].Id_Image_2 = allArray3[b].M2;
+                delete allArray3[b].M2;
+
+                allArray3[b].Id_Groupe = allArray3[b].G;
+                delete allArray3[b].G;
+                allArray3[b].Id_penalty = allArray3[b].P;
+                delete allArray3[b].P;
+                
+                allArray3[b].blue = allArray3[b].B;
+                delete allArray3[b].B;
+                
+                allArray3[b].Id_Numero = allArray3[b].O;
+                delete allArray3[b].O;
+
+                // convert 0 to 99999999999
+                if (allArray3[b]["Id_FinishTime"] == 0) {
+                    allArray3[b]["Id_FinishTime"] = 99999999999;
+                }
+                 
+                // phrase Id_Groupe         
+                 
+                if (allArray3[b]["Id_Groupe"].includes('s1')) {
+
+                    allArray3[b]["single"] = 1;
+
+                } else if (allArray3[b]["Id_Groupe"].includes('s2')) {
+
+                    allArray3[b]["single"] = 2;
+
+                } else {
+                    allArray3[b]["single"] = 0;
+                }
+                
+                if (allArray3[b]["Id_Groupe"].includes('l')) {
+                    
+                    allArray3[b]["leader"] = 1; // mark leader (yellow shirt)
+                } else {
+                    allArray3[b]["leader"] = 0;
+                }                    
+    
+    
+                if (allArray3[b]["Id_Groupe"].includes('b')) {                    
+                    allArray3[b]["oldBlue"] = 1;
+                } else {
+                    allArray3[b]["oldBlue"] = 0;
+                }
+    
+                    if (allArray3[b]["Id_Groupe"].includes('d')) {                    
+                    allArray3[b]["Id_Image"] = '_Status10';
+                }
+    
+                
+                   
+                
+                if (allArray3[b]["Id_Finishblue"] == 1) {
+                   allArray3[b]["blue"] = 1;
+                }
+
+                
+                if (allArray3[b]["Id_Image"].includes("_Status") || allArray3[b]["Id_Image_2"].includes("_Status") || allArray3[b]["blue"] == 1 || allArray3[b]["Id_FinishTime"] == 99999999999) {
+                    
+                    allArray3[b].Id_Status = 1;
+                } else {
+                    allArray3[b].Id_Status = 0;
+                }
+               
+        
+                 
+             } // END b
+
+
+// END stage 3        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+/*
         for (b = 0; b < lines3.length; b++) { 
            
             if (lines3[b].includes('<th class="rnkh_font Id_')) { // header cell
@@ -420,12 +664,12 @@ phrase the results, so the results page on the web site will be passive
                         lineArray3["blue"] = 0;                   
                     }
                 }
-/*
-                if (lines3[b].includes("BestTimeOverall") && hhhPro3[pp] == "Id_TpsTour") {
-                    bestTime3=lineArray3["Id_TpsTour"];
-                    bestTime3comp=lineArray3["Id_Numero"];
-                }
-*/
+
+//                if (lines3[b].includes("BestTimeOverall") && hhhPro3[pp] == "Id_TpsTour") {
+//                    bestTime3=lineArray3["Id_TpsTour"];
+//                    bestTime3comp=lineArray3["Id_Numero"];
+//                }
+
                 // find best lap overall
 
                 pp += 1;
@@ -440,10 +684,109 @@ phrase the results, so the results page on the web site will be passive
         ttt = 0;
         pp = 0;
         penalty = "no";
+
+*/       
+        
     }
 
 
         if (stages >= 2) {
+            
+            
+            
+            
+// BEGIN stage 2
+
+        allArray2 = JSON.parse(J2);
+        
+        TextTemp = allArray2.shift();
+
+             for (b = 0; b < allArray2.length; b++) {
+
+                allArray2[b].Id_FinishTime = allArray2[b].F;
+                delete allArray2[b].F;
+                allArray2[b].Id_Finishblue = allArray2[b].FB;
+                delete allArray2[b].FB;
+
+                allArray2[b].Id_Arrow = allArray2[b].A;
+                delete allArray2[b].A;
+                allArray2[b].Id_Image = allArray2[b].M;
+                delete allArray2[b].M;
+                allArray2[b].Id_Image_2 = allArray2[b].M2;
+                delete allArray2[b].M2;
+
+                allArray2[b].Id_Groupe = allArray2[b].G;
+                delete allArray2[b].G;
+                allArray2[b].Id_penalty = allArray2[b].P;
+                delete allArray2[b].P;
+                
+                allArray2[b].blue = allArray2[b].B;
+                delete allArray2[b].B;
+                
+                allArray2[b].Id_Numero = allArray2[b].O;
+                delete allArray2[b].O;
+
+                // convert 0 to 99999999999
+                if (allArray2[b]["Id_FinishTime"] == 0) {
+                    allArray2[b]["Id_FinishTime"] = 99999999999;
+                }
+                 
+                // phrase Id_Groupe         
+                 
+                if (allArray2[b]["Id_Groupe"].includes('s1')) {
+
+                    allArray2[b]["single"] = 1;
+
+                } else if (allArray2[b]["Id_Groupe"].includes('s2')) {
+
+                    allArray2[b]["single"] = 2;
+
+                } else {
+                    allArray2[b]["single"] = 0;
+                }
+                
+                if (allArray2[b]["Id_Groupe"].includes('l')) {
+                    
+                    allArray2[b]["leader"] = 1; // mark leader (yellow shirt)
+                } else {
+                    allArray2[b]["leader"] = 0;
+                }                    
+    
+    
+                if (allArray2[b]["Id_Groupe"].includes('b')) {                    
+                    allArray2[b]["oldBlue"] = 1;
+                } else {
+                    allArray2[b]["oldBlue"] = 0;
+                }
+    
+                    if (allArray2[b]["Id_Groupe"].includes('d')) {                    
+                    allArray2[b]["Id_Image"] = '_Status10';
+                }
+    
+                
+                   
+                
+                if (allArray2[b]["Id_Finishblue"] == 1) {
+                   allArray2[b]["blue"] = 1;
+                }
+
+                
+                if (allArray2[b]["Id_Image"].includes("_Status") || allArray2[b]["Id_Image_2"].includes("_Status") || allArray2[b]["blue"] == 1 || allArray2[b]["Id_FinishTime"] == 99999999999) {
+                    
+                    allArray2[b].Id_Status = 1;
+                } else {
+                    allArray2[b].Id_Status = 0;
+                }
+               
+        
+                 
+             } // END b
+
+
+// END stage 2        
+           
+            
+/*           
 
             for (b = 0; b < lines2.length; b++) { 
             
@@ -486,12 +829,12 @@ phrase the results, so the results page on the web site will be passive
                             lineArray2["blue"] = 0;                   
                         }
                     }
-    /*
-                    if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
-                        bestTime2=lineArray2["Id_TpsTour"];
-                        bestTime2comp=lineArray2["Id_Numero"];
-                    }
-    */
+    
+//                    if (lines2[b].includes("BestTimeOverall") && hhhPro2[pp] == "Id_TpsTour") {
+//                        bestTime2=lineArray2["Id_TpsTour"];
+//                        bestTime2comp=lineArray2["Id_Numero"];
+//                    }
+    
                     // find best lap overall
 
                     pp += 1;
@@ -506,8 +849,174 @@ phrase the results, so the results page on the web site will be passive
             ttt = 0;
             pp = 0;
             penalty = "no";
+*/            
+                }
+    
+// BEGIN stage 1
+
+        allArray = JSON.parse(J1);
+        
+        Text = allArray.shift();
+
+        var headerFlag = Text.headerFlag;
+        var HeaderEventName = Text.HeaderEventName;
+        var DayTime = Text.DayTime;
+        var ElapsedTime = Text.ElapsedTime;
+        var RemainingTime = Text.RemainingTime;
+
+        if (HeaderEventName.includes("+++")) { // clean table for results page
+            cleanResults = 1;
+            HeaderEventName = HeaderEventName.replace("+++", "");
+        } else {
+            cleanResults = 0;
         }
+
+
+
+        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + HeaderEventName.replace(" - ", "<br>") + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
+
+        
+
+             for (b = 0; b < allArray.length; b++) {
+                
+                allArray[b].Id_Nationalite_2 = allArray[b].NA2;
+                delete allArray[b].NA2;
+                allArray[b].Id_Nationalite = allArray[b].NA;
+                delete allArray[b].NA;
+                
+                allArray[b].Id_Categorie = allArray[b].C;
+                delete allArray[b].C;
+
+                allArray[b].Id_Equipe = allArray[b].Q;
+                delete allArray[b].Q;
+
+
+                allArray[b].Id_FinishTime = allArray[b].F;
+                delete allArray[b].F;
+                allArray[b].Id_Finishblue = allArray[b].FB;
+                delete allArray[b].FB;
+
+                allArray[b].Id_Arrow = allArray[b].A;
+                delete allArray[b].A;
+                allArray[b].Id_Image = allArray[b].M;
+                delete allArray[b].M;
+                allArray[b].Id_Image_2 = allArray[b].M2;
+                delete allArray[b].M2;
+
+                allArray[b].Id_Groupe = allArray[b].G;
+                delete allArray[b].G;
+                allArray[b].Id_penalty = allArray[b].P;
+                delete allArray[b].P;
+                
+                allArray[b].blue = allArray[b].B;
+                delete allArray[b].B;
+
+                allArray[b].Id_Numero = allArray[b].O;
+                delete allArray[b].O;
+                allArray[b].Id_Nom = allArray[b].N;
+                delete allArray[b].N;
+                allArray[b].Id_Nom_2 = allArray[b].N2;
+                delete allArray[b].N2;
+
+                // convert 0 to 99999999999
+                if (allArray[b]["Id_FinishTime"] == 0) {
+                    allArray[b]["Id_FinishTime"] = 99999999999;
+                }
             
+                allArray[b]["Id_Numero_Full_2"] = allArray[b]["Id_Numero"] + '-2';
+                allArray[b]["Id_Numero_Full"] = allArray[b]["Id_Numero"] + '-1';
+                 
+                 
+                // phrase Id_Groupe         
+                 
+                if (allArray[b]["Id_Groupe"].includes('s1')) {
+
+                    allArray[b]["single"] = 1;
+
+                } else if (allArray[b]["Id_Groupe"].includes('s2')) {
+
+                    allArray[b]["single"] = 2;
+
+                } else {
+                    allArray[b]["single"] = 0;
+                }
+                
+                if (allArray[b]["Id_Groupe"].includes('u3')) {
+
+                    allArray[b]["uci"] = 3;
+
+                } else if (allArray[b]["Id_Groupe"].includes('u1')) {
+
+                    allArray[b]["uci"] = 1;
+
+                } else if (allArray[b]["Id_Groupe"].includes('u2')) {
+
+                    allArray[b]["uci"] = 2;
+
+                } else {
+                    allArray[b]["uci"] = 0;
+                }
+
+
+                if (allArray[b]["Id_Groupe"].includes('l')) {
+                    
+                    allArray[b]["leader"] = 1; // mark leader (yellow shirt)
+                } else {
+                    allArray[b]["leader"] = 0;
+                }                    
+    
+    
+                if (allArray[b]["Id_Groupe"].includes('b')) {                    
+                    allArray[b]["oldBlue"] = 1;
+                } else {
+                    allArray[b]["oldBlue"] = 0;
+                }
+    
+                    if (allArray[b]["Id_Groupe"].includes('d')) {                    
+                    allArray[b]["Id_Image"] = '_Status10';
+                }
+    
+                
+                   
+                
+                if (allArray[b]["Id_Finishblue"] == 1) {
+                   allArray[b]["blue"] = 1;
+                }
+
+                
+                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1 || allArray[b]["Id_FinishTime"] == 99999999999) {
+                    
+                    allArray[b].Id_Status = 1;
+                } else {
+                    allArray[b].Id_Status = 0;
+                }
+               
+                allArray[b]["blue_2"] = 0;                    
+                allArray[b]["blue_3"] = 0;                    
+                allArray[b]["blue_4"] = 0;                    
+                allArray[b]["blueTotalFinish"] = 0;
+                allArray[b]["Id_FinishTimeTotal"] = 99999999999;
+                allArray[b]["Id_dnsfq"] = "";
+
+
+                if (allArray[b]["Id_Categorie"] == '&nbsp;' ) {
+                    allArray[b]["Id_Categorie"] = "כללי";   
+                }
+                if (allArray[b]["Id_Categorie"] == 'undefined' ) {
+                    allArray[b]["Id_Categorie"] = "-";   
+                }
+        
+                 
+             } // END b
+
+
+        
+        console.log('allArray before:');
+        console.log(allArray);
+        
+        
+        
+/*        
         for (b = 0; b < lines.length; b++) { 
            
             if (lines[b].includes('<th class="rnkh_font Id_')) { // header cell
@@ -528,9 +1037,9 @@ phrase the results, so the results page on the web site will be passive
                     lineArray.Id_penalty = "&nbsp;";
                 }
 
-                lineArray["Id_Classe_2"] = "-";                    
-                lineArray["Id_Classe_3"] = "-";                    
-                lineArray["Id_Classe_4"] = "-";                    
+                lineArray["blue_2"] = "-";                    
+                lineArray["blue_3"] = "-";                    
+                lineArray["blue_4"] = "-";                    
                 lineArray["Id_FinishTimeTotal"] = 99999999999;
                 lineArray["Id_dnsfq"] = "";
                 
@@ -561,12 +1070,12 @@ phrase the results, so the results page on the web site will be passive
                             lineArray["blue"] = 0;                   
                         }
                     }
-/*
-                if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
-                    bestTime=lineArray["Id_TpsTour"];
-                    bestTimecomp=lineArray["Id_Numero"];
+
+//                if (lines[b].includes("BestTimeOverall") && hhhPro[pp] == "Id_TpsTour") {
+//                    bestTime=lineArray["Id_TpsTour"];
+//                    bestTimecomp=lineArray["Id_Numero"];
                 }
-*/
+
 
                 pp += 1;
         //  console.log(lineArray);
@@ -574,9 +1083,11 @@ phrase the results, so the results page on the web site will be passive
 
             }
             
-        }
+        }   // END stage 1
+*/
+         console.log('allArray:');
 
-      //   console.log(allArray);
+         console.log(allArray);
      //    console.log(hhh);
      //    console.log(hhhPro);
 
@@ -588,21 +1099,22 @@ phrase the results, so the results page on the web site will be passive
         if (stages == 1) {
             for (b = 0; b < allArray.length; b++) { // main table
 
-                if (allArray[b]["Id_FinishTime"] != "-") {
+                if (allArray[b]["Id_FinishTime"] != 99999999999) {
                     allArray[b]["Id_FinishTimeTotal"] = allArray[b]["Id_FinishTime"];
                 }
 
-                    if (allArray[b]["Id_Arrow"].includes('_dsq.svg')) {
+                    if (allArray[b]["Id_Arrow"] == 10) {
                         allArray[b]["Id_dnsfq"] = "dsq";
-                    } else if (allArray[b]["Id_Arrow"].includes('_dnf.svg')) {
+                    } else if (allArray[b]["Id_Arrow"] == 11) {
                         allArray[b]["Id_dnsfq"] = "dnf";
-                    } else if (allArray[b]["Id_Classe"] == "blue"  || allArray[b]["blue"] == 1) {
+                    } else if (allArray[b]["blue"] == 1) {
+                        allArray[b]["blueTotalFinish"] = 1;
                         allArray[b]["Id_dnsfq"] = "blue";
                     } else if (allArray[b]["Id_FinishTimeTotal"] == 99999999999) {
                         allArray[b]["Id_dnsfq"] = ""; // ???
                     }
                 
- /*               if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+ /*               if (allArray[b]["blue"] == 1 || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                     allArray[b]["Id_dnsfq"] = "dsq";
                 }*/
             }
@@ -617,35 +1129,35 @@ phrase the results, so the results page on the web site will be passive
                     if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                         
                         allArray[b]["Id_FinishTime_2"] = allArray2[a]["Id_FinishTime"];
-                        allArray[b]["Id_Classe_2"] = allArray2[a]["Id_Classe"];
-                        allArray[b]["Id_Arrow_2"] = allArray3[a]["Id_Arrow"];
+                        allArray[b]["blue_2"] = allArray2[a]["blue"];
+                        allArray[b]["Id_Arrow_2"] = allArray2[a]["Id_Arrow"];
                         
-                        if (allArray[b]["Id_FinishTime"] != "-" && allArray[b]["Id_FinishTime_2"] != "-") {
+                        if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime_2"] != 99999999999) {
                             
                             allArray[b]["Id_FinishTimeTotal"] = allArray[b]["Id_FinishTime"] + allArray[b]["Id_FinishTime_2"];
                         }
                 
-                        if (allArray[b]["blue"] == 1 || allArray2[a]["blue"] == 1) {
+                        if (allArray[b]["blue_2"] == 1) {
                             
-                            allArray[b]["blue"] = 1;
+                            allArray[b]["blueTotalFinish"] = 1;
                         }
                 
                     }
                     
                     if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                     
-                        if (allArray[b]["Id_Arrow"].includes('_dsq.svg') || allArray[b]["Id_Arrow_2"].includes('_dsq.svg')) {
+                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10) {
                             allArray[b]["Id_dnsfq"] = "dsq";
-                        } else if (allArray[b]["Id_Arrow"].includes('_dnf.svg') || allArray[b]["Id_Arrow_2"].includes('_dnf.svg')) {
+                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_2"] == 11) {
                             allArray[b]["Id_dnsfq"] = "dnf";
-                        } else if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["blue"] == 1) {
+                        } else if (allArray[b]["blueTotalFinish"] == 1) {
                             allArray[b]["Id_dnsfq"] = "blue";
                         } else if (allArray[b]["Id_FinishTimeTotal"] == 99999999999) {
                             allArray[b]["Id_dnsfq"] = ""; // ???
                         }
                    
                     
-/*                        if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                         allArray[b]["Id_dnsfq"] = "dsq";
                         }*/
                     }
@@ -665,7 +1177,7 @@ phrase the results, so the results page on the web site will be passive
                     if (allArray[b]["Id_Numero"] == allArray3[a]["Id_Numero"]) {
                         
                         allArray[b]["Id_FinishTime_3"] = allArray3[a]["Id_FinishTime"];
-                        allArray[b]["Id_Classe_3"] = allArray3[a]["Id_Classe"];
+                        allArray[b]["blue_3"] = allArray3[a]["blue"];
                         allArray[b]["Id_Arrow_3"] = allArray3[a]["Id_Arrow"];
 
                         
@@ -674,9 +1186,9 @@ phrase the results, so the results page on the web site will be passive
                             allArray[b]["Id_FinishTimeTotal"] = allArray[b]["Id_FinishTimeTotal"] + allArray[b]["Id_FinishTime_3"];
                         }
                 
-                        if (allArray[b]["blue"] == 1 || allArray3[a]["blue"] == 1) {
+                        if (allArray[b]["blue_3"] == 1) {
                             
-                            allArray[b]["blue"] = 1;
+                            allArray[b]["blueTotalFinish"] = 1;
                         }
 
                 
@@ -685,18 +1197,18 @@ phrase the results, so the results page on the web site will be passive
                     if (allArray[b]["Id_Numero"] == allArray3[a]["Id_Numero"]) {
                     
                 
-                        if (allArray[b]["Id_Arrow"].includes('_dsq.svg') || allArray[b]["Id_Arrow_2"].includes('_dsq.svg') || allArray[b]["Id_Arrow_3"].includes('_dsq.svg')) {
+                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10) {
                             allArray[b]["Id_dnsfq"] = "dsq";
-                        } else if (allArray[b]["Id_Arrow"].includes('_dnf.svg') || allArray[b]["Id_Arrow_2"].includes('_dnf.svg') || allArray[b]["Id_Arrow_3"].includes('_dnf.svg')) {
+                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_2"] == 11 || allArray[b]["Id_Arrow_3"] == 11) {
                             allArray[b]["Id_dnsfq"] = "dnf";
-                        } else if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_Classe_3"] == "blue" || allArray[b]["blue"] == 1) {
+                        } else if (allArray[b]["blueTotalFinish"] == 1) {
                             allArray[b]["Id_dnsfq"] = "blue";
                         } else if (allArray[b]["Id_FinishTimeTotal"] == 99999999999) {
                             allArray[b]["Id_dnsfq"] = ""; // ???
                         }
 
                         
-/*                        if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_Classe_3"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1 || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                         allArray[b]["Id_dnsfq"] = "dsq";
                         }*/
                     }
@@ -716,18 +1228,18 @@ phrase the results, so the results page on the web site will be passive
                     if (allArray[b]["Id_Numero"] == allArray4[a]["Id_Numero"]) {
                         
                         allArray[b]["Id_FinishTime_4"] = allArray4[a]["Id_FinishTime"];
-                        allArray[b]["Id_Classe_4"] = allArray4[a]["Id_Classe"];
+                        allArray[b]["blue_4"] = allArray4[a]["blue"];
                         allArray[b]["Id_Arrow_4"] = allArray4[a]["Id_Arrow"];
 
                         
-                        if (allArray[b]["Id_FinishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTimeTotal"] != "-" && allArray[b]["Id_FinishTime_4"] != "-") {
+                        if (allArray[b]["Id_FinishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTimeTotal"] != "-" && allArray[b]["Id_FinishTime_4"] != 99999999999) {
                             
                             allArray[b]["Id_FinishTimeTotal"] = allArray[b]["Id_FinishTimeTotal"] + allArray[b]["Id_FinishTime_4"];
                         }
                 
-                        if (allArray[b]["blue"] == 1 || allArray4[a]["blue"] == 1) {
+                        if (allArray[b]["blue_4"] == 1) {
                             
-                            allArray[b]["blue"] = 1;
+                            allArray[b]["blueTotalFinish"] = 1;
                         }
 
                 
@@ -736,18 +1248,18 @@ phrase the results, so the results page on the web site will be passive
                     if (allArray[b]["Id_Numero"] == allArray4[a]["Id_Numero"]) {
                     
                 
-                        if (allArray[b]["Id_Arrow"].includes('_dsq.svg') || allArray[b]["Id_Arrow_2"].includes('_dsq.svg') || allArray[b]["Id_Arrow_3"].includes('_dsq.svg') || allArray[b]["Id_Arrow_4"].includes('_dsq.svg')) {
+                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10 || allArray[b]["Id_Arrow_4"] == 10) {
                             allArray[b]["Id_dnsfq"] = "dsq";
-                        } else if (allArray[b]["Id_Arrow"].includes('_dnf.svg') || allArray[b]["Id_Arrow_2"].includes('_dnf.svg') || allArray[b]["Id_Arrow_3"].includes('_dnf.svg') || allArray[b]["Id_Arrow_4"].includes('_dnf.svg')) {
+                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_2"] == 11 || allArray[b]["Id_Arrow_3"] == 11 || allArray[b]["Id_Arrow_4"] == 11) {
                             allArray[b]["Id_dnsfq"] = "dnf";
-                        } else if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_Classe_3"] == "blue" || allArray[b]["Id_Classe_4"] == "blue" || allArray[b]["blue"] == 1) {
+                        } else if (allArray[b]["blueTotalFinish"] == 1) {
                             allArray[b]["Id_dnsfq"] = "blue";
                         } else if (allArray[b]["Id_FinishTimeTotal"] == 99999999999) {
                             allArray[b]["Id_dnsfq"] = ""; // ???
                         }
 
                         
-/*                        if (allArray[b]["Id_Classe"] == "blue" || allArray[b]["Id_Classe_2"] == "blue" || allArray[b]["Id_Classe_3"] == "blue" || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1 || allArray[b]["Id_FinishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                         allArray[b]["Id_dnsfq"] = "dsq";
                         }*/
                     }
@@ -771,33 +1283,31 @@ phrase the results, so the results page on the web site will be passive
                             
         headerText1 = '<tr class="rnkh_bkcolor">\n';
 
-   //     for (b = 0; b < qqq.length; b++) { 
-   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
-   //             temp.push(b);
-   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>\n';
-   //         }
-   //     }          
 
     // hard coded header for now
-            headerText1 += '<th class="rnkh_font" id="Id_Position">Rank</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Numero">No.</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Nom">Rider 1</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Nom_2">Rider 2</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position">Rank</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Numero">No.</th>\n';
+            headerText1 += '<th class="rnkh_font uci">&nbsp;</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Nationalite">&nbsp;</th>\n';
+            headerText1 += '<th class="rnkh_font uci">&nbsp;</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Nationalite_2">&nbsp;</th>\n';
             if (useCategory == "no") {
-                headerText1 += '<th class="rnkh_font" id="Id_Categorie">Category</th>\n';
+                headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>\n';
             }
-            headerText1 += '<th class="rnkh_font" id="Id_FinishTime">Stage 1</th>\n';
+            headerText1 += '<th class="rnkh_font Id_FinishTime">Stage 1</th>\n';
             if (stages >= 2) {
-                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_2">Stage 2</th>\n';
+                headerText1 += '<th class="rnkh_font Id_FinishTime_2">Stage 2</th>\n';
             }
             if (stages >= 3) {
-                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_3">Stage 3</th>\n';
+                headerText1 += '<th class="rnkh_font Id_FinishTime_3">Stage 3</th>\n';
             }
             if (stages == 4) {
-                headerText1 += '<th class="rnkh_font" id="Id_FinishTime_4">Stage 4</th>\n';
+                headerText1 += '<th class="rnkh_font Id_FinishTime_4">Stage 4</th>\n';
             }
-            headerText1 += '<th class="rnkh_font" id="Id_FinishTimeTotal">Time</th>\n';
-            headerText1 += '<th class="rnkh_font" id="Id_Ecart1er">Gap</th>\n';
+            headerText1 += '<th class="rnkh_font Id_FinishTimeTotal">Time</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Ecart1er">Gap</th>\n';
 
         
         headerText1 += '</tr>\n';
@@ -846,74 +1356,41 @@ phrase the results, so the results page on the web site will be passive
                                     competitorTime = allArray[l]["Id_FinishTimeTotal"];
                                     if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
-
-                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 3) == "00:") {
-                                        allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(3);
-                                    }
-                                    if (allArray[l]["Id_Ecart1er"].toString().substring(0, 1) == "0" && allArray[l]["Id_Ecart1er"].includes(":")) {
-                                        allArray[l]["Id_Ecart1er"] = allArray[l]["Id_Ecart1er"].substr(1);
-                                    }
                                      
                                     } else {
                                     allArray[l]["Id_Ecart1er"] = "-";
                                     }
                                
                             // convert back to time
-                            if (allArray[l]["Id_FinishTime"] != "-") {  
+                            if (allArray[l]["Id_FinishTime"] != 99999999999) {  
                                 allArray[l]["Id_FinishTime"] = ms2TimeString(allArray[l]["Id_FinishTime"]);
-
-                                
-                                if (allArray[l]["Id_FinishTime"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_FinishTime"] = allArray[l]["Id_FinishTime"].substr(3);
-                                }
-                                if (allArray[l]["Id_FinishTime"].toString().substring(0, 1) == "0" && allArray[l]["Id_FinishTime"].includes(":")) {
-                                    allArray[l]["Id_FinishTime"] = allArray[l]["Id_FinishTime"].substr(1);
-                                }
-                                
+                            } else {
+                                allArray[l]["Id_FinishTime"] = '-';
                             }
+                            
                 if (stages >= 2) {
 
-                            if (allArray[l]["Id_FinishTime_2"] != "-") {  
+                            if (allArray[l]["Id_FinishTime_2"] != 99999999999) {  
                                 allArray[l]["Id_FinishTime_2"] = ms2TimeString(allArray[l]["Id_FinishTime_2"]);
-
-                                
-                                if (allArray[l]["Id_FinishTime_2"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_FinishTime_2"] = allArray[l]["Id_FinishTime_2"].substr(3);
-                                }
-                                if (allArray[l]["Id_FinishTime_2"].toString().substring(0, 1) == "0" && allArray[l]["Id_FinishTime_2"].includes(":")) {
-                                    allArray[l]["Id_FinishTime_2"] = allArray[l]["Id_FinishTime_2"].substr(1);
-                                }
-                                
+                            } else {
+                                allArray[l]["Id_FinishTime_2"] = '-';
                             }
                 }
             
                 if (stages >= 3) {
-                            if (allArray[l]["Id_FinishTime_3"] != "-") {  
+                            if (allArray[l]["Id_FinishTime_3"] != 99999999999) {  
                                 allArray[l]["Id_FinishTime_3"] = ms2TimeString(allArray[l]["Id_FinishTime_3"]);
-
                                 
-                                if (allArray[l]["Id_FinishTime_3"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_FinishTime_3"] = allArray[l]["Id_FinishTime_3"].substr(3);
-                                }
-                                if (allArray[l]["Id_FinishTime_3"].toString().substring(0, 1) == "0" && allArray[l]["Id_FinishTime_3"].includes(":")) {
-                                    allArray[l]["Id_FinishTime_3"] = allArray[l]["Id_FinishTime_3"].substr(1);
-                                }
-                                
+                            } else {
+                                allArray[l]["Id_FinishTime_3"] = '-';
                             }
                 }
             
                 if (stages == 4) {
-                            if (allArray[l]["Id_FinishTime_4"] != "-") {  
+                            if (allArray[l]["Id_FinishTime_4"] != 99999999999) {  
                                 allArray[l]["Id_FinishTime_4"] = ms2TimeString(allArray[l]["Id_FinishTime_4"]);
-
-                                
-                                if (allArray[l]["Id_FinishTime_4"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_FinishTime_4"] = allArray[l]["Id_FinishTime_4"].substr(3);
-                                }
-                                if (allArray[l]["Id_FinishTime_4"].toString().substring(0, 1) == "0" && allArray[l]["Id_FinishTime_4"].includes(":")) {
-                                    allArray[l]["Id_FinishTime_4"] = allArray[l]["Id_FinishTime_4"].substr(1);
-                                }
-                                
+                             } else {
+                                allArray[l]["Id_FinishTime_4"] = '-';
                             }
                 }
      
@@ -925,13 +1402,8 @@ phrase the results, so the results page on the web site will be passive
                                     allArray[l]["Id_FinishTimeTotal"] = ms2TimeString(allArray[l]["Id_FinishTimeTotal"]);
                                 }
                                 
-                                if (allArray[l]["Id_FinishTimeTotal"].toString().substring(0, 3) == "00:") {
-                                    allArray[l]["Id_FinishTimeTotal"] = allArray[l]["Id_FinishTimeTotal"].substr(3);
-                                }
-                                if (allArray[l]["Id_FinishTimeTotal"].toString().substring(0, 1) == "0" && allArray[l]["Id_FinishTimeTotal"].includes(":")) {
-                                    allArray[l]["Id_FinishTimeTotal"] = allArray[l]["Id_FinishTimeTotal"].substr(1);
-                                }
-                                
+                            } else {
+                                allArray[l]["Id_FinishTimeTotal"] = '-';
                             }
 
         
@@ -975,31 +1447,62 @@ phrase the results, so the results page on the web site will be passive
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position"] + '</td>\n'; // add postion
                 }
                 
-                 if (allArray[l]["Id_Classe"] == "blue" || allArray[l]["Id_Classe_2"] == "blue" || allArray[l]["Id_Classe_3"] == "blue" || allArray[l]["Id_Classe_4"] == "blue" || allArray[l]["blue"] == 1) {
+                 if (allArray[l]["blueTotalFinish"] == 1) {
                 finalText += '<td style="color:#111; background-color:#add8e6bf;" class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 }
                                
        //         finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';
-                
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';// add the name
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom_2"] + '</td>\n';// add the name
+       
+       
+       
+                if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
+                    
+                    finalText += '<td class="rnk_font left"><span title="UCI Rider" class="Flag UCI"></span></td>\n';// add uci 1
 
+                } else {
+                    finalText += '<td class="rnk_font left">&nbsp;</td>\n';// add uci 1
+                }
+       
+       
+       
+                
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + '</td>\n';// add the name
+                
+                finalText += '<td class="rnk_font left"><span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span></td>\n';// add Id_Nationalite 
+                
+                
+                if (allArray[l]["uci"] == 2 || allArray[l]["uci"] == 3) {
+                    finalText += '<td class="rnk_font left"><span title="UCI Rider" class="Flag UCI"></span></td>\n';// add uci 2
+                } else {
+                    finalText += '<td class="rnk_font left">&nbsp;</td>\n';// add uci 2
+                }
+                
+                
+                
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom_2"] + '</td>\n';// add the name 2
+
+                finalText += '<td class="rnk_font left"><span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>\n';// add Id_Nationalite 2
+                
+                
+                
+                
+                
             if (useCategory == "no") {
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the name
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the Category
             }
 
 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add total time
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
                 if (stages >= 2) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add total time
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 2
                 }
                 if (stages >= 3) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add total time
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 3
                 }
                 if (stages == 4) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_4"] + '</td>\n'; // add total time
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_4"] + '</td>\n'; // add time 4
                 }
                 if (allArray[l]["Id_FinishTimeTotal"] == 99999999999) {
                     finalText += '<td class="rnk_font">-</td>\n'; // add total time
@@ -1008,7 +1511,7 @@ phrase the results, so the results page on the web site will be passive
                 }
                 
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
+                finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
  
                 
      //       }
@@ -1027,7 +1530,12 @@ phrase the results, so the results page on the web site will be passive
      
 //download(finalText, 'finalText.txt', 'text/plain')
                 
-             console.log(allArray);
+        console.log('allArray after:');
+        console.log(allArray);
+          
+        console.log('allArray2:');
+        console.log(allArray2);
+
 
          //    console.log(finalText);
       
@@ -1046,7 +1554,69 @@ phrase the results, so the results page on the web site will be passive
         URL.revokeObjectURL(a.href);
     }   
 */    
-       
+    function ms2TimeString(mili){
+        
+        var gfg = ms2TimeStringSub(mili);
+        
+        if (gfg.toString().substring(0, 3) == "00:") {
+            gfg = gfg.substr(3);
+        }
+        if (gfg.toString().substring(0, 1) == "0" && gfg.toString().substring(1, 2) != ".") {
+            gfg = gfg.substr(1);
+        }
+    return gfg
+        
+    };
+
+
+    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
+        if (precision == "tenth") {
+            return a=a.split('.'), // optimized
+            b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
+            a=a[0].split(':'),
+            (b*1e2)+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+        } else {
+            return a=a.split('.'), // optimized
+            b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
+            a=a[0].split(':'),
+            b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+        }        
+    };
+
+    function ms2TimeStringSub(a,k,s,m,h){
+        if (precision == "tenth") {
+            return k=a%1e3, // optimized by konijn
+            s=a/1e3%60|0,
+            m=a/6e4%60|0,
+            h=a/36e5%24|0,
+            (h?(h<10?'0'+h:h)+':':'')+ // optimized
+            (m<10?0:'')+m+':'+  // optimized
+            (s<10?0:'')+s+'.'+ // optimized
+            +(k/1e2) // optimized
+        } else {
+            return k=a%1e3, // optimized by konijn
+            s=a/1e3%60|0,
+            m=a/6e4%60|0,
+            h=a/36e5%24|0,
+            (h?(h<10?'0'+h:h)+':':'')+ // optimized
+            (m<10?0:'')+m+':'+  // optimized
+            (s<10?0:'')+s+'.'+ // optimized
+            (k<100?k<10?'00':0:'')+k // optimized
+/*    
+if (k<100){
+  if(k<10){
+    message = '00'
+  }else{
+    message = 0
+  }
+} else {
+  message = ''
+}
+*/    
+        }
+    };
+
+/*       
     function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
         return a=a.split('.'), // optimized
         b=a[1]*1||0, // optimized
@@ -1064,6 +1634,7 @@ phrase the results, so the results page on the web site will be passive
         (s<10?0:'')+s+'.'+ // optimized
         (k<100?k<10?'00':0:'')+k // optimized
     } 
+*/
 
     function convertMS(milliseconds) { // if over 24 hours
         var day, hour, minute, seconds,millisecond, time;
@@ -1080,6 +1651,7 @@ phrase the results, so the results page on the web site will be passive
         return time
     }
     
+
     function alignTable() {
         
         if (cleanResults == 0) {

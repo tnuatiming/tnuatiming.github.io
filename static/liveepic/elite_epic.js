@@ -3183,6 +3183,8 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
         delete allArray[l].Id_Status;
 
 
+        allArray[l].B = allArray[l].blue; // needed for total
+        delete allArray[l].blue;
         allArray[l].T = allArray[l].Id_TpsCumule;
         delete allArray[l].Id_TpsCumule;
         allArray[l].TT = allArray[l].Id_TpsCumule_2;
@@ -3491,7 +3493,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
             
             if (allArray3f[l]["Id_Ecart1er"] != 99999999999 && allArray3f[l]["Id_Position"] != 1) {  
                 allArray3f[l]["Id_Ecart1er"] = ms2TimeString(allArray3f[l]["Id_Ecart1er"]);
-                finalText3 += '<td class="rnk_font">+' + allArray3f[l]["Id_Ecart1er"] + '</td>\n';
+                finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Ecart1er"] + '</td>\n';
             } else {
                 finalText3 += '<td class="rnk_font">-</td>\n';
             }
