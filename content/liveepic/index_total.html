@@ -90,6 +90,17 @@ slug: "total"
     #live td.right, #live th.right {
         text-align: right;
     }
+    .lineThrough {
+        filter: opacity(35%)
+    }
+    #live td.rnk_font.wrap {
+        max-width: 200px;
+       /* white-space: normal;*/ 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #live td.rnk_font.bold {font-weight: 700;}
+
     #live .btn {display: inline-block;}
     #live #buttonInfo {margin-bottom: 10px;}
     #live .btn.active {cursor: pointer;filter: opacity(50%);}
@@ -103,6 +114,18 @@ slug: "total"
         text-align: center;
     }    
     #live h1#Title img {margin: 0 10px;}
+    div#legend {width: 100%; text-align: left; direction: ltr;}
+    div#legend ul {width: 100%; text-align: left; float: left;}
+    div#legend li {text-align: left;}
+
+    #csv {display: none;}
+    
+@media (max-width: 767px) {
+
+    #live td.rnk_font.wrap {
+        max-width: 120px;
+    }
+}
     
 </style>
 
@@ -117,6 +140,19 @@ slug: "total"
         <div id="updates">&nbsp;</div>
 </div>
 <div id="result"></div>
+
+<button id="csv">Download CSV Results File</button>
+
+<div id="legend">
+         <ul>
+                <li><span class="Flag UCI"></span> - UCI Rider</li>
+                <li><span class="redred">S</span> - Single Finisher</li>
+                <li><span class="Flag dsq"></span> - Disqualified</li>
+                <li><span class="Flag dnf"></span> - Did Not Finished</li>
+                <li><span class="Flag dns"></span> - Did Not Started</li>
+                <li><span class="Flag blueFlag"></span> - over maximum stage time or separation between team members over 2 minutes</li>
+            </ul>
+</div>
     
 <!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
 
