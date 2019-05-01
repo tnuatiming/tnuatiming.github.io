@@ -436,8 +436,8 @@ add dns
                 
                    
                 
-                if (allArray4[b]["blue"] == 1 || allArray4[b]["Id_Groupe"].includes('b') || allArray4[b]["Id_Groupe"].includes('s') || allArray4[b]["Id_Arrow"] == 11 || allArray4[b]["Id_Arrow"] == 10) {
-                   allArray4[b]["out"] = 1;
+                if (allArray4[b]["blue"] == 1 || allArray4[b]["Id_Groupe"].includes('b') || allArray4[b]["Id_Groupe"].includes('s') || allArray4[b]["Id_Arrow"] == 11 || allArray4[b]["Id_Arrow"] == 10 || allArray4[b]["Id_FinishTime"] == 99999999999) {
+                    allArray4[b]["out"] = 1;
                 }
 
 /*                
@@ -613,8 +613,8 @@ add dns
                 
                    
                 
-                if (allArray3[b]["blue"] == 1 || allArray3[b]["Id_Groupe"].includes('b') || allArray3[b]["Id_Groupe"].includes('s') || allArray3[b]["Id_Arrow"] == 11 || allArray3[b]["Id_Arrow"] == 10) {
-                   allArray3[b]["out"] = 1;
+                if (allArray3[b]["blue"] == 1 || allArray3[b]["Id_Groupe"].includes('b') || allArray3[b]["Id_Groupe"].includes('s') || allArray3[b]["Id_Arrow"] == 11 || allArray3[b]["Id_Arrow"] == 10 || allArray3[b]["Id_FinishTime"] == 99999999999) {
+                    allArray3[b]["out"] = 1;
                 }
 
 /*                
@@ -788,8 +788,8 @@ add dns
                 
                    
                 
-                if (allArray2[b]["blue"] == 1 || allArray2[b]["Id_Groupe"].includes('b') || allArray2[b]["Id_Groupe"].includes('s') || allArray2[b]["Id_Arrow"] == 11 || allArray2[b]["Id_Arrow"] == 10) {
-                   allArray2[b]["out"] = 1;
+                if (allArray2[b]["blue"] == 1 || allArray2[b]["Id_Groupe"].includes('b') || allArray2[b]["Id_Groupe"].includes('s') || allArray2[b]["Id_Arrow"] == 11 || allArray2[b]["Id_Arrow"] == 10 || allArray2[b]["Id_FinishTime"] == 99999999999) {
+                    allArray2[b]["out"] = 1;
                 }
 
 /*                
@@ -941,6 +941,26 @@ add dns
                 delete allArray[b].N;
                 allArray[b].Id_Nom_2 = allArray[b].N2;
                 delete allArray[b].N2;
+                
+                
+                delete allArray[b].B1;
+                delete allArray[b].B2;
+                delete allArray[b].B3;
+                delete allArray[b].E;
+                delete allArray[b].E1;
+                delete allArray[b].E2;
+                delete allArray[b].E3;
+                delete allArray[b].L;
+                delete allArray[b].PC;
+                delete allArray[b].PO;
+                delete allArray[b].R;
+                delete allArray[b].T;
+                delete allArray[b].T1;
+                delete allArray[b].T2;
+                delete allArray[b].T3;
+                delete allArray[b].TT;
+                
+                
 
                 // convert 0 to 99999999999
                 if (allArray[b]["Id_FinishTime"] == 0) {
@@ -1003,8 +1023,10 @@ add dns
                 
                    
                 
-                if (allArray[b]["blue"] == 1 || allArray[b]["Id_Groupe"].includes('b') || allArray[b]["Id_Groupe"].includes('s') || allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow"] == 10) {
-                   allArray[b]["out"] = 1;
+                if (allArray[b]["blue"] == 1 || allArray[b]["Id_Groupe"].includes('b') || allArray[b]["Id_Groupe"].includes('s') || allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_FinishTime"] == 99999999999) {
+                    allArray[b]["out"] = 1;
+                } else {
+                    allArray[b]["out"] = 0;                    
                 }
 
 /*                
@@ -1015,12 +1037,12 @@ add dns
                     allArray[b].Id_Status = 0;
                 }
 */               
-                allArray[b]["out"] = 0;                    
                 allArray[b]["blue_2"] = 0;                    
                 allArray[b]["blue_3"] = 0;                    
                 allArray[b]["blue_4"] = 0;                    
                 allArray[b]["finishTimeTotal"] = 99999999999;
                 allArray[b]["dnsfq"] = "";
+                allArray[b]["stagesFinished"] = 0;
 
 
                 if (allArray[b]["Id_Categorie"] == '&nbsp;' ) {
@@ -1125,6 +1147,7 @@ add dns
 
                 if (allArray[b]["Id_FinishTime"] != 99999999999) {
                     allArray[b]["finishTimeTotal"] = allArray[b]["Id_FinishTime"];
+                    allArray[b]["stagesFinished"] += 1;
                 }
 
                     if (allArray[b]["Id_Arrow"] == 10) {
@@ -1168,6 +1191,11 @@ add dns
                             allArray[b]["finishTimeTotal"] = allArray[b]["Id_FinishTime"] + allArray[b]["Id_FinishTime_2"];
                         }
                     
+                        if (allArray[b]["Id_FinishTime_2"] != 99999999999) {
+                            
+                            allArray[b]["stagesFinished"] += 1;
+                        }
+
                         if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10) {
                             allArray[b]["dnsfq"] = "dsq";
                         } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_2"] == 11) {
@@ -1215,7 +1243,11 @@ add dns
                             
                             allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_3"];
                         }
-
+                    
+                        if (allArray[b]["Id_FinishTime_3"] != 99999999999) {
+                            
+                            allArray[b]["stagesFinished"] += 1;
+                        }
                     
                 
                         if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10) {
@@ -1267,7 +1299,10 @@ add dns
                             allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_4"];
                         }
                 
-                    
+                        if (allArray[b]["Id_FinishTime_4"] != 99999999999) {
+                            
+                            allArray[b]["stagesFinished"] += 1;
+                        }
                 
                         if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10 || allArray[b]["Id_Arrow_4"] == 10) {
                             allArray[b]["dnsfq"] = "dsq";
@@ -1293,9 +1328,9 @@ add dns
 
          // THE MAGIC - sort the array after the merge to get new results
         if (useCategory == "no") {
-            allArray.sort(function(a, b){return a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
+            allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
         }
          
                             
@@ -1430,8 +1465,6 @@ add dns
                         allArray[l]["finishTimeTotal"] = ms2TimeString(allArray[l]["finishTimeTotal"]);
                     }
                     
-                } else {
-                    allArray[l]["finishTimeTotal"] = '-';
                 }
 
         
@@ -1514,37 +1547,37 @@ add dns
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the Category
                 }
        
-       if (cleanResults == 1) {
+                if (cleanResults == 1) {
+                        
+                    finalText += '<td class="rnk_font left ' + single1 + '">' + uci1 + '</td>\n';// add uci 1
+        
+                        
+                    finalText += '<td class="rnk_font left ' + single1 + '">' + allArray[l]["Id_Nom"] + '</td>\n';// add the name
                     
-                finalText += '<td class="rnk_font left ' + single1 + '">' + uci1 + '</td>\n';// add uci 1
-       
-                       
-                finalText += '<td class="rnk_font left ' + single1 + '">' + allArray[l]["Id_Nom"] + '</td>\n';// add the name
+                    finalText += '<td class="rnk_font left ' + single1 + '"><span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span></td>\n';// add Id_Nationalite 
+                    
+                    
+                    finalText += '<td class="rnk_font left ' + single2 + '">' + uci2 + '</td>\n';// add uci 2
                 
-                finalText += '<td class="rnk_font left ' + single1 + '"><span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span></td>\n';// add Id_Nationalite 
-                
-                
-                finalText += '<td class="rnk_font left ' + single2 + '">' + uci2 + '</td>\n';// add uci 2
-               
-                
-                finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom_2"] + '</td>\n';// add the name 2
+                    
+                    finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom_2"] + '</td>\n';// add the name 2
 
-                finalText += '<td class="rnk_font left ' + single2 + '"><span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>\n';// add Id_Nationalite 2
-       } else {
+                    finalText += '<td class="rnk_font left ' + single2 + '"><span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>\n';// add Id_Nationalite 2
+                } else {
 
-                finalText += '<td class="rnk_font"><div class="FirstLine ' + single1 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
-                if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
-                    finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single1 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
+                    if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
+                        finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                    }
+                    finalText += '</div>';// add the name
+
+                    
+                    finalText += '<div class="SecoundLine ' + single2 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                    if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
+                        finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                    }
+                    finalText += '</div></td>';// add the name
                 }
-                finalText += '</div>';// add the name
-
-                
-                finalText += '<div class="SecoundLine ' + single2 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
-                if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
-                    finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
-                }
-                finalText += '</div></td>';// add the name
-       }
        
                 finalText += '<td class="rnk_font wrap">' + allArray[l]["Id_Equipe"] + '</td>\n';// add the Team
                 
@@ -1560,26 +1593,20 @@ add dns
                 if (stages == 4) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_4"] + '</td>\n'; // add time 4
                 }
-                if (allArray[l]["finishTimeTotal"] == 99999999999) {
+                
+                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
                     finalText += '<td class="rnk_font">-</td>\n'; // add total time
                 } else {
                     finalText += '<td class="rnk_font bold">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
                 }
                 
-                if (allArray[l]["Id_Ecart1er"] == 99999999999) {
+                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
                     finalText += '<td class="rnk_font">-</td>\n'; // add diff
                 } else {
                     finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
                 }
  
-                
-     //       }
-
-                 
-                
-      //      }    
-
-                    finalText += '</tr>\n';
+                     finalText += '</tr>\n';
 
                
             }        
