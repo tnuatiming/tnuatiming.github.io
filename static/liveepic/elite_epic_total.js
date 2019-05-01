@@ -13,8 +13,13 @@ add dns
 //    var TimerLoad;
 //    var Rafraichir = 60000; // every 60 seconds
 
-    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
+    var stages = 3; // day of competition
+    console.log('stages: ' + stages);
+
     var cleanResults = 0;
+
+
+    var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     
     var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
@@ -22,9 +27,7 @@ add dns
     }
 
     var precision = "tenth"; // "tenth" for 1 digit after the .
-
-    var stages = 4; // day of competition
-
+    
     var tableClass = "fadeIn ";
     var url1 = "t1.txt";    
     var J1;
@@ -896,8 +899,13 @@ add dns
         var HeaderRaceName = HeaderEventName.split('-');
         csvName = (HeaderRaceName[1]).split(' ').join('_'); // replace all spaces with _
 
-
-        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + HeaderEventName.replace(" - ", "<br>") + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
+        if (stages == 1) {
+        var st = 'Prologue';
+        } else {
+        var st = 'Stage ' + (stages - 1);
+        }
+        
+        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + 'Migdal Epic Israel<br>After '+ st + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
 
         
 
@@ -1037,16 +1045,16 @@ add dns
                     allArray[b].Id_Status = 0;
                 }
 */               
+                allArray[b]["blue_1"] = 0;                    
                 allArray[b]["blue_2"] = 0;                    
                 allArray[b]["blue_3"] = 0;                    
-                allArray[b]["blue_4"] = 0;                    
                 allArray[b]["finishTimeTotal"] = 99999999999;
                 allArray[b]["dnsfq"] = "";
                 allArray[b]["stagesFinished"] = 0;
 
 
                 if (allArray[b]["Id_Categorie"] == '&nbsp;' ) {
-                    allArray[b]["Id_Categorie"] = "כללי";   
+                    allArray[b]["Id_Categorie"] = " ";   
                 }
                 if (allArray[b]["Id_Categorie"] == 'undefined' ) {
                     allArray[b]["Id_Categorie"] = "-";   
@@ -1083,9 +1091,9 @@ add dns
                     lineArray.Id_penalty = "&nbsp;";
                 }
 
+                lineArray["blue_1"] = "-";                    
                 lineArray["blue_2"] = "-";                    
                 lineArray["blue_3"] = "-";                    
-                lineArray["blue_4"] = "-";                    
                 lineArray["finishTimeTotal"] = 99999999999;
                 lineArray["dnsfq"] = "";
                 
@@ -1174,9 +1182,9 @@ add dns
 
                     if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                         
-                        allArray[b]["Id_FinishTime_2"] = allArray2[a]["Id_FinishTime"];
-                        allArray[b]["blue_2"] = allArray2[a]["blue"];
-                        allArray[b]["Id_Arrow_2"] = allArray2[a]["Id_Arrow"];
+                        allArray[b]["Id_FinishTime_1"] = allArray2[a]["Id_FinishTime"];
+                        allArray[b]["blue_1"] = allArray2[a]["blue"];
+                        allArray[b]["Id_Arrow_1"] = allArray2[a]["Id_Arrow"];
                         allArray[b]["single"] = allArray2[a]["single"];
                         
                         if (allArray2[a]["out"] == 1) {
@@ -1186,28 +1194,28 @@ add dns
                     }
                 }  // END a
                         
-                        if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime_2"] != 99999999999) {
+                        if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime_1"] != 99999999999) {
                             
-                            allArray[b]["finishTimeTotal"] = allArray[b]["Id_FinishTime"] + allArray[b]["Id_FinishTime_2"];
+                            allArray[b]["finishTimeTotal"] = allArray[b]["Id_FinishTime"] + allArray[b]["Id_FinishTime_1"];
                         }
                     
-                        if (allArray[b]["Id_FinishTime_2"] != 99999999999) {
+                        if (allArray[b]["Id_FinishTime_1"] != 99999999999) {
                             
                             allArray[b]["stagesFinished"] += 1;
                         }
 
-                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10) {
+                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_1"] == 10) {
                             allArray[b]["dnsfq"] = "dsq";
-                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_2"] == 11) {
+                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_1"] == 11) {
                             allArray[b]["dnsfq"] = "dnf";
-                        } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1) {
+                        } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1) {
                             allArray[b]["dnsfq"] = "blue";
                         } else if (allArray[b]["finishTimeTotal"] == 99999999999) {
                             allArray[b]["dnsfq"] = ""; // ???
                         }
                    
                     
-/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_1"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                         allArray[b]["dnsfq"] = "dsq";
                         }*/
                     
@@ -1226,9 +1234,9 @@ add dns
 
                     if (allArray[b]["Id_Numero"] == allArray3[a]["Id_Numero"]) {
                         
-                        allArray[b]["Id_FinishTime_3"] = allArray3[a]["Id_FinishTime"];
-                        allArray[b]["blue_3"] = allArray3[a]["blue"];
-                        allArray[b]["Id_Arrow_3"] = allArray3[a]["Id_Arrow"];
+                        allArray[b]["Id_FinishTime_2"] = allArray3[a]["Id_FinishTime"];
+                        allArray[b]["blue_2"] = allArray3[a]["blue"];
+                        allArray[b]["Id_Arrow_2"] = allArray3[a]["Id_Arrow"];
                         allArray[b]["single"] = allArray3[a]["single"];
                         
                         if (allArray3[a]["out"] == 1) {
@@ -1239,29 +1247,29 @@ add dns
                     
                 }  // END a
                         
-                        if (allArray[b]["finishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTime_3"] != 99999999999) {
+                        if (allArray[b]["finishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTime_2"] != 99999999999) {
                             
-                            allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_3"];
+                            allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_2"];
                         }
                     
-                        if (allArray[b]["Id_FinishTime_3"] != 99999999999) {
+                        if (allArray[b]["Id_FinishTime_2"] != 99999999999) {
                             
                             allArray[b]["stagesFinished"] += 1;
                         }
                     
                 
-                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10) {
+                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_1"] == 10 || allArray[b]["Id_Arrow_2"] == 10) {
                             allArray[b]["dnsfq"] = "dsq";
-                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_2"] == 11 || allArray[b]["Id_Arrow_3"] == 11) {
+                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_1"] == 11 || allArray[b]["Id_Arrow_2"] == 11) {
                             allArray[b]["dnsfq"] = "dnf";
-                        } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1) {
+                        } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["blue_2"] == 1) {
                             allArray[b]["dnsfq"] = "blue";
                         } else if (allArray[b]["finishTimeTotal"] == 99999999999) {
                             allArray[b]["dnsfq"] = ""; // ???
                         }
 
                         
-/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_1"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                         allArray[b]["dnsfq"] = "dsq";
                         }*/
                     
@@ -1280,9 +1288,9 @@ add dns
 
                     if (allArray[b]["Id_Numero"] == allArray4[a]["Id_Numero"]) {
                         
-                        allArray[b]["Id_FinishTime_4"] = allArray4[a]["Id_FinishTime"];
-                        allArray[b]["blue_4"] = allArray4[a]["blue"];
-                        allArray[b]["Id_Arrow_4"] = allArray4[a]["Id_Arrow"];
+                        allArray[b]["Id_FinishTime_3"] = allArray4[a]["Id_FinishTime"];
+                        allArray[b]["blue_3"] = allArray4[a]["blue"];
+                        allArray[b]["Id_Arrow_3"] = allArray4[a]["Id_Arrow"];
                         allArray[b]["single"] = allArray4[a]["single"];
                         
                         if (allArray4[a]["out"] == 1) {
@@ -1294,28 +1302,28 @@ add dns
                 }  // END a
 
                         
-                        if (allArray[b]["finishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTime_4"] != 99999999999) {
+                        if (allArray[b]["finishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTime_3"] != 99999999999) {
                             
-                            allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_4"];
+                            allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_3"];
                         }
                 
-                        if (allArray[b]["Id_FinishTime_4"] != 99999999999) {
+                        if (allArray[b]["Id_FinishTime_3"] != 99999999999) {
                             
                             allArray[b]["stagesFinished"] += 1;
                         }
                 
-                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10 || allArray[b]["Id_Arrow_4"] == 10) {
+                        if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_1"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10) {
                             allArray[b]["dnsfq"] = "dsq";
-                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_2"] == 11 || allArray[b]["Id_Arrow_3"] == 11 || allArray[b]["Id_Arrow_4"] == 11) {
+                        } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_1"] == 11 || allArray[b]["Id_Arrow_2"] == 11 || allArray[b]["Id_Arrow_3"] == 11) {
                             allArray[b]["dnsfq"] = "dnf";
-                        } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1 || allArray[b]["blue_4"] == 1) {
+                        } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1) {
                             allArray[b]["dnsfq"] = "blue";
                         } else if (allArray[b]["finishTimeTotal"] == 99999999999) {
                             allArray[b]["dnsfq"] = ""; // ???
                         }
 
                         
-/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["Id_Arrow_3"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+/*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_1"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                         allArray[b]["dnsfq"] = "dsq";
                         }*/
                     
@@ -1328,9 +1336,9 @@ add dns
 
          // THE MAGIC - sort the array after the merge to get new results
         if (useCategory == "no") {
-            allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
+            allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
         } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.Id_FinishTime - b.Id_FinishTime});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
         }
          
                             
@@ -1359,15 +1367,15 @@ add dns
             headerText1 += '<th class="rnkh_font Id_Nom">Riders</th>\n';
        }
             headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>\n';
-            headerText1 += '<th class="rnkh_font Id_FinishTime">Stage 1</th>\n';
+            headerText1 += '<th class="rnkh_font Id_FinishTime">Prologue</th>\n';
             if (stages >= 2) {
-                headerText1 += '<th class="rnkh_font Id_FinishTime_2">Stage 2</th>\n';
+                headerText1 += '<th class="rnkh_font Id_FinishTime_1">Stage 1</th>\n';
             }
             if (stages >= 3) {
-                headerText1 += '<th class="rnkh_font Id_FinishTime_3">Stage 3</th>\n';
+                headerText1 += '<th class="rnkh_font Id_FinishTime_2">Stage 2</th>\n';
             }
             if (stages == 4) {
-                headerText1 += '<th class="rnkh_font Id_FinishTime_4">Stage 4</th>\n';
+                headerText1 += '<th class="rnkh_font Id_FinishTime_3">Stage 3</th>\n';
             }
             headerText1 += '<th class="rnkh_font finishTimeTotal">Time</th>\n';
             headerText1 += '<th class="rnkh_font Id_Ecart1er">Gap</th>\n';
@@ -1433,27 +1441,27 @@ add dns
                             
                 if (stages >= 2) {
 
+                    if (allArray[l]["Id_FinishTime_1"] != 99999999999) {  
+                        allArray[l]["Id_FinishTime_1"] = ms2TimeString(allArray[l]["Id_FinishTime_1"]);
+                    } else {
+                        allArray[l]["Id_FinishTime_1"] = '-';
+                    }
+                }
+            
+                if (stages >= 3) {
                     if (allArray[l]["Id_FinishTime_2"] != 99999999999) {  
                         allArray[l]["Id_FinishTime_2"] = ms2TimeString(allArray[l]["Id_FinishTime_2"]);
+                        
                     } else {
                         allArray[l]["Id_FinishTime_2"] = '-';
                     }
                 }
             
-                if (stages >= 3) {
+                if (stages == 4) {
                     if (allArray[l]["Id_FinishTime_3"] != 99999999999) {  
                         allArray[l]["Id_FinishTime_3"] = ms2TimeString(allArray[l]["Id_FinishTime_3"]);
-                        
-                    } else {
-                        allArray[l]["Id_FinishTime_3"] = '-';
-                    }
-                }
-            
-                if (stages == 4) {
-                    if (allArray[l]["Id_FinishTime_4"] != 99999999999) {  
-                        allArray[l]["Id_FinishTime_4"] = ms2TimeString(allArray[l]["Id_FinishTime_4"]);
                         } else {
-                        allArray[l]["Id_FinishTime_4"] = '-';
+                        allArray[l]["Id_FinishTime_3"] = '-';
                     }
                 }
 
@@ -1501,8 +1509,8 @@ add dns
                             
                 finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-//                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1;
-                    finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
+                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
             }
 
 
@@ -1534,7 +1542,7 @@ add dns
                     finalText += '<td class="rnk_font"></td>\n'; // add postion
                 }
                 
-                 if (allArray[l]["blue"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["blue_4"] == 1) {
+                 if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1) {
                 finalText += '<td class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
@@ -1585,13 +1593,13 @@ add dns
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
                 
                 if (stages >= 2) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 2
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
                 }
                 if (stages >= 3) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 3
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
                 }
                 if (stages == 4) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_4"] + '</td>\n'; // add time 4
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
                 }
                 
                 if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {

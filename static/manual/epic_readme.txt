@@ -1,0 +1,89 @@
+
+## raspberry pi ##
+
+using the rpi as local web server, to get results locally and then uploading them to site.
+
+files needed to be modified to the production dir/file names.
+
+make sure the local web server folder (tt) has the latest updates.
+
+master.html and elite_epic.js is on the timing computer, when the page is open in chromium('gc' and 'finish' must be selected) it generate j1.txt json(dont forget to enable on the bottom of elite_epic.js). it also generate p3.html for the single day competitors(FIXME - add to python). the python script below sense it and upload it to the web server. on the web server we have index.html and elite_epic_remote.js that phrase the json and show the results.
+for tv, we have tv.html which uses the same elite_epic.js, at least for now.
+
+1. run 'python3 -m http.server' in the local website folder (tt).
+
+2. USE THIS! 'python3 ftp_with_inotify_and_log.py' - this upload j1.txt from /home/pi/Downloads (where chromium saves files) to the web server (check address!)
+2a. to upload the p1.html as is use: 'python3 ftp_with_inotify.py' (modify to upload j1.txt) - more updated with log: 'python3 ftp_with_inotify_and_log.py'
+2b. to upload the PHRASE p1.html file use: 'python3 ftp_and_phrase_for_rpi.py'
+2c. to upload j1.txt after local converting the p1.html use: 'python3 ftp_j1_with_inotify.py'
+
+
+## Elite ##
+
+make sure live settings are pointing to the rpi web server (10.0.0.77, 22, passive, pi, raspberry, /home/pi/tt/liveepic/, use sftp, temp.html, upgrade every 30 sec).
+
+build classification for epic: 
+
+    (מספר) - Id_Numero
+    (שם) - Id_Nom
+    (זמן) - Id_TpsCumule
+    (הקפות) - Id_NbTour
+    (קטגוריה) - Id_Categorie
+    (&nbsp;) - Id_Image
+    (Nationality) - Id_Nationalite
+    (Inter. 1) - Id_Inter1 - intermediate time 1
+    (Inter. 2) - Id_Inter2 - intermediate time 2
+    (Inter. 3) - Id_Inter3 - intermediate time 3
+    (Class) - Id_Classe - mark 1 day competitors ('sf' for Friday and 'ss' for Saturday)
+    (Group) - Id_Groupe - add letters as follows: "u" - UCI Rider, "b" - blue rider, "s" - single Rider, "l" - leader(yellow shirt), "d" - DSQ.
+    (Team) - Id_Equipe - team name
+    
+set race settings > others > cycling:
+
+set time precision to "tenth". MOST IMPORTANT, AS TIMING WILL BE WRONG!!! OTHER WISE.
+set "assign competitors start time at green flag date time" - need testing.
+
+when importing competitors, make sure to import uci rider as "u" into "Group".
+
+on prologue stage, make sure to have "prologue" in race name as it active the position arrow display (not needed in other stages)
+
+before start of stage, make sure to update "Group" - ("ubsld").
+make sure 'MaximumStageTime' set correctly, as it auto finish the day stage.
+
+elite_epic_remote.js - the js to put on the remote server, reads JSON j1.txt. needs to enable in elite_epic.js which run as in between.
+
+
+apple magicpad:
+sudo apt-get install xserver-xorg-input-libinput
+
+/etc/X11/xorg.conf.d/40-libinput.conf:
+
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+	MatchIsTouchpad "on"
+	Option "Tapping" "on"    
+EndSection
+
+
+## option for getting j1.txt using python(very slow for now): ## DO NOT USE, TAKES A LOT OF TIME AND NOT COMPLETE SOLUTION!!!
+
+sudo apt-get install python3-pandas
+
+python3 convert_p1_to_json.py
+
+
+## web pages  ##
+
+race directors - https://tnuatiming.com/liveepic/master.html (wiil have csv download on stage end)
+
+TV - https://tnuatiming.com/liveepic/tv.html (manual refrash)
+
+live - https://tnuatiming.com/liveepic/index.html and on epic site
+
+total - https://tnuatiming.com/liveepic/total.html and on epic site (use t1.txt-t4.txt and to update elite_epic_total.js?v=1 after every stage finish)
+
+single day - https://tnuatiming.com/liveepic/single.html and on epic site (not built yet, support added to elite_epic.js as p3.html)
+
+
+

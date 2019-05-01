@@ -751,6 +751,7 @@ Status 12,DNS,center</code></pre></li>
     <a class="c1" href="http://tnuatiming.com/live/Images/CheckeredFlag.svg"><span><img alt="CheckeredFlag.svg" src="/live/Images/CheckeredFlag.svg"></span></a><br><br>
     <a id="C101" class="c2" href="http://tnuatiming.com/csv/index.html">תוצאות כקובץ CSV</a><br><br>
     <a id="C101" class="c2" href="https://github.com/tnuatiming/tnuatiming.github.io">https://github.com/tnuatiming/tnuatiming.github.io</a><br><br>
+    <p class="c0"><span><a class="c2" href="http://tnuatiming.com/manual/epic_readme.txt">Epic 2019</a></span></p>
     <p class="c0" style="color: #eee;"><span>p5f123d7a7e</span></p>
     </div>
 </body>

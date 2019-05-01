@@ -7,6 +7,10 @@ place: live timing
 slug: "total"
 ---
 <style>
+    #live #buttonInfo {
+        flex-direction: column;
+        direction: ltr;
+    }
     #live table.line_color {
         margin-top: 10px;
     }
@@ -144,12 +148,12 @@ slug: "total"
 </style>
 
 
-<div id="raceheader"><h1>תוצאות</h1></div>
+<div id="raceheader"><h1>Results Total</h1></div>
 
 <div id="buttonInfo">
     <div id="categoryOrAll" style="display: block;">
-        <button id="displayCatButton" class="btn" onClick="category('yes')">לפי קטגוריה</button>
-        <button id="displayAllButton" class="btn" onClick="category('no')">כללי</button>
+        <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button>
+        <button id="displayAllButton" class="btn" onClick="category('no')">GC</button>
     </div>
         <div id="updates">&nbsp;</div>
 </div>
