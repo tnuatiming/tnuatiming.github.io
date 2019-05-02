@@ -6,7 +6,8 @@
 TODO
 remove all blue board as not needed in total??? (not needed in stage 4, other stages is needed) 
 csv download not tested
-cleanResults == 1 not tested
+cleanResults == 1 not tested, simplify table
+display both gc and category position
 add dns
 
 */
@@ -299,7 +300,7 @@ add dns
         var bestTime = 0;
 */        
         
-        var m, Text, TextTemp, competitorTime, leaderTime, headerText1, prevCompCat, single1, single2, uci1, uci2, bigFont;
+        var m, Text, TextTemp, competitorTime, leaderTime, headerText1, prevCompCat, single1, single2, uci1, uci2, bigFont, catCol;
         
     if (stages >= 3) {
 //        var lines3;
@@ -905,7 +906,7 @@ add dns
         var st = 'Stage ' + (stages - 1);
         }
         
-        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + 'Migdal Epic Israel<br>After '+ st + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
+        var finalText = '<h1 id="Title"><img src="Images/_Stop.png" alt="flag color">Migdal Epic Israel<br>After '+ st + '<img src="Images/_Stop.png" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">&nbsp;</span><span id="RemainingTime">&nbsp;</span></p>\n';
 
         
 
@@ -1051,7 +1052,8 @@ add dns
                 allArray[b]["finishTimeTotal"] = 99999999999;
                 allArray[b]["dnsfq"] = "";
                 allArray[b]["stagesFinished"] = 0;
-
+                allArray[b]["Id_Position_Categorie"] = 0;
+                allArray[b]["Id_Position_Overall"] = 0;
 
                 if (allArray[b]["Id_Categorie"] == '&nbsp;' ) {
                     allArray[b]["Id_Categorie"] = " ";   
@@ -1335,21 +1337,60 @@ add dns
 
 
          // THE MAGIC - sort the array after the merge to get new results
-        if (useCategory == "no") {
+//        if (useCategory == "no") {
             allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
-        } else if (useCategory == "yes") {
+            
+                // reasign postion number
+            for (l = 0; l < allArray.length; l++) {
+
+                allArray[l]["Id_Position_Overall"] = l+1;
+            }
+            
+            
+            
+            
+//        } else if (useCategory == "yes") {
             allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
-        }
+//        }
          
+    // fix the position fields of the competitors and start building the final table
+            m = 0;
+            prevCompCat = ""
+
+            
+            for (l = 0; l < allArray.length; l++) {
+
+  
+                if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                    m += 1;
+                } else {
+                    m = 1;
+                prevCompCat = allArray[l]["Id_Categorie"];
+                }
+                
+                allArray[l]["Id_Position_Categorie"] = m;
+                 
+
+            }     
+                 
+                 
+                 
+            if (useCategory == "no") {
+                
+                allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
+                                
+            }                 
                             
-// HEADER         
+                            
+    // HEADER         
                             
                             
         headerText1 = '<tr class="rnkh_bkcolor">\n';
 
 
     // hard coded header for now
-            headerText1 += '<th class="rnkh_font Id_Position">Rank</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Overall">GC</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Categorie">CAT</th>\n';
             headerText1 += '<th class="rnkh_font Id_Numero">No.</th>\n';
             if (useCategory == "no") {
                 headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>\n';
@@ -1389,8 +1430,8 @@ add dns
 
          
     // fix the position fields of the competitors and start building the final table
-            m = 0;
-            prevCompCat = ""
+//            m = 0;
+//            prevCompCat = ""
 
 //            finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
             
@@ -1403,8 +1444,22 @@ add dns
             
             
             for (l = 0; l < allArray.length; l++) {
+                
+                    
+                if (useCategory == "no") {
+                                                    
+                    allArray[l]["Id_Position"] = allArray[l]["Id_Position_Overall"];
+                    
+                } else {
+                    allArray[l]["Id_Position"] = allArray[l]["Id_Position_Categorie"];
+                }
+                
+                
+                
+                
+                
 
-                // reasign postion number
+/*                // reasign postion number
                  if (useCategory == "no") {
                     allArray[l]["Id_Position"] = l+1;
                  } else if (useCategory == "yes") {
@@ -1417,7 +1472,7 @@ add dns
                     }
                     allArray[l]["Id_Position"] = m;
                  }
-
+*/
                 if (allArray[l]["Id_Position"] == 1) {
                     leaderTime = allArray[l]["finishTimeTotal"];
                 }
@@ -1521,6 +1576,19 @@ add dns
                 bigFont = 'bigFont';
             }
 
+            if (allArray[l]["Id_Categorie"] == 'Women') {
+                catCol = 'pink';
+            } else if (allArray[l]["Id_Categorie"] == 'Mixed') {
+                catCol = 'greengreen';
+            } else if (allArray[l]["Id_Categorie"] == 'Masters') {
+                catCol = 'blue';
+            } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                catCol = 'purple';
+            } else if (allArray[l]["Id_Categorie"] == 'Men'){
+                catCol = 'yellow';
+            } else {
+                catCol = 'black';
+            }
 
 
             if (l % 2 == 0) { // start building competitor line
@@ -1531,19 +1599,20 @@ add dns
                        
 
                 if (allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "blue") {
-                    finalText += '<td class="rnk_font">DSQ</td>\n';
+                    finalText += '<td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>\n';
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dnf") {
-                    finalText += '<td class="rnk_font">DNF</td>\n';
+                    finalText += '<td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>\n';
                 } else if (allArray[l]["single"] != 0) {
-                    finalText += '<td class="rnk_font">S</td>\n'; // add postion
+                    finalText += '<td colspan="2" title="Single Finisher" class="rnk_font">SF</td>\n'; // add postion
                 } else if (allArray[l]["out"] == 0) {
-                    finalText += '<td class="rnk_font ' + bigFont + '">' + allArray[l]["Id_Position"] + '</td>\n'; // add postion
+                    finalText += '<td class="rnk_font ' + bigFont + '">' + allArray[l]["Id_Position_Overall"] + '</td>\n'; // add postion
+                    finalText += '<td class="rnk_font ' + bigFont + ' ' + catCol + '">' + allArray[l]["Id_Position_Categorie"] + '</td>\n'; // add postion
                 } else {
-                    finalText += '<td class="rnk_font"></td>\n'; // add postion
+                    finalText += '<td colspan="2" class="rnk_font"></td>\n'; // add postion
                 }
                 
                  if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1) {
-                finalText += '<td class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }

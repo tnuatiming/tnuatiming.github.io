@@ -12,9 +12,9 @@
 {{ partial "elite.min.js" . }}
 </script>
 -->*/}}
-{{ if (eq .Params.body "total1") }}
+{{ if (eq .Params.body "total") }}
     <body id="live">
-{{  else if (eq .Params.body "total") }}
+{{  else if (eq .Params.body "mastertotal") }}
     <body onload="Load()" id="live">
 {{  else if (eq .Params.media "tv") }}
     <body  onload="Load()" id="live">

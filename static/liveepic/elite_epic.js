@@ -671,7 +671,6 @@
         var allArray31 = [];
         var allArray32 = [];
         var allArray3f = [];
-        var penalty = "no";
         var ttt = 0;
         var pp = 0;
         var b;
@@ -786,7 +785,6 @@
             
         ttt = 0;
         pp = 0;
-        penalty = "no";
   
             
         for (b = 0; b < lines.length; b++) { 
@@ -803,11 +801,6 @@
                 ttt = 1;
             } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
                 ttt = 0;
-                if (penalty == "yes") {
-                    lineArray.Id_penalty = "P";
-                } else {
-                    lineArray.Id_penalty = "";
-                }
                 
                 if (lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') { // single day
 
@@ -875,7 +868,7 @@
                     lineArray.single = 0;
                     lineArray.leader = 0;
                     lineArray.uci = 0; // 0 - none, 1 - first rider is uci, 2 - second rider is uci, 3 - both
-                    lineArray.Id_penalty = "";   
+//                    lineArray.Id_penalty = "";   
 
                     if (lineArray["Id_Groupe"] == '&nbsp;') {
                         lineArray["Id_Groupe"] = "";   
@@ -965,13 +958,14 @@
 
                 lineArray = {};
                 pp = 0;
-                penalty = "no";
                 pair_num = "";
                 main_num = "";
                 
-            } else if (lines[b].includes("<td ") && ttt == 1) { // clean and add competitor cell
+            } else if (lines[b].includes("<td ") && ttt == 1 && !lines[b].includes("???")) { // clean and add competitor cell
                 if (lines[b].includes("(C)")) {
-                    penalty = "yes";
+                    lineArray.Id_penalty = "P";
+                } else {
+                    lineArray.Id_penalty = "";
                 }
 
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
@@ -1968,7 +1962,7 @@
                         allArray[l]["Id_Arrow"] = 9;
                     } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
                         allArray[l]["Id_Arrow"] = 8; // astrix
-                    } else if (allArray[l]["Id_penalty"].includes("P")) {
+                    } else if (allArray[l]["Id_penalty"] == "P") {
                         allArray[l]["Id_Arrow"] = 7; // penalty
                     }
 

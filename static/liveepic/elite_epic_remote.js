@@ -13,6 +13,7 @@ add "Id_Sector_FinishTime" - maybe fixed?
 fix all the crufafel with "Inter1Leader" tables - maybe fixed?
 enable google compiler for production
 postion arrow needes to be disabled after the prologue
+after removing the status colmun, need to fix the finish flag, gain/lost indicator
 
 */
     var useHash = 1;
@@ -699,7 +700,6 @@ postion arrow needes to be disabled after the prologue
         var competitorLaps = 0;
 
         var allArray = [];
-        var penalty = "no";
         var positionChanged = "";
         var bestLapComp = 0;
         var bestLap = "99999999999";
@@ -1619,7 +1619,7 @@ postion arrow needes to be disabled after the prologue
                         allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
                         allArray[l]["Id_Arrow"] = 8; // astrix
-                    } else if (allArray[l]["Id_penalty"].includes("P")) {
+                    } else if (allArray[l]["Id_penalty"] == "P") {
                         allArray[l]["Id_Arrow"] = 7; // penalty
                     }
 

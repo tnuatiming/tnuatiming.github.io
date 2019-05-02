@@ -6,38 +6,45 @@ subbody: epic
 place: live timing
 slug: "total"
 ---
-<style>
-    #live #buttonInfo {
-        flex-direction: column;
-        direction: ltr;
-    }
-    #live table.line_color {
-        margin-top: 10px;
-    }
-    
-    #live tr.rnk_bkcolor:hover {
-        background-color: #f0f0f0bf;
-        } 
 
-    h1 img {
-        height: 32px; 
-        vertical-align: middle; 
-        margin: 0 5px;
-        }
-    .Flag:before {
-        content: "\00a0";
-    }
-    .Flag {
-        background-size: contain;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        position: relative;
-        display: inline-block;
-        width: 1.33333333em;
-        vertical-align: middle;
-        margin: 0 5px;
-    }
-    
+
+
+<style>
+#live #buttonInfo {
+    flex-direction: column;
+    direction: ltr;
+}
+
+#live table.line_color {
+    margin-top: 10px;
+    direction: ltr;
+}
+
+#live tr.rnk_bkcolor:hover {
+    background-color: #f0f0f0bf;
+}
+
+h1 img {
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.Flag:before {
+    content: "\00a0";
+}
+
+.Flag {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
     .australia {background-image: url(Images/CountryFlags/australia.svg);}
     .austria {background-image: url(Images/CountryFlags/austria.svg);}
     .belgium {background-image: url(Images/CountryFlags/belgium.svg);}
@@ -88,63 +95,97 @@ slug: "total"
     .dsq {background-image: url(Images/_dsq.svg);}
     .dns {background-image: url(Images/_dns.svg);}
 
-    #live td.rnk_font.blueCard {
-        color:#111; 
-        background-color:#add8e6bf; 
-        font-weight:700;
-    }
-    #live td.left, #live th.left {
-        text-align: left;
-    }
-    #live td.right, #live th.right {
-        text-align: right;
-    }
-    .lineThrough {
-        filter: opacity(35%)
-    }
-    #live td.rnk_font.wrap {
-        max-width: 200px;
-       /* white-space: normal;*/ 
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    #live td.rnk_font.bold {font-weight: 700;}
-    #live td.rnk_font.bigFont {
-        font-size: 1.5em;
-        min-width: 35px;
-    }
 
-    #live .btn {display: inline-block;}
-    #live #buttonInfo {margin-bottom: 10px;}
-    #live .btn.active {cursor: pointer;filter: opacity(50%);}
-    #live #Title {
-        justify-content: space-evenly;
-        vertical-align: middle;
-        font-weight: 700;
-        font-size: 1em;
-        color: #58585a;
-        margin: 5px 0;
-        text-align: center;
-    }    
-    #live h1#Title img {margin: 0 10px;}
-    div#legend {width: 100%; text-align: left; direction: ltr;}
-    div#legend ul {width: 100%; text-align: left; float: left;}
-    div#legend li {text-align: left;}
+#live td.rnk_font.blueCard {
+    color: #111;
+    background-color: #add8e6bf;
+    font-weight: 700;
+}
 
-    #csv {display: none;}
-    
-@media (max-width: 767px) {
+#live td.left,
+#live th.left {
+    text-align: left;
+}
 
+#live td.right,
+#live th.right {
+    text-align: right;
+}
+
+.lineThrough {
+    filter: opacity(35%);
+}
+
+#live td.rnk_font.wrap {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#live td.rnk_font.bold {
+    font-weight: 700;
+}
+
+#live td.rnk_font.bigFont {
+    font-size: 1.5em;
+    min-width: 35px;
+}
+
+#live .btn {
+    display: inline-block;
+}
+
+#live #buttonInfo {
+    margin-bottom: 10px;
+}
+
+#live .btn.active {
+    cursor: pointer;
+    filter: opacity(50%);
+}
+
+#live #Title {
+    justify-content: space-evenly;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 1em;
+    color: #58585a;
+    margin: 5px 0;
+    text-align: center;
+}
+
+#live h1#Title img {
+    margin: 0 10px;
+}
+div#legend {
+    width: 100%;
+    text-align: left;
+    direction: ltr;
+}
+
+div#legend ul {
+    width: 100%;
+    text-align: left;
+    float: left;
+}
+
+div#legend li {
+    text-align: left;
+}
+
+#csv {
+    display: none;
+}
+
+@media (max-width:767px) {
     #live td.rnk_font.bigFont {
         font-size: 1.2em;
         min-width: 25px;
     }
-
     #live td.rnk_font.wrap {
         max-width: 120px;
     }
 }
-    
 </style>
 
 
@@ -157,23 +198,530 @@ slug: "total"
     </div>
         <div id="updates">&nbsp;</div>
 </div>
-<div id="result"></div>
 
-<button id="csv">Download CSV Results File</button>
+<!--  put header here  -->
+<h1 id="Title"><img src="Images/_Stop.png" alt="flag color">Migdal Epic Israel<br>After Stage 2<img src="Images/_Stop.png" alt="flag color"></h1>
+                
 
-<div id="legend">
-         <ul>
-                <li><span class="Flag UCI"></span> - UCI Rider</li>
-                <li>S - Single Finisher</li>
-                <li>DSQ - Disqualified</li>
-                <li>DNF - Did Not Finished</li>
-                <li>DNS - Did Not Started</li>
-                <li><span class="Flag blueFlag"></span> - over maximum stage time or separation between team members over 2 minutes</li>
-            </ul>
+<div id="liveTable"><div id="finalTextCategory" style="display: block;">
+
+<!--  put total category results here  -->
+
+
+                    <table class="fadeIn line_color">
+                        <tbody>
+                            <tr>
+                                <td colspan="99" class="title_font">Men</td>
+                            </tr>
+                            <tr class="rnkh_bkcolor">
+                                <th class="rnkh_font Id_Position_Overall">GC</th>
+                                <th class="rnkh_font Id_Position_Categorie">CAT</th>
+                                <th class="rnkh_font Id_Numero">No.</th>
+                                <th class="rnkh_font Id_Nom">Riders</th>
+                                <th class="rnkh_font Id_Equipe">Team</th>
+                                <th class="rnkh_font Id_FinishTime">Prologue</th>
+                                <th class="rnkh_font Id_FinishTime_1">Stage 1</th>
+                                <th class="rnkh_font Id_FinishTime_2">Stage 2</th>
+                                <th class="rnkh_font finishTimeTotal">Time</th>
+                                <th class="rnkh_font Id_Ecart1er">Gap</th>
+                            </tr>
+
+                            <tr class="rnk_bkcolor OddRow">
+                                <td class="rnk_font bigFont">2</td>
+                                <td class="rnk_font bigFont yellow">1</td>
+                                <td class="rnk_font highlight bigFont">1</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Pedro Delgado<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine ">Jan Janssen<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation</td>
+                                <td class="rnk_font">4:03:44.8</td>
+                                <td class="rnk_font">4:03:44.8</td>
+                                <td class="rnk_font">4:03:44.8</td>
+                                <td class="rnk_font bold">12:11:14.4</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td class="rnk_font bigFont">3</td>
+                                <td class="rnk_font bigFont yellow">2</td>
+                                <td class="rnk_font highlight bigFont">6</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Stephen Roche<span title="USA" class="Flag  usa"></span></div>
+                                    <div class="SecoundLine ">Marco Pantani<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Silverback OMX Pro Team / Canadian National team</td>
+                                <td class="rnk_font">4:17:55.3</td>
+                                <td class="rnk_font">4:17:55.3</td>
+                                <td class="rnk_font">4:17:55.3</td>
+                                <td class="rnk_font bold">12:53:45.9</td>
+                                <td class="rnk_font">+42:31.5</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td colspan="2" title="Single Finisher" class="rnk_font">SF</td>
+                                <td class="rnk_font highlight bigFont">85</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Greg LeMond<span title="Switzerland" class="Flag  switzerland"></span></div>
+                                    <div class="SecoundLine lineThrough">Cadel Evans<span title="iceland" class="Flag lineThrough iceland"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">4:17:48.1</td>
+                                <td class="rnk_font">4:17:48.1</td>
+                                <td class="rnk_font">4:17:48.1</td>
+                                <td class="rnk_font bold">12:53:24.3</td>
+                                <td class="rnk_font">+42:09.9</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">4</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Lucien Petit-Breton<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Philippe Thys<span title="South Africa" class="Flag  southafrica"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">4:04:21.3</td>
+                                <td class="rnk_font">4:04:21.3</td>
+                                <td class="rnk_font">4:04:21.3</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">2</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">René Pottier<span title="Switzerland" class="Flag  switzerland"></span></div>
+                                    <div class="SecoundLine ">Bernard Hinault<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">4:06:16.9</td>
+                                <td class="rnk_font">4:06:16.9</td>
+                                <td class="rnk_font">4:06:16.9</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">3</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Louison Bobet<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Joop Zoetemelk<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Scott-SRAM MTB-Racing</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="fadeIn line_color">
+                        <tbody>
+                            <tr>
+                                <td colspan="99" class="title_font">Women</td>
+                            </tr>
+                            <tr class="rnkh_bkcolor">
+                                <th class="rnkh_font Id_Position_Overall">GC</th>
+                                <th class="rnkh_font Id_Position_Categorie">CAT</th>
+                                <th class="rnkh_font Id_Numero">No.</th>
+                                <th class="rnkh_font Id_Nom">Riders</th>
+                                <th class="rnkh_font Id_Equipe">Team</th>
+                                <th class="rnkh_font Id_FinishTime">Prologue</th>
+                                <th class="rnkh_font Id_FinishTime_1">Stage 1</th>
+                                <th class="rnkh_font Id_FinishTime_2">Stage 2</th>
+                                <th class="rnkh_font finishTimeTotal">Time</th>
+                                <th class="rnkh_font Id_Ecart1er">Gap</th>
+                            </tr>
+
+                            <tr class="rnk_bkcolor OddRow">
+                                <td class="rnk_font bigFont">4</td>
+                                <td class="rnk_font bigFont pink">1</td>
+                                <td class="rnk_font highlight bigFont">331</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Pedro Delgado II<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine "><span title="UCI Rider" class="Flag UCI"></span>Jan Janssen II<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation il</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font bold">15:11:08.4</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>
+                                <td class="rnk_font highlight bigFont">237</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Ferdinand Kübler<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Jacques Anquetil<span title="Brazil" class="Flag  brazil"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Shimano Il</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">8</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Vincenzo Nibali<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Chris Froome<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>
+                                <td class="rnk_font highlight bigFont">9</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Miguel Indurain<span title="united kingdom" class="Flag  unitedkingdom"></span></div>
+                                    <div class="SecoundLine ">Eddy Merckx<span title="South Africa" class="Flag  southafrica"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="fadeIn line_color">
+                        <tbody>
+                            <tr>
+                                <td colspan="99" class="title_font">Mixed</td>
+                            </tr>
+                            <tr class="rnkh_bkcolor">
+                                <th class="rnkh_font Id_Position_Overall">GC</th>
+                                <th class="rnkh_font Id_Position_Categorie">CAT</th>
+                                <th class="rnkh_font Id_Numero">No.</th>
+                                <th class="rnkh_font Id_Nom">Riders</th>
+                                <th class="rnkh_font Id_Equipe">Team</th>
+                                <th class="rnkh_font Id_FinishTime">Prologue</th>
+                                <th class="rnkh_font Id_FinishTime_1">Stage 1</th>
+                                <th class="rnkh_font Id_FinishTime_2">Stage 2</th>
+                                <th class="rnkh_font finishTimeTotal">Time</th>
+                                <th class="rnkh_font Id_Ecart1er">Gap</th>
+                            </tr>
+
+                            <tr class="rnk_bkcolor OddRow">
+                                <td class="rnk_font bigFont">1</td>
+                                <td class="rnk_font bigFont greengreen">1</td>
+                                <td class="rnk_font highlight bigFont">51</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Pedro Delgado II<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine ">Jan Janssen II<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation 2</td>
+                                <td class="rnk_font">3:03:42.8</td>
+                                <td class="rnk_font">3:03:42.8</td>
+                                <td class="rnk_font">3:03:42.8</td>
+                                <td class="rnk_font bold">9:11:08.4</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td class="rnk_font bigFont">5</td>
+                                <td class="rnk_font bigFont greengreen">2</td>
+                                <td class="rnk_font highlight bigFont">221</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Pedro Delgado II<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine ">Jan Janssen II<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation 3</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font bold">15:11:08.4</td>
+                                <td class="rnk_font">+6:00:00.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
 </div>
+</div>
+
+
+<div id="liveTable"><div id="finalTextAll" style="display: none;">
+
+<!--  put total all results here  -->
+
+
+                    <table class="fadeIn line_color">
+                        <tbody>
+                            <tr>
+                                <td colspan="99" class="title_font">GC</td>
+                            </tr>
+                            <tr class="rnkh_bkcolor">
+                                <th class="rnkh_font Id_Position_Overall">GC</th>
+                                <th class="rnkh_font Id_Position_Categorie">CAT</th>
+                                <th class="rnkh_font Id_Numero">No.</th>
+                                <th class="rnkh_font Id_Categorie">Category</th>
+                                <th class="rnkh_font Id_Nom">Riders</th>
+                                <th class="rnkh_font Id_Equipe">Team</th>
+                                <th class="rnkh_font Id_FinishTime">Prologue</th>
+                                <th class="rnkh_font Id_FinishTime_1">Stage 1</th>
+                                <th class="rnkh_font Id_FinishTime_2">Stage 2</th>
+                                <th class="rnkh_font finishTimeTotal">Time</th>
+                                <th class="rnkh_font Id_Ecart1er">Gap</th>
+                            </tr>
+
+                            <tr class="rnk_bkcolor OddRow">
+                                <td class="rnk_font bigFont">1</td>
+                                <td class="rnk_font bigFont greengreen">1</td>
+                                <td class="rnk_font highlight bigFont">51</td>
+                                <td class="rnk_font">Mixed</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Pedro Delgado II<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine ">Jan Janssen II<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation 2</td>
+                                <td class="rnk_font">3:03:42.8</td>
+                                <td class="rnk_font">3:03:42.8</td>
+                                <td class="rnk_font">3:03:42.8</td>
+                                <td class="rnk_font bold">9:11:08.4</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td class="rnk_font bigFont">2</td>
+                                <td class="rnk_font bigFont yellow">1</td>
+                                <td class="rnk_font highlight bigFont">1</td>
+                                <td class="rnk_font">Men</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Pedro Delgado<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine ">Jan Janssen<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation</td>
+                                <td class="rnk_font">4:03:44.8</td>
+                                <td class="rnk_font">4:03:44.8</td>
+                                <td class="rnk_font">4:03:44.8</td>
+                                <td class="rnk_font bold">12:11:14.4</td>
+                                <td class="rnk_font">+3:00:06.0</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td class="rnk_font bigFont">3</td>
+                                <td class="rnk_font bigFont yellow">2</td>
+                                <td class="rnk_font highlight bigFont">6</td>
+                                <td class="rnk_font">Men</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Stephen Roche<span title="USA" class="Flag  usa"></span></div>
+                                    <div class="SecoundLine ">Marco Pantani<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Silverback OMX Pro Team / Canadian National team</td>
+                                <td class="rnk_font">4:17:55.3</td>
+                                <td class="rnk_font">4:17:55.3</td>
+                                <td class="rnk_font">4:17:55.3</td>
+                                <td class="rnk_font bold">12:53:45.9</td>
+                                <td class="rnk_font">+3:42:37.5</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td class="rnk_font bigFont">4</td>
+                                <td class="rnk_font bigFont pink">1</td>
+                                <td class="rnk_font highlight bigFont">331</td>
+                                <td class="rnk_font">Women</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Pedro Delgado II<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine "><span title="UCI Rider" class="Flag UCI"></span>Jan Janssen II<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation il</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font bold">15:11:08.4</td>
+                                <td class="rnk_font">+6:00:00.0</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td class="rnk_font bigFont">5</td>
+                                <td class="rnk_font bigFont greengreen">2</td>
+                                <td class="rnk_font highlight bigFont">221</td>
+                                <td class="rnk_font">Mixed</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Pedro Delgado II<span title="ecuador" class="Flag  ecuador"></span></div>
+                                    <div class="SecoundLine ">Jan Janssen II<span title="USA" class="Flag  usa"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Specialized Foundation 3</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font">5:03:42.8</td>
+                                <td class="rnk_font bold">15:11:08.4</td>
+                                <td class="rnk_font">+6:00:00.0</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Single Finisher" class="rnk_font">SF</td>
+                                <td class="rnk_font highlight bigFont">85</td>
+                                <td class="rnk_font">Men</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Greg LeMond<span title="Switzerland" class="Flag  switzerland"></span></div>
+                                    <div class="SecoundLine lineThrough">Cadel Evans<span title="iceland" class="Flag lineThrough iceland"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">4:17:48.1</td>
+                                <td class="rnk_font">4:17:48.1</td>
+                                <td class="rnk_font">4:17:48.1</td>
+                                <td class="rnk_font bold">12:53:24.3</td>
+                                <td class="rnk_font">+3:42:15.9</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">4</td>
+                                <td class="rnk_font">Men</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Lucien Petit-Breton<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Philippe Thys<span title="South Africa" class="Flag  southafrica"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">4:04:21.3</td>
+                                <td class="rnk_font">4:04:21.3</td>
+                                <td class="rnk_font">4:04:21.3</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">2</td>
+                                <td class="rnk_font">Men</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">René Pottier<span title="Switzerland" class="Flag  switzerland"></span></div>
+                                    <div class="SecoundLine ">Bernard Hinault<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">4:06:16.9</td>
+                                <td class="rnk_font">4:06:16.9</td>
+                                <td class="rnk_font">4:06:16.9</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>
+                                <td class="rnk_font highlight bigFont">237</td>
+                                <td class="rnk_font">Women</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Ferdinand Kübler<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Jacques Anquetil<span title="Brazil" class="Flag  brazil"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Shimano Il</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">3</td>
+                                <td class="rnk_font">Men</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine "><span title="UCI Rider" class="Flag UCI"></span>Louison Bobet<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Joop Zoetemelk<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Scott-SRAM MTB-Racing</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor OddRow">
+                                <td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>
+                                <td title="Blue Board Rider" class="rnk_font blueCard bigFont">8</td>
+                                <td class="rnk_font">Women</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Vincenzo Nibali<span title="Israel" class="Flag  israel"></span></div>
+                                    <div class="SecoundLine ">Chris Froome<span title="Israel" class="Flag  israel"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                            <tr class="rnk_bkcolor EvenRow">
+                                <td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>
+                                <td class="rnk_font highlight bigFont">9</td>
+                                <td class="rnk_font">Women</td>
+                                <td class="rnk_font">
+                                    <div class="FirstLine ">Miguel Indurain<span title="united kingdom" class="Flag  unitedkingdom"></span></div>
+                                    <div class="SecoundLine ">Eddy Merckx<span title="South Africa" class="Flag  southafrica"></span></div>
+                                </td>
+                                <td class="rnk_font wrap">Cannondale Factory Racing</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                                <td class="rnk_font">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+</div>
+</div>
+
+
     
 <!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
 
-<div id="previousResults"></div>
+
+<script>
+
+/*
+1. make "stage1", "stage2", "stage3", "stage4" folders
+2. create the daily stage results with "cleanResults = 2" (you can use +++) and on the כללי view. copy the table and put it in "p1.html" file in corespanding stage folder, make sure to leave the header (tough we only use the one in stage 1).
+3. set "stages = 4" acording to number of stages compleated.
+
+TODO
+phrase the results, so the results page on the web site will be passive
+
+*/
+
+    var useCategory = "yes";
+    
+    if (sessionStorage.getItem('categoryOrAll')) {
+        useCategory = sessionStorage.getItem('categoryOrAll');
+    }
+
+    category(useCategory);
+ 
+    function category(choice){
+        
+        useCategory = choice;
+        
+        if (useCategory == "yes") {
+            sessionStorage.setItem('categoryOrAll', 'yes');
+        } else if (useCategory == "no") {
+            sessionStorage.setItem('categoryOrAll', 'no');
+        }
+        
+        if (useCategory == "yes") {
+            document.getElementById("displayCatButton").classList.remove("active");
+            document.getElementById("displayCatButton").disabled = true;
+            document.getElementById("displayAllButton").classList.add("active");        
+            document.getElementById("displayAllButton").disabled = false;
+        } else if (useCategory == "no") {
+            document.getElementById("displayCatButton").classList.add("active");        
+            document.getElementById("displayCatButton").disabled = false;
+            document.getElementById("displayAllButton").classList.remove("active");        
+            document.getElementById("displayAllButton").disabled = true;
+        }
+ 
+        if (useCategory == "yes") {
+            document.getElementById("finalTextAll").style.display = "none";        
+            document.getElementById("finalTextCategory").style.display = "block";        
+        } else if (useCategory == "no") {
+            document.getElementById("finalTextAll").style.display = "block";        
+            document.getElementById("finalTextCategory").style.display = "none";        
+        }
+
+    }
+
+ 
+</script>
 
 
