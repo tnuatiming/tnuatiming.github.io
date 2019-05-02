@@ -802,7 +802,7 @@
             } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
                 ttt = 0;
                 
-                if (lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') { // single day
+                if ((lineArray["Id_Classe"] == 'ss' || lineArray["Id_Classe"] == 'sf') && lineArray["Id_Nom"] != '???') { // single day
 
                     
                     delete lineArray.Id_penalty;   
@@ -838,7 +838,7 @@
                         
                     }
                     
-               } else if (pair_num == 1) { // to epic main array 
+               } else if (pair_num == 1 && lineArray["Id_Nom"] != '???') { // to epic main array 
                    
                    
                    
@@ -894,7 +894,7 @@
                     if (lineArray["Id_Inter3"] != "-") {
                         lineArray["Id_Inter3"] = timeString2ms(lineArray["Id_Inter3"]);   
                     } else {
-                        lineArray["Id_Inter1"] = 99999999999;   
+                        lineArray["Id_Inter3"] = 99999999999;   
                     }
                     
                     // convert total time to miliseconds
@@ -909,7 +909,7 @@
                    
                     allArray.push(lineArray); // push line to main array 
                     
-                } else if (pair_num == 2) { // to epic secoundry array
+                } else if (pair_num == 2 && lineArray["Id_Nom"] != '???') { // to epic secoundry array
                     
  
 
@@ -961,7 +961,7 @@
                 pair_num = "";
                 main_num = "";
                 
-            } else if (lines[b].includes("<td ") && ttt == 1 && !lines[b].includes("???")) { // clean and add competitor cell
+            } else if ((lines[b].includes("<td ") && ttt == 1)) { // clean and add competitor cell
                 if (lines[b].includes("(C)")) {
                     lineArray.Id_penalty = "P";
                 } else {
@@ -1357,6 +1357,255 @@
          // FIXME Id_Status drops blue competitor to bottom , check if this is what needed
 
          
+
+// TEST doing ALL sorting (inc intermediate) on master         
+         
+// sorting intermediate 1
+         allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            m = 0;
+            prevCompCat = ""
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                     allArray[l]["i1index"] = Number(l+1);
+                // reassign position number
+
+                    if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["i1Position_Categorie"] = Number(m);
+                    
+                    if (show == 1) {
+                        allArray[l]["Id_Position_Categorie"] = Number(m);
+                        if (useCategory == "yes") {
+                            allArray[l]["Id_Position"] = Number(m);
+                        }
+                    }
+
+            }
+         
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reassign position number
+                     allArray[l]["i1Position_Overall"] = Number(l+1);
+                    
+                    if (show == 1) {
+                        allArray[l]["Id_Position_Overall"] = Number(l+1);
+                        if (useCategory == "no") {
+                            allArray[l]["Id_Position"] = Number(l+1);
+                        }
+                    }
+
+            }
+         
+// sorting intermediate 2
+         
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            m = 0;
+            prevCompCat = ""
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                     allArray[l]["i2index"] = Number(l+1);
+                // reassign position number
+ 
+                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["i2Position_Categorie"] = Number(m);
+                    
+                    if (show == 2) {
+                        allArray[l]["Id_Position_Categorie"] = Number(m);
+                        if (useCategory == "yes") {
+                            allArray[l]["Id_Position"] = Number(m);
+                        }
+                    }
+
+            }
+         
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reassign position number
+                     allArray[l]["i2Position_Overall"] = Number(l+1);
+                    
+                    if (show == 2) {
+                        allArray[l]["Id_Position_Overall"] = Number(l+1);
+                        if (useCategory == "no") {
+                            allArray[l]["Id_Position"] = Number(l+1);
+                        }
+                    }
+
+            }
+
+// sorting intermediate 3
+         
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            m = 0;
+            prevCompCat = ""
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                     allArray[l]["i3index"] = Number(l+1);
+                // reassign position number
+ 
+                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["i3Position_Categorie"] = Number(m);
+                    
+                    if (show == 3) {
+                        allArray[l]["Id_Position_Categorie"] = Number(m);
+                        if (useCategory == "yes") {
+                            allArray[l]["Id_Position"] = Number(m);
+                        }
+                    }
+
+
+            }
+         
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reassign position number
+                     allArray[l]["i3Position_Overall"] = Number(l+1);
+                    
+                    if (show == 3) {
+                        allArray[l]["Id_Position_Overall"] = Number(l+1);
+                        if (useCategory == "no") {
+                            allArray[l]["Id_Position"] = Number(l+1);
+                        }
+                    }
+
+            }
+         
+// sorting finish
+         
+           
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            m = 0;
+            prevCompCat = ""
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                     allArray[l]["findex"] = Number(l+1);
+                // reassign position number
+ 
+                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                        m += 1;
+                     } else {
+                         m = 1;
+                      prevCompCat = allArray[l]["Id_Categorie"];
+                    }
+                    allArray[l]["fPosition_Categorie"] = Number(m);
+                    
+                    if (show == 4) {
+                        allArray[l]["Id_Position_Categorie"] = Number(m);
+                        if (useCategory == "yes") {
+                            allArray[l]["Id_Position"] = Number(m);
+                        }
+                    }
+
+            }
+         
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.single - b.single || a.oldBlue - b.oldBlue || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            
+            for (l = 0; l < allArray.length; l++) {
+
+                // reassign position number
+                     allArray[l]["fPosition_Overall"] = Number(l+1);
+                    
+                    if (show == 4) {
+                        allArray[l]["Id_Position_Overall"] = Number(l+1);
+                        if (useCategory == "no") {
+                            allArray[l]["Id_Position"] = Number(l+1);
+                        }
+                    }
+
+            }
+         
+
+         
+         
+         
+         
+      //   console.log(allArray);
+         
+         
+    if (show == 1) { // sorting intermediate 1
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.i1Position_Overall - b.i1Position_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.i1index - b.i1index});
+        }
+                    
+    } else if (show == 2) { // sorting intermediate 2
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.i2Position_Overall - b.i2Position_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.i2index - b.i2index});
+        }
+                    
+    } else if (show == 3) { // sorting intermediate 3
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.i3Position_Overall - b.i3Position_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.i3index - b.i3index});
+        }
+                    
+    } else if (show == 4) { // sorting finish
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.fPosition_Overall - b.fPosition_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.findex - b.findex});
+        }
+                    
+    }
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         // end TEST         
+/*         
     if (show == 1) { // sorting intermediate 1
 
         if (useCategory == "no") {
@@ -1548,7 +1797,7 @@
     } // END "show"
          
 // END SORTING
-         
+*/         
          
 // HEADER              
     if (cleanResults == 0) {                            
@@ -1739,7 +1988,7 @@
 
             
             for (l = 0; l < allArray.length; l++) {
-
+/*
                 // reassign position number
                  if (useCategory == "no") {
                      
@@ -1757,7 +2006,7 @@
                     allArray[l]["Id_Position"] = m;
                     allArray[l]["Id_Position_Categorie"] = m;
                 }
-
+*/
                  
                  
                            if (allArray[l]["Id_Position"] == 1) {
