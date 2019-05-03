@@ -6,7 +6,11 @@
 // 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  
 // 20180701 - added penalty indicator.  
 // 20181030 - epic israel version.  
-
+/*
+ TODO
+ json all i3Position_Overall and i3index
+ 
+*/
     var url = 'p1.html';
     var target = 'result';
 
@@ -2009,11 +2013,19 @@
 */
                  
                  
-                           if (allArray[l]["Id_Position"] == 1) {
+                if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
+                    leaderTime = allArray[l]["Id_Sector_FinishTime"];
+                    leaderLaps = allArray[l]["Id_NbTour"];
+                } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
+                    leaderTime = allArray[l]["Id_Sector_FinishTime"];
+                    leaderLaps = allArray[l]["Id_NbTour"];
+                }  
+/*
+                            if (allArray[l]["Id_Position"] == 1) {
                                 leaderTime = allArray[l]["Id_Sector_FinishTime"];
                                 leaderLaps = allArray[l]["Id_NbTour"];
                             }
-
+*/
                                     // fix the diff fields of the competitors
                                 competitorLaps = allArray[l]["Id_NbTour"];
                                 
@@ -2356,7 +2368,7 @@
 
 
 // add category name header and table header
-            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+            if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
@@ -2367,7 +2379,7 @@
                 }
                             
                 finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
-            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+            } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
                     finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
             }
@@ -2924,7 +2936,7 @@ if (show == 4) {
         
         
                 } else if (timeGapDisplay == 2) {
-                    if (allArray[l]["Id_Position"] == 1) {
+                    if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
@@ -2939,7 +2951,7 @@ if (show == 4) {
                         }
                     }
                 } else if (timeGapDisplay == 3) {
-                    if (allArray[l]["Id_Position"] == 1) {
+                    if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
@@ -3025,7 +3037,7 @@ if (show == 4) {
     if (cleanResults == 1) { 
         
 // add category name header and table header
-            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+            if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
@@ -3036,7 +3048,7 @@ if (show == 4) {
                 }
                             
                 finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
-            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+            } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
                     finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
             }
@@ -3194,7 +3206,7 @@ if (show == 4) {
 
 
 
-if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
+if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 5 competitors
     
     
     
@@ -3226,7 +3238,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
    
     
             // add category name header and table header
-            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+            if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
@@ -3248,7 +3260,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
 
                 
                 
-            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+            } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
                 
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
@@ -3284,7 +3296,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
                 
 
-                    if (allArray[l]["Id_Position"] == 1) {
+                    if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {

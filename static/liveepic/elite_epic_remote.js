@@ -14,6 +14,8 @@ fix all the crufafel with "Inter1Leader" tables - maybe fixed?
 enable google compiler for production
 postion arrow needes to be disabled after the prologue
 after removing the status colmun, need to fix the finish flag, gain/lost indicator
+use all Ecart1er from Masters
+remove all imTheLeader
 
 */
     var useHash = 1;
@@ -974,7 +976,7 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
                     allArray[b]["Id_TpsCumule_2"] = timeString2ms(allArray[b]["Id_TpsCumule_2"]);
                 }
 */
-                        
+/*                        
                 // update intermediate 1 leader array 
                 if (typeof Inter1Leader["overall"] == 'undefined') { // overall
                     Inter1Leader["overall"] = 99999999999;
@@ -1034,7 +1036,7 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
                     
                     Inter3Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter3Time"];
                 }
-                    
+*/                    
                     
                // display result for selected intermediate or finish
                if (show == 1) {
@@ -1077,7 +1079,74 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
          // THE MAGIC - sort the array after the merge to get new results
          // FIXME Id_Status drops blue competitor to buttom , check if this is what needed
 
+
+             
+             
+             
+ // TEST
+             
+                     
+    if (show == 1) { // sorting intermediate 1
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.i1Position_Overall - b.i1Position_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.i1index - b.i1index});
+        }
+                    
+    } else if (show == 2) { // sorting intermediate 2
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.i2Position_Overall - b.i2Position_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.i2index - b.i2index});
+        }
+                    
+    } else if (show == 3) { // sorting intermediate 3
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.i3Position_Overall - b.i3Position_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.i3index - b.i3index});
+        }
+                    
+    } else if (show == 4) { // sorting finish
+
+        if (useCategory == "no") {
+                       
+            allArray.sort(function(a, b){return a.fPosition_Overall - b.fPosition_Overall});
+             
+        } else if (useCategory == "yes") {
+
+            allArray.sort(function(a, b){return a.findex - b.findex});
+        }
+                    
+    }
          
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         // end TEST         
+
+             
+             
+             
+/*             
     if (show == 1) { // sorting intermediate 1
 
         if (useCategory == "no") {
@@ -1268,7 +1337,7 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
     } // END "show"
          
 // END SORTING
-         
+*/         
          
 // HEADER              
                             
@@ -1398,6 +1467,24 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
             
             for (l = 0; l < allArray.length; l++) {
 
+                
+               if (show == 1) {
+                    allArray[l]["Id_Position_Overall"] = allArray[l]["i1Position_Overall"];
+                    allArray[l]["Id_Position_Categorie"] = allArray[l]["i1Position_Categorie"];
+                } else if (show == 2) {
+                    allArray[l]["Id_Position_Overall"] = allArray[l]["i2Position_Overall"];
+                    allArray[l]["Id_Position_Categorie"] = allArray[l]["i2Position_Categorie"];
+                } else if (show == 3) {
+                    allArray[l]["Id_Position_Overall"] = allArray[l]["i3Position_Overall"];
+                    allArray[l]["Id_Position_Categorie"] = allArray[l]["i3Position_Categorie"];
+                } else {
+                    allArray[l]["Id_Position_Overall"] = allArray[l]["fPosition_Overall"];
+                    allArray[l]["Id_Position_Categorie"] = allArray[l]["fPosition_Categorie"];
+                }
+                
+                
+                
+/*
                 // reasign postion number
                 if (useCategory == "no") {
                     
@@ -1415,18 +1502,28 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
                     allArray[l]["Id_Position"] = m;
                     allArray[l]["Id_Position_Categorie"] = m;
                 }
-
+*/
                  
-                 
-                if (allArray[l]["Id_Position"] == 1) {
+/*                 
+                if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
                     leaderTime = allArray[l]["Id_Sector_FinishTime"];
                     leaderLaps = allArray[l]["Id_NbTour"];
-                }
+                } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
+                    leaderTime = allArray[l]["Id_Sector_FinishTime"];
+                    leaderLaps = allArray[l]["Id_NbTour"];
+                }  
+*/
+/*
+                            if (allArray[l]["Id_Position"] == 1) {
+                                leaderTime = allArray[l]["Id_Sector_FinishTime"];
+                                leaderLaps = allArray[l]["Id_NbTour"];
+                            }
+*/
 
                     // fix the diff fields of the competitors
-                competitorLaps = allArray[l]["Id_NbTour"];
+//                competitorLaps = allArray[l]["Id_NbTour"];
                 
-                
+/*                
                 if (useCategory == "yes") {
                     leaderInter1Time = Inter1Leader[allArray[l]["Id_Categorie"]];
                     leaderInter2Time = Inter2Leader[allArray[l]["Id_Categorie"]];
@@ -1510,7 +1607,7 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
                     allArray[l]["Id_Ecart1er"] = 99999999999;
                 }
                             
-                    
+*/                    
                     // convert back to time
                     
                 if (allArray[l]["Id_Inter1Time"] != 99999999999) {  
@@ -1565,6 +1662,9 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
                     }
                 }
                
+                if (allArray[l]["Id_Sector_Ecart1er"] != 99999999999) {  
+                    allArray[l]["Id_Sector_Ecart1er"] = ms2TimeString(allArray[l]["Id_Sector_Ecart1er"]);
+                }
          
                              // position change arrow/status prep
 
@@ -1768,7 +1868,7 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
 
 
 // add category name header and table header
-            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+            if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
@@ -1779,7 +1879,7 @@ after removing the status colmun, need to fix the finish flag, gain/lost indicat
                 }
                             
                 finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
-            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+            } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
                     finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
             }
@@ -2362,7 +2462,7 @@ if (show == 4 &&) {
         
         
                 } else if (timeGapDisplay == 2) {
-                    if (allArray[l]["Id_Position"] == 1) {
+                    if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
@@ -2377,7 +2477,7 @@ if (show == 4 &&) {
                         }
                     }
                 } else if (timeGapDisplay == 3) {
-                    if (allArray[l]["Id_Position"] == 1) {
+                    if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
@@ -2454,7 +2554,7 @@ if (show == 4 &&) {
 
 
 
-if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 'rows' competitors
+if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 'rows' competitors
     
     
     
@@ -2487,7 +2587,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
     
 
             // add category name header and table header
-            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+            if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
@@ -2509,7 +2609,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
 
                 
                 
-            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+            } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
                 
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
@@ -2545,7 +2645,7 @@ if ((epictv == 1 && allArray[l]["Id_Position"] <= rows && allArray[l]["Id_Sector
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
                 
 
-                    if (allArray[l]["Id_Position"] == 1) {
+                    if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
