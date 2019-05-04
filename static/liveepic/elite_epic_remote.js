@@ -863,6 +863,35 @@ remove all imTheLeader
                 allArray[b].Id_Nom_2 = allArray[b].N2;
                 delete allArray[b].N2;
 
+
+                allArray[b].fPosition_Categorie = allArray[b].FC;
+                delete allArray[b].FC;
+                allArray[b].fPosition_Overall = allArray[b].FO;
+                delete allArray[b].FO;
+                allArray[b].findex = allArray[b].FI;
+                delete allArray[b].FI;
+                allArray[b].i1Position_Categorie = allArray[b].I1C;
+                delete allArray[b].I1C;
+                allArray[b].i1Position_Overall = allArray[b].I1O;
+                delete allArray[b].I1O;
+                allArray[b].i1index = allArray[b].I1;
+                delete allArray[b].I1;
+                allArray[b].i2Position_Categorie = allArray[b].I2C;
+                delete allArray[b].I2C;
+                allArray[b].i2Position_Overall = allArray[b].I2O;
+                delete allArray[b].I2O;
+                allArray[b].i2index = allArray[b].I2;
+                delete allArray[b].I2;
+                allArray[b].i3Position_Categorie = allArray[b].I3C;
+                delete allArray[b].I3C;
+                allArray[b].i3Position_Overall = allArray[b].I3O;
+                delete allArray[b].I3O;
+                allArray[b].i3index = allArray[b].I3;
+                delete allArray[b].I3;
+
+
+
+
                 // convert 0 to 99999999999
                 if (allArray[b]["Id_Inter1Time"] == 0) {
                     allArray[b]["Id_Inter1Time"] = 99999999999;

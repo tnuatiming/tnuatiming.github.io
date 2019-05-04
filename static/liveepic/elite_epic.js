@@ -41,7 +41,7 @@
     if (sessionStorage.getItem('catcat')) {
         catcat = sessionStorage.getItem('catcat');
     }
-    var useCategory = "no";
+    var useCategory = "yes";
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
     }
@@ -2227,24 +2227,27 @@
        //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
 
 
+
        
+                    
                     if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
-                        allArray[l]["Id_Arrow"] = 10;
+                        allArray[l]["Id_Arrow"] = 10; // DSQ
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
                         allArray[l]["blue"] = 1; //FIXME
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
-                        allArray[l]["Id_Arrow"] = 11;
+                        allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
                         allArray[l]["Id_Arrow"] = 12;
                         allArray[l]["blue"] = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
                         allArray[l]["Id_Arrow"] = 9;
+                    } else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
+                        allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
                         allArray[l]["Id_Arrow"] = 8; // astrix
                     } else if (allArray[l]["Id_penalty"] == "P") {
                         allArray[l]["Id_Arrow"] = 7; // penalty
                     }
-
             
             
             
@@ -3370,7 +3373,7 @@ if (enableJ1 == 1) {
 // order the array for JSON.stringify
         
 
-            if (allArray[l]["Id_Arrow"] == 3 || allArray[l]["Id_Arrow"] == 3) { // delete arrow postion as it messes in remote
+            if (allArray[l]["Id_Arrow"] == 3 || allArray[l]["Id_Arrow"] == 4) { // delete arrow postion as it messes in remote
                 allArray[l]["Id_Arrow"] = 0;
             }
             
@@ -3508,6 +3511,32 @@ if (enableJ1 == 1) {
         allArray[l].B3 = allArray[l].Id_Inter3blue;
         delete allArray[l].Id_Inter3blue;
    
+        allArray[l].FC = allArray[l].fPosition_Categorie;
+        delete allArray[l].fPosition_Categorie;
+        allArray[l].FO = allArray[l].fPosition_Overall;
+        delete allArray[l].fPosition_Overall;
+        allArray[l].FI = allArray[l].findex;
+        delete allArray[l].findex;
+        allArray[l].I1C = allArray[l].i1Position_Categorie;
+        delete allArray[l].i1Position_Categorie;
+        allArray[l].I1O = allArray[l].i1Position_Overall;
+        delete allArray[l].i1Position_Overall;
+        allArray[l].I1 = allArray[l].i1index;
+        delete allArray[l].i1index;
+        allArray[l].I2C = allArray[l].i2Position_Categorie;
+        delete allArray[l].i2Position_Categorie;
+        allArray[l].I2O = allArray[l].i2Position_Overall;
+        delete allArray[l].i2Position_Overall;
+        allArray[l].I2 = allArray[l].i2index;
+        delete allArray[l].i2index;
+        allArray[l].I3C = allArray[l].i3Position_Categorie;
+        delete allArray[l].i3Position_Categorie;
+        allArray[l].I3O = allArray[l].i3Position_Overall;
+        delete allArray[l].i3Position_Overall;
+        allArray[l].I3 = allArray[l].i3index;
+        delete allArray[l].i3index;
+
+
         allArray[l].A = allArray[l].Id_Arrow;
         delete allArray[l].Id_Arrow;
         allArray[l].M = allArray[l].Id_Image;
