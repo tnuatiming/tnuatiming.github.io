@@ -158,19 +158,18 @@
         order: 3;
         }
 
-td[aria-label]:hover:after {
-    content: attr(aria-label);
-    padding: 0 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    z-index: 99;
-    color: #fff;
-    background: rgba(17, 17, 17, 1);
-    min-width: 100%;
-}
-
+    td[aria-label]:hover:after {
+        content: attr(aria-label);
+        padding: 0 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        z-index: 99;
+        color: #fff;
+        background: rgba(17, 17, 17, 1);
+        min-width: 100%;
+    }
 
     tbody.line, tr.rnk_bkcolor {
         border-bottom: 1px solid #111;
@@ -332,6 +331,7 @@ td[aria-label]:hover:after {
     .transparent {background-image: url(Images/transparent.png);}
     .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
     .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
+    .Started {background-image: url(Images/_TrackPassing.svg); width: 1em;}
     .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
     .YellowShirt {background-image: url(Images/YellowShirt.svg);margin: 0;}
     .PinkShirt {background-image: url(Images/PinkShirt.svg);margin: 0;}
@@ -364,7 +364,7 @@ td[aria-label]:hover:after {
     }
     #live h1#Title img {margin: 0 10px;}
 
-    #live td.rnk_font.bold {font-weight:700;}
+    #live td.rnk_font.bold, #live td div.bold {font-weight:700;}
     
     div#legend {width: 100%; text-align: left;}
     div#legend ul {width: 100%; text-align: left; float: left;}
@@ -436,7 +436,8 @@ td[aria-label]:hover:after {
                 <li><span class="Flag dsq"></span> - Disqualified</li>
                 <li><span class="Flag dnf"></span> - Did Not Finished</li>
                 <li><span class="Flag dns"></span> - Did Not Started</li>
-                <li><span class="Flag blueFlag"></span> - over maximum stage time or separation between team members over 2 minutes</li>
+                <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
+                <li><span class="Flag Started"></span> - Started Prologue</li>
             </ul>
 </div>
 

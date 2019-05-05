@@ -659,7 +659,7 @@
         
         var MaximumStageTime = 36000000; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
         var i;
-        var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
+        var timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
         var raceEnded = 0;
         var doNotShowTime = 0; // don't display individual time
@@ -864,6 +864,7 @@
                     lineArray.Id_Inter3Ecart1er = 99999999999; // maybe needs to be '-'
                     lineArray.Id_Nom_2 = "";
                     lineArray.Id_Nationalite_2 = "";
+                    lineArray.Id_Canal_2 = "";
                     lineArray.Id_Arrow = 0;
                     lineArray.Id_Status = 0;
                     lineArray.oldBlue = 0;
@@ -1082,6 +1083,7 @@
                     allArray[b]["Id_Numero_Full_2"] = allArray2[a]["Id_Numero_Full"];
                     allArray[b]["Id_Nationalite_2"] = allArray2[a]["Id_Nationalite"];
                     allArray[b]["Id_TpsCumule_2"] = allArray2[a]["Id_TpsCumule"];
+                    allArray[b]["Id_Canal_2"] = allArray2[a]["Id_Canal"];
                     
                     if (typeof allArray2[a]["Id_Inter1"] != 'undefined') {
                         allArray[b]["Id_Inter1_2"] = allArray2[a]["Id_Inter1"];
@@ -1146,7 +1148,7 @@
                         }
 
  // make blue if exceed MaximumStageTime, ENABLE after testing
-                        if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) {
+                        if ((allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
                             allArray[b]["Id_FinishTime"] = 99999999999;
                             allArray[b].Id_Finishblue = 1; // make blue DSQ
                         }
@@ -1335,7 +1337,7 @@
                     allArray[b].Id_Statusi3 = 0;
                 }
                 
-                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1 || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
+                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status")) {
                     allArray[b].Id_Status = 1;
                 } else {
                     allArray[b].Id_Status = 0;
@@ -1520,7 +1522,7 @@
 // sorting finish
          
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             m = 0;
             prevCompCat = ""
@@ -1547,7 +1549,7 @@
 
             }
          
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -2599,6 +2601,10 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += '<td title="Finished" class="finished white rnk_font">&nbsp;</td>';
                     
+                } else if (prologue == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (allArray[l]["Id_Canal"] == 1 || allArray[l]["Id_Canal_2"] == 1)) { // on track
+                    
+                    finalText += '<td class="rnk_font fadeIn"><span title="Started" class="Flag Started"></span></td>';
+                    
                 } else if (allArray[l]["Id_Arrow"] == 7) { // black
                     
                     finalText += '<td class="black rnk_font fadeIn">P</td>';
@@ -2610,19 +2616,19 @@ allArray[l]["Id_Arrow"]
                 }
                 
                 if (allArray[l]["Id_Arrow"] == 12) {
-                    finalText += '<td colspan="2" title="DNS" class="rnk_font">DNS</td>';
+                    finalText += '<td colspan="2" title="Did Not Started" class="rnk_font">DNS</td>';
 
                 } else if (allArray[l]["Id_Arrow"] == 11) {
                     
-                    finalText += '<td colspan="2" title="DNF" class="rnk_font">DNF</td>';
+                    finalText += '<td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 10) {
                     
-                    finalText += '<td colspan="2" title="DSQ" class="rnk_font">DSQ</td>';
+                    finalText += '<td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 9) {
                     
-                    finalText += '<td colspan="2" title="NQ" class="rnk_font">NQ</td>';
+                    finalText += '<td colspan="2" title="Not Qualified" class="rnk_font">NQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
@@ -3461,7 +3467,10 @@ if (enableJ1 == 1) {
         delete allArray[l].Id_Statusi1;
         delete allArray[l].Id_Statusi2;
         delete allArray[l].Id_Statusi3;
-
+        delete allArray[l].Id_Canal;
+        delete allArray[l].Id_Canal_2;
+        
+        
         allArray[l].B = allArray[l].blue; // needed for total
         delete allArray[l].blue;
         allArray[l].T = allArray[l].Id_TpsCumule;

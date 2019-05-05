@@ -11,33 +11,26 @@ slug: "tv"
 
 /*  TV */
 
-body, body#live {
-    background-image: none;
-}
-    
-@media (min-width: 768px) {
     body, body#live {
         background-image: none;
     }
-}
+        .full-bg {
+        background: #6c3;
+    }
+    .header, .footer, #raceheader, #live h1#Title, #live p#Time, div#daysTotal {display: none;}
+    #live td.rnk_font {
+        color: #f0f0f0;
+        font-weight: 700;
+        text-shadow: none;
+        white-space: nowrap;
+    }
+    #live #buttonInfo {
+        flex-direction: column;
+        direction: ltr;
 
-    .full-bg {
-    background: #6c3;
-}
-.header, .footer, #raceheader, #live h1#Title, #live p#Time, div#daysTotal {display: none;}
-#live td.rnk_font {
-    color: #f0f0f0;
-    font-weight: 700;
-    text-shadow: none;
-    white-space: nowrap;
-}
-#live #buttonInfo {
-    flex-direction: column;
-    direction: ltr;
+    }
 
-}
-
-#live #intermediateOrFinish {
+    #live #intermediateOrFinish {
         flex-grow: 0;
         order: 1;
         align-self: flex-start;
@@ -54,105 +47,95 @@ body, body#live {
     }
 
     #live table.line_color {
-    direction: ltr;
-    margin: 600px auto;
-    width: 80%;
-}
-#live tr.rnkh_bkcolor {
-    color: #fff;
-    font-weight: 700;
-    border-bottom: 10px solid #6c3;
-}
-th.rnkh_font {
-    color: #fff;
-    background: #32243fcb;
-}
-#live .OddRow {
-    background-color: #303030cb;
-    color: #f0f0f0;
-}
+        direction: ltr;
+        margin: 600px auto;
+        width: 80%;
+    }
+    #live tr.rnkh_bkcolor {
+        color: #fff;
+        font-weight: 700;
+        border-bottom: 10px solid #6c3;
+    }
+    th.rnkh_font {
+        color: #fff;
+        background: #32243fcb;
+    }
+    #live .OddRow {
+        background-color: #303030cb;
+        color: #f0f0f0;
+    }
 
-#live .EvenRow {
-    background-color: #474747cb;
-    color: #f0f0f0;
-}
-td.title_font {
-    padding-bottom: 20px;
-}
-th {
-    font-weight: 700;
-    font-size: 1.5em;
-    padding: 5px 10px;
-    line-height: 2;
-}
-td {
-    font-weight: 700;
-    font-size: 1.5em;
-    padding: 5px 10px;
-    line-height: 2;
-}
-#live td span.tv {
-    margin: 0 -5px; 
-    width: 2em; 
-    clip-path: circle(12px at center);
-}
-#live img.CategoryHeader {
-    height: 5em; 
-}
-.subHeader {
-    font-weight: 400;
-    font-size: 2.2em;
-    padding: 10px 0 30px 0;
-    color: #f0f0f0;
-    line-height: 1;
-   /* text-shadow: 1px 1px #ccc; */
-}
+    #live .EvenRow {
+        background-color: #474747cb;
+        color: #f0f0f0;
+    }
+    td.title_font {
+        padding-bottom: 20px;
+    }
+    th {
+        font-weight: 700;
+        font-size: 1.5em;
+        padding: 5px 10px;
+        line-height: 2;
+    }
+    td {
+        font-weight: 700;
+        font-size: 1.5em;
+        padding: 5px 10px;
+        line-height: 2;
+    }
+    #live td span.tv {
+        margin: 0 -5px; 
+        width: 2em; 
+        clip-path: circle(12px at center);
+    }
+    #live img.CategoryHeader {
+        height: 5em; 
+    }
+    .subHeader {
+        font-weight: 400;
+        font-size: 2.2em;
+        padding: 10px 0 30px 0;
+        color: #f0f0f0;
+        line-height: 1;
+    /* text-shadow: 1px 1px #ccc; */
+    }
 
-#live div#categoryOrAll span.btn {
-    font-weight: 700; 
-    display: inline-block;
-    height: 20px;
-    background-color: #6c3;
-    margin: 0 35px;
-}
-#live #categoryOrAll label {
-    font-weight: 700; 
-    display: inline-block;
-    height: 18px;
-    color: #ecf0f1;
-}
-#live label.rows {
-    margin-left: 40px; 
-}
-#live input#rows {
-    margin-right: 20px; 
-    transform: scale(1.2);
-}
-#live input#showTvHeader {
-    transform: scale(2);
-}
-#live #result {
-    cursor: none;
-}
-#live tr.rnk_bkcolor {
-    pointer-events: none;
-}
+    #live div#categoryOrAll span.btn {
+        font-weight: 700; 
+        display: inline-block;
+        height: 20px;
+        background-color: #6c3;
+        margin: 0 35px;
+    }
+    #live #categoryOrAll label {
+        font-weight: 700; 
+        display: inline-block;
+        height: 18px;
+        color: #ecf0f1;
+    }
+    #live label.rows {
+        margin-left: 40px; 
+    }
+    #live input#rows {
+        margin-right: 20px; 
+        transform: scale(1.2);
+    }
+    #live input#showTvHeader {
+        transform: scale(2);
+    }
+    #live #result {
+        cursor: none;
+    }
+    #live tr.rnk_bkcolor {
+        pointer-events: none;
+    }
 
 
 /*  END TV */
 
     #live .btn {margin: 0;}
 
-@media (max-width: 767px) {
-
-    #live #categoryOrAll button, #live #intermediateOrFinish button {
-        font-size: 0.8em;
-    }
-    #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
-        font-size: 0.8em;
-        padding: 0;
-    }
-}
 
   /*    tbody.line, tr.rnk_bkcolor {
         border-bottom: 1px solid #111;
@@ -167,7 +150,9 @@ td {
     }
   /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
 
-    #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
+    #live tr.rnk_bkcolor:hover {
+        background-color: #f0f0f0bf;
+    } 
   
     #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) { /*first 3 elements*/
         width: 3%;
@@ -201,6 +186,7 @@ td {
     }
     #live td.right, #live th.right {
         text-align: right;
+    }
     #live td img {
         height:0.9em; 
         vertical-align:middle; 
@@ -219,7 +205,9 @@ td {
         margin: 0 5px;
     }
 
-    .Flag:before {content: "\00a0";}
+    .Flag:before {
+        content: "\00a0";
+    }
     .Flag {
         background-size: contain;
         background-position: 50%;
@@ -285,13 +273,29 @@ td {
     .SecoundLine {} 
 
     #live .btn {display: inline-block;}
-    #live #buttonInfo {margin-bottom: 10px;}
+    #live #buttonInfo {margin-bottom: 10px;position: sticky; top: 10px;}
     #live .btn.active {cursor: pointer;filter: opacity(50%);}
     #live #Title {justify-content: center;}
     #live h1#Title img {margin: 0 10px;}
 
     #live td div.bold {font-weight:700;}
+
+@media (min-width: 767px) { /* TV */
+    body, body#live {
+        background-image: none;
+    }
+}
     
+@media (max-width: 767px) {
+
+    #live #categoryOrAll button, #live #intermediateOrFinish button {
+        font-size: 0.8em;
+    }
+    #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
+        font-size: 0.8em;
+        padding: 0;
+    }
+}
     
 </style>
 
@@ -315,7 +319,6 @@ td {
         <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
         <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
     </div>
-        <div id="updates">&nbsp;</div>
 </div>
 <div id="result"></div>
     

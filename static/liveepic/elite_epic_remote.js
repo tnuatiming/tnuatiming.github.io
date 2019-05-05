@@ -2053,19 +2053,19 @@ allArray[l]["Id_Arrow"]
 
                 // add and style the status/arrow
                 if (allArray[l]["Id_Arrow"] == 12) {
-                    finalText += '<td colspan="2" title="DNS" class="black ' + blued + 'rnk_font">DNS</td>';
+                    finalText += '<td colspan="2" title="Did Not Started" class="black ' + blued + 'rnk_font">DNS</td>';
 
                 } else if (allArray[l]["Id_Arrow"] == 11) {
                     
-                    finalText += '<td colspan="2" title="DNF" class="black ' + blued + 'rnk_font">DNF</td>';
+                    finalText += '<td colspan="2" title="Did Not Finished" class="black ' + blued + 'rnk_font">DNF</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 10) {
                     
-                    finalText += '<td colspan="2" title="DSQ" class="black ' + blued + 'rnk_font">DSQ</td>';
+                    finalText += '<td colspan="2" title="Disqualified" class="black ' + blued + 'rnk_font">DSQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 9) {
                     
-                    finalText += '<td colspan="2" title="NQ" class="black ' + blued + 'rnk_font">NQ</td>';
+                    finalText += '<td colspan="2" title="Not Qualified" class="black ' + blued + 'rnk_font">NQ</td>';
                     
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
