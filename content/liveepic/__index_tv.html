@@ -14,7 +14,7 @@ slug: "tv"
     body, body#live {
         background-image: none;
     }
-        .full-bg {
+    .full-bg {
         background: #6c3;
     }
     .header, .footer, #raceheader, #live h1#Title, #live p#Time, div#daysTotal {display: none;}
@@ -45,7 +45,13 @@ slug: "tv"
         white-space: nowrap;
         font-weight: 700;
     }
-
+    #live label.Stopwatch {
+        margin-left: 120px; 
+    }
+    #showStopwatch {
+        color: white;
+        display: inline-block;
+    }
     #live table.line_color {
         direction: ltr;
         margin: 600px auto;
@@ -273,7 +279,14 @@ slug: "tv"
     .SecoundLine {} 
 
     #live .btn {display: inline-block;}
-    #live #buttonInfo {margin-bottom: 10px;position: sticky; top: 10px;}
+    #live #buttonInfo {
+        margin-bottom: 10px;
+        position: sticky; 
+        top: 15px;
+        z-index: 99;
+        background: black;
+        padding-top: 10px;
+    }
     #live .btn.active {cursor: pointer;filter: opacity(50%);}
     #live #Title {justify-content: center;}
     #live h1#Title img {margin: 0 10px;}
@@ -318,13 +331,14 @@ slug: "tv"
         <button id="intermediate2" class="btn" onClick="intermediateOrFinish('2')">Intermediate 2</button>
         <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
         <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
+        <label class="Stopwatch"><div id="showStopwatch"></div></label>
     </div>
 </div>
 <div id="result"></div>
     
 <!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
 
-<div id="previousResults"></div>
+<div id="showStopwatch"></div>
 
 <div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall</button></div>
 

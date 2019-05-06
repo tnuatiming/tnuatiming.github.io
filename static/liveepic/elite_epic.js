@@ -11,7 +11,9 @@
  json all i3Position_Overall and i3index
  
 */
-    var enableJ1 = 1;   // for remote
+    var MaximumStageTime = 36000000; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
+
+        var enableJ1 = 1;   // for remote
     var enableJ3 = 0;  // for single day
     
     var url = 'p1.html';
@@ -657,7 +659,6 @@
 
     function createLiveTable(p1) {
         
-        var MaximumStageTime = 36000000; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
         var i;
         var timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS

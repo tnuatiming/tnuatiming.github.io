@@ -18,6 +18,14 @@ use all Ecart1er from Masters
 remove all imTheLeader
 
 */
+
+    var MaximumStageTime = 21600000; // Maximum stage time in miliseconds, 3600000=1hours, 18000000=5hours, 21600000=6hours, 36000000=10hours
+
+// Set the date for start
+    var startTime = new Date("May 6, 2019 07:00:00").getTime();
+
+    var showStopwatch = 1;
+
     var useHash = 1;
     var hash = 'hash.txt';
     var hashOld = '';
@@ -81,6 +89,7 @@ remove all imTheLeader
             epictv = 1;
 
             document.getElementById("rows").value = rows;
+            
             if (document.getElementById("showTvHeader").checked) {
                 showTvHeader = 1;
             } else {
@@ -92,13 +101,87 @@ remove all imTheLeader
             checkbox.addEventListener('change', (event) => {
                 if (event.target.checked) {
                     showTvHeader = 1;
+                    rows = Number(document.getElementById("rows").value);
+                    sessionStorage.setItem('rows', rows);
                     document.getElementById("result").innerHTML = createLiveTable(P1);
+                    alignTDforTV();
                 } else {
                     showTvHeader = 0;
+                    rows = Number(document.getElementById("rows").value);
+                    sessionStorage.setItem('rows', rows);
                     document.getElementById("result").innerHTML = createLiveTable(P1);
+                    alignTDforTV();
                 }
             });
-        }
+
+            
+            
+            if (showStopwatch == 1) {         
+                    
+
+                // Update the count down every 1 second
+                var x = setInterval(function() {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+                    
+                // Find the distance between now and the count down date
+                var distance = now - startTime;
+                    
+                if (distance > MaximumStageTime) { //race finished
+                    // Time calculations for days, hours, minutes and seconds
+                    //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    var milliseconds = new Date().getMilliseconds();
+                        
+                    // Output the result in an element with id="showStopwatch"
+                    document.getElementById("showStopwatch").innerHTML = "Finished";
+                        
+                } else if (distance > 0) { //race in motion
+                    // Time calculations for days, hours, minutes and seconds
+                    //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    var milliseconds = new Date().getMilliseconds();
+                        
+                    // Output the result in an element with id="showStopwatch"
+                    document.getElementById("showStopwatch").innerHTML = hours.toString() + ":"
+                    + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + milliseconds.toString().substring(0, 1);
+                        
+                    // If the count down is over, write some text 
+                } else {
+                    //clearInterval(x);
+                    // Find the distance between now and the count down date
+                    var distance = startTime - now;
+                        
+                    // Time calculations for days, hours, minutes and seconds
+                    //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        
+                    // Output the result in an element with id="showStopwatch"
+                    document.getElementById("showStopwatch").innerHTML = "Start in: " + hours.toString() + ":"
+                    + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+                    }
+                }, 100);
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        } // END epictv
             
         if (show == 1) {
             document.getElementById("intermediate1").classList.remove("active");
@@ -348,6 +431,10 @@ remove all imTheLeader
         document.getElementById("result").innerHTML = createLiveTable(P1);
         alignTable();
         
+        if (epictv == 1) {
+            alignTDforTV();
+        }
+        
     }
 
 
@@ -361,7 +448,7 @@ remove all imTheLeader
         if (epictv == 1) { 
             rows = Number(document.getElementById("rows").value);
             sessionStorage.setItem('rows', rows);
-
+                        
             if (document.getElementById("showTvHeader").checked) {
                 showTvHeader = 1;
             } else {
@@ -508,6 +595,10 @@ remove all imTheLeader
         document.getElementById("result").innerHTML = createLiveTable(P1);
         alignTable();
 
+        if (epictv == 1) { 
+            alignTDforTV();
+        }
+
     };
 
     async function Load() {
@@ -584,6 +675,11 @@ remove all imTheLeader
     //                    alignTable();
                     }
                 }
+                
+                if (epictv == 1) { 
+                    alignTDforTV();
+                }
+                
             }
             catch (err) {
                 console.log('results fetch failed', err);
@@ -690,7 +786,6 @@ remove all imTheLeader
 
     function createLiveTable(p1) {
         
-        var MaximumStageTime = 36000000; // Maximum stage time in miliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
         var i;
         var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLIMENTED IN THE COMPETITOR RESULTS
@@ -2845,8 +2940,23 @@ if (k<100){
         //       console.log(kk + " " + numCols)
             }
         }
-    }  
+    };  
     
+ 
+ 
+ 
+    function alignTDforTV() {
+            if (rows <= 3) {
+                //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "2");
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '2' }
+            } else if (rows > 3 && rows <= 8) {
+                //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "1.5");
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '1.5' }
+            } else {
+                //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "1");
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '1' }
+            }
+    };
     
 /*
  // another option to convert
@@ -2897,3 +3007,6 @@ if (k<100){
         "" != b ? (document.getElementById("ImageZoom").src = b, document.getElementById("ImageZoom").style.left = a.clientX + "px", document.getElementById("ImageZoom").style.top = a.clientY + "px", document.getElementById("ImageZoom").style.visibility = "visible") : document.getElementById("ImageZoom").style.visibility = "hidden"
     };
 */
+
+
+

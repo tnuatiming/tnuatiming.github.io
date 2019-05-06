@@ -89,4 +89,13 @@ total - https://tnuatiming.com/liveepic/total.html on epic site, copy of tables 
 single day - https://tnuatiming.com/liveepic/single.html and on epic site (support added to elite_epic.js as p3.html, remember to "enableJ3")
 
 
+## daily update ##
 
+Id_Groupe
+StartTime in elite_epic_remote.js
+elite_epic_total.js?v=1 change version
+stages in elite_epic_total.js
+add t1.txt-t4.txt
+"prologue" in race name for day 1
+enableJ3 enabled for single day
+update MaximumStageTime in elite_epic_remote.js and elite_epic.js

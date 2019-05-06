@@ -40,9 +40,10 @@
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
 </head>
 
-<body id="live">
+<body onload="Load()" id="live">
     <div id="epictv"></div>
     <div class="full-bg fadeIn">
         <div class="page">
@@ -71,468 +72,604 @@
             </div>
         </div>
         <div class="row main_content">
+            <style>
+body,
+body#live {
+    background-image: none
+}
 
-<style>
-    body, body#live {
-        background-image: none;
-    }
-    
-    @media (min-width: 768px) {
-        body, body#live {
-            background-image: none;
-        }
-    }
+.full-bg {
+    background: #6c3
+}
 
-    .full-bg {
-        background: #6c3
-    }
+#live h1#Title,
+#live p#Time,
+#raceheader,
+.footer,
+.header,
+div#daysTotal {
+    display: none
+}
 
-    #live h1#Title,
-    #live p#Time,
-    #raceheader,
-    .footer,
-    .header,
-    div#daysTotal {
-        display: none
-    }
+#live td.rnk_font {
+    color: #f0f0f0;
+    font-weight: 700;
+    text-shadow: none;
+    white-space: nowrap
+}
 
-    #live td.rnk_font {
-        color: #f0f0f0;
-        font-weight: 700;
-        text-shadow: none;
-        white-space: nowrap
-    }
+#live #buttonInfo {
+    flex-direction: column;
+    direction: ltr
+}
 
-    #live #buttonInfo {
-        flex-direction: column;
-        direction: ltr
-    }
+#live #intermediateOrFinish {
+    flex-grow: 0;
+    order: 1;
+    align-self: flex-start;
+    vertical-align: middle;
+    margin: 10px 5px;
+    padding: 0
+}
 
-    #live #intermediateOrFinish {
-        flex-grow: 0;
-        order: 1;
-        align-self: flex-start;
-        vertical-align: middle;
-        margin: auto 5px;
-        padding: 0
-    }
+#live #categoryOrAll button,
+#live #intermediateOrFinish button {
+    font-size: 1em;
+    padding: 2px 10px;
+    white-space: nowrap;
+    font-weight: 700
+}
 
+#live table.line_color {
+    direction: ltr;
+    margin: 600px auto;
+    width: 80%
+}
+
+#live tr.rnkh_bkcolor {
+    color: #fff;
+    font-weight: 700;
+    border-bottom: 10px solid #6c3
+}
+
+th.rnkh_font {
+    color: #fff;
+    background: #32243fcb
+}
+
+#live .OddRow {
+    background-color: #303030cb;
+    color: #f0f0f0
+}
+
+#live .EvenRow {
+    background-color: #474747cb;
+    color: #f0f0f0
+}
+
+td.title_font {
+    padding-bottom: 20px
+}
+
+th {
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    line-height: 2
+}
+
+td {
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    line-height: 2
+}
+
+#live td span.tv {
+    margin: 0 -5px;
+    width: 2em;
+    clip-path: circle(12px at center)
+}
+
+#live img.CategoryHeader {
+    height: 5em
+}
+
+.subHeader {
+    font-weight: 400;
+    font-size: 2.2em;
+    padding: 10px 0 30px 0;
+    color: #f0f0f0;
+    line-height: 1
+}
+
+#live div#categoryOrAll span.btn {
+    font-weight: 700;
+    display: inline-block;
+    height: 20px;
+    background-color: #6c3;
+    margin: 0 35px
+}
+
+#live #categoryOrAll label {
+    font-weight: 700;
+    display: inline-block;
+    height: 18px;
+    color: #ecf0f1
+}
+
+#live label.rows {
+    margin-left: 40px
+}
+
+#live input#rows {
+    margin-right: 20px;
+    transform: scale(1.2)
+}
+
+#live input#showTvHeader {
+    transform: scale(2)
+}
+
+#live #result {
+    cursor: none
+}
+
+#live tr.rnk_bkcolor {
+    pointer-events: none
+}
+
+#live .btn {
+    margin: 0
+}
+
+.bigFont {
+    font-size: 1.5em
+}
+
+#live tr.rnk_bkcolor:hover {
+    background-color: #f0f0f0bf
+}
+
+#live td.rnk_font:nth-child(-n+3),
+#live th.rnkh_font:nth-child(-n+2) {
+    width: 3%
+}
+
+#live td.blued {
+    background-image: url(Images/_LightBlueFlag.png);
+    background-position: center center;
+    background-size: auto 30%;
+    background-repeat: no-repeat;
+    min-width: 16px
+}
+
+#live td.finished {
+    background-size: auto 30%
+}
+
+#live td.rnk_font.blueCard {
+    color: #111;
+    background-color: #add8e6bf;
+    font-weight: 700
+}
+
+#live td.rnk_font.redCard {
+    color: #fff;
+    background-color: red;
+    font-weight: 700
+}
+
+#live td.rnk_font.yellowCard {
+    background-color: #fee300bf;
+    font-weight: 700
+}
+
+#live td.left,
+#live th.left {
+    text-align: left
+}
+
+#live td.right,
+#live th.right {
+    text-align: right
+}
+
+#live td img {
+    height: .9em;
+    vertical-align: middle;
+    padding: 0 2px
+}
+
+.lineThrough {
+    filter: opacity(35%)
+}
+
+h1 img {
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 5px
+}
+
+img.Flag {
+    vertical-align: middle;
+    margin: 0 5px
+}
+
+.Flag:before {
+    content: "\00a0"
+}
+
+.Flag {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    vertical-align: middle;
+    margin: 0 5px
+}
+
+.australia {
+    background-image: url(Images/CountryFlags/australia.svg)
+}
+
+.austria {
+    background-image: url(Images/CountryFlags/austria.svg)
+}
+
+.belgium {
+    background-image: url(Images/CountryFlags/belgium.svg)
+}
+
+.brazil {
+    background-image: url(Images/CountryFlags/brazil.svg)
+}
+
+.canada {
+    background-image: url(Images/CountryFlags/canada.svg)
+}
+
+.czechrepublic {
+    background-image: url(Images/CountryFlags/czechrepublic.svg)
+}
+
+.denmark {
+    background-image: url(Images/CountryFlags/denmark.svg)
+}
+
+.ecuador {
+    background-image: url(Images/CountryFlags/ecuador.svg)
+}
+
+.england {
+    background-image: url(Images/CountryFlags/england.svg)
+}
+
+.finland {
+    background-image: url(Images/CountryFlags/finland.svg)
+}
+
+.france {
+    background-image: url(Images/CountryFlags/france.svg)
+}
+
+.germany {
+    background-image: url(Images/CountryFlags/germany.svg)
+}
+
+.greece {
+    background-image: url(Images/CountryFlags/greece.svg)
+}
+
+.hungary {
+    background-image: url(Images/CountryFlags/hungary.svg)
+}
+
+.iceland {
+    background-image: url(Images/CountryFlags/iceland.svg)
+}
+
+.ireland {
+    background-image: url(Images/CountryFlags/ireland.svg)
+}
+
+.israel {
+    background-image: url(Images/CountryFlags/israel.svg)
+}
+
+.italy {
+    background-image: url(Images/CountryFlags/italy.svg)
+}
+
+.latvia {
+    background-image: url(Images/CountryFlags/latvia.svg)
+}
+
+.lithuania {
+    background-image: url(Images/CountryFlags/lithuania.svg)
+}
+
+.netherlands {
+    background-image: url(Images/CountryFlags/netherlands.svg)
+}
+
+.newzealand {
+    background-image: url(Images/CountryFlags/newzealand.svg)
+}
+
+.norway {
+    background-image: url(Images/CountryFlags/norway.svg)
+}
+
+.poland {
+    background-image: url(Images/CountryFlags/poland.svg)
+}
+
+.portugal {
+    background-image: url(Images/CountryFlags/portugal.svg)
+}
+
+.russia {
+    background-image: url(Images/CountryFlags/russia.svg)
+}
+
+.serbia {
+    background-image: url(Images/CountryFlags/serbia.svg)
+}
+
+.southafrica {
+    background-image: url(Images/CountryFlags/southafrica.svg)
+}
+
+.spain {
+    background-image: url(Images/CountryFlags/spain.svg)
+}
+
+.sweden {
+    background-image: url(Images/CountryFlags/sweden.svg)
+}
+
+.switzerland {
+    background-image: url(Images/CountryFlags/switzerland.svg)
+}
+
+.ukraine {
+    background-image: url(Images/CountryFlags/ukraine.svg)
+}
+
+.unitedkingdom {
+    background-image: url(Images/CountryFlags/unitedkingdom.svg)
+}
+
+.usa {
+    background-image: url(Images/CountryFlags/usa.svg)
+}
+
+.transparent {
+    background-image: url(Images/transparent.png)
+}
+
+.blueFlag {
+    background-image: url(Images/_LightBlueFlag.png)
+}
+
+.CheckeredFlag {
+    background-image: url(Images/_CheckeredFlag.png)
+}
+
+.numberOne {
+    background-image: url(Images/numbreOne.svg);
+    width: 1em
+}
+
+.YellowShirt {
+    background-image: url(Images/YellowShirt.svg);
+    margin: 0
+}
+
+.PinkShirt {
+    background-image: url(Images/PinkShirt.svg);
+    margin: 0
+}
+
+.GreenShirt {
+    background-image: url(Images/GreenShirt.svg);
+    margin: 0
+}
+
+.BlueShirt {
+    background-image: url(Images/BlueShirt.svg);
+    margin: 0
+}
+
+.PurpleShirt {
+    background-image: url(Images/PurpleShirt.svg);
+    margin: 0
+}
+
+.UCI {
+    background-image: url(Images/uci.svg)
+}
+
+.dnf {
+    background-image: url(Images/_dnf.svg)
+}
+
+.dsq {
+    background-image: url(Images/_dsq.svg)
+}
+
+.dns {
+    background-image: url(Images/_dns.svg)
+}
+
+#live .btn {
+    display: inline-block
+}
+
+#live #buttonInfo {
+    margin-bottom: 10px;
+    position: sticky; 
+    top: 15px;
+    z-index: 99;
+    background: black;
+    padding-top: 10px;
+}
+
+#live .btn.active {
+    cursor: pointer;
+    filter: opacity(50%)
+}
+
+#live #Title {
+    justify-content: center
+}
+
+#live h1#Title img {
+    margin: 0 10px
+}
+
+#live td div.bold {
+    font-weight: 700
+}
+
+@media (min-width:767px) {
+    body,
+    body#live {
+        background-image: none
+    }
+}
+
+@media (max-width:767px) {
     #live #categoryOrAll button,
     #live #intermediateOrFinish button {
-        font-size: 1em;
-        padding: 2px 10px;
-        white-space: nowrap;
-        font-weight: 700
-    }
-
-    #live table.line_color {
-        direction: ltr;
-        margin: 600px auto;
-        width: 80%
-    }
-
-    #live tr.rnkh_bkcolor {
-        color: #fff;
-        font-weight: 700;
-        border-bottom: 10px solid #6c3
-    }
-
-    th.rnkh_font {
-        color: #fff;
-        background: #32243fcb
-    }
-
-    #live .OddRow {
-        background-color: #303030cb;
-        color: #f0f0f0
-    }
-
-    #live .EvenRow {
-        background-color: #474747cb;
-        color: #f0f0f0
-    }
-
-    td.title_font {
-        padding-bottom: 20px
-    }
-
-    td,
-    th {
-        font-weight: 700;
-        font-size: 1.5em;
-        padding: 10px;
-        line-height: 2
-    }
-
-    #live img.CategoryHeader {
-        height: 5em
-    }
-
-    .subHeader {
-        font-weight: 400;
-        font-size: 2.2em;
-        padding: 10px 0 30px 0;
-        color: #f0f0f0;
-        line-height: 1
-    }
-
-    #live .btn {
-        margin: 0
-    }
-
-    @media (max-width:767px) {
-        #live #categoryOrAll button,
-        #live #intermediateOrFinish button {
-            font-size: .8em
-        }
-        #live #DayTime,
-        #live #ElapsedTime,
-        #live #RemainingTime,
-        #live #Time,
-        #live #Title {
-            font-size: .8em;
-            padding: 0
-        }
-    }
-
-    .bigFont {
-        font-size: 1.5em
-    }
-
-    #live tr.rnk_bkcolor:hover {
-        background-color: #f0f0f0bf
-    }
-
-    #live td.rnk_font:nth-child(-n+3),
-    #live th.rnkh_font:nth-child(-n+2) {
-        width: 3%
-    }
-
-    #live td.blued {
-        background-image: url(Images/_LightBlueFlag.png);
-        background-position: center center;
-        background-size: auto 30%;
-        background-repeat: no-repeat;
-        min-width: 16px
-    }
-
-    #live td.finished {
-        background-size: auto 30%
-    }
-
-    #live td.rnk_font.blueCard {
-        color: #111;
-        background-color: #add8e6bf;
-        font-weight: 700
-    }
-
-    #live td.rnk_font.redCard {
-        color: #fff;
-        background-color: red;
-        font-weight: 700
-    }
-
-    #live td.rnk_font.yellowCard {
-        background-color: #fee300bf;
-        font-weight: 700
-    }
-
-    #live td img {
-        height: .9em;
-        vertical-align: middle;
-        padding: 0 2px
-    }
-
-    .lineThrough {
-        filter: opacity(35%)
-    }
-
-    h1 img {
-        height: 32px;
-        vertical-align: middle;
-        margin: 0 5px
-    }
-
-    img.Flag {
-        vertical-align: middle;
-        margin: 0 5px
-    }
-
-    .Flag:before {
-        content: "\00a0"
-    }
-
-    .Flag {
-        background-size: contain;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        position: relative;
-        display: inline-block;
-        width: 1.33333333em;
-        vertical-align: middle;
-        margin: 0 5px
-    }
-
-    .australia {
-        background-image: url(Images/CountryFlags/australia.svg)
-    }
-
-    .austria {
-        background-image: url(Images/CountryFlags/austria.svg)
-    }
-
-    .belgium {
-        background-image: url(Images/CountryFlags/belgium.svg)
-    }
-
-    .brazil {
-        background-image: url(Images/CountryFlags/brazil.svg)
-    }
-
-    .canada {
-        background-image: url(Images/CountryFlags/canada.svg)
-    }
-
-    .czechrepublic {
-        background-image: url(Images/CountryFlags/czechrepublic.svg)
-    }
-
-    .denmark {
-        background-image: url(Images/CountryFlags/denmark.svg)
-    }
-
-    .ecuador {
-        background-image: url(Images/CountryFlags/ecuador.svg)
-    }
-
-    .england {
-        background-image: url(Images/CountryFlags/england.svg)
-    }
-
-    .finland {
-        background-image: url(Images/CountryFlags/finland.svg)
-    }
-
-    .france {
-        background-image: url(Images/CountryFlags/france.svg)
-    }
-
-    .germany {
-        background-image: url(Images/CountryFlags/germany.svg)
-    }
-
-    .greece {
-        background-image: url(Images/CountryFlags/greece.svg)
-    }
-
-    .hungary {
-        background-image: url(Images/CountryFlags/hungary.svg)
-    }
-
-    .iceland {
-        background-image: url(Images/CountryFlags/iceland.svg)
-    }
-
-    .ireland {
-        background-image: url(Images/CountryFlags/ireland.svg)
-    }
-
-    .israel {
-        background-image: url(Images/CountryFlags/israel.svg)
-    }
-
-    .italy {
-        background-image: url(Images/CountryFlags/italy.svg)
-    }
-
-    .latvia {
-        background-image: url(Images/CountryFlags/latvia.svg)
-    }
-
-    .lithuania {
-        background-image: url(Images/CountryFlags/lithuania.svg)
-    }
-
-    .netherlands {
-        background-image: url(Images/CountryFlags/netherlands.svg)
-    }
-
-    .newzealand {
-        background-image: url(Images/CountryFlags/newzealand.svg)
-    }
-
-    .norway {
-        background-image: url(Images/CountryFlags/norway.svg)
-    }
-
-    .poland {
-        background-image: url(Images/CountryFlags/poland.svg)
-    }
-
-    .portugal {
-        background-image: url(Images/CountryFlags/portugal.svg)
-    }
-
-    .russia {
-        background-image: url(Images/CountryFlags/russia.svg)
-    }
-
-    .serbia {
-        background-image: url(Images/CountryFlags/serbia.svg)
-    }
-
-    .southafrica {
-        background-image: url(Images/CountryFlags/southafrica.svg)
-    }
-
-    .spain {
-        background-image: url(Images/CountryFlags/spain.svg)
-    }
-
-    .sweden {
-        background-image: url(Images/CountryFlags/sweden.svg)
-    }
-
-    .switzerland {
-        background-image: url(Images/CountryFlags/switzerland.svg)
-    }
-
-    .ukraine {
-        background-image: url(Images/CountryFlags/ukraine.svg)
-    }
-
-    .unitedkingdom {
-        background-image: url(Images/CountryFlags/unitedkingdom.svg)
-    }
-
-    .usa {
-        background-image: url(Images/CountryFlags/usa.svg)
-    }
-
-    .blueFlag {
-        background-image: url(Images/_LightBlueFlag.png)
-    }
-
-    .CheckeredFlag {
-        background-image: url(Images/_CheckeredFlag.png)
-    }
-
-    .numberOne {
-        background-image: url(Images/numbreOne.svg);
-        width: 1em
-    }
-
-    .YellowShirt {
-        background-image: url(Images/YellowShirt.svg)
-    }
-
-    #live .btn {
-        display: inline-block
-    }
-
-    #live #buttonInfo {
-        margin-bottom: 10px
-    }
-
-    #live .btn.active {
-        cursor: pointer;
-        filter: opacity(50%)
-    }
-
+        font-size: .8em
+    }
+    #live #DayTime,
+    #live #ElapsedTime,
+    #live #RemainingTime,
+    #live #Time,
     #live #Title {
-        justify-content: center
+        font-size: .8em;
+        padding: 0
     }
-
-    #live h1#Title img {
-        margin: 0 10px
-    }
-
-    #live td div.bold {
-        font-weight: 700
-    }
-</style>
+}            </style>
             <div id="raceheader">
                 <h1>Live Results</h1></div>
             <div id="buttonInfo">
-                <div id="categoryOrAll" style="display: block;"><span><button id="Men" class="btn active" onclick="category(&quot;yes&quot;,&quot;Men&quot;)">Men</button></span> <span><button id="Women" class="btn active" onclick="category(&quot;yes&quot;,&quot;Women&quot;)">Women</button></span> <span><button id="Mixed" class="btn active" onclick="category(&quot;yes&quot;,&quot;Mixed&quot;)">Mixed</button></span>                    <span><button id="Masters" class="btn active" onclick="category(&quot;yes&quot;,&quot;Masters&quot;)">Masters</button></span> <span><button id="Grand" class="btn active" onclick="category(&quot;yes&quot;,&quot;Grand&quot;)">Grand</button></span>                    <span><button id="displayCatButton" class="btn" onclick="category(&quot;yes&quot;,&quot;None&quot;)" disabled="">By Category</button></span> <span><button id="displayAllButton" class="btn active" onclick="category(&quot;no&quot;,&quot;None&quot;)">GC</button></span></div>
+                <div id="categoryOrAll" style="display: block;"><button id="Men" class="btn active" onclick="category(&quot;yes&quot;,&quot;Men&quot;)">Men</button> <button id="Women" class="btn active" onclick="category(&quot;yes&quot;,&quot;Women&quot;)">Women</button> <button id="Mixed" class="btn active"
+                        onclick="category(&quot;yes&quot;,&quot;Mixed&quot;)">Mixed</button> <button id="Masters" class="btn active" onclick="category(&quot;yes&quot;,&quot;Masters&quot;)">Masters</button> <button id="Grand" class="btn active" onclick="category(&quot;yes&quot;,&quot;Grand&quot;)">Grand</button>                    <button id="displayCatButton" class="btn" onclick="category(&quot;yes&quot;,&quot;None&quot;)" disabled="">By Category</button> <button id="displayAllButton" class="btn active" onclick="category(&quot;no&quot;,&quot;None&quot;)">GC</button>                    <label class="rows">rows:&nbsp;&nbsp;<input id="rows" style="width:30px" type="text" name="rows"></label> <label for="showTvHeader"><input type="checkbox" id="showTvHeader" name="showTvHeader" value="header" checked="checked">&nbsp;headers</label></div>
                 <div
-                    id="intermediateOrFinish"><span><button id="intermediate1" class="btn" onclick="intermediateOrFinish(&quot;1&quot;)" disabled="">Intermediate 1</button></span> <span><button id="intermediate2" class="btn active" onclick="intermediateOrFinish(&quot;2&quot;)">Intermediate 2</button></span>                    <span><button id="intermediate3" class="btn active" onclick="intermediateOrFinish(&quot;3&quot;)">Intermediate 3</button></span> <span><button id="finish" class="btn active" onclick="intermediateOrFinish(&quot;4&quot;)">Finish</button></span></div>
-            <div
-                id="updates">
+                    id="intermediateOrFinish" style="display: block;"><button id="intermediate1" class="btn active" onclick="intermediateOrFinish(&quot;1&quot;)">Intermediate 1</button> <button id="intermediate2" class="btn active" onclick="intermediateOrFinish(&quot;2&quot;)">Intermediate 2</button>
+                    <button
+                        id="intermediate3" class="btn active" onclick="intermediateOrFinish(&quot;3&quot;)">Intermediate 3</button> <button id="finish" class="btn" onclick="intermediateOrFinish(&quot;4&quot;)" disabled="">Finish</button></div>
         </div>
-    </div>
-    <div id="result">
-        <h1 id="Title"><img src="Images/_GreenFlag.png" alt="green">Migdal Epic Israel - stage 2<img src="Images/_GreenFlag.png" alt="green"></h1>
-        <p id="Time"><span id="DayTime">03/02/2019 8:56:46 PM</span><span id="ElapsedTime">04:55:37</span><span id="RemainingTime">&nbsp;</span></p>
+        <div id="result">
+            <h1 id="Title"><img src="Images/_GreenFlag.png" alt="flag color">Migdal Epic Israel<br>stage 2<img src="Images/_GreenFlag.png" alt="flag color"></h1>
+            <p id="Time"><span id="DayTime">03/02/2019 8:56:46 PM</span><span id="ElapsedTime">04:55:37</span><span id="RemainingTime">&nbsp;</span></p>
 
-
-        <div id="liveTable">
-            <table class="fadeIn line_color">
-                <tbody>
-                    <tr>
-                        <td colspan="99" class="title_font">
-                            <div><img class="CategoryHeader" src="Images/men.svg"></div>
-                            <div class="subHeader">Results at Intermediate 1</div>
-                        </td>
-                    </tr>
-                    <tr class="rnkh_bkcolor">
-                        <th class="rnkh_font Id_Position">Rank</th>
-                        <th class="rnkh_font Id_Nom">Name</th>
-                        <th class="rnkh_font Id_Nom">Nation</th>
-                        <th class="rnkh_font Id_Numero">Nr</th>
-                        <th class="rnkh_font Id_FinishTime">Time</th>
-                    </tr>
-                    <tr class="rnk_bkcolor OddRow">
-                        <td class="rnk_font">1</td>
-                        <td class="rnk_font">Stephen Roche / Marco Pantani <span title="Finished" class="Flag YellowShirt"></span></td>
-                        <td class="rnk_font"><span class="Flag usa"></span> <span class="Flag israel"></span></td>
-                        <td class="rnk_font">6</td>
-                        <td class="rnk_font">2:01:55.3</td>
-                    </tr>
-                    <tr class="rnk_bkcolor EvenRow">
-                        <td class="rnk_font">2</td>
-                        <td class="rnk_font">Pedro Delgado / Jan Janssen </td>
-                        <td class="rnk_font"><span class="Flag ecuador"></span> <span class="Flag usa"></span></td>
-                        <td class="rnk_font">1</td>
-                        <td class="rnk_font">+1:49.5</td>
-                    </tr>
-                    <tr class="rnk_bkcolor OddRow">
-                        <td class="rnk_font">3</td>
-                        <td class="rnk_font">Lucien Petit-Breton / Philippe Thys </td>
-                        <td class="rnk_font"><span class="Flag israel"></span> <span class="Flag southafrica"></span></td>
-                        <td class="rnk_font">4</td>
-                        <td class="rnk_font">+2:26.0</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="fadeIn line_color">
-                <tbody>
-                    <tr>
-                        <td colspan="99" class="title_font">
-                            <div><img class="CategoryHeader" src="Images/women.svg"></div>
-                            <div class="subHeader">Results at Intermediate 1</div>
-                        </td>
-                    </tr>
-                    <tr class="rnkh_bkcolor">
-                        <th class="rnkh_font Id_Position">Rank</th>
-                        <th class="rnkh_font Id_Nom">Name</th>
-                        <th class="rnkh_font Id_Nom">Nation</th>
-                        <th class="rnkh_font Id_Numero">Nr</th>
-                        <th class="rnkh_font Id_FinishTime">Time</th>
-                    </tr>
-                    <tr class="rnk_bkcolor OddRow">
-                        <td class="rnk_font">1</td>
-                        <td class="rnk_font">Ferdinand Kübler / Jacques Anquetil </td>
-                        <td class="rnk_font"><span class="Flag israel"></span> <span class="Flag brazil"></span></td>
-                        <td class="rnk_font">237</td>
-                        <td class="rnk_font">2:05:02.3</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="liveTable">
+                <table class="line_color">
+                    <tbody>
+                        <tr>
+                            <td colspan="99" class="title_font">
+                                <div><img class="CategoryHeader" src="Images/men.svg"></div>
+                                <div class="subHeader">Results at Finish</div>
+                            </td>
+                        </tr>
+                        <tr class="rnkh_bkcolor">
+                            <th class="rnkh_font Id_Position">Rank</th>
+                            <th class="rnkh_font Id_Nom left">Name</th>
+                            <th class="rnkh_font Id_Nationalite">Nation</th>
+                            <th class="rnkh_font Id_Numero">Nr</th>
+                            <th class="rnkh_font Id_Sector_FinishTime">Time</th>
+                        </tr>
+                        <tr class="rnk_bkcolor OddRow">
+                            <td class="rnk_font">1</td>
+                            <td class="rnk_font left">Pedro Delgado / Jan Janssen </td>
+                            <td class="rnk_font"><span class="Flag ecuador"></span> <span class="Flag usa"></span></td>
+                            <td class="rnk_font">1</td>
+                            <td class="rnk_font">4:03:44.8</td>
+                        </tr>
+                        <tr class="rnk_bkcolor EvenRow">
+                            <td class="rnk_font">2</td>
+                            <td class="rnk_font left">Stephen Roche / Marco Pantani <span title="Men Leader" class="Flag YellowShirt"></span></td>
+                            <td class="rnk_font"><span class="Flag usa"></span> <span class="Flag israel"></span></td>
+                            <td class="rnk_font">6</td>
+                            <td class="rnk_font">+1:14:12.5</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; padding-right: 0;" colspan="99"><img style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="line_color">
+                    <tbody>
+                        <tr>
+                            <td colspan="99" class="title_font">
+                                <div><img class="CategoryHeader" src="Images/women.svg"></div>
+                                <div class="subHeader">Results at Finish</div>
+                            </td>
+                        </tr>
+                        <tr class="rnkh_bkcolor">
+                            <th class="rnkh_font Id_Position">Rank</th>
+                            <th class="rnkh_font Id_Nom left">Name</th>
+                            <th class="rnkh_font Id_Nationalite">Nation</th>
+                            <th class="rnkh_font Id_Numero">Nr</th>
+                            <th class="rnkh_font Id_Sector_FinishTime">Time</th>
+                        </tr>
+                        <tr class="rnk_bkcolor OddRow">
+                            <td class="rnk_font">1</td>
+                            <td class="rnk_font left">Pedro Delgado II / Jan Janssen II </td>
+                            <td class="rnk_font"><span class="Flag ecuador"></span> <span class="Flag usa"></span></td>
+                            <td class="rnk_font">331</td>
+                            <td class="rnk_font">5:03:42.8</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; padding-right: 0;" colspan="99"><img style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="line_color">
+                    <tbody>
+                        <tr>
+                            <td colspan="99" class="title_font">
+                                <div><img class="CategoryHeader" src="Images/mixed.svg"></div>
+                                <div class="subHeader">Results at Finish</div>
+                            </td>
+                        </tr>
+                        <tr class="rnkh_bkcolor">
+                            <th class="rnkh_font Id_Position">Rank</th>
+                            <th class="rnkh_font Id_Nom left">Name</th>
+                            <th class="rnkh_font Id_Nationalite">Nation</th>
+                            <th class="rnkh_font Id_Numero">Nr</th>
+                            <th class="rnkh_font Id_Sector_FinishTime">Time</th>
+                        </tr>
+                        <tr class="rnk_bkcolor OddRow">
+                            <td class="rnk_font">1</td>
+                            <td class="rnk_font left">Pedro Delgado II / Jan Janssen II </td>
+                            <td class="rnk_font"><span class="Flag ecuador"></span> <span class="Flag usa"></span></td>
+                            <td class="rnk_font">51</td>
+                            <td class="rnk_font">3:03:42.8</td>
+                        </tr>
+                        <tr class="rnk_bkcolor EvenRow">
+                            <td class="rnk_font">2</td>
+                            <td class="rnk_font left">Pedro Delgado II / Jan Janssen II <span title="Mixed Leader" class="Flag GreenShirt"></span></td>
+                            <td class="rnk_font"><span class="Flag ecuador"></span> <span class="Flag usa"></span></td>
+                            <td class="rnk_font">221</td>
+                            <td class="rnk_font">+2:00:00.0</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; padding-right: 0;" colspan="99"><img style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <div id="previousResults"></div>
-    <div id="daysTotal" style="width:100%;text-align:right"><button style="padding:10px;margin-top:20px;font-weight:700" class="btn" onclick="location.href=&quot;./total.html&quot;" type="button">overall</button></div>
+        <div id="previousResults"></div>
+        <div id="daysTotal" style="width:100%;text-align:right"><button style="padding:10px;margin-top:20px;font-weight:700" class="btn" onclick="location.href=&quot;./total.html&quot;" type="button">overall</button></div>
     </div>
     <div class="row footer"><a class="mail" href="mailto:119raz@walla.com">רז הימן - 119raz@walla.com</a> <a class="copyright" href="/terms.html">© כל הזכויות שמורות לתנועה מדידת זמנים</a> <a class="logo_tiny" href="http://tnuatiming.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><switch><g style="fill-opacity:1;stroke:none"><circle r="7" transform="matrix(0.86602544,0.49999993,-0.49999993,0.86602544,0,0)" style="fill:#f60" cx="24.284611" cy="-5.9378204"></circle><circle r="7" transform="matrix(-0.86602544,0.49999993,-0.49999993,-0.86602544,0,0)" style="fill:#c00" cx="5.9378204" cy="-24.284611"></circle><circle r="7" transform="matrix(0.2588191,0.96592581,-0.96592581,0.25881909,0,0)" style="fill:#039" cx="33.793804" cy="-33.3913"></circle><circle r="7" transform="matrix(0.86602544,-0.49999993,0.49999993,0.86602544,0,0)" style="fill:#6c3" cx="0.28461337" cy="47.507042"></circle></g><foreignObject width="16" height="16" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><img src="/images/logo16.png" width="16" height="16" alt="לוגו תנועה מדידת זמנים"></foreignObject></switch></svg></a></div>
     </div>
