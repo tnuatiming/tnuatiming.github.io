@@ -49,7 +49,269 @@
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+
+
+    <style>
+        .main_content {direction: ltr;}
+
+        #live .btn {margin: 0;}
+        
+        #live #buttonInfo {
+            flex-direction: column;
+            direction: ltr;
+
+        }
+
+        #live #categoryOrAll, #live #intermediateOrFinish {
+            flex-grow: 0;
+            order: 1;
+            align-self: flex-start;
+            vertical-align: middle;
+            margin: 5px 5px;
+            padding: 0;
+        }
+
+    #live #categoryOrAll button, #live #intermediateOrFinish button {
+            font-size: 1em;
+            padding: 2px 10px;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+
+        #live #DayTime {
+            order: 1;
+            }
+        #live #ElapsedTime {
+            order: 2;
+            }
+        #live #RemainingTime {
+            order: 3;
+            }
+
+        td[aria-label]:hover:after {
+            content: attr(aria-label);
+            padding: 0 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            z-index: 99;
+            color: #fff;
+            background: rgba(17, 17, 17, 1);
+            min-width: 100%;
+        }
+
+        tbody.line, tr.rnk_bkcolor {
+            border-bottom: 1px solid #111;
+        }
+    /*  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  */
+        #live table.line_color {
+            direction: ltr;
+            margin-top: 10px;
+        }
+        #live td.rnk_font.bigFont {
+            font-size: 1.5em;
+        }
+    /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
+
+        #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
     
+    /*    #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) {
+            width: 3%;
+        } */
+        #live td.rnk_font:nth-child(-n+3), #live th.rnkh_font:nth-child(-n+3) {
+            width: 5%;
+        }
+        #live td.blued {
+            background-image: url(Images/_LightBlueFlag.png);
+            background-position: center center; 
+            background-size: auto 50%; 
+            background-repeat: no-repeat; 
+            min-width: 16px;
+        }
+        #live td.finished {
+            background-size: auto 30%;
+        }    
+        #live td.rnk_font.blueCard {
+            color:#111; 
+            background-color:#add8e6bf; 
+            font-weight:700;
+        }
+        #live td.rnk_font.DarkBlueCard {
+            color:#111; 
+            background-color:#2f5999ff; 
+            font-weight:700;
+        }
+        #live td.rnk_font.redCard {
+            color:white; 
+            background-color:red; 
+            font-weight:700;
+        }
+        #live td.rnk_font.yellowCard {
+            background-color:#fae100ff; 
+            font-weight:700;
+        }
+        #live td.rnk_font.pinkCard {
+            color:white; 
+            background-color:#ff1493ff; 
+            font-weight:700;
+        }
+        #live td.rnk_font.greenCard {
+            color:white; 
+            background-color:#427f4dfe; 
+            font-weight:700;
+        }
+        #live td.rnk_font.purpleCard {
+            color:white; 
+            background-color:#412297ff; 
+            font-weight:700;
+        }
+        #live td.left, #live th.left {
+            text-align: left;
+        }
+        #live td.right, #live th.right {
+            text-align: right;
+        }
+        #live td img {
+            height:0.9em; 
+            vertical-align:middle; 
+            padding:0 2px;
+        }
+        .pos {
+            font-weight:700;
+        }
+        .lineThrough {
+            filter: opacity(35%)
+        }
+        h1 img {
+            height: 32px; 
+            vertical-align: middle; 
+            margin: 0 5px;
+        }
+        img.Flag {
+            vertical-align: middle; 
+            margin: 0 5px;
+        }
+
+        .Flag:before {content: "\00a0";}
+        .Flag {
+            background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            position: relative;
+            display: inline-block;
+            width: 1.33333333em;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+        
+        .australia {background-image: url(Images/CountryFlags/australia.svg);}
+        .austria {background-image: url(Images/CountryFlags/austria.svg);}
+        .belgium {background-image: url(Images/CountryFlags/belgium.svg);}
+        .brazil {background-image: url(Images/CountryFlags/brazil.svg);}
+        .canada {background-image: url(Images/CountryFlags/canada.svg);}
+        .czechrepublic {background-image: url(Images/CountryFlags/czechrepublic.svg);}
+        .denmark {background-image: url(Images/CountryFlags/denmark.svg);}
+        .ecuador {background-image: url(Images/CountryFlags/ecuador.svg);}
+        .england {background-image: url(Images/CountryFlags/england.svg);}
+        .finland {background-image: url(Images/CountryFlags/finland.svg);}
+        .france {background-image: url(Images/CountryFlags/france.svg);}
+        .germany {background-image: url(Images/CountryFlags/germany.svg);}
+        .greece {background-image: url(Images/CountryFlags/greece.svg);}
+        .hungary {background-image: url(Images/CountryFlags/hungary.svg);}
+        .iceland {background-image: url(Images/CountryFlags/iceland.svg);}
+        .ireland {background-image: url(Images/CountryFlags/ireland.svg);}
+        .israel {background-image: url(Images/CountryFlags/israel.svg);}
+        .italy {background-image: url(Images/CountryFlags/italy.svg);}
+        .latvia {background-image: url(Images/CountryFlags/latvia.svg);}
+        .lithuania {background-image: url(Images/CountryFlags/lithuania.svg);}
+        .netherlands {background-image: url(Images/CountryFlags/netherlands.svg);}
+        .newzealand {background-image: url(Images/CountryFlags/newzealand.svg);}
+        .norway {background-image: url(Images/CountryFlags/norway.svg);}
+        .poland {background-image: url(Images/CountryFlags/poland.svg);}
+        .portugal {background-image: url(Images/CountryFlags/portugal.svg);}
+        .russia {background-image: url(Images/CountryFlags/russia.svg);}
+        .serbia {background-image: url(Images/CountryFlags/serbia.svg);}
+        .southafrica {background-image: url(Images/CountryFlags/southafrica.svg);}
+        .spain {background-image: url(Images/CountryFlags/spain.svg);}
+        .sweden {background-image: url(Images/CountryFlags/sweden.svg);}
+        .switzerland {background-image: url(Images/CountryFlags/switzerland.svg);}
+        .ukraine {background-image: url(Images/CountryFlags/ukraine.svg);}
+        .unitedkingdom {background-image: url(Images/CountryFlags/unitedkingdom.svg);}
+        .usa {background-image: url(Images/CountryFlags/usa.svg);}
+
+        .transparent {background-image: url(Images/transparent.png);}
+        .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
+        .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
+        .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
+        .YellowShirt {background-image: url(Images/YellowShirt.svg);margin: 0;}
+        .PinkShirt {background-image: url(Images/PinkShirt.svg);margin: 0;}
+        .GreenShirt {background-image: url(Images/GreenShirt.svg);margin: 0;}
+        .BlueShirt {background-image: url(Images/BlueShirt.svg);margin: 0;}
+        .PurpleShirt {background-image: url(Images/PurpleShirt.svg);margin: 0;}
+        .UCI {background-image: url(Images/uci.svg);}
+
+        .dnf {background-image: url(Images/_dnf.svg);}
+        .dsq {background-image: url(Images/_dsq.svg);}
+        .dns {background-image: url(Images/_dns.svg);}
+
+        .FirstLine {} 
+        .SecoundLine {} 
+        .uci {color: brown;}
+        
+        #live .btn {display: inline-block;}
+        #live #buttonInfo {margin-bottom: 10px;}
+        #live .btn.active {cursor: pointer;filter: opacity(50%);}
+        #live #Title {
+            justify-content: space-evenly;
+            vertical-align: middle;
+            font-weight: 700;
+            font-size: 1em;
+            color: #58585a;
+            margin: 5px 0;
+            text-align: center;    
+        }
+        #live h1#Title img {margin: 0 10px;}
+
+        #live td div.bold, #live td.rnk_font.bold {font-weight:700;}
+        #live td.rnk_font.wrap {
+            max-width: 200px;
+        /* white-space: normal;*/ 
+        }
+        #live div.team {
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0 auto;
+        }
+        
+        div#legend {width: 100%; text-align: left;}
+        div#legend ul {width: 100%; text-align: left; float: left;}
+        div#legend li {text-align: left;}
+
+    @media (max-width: 767px) {
+
+        #live #categoryOrAll button, #live #intermediateOrFinish button {
+            font-size: 0.8em;
+        }
+        #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
+            font-size: 0.8em;
+            padding: 0;
+        }
+        #live td.rnk_font.bigFont {
+            font-size: 1.2em;
+        }
+        #live td.rnk_font.wrap {
+            max-width: 120px;
+            white-space: nowrap;
+        }    
+        #live div.team {
+            max-width: 120px;
+        }
+    }
+
+    </style>
+
 
     <script src="elite_epic_remote.js"></script>
 </head>
@@ -119,271 +381,6 @@
       <div class="row main_content">
 
  
-
-
-<style>
-    .main_content {direction: ltr;}
-
-    #live .btn {margin: 0;}
-    
-    #live #buttonInfo {
-        flex-direction: column;
-        direction: ltr;
-
-    }
-
-    #live #categoryOrAll, #live #intermediateOrFinish {
-        flex-grow: 0;
-        order: 1;
-        align-self: flex-start;
-        vertical-align: middle;
-        margin: 5px 5px;
-        padding: 0;
-    }
-
-   #live #categoryOrAll button, #live #intermediateOrFinish button {
-        font-size: 1em;
-        padding: 2px 10px;
-        white-space: nowrap;
-        font-weight: 700;
-    }
-
-    #live #DayTime {
-        order: 1;
-        }
-    #live #ElapsedTime {
-        order: 2;
-        }
-    #live #RemainingTime {
-        order: 3;
-        }
-
-td[aria-label]:hover:after {
-    content: attr(aria-label);
-    padding: 0 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    white-space: nowrap;
-    z-index: 99;
-    color: #fff;
-    background: rgba(17, 17, 17, 1);
-    min-width: 100%;
-}
-
-
-    tbody.line, tr.rnk_bkcolor {
-        border-bottom: 1px solid #111;
-    }
-  /*  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  */
-    #live table.line_color {
-        direction: ltr;
-        margin-top: 10px;
-    }
-    #live td.rnk_font.bigFont {
-        font-size: 1.5em;
-    }
-  /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
-
-    #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
-  
-/*    #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) {
-        width: 3%;
-    } */
-    #live td.rnk_font:nth-child(-n+3), #live th.rnkh_font:nth-child(-n+3) {
-        width: 5%;
-    }
-    #live td.blued {
-        background-image: url(Images/_LightBlueFlag.png);
-        background-position: center center; 
-        background-size: auto 50%; 
-        background-repeat: no-repeat; 
-        min-width: 16px;
-    }
-    #live td.finished {
-        background-size: auto 30%;
-    }    
-    #live td.rnk_font.blueCard {
-        color:#111; 
-        background-color:#add8e6bf; 
-        font-weight:700;
-    }
-    #live td.rnk_font.DarkBlueCard {
-        color:#111; 
-        background-color:#2f5999ff; 
-        font-weight:700;
-    }
-    #live td.rnk_font.redCard {
-        color:white; 
-        background-color:red; 
-        font-weight:700;
-    }
-    #live td.rnk_font.yellowCard {
-        background-color:#fae100ff; 
-        font-weight:700;
-    }
-    #live td.rnk_font.pinkCard {
-        color:white; 
-        background-color:#ff1493ff; 
-        font-weight:700;
-    }
-    #live td.rnk_font.greenCard {
-        color:white; 
-        background-color:#427f4dfe; 
-        font-weight:700;
-    }
-    #live td.rnk_font.purpleCard {
-        color:white; 
-        background-color:#412297ff; 
-        font-weight:700;
-    }
-    #live td.left, #live th.left {
-        text-align: left;
-    }
-    #live td.right, #live th.right {
-        text-align: right;
-    }
-    #live td img {
-        height:0.9em; 
-        vertical-align:middle; 
-        padding:0 2px;
-    }
-    .pos {
-        font-weight:700;
-    }
-    .lineThrough {
-        filter: opacity(35%)
-    }
-    h1 img {
-        height: 32px; 
-        vertical-align: middle; 
-        margin: 0 5px;
-    }
-    img.Flag {
-        vertical-align: middle; 
-        margin: 0 5px;
-    }
-
-    .Flag:before {content: "\00a0";}
-    .Flag {
-        background-size: contain;
-        background-position: 50%;
-        background-repeat: no-repeat;
-        position: relative;
-        display: inline-block;
-        width: 1.33333333em;
-        vertical-align: middle;
-        margin: 0 5px;
-    }
-    
-    .australia {background-image: url(Images/CountryFlags/australia.svg);}
-    .austria {background-image: url(Images/CountryFlags/austria.svg);}
-    .belgium {background-image: url(Images/CountryFlags/belgium.svg);}
-    .brazil {background-image: url(Images/CountryFlags/brazil.svg);}
-    .canada {background-image: url(Images/CountryFlags/canada.svg);}
-    .czechrepublic {background-image: url(Images/CountryFlags/czechrepublic.svg);}
-    .denmark {background-image: url(Images/CountryFlags/denmark.svg);}
-    .ecuador {background-image: url(Images/CountryFlags/ecuador.svg);}
-    .england {background-image: url(Images/CountryFlags/england.svg);}
-    .finland {background-image: url(Images/CountryFlags/finland.svg);}
-    .france {background-image: url(Images/CountryFlags/france.svg);}
-    .germany {background-image: url(Images/CountryFlags/germany.svg);}
-    .greece {background-image: url(Images/CountryFlags/greece.svg);}
-    .hungary {background-image: url(Images/CountryFlags/hungary.svg);}
-    .iceland {background-image: url(Images/CountryFlags/iceland.svg);}
-    .ireland {background-image: url(Images/CountryFlags/ireland.svg);}
-    .israel {background-image: url(Images/CountryFlags/israel.svg);}
-    .italy {background-image: url(Images/CountryFlags/italy.svg);}
-    .latvia {background-image: url(Images/CountryFlags/latvia.svg);}
-    .lithuania {background-image: url(Images/CountryFlags/lithuania.svg);}
-    .netherlands {background-image: url(Images/CountryFlags/netherlands.svg);}
-    .newzealand {background-image: url(Images/CountryFlags/newzealand.svg);}
-    .norway {background-image: url(Images/CountryFlags/norway.svg);}
-    .poland {background-image: url(Images/CountryFlags/poland.svg);}
-    .portugal {background-image: url(Images/CountryFlags/portugal.svg);}
-    .russia {background-image: url(Images/CountryFlags/russia.svg);}
-    .serbia {background-image: url(Images/CountryFlags/serbia.svg);}
-    .southafrica {background-image: url(Images/CountryFlags/southafrica.svg);}
-    .spain {background-image: url(Images/CountryFlags/spain.svg);}
-    .sweden {background-image: url(Images/CountryFlags/sweden.svg);}
-    .switzerland {background-image: url(Images/CountryFlags/switzerland.svg);}
-    .ukraine {background-image: url(Images/CountryFlags/ukraine.svg);}
-    .unitedkingdom {background-image: url(Images/CountryFlags/unitedkingdom.svg);}
-    .usa {background-image: url(Images/CountryFlags/usa.svg);}
-
-    .transparent {background-image: url(Images/transparent.png);}
-    .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
-    .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
-    .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
-    .YellowShirt {background-image: url(Images/YellowShirt.svg);margin: 0;}
-    .PinkShirt {background-image: url(Images/PinkShirt.svg);margin: 0;}
-    .GreenShirt {background-image: url(Images/GreenShirt.svg);margin: 0;}
-    .BlueShirt {background-image: url(Images/BlueShirt.svg);margin: 0;}
-    .PurpleShirt {background-image: url(Images/PurpleShirt.svg);margin: 0;}
-    .UCI {background-image: url(Images/uci.svg);}
-
-    .dnf {background-image: url(Images/_dnf.svg);}
-    .dsq {background-image: url(Images/_dsq.svg);}
-    .dns {background-image: url(Images/_dns.svg);}
-
-    .FirstLine {} 
-    .SecoundLine {} 
-    .uci {color: brown;}
-    
-    #live .btn {display: inline-block;}
-    #live #buttonInfo {margin-bottom: 10px;}
-    #live .btn.active {cursor: pointer;filter: opacity(50%);}
-    #live #Title {
-        justify-content: space-evenly;
-        vertical-align: middle;
-        font-weight: 700;
-        font-size: 1em;
-        color: #58585a;
-        margin: 5px 0;
-        text-align: center;    
-    }
-    #live h1#Title img {margin: 0 10px;}
-
-    #live td div.bold, #live td.rnk_font.bold {font-weight:700;}
-    #live td.rnk_font.wrap {
-        max-width: 200px;
-       /* white-space: normal;*/ 
-    }
-    #live div.team {
-        width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 0 auto;
-    }
-    
-    div#legend {width: 100%; text-align: left;}
-    div#legend ul {width: 100%; text-align: left; float: left;}
-    div#legend li {text-align: left;}
-
-@media (max-width: 767px) {
-
-
-   #live #categoryOrAll button, #live #intermediateOrFinish button {
-        font-size: 0.8em;
-    }
-    #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
-        font-size: 0.8em;
-        padding: 0;
-    }
-    #live td.rnk_font.bigFont {
-        font-size: 1.2em;
-    }
-    #live td.rnk_font.wrap {
-        max-width: 120px;
-        white-space: nowrap;
-    }    
-    #live div.team {
-        max-width: 120px;
-    }
-}
-
-</style>
-
 <div id="raceheader"><h1>Live Results</h1></div>
 
 <div id="buttonInfo">
@@ -415,7 +412,6 @@ td[aria-label]:hover:after {
 
 <div id="legend">
          <ul>
-                <li><span class="Flag YellowShirt"></span> - Epic Israel Leader</li>
                 <li><span class="Flag UCI"></span> - UCI Rider</li>
                 <li><span class="Flag CheckeredFlag"></span> - Finished</li>
                 <li>DSQ - Disqualified</li>

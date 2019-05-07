@@ -13,7 +13,7 @@
 */
     var MaximumStageTime = 36000000; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
 
-        var enableJ1 = 1;   // for remote
+    var enableJ1 = 1;   // for remote
     var enableJ3 = 0;  // for single day
     
     var url = 'p1.html';
@@ -1840,19 +1840,19 @@
 //        if (cleanResults == 0) {
 
                   headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-//                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
+//                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>Cat</div><div>GC</div></th>';
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Cat</th>';
 /*        } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position_Categorie">CAT</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position_Categorie">Cat</th>';
                     headerText1 += '<th class="rnkh_font Id_Position_Overall">GC</th>';
         }
 */
                     headerText1 += '<th class="rnkh_font Id_Numero">&nbsp;Nr</th>';
 
                     if (useCategory == "no") {
-                        headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
+                        headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
                     }            
                     
 
@@ -1862,9 +1862,9 @@
  //                   headerText1 += '<th class="rnkh_font Id_Numero">&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Nom">Riders</th>';
  //                   headerText1 += '<th class="rnkh_font Id_Nationalite">&nbsp;</th>';
-            //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+            //        headerText1 += '<th class="rnkh_font Id_Nom_2">Name 2</th>';
 
-                    //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">זמן 2</th>';
+                    //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time 2</th>';
                     headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
                 if (show == 4) {
                         headerText1 += '<th class="rnkh_font mobile Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
@@ -3705,7 +3705,9 @@ if (enableJ1 == 1) {
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">מגדל אפיק ישראל - חד יומי</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+
+//        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText3header += HeaderName[1];
         finalText3 = '\n<div id="liveTableS">\n';

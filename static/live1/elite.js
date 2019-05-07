@@ -676,7 +676,7 @@ switch(option) {  // tickerTest
 */
            
            // MAGIC sort the array after the merge to get new results
-        if (useCategory == "yes" && HeaderName[0].includes("אנדורו")) { // this sort discreminate aginst empty category so it shown last
+        if (useCategory == "yes" && HeaderName[0].includes("נדורו")) { // this sort discreminate aginst empty category so it shown last
             allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || (b.Id_Categorie.includes("מקצועית"))-(a.Id_Categorie.includes("מקצועית")) || (b.Id_Categorie.includes("עממית"))-(a.Id_Categorie.includes("עממית")) || (b.Id_Categorie.includes("סניורים"))-(a.Id_Categorie.includes("סניורים")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         } else if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
             allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
@@ -1306,7 +1306,7 @@ switch(option) {  // tickerTest
                         finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
                     } else if (opt4.toUpperCase().includes("פתוחה") || opt4.toUpperCase().includes("אקספרט")) {
                         finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("עממית") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("אנדורו")) {
+                    } else if (opt4.toUpperCase().includes("עממית") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("נדורו")) {
                         finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
                         finalText += '<td class="rnk_font blueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
@@ -1320,7 +1320,7 @@ switch(option) {  // tickerTest
                         finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     }
 
-                } else if (useCategory == "no" && HeaderName[0].includes("אנדורו")) {
+                } else if (useCategory == "no" && HeaderName[0].includes("נדורו")) {
                     
                     if (opt4.toUpperCase().includes("E1")) {
                         finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
