@@ -88,6 +88,8 @@ total - https://tnuatiming.com/liveepic/total.html on epic site, copy of tables 
 
 single day - https://tnuatiming.com/liveepic/single.html and on epic site (support added to elite_epic.js as p3.html, remember to "enableJ3")
 
+prologue start clock - https://tnuatiming.com/liveepic/start.html (local time must be sync)
+
 
 ## daily update ##
 

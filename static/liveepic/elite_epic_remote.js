@@ -113,7 +113,6 @@ remove all imTheLeader
                     alignTDforTV();
                 }
             });
-
             
             
             if (showStopwatch == 1) {         
@@ -125,16 +124,16 @@ remove all imTheLeader
                 // Get todays date and time
                 var now = new Date().getTime();
                     
-                // Find the distance between now and the count down date
+                // Find the distance between now and the start time
                 var distance = now - startTime;
                     
                 if (distance > MaximumStageTime) { //race finished
                     // Time calculations for days, hours, minutes and seconds
                     //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    var milliseconds = new Date().getMilliseconds();
+                    //var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    //var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    //var milliseconds = new Date().getMilliseconds();
                         
                     // Output the result in an element with id="showStopwatch"
                     document.getElementById("showStopwatch").innerHTML = "Finished";
@@ -154,7 +153,7 @@ remove all imTheLeader
                     // If the count down is over, write some text 
                 } else {
                     //clearInterval(x);
-                    // Find the distance between now and the count down date
+                // Find the distance between now and the start time
                     var distance = startTime - now;
                         
                     // Time calculations for days, hours, minutes and seconds
@@ -168,17 +167,8 @@ remove all imTheLeader
                     + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
                     }
                 }, 100);
+                
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
         } // END epictv
@@ -1481,12 +1471,12 @@ remove all imTheLeader
                 //  headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>CAT</div><div>GC</div></th>';
  /*       } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Cat</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
 */
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">CAT</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Cat</th>';
 
                     headerText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
 
@@ -1496,8 +1486,8 @@ remove all imTheLeader
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
                     }            
-                    headerText1 += '<th class="rnkh_font Id_Nom">Name</th>';
-            //        headerText1 += '<th class="rnkh_font Id_Nom_2">מתחרה 2</th>';
+                    headerText1 += '<th class="rnkh_font Id_Nom">Riders</th>';
+            //        headerText1 += '<th class="rnkh_font Id_Nom_2">Name 2</th>';
                     headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
 /*
                     if (doNotShowTime == 0 && show == 4) {
@@ -2696,7 +2686,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
         
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
 

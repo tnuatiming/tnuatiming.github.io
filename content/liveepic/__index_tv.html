@@ -27,7 +27,6 @@ slug: "tv"
     #live #buttonInfo {
         flex-direction: column;
         direction: ltr;
-
     }
 
     #live #intermediateOrFinish {
@@ -51,6 +50,7 @@ slug: "tv"
     #showStopwatch {
         color: white;
         display: inline-block;
+        font-weight: 700;
     }
     #live table.line_color {
         direction: ltr;
@@ -82,7 +82,7 @@ slug: "tv"
         font-weight: 700;
         font-size: 1.5em;
         padding: 5px 10px;
-        line-height: 2;
+        line-height: 1.5;
     }
     td {
         font-weight: 700;
@@ -334,11 +334,13 @@ slug: "tv"
         <label class="Stopwatch"><div id="showStopwatch"></div></label>
     </div>
 </div>
+
+<div id="timetime"></div>
+
 <div id="result"></div>
     
 <!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
 
-<div id="showStopwatch"></div>
 
 <div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall</button></div>
 
