@@ -58,7 +58,7 @@
             direction: ltr;
         }
 
-        #live #categoryOrAll, #live #intermediateOrFinish {
+        #live #categoryOrAll, #live #intermediateOrFinish, #live #options, #live #options1 {
             flex-grow: 0;
             order: 1;
             align-self: flex-start;
@@ -424,7 +424,16 @@
         <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
         <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
     </div>
+    <div id="options">
+        <label for="enableJ1"><input type="checkbox" id="enableJ1" name="enableJ1" value="enableJ1">&nbsp;enableJ1</label>
+        <label for="enableJ3"><input type="checkbox" id="enableJ3" name="enableJ3" value="enableJ3">&nbsp;enableJ3</label>
+        <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
+    </div>
+    <div id="options1">
+        <label class="MaximumStageTime">Maximum Stage Time:&nbsp;&nbsp;<input id="MaximumStageTime" style="width: 100px;" type="text" name="MaximumStageTime">&nbsp; milliseconds (18000000=5hours, 21600000=6hours, 36000000=10hours)</label>
+    </div>
         <div id="updates">&nbsp;</div>
+
 </div>
 <div id="result"></div>
     

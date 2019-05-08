@@ -53,6 +53,16 @@
         flex-direction: column;
         direction: ltr;
     }
+    #live label.rows {
+        margin-left: 40px; 
+    }
+    #live select#stages {
+        margin-right: 20px; 
+        transform: scale(1.2);
+    }
+    #live input#cleanResults {
+        transform: scale(2);
+    }
     #live table.line_color {
         margin-top: 10px;
     }
@@ -176,7 +186,7 @@
     div#legend ul {width: 100%; text-align: left; float: left;}
     div#legend li {text-align: left;}
 
-    #csv {display: none;}
+    #csv {display: none; margin-top: 50px;}
     
 @media (max-width: 767px) {
 
@@ -262,35 +272,43 @@
 
  
 
-<div id="raceheader"><h1>Results Total</h1></div>
+    <div id="raceheader"><h1>Results Total</h1></div>
 
-<div id="buttonInfo">
-    <div id="categoryOrAll" style="display: block;">
-        <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button>
-        <button id="displayAllButton" class="btn" onClick="category('no')">GC</button>
+    <div id="buttonInfo">
+        <div id="categoryOrAll" style="display: block;">
+            <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button>
+            <button id="displayAllButton" class="btn" onClick="category('no')">GC</button>
+            <label class="rows">Stage:&nbsp;&nbsp;
+                <select id="stages" name="stages">
+                    <option value="1">Prologue</option>
+                    <option value="2">Stage 1</option>
+                    <option value="3">Stage 2</option>
+                    <option value="4">Stage 3</option>
+                </select>
+            </label>
+            <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
+        </div>
     </div>
-        <div id="updates">&nbsp;</div>
-</div>
-<div id="result"></div>
 
-<button id="csv">Download CSV Results File</button>
 
-    
-<!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
+    <div id="result"></div>
 
-<div id="legend">
-         <ul>
-                <li><span class="Flag YellowShirt"></span> - Epic Israel Leader</li>
-                <li><span class="Flag numberOne"></span> - Intermediate Leader</li>
-                <li><span class="Flag UCI"></span> - UCI Rider</li>
-                <li><span class="Flag CheckeredFlag"></span> - Finished</li>
-                <li><span class="Flag dsq"></span> - Disqualified</li>
-                <li><span class="Flag dnf"></span> - Did Not Finished</li>
-                <li><span class="Flag dns"></span> - Did Not Started</li>
-                <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
-                <li><span class="Flag Started"></span> - Started Prologue</li>
-            </ul>
-</div>
+    <button id="csv">Download CSV Results File</button>
+
+        
+    <!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
+
+    <div id="legend">
+        <ul>
+            <li><span class="Flag UCI"></span> - UCI Rider</li>
+            <li><span class="Flag CheckeredFlag"></span> - Finished</li>
+            <li>DSQ - Disqualified</li>
+            <li>DNF - Did Not Finished</li>
+            <li>DNS - Did Not Started</li>
+            <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
+            <li><span class="Flag Started"></span> - Started Prologue</li>
+        </ul>
+    </div>
 
 
           

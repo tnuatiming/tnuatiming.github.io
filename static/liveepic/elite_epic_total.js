@@ -14,8 +14,7 @@ add dns
 //    var TimerLoad;
 //    var Rafraichir = 60000; // every 60 seconds
 
-    var stages = 3; // day of competition
-    console.log('stages: ' + stages);
+    var stages = 1; // day of competition
 
     var cleanResults = 0;
 
@@ -33,28 +32,63 @@ add dns
     var url1 = "t1.txt";    
     var J1;
 //    var T1;
-    if (stages >= 2) {
         var url2 = "t2.txt";    
         var J2;    
 //        var T2;    
-    }
-    if (stages >= 3) {
         var url3 = "t3.txt";    
         var J3;
 //        var T3;
-    }
-    if (stages == 4) {
         var url4 = "t4.txt";    
         var J4;
 //        var T4;
-    }
     
     
     var csvName = '';
 
     document.addEventListener("DOMContentLoaded", function() {
         
+        if (sessionStorage.getItem('stages')) {
+            stages = sessionStorage.getItem('stages');
+        }
+
         
+    //document.getElementById("demo").innerHTML = obj.options[obj.selectedIndex].text;
+
+        document.getElementById("stages").addEventListener("change", function () {
+            
+            var obj = document.getElementById("stages");
+            
+            console.log(obj.options[obj.selectedIndex].value);
+            
+            stages = obj.options[obj.selectedIndex].value;
+            
+            Load();
+    
+            sessionStorage.setItem('stages', stages);
+    
+        });
+  
+  
+        if (document.getElementById("cleanResults").checked) {
+            cleanResults = 1;
+        } else {
+            cleanResults = 0;
+        }
+        
+        const checkbox = document.getElementById('cleanResults');
+
+        checkbox.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                cleanResults = 1;
+                Load();
+            } else {
+                cleanResults = 0;
+                Load();
+            }
+
+        });
+  
+  
         if (cleanResults == 1) {
             
             document.getElementById("csv").style.display = "block";  
@@ -68,8 +102,6 @@ add dns
                 
                 export_table_to_csv(html, dateString + "_results_total_" + csvName + ".csv");
             });
-            
-            
             
         }
 
@@ -264,6 +296,32 @@ add dns
 //        TimerLoad = setTimeout(loop, Rafraichir);
 //        Rafraichir = 60000; // every 60 seconds
 
+
+        
+        if (cleanResults == 1) {
+            
+            document.getElementById("csv").style.display = "block";  
+                
+            // download results csv
+            document.querySelector('button[id="csv"]').addEventListener("click", function () {
+                var html = document.querySelector("table").outerHTML;
+                
+                var ma = new Date();
+                var dateString = ma.getUTCFullYear() + ("0" + (ma.getUTCMonth()+1)).slice(-2) + ("0" + ma.getUTCDate()).slice(-2) + "_" + ("0" + (ma.getUTCHours()+3)).slice(-2) + ("0" + ma.getUTCMinutes()).slice(-2) + ("0" + ma.getUTCSeconds()).slice(-2);
+                
+                export_table_to_csv(html, dateString + "_results_total_" + csvName + ".csv");
+            });
+            
+        } else {
+            
+            document.getElementById("csv").style.display = "none";  
+        }
+        
+        
+        
+        
+        
+        
     }
 
     function createLiveTable() {

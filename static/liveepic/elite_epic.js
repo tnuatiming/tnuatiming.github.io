@@ -12,12 +12,18 @@
  
 */
     var MaximumStageTime = 36000000; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
+    if (sessionStorage.getItem('MaximumStageTime')) {
+        MaximumStageTime = sessionStorage.getItem('MaximumStageTime');
+    }
 
     var enableJ1 = 1;   // for remote
     var enableJ3 = 0;  // for single day
     
     var url = 'p1.html';
     var target = 'result';
+
+//    var enableDelta = 0; // time delta only on epic (not single day)
+//    var delta = 0; // delta in milliseconds, 60000 = 1minute
 
     var TimerLoad;
     var Rafraichir = 60000; // every 60 seconds
@@ -70,6 +76,87 @@
     
     document.addEventListener("DOMContentLoaded", function() {
             
+
+ 
+        if (document.getElementById("cleanResults").checked) {
+            cleanResults = 1;
+        } else {
+            cleanResults = 0;
+        }
+        
+        const checkbox1 = document.getElementById('cleanResults');
+
+        checkbox1.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                cleanResults = 1;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            } else {
+                cleanResults = 0;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            }
+
+        });
+
+
+
+        if (document.getElementById("enableJ1").checked) {
+            enableJ1 = 1;
+        } else {
+            enableJ1 = 0;
+        }
+        
+        const checkbox2 = document.getElementById('enableJ1');
+
+        checkbox2.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                enableJ1 = 1;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            } else {
+                enableJ1 = 0;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            }
+
+        });
+
+
+
+        if (document.getElementById("enableJ3").checked) {
+            enableJ3 = 1;
+        } else {
+            enableJ3 = 0;
+        }
+        
+        const checkbox3 = document.getElementById('enableJ3');
+
+        checkbox3.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                enableJ3 = 1;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            } else {
+                enableJ3 = 0;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            }
+
+        });
+
+                        
+            document.getElementById("MaximumStageTime").value = MaximumStageTime;
+
+            const checkbox4 = document.getElementById('MaximumStageTime');
+
+            checkbox4.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
+                    sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                } else {
+                    MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
+                    sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                }
+            });
+
+
         // download results csv
         document.querySelector('button[id="csv"]').addEventListener("click", function () {
             var html = document.querySelector("table").outerHTML;
@@ -272,6 +359,9 @@
 
 //        positionArray_All_Cat = {}; // emptying the array
 
+        MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
+        sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
+            
         show = section;
         
         if (epictv == 1) {
@@ -359,6 +449,10 @@
     function category(choice, cat){
         
 //        positionArray = []; // emptying the array as the info inside is incorrect due to changing between position/category position.
+
+        MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
+        sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
+            
         
         useCategory = choice;
         catcat = cat;
@@ -733,7 +827,7 @@
         
         eventName = HeaderEventName;  // tickerTest
         
-        
+/*        
         if (Text[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             timeGapDisplay = 1;
@@ -742,7 +836,7 @@
         } else {
             cleanResults = 0;
         }
-            
+*/            
         if (Text[0].includes("---")) { // do not show individual times
             doNotShowTime = 1;
             Text[0] = Text[0].replace("---", "");
@@ -892,24 +986,40 @@
                     // convert intermediate time to miliseconds
                     if (lineArray["Id_Inter1"] != "-") {
                         lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
-                    } else {
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_Inter1"] = lineArray["Id_Inter1"] + delta;
+                        }
+*/                    } else {
                         lineArray["Id_Inter1"] = 99999999999;   
                     }
                     if (lineArray["Id_Inter2"] != "-") {
                         lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
-                    } else {
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_Inter2"] = lineArray["Id_Inter2"] + delta;
+                        }
+*/                    } else {
                         lineArray["Id_Inter2"] = 99999999999;   
                     }
                     if (lineArray["Id_Inter3"] != "-") {
                         lineArray["Id_Inter3"] = timeString2ms(lineArray["Id_Inter3"]);   
-                    } else {
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_Inter3"] = lineArray["Id_Inter3"] + delta;
+                        }
+*/                    } else {
                         lineArray["Id_Inter3"] = 99999999999;   
                     }
                     
                     // convert total time to miliseconds
                     if (lineArray["Id_TpsCumule"] != "-" ) {
                         lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
-                    } else {
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"] + delta;
+                        }
+*/                    } else {
                         lineArray["Id_TpsCumule"] = 99999999999;   
                     }
 
@@ -936,24 +1046,40 @@
                     // convert intermediate time to miliseconds
                     if (lineArray["Id_Inter1"] != "-") {
                         lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
-                    } else {
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_Inter1"] = lineArray["Id_Inter1"] + delta;
+                        }
+*/                    } else {
                         lineArray["Id_Inter1"] = 99999999999;   
                     }
                     if (lineArray["Id_Inter2"] != "-") {
                         lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
-                    } else {
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_Inter2"] = lineArray["Id_Inter2"] + delta;
+                        }
+*/                    } else {
                         lineArray["Id_Inter2"] = 99999999999;   
                     }
                     if (lineArray["Id_Inter3"] != "-") {
                         lineArray["Id_Inter3"] = timeString2ms(lineArray["Id_Inter3"]);   
-                    } else {
-                        lineArray["Id_Inter1"] = 99999999999;   
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_Inter3"] = lineArray["Id_Inter3"] + delta;
+                        }
+*/                    } else {
+                        lineArray["Id_Inter3"] = 99999999999;   
                     }
                     
                     // convert total time to miliseconds
                     if (lineArray["Id_TpsCumule"] != "-" ) {
-                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
-                    } else {
+                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]); 
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"] + delta;
+                        }
+*/                    } else {
                         lineArray["Id_TpsCumule"] = 99999999999;   
                     }
                 
@@ -1114,7 +1240,7 @@
                     
             } // END for a
 
-
+            
             // find finish time and check for 2 minutes difference
                         
                         if (allArray[b]["Id_Groupe"].includes("s1")) {
@@ -3940,7 +4066,7 @@ if (enableJ3 == 1) {
     
 if (enableJ1 == 1) {
   
-    if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
+    if (cleanResults == 0/* && show == 4 && useCategory == "no"*/) { // FIXME check if need all(mainly show), so we can watch different results on timing computer
         var header = {};
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
