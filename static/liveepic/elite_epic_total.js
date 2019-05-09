@@ -965,7 +965,7 @@ add dns
         var st = 'Stage ' + (stages - 1);
         }
         
-        var finalText = '<h1 id="Title"><img src="Images/_Stop.png" alt="flag color">Migdal Epic Israel<br>After '+ st + '<img src="Images/_Stop.png" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">&nbsp;</span><span id="RemainingTime">&nbsp;</span></p>\n';
+        var finalText = '<h1 id="Title">Migdal Epic Israel<br>After '+ st + '</h1>\n';
 
         
 
