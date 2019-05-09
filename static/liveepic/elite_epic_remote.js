@@ -2667,6 +2667,7 @@ if (show == 4 &&) {
  } // END MAIN TABLE DATA
 
 
+// BEGIN TV
 
 if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 'rows' competitors
     
@@ -2777,7 +2778,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                 
         finalText += '</tr>\n';
     
-} // end TV
+} // END TV
 
                 
 // update competitor previous overall and category position array
@@ -2799,12 +2800,11 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
 
     }        // end for l
          
-                if (epictv == 1) {
-                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
-                }
-                finalText += '</table></div>';
+        if (epictv == 1) {
+            finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
+        }
+        finalText += '</table></div>';
 
- 
             console.log('out: ')
              console.log(allArray);
       //       console.log(finalText);

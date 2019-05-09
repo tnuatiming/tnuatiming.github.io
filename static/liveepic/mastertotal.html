@@ -53,15 +53,24 @@
         flex-direction: column;
         direction: ltr;
     }
-    #live label.rows {
-        margin-left: 40px; 
+    #live #categoryOrAll, #live #options, #live #options1 {
+        flex-grow: 0;
+        order: 1;
+        align-self: flex-start;
+        vertical-align: middle;
+        margin: 5px 5px;
+        padding: 0;
     }
-    #live select#stages {
+
+    #live #categoryOrAll button {
+            font-size: 1em;
+            padding: 2px 10px;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+    #live div#options label {
         margin-right: 20px; 
         transform: scale(1.2);
-    }
-    #live input#cleanResults {
-        transform: scale(2);
     }
     #live table.line_color {
         margin-top: 10px;
@@ -147,6 +156,9 @@
         color:#111; 
         background-color:#add8e6bf; 
         font-weight:700;
+    }
+    th.rnkh_font {
+        white-space: normal;
     }
     #live td.left, #live th.left {
         text-align: left;
@@ -278,16 +290,18 @@
         <div id="categoryOrAll" style="display: block;">
             <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button>
             <button id="displayAllButton" class="btn" onClick="category('no')">GC</button>
+        </div>
+    <div id="options">
             <label class="rows">Stage:&nbsp;&nbsp;
                 <select id="stages" name="stages">
                     <option value="1">Prologue</option>
-                    <option value="2">Stage 1</option>
-                    <option value="3">Stage 2</option>
-                    <option value="4">Stage 3</option>
+                    <option value="2">1</option>
+                    <option value="3">2</option>
+                    <option value="4">3</option>
                 </select>
             </label>
             <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
-        </div>
+    </div>
     </div>
 
 

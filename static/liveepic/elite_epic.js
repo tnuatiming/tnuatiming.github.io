@@ -2066,29 +2066,29 @@
     if (cleanResults == 1) {                            
         headerText1 = '<tr class="rnkh_bkcolor">';
 
-                headerText1 += '<th class="rnkh_font Id_Position_Overall">General<br>Classification</th>';
-                headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category<br>Position</th>';
+                headerText1 += '<th class="rnkh_font Id_Position_Overall">General Classification</th>';
+                headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Position</th>';
                 headerText1 += '<th class="rnkh_font Id_Numero">Number</th>';
 
                 if (useCategory == "no") {
                     headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
                 }            
-                headerText1 += '<th class="rnkh_font Id_Arrow">finish<br>status</th>';
-                headerText1 += '<th class="rnkh_font Id_Groupe">start<br>status</th>';
+                headerText1 += '<th class="rnkh_font Id_Arrow">finish status</th>';
+                headerText1 += '<th class="rnkh_font Id_Groupe">start status</th>';
 
-                headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider<br>1<br>Number</th>';
+                headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Number</th>';
                 
-                headerText1 += '<th class="rnkh_font Id_Nom">Rider<br>1<br>Name</th>';
+                headerText1 += '<th class="rnkh_font Id_Nom">Rider 1 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
 
-                headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider<br>2<br>Number</th>';
-                headerText1 += '<th class="rnkh_font Id_Nom_2">Rider<br>2<br>Name</th>';
+                headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Number</th>';
+                headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
                 if (doNotShowTime == 0) {
-                    headerText1 += '<th class="rnkh_font Id_TpsCumule">Rider<br>1<br>Time</th>';
-                    headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Rider<br>2<br>Time</th>';
+                    headerText1 += '<th class="rnkh_font Id_TpsCumule">Rider 1 Time</th>';
+                    headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Rider 2 Time</th>';
                 }
 // display intermediate in cleanResults
 //                if (show == 4) {
@@ -4302,6 +4302,7 @@ function download_csv(csv, filename) {
 
 function export_table_to_csv(html, filename) {
 	var csv = [];
+    csv.push('Migdal Epic Israel -' + csvName.split('_').join(' '));
 	var rows = document.querySelectorAll("table tr");
 	
     for (var i = 0; i < rows.length; i++) {
