@@ -3295,7 +3295,7 @@ if (show == 4) {
                 }
 
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue') + '</td>'; // status
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue').replace('s', 'Single').replace(/[0-9]/g, '') + '</td>'; // status
                 
                         
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Rider 1 Nr
@@ -4066,7 +4066,7 @@ if (enableJ3 == 1) {
     
 if (enableJ1 == 1) {
   
-    if (cleanResults == 0/* && show == 4 && useCategory == "no"*/) { // FIXME check if need all(mainly show), so we can watch different results on timing computer
+    if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
         var header = {};
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;

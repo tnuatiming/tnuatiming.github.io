@@ -76,7 +76,7 @@ python3 convert_p1_to_json.py
 
 ## web pages  ##
 
-race directors - https://tnuatiming.com/liveepic/master.html (wiil have csv download on stage end)
+master menagment - https://tnuatiming.com/liveepic/master.html (wiil have csv download on stage end)
 
 TV - https://tnuatiming.com/liveepic/tv.html (manual refrash)
 

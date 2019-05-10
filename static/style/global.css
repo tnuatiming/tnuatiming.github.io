@@ -1781,6 +1781,10 @@ a.main_logo {
     body#race.isbk {
         background-image: url("/images/isbk.jpg");
     }
+
+    body#race.rockcrawling {
+        background-image: url("/images/rockcrawling.jpg");
+    }
 /*
     #live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
         background: rgba(208,208,208,0.8);
