@@ -1346,6 +1346,8 @@ switch(option) {  // tickerTest
 
                 } else if (useCategory == "no") {
                         finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                } else if (cleanResults == 1) {
+                        finalText += '<td class="rnk_font">' + opt3 + '</td>\n';
                 } else {
                         finalText += '<td class="rnk_font highlight">' + opt3 + '</td>\n';
                 }

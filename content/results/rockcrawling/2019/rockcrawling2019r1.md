@@ -23,7 +23,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">17</td>
+        <td class="rnk_font">17</td>
         <td class="rnk_font">נתנאל אזולאי</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">2:57.528</td>
@@ -32,7 +32,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">18</td>
+        <td class="rnk_font">18</td>
         <td class="rnk_font">ערן תורג'מן</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">3:19.603</td>
@@ -59,7 +59,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">9</td>
+        <td class="rnk_font">9</td>
         <td class="rnk_font">צחי מדהלה</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">14:00.000</td>
@@ -69,7 +69,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">8</td>
+        <td class="rnk_font">8</td>
         <td class="rnk_font">אורן אברהמי</td>
         <td class="rnk_font">1</td>
         <td class="rnk_font">14:00.000</td>
@@ -97,7 +97,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">14</td>
+        <td class="rnk_font">14</td>
         <td class="rnk_font">עירא אבני</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">2:50.497</td>
@@ -107,7 +107,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">10</td>
+        <td class="rnk_font">10</td>
         <td class="rnk_font">איימן עלוה</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">2:45.047</td>
@@ -117,7 +117,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">12</td>
+        <td class="rnk_font">12</td>
         <td class="rnk_font">עובד ארזי</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">3:57.359</td>
@@ -127,7 +127,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">13</td>
+        <td class="rnk_font">13</td>
         <td class="rnk_font">דודי ג'אן</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">3:17.257</td>
@@ -135,25 +135,25 @@ category: "rockcrawling"
         <td class="rnk_font">-</td>
         <td class="rnk_font">9:48.831</td>
     </tr>
-    <tr class="rnk_bkcolor OddRow">
-        <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">21</td>
-        <td class="rnk_font">אריה בטיא</td>
-        <td class="rnk_font">2</td>
-        <td class="rnk_font">3:40.717</td>
-        <td class="rnk_font">17:40.717</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">11:39.200</td>
-    </tr>
     <tr class="rnk_bkcolor EvenRow">
-        <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">11</td>
+        <td class="rnk_font">5</td>
+        <td class="rnk_font">11</td>
         <td class="rnk_font">עאדל זאהר</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">2:36.962</td>
         <td class="rnk_font penalty">P 26:36.962</td>
         <td class="rnk_font">10:00.000</td>
         <td class="rnk_font">20:35.445</td>
+    </tr>
+    <tr class="rnk_bkcolor OddRow">
+        <td class="rnk_font">6</td>
+        <td class="rnk_font">21</td>
+        <td class="rnk_font">אריה בטיא</td>
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">3:40.717</td>
+        <td class="rnk_font">P 27:40.717</td>
+        <td class="rnk_font">10:00.000</td>
+        <td class="rnk_font">21:39.200</td>
     </tr>
     <tr>
         <td colspan="99" class="comment_font">הקפה מהירה: (11) עאדל זאהר - 2:36.962</td>
@@ -174,7 +174,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">1</td>
+        <td class="rnk_font">1</td>
         <td class="rnk_font">עדן וינטרוב</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:03.318</td>
@@ -183,7 +183,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">25</td>
+        <td class="rnk_font">25</td>
         <td class="rnk_font">דודי בר מואב</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:03.971</td>
@@ -192,7 +192,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">תמיר אדרי</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:09.571</td>
@@ -219,7 +219,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">צחי אשכנזי</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:37.763</td>
@@ -229,7 +229,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">4</td>
+        <td class="rnk_font">4</td>
         <td class="rnk_font">רמי מסיקה</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:43.249</td>
@@ -239,7 +239,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">2</td>
+        <td class="rnk_font">2</td>
         <td class="rnk_font">אסי גורקביץ</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:45.873</td>
@@ -249,7 +249,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">5</td>
+        <td class="rnk_font">5</td>
         <td class="rnk_font">עופר בן שושן</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:46.654</td>
@@ -259,7 +259,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">3</td>
+        <td class="rnk_font">3</td>
         <td class="rnk_font">טאריק שחאדה</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:03.354</td>
@@ -269,7 +269,7 @@ category: "rockcrawling"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">6</td>
+        <td class="rnk_font">6</td>
         <td class="rnk_font">סהר אמיר</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:24.228</td>

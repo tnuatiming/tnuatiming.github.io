@@ -8,7 +8,7 @@ season: "2019"
 round: "מרוץ 1"
 category: "motocross"
 ---
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית MX1 - מקצה ראשון</td>
     </tr>

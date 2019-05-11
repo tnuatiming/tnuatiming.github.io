@@ -23,7 +23,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">12</td>
+        <td class="rnk_font">12</td>
         <td class="rnk_font">שחר בלולו</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:48.528</td>
@@ -32,7 +32,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">10</td>
+        <td class="rnk_font">10</td>
         <td class="rnk_font">דור עטיה</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:50.684</td>
@@ -41,7 +41,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">100</td>
+        <td class="rnk_font">100</td>
         <td class="rnk_font">אליקו אוחנה</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:56.328</td>
@@ -50,7 +50,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">3</td>
+        <td class="rnk_font">3</td>
         <td class="rnk_font">אלירן קדר</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:56.793</td>
@@ -76,7 +76,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">12</td>
+        <td class="rnk_font">12</td>
         <td class="rnk_font">שחר בלולו</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:48.456</td>
@@ -85,7 +85,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">10</td>
+        <td class="rnk_font">10</td>
         <td class="rnk_font">דור עטיה</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:51.305</td>
@@ -94,7 +94,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">100</td>
+        <td class="rnk_font">100</td>
         <td class="rnk_font">אליקו אוחנה</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:54.674</td>
@@ -103,7 +103,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">3</td>
+        <td class="rnk_font">3</td>
         <td class="rnk_font">אלירן קדר</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:57.155</td>
@@ -129,7 +129,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">47</td>
+        <td class="rnk_font">47</td>
         <td class="rnk_font">סוף סלע</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:50.110</td>
@@ -138,7 +138,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">1</td>
+        <td class="rnk_font">1</td>
         <td class="rnk_font">דן מיה</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:53.085</td>
@@ -147,7 +147,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">777</td>
+        <td class="rnk_font">777</td>
         <td class="rnk_font">דוד פורמנוב</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:55.412</td>
@@ -156,7 +156,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">36</td>
+        <td class="rnk_font">36</td>
         <td class="rnk_font">בן חביב</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:57.312</td>
@@ -165,7 +165,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">94</td>
+        <td class="rnk_font">94</td>
         <td class="rnk_font">דודו עטר</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:57.642</td>
@@ -174,7 +174,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">איתי דוב</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:57.676</td>
@@ -183,7 +183,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">51</td>
+        <td class="rnk_font">51</td>
         <td class="rnk_font">גיא דוברובסקי</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">1:58.890</td>
@@ -192,7 +192,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">241</td>
+        <td class="rnk_font">241</td>
         <td class="rnk_font">אופיר ואזה</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">2:00.327</td>
@@ -201,7 +201,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">שי מנצור</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">2:01.715</td>
@@ -213,7 +213,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">146</td>
+        <td class="rnk_font">146</td>
         <td class="rnk_font">רוני רגף</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">1:55.187</td>
@@ -239,7 +239,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">47</td>
+        <td class="rnk_font">47</td>
         <td class="rnk_font">סוף סלע</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:50.167</td>
@@ -248,7 +248,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">1</td>
+        <td class="rnk_font">1</td>
         <td class="rnk_font">דן מיה</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:53.111</td>
@@ -257,7 +257,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">777</td>
+        <td class="rnk_font">777</td>
         <td class="rnk_font">דוד פורמנוב</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:54.521</td>
@@ -266,7 +266,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">שי מנצור</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:56.278</td>
@@ -275,7 +275,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">איתי דוב</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">1:55.990</td>
@@ -284,7 +284,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">51</td>
+        <td class="rnk_font">51</td>
         <td class="rnk_font">גיא דוברובסקי</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">1:58.701</td>
@@ -293,7 +293,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">36</td>
+        <td class="rnk_font">36</td>
         <td class="rnk_font">בן חביב</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">1:56.555</td>
@@ -302,7 +302,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">241</td>
+        <td class="rnk_font">241</td>
         <td class="rnk_font">אופיר ואזה</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">1:59.123</td>
@@ -314,7 +314,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">94</td>
+        <td class="rnk_font">94</td>
         <td class="rnk_font">דודו עטר</td>
         <td class="rnk_font">3</td>
         <td class="rnk_font">1:55.968</td>
@@ -340,7 +340,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">אריאל דדיה</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:53.128</td>
@@ -349,7 +349,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">15</td>
+        <td class="rnk_font">15</td>
         <td class="rnk_font">גיא אליתים</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:53.248</td>
@@ -358,7 +358,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">8</td>
+        <td class="rnk_font">8</td>
         <td class="rnk_font">נמרוד דור</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:53.994</td>
@@ -367,7 +367,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">27</td>
+        <td class="rnk_font">27</td>
         <td class="rnk_font">עידו כרמון</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:55.405</td>
@@ -376,7 +376,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">2</td>
+        <td class="rnk_font">2</td>
         <td class="rnk_font">איתי מרחבי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:58.156</td>
@@ -385,7 +385,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">69</td>
+        <td class="rnk_font">69</td>
         <td class="rnk_font">מוטי אלקיים</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">1:59.733</td>
@@ -411,7 +411,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">27</td>
+        <td class="rnk_font">27</td>
         <td class="rnk_font">עידו כרמון</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:55.354</td>
@@ -420,7 +420,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">אריאל דדיה</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:55.389</td>
@@ -429,7 +429,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">8</td>
+        <td class="rnk_font">8</td>
         <td class="rnk_font">נמרוד דור</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:58.203</td>
@@ -438,7 +438,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">15</td>
+        <td class="rnk_font">15</td>
         <td class="rnk_font">גיא אליתים</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:58.923</td>
@@ -447,7 +447,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">2</td>
+        <td class="rnk_font">2</td>
         <td class="rnk_font">איתי מרחבי</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">2:00.046</td>
@@ -456,7 +456,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">69</td>
+        <td class="rnk_font">69</td>
         <td class="rnk_font">מוטי אלקיים</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">2:02.025</td>
@@ -482,7 +482,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">33</td>
+        <td class="rnk_font">33</td>
         <td class="rnk_font">גיל זרקו</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:53.516</td>
@@ -491,7 +491,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">50</td>
+        <td class="rnk_font">50</td>
         <td class="rnk_font">עילי מיכאלי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:52.784</td>
@@ -500,7 +500,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">262</td>
+        <td class="rnk_font">262</td>
         <td class="rnk_font">אופק קיסוס</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:54.883</td>
@@ -509,7 +509,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">26</td>
+        <td class="rnk_font">26</td>
         <td class="rnk_font">עומר רוזנבלום</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:58.762</td>
@@ -518,7 +518,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">23</td>
+        <td class="rnk_font">23</td>
         <td class="rnk_font">ולדמן איתמר</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:02.658</td>
@@ -527,7 +527,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">24</td>
+        <td class="rnk_font">24</td>
         <td class="rnk_font">יובל בנאי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:16.290</td>
@@ -539,7 +539,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">4</td>
+        <td class="rnk_font">4</td>
         <td class="rnk_font">ניב סבן</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">1:58.753</td>
@@ -565,7 +565,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">33</td>
+        <td class="rnk_font">33</td>
         <td class="rnk_font">גיל זרקו</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:53.275</td>
@@ -574,7 +574,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">262</td>
+        <td class="rnk_font">262</td>
         <td class="rnk_font">אופק קיסוס</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:55.044</td>
@@ -583,7 +583,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">50</td>
+        <td class="rnk_font">50</td>
         <td class="rnk_font">עילי מיכאלי</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:54.366</td>
@@ -592,7 +592,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">26</td>
+        <td class="rnk_font">26</td>
         <td class="rnk_font">עומר רוזנבלום</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:58.670</td>
@@ -601,7 +601,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">23</td>
+        <td class="rnk_font">23</td>
         <td class="rnk_font">ולדמן איתמר</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">2:07.065</td>
@@ -610,7 +610,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">24</td>
+        <td class="rnk_font">24</td>
         <td class="rnk_font">יובל בנאי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:21.250</td>
@@ -636,7 +636,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">106</td>
+        <td class="rnk_font">106</td>
         <td class="rnk_font">רן יוחאי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:05.362</td>
@@ -645,7 +645,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">נועה כהן</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:06.990</td>
@@ -654,7 +654,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">141</td>
+        <td class="rnk_font">141</td>
         <td class="rnk_font">דנה פרדר</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:31.877</td>
@@ -680,7 +680,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">106</td>
+        <td class="rnk_font">106</td>
         <td class="rnk_font">רן יוחאי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:07.823</td>
@@ -689,7 +689,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">נועה כהן</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:07.615</td>
@@ -698,7 +698,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">141</td>
+        <td class="rnk_font">141</td>
         <td class="rnk_font">דנה פרדר</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:36.334</td>
@@ -724,7 +724,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">100</td>
+        <td class="rnk_font">100</td>
         <td class="rnk_font">חיים אוחנה</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:03.663</td>
@@ -733,7 +733,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">74</td>
+        <td class="rnk_font">74</td>
         <td class="rnk_font">מאור אברהם</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">1:59.942</td>
@@ -742,7 +742,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">169</td>
+        <td class="rnk_font">169</td>
         <td class="rnk_font">רמי ברנס</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:04.826</td>
@@ -751,7 +751,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">616</td>
+        <td class="rnk_font">616</td>
         <td class="rnk_font">ירון גולדשטיין</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">1:59.678</td>
@@ -760,7 +760,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">43</td>
+        <td class="rnk_font">43</td>
         <td class="rnk_font">עמית בן עזר</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:08.882</td>
@@ -769,7 +769,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">82</td>
+        <td class="rnk_font">82</td>
         <td class="rnk_font">אילן יפרח</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:10.573</td>
@@ -778,7 +778,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">62</td>
+        <td class="rnk_font">62</td>
         <td class="rnk_font">אברהים אלחמידי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:12.182</td>
@@ -787,7 +787,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">5</td>
+        <td class="rnk_font">5</td>
         <td class="rnk_font">יריב לוי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:18.060</td>
@@ -813,7 +813,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">74</td>
+        <td class="rnk_font">74</td>
         <td class="rnk_font">מאור אברהם</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:00.144</td>
@@ -822,7 +822,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">169</td>
+        <td class="rnk_font">169</td>
         <td class="rnk_font">רמי ברנס</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:04.934</td>
@@ -831,7 +831,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">100</td>
+        <td class="rnk_font">100</td>
         <td class="rnk_font">חיים אוחנה</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:03.127</td>
@@ -840,7 +840,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">62</td>
+        <td class="rnk_font">62</td>
         <td class="rnk_font">אברהים אלחמידי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:14.151</td>
@@ -849,7 +849,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">5</td>
+        <td class="rnk_font">5</td>
         <td class="rnk_font">יריב לוי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:22.196</td>
@@ -858,7 +858,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">43</td>
+        <td class="rnk_font">43</td>
         <td class="rnk_font">עמית בן עזר</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:27.538</td>
@@ -867,7 +867,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">23</td>
+        <td class="rnk_font">23</td>
         <td class="rnk_font">יובל שלומי</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:38.123</td>
@@ -893,7 +893,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">102</td>
+        <td class="rnk_font">102</td>
         <td class="rnk_font">איתי ברק</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:00.405</td>
@@ -902,7 +902,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">17</td>
+        <td class="rnk_font">17</td>
         <td class="rnk_font">בר אברג'יל</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">1:59.545</td>
@@ -911,7 +911,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">67</td>
+        <td class="rnk_font">67</td>
         <td class="rnk_font">ירין כהן</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:05.742</td>
@@ -920,7 +920,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">54</td>
+        <td class="rnk_font">54</td>
         <td class="rnk_font">משה קולנו</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:06.104</td>
@@ -929,7 +929,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">111</td>
+        <td class="rnk_font">111</td>
         <td class="rnk_font">חן שטבינסקי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:08.906</td>
@@ -938,7 +938,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">86</td>
+        <td class="rnk_font">86</td>
         <td class="rnk_font">מני בן גיגי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:12.196</td>
@@ -947,7 +947,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">99</td>
+        <td class="rnk_font">99</td>
         <td class="rnk_font">דניאל ארליך</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:22.683</td>
@@ -959,7 +959,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">554</td>
+        <td class="rnk_font">554</td>
         <td class="rnk_font">בר פרץ</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">3:18.938</td>
@@ -985,7 +985,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">102</td>
+        <td class="rnk_font">102</td>
         <td class="rnk_font">איתי ברק</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:01.233</td>
@@ -994,7 +994,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">17</td>
+        <td class="rnk_font">17</td>
         <td class="rnk_font">בר אברג'יל</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:00.825</td>
@@ -1003,7 +1003,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">67</td>
+        <td class="rnk_font">67</td>
         <td class="rnk_font">ירין כהן</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:06.928</td>
@@ -1012,7 +1012,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">54</td>
+        <td class="rnk_font">54</td>
         <td class="rnk_font">משה קולנו</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:07.955</td>
@@ -1021,7 +1021,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">99</td>
+        <td class="rnk_font">99</td>
         <td class="rnk_font">דניאל ארליך</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">2:28.170</td>
@@ -1033,7 +1033,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">554</td>
+        <td class="rnk_font">554</td>
         <td class="rnk_font">בר פרץ</td>
         <td class="rnk_font">0</td>
         <td class="rnk_font">-</td>
@@ -1059,7 +1059,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">108</td>
+        <td class="rnk_font">108</td>
         <td class="rnk_font">שי ספקטור</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">1:56.738</td>
@@ -1068,7 +1068,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">66</td>
+        <td class="rnk_font">66</td>
         <td class="rnk_font">אור זרקו</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:04.131</td>
@@ -1077,7 +1077,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">922</td>
+        <td class="rnk_font">922</td>
         <td class="rnk_font">אופשטיין שון</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:26.472</td>
@@ -1086,7 +1086,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font penalty">P 4</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">אכרם אלחמידי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:05.843</td>
@@ -1095,7 +1095,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font penalty">P 5</td>
-        <td class="rnk_font highlight">121</td>
+        <td class="rnk_font">121</td>
         <td class="rnk_font">גל אזולאי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:08.782</td>
@@ -1104,7 +1104,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">321</td>
+        <td class="rnk_font">321</td>
         <td class="rnk_font">איתי אביבי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:27.865</td>
@@ -1116,7 +1116,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">25</td>
+        <td class="rnk_font">25</td>
         <td class="rnk_font">דודי שמואל</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">2:56.815</td>
@@ -1125,7 +1125,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">224</td>
+        <td class="rnk_font">224</td>
         <td class="rnk_font">אילי ביבי</td>
         <td class="rnk_font">3</td>
         <td class="rnk_font">1:58.603</td>
@@ -1151,7 +1151,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">108</td>
+        <td class="rnk_font">108</td>
         <td class="rnk_font">שי ספקטור</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:59.218</td>
@@ -1160,7 +1160,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">224</td>
+        <td class="rnk_font">224</td>
         <td class="rnk_font">אילי ביבי</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:59.688</td>
@@ -1169,7 +1169,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">66</td>
+        <td class="rnk_font">66</td>
         <td class="rnk_font">אור זרקו</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">2:04.844</td>
@@ -1178,7 +1178,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">121</td>
+        <td class="rnk_font">121</td>
         <td class="rnk_font">גל אזולאי</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">2:07.737</td>
@@ -1187,7 +1187,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">אכרם אלחמידי</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">2:07.728</td>
@@ -1196,7 +1196,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">321</td>
+        <td class="rnk_font">321</td>
         <td class="rnk_font">איתי אביבי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">2:29.753</td>
@@ -1205,7 +1205,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">922</td>
+        <td class="rnk_font">922</td>
         <td class="rnk_font">אופשטיין שון</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:33.619</td>
@@ -1231,7 +1231,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">27</td>
+        <td class="rnk_font">27</td>
         <td class="rnk_font">אופיר קייסי צמח</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:02.076</td>
@@ -1240,7 +1240,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">1</td>
+        <td class="rnk_font">1</td>
         <td class="rnk_font">בן אלמגור</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:01.159</td>
@@ -1249,7 +1249,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">109</td>
+        <td class="rnk_font">109</td>
         <td class="rnk_font">איתי וינברג</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">2:21.355</td>
@@ -1258,7 +1258,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">48</td>
+        <td class="rnk_font">48</td>
         <td class="rnk_font">שי אשכנזי</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:29.223</td>
@@ -1267,7 +1267,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">84</td>
+        <td class="rnk_font">84</td>
         <td class="rnk_font">אוראן אוחנה</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:30.135</td>
@@ -1276,7 +1276,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">160</td>
+        <td class="rnk_font">160</td>
         <td class="rnk_font">ליאל רומנוב</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:41.901</td>
@@ -1285,7 +1285,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">בן נהרי</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:41.722</td>
@@ -1311,7 +1311,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">1</td>
+        <td class="rnk_font">1</td>
         <td class="rnk_font">בן אלמגור</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:02.267</td>
@@ -1320,7 +1320,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">27</td>
+        <td class="rnk_font">27</td>
         <td class="rnk_font">אופיר קייסי צמח</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:02.559</td>
@@ -1329,7 +1329,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">109</td>
+        <td class="rnk_font">109</td>
         <td class="rnk_font">איתי וינברג</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:24.293</td>
@@ -1338,7 +1338,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">48</td>
+        <td class="rnk_font">48</td>
         <td class="rnk_font">שי אשכנזי</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:29.984</td>
@@ -1347,7 +1347,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">84</td>
+        <td class="rnk_font">84</td>
         <td class="rnk_font">אוראן אוחנה</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">2:37.529</td>
@@ -1356,7 +1356,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">בן נהרי</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">2:44.043</td>
@@ -1365,7 +1365,7 @@ category: "motocross"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">160</td>
+        <td class="rnk_font">160</td>
         <td class="rnk_font">ליאל רומנוב</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">2:49.473</td>

@@ -8,7 +8,7 @@ season: "2019"
 round: "מרוץ 2"
 category: "motocross"
 ---
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית MX1 - מקצה ראשון</td>
     </tr>
@@ -97,7 +97,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (47) סוף סלע - 1:47.072</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית MX1 - מקצה שני</td>
     </tr>
@@ -341,7 +341,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (47) סוף סלע - 1:46.870</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית MX2 - מקצה שני</td>
     </tr>
@@ -475,7 +475,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (47) סוף סלע - 1:50.447</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">אקספרט - מקצה ראשון</td>
     </tr>
@@ -582,7 +582,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (26) עומר רוזנבלום - 1:58.147</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">אקספרט - מקצה שני</td>
     </tr>
@@ -689,7 +689,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (26) עומר רוזנבלום - 2:00.090</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">סניורים - מקצה ראשון</td>
     </tr>
@@ -751,7 +751,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (15) מתן ניר - 1:54.815</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">סניורים - מקצה שני</td>
     </tr>
@@ -813,7 +813,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (15) מתן ניר - 2:00.047</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניור - מקצה ראשון</td>
     </tr>
@@ -902,7 +902,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (5) בן אלמגור - 1:53.762</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניור - מקצה שני</td>
     </tr>
@@ -991,7 +991,7 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (5) בן אלמגור - 1:55.764</td>
     </tr>
 </table>
-<table class="fadeIn line_color">
+<table class="line_color">
     <tr>
         <td colspan="99" class="title_font">סופר ג'וניור - מקצה ראשון</td>
     </tr>

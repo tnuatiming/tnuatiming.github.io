@@ -25,7 +25,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">47</td>
+        <td class="rnk_font">47</td>
         <td class="rnk_font">סוף סלע</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">10:26.378</td>
@@ -35,7 +35,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">94</td>
+        <td class="rnk_font">94</td>
         <td class="rnk_font">בר נוב</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">10:37.596</td>
@@ -45,7 +45,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">6</td>
+        <td class="rnk_font">6</td>
         <td class="rnk_font">רון קדשאי</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">10:53.843</td>
@@ -55,7 +55,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">11</td>
+        <td class="rnk_font">11</td>
         <td class="rnk_font">גיא נורסלע</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">11:04.309</td>
@@ -65,7 +65,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">108</td>
+        <td class="rnk_font">108</td>
         <td class="rnk_font">שי ספקטור</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">11:48.406</td>
@@ -75,7 +75,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">75</td>
+        <td class="rnk_font">75</td>
         <td class="rnk_font">יובל גוטמן</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">12:43.998</td>
@@ -85,7 +85,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">45</td>
+        <td class="rnk_font">45</td>
         <td class="rnk_font">שי אביגדור</td>
         <td class="rnk_font">9</td>
         <td class="rnk_font">13:15.339</td>
@@ -95,7 +95,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">17</td>
+        <td class="rnk_font">17</td>
         <td class="rnk_font">הראל היימן</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">12:32.317</td>
@@ -108,7 +108,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">33</td>
+        <td class="rnk_font">33</td>
         <td class="rnk_font">גיל זרקו</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">11:13.296</td>
@@ -136,7 +136,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">88</td>
+        <td class="rnk_font">88</td>
         <td class="rnk_font">דן מיה</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">10:45.917</td>
@@ -146,7 +146,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">4</td>
+        <td class="rnk_font">4</td>
         <td class="rnk_font">נמרוד חמו</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">10:36.749</td>
@@ -156,7 +156,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">25</td>
+        <td class="rnk_font">25</td>
         <td class="rnk_font">תומר שמש</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">10:29.222</td>
@@ -166,7 +166,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">9</td>
+        <td class="rnk_font">9</td>
         <td class="rnk_font">טל איזנבנד</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">11:06.700</td>
@@ -176,7 +176,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">12</td>
+        <td class="rnk_font">12</td>
         <td class="rnk_font">שגב דן</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">12:04.897</td>
@@ -189,7 +189,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">35</td>
+        <td class="rnk_font">35</td>
         <td class="rnk_font">חן כהן</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">11:20.117</td>
@@ -216,7 +216,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">יוני לוי</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">10:57.302</td>
@@ -225,7 +225,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">7</td>
+        <td class="rnk_font">7</td>
         <td class="rnk_font">זיו כרמי</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">11:13.694</td>
@@ -234,7 +234,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">16</td>
+        <td class="rnk_font">16</td>
         <td class="rnk_font">דרור כהן</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">11:14.911</td>
@@ -243,7 +243,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">15</td>
+        <td class="rnk_font">15</td>
         <td class="rnk_font">אריאל שלי</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">11:08.609</td>
@@ -270,7 +270,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">310</td>
+        <td class="rnk_font">310</td>
         <td class="rnk_font">בועז סאסי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:17.560</td>
@@ -280,7 +280,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">259</td>
+        <td class="rnk_font">259</td>
         <td class="rnk_font">רז עידן</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:49.297</td>
@@ -290,7 +290,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">141</td>
+        <td class="rnk_font">141</td>
         <td class="rnk_font">דור תורג'מן</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:41.717</td>
@@ -300,7 +300,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">110</td>
+        <td class="rnk_font">110</td>
         <td class="rnk_font">איתי גרואג</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:35.539</td>
@@ -310,7 +310,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">37</td>
+        <td class="rnk_font">37</td>
         <td class="rnk_font">גל מיה</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:42.558</td>
@@ -320,7 +320,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">46</td>
+        <td class="rnk_font">46</td>
         <td class="rnk_font">ענבר זלינגר</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:46.651</td>
@@ -330,7 +330,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">263</td>
+        <td class="rnk_font">263</td>
         <td class="rnk_font">עומר רוזנבלום</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:35.172</td>
@@ -340,7 +340,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">656</td>
+        <td class="rnk_font">656</td>
         <td class="rnk_font">עוז נהוראי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">13:44.173</td>
@@ -350,7 +350,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">222</td>
+        <td class="rnk_font">222</td>
         <td class="rnk_font">עומר קלנר</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">13:49.563</td>
@@ -360,7 +360,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">10</td>
-        <td class="rnk_font highlight">138</td>
+        <td class="rnk_font">138</td>
         <td class="rnk_font">אלון טייר</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">14:30.965</td>
@@ -370,7 +370,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">11</td>
-        <td class="rnk_font highlight">390</td>
+        <td class="rnk_font">390</td>
         <td class="rnk_font">טל אבטליון</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">14:18.637</td>
@@ -380,7 +380,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">12</td>
-        <td class="rnk_font highlight">800</td>
+        <td class="rnk_font">800</td>
         <td class="rnk_font">איתן יואל</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">15:26.462</td>
@@ -390,7 +390,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">13</td>
-        <td class="rnk_font highlight">207</td>
+        <td class="rnk_font">207</td>
         <td class="rnk_font">בן קדמי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">13:11.089</td>
@@ -400,7 +400,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">14</td>
-        <td class="rnk_font highlight">182</td>
+        <td class="rnk_font">182</td>
         <td class="rnk_font">שקד כהן</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">16:19.154</td>
@@ -410,7 +410,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">15</td>
-        <td class="rnk_font highlight">203</td>
+        <td class="rnk_font">203</td>
         <td class="rnk_font">אורי עזרא</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">14:48.097</td>
@@ -420,7 +420,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">16</td>
-        <td class="rnk_font highlight">267</td>
+        <td class="rnk_font">267</td>
         <td class="rnk_font">ירין כהן</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">15:52.804</td>
@@ -430,7 +430,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">17</td>
-        <td class="rnk_font highlight">123</td>
+        <td class="rnk_font">123</td>
         <td class="rnk_font">גל אזולאי</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">14:13.907</td>
@@ -443,7 +443,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">211</td>
+        <td class="rnk_font">211</td>
         <td class="rnk_font">רון פרידריך</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">18:11.366</td>
@@ -453,7 +453,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">147</td>
+        <td class="rnk_font">147</td>
         <td class="rnk_font">איציק למברוזו</td>
         <td class="rnk_font">1</td>
         <td class="rnk_font">-</td>
@@ -463,7 +463,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">206</td>
+        <td class="rnk_font">206</td>
         <td class="rnk_font">אורי בן עמי</td>
         <td class="rnk_font">1</td>
         <td class="rnk_font">-</td>
@@ -491,7 +491,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">304</td>
+        <td class="rnk_font">304</td>
         <td class="rnk_font">אסף ויסבקר</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:04.661</td>
@@ -501,7 +501,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">225</td>
+        <td class="rnk_font">225</td>
         <td class="rnk_font">עמית מלול</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:58.771</td>
@@ -511,7 +511,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">183</td>
+        <td class="rnk_font">183</td>
         <td class="rnk_font">אור פלס</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:01.424</td>
@@ -521,7 +521,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">126</td>
+        <td class="rnk_font">126</td>
         <td class="rnk_font">ברששת נתנאל</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:39.568</td>
@@ -531,7 +531,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">95</td>
+        <td class="rnk_font">95</td>
         <td class="rnk_font">גל יעקב</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:53.654</td>
@@ -541,7 +541,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">213</td>
+        <td class="rnk_font">213</td>
         <td class="rnk_font">רובי גולן</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">14:46.853</td>
@@ -551,7 +551,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">69</td>
+        <td class="rnk_font">69</td>
         <td class="rnk_font">אלעד ששון</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">15:32.584</td>
@@ -561,7 +561,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">999</td>
+        <td class="rnk_font">999</td>
         <td class="rnk_font">אלדר ג'ובני</td>
         <td class="rnk_font">0</td>
         <td class="rnk_font">-</td>
@@ -589,7 +589,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">190</td>
+        <td class="rnk_font">190</td>
         <td class="rnk_font">בן זינגר</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:13.070</td>
@@ -599,7 +599,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">336</td>
+        <td class="rnk_font">336</td>
         <td class="rnk_font">מג'ד נעיים</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:23.100</td>
@@ -609,7 +609,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">79</td>
+        <td class="rnk_font">79</td>
         <td class="rnk_font">עמית שטרן</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:17.120</td>
@@ -619,7 +619,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">337</td>
+        <td class="rnk_font">337</td>
         <td class="rnk_font">מוחמד נעיים</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:51.852</td>
@@ -629,7 +629,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">205</td>
+        <td class="rnk_font">205</td>
         <td class="rnk_font">תומר גבעתי</td>
         <td class="rnk_font">6</td>
         <td class="rnk_font">14:11.289</td>
@@ -639,7 +639,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">321</td>
+        <td class="rnk_font">321</td>
         <td class="rnk_font">ליאור יוסף</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">16:00.504</td>
@@ -667,7 +667,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">111</td>
+        <td class="rnk_font">111</td>
         <td class="rnk_font">יוסי גוטמן</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:39.703</td>
@@ -677,7 +677,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">121</td>
+        <td class="rnk_font">121</td>
         <td class="rnk_font">אוריה כרמלי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:05.707</td>
@@ -687,7 +687,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">28</td>
+        <td class="rnk_font">28</td>
         <td class="rnk_font">צחי בני</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:30.886</td>
@@ -697,7 +697,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">901</td>
+        <td class="rnk_font">901</td>
         <td class="rnk_font">עמית גול</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:29.103</td>
@@ -707,7 +707,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">130</td>
+        <td class="rnk_font">130</td>
         <td class="rnk_font">קלדס אדי</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:13.428</td>
@@ -717,7 +717,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">125</td>
+        <td class="rnk_font">125</td>
         <td class="rnk_font">רונן מדיאל</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:25.240</td>
@@ -727,7 +727,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">519</td>
+        <td class="rnk_font">519</td>
         <td class="rnk_font">דרור כהן</td>
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:30.784</td>
@@ -737,7 +737,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">86</td>
+        <td class="rnk_font">86</td>
         <td class="rnk_font">שלומי אקטע</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">15:55.529</td>
@@ -747,7 +747,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">745</td>
+        <td class="rnk_font">745</td>
         <td class="rnk_font">שאולי חמווי</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">11:02.178</td>
@@ -757,7 +757,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">10</td>
-        <td class="rnk_font highlight">56</td>
+        <td class="rnk_font">56</td>
         <td class="rnk_font">איציק קלנר</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">13:50.934</td>
@@ -770,7 +770,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">109</td>
+        <td class="rnk_font">109</td>
         <td class="rnk_font">מתן ניר</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">12:23.266</td>
@@ -797,7 +797,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">415</td>
+        <td class="rnk_font">415</td>
         <td class="rnk_font">דביר יזרעאלי</td>
         <td class="rnk_font">3</td>
         <td class="rnk_font">17:02.702</td>
@@ -806,7 +806,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">202</td>
+        <td class="rnk_font">202</td>
         <td class="rnk_font">אסף אדום</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">23:07.170</td>
@@ -832,7 +832,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">449</td>
+        <td class="rnk_font">449</td>
         <td class="rnk_font">רז נהוראי</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">14:25.697</td>
@@ -841,7 +841,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">114</td>
+        <td class="rnk_font">114</td>
         <td class="rnk_font">ליאור עוזיאל</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">14:44.613</td>
@@ -850,7 +850,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">200</td>
+        <td class="rnk_font">200</td>
         <td class="rnk_font">ים ארצי</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">47:07.409</td>
@@ -859,7 +859,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">174</td>
+        <td class="rnk_font">174</td>
         <td class="rnk_font">איתי אורן</td>
         <td class="rnk_font">2</td>
         <td class="rnk_font">32:27.967</td>
@@ -868,7 +868,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">804</td>
+        <td class="rnk_font">804</td>
         <td class="rnk_font">אלבחר אביאל</td>
         <td class="rnk_font">1</td>
         <td class="rnk_font">-</td>
@@ -894,7 +894,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">163</td>
+        <td class="rnk_font">163</td>
         <td class="rnk_font">שירן פרוחי</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">13:40.396</td>
@@ -920,7 +920,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">27</td>
+        <td class="rnk_font">27</td>
         <td class="rnk_font">אופיר קייסי צמח</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">16:58.264</td>
@@ -929,7 +929,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">666</td>
+        <td class="rnk_font">666</td>
         <td class="rnk_font">אור זרקו</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">16:39.139</td>
@@ -938,7 +938,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">165</td>
+        <td class="rnk_font">165</td>
         <td class="rnk_font">אלון יוסף</td>
         <td class="rnk_font">4</td>
         <td class="rnk_font">26:27.965</td>
@@ -947,7 +947,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">77</td>
+        <td class="rnk_font">77</td>
         <td class="rnk_font">ארז מלמן</td>
         <td class="rnk_font">1</td>
         <td class="rnk_font">-</td>
@@ -973,7 +973,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">321</td>
+        <td class="rnk_font">321</td>
         <td class="rnk_font">מעין חמוי</td>
         <td class="rnk_font">16</td>
         <td class="rnk_font">2:30.167</td>
@@ -982,7 +982,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">84</td>
+        <td class="rnk_font">84</td>
         <td class="rnk_font">רון רוזנבוים</td>
         <td class="rnk_font">15</td>
         <td class="rnk_font">2:28.536</td>
@@ -991,7 +991,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">25</td>
+        <td class="rnk_font">25</td>
         <td class="rnk_font">דודי שמואל</td>
         <td class="rnk_font">15</td>
         <td class="rnk_font">2:34.844</td>
@@ -1000,7 +1000,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">517</td>
+        <td class="rnk_font">517</td>
         <td class="rnk_font">רן שמאי</td>
         <td class="rnk_font">15</td>
         <td class="rnk_font">2:35.582</td>
@@ -1009,7 +1009,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">243</td>
+        <td class="rnk_font">243</td>
         <td class="rnk_font">איתמר ברדה</td>
         <td class="rnk_font">15</td>
         <td class="rnk_font">2:35.779</td>
@@ -1018,7 +1018,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">65</td>
+        <td class="rnk_font">65</td>
         <td class="rnk_font">עדן רגב</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">2:39.486</td>
@@ -1027,7 +1027,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">172</td>
+        <td class="rnk_font">172</td>
         <td class="rnk_font">רון צדיק</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">2:42.926</td>
@@ -1036,7 +1036,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">32</td>
+        <td class="rnk_font">32</td>
         <td class="rnk_font">עידו לובטון</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">2:37.857</td>
@@ -1045,7 +1045,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">118</td>
+        <td class="rnk_font">118</td>
         <td class="rnk_font">עילאי בן דהן</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">2:59.357</td>
@@ -1057,7 +1057,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">115</td>
+        <td class="rnk_font">115</td>
         <td class="rnk_font">מעיין עוזיאל</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">2:37.239</td>
@@ -1084,7 +1084,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">48</td>
+        <td class="rnk_font">48</td>
         <td class="rnk_font">שי אשכנזי</td>
         <td class="rnk_font">15</td>
         <td class="rnk_font">2:36.957</td>
@@ -1094,7 +1094,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">109</td>
+        <td class="rnk_font">109</td>
         <td class="rnk_font">איתי וינברג</td>
         <td class="rnk_font">15</td>
         <td class="rnk_font">2:41.143</td>
@@ -1104,7 +1104,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">100</td>
+        <td class="rnk_font">100</td>
         <td class="rnk_font">אוראן אוחנה</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">2:30.651</td>
@@ -1114,7 +1114,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">246</td>
+        <td class="rnk_font">246</td>
         <td class="rnk_font">אוריין רוזנבוים</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">2:38.178</td>
@@ -1124,7 +1124,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">6</td>
+        <td class="rnk_font">6</td>
         <td class="rnk_font">יותם גרינברג</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">2:49.118</td>
@@ -1134,7 +1134,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">666</td>
+        <td class="rnk_font">666</td>
         <td class="rnk_font">עומר שהם</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">2:48.108</td>
@@ -1144,7 +1144,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">34</td>
+        <td class="rnk_font">34</td>
         <td class="rnk_font">נדב ברדה</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">2:43.529</td>
@@ -1154,7 +1154,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">777</td>
+        <td class="rnk_font">777</td>
         <td class="rnk_font">גיא שהם</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">2:54.704</td>
@@ -1164,7 +1164,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">40</td>
+        <td class="rnk_font">40</td>
         <td class="rnk_font">אימרי יוסף אברגל</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">2:51.373</td>
@@ -1174,7 +1174,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">10</td>
-        <td class="rnk_font highlight">26</td>
+        <td class="rnk_font">26</td>
         <td class="rnk_font">אביהו סיני</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">2:39.326</td>
@@ -1201,7 +1201,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">57</td>
+        <td class="rnk_font">57</td>
         <td class="rnk_font">נהוראי דוידה</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">2:52.375</td>
@@ -1210,7 +1210,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">44</td>
+        <td class="rnk_font">44</td>
         <td class="rnk_font">עומר כהן</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">2:44.000</td>
@@ -1219,7 +1219,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">94</td>
+        <td class="rnk_font">94</td>
         <td class="rnk_font">רוי ניניו</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">2:50.799</td>
@@ -1228,7 +1228,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">715</td>
+        <td class="rnk_font">715</td>
         <td class="rnk_font">דור שמאי</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">3:11.184</td>
@@ -1237,7 +1237,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">46</td>
+        <td class="rnk_font">46</td>
         <td class="rnk_font">גיא גולדשטיין</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">3:12.694</td>
@@ -1246,7 +1246,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">199</td>
+        <td class="rnk_font">199</td>
         <td class="rnk_font">שליו אגמי</td>
         <td class="rnk_font">11</td>
         <td class="rnk_font">2:53.593</td>
@@ -1255,7 +1255,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">22</td>
+        <td class="rnk_font">22</td>
         <td class="rnk_font">רועי סבגי</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">3:16.928</td>
@@ -1264,7 +1264,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">157</td>
+        <td class="rnk_font">157</td>
         <td class="rnk_font">נועם שוורץ</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">3:35.109</td>
@@ -1273,7 +1273,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">103</td>
+        <td class="rnk_font">103</td>
         <td class="rnk_font">ירין קסנטיני</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">3:31.441</td>
@@ -1285,7 +1285,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">21</td>
+        <td class="rnk_font">21</td>
         <td class="rnk_font">יהונתן סבג</td>
         <td class="rnk_font">10</td>
         <td class="rnk_font">3:28.833</td>
@@ -1297,7 +1297,7 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font highlight">89</td>
+        <td class="rnk_font">89</td>
         <td class="rnk_font">אורי סבג</td>
         <td class="rnk_font">0</td>
         <td class="rnk_font">-</td>

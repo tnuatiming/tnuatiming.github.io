@@ -19,7 +19,7 @@ remove all imTheLeader
 
 */
 
-    var MaximumStageTime = 21600000; // Maximum stage time in miliseconds, 3600000=1hours, 18000000=5hours, 21600000=6hours, 36000000=10hours
+    var MaximumStageTime = 36000000; // Maximum stage time in miliseconds, 3600000=1hours, 18000000=5hours, 21600000=6hours, 36000000=10hours
 
 // Set the date for start
     var startTime = new Date("May 6, 2019 07:00:00").getTime();
@@ -824,6 +824,7 @@ remove all imTheLeader
         var DayTime = Text.DayTime;
         var ElapsedTime = Text.ElapsedTime;
         var RemainingTime = Text.RemainingTime;
+//        MaximumStageTime = Text.MaximumStageTime;
 
         if (HeaderEventName.includes("+++")) { // clean table for results page
             cleanResults = 1;

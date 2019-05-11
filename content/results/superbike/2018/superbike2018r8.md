@@ -23,7 +23,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">1</td>
-            <td class="rnk_font highlight">11</td>
+            <td class="rnk_font">11</td>
             <td class="rnk_font">אלמוג מנגד</td>
             <td class="rnk_font">27</td>
             <td class="rnk_font">39.026</td>
@@ -32,7 +32,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">2</td>
-            <td class="rnk_font highlight">73</td>
+            <td class="rnk_font">73</td>
             <td class="rnk_font">אבי אלבז</td>
             <td class="rnk_font">27</td>
             <td class="rnk_font">39.312</td>
@@ -58,7 +58,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">1</td>
-            <td class="rnk_font highlight">77</td>
+            <td class="rnk_font">77</td>
             <td class="rnk_font">יוגב הרוש</td>
             <td class="rnk_font">27</td>
             <td class="rnk_font">38.051</td>
@@ -67,7 +67,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">2</td>
-            <td class="rnk_font highlight">82</td>
+            <td class="rnk_font">82</td>
             <td class="rnk_font">נביל שבסו</td>
             <td class="rnk_font">27</td>
             <td class="rnk_font">37.964</td>
@@ -76,7 +76,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">3</td>
-            <td class="rnk_font highlight">19</td>
+            <td class="rnk_font">19</td>
             <td class="rnk_font">ליעד לב</td>
             <td class="rnk_font">27</td>
             <td class="rnk_font">39.071</td>
@@ -85,7 +85,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">4</td>
-            <td class="rnk_font highlight">1</td>
+            <td class="rnk_font">1</td>
             <td class="rnk_font">חיים זנדברג</td>
             <td class="rnk_font">26</td>
             <td class="rnk_font">39.803</td>
@@ -94,7 +94,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">5</td>
-            <td class="rnk_font highlight">84</td>
+            <td class="rnk_font">84</td>
             <td class="rnk_font">ניר ישראל</td>
             <td class="rnk_font">24</td>
             <td class="rnk_font">42.208</td>
@@ -103,7 +103,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">6</td>
-            <td class="rnk_font highlight">22</td>
+            <td class="rnk_font">22</td>
             <td class="rnk_font">אייל חוברה</td>
             <td class="rnk_font">24</td>
             <td class="rnk_font">42.152</td>
@@ -129,7 +129,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">1</td>
-            <td class="rnk_font highlight">800</td>
+            <td class="rnk_font">800</td>
             <td class="rnk_font">בר לוי</td>
             <td class="rnk_font">20</td>
             <td class="rnk_font">40.787</td>
@@ -138,7 +138,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">2</td>
-            <td class="rnk_font highlight">17</td>
+            <td class="rnk_font">17</td>
             <td class="rnk_font">חיים זנדברג</td>
             <td class="rnk_font">20</td>
             <td class="rnk_font">41.039</td>
@@ -147,7 +147,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">3</td>
-            <td class="rnk_font highlight">47</td>
+            <td class="rnk_font">47</td>
             <td class="rnk_font">אילן ברוורמן</td>
             <td class="rnk_font">20</td>
             <td class="rnk_font">42.894</td>
@@ -156,7 +156,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">4</td>
-            <td class="rnk_font highlight">11</td>
+            <td class="rnk_font">11</td>
             <td class="rnk_font">ניב מורן רבין</td>
             <td class="rnk_font">20</td>
             <td class="rnk_font">42.910</td>
@@ -165,7 +165,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">5</td>
-            <td class="rnk_font highlight">6</td>
+            <td class="rnk_font">6</td>
             <td class="rnk_font">ניר מרגוליס</td>
             <td class="rnk_font">19</td>
             <td class="rnk_font">43.498</td>
@@ -174,7 +174,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">6</td>
-            <td class="rnk_font highlight">777</td>
+            <td class="rnk_font">777</td>
             <td class="rnk_font">אלי כרמל</td>
             <td class="rnk_font">19</td>
             <td class="rnk_font">43.168</td>
@@ -183,7 +183,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">7</td>
-            <td class="rnk_font highlight">43</td>
+            <td class="rnk_font">43</td>
             <td class="rnk_font">תובל ארד</td>
             <td class="rnk_font">19</td>
             <td class="rnk_font">43.889</td>
@@ -192,7 +192,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">8</td>
-            <td class="rnk_font highlight">888</td>
+            <td class="rnk_font">888</td>
             <td class="rnk_font">לוי שמואל</td>
             <td class="rnk_font">19</td>
             <td class="rnk_font">44.192</td>
@@ -201,7 +201,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">9</td>
-            <td class="rnk_font highlight">80</td>
+            <td class="rnk_font">80</td>
             <td class="rnk_font">שירה פרי</td>
             <td class="rnk_font">18</td>
             <td class="rnk_font">45.513</td>
@@ -227,7 +227,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">1</td>
-            <td class="rnk_font highlight">33</td>
+            <td class="rnk_font">33</td>
             <td class="rnk_font">עמית פוקס</td>
             <td class="rnk_font">20</td>
             <td class="rnk_font">40.597</td>
@@ -236,7 +236,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">2</td>
-            <td class="rnk_font highlight">31</td>
+            <td class="rnk_font">31</td>
             <td class="rnk_font">חן אביוב</td>
             <td class="rnk_font">20</td>
             <td class="rnk_font">40.400</td>
@@ -245,7 +245,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">3</td>
-            <td class="rnk_font highlight">18</td>
+            <td class="rnk_font">18</td>
             <td class="rnk_font">גל בן דהן</td>
             <td class="rnk_font">19</td>
             <td class="rnk_font">42.810</td>
@@ -254,7 +254,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">4</td>
-            <td class="rnk_font highlight">74</td>
+            <td class="rnk_font">74</td>
             <td class="rnk_font">אלעד איסוביץ</td>
             <td class="rnk_font">19</td>
             <td class="rnk_font">43.125</td>
@@ -263,7 +263,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor OddRow">
             <td class="rnk_font">5</td>
-            <td class="rnk_font highlight">67</td>
+            <td class="rnk_font">67</td>
             <td class="rnk_font">רוסלן נייבלט</td>
             <td class="rnk_font">19</td>
             <td class="rnk_font">42.995</td>
@@ -272,7 +272,7 @@ category: "superbike"
         </tr>
         <tr class="rnk_bkcolor EvenRow">
             <td class="rnk_font">6</td>
-            <td class="rnk_font highlight">4</td>
+            <td class="rnk_font">4</td>
             <td class="rnk_font">גיל ברנשטיין</td>
             <td class="rnk_font">18</td>
             <td class="rnk_font">46.007</td>

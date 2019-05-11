@@ -72,7 +72,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">696</td>
+        <td class="rnk_font">696</td>
         <td class="rnk_font">לי ברדה</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">1:15.618</td>
@@ -81,7 +81,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">44</td>
+        <td class="rnk_font">44</td>
         <td class="rnk_font">יוחאי חכם</td>
         <td class="rnk_font">14</td>
         <td class="rnk_font">1:20.342</td>
@@ -90,7 +90,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">47</td>
+        <td class="rnk_font">47</td>
         <td class="rnk_font">אילן ברוורמן</td>
         <td class="rnk_font">8</td>
         <td class="rnk_font">1:24.235</td>
@@ -118,7 +118,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">11</td>
+        <td class="rnk_font">11</td>
         <td class="rnk_font">שחר יגל</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:24.785</td>
@@ -128,7 +128,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">3</td>
+        <td class="rnk_font">3</td>
         <td class="rnk_font">אסף בן אהרון</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:23.960</td>
@@ -138,7 +138,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">777</td>
+        <td class="rnk_font">777</td>
         <td class="rnk_font">לירון פאדל</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:24.721</td>
@@ -148,7 +148,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">100</td>
+        <td class="rnk_font">100</td>
         <td class="rnk_font">רן יוחאי</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:25.665</td>
@@ -158,7 +158,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">14</td>
+        <td class="rnk_font">14</td>
         <td class="rnk_font">אליאור אטיאס</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:25.434</td>
@@ -168,7 +168,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">72</td>
+        <td class="rnk_font">72</td>
         <td class="rnk_font">טל זהבי</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:27.218</td>
@@ -178,7 +178,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">61</td>
+        <td class="rnk_font">61</td>
         <td class="rnk_font">יוחנן רזניק</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">1:30.032</td>
@@ -188,7 +188,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">17</td>
+        <td class="rnk_font">17</td>
         <td class="rnk_font">אסף טננבאום</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">1:30.514</td>
@@ -198,7 +198,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">32</td>
+        <td class="rnk_font">32</td>
         <td class="rnk_font">שי נוטלס</td>
         <td class="rnk_font">12</td>
         <td class="rnk_font">1:25.264</td>
@@ -225,7 +225,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font highlight">3</td>
+        <td class="rnk_font">3</td>
         <td class="rnk_font">אסף בן אהרון</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:24.492</td>
@@ -234,7 +234,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font highlight">14</td>
+        <td class="rnk_font">14</td>
         <td class="rnk_font">אליאור אטיאס</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:24.554</td>
@@ -243,7 +243,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">3</td>
-        <td class="rnk_font highlight">777</td>
+        <td class="rnk_font">777</td>
         <td class="rnk_font">לירון פאדל</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:24.394</td>
@@ -252,7 +252,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">4</td>
-        <td class="rnk_font highlight">100</td>
+        <td class="rnk_font">100</td>
         <td class="rnk_font">רן יוחאי</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:25.352</td>
@@ -261,7 +261,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">5</td>
-        <td class="rnk_font highlight">11</td>
+        <td class="rnk_font">11</td>
         <td class="rnk_font">שחר יגל</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:23.888</td>
@@ -270,7 +270,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">6</td>
-        <td class="rnk_font highlight">72</td>
+        <td class="rnk_font">72</td>
         <td class="rnk_font">טל זהבי</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:28.778</td>
@@ -279,7 +279,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">7</td>
-        <td class="rnk_font highlight">32</td>
+        <td class="rnk_font">32</td>
         <td class="rnk_font">שי נוטלס</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:28.346</td>
@@ -288,7 +288,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">8</td>
-        <td class="rnk_font highlight">61</td>
+        <td class="rnk_font">61</td>
         <td class="rnk_font">יוחנן רזניק</td>
         <td class="rnk_font">13</td>
         <td class="rnk_font">1:29.766</td>
@@ -297,7 +297,7 @@ category: "supermoto"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">9</td>
-        <td class="rnk_font highlight">17</td>
+        <td class="rnk_font">17</td>
         <td class="rnk_font">אסף טננבאום</td>
         <td class="rnk_font">5</td>
         <td class="rnk_font">1:30.237</td>
