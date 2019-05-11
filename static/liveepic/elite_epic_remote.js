@@ -69,6 +69,10 @@ remove all imTheLeader
     var showPrevious = show;// used for empting the array when displaying back intermediate.
 
     var epictv = 0;
+    var showArrow = 0; // FIXME disabled maybe not needed
+    if (sessionStorage.getItem('showArrow')) {
+        showArrow = sessionStorage.getItem('showArrow');
+    }
     
     var showTvHeader = 0;
     if (sessionStorage.getItem('showTvHeader')) {
@@ -86,8 +90,9 @@ remove all imTheLeader
     
     
         if (document.getElementById('epictv')){
+            
             epictv = 1;
-
+            
             document.getElementById("rows").value = rows;
             
             if (document.getElementById("showTvHeader").checked) {
@@ -113,6 +118,35 @@ remove all imTheLeader
                     alignTDforTV();
                 }
             });
+            
+            
+            
+            document.getElementById("showArrow").value = showArrow;
+            
+            if (document.getElementById("showArrow").checked) {
+                showArrow = 1;
+            } else {
+                showArrow = 0;
+            }
+            
+            const checkbox1 = document.getElementById('showArrow');
+
+            checkbox1.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    showArrow = 1;
+                    sessionStorage.setItem('showArrow', showArrow);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                    alignTDforTV();
+                } else {
+                    showArrow = 0;
+                    sessionStorage.setItem('showArrow', showArrow);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                    alignTDforTV();
+                }
+            });
+            
+            
+            
             
             
             if (showStopwatch == 1) {         
@@ -352,6 +386,13 @@ remove all imTheLeader
                 showTvHeader = 0;
             }
             sessionStorage.setItem('showTvHeader', showTvHeader);
+            
+            if (document.getElementById("showArrow").checked) {
+                showArrow = 1;
+            } else {
+                showArrow = 0;
+            }
+            sessionStorage.setItem('showArrow', showArrow);
         }
 
         if (show == 1) {
@@ -445,6 +486,13 @@ remove all imTheLeader
                 showTvHeader = 0;
             }
             sessionStorage.setItem('showTvHeader', showTvHeader);
+            
+            if (document.getElementById("showArrow").checked) {
+                showArrow = 1;
+            } else {
+                showArrow = 0;
+            }
+            sessionStorage.setItem('showArrow', showArrow);
         }
 
          if (useCategory == "yes" && catcat == "Men") {
@@ -2685,6 +2733,10 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
    //         }
    //     }          
 
+                if (/*showArrow == 1*/ showTvHeader == 0) {
+                    TVheaderText1 += '<th style="width: 0; margin: 0; padding: 0;" class="rnkh_font"></th>';
+                    TVheaderText1 += '<th class="rnkh_font">&nbsp;</th>';
+                }
         
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
@@ -2699,15 +2751,20 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
 
 // END HEADER for tv
    
+                if (useCategory == "no") {
+                    var arrowC = "Men";
+                } else {
+                    var arrowC = allArray[l]["Id_Categorie"];
+                }
    
-    
+                var lll = 0;
 
             // add category name header and table header
             if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
 //                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1;
                 
                 if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
-                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
+                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
                     finalText += '</table>\n';
                     NewCategoryHeader = allArray[l]["Id_Categorie"];
                 } else if (l == 0) {
@@ -2715,23 +2772,33 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                 }
 //                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1 + '\n';                
                             
+
+
                 finalText += '<table class="' + tableClass + 'line_color">\n';
                 
+                
                 if (showTvHeader == 1) {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow' + arrowC + '.svg"></td></tr>\n';
+
                     finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
                 }
                 
                 finalText += TVheaderText1 + '\n';
 
-                
+                lll = 1;
                 
             } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
                 
+                
                 if (showTvHeader == 1) {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow.svg"></td></tr>\n';
+
                     finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
                 }
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + TVheaderText1;
                 finalText += TVheaderText1 + '\n';
+                
+                lll = 1;
             }
 
     
@@ -2742,6 +2809,27 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                 finalText += '<tr class="rnk_bkcolor EvenRow">';
             }
     
+                 if (/*showArrow == 1*/ showTvHeader == 0 && lll == 1) {
+                     
+                     if (rows <= 3) {
+                         var size = "120";
+                     } else if (rows > 6) {
+                         var size = "160";
+                     } else {
+                         var size = "140";
+                     }
+                    
+                     
+                    finalText += '<td rowspan="' + rows + '" style="vertical-align: middle; margin: 0; padding: 0; overflow: visible; text-align: left;max-width: 0; width: 0;" class="rnk_font"><img style="position: relative; overflow: visible; margin: 0; padding: 0; height: ' + size + 'px; max-width: none; width: auto;" src="Images/arrow' + arrowC + '.svg"></td>';
+                    
+                    finalText += '<td style="min-width: 80px;" class="rnk_font">&nbsp;</td>';
+                                    
+                    lll = 0;
+
+                } else if (/*showArrow == 1*/ showTvHeader == 0 && lll == 0) {
+                    finalText += '<td style="min-width: 80px;" class="rnk_font">&nbsp;</td>';
+                
+                }
     
     
  
@@ -2939,13 +3027,13 @@ if (k<100){
     function alignTDforTV() {
             if (rows <= 3) {
                 //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "2");
-                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '2' }
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '45px' }
             } else if (rows > 3 && rows <= 8) {
                 //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "1.5");
-                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '1.5' }
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '35px' }
             } else {
                 //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "1");
-                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '1' }
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '25px' }
             }
     };
     

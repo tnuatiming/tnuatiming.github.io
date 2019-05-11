@@ -158,11 +158,12 @@
         background-color: #6c3;
         margin: 0 35px;
     }
-    #live #categoryOrAll label {
+    #live div#categoryOrAll label {
         font-weight: 700; 
         display: inline-block;
         height: 18px;
         color: #ecf0f1;
+        margin-left: 20px; 
     }
     #live label.rows {
         margin-left: 40px; 
@@ -171,7 +172,7 @@
         margin-right: 20px; 
         transform: scale(1.2);
     }
-    #live input#showTvHeader {
+    #live input#showTvHeader, #live input#showArrow {
         transform: scale(2);
     }
     #live #result {
@@ -439,6 +440,7 @@
         <button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button>
         <label class="rows">rows:&nbsp;&nbsp;<input id="rows" style="width: 30px;" type="text" name="rows"></label>
         <label for="showTvHeader"><input type="checkbox" id="showTvHeader" name="showTvHeader" value="header" checked>&nbsp;headers</label>
+        <label for="showArrow"><input type="checkbox" id="showArrow" name="showArrow" value="arrow" checked>&nbsp;arrow</label>
     </div>
     <div id="intermediateOrFinish">
         <button id="intermediate1" class="btn" onClick="intermediateOrFinish('1')">Intermediate 1</button>
