@@ -69,11 +69,11 @@ remove all imTheLeader
     var showPrevious = show;// used for empting the array when displaying back intermediate.
 
     var epictv = 0;
-    var showArrow = 0; // FIXME disabled maybe not needed
+/*    var showArrow = 0; // FIXME disabled maybe not needed
     if (sessionStorage.getItem('showArrow')) {
         showArrow = sessionStorage.getItem('showArrow');
     }
-    
+*/    
     var showTvHeader = 0;
     if (sessionStorage.getItem('showTvHeader')) {
         showTvHeader = sessionStorage.getItem('showTvHeader');
@@ -120,7 +120,7 @@ remove all imTheLeader
             });
             
             
-            
+/*            
             document.getElementById("showArrow").value = showArrow;
             
             if (document.getElementById("showArrow").checked) {
@@ -144,7 +144,7 @@ remove all imTheLeader
                     alignTDforTV();
                 }
             });
-            
+*/            
             
             
             
@@ -386,13 +386,15 @@ remove all imTheLeader
                 showTvHeader = 0;
             }
             sessionStorage.setItem('showTvHeader', showTvHeader);
-            
+/*            
             if (document.getElementById("showArrow").checked) {
                 showArrow = 1;
             } else {
                 showArrow = 0;
             }
             sessionStorage.setItem('showArrow', showArrow);
+*/
+            
         }
 
         if (show == 1) {
@@ -486,13 +488,15 @@ remove all imTheLeader
                 showTvHeader = 0;
             }
             sessionStorage.setItem('showTvHeader', showTvHeader);
-            
+/*            
             if (document.getElementById("showArrow").checked) {
                 showArrow = 1;
             } else {
                 showArrow = 0;
             }
             sessionStorage.setItem('showArrow', showArrow);
+*/
+
         }
 
          if (useCategory == "yes" && catcat == "Men") {
@@ -2781,6 +2785,8 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow' + arrowC + '.svg"></td></tr>\n';
 
                     finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
+                } else {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font"></td>&nbsp;</tr>\n'; // just to fill
                 }
                 
                 finalText += TVheaderText1 + '\n';
@@ -2794,6 +2800,8 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow.svg"></td></tr>\n';
 
                     finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
+                } else {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font">&nbsp;</td></tr>\n'; // just to fill
                 }
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + TVheaderText1;
                 finalText += TVheaderText1 + '\n';

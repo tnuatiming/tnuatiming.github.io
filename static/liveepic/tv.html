@@ -68,6 +68,10 @@
         text-shadow: none;
         white-space: nowrap;
     }
+    #live table {
+        position: absolute;
+        top: 300px;
+    }
     #live #buttonInfo {
         flex-direction: column;
         direction: ltr;
@@ -98,7 +102,8 @@
     }
     #live table.line_color {
         direction: ltr;
-        margin: 600px auto;
+  /*      margin: 600px auto;*/
+        margin: 0 auto;
         width: 80%;
     }
     #live tr.rnkh_bkcolor {
@@ -440,7 +445,7 @@
         <button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button>
         <label class="rows">rows:&nbsp;&nbsp;<input id="rows" style="width: 30px;" type="text" name="rows"></label>
         <label for="showTvHeader"><input type="checkbox" id="showTvHeader" name="showTvHeader" value="header" checked>&nbsp;headers</label>
-        <label for="showArrow"><input type="checkbox" id="showArrow" name="showArrow" value="arrow" checked>&nbsp;arrow</label>
+<!--        <label for="showArrow"><input type="checkbox" id="showArrow" name="showArrow" value="arrow" checked>&nbsp;arrow</label>-->
     </div>
     <div id="intermediateOrFinish">
         <button id="intermediate1" class="btn" onClick="intermediateOrFinish('1')">Intermediate 1</button>
