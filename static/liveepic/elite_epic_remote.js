@@ -57,7 +57,7 @@ remove all imTheLeader
     if (sessionStorage.getItem('catcat')) {
         catcat = sessionStorage.getItem('catcat');
     }
-    var useCategory = "yes";
+    var useCategory = "no";
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
     }

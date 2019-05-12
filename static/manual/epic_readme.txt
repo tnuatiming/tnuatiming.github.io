@@ -78,7 +78,9 @@ python3 convert_p1_to_json.py
 
 master menagment - https://tnuatiming.com/liveepic/master.html (wiil have csv download on stage end)
 
-TV - https://tnuatiming.com/liveepic/tv.html (manual refrash)
+TV - https://tnuatiming.com/liveepic/tv.html (manual refrash?)
+
+TV total - https://tnuatiming.com/liveepic/tvtotal.html (manual refrash?) to get live total, not implamented yet
 
 live - https://tnuatiming.com/liveepic/index.html and on epic site
 
@@ -90,7 +92,7 @@ total - https://tnuatiming.com/liveepic/total.html on epic site, copy of tables 
 
 single day - https://tnuatiming.com/liveepic/single.html and on epic site (support added to elite_epic.js as p3.html, remember to enable on master)
 
-prologue start clock - https://tnuatiming.com/liveepic/start.html (computer time must be sync)
+prologue start clock - https://tnuatiming.com/liveepic/start.html (computer time must be sync, start every 30 sec)
 
 
 ## daily update ##
@@ -99,6 +101,7 @@ Id_Groupe
 StartTime in elite_epic_remote.js
 elite_epic_total.js?v=1 change version
 stages in elite_epic_total.js
+update t1.txt-t4.txt in ftp_with_inotify_and_log.py (for live total TV)
 add t1.txt-t4.txt
 "prologue" in race name for day 1
 enableJ3 enabled for single day

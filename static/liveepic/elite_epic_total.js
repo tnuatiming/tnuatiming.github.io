@@ -44,8 +44,74 @@ add dns
     
     
     var csvName = '';
+    
+    
+    var epictv = 0;
+    
+    var showTvHeader = 0;
+    if (sessionStorage.getItem('showTvHeader')) {
+        showTvHeader = sessionStorage.getItem('showTvHeader');
+    }
 
+    var rows = 5; // number of rows to display on tv
+    if (sessionStorage.getItem('rows')) {
+        rows = sessionStorage.getItem('rows');
+    }
+
+    
     document.addEventListener("DOMContentLoaded", function() {
+        
+        
+        
+        
+        
+        if (document.getElementById('epictv')){
+            
+            epictv = 1;
+            
+            document.getElementById("rows").value = rows;
+            
+            if (document.getElementById("showTvHeader").checked) {
+                showTvHeader = 1;
+            } else {
+                showTvHeader = 0;
+            }
+            
+            const checkbox = document.getElementById('showTvHeader');
+
+            checkbox.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    showTvHeader = 1;
+                    rows = Number(document.getElementById("rows").value);
+                    sessionStorage.setItem('rows', rows);
+                    document.getElementById("result").innerHTML = createLiveTable();
+                    alignTDforTV();
+                } else {
+                    showTvHeader = 0;
+                    rows = Number(document.getElementById("rows").value);
+                    sessionStorage.setItem('rows', rows);
+                    document.getElementById("result").innerHTML = createLiveTable();
+                    alignTDforTV();
+                }
+            });
+            
+            
+
+            
+          
+        } // END epictv
+         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         if (sessionStorage.getItem('stages')) {
             stages = sessionStorage.getItem('stages');
@@ -123,9 +189,31 @@ add dns
         
     function category(choice){
         
+        if (epictv == 1) {
+            rows = Number(document.getElementById("rows").value);
+            sessionStorage.setItem('rows', rows);
+            
+            if (document.getElementById("showTvHeader").checked) {
+                showTvHeader = 1;
+            } else {
+                showTvHeader = 0;
+            }
+            sessionStorage.setItem('showTvHeader', showTvHeader);
+/*            
+            if (document.getElementById("showArrow").checked) {
+                showArrow = 1;
+            } else {
+                showArrow = 0;
+            }
+            sessionStorage.setItem('showArrow', showArrow);
+*/
+            
+        }
+
         positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
         
         useCategory = choice;
+        
         if (useCategory == "yes") {
             sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "no") {
@@ -151,6 +239,11 @@ add dns
 //        Load();
         document.getElementById("result").innerHTML = createLiveTable();
 //        alignTable();
+
+        if (epictv == 1) {
+            alignTDforTV();
+        }
+
     }
 
 
@@ -234,6 +327,11 @@ add dns
                 console.log('results fetch failed', err);
             }
 
+                
+                if (epictv == 1) { 
+                    alignTDforTV();
+                }
+                
             
             
             
@@ -967,6 +1065,7 @@ add dns
         
         var finalText = '<h1 id="Title">Migdal Epic Israel<br>After '+ st + '</h1>\n';
 
+        var showFull = st;
         
 
              for (b = 0; b < allArray.length; b++) {
@@ -1439,8 +1538,8 @@ add dns
                 allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
                                 
             }                 
-                            
-                            
+
+    
     // HEADER         
                             
                             
@@ -1509,7 +1608,6 @@ add dns
 
                 finalText += '\n<div id="liveTable">\n';
             }           
-            
             
             for (l = 0; l < allArray.length; l++) {
                 
@@ -1618,23 +1716,30 @@ add dns
                     uci2 = '<span title="UCI Rider" class="Flag UCI"></span>';
                 }
 
+// BEGIN main    
 
-            // add category name header and table header
-            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
-//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
-                
-                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
-                    finalText += '</table>\n';
-                    NewCategoryHeader = allArray[l]["Id_Categorie"];
-                } else if (l == 0) {
-                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                if (allArray[l]["leader"] == 1) {
+                    if (allArray[l]["Id_Categorie"] == 'Women') {
+                    leader = '<span title="Women Leader" class="Flag PinkShirt"></span>';
+                    leaderCard = 'pinkCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Mixed') {
+                    leader = '<span title="Mixed Leader" class="Flag GreenShirt"></span>';
+                    leaderCard = 'greenCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Masters') {
+                    leader = '<span title="Masters Leader" class="Flag BlueShirt"></span>';
+                    leaderCard = 'DarkBlueCard';
+                    } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
+                    leaderCard = 'purpleCard';
+                    } else {
+                    leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
+                    leaderCard = 'yellowCard';
+                    }
+                } else {
+                    leader = '';
+                    leaderCard = '';
                 }
-                            
-                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
-            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
-                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
-            }
+
 
 
 
@@ -1657,6 +1762,29 @@ add dns
             } else {
                 catCol = 'black';
             }
+
+
+
+if (epictv == 0) {
+    
+
+            // add category name header and table header
+            if (allArray[l]["Id_Position"] == 1 && useCategory == "yes") {
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+                
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0) { // add table end tag
+                    finalText += '</table>\n';
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                } else if (l == 0) {
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                }
+                            
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
+            } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
+                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
+            }
+
 
 
             if (l % 2 == 0) { // start building competitor line
@@ -1839,12 +1967,187 @@ add dns
    
                 
             }
+        
+        
+    } // END main     
+    
+    
+// BEGIN TV
+    
+if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["finishTimeTotal"] != 99999999999) { // TV show only 'rows' competitors
+        
+    
+ // HEADER for tv            
+                            
+        TVheaderText1 = '<tr class="rnkh_bkcolor">';
+
+   //     for (b = 0; b < qqq.length; b++) { 
+   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Sector_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
+   //             temp.push(b);
+   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>';
+   //         }
+   //     }          
+
+                if (/*showArrow == 1*/ showTvHeader == 0) {
+                    TVheaderText1 += '<th style="width: 0; margin: 0; padding: 0;" class="rnkh_font"></th>';
+                    TVheaderText1 += '<th class="rnkh_font">&nbsp;</th>';
+                }
+        
+                    TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    TVheaderText1 += '<th class="rnkh_font finishTimeTotal">Time</th>'; // combined time
+
+                  
+        TVheaderText1 += '</tr>';
+        
+      //     console.log(TVheaderText1);
+
+// END HEADER for tv
+    
+                if (useCategory == "no") {
+                    var arrowC = "Men";
+                } else {
+                    var arrowC = allArray[l]["Id_Categorie"];
+                }
+   
+                var lll = 0;
+
+            // add category name header and table header
+            if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1;
+                
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 /*&& catcat == 'None'*/) { // add table end tag
+                    finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
+                    finalText += '</table>\n';
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                } else if (l == 0) {
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                }
+//                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + TVheaderText1 + '\n';                
+                            
+
+
+                finalText += '<table class="' + tableClass + 'line_color">\n';
+                
+                
+                if (showTvHeader == 1) {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow' + arrowC + '.svg"></td></tr>\n';
+
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results After ' + showFull + '</div></td></tr>\n';
+                } else {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font"></td>&nbsp;</tr>\n'; // just to fill
+                }
+                
+                finalText += TVheaderText1 + '\n';
+
+                lll = 1;
+                
+            } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
+                
+                
+                if (showTvHeader == 1) {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow.svg"></td></tr>\n';
+
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results After ' + showFull + '</div></td></tr>\n';
+                } else {
+                    finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font">&nbsp;</td></tr>\n'; // just to fill
+                }
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + TVheaderText1;
+                finalText += TVheaderText1 + '\n';
+                
+                lll = 1;
+            }
+
+    
+    
+            if (l % 2 == 0) { // start building competitor line
+                finalText += '<tr class="rnk_bkcolor OddRow">';
+            } else {
+                finalText += '<tr class="rnk_bkcolor EvenRow">';
+            }
+    
+                 if (/*showArrow == 1*/ showTvHeader == 0 && lll == 1) {
+                     
+                     if (rows <= 3) {
+                         var size = "120";
+                     } else if (rows > 6) {
+                         var size = "160";
+                     } else {
+                         var size = "140";
+                     }
+                    
+                     
+                    finalText += '<td rowspan="' + rows + '" style="vertical-align: middle; margin: 0; padding: 0; overflow: visible; text-align: left;max-width: 0; width: 0;" class="rnk_font"><img style="position: relative; overflow: visible; margin: 0; padding: 0; height: ' + size + 'px; max-width: none; width: auto;" src="Images/arrow' + arrowC + '.svg"></td>';
+                    
+                    finalText += '<td style="min-width: 80px;" class="rnk_font">&nbsp;</td>';
+                                    
+                    lll = 0;
+
+                } else if (/*showArrow == 1*/ showTvHeader == 0 && lll == 0) {
+                    finalText += '<td style="min-width: 80px;" class="rnk_font">&nbsp;</td>';
+                
+                }
+    
+    
+ 
+                if (useCategory == "no") {
+
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // add overall position
+                
+                } else {
+                    
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
+                }
+                
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
+                
+                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
+                
+                if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
+                    
+                    
+                    if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
+                        finalText += '<td class="rnk_font">-</td>\n'; // add total time
+                    } else {
+                        finalText += '<td class="rnk_font bold">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
+                    }
+                } else {
+                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
+                        finalText += '<td class="rnk_font">-</td>\n'; // add diff
+                    } else {
+                        finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
+                    }
+                }
+                
+        finalText += '</tr>\n';
+    
+    
+} // END TV     
+
+
+
                
         }  // END for l      
          
+
+         if (epictv == 1) {
+            finalText += '<tr><td style="text-align: right; padding-right: 0;" colspan="99"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></td></tr>';
+        }
          
         finalText += '</table></div>\n';
-     
+        
+
+
+
+
+
+
+
+
 //download(finalText, 'finalText.txt', 'text/plain')
                 
 //        console.log('allArray after:');
@@ -1971,7 +2274,7 @@ if (k<100){
 
     function alignTable() {
         
-        if (cleanResults == 0) {
+        if (cleanResults == 0 && epictv == 0) {
             
             // aligning table colmuns according to number of colmuns
             var tt = document.querySelectorAll('.line_color');
@@ -2059,4 +2362,18 @@ function export_table_to_csv(html, filename) {
     // Download CSV
     download_csv(csv.join("\n"), filename);
 }
+    
+ 
+    function alignTDforTV() {
+            if (rows <= 3) {
+                //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "2");
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '45px' }
+            } else if (rows > 3 && rows <= 8) {
+                //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "1.5");
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '35px' }
+            } else {
+                //document.getElementsByTagName('td').forEach(e => e.style.lineHeight = "1");
+                for(let element of document.getElementsByTagName('td')) { element.style.lineHeight = '25px' }
+            }
+    };
     
