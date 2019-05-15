@@ -63,5 +63,53 @@
     </script>
 {{ end }}      
 -->*/}}
+{{- if (eq .Params.tag "epic") }}
+    <script>
+
+
+        var useCategory = "yes";
+        
+        if (sessionStorage.getItem('categoryOrAll')) {
+            useCategory = sessionStorage.getItem('categoryOrAll');
+        }
+
+        category(useCategory);
+    
+        function category(choice){
+            
+            useCategory = choice;
+            
+            if (useCategory == "yes") {
+                sessionStorage.setItem('categoryOrAll', 'yes');
+            } else if (useCategory == "no") {
+                sessionStorage.setItem('categoryOrAll', 'no');
+            }
+            
+            if (useCategory == "yes") {
+                document.getElementById("displayCatButton").classList.remove("active");
+                document.getElementById("displayCatButton").disabled = true;
+                document.getElementById("displayAllButton").classList.add("active");        
+                document.getElementById("displayAllButton").disabled = false;
+            } else if (useCategory == "no") {
+                document.getElementById("displayCatButton").classList.add("active");        
+                document.getElementById("displayCatButton").disabled = false;
+                document.getElementById("displayAllButton").classList.remove("active");        
+                document.getElementById("displayAllButton").disabled = true;
+            }
+    
+            if (useCategory == "yes") {
+                document.getElementById("finalTextAll").style.display = "none";        
+                document.getElementById("finalTextCategory").style.display = "block";        
+            } else if (useCategory == "no") {
+                document.getElementById("finalTextAll").style.display = "block";        
+                document.getElementById("finalTextCategory").style.display = "none";        
+            }
+
+        }
+
+    </script>
+
+{{ end }}      
+
 
 </html>

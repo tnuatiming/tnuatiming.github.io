@@ -1549,13 +1549,13 @@ add dns
     // hard coded header for now
         if (cleanResults == 1) {
             headerText1 += '<th class="rnkh_font Id_Arrow">Status</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Position_Overall">General Classification</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Overall">GC Position</th>\n';
             headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Position</th>\n';
             headerText1 += '<th class="rnkh_font Id_Numero">Number</th>\n';
         } else {
-            headerText1 += '<th class="rnkh_font Id_Position_Overall">GC</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Position_Categorie">CAT</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Numero">Nr.</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Overall">GC Position</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Categorie">Cat Position</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Numero">No.</th>\n';
         }
             if (useCategory == "no") {
                 headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>\n';
@@ -2035,7 +2035,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow' + arrowC + '.svg"></td></tr>\n';
 
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results After ' + showFull + '</div></td></tr>\n';
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">After ' + showFull + '</div></td></tr>\n';
                 } else {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font"></td>&nbsp;</tr>\n'; // just to fill
                 }
@@ -2050,7 +2050,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow.svg"></td></tr>\n';
 
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results After ' + showFull + '</div></td></tr>\n';
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">After ' + showFull + '</div></td></tr>\n';
                 } else {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font">&nbsp;</td></tr>\n'; // just to fill
                 }

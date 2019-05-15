@@ -67,8 +67,8 @@
     #live table {
 /*        position: absolute;
         top: 300px;
-    }
-*/
+*/    }
+
      #live #intermediateOrFinish {
         flex-grow: 0;
         order: 1;
@@ -302,7 +302,7 @@
         text-align: right;
     }
     .lineThrough {
-        filter: opacity(35%)
+        filter: opacity(35%);
     }
     #live td.rnk_font.wrap {
         max-width: 200px;
@@ -433,8 +433,6 @@
         <div id="categoryOrAll" style="display: block;">
             <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button>
             <button id="displayAllButton" class="btn" onClick="category('no')">GC</button>
-        </div>
-    <div id="options">
             <label class="rows">Stage:&nbsp;&nbsp;
                 <select id="stages" name="stages">
                     <option value="1">Prologue</option>
@@ -446,6 +444,8 @@
             <label style="display: none;" for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
         <label class="rows">rows:&nbsp;&nbsp;<input id="rows" style="width: 30px;" type="text" name="rows"></label>
         <label for="showTvHeader"><input type="checkbox" id="showTvHeader" name="showTvHeader" value="header" checked>&nbsp;headers</label>
+        </div>
+    <div id="options">
     </div>
     </div>
 

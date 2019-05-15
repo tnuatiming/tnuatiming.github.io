@@ -1,0 +1,403 @@
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+<head>
+
+
+
+    <style>
+
+    </style>
+
+
+    <script>
+   
+   var competitorsNumber = 400;
+   
+function randomN(min, max) {
+
+//    var min=0; 
+//    var max=59;  
+    var random =Math.floor(Math.random() * (+max - +min)) + +min; 
+    document.write("Random Number Generated : " + random );  
+    return random
+}
+
+
+
+function capFirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function generateName(){
+	var name1 = [];
+
+	var name2 = [];
+
+	var name = capFirst(name1[Math.floor(Math.random() * name1.length)]) + ' ' + capFirst(name2[Math.floor(Math.random() * name2.length)]);
+	return name;
+
+}
+
+
+
+
+
+function makeid(length) {
+   var result           = '';
+   var characters       = 'abcdefghijklmnopqrstuvwxyz   ';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+
+
+
+
+
+
+function maketime(start, end) { // start, end hour
+    
+    var blue = (Math.floor(Math.random() * 100));
+    var time  = [];
+    var hours = ((Math.floor(Math.random() * (end + 1))) + start);
+    var min = (Math.floor(Math.random() * 60));
+    var sec = (Math.floor(Math.random() * 60));
+
+    time.push((hours).toString().padStart(2, "0") + ':' + (min).toString().padStart(2, "0") + ':' + (sec).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));   
+    
+    if (min >= 0 && min <= 30) {
+        if (blue == 12) {
+            var min1 = min + 3;
+        } else {
+            var min1 = min + 1;
+        }
+    } else {
+        if (blue == 12) {
+            var min1 = min - 4;
+        } else {
+            var min1 = min - 1;
+        }
+    }
+
+    if (sec >= 0 && sec <= 30) {
+        var sec1 = sec + (Math.floor(Math.random() * 30));
+    } else {
+        var sec1 = sec - (Math.floor(Math.random() * 30));
+    }
+    
+    
+    time.push((hours).toString().padStart(2, "0") + ':' + (min1).toString().padStart(2, "0") + ':' + (sec1).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));
+    
+    console.log(time);
+    return time;
+}
+
+function selectName() {
+    var list = ["Jaydon Caleb","Jaret Ramsey","Skyler Raheem","Ramsey Rubin","Brendon Mel","Jago Graeme","Henry Harrison","Rehan Evelyn","Prakash Silas","Brogan Walter","Ashton Frank","Bart Al","Ira Lake","Romeo Bradley","Auden Drew","Ezio Brady","Dino Alan","Giorgio Billy","Diego Gary","Andre Ellis","Gael Bryson","Francisco Hans","Willem Inigo","Rashan Trey","Glen Ken","Bryon Remco","Campbell Warren","Che Gordon","Osvaldo Chevy","Ike Kameron","Florian Maison","Rock Brayden","Hugh Avery","Fredrick Saul","Ajay Torin","Deacon Chevy","Dermot Fritz","Yusuf Darin","Torin Kyron","Titus Deepak","Miguel Lachlan","Rylan Clive","Kris Rhett","Jose Lisandro","Elliott Daniel","Ali Porter","Edwin Johnnie","Kendrick Moe","Wilson Arturo","Lamar Kieron","Cyrus Mervin","Langdon Hassan","Mick Aron","Brady Trace","Davin Nash","Ian Carlton","Levi Franklin","Channing Wilbur","Len Walter","Maddox Aspen","Dinesh Sheldon","Dakota Jared","Archie Jason","Cillian Adonis","Gil Indiana","Harry Shaun","Jeffry Jay","Yehudi Marc","Morgan Nathaniel","Clark Antony","Benjy Gary","Vladimir Herman","Tristen Earl","Chaz Monte","Ryland Charlie","Shelton Vihan","Brooke Norbert","Lee Joey","Rupert Lester","Mauricio Gregor","Triston Lief","August Oliver","Slade Cal","Stuart Teague","Karsten Daire","Cadby Herman","Fergal Rashid","Skylar Elliott","Edouard Leonard","Kip Rhydian","Nicolas Leandro","Lisandro Daren","Gonzalo Bennie","Carsten Mohammed","Ari Colm","Denver Clifford","Silas Raul","Greg Chance","Jeremiah Darragh","Raoul Forest","Nico Nick","Thor Jaydon","Leigh Buck","Darragh Jim","Daniel Finley","Wolf Barack","Owain Mike","Raylan Jase","Aven Rohan","Sergio Zak","Spike Vlad","Ryan Grady","Finbar Cael","Nick Ashby","Bryon Ewan","Miles Vidal","Tex Rickie","Zayne Riker","Ahmed Marc","Terence Jedediah","Lewis Bruce","Edgar Cyril","Zoltan Montgomery","Layne Alden","Lawson Trenton","Alain Wilbert","Carlos Mohamed","Elon William","Rod Maxim","Camden Alen","Caydon Ulysses","Sonny Zion","Kerry Remington","Ernie Langston","Logan Phil","Bowen Mateo","Elon Forest","Gene Zaine","Bryon Mordecai","Jackson Rickie","Leaf Murray","Blake Garman","Wilhelm Brennon","Morris Randolph","Wally Bryden","Caiden Dawson","Miller Neal","Josiah Sid","Cillian Callum","Finnigan Aubrey","Julius Vasco","Conan Vladimir","Rodger Cristobal","Ronan Pierce","Byron Raiden","Laurence Edwin","Vance Jovan","Ari Langdon","Preston Skylar","Tiago Martyn","Leslie Brooke","Chris Francisco","Tyrese Horatio","Donald Edison","Dario Alexis","Gustavo Burt","Rohan Collin","Matthias Doug","Dawson Lars","Cohen Maison","Pat Sterling","Lyndon Wesley","Teo Karson","Lebron Hamish","Jock Kade","Blain Lawson","Laurie Bill","Brody Lochlan","Archer Audwin","Zackary Cristian","Bellamy Rupert","Vladimir Dustin","Quincy Adonis","Jeb Ewan","Leighton Bill","Austin Klaus","Cecil Beck","Bridie Alexander","Lysander Tariq","Crosby Ollie","Elias Bastian","Elmo Victor","Reggie Fergal","Bear Connor","Anson Jonah","Jacques Jay","Barry Drake","Marik Al","Lysander Jim","William Bjorn"];
+    var i = Math.floor(Math.random() * (list.length));
+    return list[i];
+}
+
+
+function selectTeam() {
+    var list = ["G.I. Joes Micro Machines","Whoopie cushion Playstation","Lego Mario","Whoopie cushion Barbies","Starfox Monopoly","G.I. Joes Starfox","Tetris Whoopie cushion","Lego Jurassic World Playstation","Sorry! Bezerk","Poker Donkey Kong","Battle ship G.I. Joes","Shoots and Ladders Solitare","Lego Playstation","G.I. Joes Playstation","Cribbage Connect 4","Bezerk Whoopie cushion","Monopoly Cribbage","Donkey Kong Solitare","Tetris Starfox","Ping Pong 1943","Lego Jurassic World Monopoly","Battle ship Connect 4","Bezerk Shoots and Ladders","Nintendo Jenga","Ping Pong Playstation","Lego XBox","Poker G.I. Joes","Barbies Foosball","Shoots and Ladders Go Fish","Playstation Poker","1943 Sorry!","Playstation Solitare","Cribbage Monopoly","Mario Starfox","Playstation Sorry!","Nintendo Tetris","Whoopie cushion Mario","Cribbage Barbies","Tetris G.I. Joes","G.I. Joes Lego Jurassic World","Ping Pong Jenga","Poker Foosball","Ping Pong G.I. Joes","Monopoly Jenga","Donkey Kong Solitare","Go Fish XBox","1943 Sorry!","Lego Barbies","Cribbage Hot Wheels","Connect 4 Bezerk","Nintendo Go Fish","Jenga Connect 4","Bezerk Jenga","Donkey Kong Connect 4","Monopoly Go Fish","Battle ship Lego Jurassic World","Pong Shoots and Ladders","Solitare Sorry!","Ping Pong XBox","Barbies Pong","Donkey Kong Barbies","Playstation Pong","Battle ship Pong","Donkey Kong Nintendo","Cribbage Barbies","Monopoly Hot Wheels","Starfox Hot Wheels","Hot Wheels Ping Pong","Starfox Foosball","Barbies Monopoly","Mario Pong","Solitare Barbies","Playstation Go Fish","Playstation Bezerk","Bezerk Barbies","Donkey Kong Sorry!","Micro Machines Hot Wheels","G.I. Joes Sorry!","Solitare Hot Wheels","Starfox Nintendo","G.I. Joes 1943","Foosball Connect 4","Connect 4 Foosball","Whoopie cushion Bezerk","Tetris Connect 4","Monopoly Donkey Kong","Pong Poker","Mario Poker","Cribbage XBox","Monopoly Micro Machines","Connect 4 Pong","Go Fish Lego Jurassic World","XBox Donkey Kong","Bezerk Cribbage","Lego Jurassic World Battle ship","Solitare Micro Machines","Bezerk Foosball","Lego Jurassic World Pong","Shoots and Ladders Battle ship","Starfox Donkey Kong"];
+    var i = Math.floor(Math.random() * (list.length + 1));
+    return list[i];
+}
+
+
+function selectCategory() {
+    var list = ["Men", "Women", "Mixed", "Grand", "Master"];
+    var i = Math.floor(Math.random() * (list.length));
+    return list[i];
+}
+
+function nation() {
+    var list = ["australia", "israel", "ireland", "italy", "unitedkingdom", "usa", "netherlands", "greece", "denmark", "brazil", "czechrepublic", "southafrica", "switzerland", "sweden", "spain", "france", "germany", "england", "norway"];
+    var i = Math.floor(Math.random() * (list.length));
+    return list[i];
+}
+
+
+
+function genp1() {
+
+
+        var leader = 0;
+        
+        var text = '<h1 id="Title"><img src="Images/_GreenFlag.png" alt="green">Migdal Epic Israel - stage 2<img src="Images/_GreenFlag.png" alt="green"></h1>\n';
+        text += '<p id="Time"><span id="DayTime">03/02/2019 8:56:46 PM</span><span id="ElapsedTime">04:55:37</span><span id="RemainingTime">&nbsp;</span></p>\n';
+        
+        
+        text += `
+<table width="100%">
+<tr class="HeaderRow">
+<td id="Id_Numero" align="center" width="10">מספר</td>
+<td id="Id_Nom" align="right" width="10">שם</td>
+<td id="Id_NbTour" align="center" width="10">הקפות</td>
+<td id="Id_TpsCumule" align="right" width="10">זמן</td>
+<td id="Id_Categorie" align="right" width="100">קטגוריה</td>
+<td id="Id_Image" align="left" width="100">&nbsp;</td>
+<td id="Id_Canal" align="left" width="100">Channel</td>
+<td id="Id_Classe" align="left" width="100">Class</td>
+<td id="Id_Nationalite" align="left" width="100">flag</td>
+<td id="Id_Inter1" align="left" width="100">Inter. 1</td>
+<td id="Id_Inter2" align="left" width="100">Inter. 2</td>
+<td id="Id_Inter3" align="left" width="100">Inter. 3</td>
+<td id="Id_Groupe" align="left" width="100">Group</td>
+<td id="Id_Equipe" align="left" width="100">Team</td>
+</tr>
+`;
+    
+    
+
+    for (l = 1; l < competitorsNumber; l++) {
+                            
+    x = Math.floor(Math.random() * 100);
+   
+
+    var category = selectCategory();
+    
+    var time = maketime(4, 7);
+    if (x < 5) {
+        time = ['-', '-'];
+    } else if (x > 98) {
+        time[0] = '-';
+    }
+
+    var timeInt1 = maketime(1, 2);
+    var timeInt2 = maketime(2, 3);
+    var timeInt3 = maketime(3, 4);
+
+    if (x % 30 == 0) {
+        timeInt1 = ['-', '-'];
+    } else if (x == 89) {
+        timeInt1[0] = '-';
+    }
+    if (x % 75 == 0) {
+        timeInt2 = ['-', '-'];
+    } else if (x == 79) {
+        timeInt2[0] = '-';
+    }
+    if (x % 25 == 0) {
+        timeInt3 = ['-', '-'];
+    } else if (x == 99) {
+        timeInt3[0] = '-';
+    }
+    
+    if (time[0] == '-') {
+        var c1 = 1;
+        var laps1 = 0;
+    } else {
+        var c1 = 4;
+        var laps1 = 1;
+    }
+    if (time[1] == '-') {
+        var c2 = 1;
+        var laps2 = 0;
+    } else {
+        var c2 = 4;
+        var laps2 = 1;
+    }
+    
+    var team = selectTeam();
+    
+    var group = '&nbsp;';
+    if (x % 5 == 0) {
+        group = 'u';
+    }
+    if (x == 8) {
+        group = 'b';
+    }
+    if (x == 6 && leader == 0) {
+        var cat = category;
+        group = 'l';
+        leader = 1;
+    }
+    if (x == 6 && leader == 1 && cat != category) {
+        var cat1 = category;
+        group = 'l';
+        leader = 2;
+    }
+    if (x == 6 && leader == 2 && cat != category && cat1 != category) {
+        group = 'l';
+        leader = 3;
+    }
+    
+    var status1 = '&nbsp;';
+    var status2 = '&nbsp;';
+    if (x == 68) {
+        status1 = '_Status11';
+        status2 = '_Status11';
+    }
+    if (x == 67) {
+        status2 = '_Status11';
+    }
+    if (x == 66) {
+        status1 = '_Status11';
+    }
+    
+    
+// rider 1
+    text += '<tr class="OddRow">\n';
+    
+    text += '<td align="center" class="">' + l + '1' + '</td>\n'; // Id_Numero
+    text += '<td align="center" class="">' + selectName() + '</td>\n'; // Id_Nom
+    text += '<td align="center" class="">' + laps1 + '</td>\n'; // Id_NbTour
+    text += '<td align="center" class="">' + time[0] + '</td>\n'; // Id_TpsCumule
+    text += '<td align="center" class="">' + category + '</td>\n'; // Id_Categorie
+    text += '<td align="center" class="">' + status2 + '</td>\n'; // Id_Image
+    text += '<td align="center" class="">' + c1 + '</td>\n'; // Id_Canal
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Classe
+    text += '<td align="center" class="">' + nation() + '</td>\n'; // Id_Nationalite
+    text += '<td align="center" class="">' + timeInt1[0] + '</td>\n'; // Id_Inter1
+    text += '<td align="center" class="">' + timeInt2[0] + '</td>\n'; // Id_Inter2
+    text += '<td align="center" class="">' + timeInt3[0] + '</td>\n'; // Id_Inter3
+    text += '<td align="center" class="">' + group + '</td>\n'; // Id_Groupe
+    text += '<td align="center" class="">' + team + '</td>\n'; // Id_Equipe
+    
+    text += '</tr>\n';
+            
+            
+// rider 2
+    text += '<tr class="EvenRow">\n';
+    
+    text += '<td align="center" class="">' + l + '2' + '</td>\n'; // Id_Numero
+    text += '<td align="center" class="">' + selectName() + '</td>\n'; // Id_Nom
+    text += '<td align="center" class="">' + laps2 + '</td>\n'; // Id_NbTour
+    text += '<td align="center" class="">' + time[1] + '</td>\n'; // Id_TpsCumule
+    text += '<td align="center" class="">' + category + '</td>\n'; // Id_Categorie
+    text += '<td align="center" class="">' + status1 + '</td>\n'; // Id_Image
+    text += '<td align="center" class="">' + c2 + '</td>\n'; // Id_Canal
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Classe
+    text += '<td align="center" class="">' + nation() + '</td>\n'; // Id_Nationalite
+    text += '<td align="center" class="">' + timeInt1[1] + '</td>\n'; // Id_Inter1
+    text += '<td align="center" class="">' + timeInt2[1] + '</td>\n'; // Id_Inter2
+    text += '<td align="center" class="">' + timeInt3[1] + '</td>\n'; // Id_Inter3
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Groupe
+    text += '<td align="center" class="">' + team + '</td>\n'; // Id_Equipe
+    
+    text += '</tr>\n';
+            
+            
+if (l % 3 == 0) { 
+            
+// single day rider 1
+    text += '<tr class="EvenRow">\n';
+    
+    text += '<td align="center" class="">' + l + '8881' + '</td>\n'; // Id_Numero
+    text += '<td align="center" class="">' + selectName() + '</td>\n'; // Id_Nom
+    text += '<td align="center" class="">' + laps1 + '</td>\n'; // Id_NbTour
+    text += '<td align="center" class="">' + time[0] + '</td>\n'; // Id_TpsCumule
+    text += '<td align="center" class="">' + category + '</td>\n'; // Id_Categorie
+    text += '<td align="center" class="">' + status1 + '</td>\n'; // Id_Image
+    text += '<td align="center" class="">' + c1 + '</td>\n'; // Id_Canal
+    text += '<td align="center" class="">ss</td>\n'; // Id_Classe
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Nationalite
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter1
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter2
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter3
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Groupe
+    text += '<td align="center" class="">' + team + '</td>\n'; // Id_Equipe
+    
+    text += '</tr>\n';
+// single day rider 2
+    text += '<tr class="EvenRow">\n';
+    
+    text += '<td align="center" class="">' + l + '8882' + '</td>\n'; // Id_Numero
+    text += '<td align="center" class="">' + selectName() + '</td>\n'; // Id_Nom
+    text += '<td align="center" class="">' + laps2 + '</td>\n'; // Id_NbTour
+    text += '<td align="center" class="">' + time[1] + '</td>\n'; // Id_TpsCumule
+    text += '<td align="center" class="">' + category + '</td>\n'; // Id_Categorie
+    text += '<td align="center" class="">' + status2 + '</td>\n'; // Id_Image
+    text += '<td align="center" class="">' + c2 + '</td>\n'; // Id_Canal
+    text += '<td align="center" class="">ss</td>\n'; // Id_Classe
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Nationalite
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter1
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter2
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter3
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Groupe
+    text += '<td align="center" class="">' + team + '</td>\n'; // Id_Equipe
+    
+    text += '</tr>\n';
+            
+// single day single
+    text += '<tr class="EvenRow">\n';
+    
+    text += '<td align="center" class="">' + l + '999' + '</td>\n'; // Id_Numero
+    text += '<td align="center" class="">' + selectName() + '</td>\n'; // Id_Nom
+    text += '<td align="center" class="">' + laps2 + '</td>\n'; // Id_NbTour
+    text += '<td align="center" class="">' + time[1] + '</td>\n'; // Id_TpsCumule
+    text += '<td align="center" class="">גברים יחיד</td>\n'; // Id_Categorie
+    text += '<td align="center" class="">' + status2 + '</td>\n'; // Id_Image
+    text += '<td align="center" class="">' + c2 + '</td>\n'; // Id_Canal
+    text += '<td align="center" class="">ss</td>\n'; // Id_Classe
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Nationalite
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter1
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter2
+    text += '<td align="center" class="">-</td>\n'; // Id_Inter3
+    text += '<td align="center" class="">&nbsp;</td>\n'; // Id_Groupe
+    text += '<td align="center" class="">' + team + '</td>\n'; // Id_Equipe
+    
+    text += '</tr>\n';
+            
+            
+}
+    
+    } // END l
+    
+    
+     text += '</table>\n';
+   
+    
+                        
+                        
+                        
+                        
+                        
+                        
+              //console.log(text);
+            download(text, 'p1.html', 'text/plain');    
+
+              return text
+              
+ }                       
+    document.addEventListener("DOMContentLoaded", function() {
+                        
+    document.getElementById("result").innerHTML = genp1();
+});
+    
+    
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    a.setAttribute("id", "download");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+};
+    
+    </script>
+</head>
+
+
+
+
+    <body>
+
+
+
+<div id="result"></div>
+
+
+
+    </body>
+</html>
+ 

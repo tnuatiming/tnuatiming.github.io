@@ -1967,15 +1967,15 @@
 
                   headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
 //                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>Cat</div><div>GC</div></th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">Cat</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">GC Position</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Cat Position</th>';
 /*        } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Position_Categorie">Cat</th>';
                     headerText1 += '<th class="rnkh_font Id_Position_Overall">GC</th>';
         }
 */
-                    headerText1 += '<th class="rnkh_font Id_Numero">&nbsp;Nr</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero">No.</th>';
 
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
@@ -2036,10 +2036,13 @@
 */
 
                if (show == 1) {
+                    headerText1 += '<th class="rnkh_font Id_Inter1">Individual Time</th>';
                     headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                 } else if (show == 2) {
+                    headerText1 += '<th class="rnkh_font Id_Inter2">Individual Time</th>';
                     headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
                 } else if (show == 3) {
+                    headerText1 += '<th class="rnkh_font Id_Inter3">Individual Time</th>';
                     headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
                 } else {
                     if (doNotShowTime == 0 && show == 4) {
@@ -2066,7 +2069,7 @@
     if (cleanResults == 1) {                            
         headerText1 = '<tr class="rnkh_bkcolor">';
 
-                headerText1 += '<th class="rnkh_font Id_Position_Overall">General Classification</th>';
+                headerText1 += '<th class="rnkh_font Id_Position_Overall">GC Position</th>';
                 headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Position</th>';
                 headerText1 += '<th class="rnkh_font Id_Numero">Number</th>';
 
@@ -3050,6 +3053,51 @@ if (show == 4) {
 }
 
 // individual time
+            if (doNotShowTime == 0 && show == 1) {
+                
+                if (allArray[l]["Id_Inter1"] == 99999999999) {
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">-' + '</div>'; // add time
+                } else {
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + ms2TimeString(allArray[l]["Id_Inter1"]) + '</div>'; // add time
+                }
+                
+                  if (allArray[l]["Id_Inter1_2"] == 99999999999) {
+                    finalText += '<div class="SecoundLine">-</div></td>'; // add time
+                } else {
+                    finalText += '<div class="SecoundLine">' + ms2TimeString(allArray[l]["Id_Inter1_2"]) + '</div></td>'; // add time
+                }
+            }
+
+            if (doNotShowTime == 0 && show == 2) {
+                
+                if (allArray[l]["Id_Inter2"] == 99999999999) {
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">-' + '</div>'; // add time
+                } else {
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + ms2TimeString(allArray[l]["Id_Inter2"]) + '</div>'; // add time
+                }
+                
+                  if (allArray[l]["Id_Inter2_2"] == 99999999999) {
+                    finalText += '<div class="SecoundLine">-</div></td>'; // add time
+                } else {
+                    finalText += '<div class="SecoundLine">' + ms2TimeString(allArray[l]["Id_Inter2_2"]) + '</div></td>'; // add time
+                }
+            }
+
+            if (doNotShowTime == 0 && show == 3) {
+                
+                if (allArray[l]["Id_Inter3"] == 99999999999) {
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">-' + '</div>'; // add time
+                } else {
+                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + ms2TimeString(allArray[l]["Id_Inter3"]) + '</div>'; // add time
+                }
+                
+                  if (allArray[l]["Id_Inter3_2"] == 99999999999) {
+                    finalText += '<div class="SecoundLine">-</div></td>'; // add time
+                } else {
+                    finalText += '<div class="SecoundLine">' + ms2TimeString(allArray[l]["Id_Inter3_2"]) + '</div></td>'; // add time
+                }
+            }
+            
             if (doNotShowTime == 0 && show == 4) {
                 
                 if (allArray[l]["Id_TpsCumule"] == 99999999999) {
@@ -3063,7 +3111,6 @@ if (show == 4) {
                 } else {
                     finalText += '<div class="SecoundLine">' + allArray[l]["Id_TpsCumule_2"] + '</div></td>'; // add time
                 }
-                              
             }          
 
 
@@ -4004,8 +4051,9 @@ if (enableJ3 == 1) {
         
         if (m != 0) { // check if we have competitors
             finalText3 += '</table>\n</div>\n';  // close after last category   
-            
+if (enableJ3 == 1) {            
             download((finalText3header + finalText3), 'p3.html', 'text/plain');    // download the html for single day 
+}
             finalText3 = '<h2>Single Day</h2>\n' + finalText3;
 
         } else {

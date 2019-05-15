@@ -1528,10 +1528,10 @@ remove all imTheLeader
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
 */
-                    headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">Cat</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">GC Position</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Cat Position</th>';
 
-                    headerText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero">No.</th>';
 
 
  //       if (cleanResults == 0) {
@@ -2784,7 +2784,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow' + arrowC + '.svg"></td></tr>\n';
 
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">' + showFull + '</div></td></tr>\n';
                 } else {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font"></td>&nbsp;</tr>\n'; // just to fill
                 }
@@ -2799,7 +2799,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow.svg"></td></tr>\n';
 
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ' + showFull + '</div></td></tr>\n';
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">' + showFull + '</div></td></tr>\n';
                 } else {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font">&nbsp;</td></tr>\n'; // just to fill
                 }
