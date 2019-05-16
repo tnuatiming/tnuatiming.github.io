@@ -153,7 +153,7 @@
     .dns {background-image: url(Images/_dns.svg);}
 
     #live td.rnk_font, #live th.rnkh_font {
-        margin: 0 2px;
+        padding: 0 2px;
     }
     #live td.rnk_font.blueCard {
         color:#111; 
@@ -219,7 +219,8 @@
 </style>
 
 
-    <script src="elite_epic_total.js?v=1"></script>
+<!--    <script src="elite_epic_total.js?v=1"></script>-->
+    <script src="elite_epic_total.js"></script>
 </head>
 
 
@@ -305,6 +306,7 @@
                 </select>
             </label>
             <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
+            <button id="publish" class="publish" onClick="publish()">Publish</button>
     </div>
     </div>
 

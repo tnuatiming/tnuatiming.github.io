@@ -1993,11 +1993,6 @@
 */
                     headerText1 += '<th class="rnkh_font Id_Numero">No.</th>';
 
-                    if (useCategory == "no") {
-                        headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
-                    }            
-                    
-
  //       if (cleanResults == 0) {
 
 //                    headerText1 += '<th class="rnkh_font uci">&nbsp;</th>';
@@ -2008,7 +2003,12 @@
 
                     //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time 2</th>';
                     headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
-                if (show == 4) {
+
+                    if (useCategory == "no") {
+                        headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
+                    }            
+                    
+                    if (show == 4) {
                         headerText1 += '<th class="rnkh_font mobile Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
                         headerText1 += '<th class="rnkh_font mobile Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
                         headerText1 += '<th class="rnkh_font mobile Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
@@ -2804,13 +2804,6 @@ allArray[l]["Id_Arrow"]
                     finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
                 
-                
-
-                if (useCategory == "no") {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // add category
-                }            
-
-
 
 
 /*                if (allArray[l]["oldBlue"] == 1) {
@@ -2848,6 +2841,13 @@ allArray[l]["Id_Arrow"]
                 } else {
                     finalText += '<td class="rnk_font left wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
                 }
+                
+
+                if (useCategory == "no") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // add category
+                }            
+
+
            //         finalText += '</div>';
                     
 //                }

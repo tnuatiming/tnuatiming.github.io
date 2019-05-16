@@ -1536,12 +1536,13 @@ remove all imTheLeader
 
  //       if (cleanResults == 0) {
 
-                    if (useCategory == "no") {
-                        headerText1 += '<th class="rnkh_font Id_Categorie">CAT</th>';
-                    }            
                     headerText1 += '<th class="rnkh_font Id_Nom">Riders</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">Name 2</th>';
                     headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
+
+                    if (useCategory == "no") {
+                        headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
+                    }            
 /*
                     if (doNotShowTime == 0 && show == 4) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule">Individual Time</th>';
@@ -2270,10 +2271,6 @@ allArray[l]["Id_Arrow"]
                 } else {
                     finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
-
-                if (useCategory == "no" /*&& cleanResults == 0*/) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
-                }            
 /*                
                 if (cleanResults == 1) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // add rider 1 number
@@ -2333,7 +2330,6 @@ allArray[l]["Id_Arrow"]
                         finalText += '</div></td>';// add the name
                     }
                    
-                     
                     
                 if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
                     finalText += '<td class="rnk_font">&nbsp;</td>';// add team name
@@ -2341,6 +2337,10 @@ allArray[l]["Id_Arrow"]
                     finalText += '<td class="rnk_font left wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
                 }
                     
+                if (useCategory == "no" /*&& cleanResults == 0*/) {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; 
+                }            
+                     
                     
                     
     //              finalText += '</div>';
