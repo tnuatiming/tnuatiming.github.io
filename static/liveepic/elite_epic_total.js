@@ -1821,7 +1821,7 @@ if (epictv == 0) {
                 }
        
 
-                finalText += '<td class="rnk_font"><div class="FirstLine ' + single1 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
+                finalText += '<td class="rnk_font left"><div class="FirstLine ' + single1 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
                 if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
                     finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
                 }
@@ -1835,7 +1835,7 @@ if (epictv == 0) {
                 finalText += '</div></td>';// add the name
                 
        
-                finalText += '<td class="rnk_font wrap">' + allArray[l]["Id_Equipe"] + '</td>\n';// add the Team
+                finalText += '<td class="rnk_font left wrap">' + allArray[l]["Id_Equipe"] + '</td>\n';// add the Team
                 
 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
@@ -2157,7 +2157,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
 //        console.log(allArray2);
 
 
-         //    console.log(finalText);
+             console.log(finalText);
       
     tableClass = "";
             

@@ -130,6 +130,9 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             
+            document.getElementById("myAudio").muted = true;
+            document.getElementById("myAudio1").muted = true;
+
             const checkbox2 = document.getElementById('mute');
 
             checkbox2.addEventListener('change', (event) => {

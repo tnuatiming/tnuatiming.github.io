@@ -2280,7 +2280,7 @@ allArray[l]["Id_Arrow"]
                 }
 */                
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 /*&& cleanResults == 0*/ && allArray[l]["single"] == 0) { // only rider 1 finished at this point
-                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + finished1 + uci1 + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font left"><div class="FirstLine ' + single2 + '">' + finished1 + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
@@ -2292,7 +2292,7 @@ allArray[l]["Id_Arrow"]
                     finalText += '</div>';// add the name
                     
                 } else {
-                    finalText += '<td class="rnk_font"><div class="FirstLine ' + single2 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font left"><div class="FirstLine ' + single2 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
@@ -2338,7 +2338,7 @@ allArray[l]["Id_Arrow"]
                 if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
                     finalText += '<td class="rnk_font">&nbsp;</td>';// add team name
                 } else {
-                    finalText += '<td class="rnk_font wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
+                    finalText += '<td class="rnk_font left wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
                 }
                     
                     

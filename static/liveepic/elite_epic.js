@@ -16,8 +16,11 @@
         MaximumStageTime = sessionStorage.getItem('MaximumStageTime');
     }
 
+    var allArrayJ = {};
+    var J3text;
     var enableJ1 = 1;   // for remote
     var enableJ3 = 0;  // for single day
+    var dayCompetitors = 0;
     
     var url = 'p1.html';
     var target = 'result';
@@ -49,7 +52,7 @@
     if (sessionStorage.getItem('catcat')) {
         catcat = sessionStorage.getItem('catcat');
     }
-    var useCategory = "yes";
+    var useCategory = "no";
     if (sessionStorage.getItem('categoryOrAll')) {
         useCategory = sessionStorage.getItem('categoryOrAll');
     }
@@ -110,10 +113,10 @@
         checkbox2.addEventListener('change', (event) => {
             if (event.target.checked) {
                 enableJ1 = 1;
-                document.getElementById("result").innerHTML = createLiveTable(P1);
+//                document.getElementById("result").innerHTML = createLiveTable(P1);
             } else {
                 enableJ1 = 0;
-                document.getElementById("result").innerHTML = createLiveTable(P1);
+//                document.getElementById("result").innerHTML = createLiveTable(P1);
             }
 
         });
@@ -131,10 +134,10 @@
         checkbox3.addEventListener('change', (event) => {
             if (event.target.checked) {
                 enableJ3 = 1;
-                document.getElementById("result").innerHTML = createLiveTable(P1);
+//                document.getElementById("result").innerHTML = createLiveTable(P1);
             } else {
                 enableJ3 = 0;
-                document.getElementById("result").innerHTML = createLiveTable(P1);
+//                document.getElementById("result").innerHTML = createLiveTable(P1);
             }
 
         });
@@ -645,6 +648,19 @@
                     document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = await response.text();
                     document.getElementById(target).innerHTML = createLiveTable(P1);
+  
+                    if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
+                        download(allArrayJ, 'j1.txt', 'text/plain');    
+                        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
+                
+                //       console.log(JSON.parse(allArrayJ));     
+                    }
+                    
+                    if (enableJ3 == 1 && dayCompetitors == 1) { 
+                        download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
+                        console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
+                    }
+                                        
 //                    alignTable();
                 }
             }
@@ -2830,7 +2846,7 @@ allArray[l]["Id_Arrow"]
                 if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
                     finalText += '<td class="rnk_font">&nbsp;</td>';// add team name
                 } else {
-                    finalText += '<td class="rnk_font wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
+                    finalText += '<td class="rnk_font left wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
                 }
            //         finalText += '</div>';
                     
@@ -3745,7 +3761,8 @@ if (enableJ1 == 1) {
         delete allArray[l].Id_Nom_2;
 
 
-        const allArrayJ = {};
+//        const allArrayJ = {};
+        allArrayJ = {};
         Object.keys(allArray[l]).sort().forEach(function(key) {
             if (allArray[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
                 allArray[l][key] == '';
@@ -4031,10 +4048,6 @@ if (enableJ3 == 1) {
 
             
             
-            
-            
-            
-            
             const allArrayJ3 = {};
             Object.keys(allArray3f[l]).sort().forEach(function(key) {
                 if (allArray3f[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
@@ -4050,17 +4063,22 @@ if (enableJ3 == 1) {
         } // END for l single day
         
         if (m != 0) { // check if we have competitors
+            dayCompetitors = 1;
             finalText3 += '</table>\n</div>\n';  // close after last category   
-if (enableJ3 == 1) {            
-            download((finalText3header + finalText3), 'p3.html', 'text/plain');    // download the html for single day 
-}
+
+        if (enableJ3 == 1) { 
+            J3text = finalText3header + finalText3;
+//            download((finalText3header + finalText3), 'p3.html', 'text/plain');    // download the html for single day 
+        }
+
             finalText3 = '<h2>Single Day</h2>\n' + finalText3;
 
         } else {
+            dayCompetitors = 0;
             finalText3 += '</div>\n';  // close "liveTableS" 
         }
 
-        
+/*        
 if (enableJ3 == 1) {
 
         var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
@@ -4086,6 +4104,7 @@ if (enableJ3 == 1) {
         download(allArrayJ3, 'j3.txt', 'text/plain');    
         console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt')
 }
+*/
 //    }
  
         
@@ -4125,8 +4144,8 @@ if (enableJ1 == 1) {
 
         allArray.unshift(header); // add the header at the beginning
         allArrayJ = JSON.stringify(allArray);             
-        download(allArrayJ, 'j1.txt', 'text/plain');    
-        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
+//        download(allArrayJ, 'j1.txt', 'text/plain');    
+//        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
     }
  //       console.log(JSON.parse(allArrayJ));     
 }

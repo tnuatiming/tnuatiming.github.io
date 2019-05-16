@@ -114,7 +114,7 @@ function selectTeam() {
 
 
 function selectCategory() {
-    var list = ["Men", "Women", "Mixed", "Grand", "Master"];
+    var list = ["Men", "Women", "Mixed", "Grand", "Masters"];
     var i = Math.floor(Math.random() * (list.length));
     return list[i];
 }
@@ -216,6 +216,9 @@ function genp1() {
     if (x == 8) {
         group = 'b';
     }
+    if (x == 78) {
+        group = 's';
+    }
     if (x == 6 && leader == 0) {
         var cat = category;
         group = 'l';
@@ -242,6 +245,9 @@ function genp1() {
     }
     if (x == 66) {
         status1 = '_Status11';
+    }
+    if (x == 56) {
+        status1 = '_Status10';
     }
     
     

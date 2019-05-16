@@ -312,7 +312,7 @@ td img {
 
 td.title_font {
     color: #222;
-    font-size: 16px;
+    font-size: 2em;
     font-weight: 700;
     text-shadow: none;
     padding-top: 5px;
@@ -752,8 +752,9 @@ span#name, span#rund, span#date {
     color: #fc3;
     font-weight: 700;
 }
-#live td.blue {
-    color: #41b6e6;
+#live td.blue {2f5999ff
+    color: #2f5999;
+    /*color: #41b6e6;*/
     font-weight: 700;
 }
 #live td.lightblue {
@@ -1643,6 +1644,9 @@ a.main_logo {
     }
     #live td, #live th {
         font-size: 0.8em;
+    }
+    #live td.title_font {
+        font-size: 1em;
     }
     #race td.rnk_font, #race th.rnkh_font, #live td.rnk_font, #live th.rnkh_font {
     border-right: 1px solid #fff;
