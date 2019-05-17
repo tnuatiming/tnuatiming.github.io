@@ -930,6 +930,10 @@ remove all imTheLeader
 
              for (b = 0; b < allArray.length; b++) {
                  
+//                allArray[b].blue = allArray[b].B;
+//                delete allArray[b].B;
+        
+        
                 allArray[b].Id_TpsCumule = allArray[b].T;
                 delete allArray[b].T;
                 allArray[b].Id_TpsCumule_2 = allArray[b].TT;
@@ -1217,8 +1221,14 @@ remove all imTheLeader
                 }
                 
                    
-                
+/*                
                 if ((allArray[b]["Id_Inter1blue"] == 1 || allArray[b]["Id_Inter2blue"] == 1 || allArray[b]["Id_Inter3blue"] == 1 || allArray[b]["Id_Finishblue"] == 1) && show == 4) {
+                   allArray[b]["blue"] = 1;
+                } else {
+                    allArray[b]["blue"] = 0;
+                }
+*/
+                if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
                    allArray[b]["blue"] = 1;
                 } else {
                     allArray[b]["blue"] = 0;
@@ -2214,6 +2224,10 @@ allArray[l]["Id_Arrow"]
                 
                     finalText += '<td colspan="2" title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
+                } else if (allArray[l]["single"] != 0) {
+                    
+                    finalText += '<td colspan="2" title="Single Finisher" class="black ' + blued + 'rnk_font">SF</td>';
+                    
                 } else if (allArray[l]["Id_Sector_FinishTime"] != 99999999999 /*&& show == 4*/ && allArray[l]["oldBlue"] == 0 && allArray[l]["single"] == 0 && !allArray[l]["Id_Image"].includes("_Status")) {
                     
                     

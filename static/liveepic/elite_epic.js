@@ -1293,9 +1293,11 @@
                         }
 
  // make blue if exceed MaximumStageTime, ENABLE after testing
+                        allArray[b].mst = 0;
                         if ((allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
                             allArray[b]["Id_FinishTime"] = 99999999999;
                             allArray[b].Id_Finishblue = 1; // make blue DSQ
+                            allArray[b].mst = 1;
                         }
 
                         if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
@@ -1324,9 +1326,9 @@
                             
                             if (Math.abs(allArray[b]["Id_Inter1"] - allArray[b]["Id_Inter1_2"]) > 120000) { // check more then 2 minutes apart
                     //               allArray[b]["Id_Inter1Time"] = 99999999999;
-                                if (show == 4) {
-                                    allArray[b].blue = 1; // make blue DSQ
-                                }
+//                                if (show == 4) {
+//                                    allArray[b].blue = 1; // make blue DSQ
+//                                }
                                 allArray[b].Id_Inter1blue = 1; // make blue DSQ
                             }
                             
@@ -1375,9 +1377,9 @@
                             
                             if (Math.abs(allArray[b]["Id_Inter2"] - allArray[b]["Id_Inter2_2"]) > 120000) { // check more then 2 minutes apart
                 //                 allArray[b]["Id_Inter2Time"] = 99999999999;
-                                if (show == 4) {
-                                    allArray[b].blue = 1; // make blue DSQ
-                                }
+//                                if (show == 4) {
+//                                    allArray[b].blue = 1; // make blue DSQ
+//                                }
                                 allArray[b].Id_Inter2blue = 1; // make blue DSQ
                             }
                             
@@ -1426,9 +1428,9 @@
                             
                             if (Math.abs(allArray[b]["Id_Inter3"] - allArray[b]["Id_Inter3_2"]) > 120000) { // check more then 2 minutes apart
                 //                   allArray[b]["Id_Inter3Time"] = 99999999999;
-                                if (show == 4) {
-                                    allArray[b].blue = 1; // make blue DSQ
-                                }
+//                                if (show == 4) {
+//                                    allArray[b].blue = 1; // make blue DSQ
+//                                }
                                 allArray[b].Id_Inter3blue = 1; // make blue DSQ
                             }
                             
@@ -2781,6 +2783,14 @@ allArray[l]["Id_Arrow"]
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
                     finalText += '<td colspan="2" title="*" class="rnk_font">*</td>';
+                    
+                } else if (allArray[l]["mst"] == 1) {
+                    
+                    finalText += '<td colspan="2" title="Exceed Maximum Stage Time" class="rnk_font">MST</td>';
+                    
+                } else if (allArray[l]["single"] != 0) {
+                    
+                    finalText += '<td colspan="2" title="Single Finisher" class="rnk_font">SF</td>';
                     
                 } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 /*|| show != 4*/) { // enable show != 4, to show postion only on finish
                 
