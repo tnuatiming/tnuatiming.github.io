@@ -2224,11 +2224,11 @@ allArray[l]["Id_Arrow"]
                 
                     finalText += '<td colspan="2" title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
 
-                } else if (allArray[l]["single"] != 0) {
+                } else if (allArray[l]["single"] != 0 && show == 4) {
                     
                     finalText += '<td colspan="2" title="Single Finisher" class="black ' + blued + 'rnk_font">SF</td>';
                     
-                } else if (allArray[l]["Id_Sector_FinishTime"] != 99999999999 /*&& show == 4*/ && allArray[l]["oldBlue"] == 0 && allArray[l]["single"] == 0 && !allArray[l]["Id_Image"].includes("_Status")) {
+                } else if (allArray[l]["Id_Sector_FinishTime"] != 99999999999 /*&& show == 4*/ && allArray[l]["oldBlue"] == 0 && allArray[l]["single"] == 0 && !allArray[l]["Id_Image"].includes("_Status") && !(show != 4 && ((show >= 1 && allArray[l]["Id_Inter1blue"] == 1) || (show >= 2 && allArray[l]["Id_Inter2blue"] == 1) || (show >= 3 && allArray[l]["Id_Inter3blue"] == 1))) ) {
                     
                     
                     

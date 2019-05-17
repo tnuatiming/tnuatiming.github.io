@@ -2784,15 +2784,15 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += '<td colspan="2" title="*" class="rnk_font">*</td>';
                     
-                } else if (allArray[l]["mst"] == 1) {
+                } else if (allArray[l]["mst"] == 1 && show == 4) {
                     
                     finalText += '<td colspan="2" title="Exceed Maximum Stage Time" class="rnk_font">MST</td>';
                     
-                } else if (allArray[l]["single"] != 0) {
+                } else if (allArray[l]["single"] != 0 && show == 4) {
                     
                     finalText += '<td colspan="2" title="Single Finisher" class="rnk_font">SF</td>';
                     
-                } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 /*|| show != 4*/) { // enable show != 4, to show postion only on finish
+                } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 || (show != 4 && ((show >= 1 && allArray[l]["Id_Inter1blue"] == 1) || (show >= 2 && allArray[l]["Id_Inter2blue"] == 1) || (show >= 3 && allArray[l]["Id_Inter3blue"] == 1)))) { // enable show != 4, to show postion only on finish
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // dont show position if status or no finish time
