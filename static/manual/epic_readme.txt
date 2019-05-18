@@ -35,7 +35,7 @@ build classification for epic:
     (Inter. 2) - Id_Inter2 - intermediate time 2
     (Inter. 3) - Id_Inter3 - intermediate time 3
     (Class) - Id_Classe - mark 1 day competitors ('sf' for Friday and 'ss' for Saturday)
-    (Group) - Id_Groupe - add letters as follows: "u" - UCI Rider, "b" - blue rider, "s" - single Rider, "l" - leader(yellow shirt), "d" - DSQ.
+    (Group) - Id_Groupe - add letters as follows: "u" - UCI Rider(convert xls "yes" on UCI colnum to "u" and import into Group), "b" - blue rider, "s" - single Rider, "l" - leader(yellow shirt), "d" - DSQ.
     (Team) - Id_Equipe - team name
     (Channel) - Id_Canal - mark "started" for prologue
     
@@ -108,3 +108,15 @@ add t1.txt-t4.txt
 "prologue" in race name for day 1
 enableJ3 enabled for single day
 update MaximumStageTime in elite_epic_remote.js and elite_epic.js
+
+
+## after stage finish ##
+
+check on master all intermediate times for missing or blue and update status (status 5 for blue)
+check DNF
+publish on master to get stage results and cleanResults to get csv
+after uploading t1.txt-t4.txt(from j1.txt), publish on mastertotal to get total results and cleanResults to get csv
+
+
+## testing ##
+test.html + testEpic.py will genrate test

@@ -15,7 +15,84 @@
 
     <script>
    
+   var createFull = 0; // 0 - start empty and fill every 10 sec, 1 - create full results
+   
    var competitorsNumber = 400;
+   
+   var arrayTest = {};
+    if (sessionStorage.getItem('arrayTest')) {
+        arrayTest = JSON.parse(sessionStorage.getItem('arrayTest'));
+    } else {
+    
+        var leader = 0;
+   
+        for (l = 1; l < competitorsNumber; l++) {
+        
+        
+    var x = Math.floor(Math.random() * 100);
+   
+
+    var category = selectCategory();
+        
+    var team = selectTeam();
+    
+    var group = '&nbsp;';
+    if (x % 5 == 0) {
+        group = 'u';
+    }
+    if (x == 8) {
+        group = 'b';
+    }
+    if (x == 78) {
+        group = 's';
+    }
+    if (x == 6 && leader == 0) {
+        var cat = category;
+        group = 'l';
+        leader = 1;
+    }
+    if (x == 6 && leader == 1 && cat != category) {
+        var cat1 = category;
+        group = 'l';
+        leader = 2;
+    }
+    if (x == 6 && leader == 2 && cat != category && cat1 != category) {
+        var cat2 = category;
+        group = 'l';
+        leader = 3;
+    }
+    if (x == 6 && leader == 2 && cat != category && cat1 != category && cat2 != category) {
+        var cat3 = category;
+        group = 'l';
+        leader = 4;
+    }
+    if (x == 6 && leader == 2 && cat != category && cat1 != category && cat2 != category && cat3 != category) {
+        group = 'l';
+        leader = 5;
+    }
+        
+        
+
+        arrayTest[l + '1'] = {["Id_Numero"]: Number(l + '1'), "Id_Nom": selectName(), "Id_NbTour": '-', "Id_TpsCumule": '-', "Id_Categorie": category, "Id_Image": '-', "Id_Canal": 1, "Id_Classe": '&nbsp;', "Id_Nationalite": nation(), "Id_Inter1": '-', "Id_Inter2": '-', "Id_Inter3": '-', "Id_Groupe": group, "Id_Equipe": team};
+        
+        arrayTest[l + '2'] = {["Id_Numero"]: Number(l + '2'), "Id_Nom": selectName(), "Id_NbTour": '-', "Id_TpsCumule": '-', "Id_Categorie": category, "Id_Image": '-', "Id_Canal": 1, "Id_Classe": '&nbsp;', "Id_Nationalite": nation(), "Id_Inter1": '-', "Id_Inter2": '-', "Id_Inter3": '-', "Id_Groupe": group, "Id_Equipe": team};
+
+
+ // single day   
+        if (l < 50) {
+            arrayTest[l + '8881'] = {["Id_Numero"]: Number(l + '1'), "Id_Nom": selectName(), "Id_NbTour": '-', "Id_TpsCumule": '-', "Id_Categorie": category, "Id_Image": '-', "Id_Canal": 1, "Id_Classe": 'ss', "Id_Nationalite": nation(), "Id_Inter1": '-', "Id_Inter2": '-', "Id_Inter3": '-', "Id_Groupe": group, "Id_Equipe": team};
+            
+            arrayTest[l + '8882'] = {["Id_Numero"]: Number(l + '2'), "Id_Nom": selectName(), "Id_NbTour": '-', "Id_TpsCumule": '-', "Id_Categorie": category, "Id_Image": '-', "Id_Canal": 1, "Id_Classe": 'ss', "Id_Nationalite": nation(), "Id_Inter1": '-', "Id_Inter2": '-', "Id_Inter3": '-', "Id_Groupe": group, "Id_Equipe": team};
+            
+            arrayTest[l + '999'] = {["Id_Numero"]: Number(l + '2'), "Id_Nom": selectName(), "Id_NbTour": '-', "Id_TpsCumule": '-', "Id_Categorie": 'גברים יחיד', "Id_Image": '-', "Id_Canal": 1, "Id_Classe": 'ss', "Id_Nationalite": nation(), "Id_Inter1": '-', "Id_Inter2": '-', "Id_Inter3": '-', "Id_Groupe": group, "Id_Equipe": team};
+        }
+         
+        }
+   
+   }
+   
+   
+//console.log(arrayTest);   
    
 function randomN(min, max) {
 
@@ -70,8 +147,11 @@ function maketime(start, end) { // start, end hour
     var min = (Math.floor(Math.random() * 60));
     var sec = (Math.floor(Math.random() * 60));
 
-    time.push((hours).toString().padStart(2, "0") + ':' + (min).toString().padStart(2, "0") + ':' + (sec).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));   
-    
+        if (blue == 74) {
+            time.push('-');
+        } else {
+            time.push((hours).toString().padStart(2, "0") + ':' + (min).toString().padStart(2, "0") + ':' + (sec).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));   
+        }
     if (min >= 0 && min <= 30) {
         if (blue == 12) {
             var min1 = min + 3;
@@ -92,10 +172,13 @@ function maketime(start, end) { // start, end hour
         var sec1 = sec - (Math.floor(Math.random() * 30));
     }
     
-    
-    time.push((hours).toString().padStart(2, "0") + ':' + (min1).toString().padStart(2, "0") + ':' + (sec1).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));
-    
-    console.log(time);
+        if (blue == 34) {
+            time.push('-');
+        } else {
+            time.push((hours).toString().padStart(2, "0") + ':' + (min1).toString().padStart(2, "0") + ':' + (sec1).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));
+        }
+        
+//    console.log(time);
     return time;
 }
 
@@ -160,7 +243,7 @@ function genp1() {
 
     for (l = 1; l < competitorsNumber; l++) {
                             
-    x = Math.floor(Math.random() * 100);
+    var x = Math.floor(Math.random() * 100);
    
 
     var category = selectCategory();
@@ -248,6 +331,10 @@ function genp1() {
     }
     if (x == 56) {
         status1 = '_Status10';
+    }
+    if (x % 100 == 0) {
+        status1 = '_Status5';
+        status2 = '_Status5';
     }
     
     
@@ -374,11 +461,373 @@ if (l % 3 == 0) {
 
               return text
               
- }                       
-    document.addEventListener("DOMContentLoaded", function() {
+ }     
+ 
+ 
+function createText() {
+
+var today  = new Date().toLocaleString();
+
+
+    var text = '<h1 id="Title"><img src="Images/_GreenFlag.png" alt="green">Migdal Epic Israel - prologue<img src="Images/_GreenFlag.png" alt="green"></h1>\n';
+    text += '<p id="Time"><span id="DayTime">' + (new Date().toLocaleString()) + '</span><span id="ElapsedTime">04:55:37</span><span id="RemainingTime">&nbsp;</span></p>\n';
+        
+        
+        text += `
+<table width="100%">
+<tr class="HeaderRow">
+<td id="Id_Numero" align="center" width="10">מספר</td>
+<td id="Id_Nom" align="right" width="10">שם</td>
+<td id="Id_NbTour" align="center" width="10">הקפות</td>
+<td id="Id_TpsCumule" align="right" width="10">זמן</td>
+<td id="Id_Categorie" align="right" width="100">קטגוריה</td>
+<td id="Id_Image" align="left" width="100">&nbsp;</td>
+<td id="Id_Canal" align="left" width="100">Channel</td>
+<td id="Id_Classe" align="left" width="100">Class</td>
+<td id="Id_Nationalite" align="left" width="100">flag</td>
+<td id="Id_Inter1" align="left" width="100">Inter. 1</td>
+<td id="Id_Inter2" align="left" width="100">Inter. 2</td>
+<td id="Id_Inter3" align="left" width="100">Inter. 3</td>
+<td id="Id_Groupe" align="left" width="100">Group</td>
+<td id="Id_Equipe" align="left" width="100">Team</td>
+</tr>
+`;
+    
+    
+
+    for (l = 1; l < competitorsNumber; l++) {
+
+    
+    text += '<tr class="OddRow">\n';
+    
+    text += '<td align="center" class="">' + l + '1' + '</td>\n'; // Id_Numero
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Nom"] + '</td>\n'; // Id_Nom
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_NbTour"] + '</td>\n'; // Id_NbTour
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_TpsCumule"] + '</td>\n'; // Id_TpsCumule
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Categorie"] + '</td>\n'; // Id_Categorie
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Image"] + '</td>\n'; // Id_Image
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Canal"] + '</td>\n'; // Id_Canal
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Classe"] + '</td>\n'; // Id_Classe
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Nationalite"] + '</td>\n'; // Id_Nationalite
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Inter1"] + '</td>\n'; // Id_Inter1
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Inter2"] + '</td>\n'; // Id_Inter2
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Inter3"] + '</td>\n'; // Id_Inter3
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Groupe"] + '</td>\n'; // Id_Groupe
+    text += '<td align="center" class="">' + arrayTest[l + '1']["Id_Equipe"] + '</td>\n'; // Id_Equipe
+    
+    text += '</tr>\n';
+    
+    text += '<tr class="EvenRow">\n';
+    
+    text += '<td align="center" class="">' + l + '2' + '</td>\n'; // Id_Numero
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Nom"] + '</td>\n'; // Id_Nom
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_NbTour"] + '</td>\n'; // Id_NbTour
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_TpsCumule"] + '</td>\n'; // Id_TpsCumule
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Categorie"] + '</td>\n'; // Id_Categorie
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Image"] + '</td>\n'; // Id_Image
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Canal"] + '</td>\n'; // Id_Canal
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Classe"] + '</td>\n'; // Id_Classe
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Nationalite"] + '</td>\n'; // Id_Nationalite
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Inter1"] + '</td>\n'; // Id_Inter1
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Inter2"] + '</td>\n'; // Id_Inter2
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Inter3"] + '</td>\n'; // Id_Inter3
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Groupe"] + '</td>\n'; // Id_Groupe
+    text += '<td align="center" class="">' + arrayTest[l + '2']["Id_Equipe"] + '</td>\n'; // Id_Equipe
+    
+    text += '</tr>\n';
+        
+    if (l < 50) {
+    
+        text += '<tr class="OddRow">\n';
+        
+        text += '<td align="center" class="">' + l + '8881' + '</td>\n'; // Id_Numero
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Nom"] + '</td>\n'; // Id_Nom
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_NbTour"] + '</td>\n'; // Id_NbTour
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_TpsCumule"] + '</td>\n'; // Id_TpsCumule
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Categorie"] + '</td>\n'; // Id_Categorie
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Image"] + '</td>\n'; // Id_Image
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Canal"] + '</td>\n'; // Id_Canal
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Classe"] + '</td>\n'; // Id_Classe
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Nationalite"] + '</td>\n'; // Id_Nationalite
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Inter1"] + '</td>\n'; // Id_Inter1
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Inter2"] + '</td>\n'; // Id_Inter2
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Inter3"] + '</td>\n'; // Id_Inter3
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Groupe"] + '</td>\n'; // Id_Groupe
+        text += '<td align="center" class="">' + arrayTest[l + '8881']["Id_Equipe"] + '</td>\n'; // Id_Equipe
+        
+        text += '</tr>\n';
+        
+        text += '<tr class="EvenRow">\n';
+        
+        text += '<td align="center" class="">' + l + '8882' + '</td>\n'; // Id_Numero
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Nom"] + '</td>\n'; // Id_Nom
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_NbTour"] + '</td>\n'; // Id_NbTour
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_TpsCumule"] + '</td>\n'; // Id_TpsCumule
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Categorie"] + '</td>\n'; // Id_Categorie
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Image"] + '</td>\n'; // Id_Image
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Canal"] + '</td>\n'; // Id_Canal
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Classe"] + '</td>\n'; // Id_Classe
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Nationalite"] + '</td>\n'; // Id_Nationalite
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Inter1"] + '</td>\n'; // Id_Inter1
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Inter2"] + '</td>\n'; // Id_Inter2
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Inter3"] + '</td>\n'; // Id_Inter3
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Groupe"] + '</td>\n'; // Id_Groupe
+        text += '<td align="center" class="">' + arrayTest[l + '8882']["Id_Equipe"] + '</td>\n'; // Id_Equipe
+        
+        text += '</tr>\n';
+        
+        text += '<tr class="OddRow">\n';
+        
+        text += '<td align="center" class="">' + l + '999' + '</td>\n'; // Id_Numero
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Nom"] + '</td>\n'; // Id_Nom
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_NbTour"] + '</td>\n'; // Id_NbTour
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_TpsCumule"] + '</td>\n'; // Id_TpsCumule
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Categorie"] + '</td>\n'; // Id_Categorie
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Image"] + '</td>\n'; // Id_Image
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Canal"] + '</td>\n'; // Id_Canal
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Classe"] + '</td>\n'; // Id_Classe
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Nationalite"] + '</td>\n'; // Id_Nationalite
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Inter1"] + '</td>\n'; // Id_Inter1
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Inter2"] + '</td>\n'; // Id_Inter2
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Inter3"] + '</td>\n'; // Id_Inter3
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Groupe"] + '</td>\n'; // Id_Groupe
+        text += '<td align="center" class="">' + arrayTest[l + '999']["Id_Equipe"] + '</td>\n'; // Id_Equipe
+        
+        text += '</tr>\n';
+    }
+    
+    }
+    
+         text += '</table>\n';
+              
+              
+        return text
+
+}
+ 
+
+function genp1x() {
+
+
+    
+
+ //   for (l = 1; l < competitorsNumber; l++) {
+    
+    var x = Math.floor(Math.random() * 100);
+    var l = Math.floor(Math.random() * competitorsNumber) + 1;
+    
+    if (arrayTest[l + '1']["Id_Inter1"] == '-' && arrayTest[l + '2']["Id_Inter1"] == '-') {
+        var timeInt1 = maketime(1, 2);
+        arrayTest[l + '1']["Id_Inter1"] = timeInt1[0]; // Id_Inter1
+        arrayTest[l + '2']["Id_Inter1"] = timeInt1[1]; // Id_Inter1
+        console.log('competitor ' + l + ' int1');
+    } else if (arrayTest[l + '1']["Id_Inter2"] == '-' && arrayTest[l + '2']["Id_Inter2"] == '-') {
+        var timeInt1 = maketime(2, 3);
+        arrayTest[l + '1']["Id_Inter2"] = timeInt1[0]; // Id_Inter1
+        arrayTest[l + '2']["Id_Inter2"] = timeInt1[1]; // Id_Inter1
+        console.log('competitor ' + l + ' int2');
+    } else if (arrayTest[l + '1']["Id_Inter3"] == '-' && arrayTest[l + '2']["Id_Inter3"] == '-') {
+        var timeInt1 = maketime(3, 4);
+        arrayTest[l + '1']["Id_Inter3"] = timeInt1[0]; // Id_Inter1
+        arrayTest[l + '2']["Id_Inter3"] = timeInt1[1]; // Id_Inter1
+        console.log('competitor ' + l + ' int3');
+    } else if (arrayTest[l + '1']["Id_TpsCumule"] == '-' && arrayTest[l + '2']["Id_TpsCumule"] == '-') {
+        var time = maketime(4, 7);
+        if (x < 5) {
+            time = ['-', '-'];
+        } else if (x > 98) {
+            time[0] = '-';
+        }
+    
+        if (time[0] == '-') {
+            var c1 = 1;
+            var laps1 = 0;
+        } else {
+            var c1 = 4;
+            var laps1 = 1;
+        }
+        if (time[1] == '-') {
+            var c2 = 1;
+            var laps2 = 0;
+        } else {
+            var c2 = 4;
+            var laps2 = 1;
+        }
+
+        var status1 = '&nbsp;';
+        var status2 = '&nbsp;';
+        if (x == 68) {
+            status1 = '_Status11';
+            status2 = '_Status11';
+        }
+        if (x == 67) {
+            status2 = '_Status11';
+        }
+        if (x == 66) {
+            status1 = '_Status11';
+        }
+        if (x == 56) {
+            status1 = '_Status10';
+        }
+        if (x % 100 == 0) {
+            status1 = '_Status5';
+            status2 = '_Status5';
+        }
+        
+    // rider 1
+        
+        arrayTest[l + '1']["Id_NbTour"] = laps1; // Id_NbTour
+        arrayTest[l + '1']["Id_TpsCumule"] = time[0]; // Id_TpsCumule
+        arrayTest[l + '1']["Id_Image"] = status2; // Id_Image
+        arrayTest[l + '1']["Id_Canal"] = c1; // Id_Canal
+        
+
+        
+                
+    // rider 2
+
+        arrayTest[l + '2']["Id_NbTour"] = laps2; // Id_NbTour
+        arrayTest[l + '2']["Id_TpsCumule"] = time[1]; // Id_TpsCumule
+        arrayTest[l + '2']["Id_Image"] = status1; // Id_Image
+        arrayTest[l + '2']["Id_Canal"] = c2; // Id_Canal
+    
+        console.log('competitor ' + l + ' finish');
+    } 
+                            
+   
+
+    
+
+/*
+    if (x % 30 == 0) {
+        timeInt1 = ['-', '-'];
+    } else if (x == 89) {
+        timeInt1[0] = '-';
+    }
+    if (x % 75 == 0) {
+        timeInt2 = ['-', '-'];
+    } else if (x == 79) {
+        timeInt2[0] = '-';
+    }
+    if (x % 25 == 0) {
+        timeInt3 = ['-', '-'];
+    } else if (x == 99) {
+        timeInt3[0] = '-';
+    }
+*/    
+    
+    
+    
+    
+
+//    } // END for l    
+
+
+        var time = maketime(4, 7);
+        if (x < 5) {
+            time = ['-', '-'];
+        } else if (x > 98) {
+            time[0] = '-';
+        }
+    
+        if (time[0] == '-') {
+            var c1 = 1;
+            var laps1 = 0;
+        } else {
+            var c1 = 4;
+            var laps1 = 1;
+        }
+        if (time[1] == '-') {
+            var c2 = 1;
+            var laps2 = 0;
+        } else {
+            var c2 = 4;
+            var laps2 = 1;
+        }
+
+        var status1 = '&nbsp;';
+        var status2 = '&nbsp;';
+        if (x == 68) {
+            status1 = '_Status11';
+            status2 = '_Status11';
+        }
+        if (x == 67) {
+            status2 = '_Status11';
+        }
+        if (x == 66) {
+            status1 = '_Status11';
+        }
+        if (x == 56) {
+            status1 = '_Status10';
+        }
+        if (x % 100 == 0) {
+            status1 = '_Status5';
+            status2 = '_Status5';
+        }
+
+            
+
+    // rider 1
+        if (l < 50) {
+  
+            arrayTest[l + '8881']["Id_NbTour"] = laps1; // Id_NbTour
+            arrayTest[l + '8881']["Id_TpsCumule"] = time[0]; // Id_TpsCumule
+            arrayTest[l + '8881']["Id_Image"] = status2; // Id_Image
+            arrayTest[l + '8881']["Id_Canal"] = c1; // Id_Canal
+                    
+        // rider 2
+
+            arrayTest[l + '8882']["Id_NbTour"] = laps2; // Id_NbTour
+            arrayTest[l + '8882']["Id_TpsCumule"] = time[1]; // Id_TpsCumule
+            arrayTest[l + '8882']["Id_Image"] = status1; // Id_Image
+            arrayTest[l + '8882']["Id_Canal"] = c2; // Id_Canal
+        // rider 2
+
+            arrayTest[l + '999']["Id_NbTour"] = laps2; // Id_NbTour
+            arrayTest[l + '999']["Id_TpsCumule"] = time[1]; // Id_TpsCumule
+            arrayTest[l + '999']["Id_Image"] = status1; // Id_Image
+            arrayTest[l + '999']["Id_Canal"] = c2; // Id_Canal
+    
+        }
+    
+//     text += '</table>\n';
+   
+    
                         
-    document.getElementById("result").innerHTML = genp1();
-});
+                        
+        text = createText();
+              
+                        
+        sessionStorage.setItem('arrayTest', JSON.stringify(arrayTest));
+                        
+              //console.log(text);
+        download(text, 'z1.html', 'text/plain');    
+
+        return text
+              
+ }                       
+ 
+ 
+ 
+ 
+ 
+    document.addEventListener("DOMContentLoaded", function() {
+      
+        if (createFull == 0) {  
+            window.setInterval(function(){
+                            
+                document.getElementById("result").innerHTML = genp1x();
+        
+            }, 10000);
+        
+        } else {
+            document.getElementById("result").innerHTML = genp1();
+     
+        }
+        
+    });
+    
+    
     
     
 function download(content, fileName, contentType) {

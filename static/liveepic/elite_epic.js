@@ -2284,6 +2284,45 @@
                                 }
                                 
                                 
+                             // position change arrow/status prep
+
+                    competitorNumber = allArray[l]["Id_Numero"];
+                    competitorPosition = 0;
+                     
+
+
+                    // calculating arrows status
+                    
+                    positionChanged = "";
+
+                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no" && allArray[l]["Id_Sector_FinishTime"] != 99999999999) {
+                        
+                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] < allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
+                            allArray[l]["Id_Arrow"] = 3; // down :(
+                            positionChanged = "lostPosition ";
+                            
+                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
+                            allArray[l]["Id_Arrow"] = 4; // up :)
+                            positionChanged = "gainedPosition ";
+                            
+                        }
+                        
+                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes" && allArray[l]["Id_Sector_FinishTime"] != 99999999999) {
+                        
+                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] < allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
+                            allArray[l]["Id_Arrow"] = 3; // down :(
+                            positionChanged = "lostPosition ";
+                            
+                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
+                            allArray[l]["Id_Arrow"] = 4; // up :)
+                            positionChanged = "gainedPosition ";
+                            
+                        }
+                    }
+                    
+       //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
+
+
                                 // convert back to time
                                 
                             if (allArray[l]["Id_Inter1Time"] != 99999999999) {  
@@ -2340,45 +2379,6 @@
                
                             
         
-                             // position change arrow/status prep
-
-                    competitorNumber = allArray[l]["Id_Numero"];
-                    competitorPosition = 0;
-                     
-
-
-                    // calculating arrows status
-                    
-                    positionChanged = "";
-
-                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no") {
-                        
-                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] < allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
-                            allArray[l]["Id_Arrow"] = 3; // down :(
-                            positionChanged = "lostPosition ";
-                            
-                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
-                            allArray[l]["Id_Arrow"] = 4; // up :)
-                            positionChanged = "gainedPosition ";
-                            
-                        }
-                        
-                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes") {
-                        
-                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] < allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
-                            allArray[l]["Id_Arrow"] = 3; // down :(
-                            positionChanged = "lostPosition ";
-                            
-                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
-                            allArray[l]["Id_Arrow"] = 4; // up :)
-                            positionChanged = "gainedPosition ";
-                            
-                        }
-                    }
-                    
-       //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
-
-
 
        
                     
@@ -2386,6 +2386,7 @@
                         allArray[l]["Id_Arrow"] = 10; // DSQ
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
                         allArray[l]["blue"] = 1; //FIXME
+                        showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {

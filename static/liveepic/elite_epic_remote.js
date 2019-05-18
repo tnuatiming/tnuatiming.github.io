@@ -911,7 +911,13 @@ remove all imTheLeader
 
         if (HeaderEventName.includes("prologue")) { // prologue
             prologue = 1;
+            document.getElementById("intermediate1").style.display = "none";        
+            document.getElementById("intermediate2").style.display = "none";        
+            document.getElementById("intermediate3").style.display = "none";        
         } else {
+            document.getElementById("intermediate1").style.display = "inline-block";        
+            document.getElementById("intermediate2").style.display = "inline-block";        
+            document.getElementById("intermediate3").style.display = "inline-block";        
             prologue = 0;
         }
 
@@ -1786,6 +1792,41 @@ remove all imTheLeader
                 }
                             
 */                    
+                             // position change arrow/status prep
+
+                    competitorNumber = allArray[l]["Id_Numero"];
+                    competitorPosition = 0;
+
+                    // calculating arrows status
+                    
+                    positionChanged = "";
+
+                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no" && allArray[l]["Id_Sector_FinishTime"] != 99999999999) {
+                        
+                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] < allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
+                            allArray[l]["Id_Arrow"] = 3; // down :(
+                            positionChanged = "lostPosition ";
+                            
+                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
+                            allArray[l]["Id_Arrow"] = 4; // up :)
+                            positionChanged = "gainedPosition ";
+                            
+                        }
+                        
+                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes" && allArray[l]["Id_Sector_FinishTime"] != 99999999999) {
+                        
+                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] < allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
+                            allArray[l]["Id_Arrow"] = 3; // down :(
+                            positionChanged = "lostPosition ";
+                            
+                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
+                            allArray[l]["Id_Arrow"] = 4; // up :)
+                            positionChanged = "gainedPosition ";
+                            
+                        }
+                    }
+                    
+       //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
                     // convert back to time
                     
                 if (allArray[l]["Id_Inter1Time"] != 99999999999) {  
@@ -1844,41 +1885,6 @@ remove all imTheLeader
                     allArray[l]["Id_Sector_Ecart1er"] = ms2TimeString(allArray[l]["Id_Sector_Ecart1er"]);
                 }
          
-                             // position change arrow/status prep
-
-                    competitorNumber = allArray[l]["Id_Numero"];
-                    competitorPosition = 0;
-
-                    // calculating arrows status
-                    
-                    positionChanged = "";
-
-                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no") {
-                        
-                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] < allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
-                            allArray[l]["Id_Arrow"] = 3; // down :(
-                            positionChanged = "lostPosition ";
-                            
-                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
-                            allArray[l]["Id_Arrow"] = 4; // up :)
-                            positionChanged = "gainedPosition ";
-                            
-                        }
-                        
-                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes") {
-                        
-                        if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] < allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
-                            allArray[l]["Id_Arrow"] = 3; // down :(
-                            positionChanged = "lostPosition ";
-                            
-                        } else if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
-                            allArray[l]["Id_Arrow"] = 4; // up :)
-                            positionChanged = "gainedPosition ";
-                            
-                        }
-                    }
-                    
-       //     positionArray_All_Cat[allArray[l]["Id_Numero"]] = [allArray[l]["Id_Position_Overall"], allArray[l]["Id_Position_Categorie"]];
 
        
                     
@@ -1886,6 +1892,7 @@ remove all imTheLeader
                         allArray[l]["Id_Arrow"] = 10; // DSQ
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
                         allArray[l]["blue"] = 1; //FIXME
+                        showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
@@ -2022,13 +2029,13 @@ remove all imTheLeader
                     gggg = '</td>';
                 }
 */
-                
-                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0 && show == 4) {
+                    checkeredFlag = "";
+/*                if (allArray[l]["Id_FinishTime"] != 99999999999 && allArray[l]["blue"] == 0 && show == 4) {
                     checkeredFlag = "finished ";
                 } else {
                     checkeredFlag = "";
                 }
-                
+*/                
                 if (allArray[l]["blue"] == 1) {
                   blued = 'blued ';  
                 } else {
@@ -2291,7 +2298,7 @@ allArray[l]["Id_Arrow"]
                 }
 */                
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 /*&& cleanResults == 0*/ && allArray[l]["single"] == 0) { // only rider 1 finished at this point
-                    finalText += '<td class="rnk_font left"><div class="FirstLine ' + single2 + '">' + finished1 + uci1 + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font left"><div class="FirstLine ' + single2 + '"><span class="number">' + allArray[l]["Id_Numero_Full"] + '</span>' + finished1 + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                         
@@ -2303,7 +2310,7 @@ allArray[l]["Id_Arrow"]
                     finalText += '</div>';// add the name
                     
                 } else {
-                    finalText += '<td class="rnk_font left"><div class="FirstLine ' + single2 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
+                    finalText += '<td class="rnk_font left"><div class="FirstLine ' + single2 + '"><span class="number">' + allArray[l]["Id_Numero_Full"] + '</span>' + uci1 + allArray[l]["Id_Nom"];// add the name
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
@@ -2328,7 +2335,7 @@ allArray[l]["Id_Arrow"]
 
                     
                     if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
-                        finalText += '<div class="SecoundLine ' + single1 + '">' + finished2 + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '"><span class="number">' + allArray[l]["Id_Numero_Full_2"] + '</span>' + finished2 + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                             finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
@@ -2336,7 +2343,7 @@ allArray[l]["Id_Arrow"]
                         finalText += '</div></td>';// add the name
                         
                     } else {
-                        finalText += '<div class="SecoundLine ' + single1 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                        finalText += '<div class="SecoundLine ' + single1 + '"><span class="number">' + allArray[l]["Id_Numero_Full_2"] + '</span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
                             finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
