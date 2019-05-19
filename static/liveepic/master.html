@@ -56,6 +56,10 @@
         #live #buttonInfo {
             flex-direction: column;
             direction: ltr;
+            position: sticky;
+            top: 0;
+            background: #f0f0f0;
+            z-index: 99;
         }
 
         #live #categoryOrAll, #live #intermediateOrFinish, #live #options, #live #options1 {
@@ -96,7 +100,7 @@
             left: 0;
             top: 0;
             white-space: nowrap;
-            z-index: 99;
+            z-index: 50;
             color: #fff;
             background: rgba(17, 17, 17, 1);
             min-width: 100%;
@@ -114,7 +118,7 @@
             font-size: 1.5em;
             min-width: 35px;
         }
-    /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
+    /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 50;}*/
 
         #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
         
