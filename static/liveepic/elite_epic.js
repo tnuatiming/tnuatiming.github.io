@@ -11,11 +11,15 @@
  json all i3Position_Overall and i3index
  
 */
+    var startTime = "2019-09-21 07:00:00"; // start time "2019-09-21 07:00:00"
+    if (sessionStorage.getItem('startTimeX')) {
+        startTime = sessionStorage.getItem('startTimeX');
+    }
+        
     var MaximumStageTime = 36000000; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
     if (sessionStorage.getItem('MaximumStageTime')) {
         MaximumStageTime = sessionStorage.getItem('MaximumStageTime');
     }
-        
     var loop;
 
     var allArrayJ = {};
@@ -147,11 +151,27 @@
         });
 
                         
-            document.getElementById("MaximumStageTime").value = MaximumStageTime;
+            document.getElementById("startTime").value = startTime;
 
-            const checkbox4 = document.getElementById('MaximumStageTime');
+            const checkbox4 = document.getElementById('startTime');
 
             checkbox4.addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    startTime = document.getElementById("startTime").value;
+                    sessionStorage.setItem('startTimeX', startTime);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                } else {
+                    startTime = document.getElementById("startTime").value;
+                    sessionStorage.setItem('startTimeX', startTime);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                }
+            });
+
+            document.getElementById("MaximumStageTime").value = MaximumStageTime;
+
+            const checkbox5 = document.getElementById('MaximumStageTime');
+
+            checkbox5.addEventListener('change', (event) => {
                 if (event.target.checked) {
                     MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
                     sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
@@ -366,6 +386,9 @@
 
 //        positionArray_All_Cat = {}; // emptying the array
 
+        startTime = document.getElementById("startTime").value;
+        sessionStorage.setItem('startTimeX', startTime);
+
         MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
         sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
             
@@ -456,6 +479,9 @@
     function category(choice, cat){
         
 //        positionArray = []; // emptying the array as the info inside is incorrect due to changing between position/category position.
+
+        startTime = document.getElementById("startTime").value;
+        sessionStorage.setItem('startTimeX', startTime);
 
         MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
         sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
@@ -4155,6 +4181,7 @@ if (enableJ1 == 1) {
         header.ElapsedTime = ElapsedTime;
         header.RemainingTime = RemainingTime;
         header.MaximumStageTime = MaximumStageTime;
+        header.startTime = startTime;
 
         allArray.unshift(header); // add the header at the beginning
         allArrayJ = JSON.stringify(allArray);             

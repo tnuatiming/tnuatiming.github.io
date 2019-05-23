@@ -22,7 +22,10 @@ remove all imTheLeader
     var MaximumStageTime = 36000000; // Maximum stage time in miliseconds, 3600000=1hours, 18000000=5hours, 21600000=6hours, 36000000=10hours
 
 // Set the date for start
-    var startTime = new Date("May 23, 2019 07:00:00").getTime();
+    var startTime = new Date("2019-05-24 07:00:00").getTime();
+    if (sessionStorage.getItem('startTime')) {
+        startTime = sessionStorage.getItem('startTime');
+    }
     var startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC
 //    console.log(startTime);
     var timeUTC;
@@ -942,8 +945,13 @@ timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
         var DayTime = Text.DayTime;
 //        ElapsedTime = Text.ElapsedTime;
         var RemainingTime = Text.RemainingTime;
+        
         MaximumStageTime = Text.MaximumStageTime;
         
+        startTime = new Date(Text.startTime).getTime();
+        sessionStorage.setItem('startTime', startTime);
+        
+        startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC
         if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
             raceEnded = 1;
         }
