@@ -15,6 +15,8 @@
     if (sessionStorage.getItem('MaximumStageTime')) {
         MaximumStageTime = sessionStorage.getItem('MaximumStageTime');
     }
+        
+    var loop;
 
     var allArrayJ = {};
     var J3text;
@@ -617,7 +619,6 @@
     async function Load() {
         
                     
-        var loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
 
@@ -4153,7 +4154,7 @@ if (enableJ1 == 1) {
         header.DayTime = DayTime;
         header.ElapsedTime = ElapsedTime;
         header.RemainingTime = RemainingTime;
-//        header.MaximumStageTime = MaximumStageTime;
+        header.MaximumStageTime = MaximumStageTime;
 
         allArray.unshift(header); // add the header at the beginning
         allArrayJ = JSON.stringify(allArray);             

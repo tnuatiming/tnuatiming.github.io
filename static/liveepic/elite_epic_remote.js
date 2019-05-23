@@ -22,13 +22,20 @@ remove all imTheLeader
     var MaximumStageTime = 36000000; // Maximum stage time in miliseconds, 3600000=1hours, 18000000=5hours, 21600000=6hours, 36000000=10hours
 
 // Set the date for start
-    var startTime = new Date("May 6, 2019 07:00:00").getTime();
-
+    var startTime = new Date("May 23, 2019 07:00:00").getTime();
+    var startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC
+//    console.log(startTime);
+    var timeUTC;
+    var ElapsedTime = '';
+    
     var showStopwatch = 1;
+
+    var runTime; // show elepsed time running
 
     var useHash = 1;
     var hash = 'hash.txt';
     var hashOld = '';
+    var hashNew, loop;
     
     var url = 'j1.txt';
     var target = 'result';
@@ -50,6 +57,7 @@ remove all imTheLeader
     var cleanResults = 0; // not using, this is just to clean the header
     
     var prologue;
+    var raceEnded = 0;
     
     var precision = "tenth"; // "tenth" for 1 digit after the .
     
@@ -84,6 +92,7 @@ remove all imTheLeader
         rows = sessionStorage.getItem('rows');
     }
 
+    var tableClass = "fadeIn ";
     
     document.addEventListener("DOMContentLoaded", function() {
             
@@ -152,7 +161,7 @@ remove all imTheLeader
             if (showStopwatch == 1) {         
                     
 
-                // Update the count down every 1 second
+                // Update the count down every tenth
                 var x = setInterval(function() {
 
                 // Get todays date and time
@@ -364,8 +373,6 @@ remove all imTheLeader
         }
 
  });   
-
-    var tableClass = "fadeIn ";
 
 
     function intermediateOrFinish(section){
@@ -646,7 +653,7 @@ remove all imTheLeader
     async function Load() {
         
                     
-        var loop;
+        loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
 
@@ -676,7 +683,11 @@ remove all imTheLeader
                 if (useHash == 1) {
                     const response = await fetch(hash, {cache: "no-store"}); // check if hash changeed, which mean we have a new j1.txt to download
                     if (response.ok) {
-                        var hashNew = await response.text();
+//console.log(response.headers.get('Date')); // get server time
+//console.log(Date.parse((response.headers.get('Date')).slice(0, -4))); // get server UTC time in milliseconds
+timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
+
+                        hashNew = await response.text();
 
                         if (hashOld != hashNew) {
                     
@@ -712,6 +723,7 @@ remove all imTheLeader
                     if (response.ok) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                         document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
+timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
                         P1 = await response.text();
                         document.getElementById(target).innerHTML = createLiveTable(P1);
     //                    alignTable();
@@ -825,13 +837,67 @@ remove all imTheLeader
         xhr1.send();
     }
 */
+    function updateRT() {
+            
+        var timeTemp = timeUTC - startTimeUTC;
+//                var mili = 0;
+        var hours, minutes, seconds;
+    
+        timeUTC += 1000
+        timeTemp += 1000;
+            
+        if (timeTemp < 0 && timeTemp > (-72000000)) { // 20 hours from start
 
+            hours = Math.floor((Math.abs(timeTemp) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            minutes = Math.floor((Math.abs(timeTemp) % (1000 * 60 * 60)) / (1000 * 60));
+            seconds = Math.floor((Math.abs(timeTemp) % (1000 * 60)) / 1000);
+        
+            if (hours > 0) {
+                ElapsedTime = 'Start in: ' + hours.toString() + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+                document.getElementById("ElapsedTime").style.color = "#58585a"; //gray
+            } else {
+                ElapsedTime = 'Start in: ' + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+                document.getElementById("ElapsedTime").style.color = "#58585a"; //gray
+                
+            }
+            runTime = setTimeout(updateRT, 1000);
+            
+        } else if (timeTemp > MaximumStageTime || raceEnded == 1) {
+            
+            ElapsedTime = 'Finished';
+            document.getElementById("ElapsedTime").style.color = "#c8102e"; //red
+
+//                    clearInterval(runTime);
+
+        } else if (timeTemp < (-72000000)) { // over 20 hours from start
+            
+            ElapsedTime = '';
+//                    clearInterval(runTime);
+
+        } else {
+            
+//                    mili += 1;
+
+            hours = Math.floor((timeTemp % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            minutes = Math.floor((timeTemp % (1000 * 60 * 60)) / (1000 * 60));
+            seconds = Math.floor((timeTemp % (1000 * 60)) / 1000);
+
+            ElapsedTime = hours.toString() + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+            document.getElementById("ElapsedTime").style.color = "#00843f"; //green
+            runTime = setTimeout(updateRT, 1000);
+        }
+                
+        document.getElementById("ElapsedTime").innerHTML = ElapsedTime;
+
+    }
+            
+            
     function createLiveTable(p1) {
         
         var i;
         var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLIMENTED IN THE COMPETITOR RESULTS
-        var raceEnded = 0;
+//        var raceEnded = 0;
         var doNotShowTime = 0; // dont display individuall time
         var lines;
         var competitorPosition = 0;
@@ -874,9 +940,68 @@ remove all imTheLeader
         var headerFlag = Text.headerFlag;
         var HeaderEventName = Text.HeaderEventName;
         var DayTime = Text.DayTime;
-        var ElapsedTime = Text.ElapsedTime;
+//        ElapsedTime = Text.ElapsedTime;
         var RemainingTime = Text.RemainingTime;
-//        MaximumStageTime = Text.MaximumStageTime;
+        MaximumStageTime = Text.MaximumStageTime;
+        
+        if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
+            raceEnded = 1;
+        }
+        
+        
+/*
+    
+            // calc running time
+        var now1 = ElapsedTime;
+        var a=now1.split(':');
+                        
+        now1 = (a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3;
+        var mili = 0;
+        clearInterval(runTime);
+        console.log(now1);
+
+        if (headerFlag.includes("_GreenFlag.png")) {         
+                
+
+            runTime = setInterval(function() {
+                    
+                mili += 1;
+
+                now1 += 100;
+
+                var hours = Math.floor((now1 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((now1 % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((now1 % (1000 * 60)) / 1000);
+                    
+                document.getElementById("ElapsedTime").innerHTML = hours.toString() + ":"
+                + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + mili % 10;
+                        
+            }, 100);
+            
+        } else {
+            clearInterval(runTime);
+        }
+    
+*/
+                
+    // calc running time for display
+    if (epictv == 0) { 
+
+//            ElapsedTime = '';
+
+//            clearInterval(runTime);
+
+//            runTime = setInterval(updateRT, 1000);
+              clearTimeout(runTime);
+
+            runTime = setTimeout(updateRT, 1000);
+ 
+    }
+
+        
+       
+        
+        
 
         if (HeaderEventName.includes("+++")) { // clean table for results page
             cleanResults = 1;
@@ -921,10 +1046,6 @@ remove all imTheLeader
             prologue = 0;
         }
 
-        if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
-            raceEnded = 1;
-        }
-        
         var bigFont = ' bigFont';
 
  //       var finalText = Text; // clear the finalText variable and add the title and time lines

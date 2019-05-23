@@ -49,6 +49,10 @@
     
     
     <style>
+    
+        body#live {
+            background: none;
+        }
         .main_content {direction: ltr;}
 
         #live .btn {margin: 0;}
@@ -449,14 +453,13 @@
     <div id="options1">
         <label class="MaximumStageTime">Maximum Stage Time:&nbsp;&nbsp;<input id="MaximumStageTime" style="width: 100px;" type="text" name="MaximumStageTime">&nbsp; milliseconds (3600000=1hours, 18000000=5hours, 21600000=6hours)</label>
     </div>
-        <div id="updates">&nbsp;</div>
 
+    
 </div>
 <div id="result"></div>
     
 <!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
 
-<div id="previousResults"></div>
 
 <div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall results</button></div>
 <button id="csv">Download CSV Results File</button>

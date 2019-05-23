@@ -80,13 +80,14 @@
 
         #live #DayTime {
             order: 1;
-            }
+        }
         #live #ElapsedTime {
             order: 2;
-            }
+            color: #58585a;
+        }
         #live #RemainingTime {
             order: 3;
-            }
+        }
 
         #live td.rnk_font, #live th.rnkh_font {
             padding: 0 2px;
@@ -322,7 +323,7 @@
     </style>
 
 
-    <script src="elite_epic_remote.js"></script>
+    <script src="elite_epic_remote.js?v=1"></script>
 </head>
 
 
@@ -408,8 +409,9 @@
         <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
         <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
     </div>
-        <div id="updates">&nbsp;</div>
+
 </div>
+
 <div id="result"></div>
     
 <div style="width:100%;text-align:right;margin-top:10px;"><a href="https://tnuatiming.com"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></a></div>
@@ -421,15 +423,15 @@
 
 
 <div id="legend">
-         <ul>
-                <li><span class="Flag UCI"></span> - UCI Rider</li>
-                <li><span class="Flag CheckeredFlag"></span> - Finished</li>
-                <li>DSQ - Disqualified</li>
-                <li>DNF - Did Not Finished</li>
-                <li>DNS - Did Not Started</li>
-                <li>SF - Single Finisher</li>
-                <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
-            </ul>
+    <ul>
+        <li><span class="Flag UCI"></span> - UCI Rider</li>
+        <li><span class="Flag CheckeredFlag"></span> - Finished</li>
+        <li>DSQ - Disqualified</li>
+        <li>DNF - Did Not Finished</li>
+        <li>DNS - Did Not Started</li>
+        <li>SF - Single Finisher</li>
+        <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
+    </ul>
 </div>
 
 
