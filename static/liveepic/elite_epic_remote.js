@@ -22,13 +22,13 @@ remove all imTheLeader
     var MaximumStageTime = 36000000; // Maximum stage time in miliseconds, 3600000=1hours, 18000000=5hours, 21600000=6hours, 36000000=10hours
 
 // Set the date for start
-    var startTime = new Date("2019-05-24 07:00:00").getTime();
+    var startTime = new Date("2019-09-24T04:00:00.000Z").getTime(); // start time ISO format
     if (sessionStorage.getItem('startTime')) {
         startTime = sessionStorage.getItem('startTime');
     }
-    var startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC
+//    var startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC (aka Zulu), no need as we passing Zulu from master
 //    console.log(startTime);
-    var timeUTC;
+    var timeFromServer; // UTC(Zulu) time from sever
     var ElapsedTime = '';
     
     var showStopwatch = 1;
@@ -106,6 +106,13 @@ remove all imTheLeader
             epictv = 1;
             
             document.getElementById("rows").value = rows;
+
+            document.getElementById('rows').addEventListener('change', (event) => {
+
+                    rows = Number(document.getElementById("rows").value);
+                    sessionStorage.setItem('rows', rows);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+            });
             
             if (document.getElementById("showTvHeader").checked) {
                 showTvHeader = 1;
@@ -113,19 +120,14 @@ remove all imTheLeader
                 showTvHeader = 0;
             }
             
-            const checkbox = document.getElementById('showTvHeader');
 
-            checkbox.addEventListener('change', (event) => {
+            document.getElementById('showTvHeader').addEventListener('change', (event) => {
                 if (event.target.checked) {
                     showTvHeader = 1;
-                    rows = Number(document.getElementById("rows").value);
-                    sessionStorage.setItem('rows', rows);
                     document.getElementById("result").innerHTML = createLiveTable(P1);
                     alignTDforTV();
                 } else {
                     showTvHeader = 0;
-                    rows = Number(document.getElementById("rows").value);
-                    sessionStorage.setItem('rows', rows);
                     document.getElementById("result").innerHTML = createLiveTable(P1);
                     alignTDforTV();
                 }
@@ -171,7 +173,7 @@ remove all imTheLeader
                 var now = new Date().getTime();
                     
                 // Find the distance between now and the start time
-                var distance = now - startTime;
+                var distance = now - startTime - 10800000; // subtract 3 hours
                     
                 if (distance > MaximumStageTime) { //race finished
                     // Time calculations for days, hours, minutes and seconds
@@ -193,14 +195,13 @@ remove all imTheLeader
                     var milliseconds = new Date().getMilliseconds();
                         
                     // Output the result in an element with id="showStopwatch"
-                    document.getElementById("showStopwatch").innerHTML = hours.toString() + ":"
-                    + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + milliseconds.toString().substring(0, 1);
+                    document.getElementById("showStopwatch").innerHTML = hours.toString() + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + milliseconds.toString().substring(0, 1);
                         
                     // If the count down is over, write some text 
                 } else {
                     //clearInterval(x);
                 // Find the distance between now and the start time
-                    var distance = startTime - now;
+                    var distance = startTime - now + 10800000; // subtract 3 hours
                         
                     // Time calculations for days, hours, minutes and seconds
                     //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -209,9 +210,15 @@ remove all imTheLeader
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                         
                     // Output the result in an element with id="showStopwatch"
-                    document.getElementById("showStopwatch").innerHTML = "Start in: " + hours.toString() + ":"
-                    + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+                    if (hours < 1) {
+                        document.getElementById("showStopwatch").innerHTML = "Start in: " + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+                        
+                    } else {
+                        document.getElementById("showStopwatch").innerHTML = "Start in: " + hours.toString() + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+                        
                     }
+                }
+                
                 }, 100);
                 
             }
@@ -687,8 +694,8 @@ remove all imTheLeader
                     const response = await fetch(hash, {cache: "no-store"}); // check if hash changeed, which mean we have a new j1.txt to download
                     if (response.ok) {
 //console.log(response.headers.get('Date')); // get server time
-//console.log(Date.parse((response.headers.get('Date')).slice(0, -4))); // get server UTC time in milliseconds
-timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
+//console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
+timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get server UTC time in milliseconds
 
                         hashNew = await response.text();
 
@@ -726,7 +733,7 @@ timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
                     if (response.ok) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                         document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
-timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
+timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get server UTC time in milliseconds
                         P1 = await response.text();
                         document.getElementById(target).innerHTML = createLiveTable(P1);
     //                    alignTable();
@@ -842,11 +849,12 @@ timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
 */
     function updateRT() {
             
-        var timeTemp = timeUTC - startTimeUTC;
+//        var timeTemp = timeFromServer - startTimeUTC;
+        var timeTemp = timeFromServer - startTime;
 //                var mili = 0;
         var hours, minutes, seconds;
     
-        timeUTC += 1000
+        timeFromServer += 1000
         timeTemp += 1000;
             
         if (timeTemp < 0 && timeTemp > (-72000000)) { // 20 hours from start
@@ -940,18 +948,22 @@ timeUTC = Date.parse((response.headers.get('Date')).slice(0, -4));
         
         Text = allArray.shift();
 
+        console.log('header:');
+        console.log(Text);
+
         var headerFlag = Text.headerFlag;
         var HeaderEventName = Text.HeaderEventName;
         var DayTime = Text.DayTime;
 //        ElapsedTime = Text.ElapsedTime;
         var RemainingTime = Text.RemainingTime;
         
-        MaximumStageTime = Text.MaximumStageTime;
+        MaximumStageTime = timeString2ms(Text.MaximumStageTime);
         
-        startTime = new Date(Text.startTime).getTime();
+        startTime = (new Date((Text.startTime).substr(0, (Text.startTime).length-1))).getTime(); // subtract the "Z" so intrapted as Zulu (UTC)
+//        console.log(new Date((Text.startTime).substr(0, (Text.startTime).length-1)));
         sessionStorage.setItem('startTime', startTime);
         
-        startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC
+//        startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC
         if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
             raceEnded = 1;
         }

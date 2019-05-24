@@ -97,17 +97,28 @@ single day - https://tnuatiming.com/liveepic/single.html and on epic site (suppo
 prologue start clock - https://tnuatiming.com/liveepic/start.html (computer time must be sync, start every 30 sec)
 
 
+
+
+
 ## daily update ##
 
 Id_Groupe
-StartTime in elite_epic_remote.js
+
+update start time Maximum Stage Time in master (elite_epic_remote.js and elite_epic.js), if possible, update in evning before so count down will be shown on live
+
 elite_epic_total.js?v=1 change version
-stages in elite_epic_total.js
+
+stages in elite_epic_total.js (auto?)
+
 update t1.txt-t4.txt in ftp_with_inotify_and_log.py (for live total TV)
+
 add t1.txt-t4.txt
+
 "prologue" in race name for day 1
+
 enableJ3 enabled for single day
-update MaximumStageTime in elite_epic_remote.js and elite_epic.js
+
+
 
 
 ## after stage finish ##

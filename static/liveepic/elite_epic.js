@@ -16,7 +16,7 @@
         startTime = sessionStorage.getItem('startTimeX');
     }
         
-    var MaximumStageTime = 36000000; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
+    var MaximumStageTime = "07:00:00"; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
     if (sessionStorage.getItem('MaximumStageTime')) {
         MaximumStageTime = sessionStorage.getItem('MaximumStageTime');
     }
@@ -95,9 +95,8 @@
             cleanResults = 0;
         }
         
-        const checkbox1 = document.getElementById('cleanResults');
 
-        checkbox1.addEventListener('change', (event) => {
+        document.getElementById('cleanResults').addEventListener('change', (event) => {
             if (event.target.checked) {
                 cleanResults = 1;
                 document.getElementById("result").innerHTML = createLiveTable(P1);
@@ -116,9 +115,8 @@
             enableJ1 = 0;
         }
         
-        const checkbox2 = document.getElementById('enableJ1');
 
-        checkbox2.addEventListener('change', (event) => {
+        document.getElementById('enableJ1').addEventListener('change', (event) => {
             if (event.target.checked) {
                 enableJ1 = 1;
 //                document.getElementById("result").innerHTML = createLiveTable(P1);
@@ -137,9 +135,8 @@
             enableJ3 = 0;
         }
         
-        const checkbox3 = document.getElementById('enableJ3');
 
-        checkbox3.addEventListener('change', (event) => {
+        document.getElementById('enableJ3').addEventListener('change', (event) => {
             if (event.target.checked) {
                 enableJ3 = 1;
 //                document.getElementById("result").innerHTML = createLiveTable(P1);
@@ -153,34 +150,23 @@
                         
             document.getElementById("startTime").value = startTime;
 
-            const checkbox4 = document.getElementById('startTime');
 
-            checkbox4.addEventListener('change', (event) => {
-                if (event.target.checked) {
+            document.getElementById('startTime').addEventListener('change', (event) => {
+
                     startTime = document.getElementById("startTime").value;
                     sessionStorage.setItem('startTimeX', startTime);
                     document.getElementById("result").innerHTML = createLiveTable(P1);
-                } else {
-                    startTime = document.getElementById("startTime").value;
-                    sessionStorage.setItem('startTimeX', startTime);
-                    document.getElementById("result").innerHTML = createLiveTable(P1);
-                }
             });
 
             document.getElementById("MaximumStageTime").value = MaximumStageTime;
 
-            const checkbox5 = document.getElementById('MaximumStageTime');
 
-            checkbox5.addEventListener('change', (event) => {
-                if (event.target.checked) {
-                    MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
+            
+            document.getElementById('MaximumStageTime').addEventListener('change', (event) => {
+
+                    MaximumStageTime = document.getElementById("MaximumStageTime").value;
                     sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
                     document.getElementById("result").innerHTML = createLiveTable(P1);
-                } else {
-                    MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
-                    sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
-                    document.getElementById("result").innerHTML = createLiveTable(P1);
-                }
             });
 
 
@@ -200,15 +186,24 @@
             epictv = 1;
 
             document.getElementById("rows").value = rows;
+
+            document.getElementById('rows').addEventListener('change', (event) => {
+
+                    rows = Number(document.getElementById("rows").value);
+                    sessionStorage.setItem('rows', rows);
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+            });
+
+//            document.getElementById("MaximumStageTime").value = MaximumStageTime;
+            
             if (document.getElementById("showTvHeader").checked) {
                 showTvHeader = 1;
             } else {
                 showTvHeader = 0;
             }
 
-            const checkbox = document.getElementById('showTvHeader');
 
-            checkbox.addEventListener('change', (event) => {
+            document.getElementById('showTvHeader').addEventListener('change', (event) => {
                 if (event.target.checked) {
                     showTvHeader = 1;
                     document.getElementById("result").innerHTML = createLiveTable(P1);
@@ -389,7 +384,7 @@
         startTime = document.getElementById("startTime").value;
         sessionStorage.setItem('startTimeX', startTime);
 
-        MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
+        MaximumStageTime = document.getElementById("MaximumStageTime").value;
         sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
             
         show = section;
@@ -483,7 +478,7 @@
         startTime = document.getElementById("startTime").value;
         sessionStorage.setItem('startTimeX', startTime);
 
-        MaximumStageTime = Number(document.getElementById("MaximumStageTime").value);
+        MaximumStageTime = document.getElementById("MaximumStageTime").value;
         sessionStorage.setItem('MaximumStageTime', MaximumStageTime);
             
         
@@ -834,8 +829,9 @@
 */        
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili;
 
+        MaximumStageTimeMili = timeString2ms(MaximumStageTime);
 
         if (show == 1) {
             showFull = 'Intermediate 1';
@@ -1186,6 +1182,8 @@
      //    console.log(allArray);
          // console.log(allArray2);
 
+
+
         for (b = 0; b < allArray.length; b++) {  // main array
             for (a = 0; a < allArray2.length; a++) { 
 
@@ -1321,7 +1319,7 @@
 
  // make blue if exceed MaximumStageTime, ENABLE after testing
                         allArray[b].mst = 0;
-                        if ((allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTime) || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
+                        if ((allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTimeMili) || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
                             allArray[b]["Id_FinishTime"] = 99999999999;
                             allArray[b].Id_Finishblue = 1; // make blue DSQ
                             allArray[b].mst = 1;
@@ -4181,7 +4179,8 @@ if (enableJ1 == 1) {
         header.ElapsedTime = ElapsedTime;
         header.RemainingTime = RemainingTime;
         header.MaximumStageTime = MaximumStageTime;
-        header.startTime = startTime;
+        header.startTime = (new Date(startTime)).toISOString();
+        console.log((new Date(startTime)).toISOString());     
 
         allArray.unshift(header); // add the header at the beginning
         allArrayJ = JSON.stringify(allArray);             
@@ -4415,10 +4414,10 @@ function download_csv(csv, filename) {
 function export_table_to_csv(html, filename) {
 	var csv = [];
     csv.push('Migdal Epic Israel -' + csvName.split('_').join(' '));
-	var rows = document.querySelectorAll("table tr");
+	var rowx = document.querySelectorAll("table tr");
 	
-    for (var i = 0; i < rows.length; i++) {
-		var row = [], cols = rows[i].querySelectorAll("td, th");
+    for (var i = 0; i < rowx.length; i++) {
+		var row = [], cols = rowx[i].querySelectorAll("td, th");
 		
         for (var j = 0; j < cols.length; j++) 
             row.push(cols[j].innerText);
