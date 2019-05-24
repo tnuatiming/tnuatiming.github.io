@@ -27,7 +27,7 @@
                 font-family: 'Noto Sans Hebrew', "Noto Sans", 'Open Sans Hebrew', Arial, sans-serif;
             }
         
-            #mutebotton {
+            #mutebottonhide {
                 order: 1;
                 flex: 0 1 auto;
                 width: 100%;
@@ -124,11 +124,36 @@
             .slider.round:before {
             border-radius: 50%;
             }
+            #mutebotton {
+                visibility: hidden;
+            }
+            div#mutebottonhide:hover  div#mutebotton {
+                visibility: visible;
+            }
             
     </style>
     <script>
-
+    
+    var delta = "-00:00:00.000";
+    if (localStorage.getItem('delta')) {
+        delta = localStorage.getItem('delta');
+    }
+            
+            
+            
+            
+            
         document.addEventListener("DOMContentLoaded", function() {
+            
+    document.getElementById("delta").value = delta;
+
+    document.getElementById('delta').addEventListener('change', (event) => {
+
+            delta = document.getElementById("delta").value;
+            localStorage.setItem('delta', delta);
+
+    });
+
             
             document.getElementById("myAudio").muted = true;
             document.getElementById("myAudio1").muted = true;
@@ -152,6 +177,9 @@
 
             // Get todays date and time
             var now = new Date();
+            var nowMili = now.getTime() + timeString2ms(delta);
+             now = new Date(nowMili);
+            
             var dateString =  ("0" + (now.getUTCHours()+3)).slice(-2) + ':' + ("0" + now.getUTCMinutes()).slice(-2) + ':' + ("0" + now.getUTCSeconds()).slice(-2);
                 
             document.getElementById("showStopwatch").innerHTML = dateString;
@@ -214,17 +242,29 @@
         
         }, 1000);
                     
+    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
+            return a=a.split('.'), // optimized
+            b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
+            a=a[0].split(':'),
+            b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+               
+    };
+
+    
     </script>
     
     </head>
     <body>
     
+    <div id="mutebottonhide"> 
         <div id="mutebotton"> 
+            <label class="delta">&nbsp;<input id="delta" style="width: 100px;" type="text" name="delta"></label>
              <label class="switch">
                 <input id="mute" type="checkbox">
                 <span class="slider round"></span>
             </label>
         </div>
+    </div>
 
         <div id="showStopwatch"></div> 
 

@@ -186,7 +186,7 @@ remove all imTheLeader
                     // Output the result in an element with id="showStopwatch"
                     document.getElementById("showStopwatch").innerHTML = "Finished";
                         
-                } else if (distance > 0) { //race in motion
+                } else if (distance >= 0) { //race in motion
                     // Time calculations for days, hours, minutes and seconds
                     //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -198,7 +198,7 @@ remove all imTheLeader
                     document.getElementById("showStopwatch").innerHTML = hours.toString() + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + milliseconds.toString().substring(0, 1);
                         
                     // If the count down is over, write some text 
-                } else {
+                } else if (distance > (-72000000) && distance < 0) {
                     //clearInterval(x);
                 // Find the distance between now and the start time
                     var distance = startTime - now + 10800000; // subtract 3 hours
@@ -217,6 +217,8 @@ remove all imTheLeader
                         document.getElementById("showStopwatch").innerHTML = "Start in: " + hours.toString() + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
                         
                     }
+                } else {
+                    document.getElementById("showStopwatch").innerHTML = '';
                 }
                 
                 }, 100);
