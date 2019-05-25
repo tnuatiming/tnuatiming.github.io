@@ -3025,14 +3025,14 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
+                            finalText += '<td class="rnk_font right">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
                         }
                         
                     } else {
                         if (allArray[l]["Id_Sector_Ecart1er"] == 99999999999) {
                             finalText += '<td class="rnk_font">-</td>'; // add diff
                         } else {
-                            finalText += '<td class="rnk_font">+' + allArray[l]["Id_Sector_Ecart1er"] + '</td>'; // add diff
+                            finalText += '<td class="rnk_font right">+' + allArray[l]["Id_Sector_Ecart1er"] + '</td>'; // add diff
                         }
                     }
 

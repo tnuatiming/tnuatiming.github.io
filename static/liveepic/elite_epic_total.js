@@ -2137,13 +2137,13 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                     if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
                         finalText += '<td class="rnk_font">-</td>\n'; // add total time
                     } else {
-                        finalText += '<td class="rnk_font bold">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
+                        finalText += '<td class="rnk_font bold right">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
                     }
                 } else {
                     if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
                         finalText += '<td class="rnk_font">-</td>\n'; // add diff
                     } else {
-                        finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
+                        finalText += '<td class="rnk_font right">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
                     }
                 }
                 
