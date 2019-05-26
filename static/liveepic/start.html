@@ -94,10 +94,26 @@
             div#mutebottonhide:hover  div#mutebotton {
                 visibility: visible;
             }
+            label {
+                color: gray;
+                margin-right: 10px;
+            }
             
     </style>
     <script>
     
+    var mute = 0;
+    if (localStorage.getItem('mute')) {
+        mute = localStorage.getItem('mute');
+    }
+    var showClock = 1;
+    if (localStorage.getItem('showClock')) {
+        showClock = localStorage.getItem('showClock');
+    }
+    var every30 = 0;
+    if (localStorage.getItem('every30')) {
+        every30 = localStorage.getItem('every30');
+    }
     var delta = "-00:00:00.000";
     if (localStorage.getItem('delta')) {
         delta = localStorage.getItem('delta');
@@ -126,16 +142,68 @@
 //            document.getElementById("myAudio1").muted = true;
 
 
+            if (every30 == 1) {
+                document.getElementById("every30").checked = true;
+            } else {
+                document.getElementById("every30").checked = false;
+            }
+                
+            document.getElementById('every30').addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    every30 = 1;
+                } else {
+                    every30 = 0;
+                }
+                localStorage.setItem('every30', every30);
+            });
+            
+            if (showClock == 1) {
+                document.getElementById("showClock").checked = true;
+                document.getElementById("countdown").style.fontSize = "25vh";
+                document.body.style.backgroundColor = "black";
+                document.getElementById("countdown").style.color="white";
+                document.getElementById("showStopwatch").innerHTML = '';
+            } else {
+                document.getElementById("showClock").checked = false;
+                document.getElementById("countdown").style.fontSize = "55vh";
+            }
+                
+            document.getElementById('showClock').addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    showClock = 1;
+                    document.getElementById("countdown").style.fontSize = "25vh";
+                    document.body.style.backgroundColor = "black";
+                    document.getElementById("countdown").style.color="white";
+                    document.getElementById("showStopwatch").innerHTML = '';
+                } else {
+                    showClock = 0;
+                    document.getElementById("countdown").style.fontSize = "55vh";
+                }
+                localStorage.setItem('showClock', showClock);
+            });
+            
+            if (mute == 1) {
+                document.getElementById("mute").checked = true;
+            } else {
+                document.getElementById("mute").checked = false;
+            }
+
             document.getElementById('mute').addEventListener('change', (event) => {
                 if (event.target.checked) {
+                    mute = 1;
                     document.getElementById("myAudio").muted = false;
                     document.getElementById("myAudio1").muted = false;
                 } else {
+                    mute = 0;
                     document.getElementById("myAudio").muted = true;
                     document.getElementById("myAudio1").muted = true;
                 }
-
+                localStorage.setItem('mute', mute);
             });
+            
+            
+            
+            
         });  
 
         // Update the count down every 1 second
@@ -148,65 +216,73 @@
             
             var dateString =  ("0" + (now.getUTCHours()+3)).slice(-2) + ':' + ("0" + now.getUTCMinutes()).slice(-2) + ':' + ("0" + now.getUTCSeconds()).slice(-2);
                 
-            document.getElementById("showStopwatch").innerHTML = dateString;
             
-            if ((now.getUTCSeconds() == 0) || (now.getUTCSeconds() == 30)) {
-                document.getElementById("countdown").classList.add("animate");
-                setTimeout(function(){
-                    document.getElementById("countdown").classList.remove('animate')
-                },900)
-                document.getElementById("myAudio1").play();
-            }                
+            if (showClock == 0) {
                             
-            if ((now.getUTCSeconds() >= 0 && now.getUTCSeconds() < 5) || (now.getUTCSeconds() >= 30 && now.getUTCSeconds() < 35)) {
-                document.body.style.backgroundColor = "#6c3";
-                document.getElementById("showStopwatch").style.color="white";
-                document.getElementById("countdown").style.color="white";
+                document.getElementById("showStopwatch").innerHTML = dateString;
+                
+                if ((now.getUTCSeconds() == 0) || (now.getUTCSeconds() == 30 && every30 == 1)) {
+                    document.getElementById("countdown").classList.add("animate");
+                    setTimeout(function(){
+                        document.getElementById("countdown").classList.remove('animate')
+                    },900)
+                    document.getElementById("myAudio1").play();
+                }                
+                                
+                if ((now.getUTCSeconds() >= 0 && now.getUTCSeconds() < 5) || (now.getUTCSeconds() >= 30 && now.getUTCSeconds() < 35 && every30 == 1)) {
+                    document.body.style.backgroundColor = "#6c3";
+                    document.getElementById("showStopwatch").style.color="white";
+                    document.getElementById("countdown").style.color="white";
 
-            } else if ((now.getUTCSeconds() >= 50 && now.getUTCSeconds() <= 59) || (now.getUTCSeconds() >= 20 && now.getUTCSeconds() <= 29)) {
-                document.body.style.backgroundColor = "yellow";
-                document.getElementById("showStopwatch").style.color="black";
-                document.getElementById("countdown").style.color="black";
-                document.getElementById("countdown").classList.add("animate");
-                setTimeout(function(){
-                    document.getElementById("countdown").classList.remove('animate')
-                },900)
-            } else {
-                document.body.style.backgroundColor = "white";
-                document.getElementById("showStopwatch").style.color="black";
-                document.getElementById("countdown").style.color="black";
-            }
+                } else if ((now.getUTCSeconds() >= 50 && now.getUTCSeconds() <= 59) || (now.getUTCSeconds() >= 20 && now.getUTCSeconds() <= 29 && every30 == 1)) {
+                    document.body.style.backgroundColor = "yellow";
+                    document.getElementById("showStopwatch").style.color="black";
+                    document.getElementById("countdown").style.color="black";
+                    document.getElementById("countdown").classList.add("animate");
+                    setTimeout(function(){
+                        document.getElementById("countdown").classList.remove('animate')
+                    },900)
+                } else {
+                    document.body.style.backgroundColor = "white";
+                    document.getElementById("showStopwatch").style.color="black";
+                    document.getElementById("countdown").style.color="black";
+                }
+                
+                if (now.getUTCSeconds() == 50 || (now.getUTCSeconds() == 20 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "10";
+                    document.getElementById("myAudio").play();
+                } else if (now.getUTCSeconds() == 51 || (now.getUTCSeconds() == 21 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "9";
+                } else if (now.getUTCSeconds() == 52 || (now.getUTCSeconds() == 22 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "8";
+                } else if (now.getUTCSeconds() == 53 || (now.getUTCSeconds() == 23 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "7";
+                } else if (now.getUTCSeconds() == 54 || (now.getUTCSeconds() == 24 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "6";
+                } else if (now.getUTCSeconds() == 55 || (now.getUTCSeconds() == 25 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "5";
+                    document.getElementById("myAudio").play();
+                } else if (now.getUTCSeconds() == 56 || (now.getUTCSeconds() == 26 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "4";
+                    document.getElementById("myAudio").play();
+                } else if (now.getUTCSeconds() == 57 || (now.getUTCSeconds() == 27 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "3";
+                    document.getElementById("myAudio").play();
+                } else if (now.getUTCSeconds() == 58 || (now.getUTCSeconds() == 28 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "2";
+                    document.getElementById("myAudio").play();
+                } else if (now.getUTCSeconds() == 59 || (now.getUTCSeconds() == 29 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "1";
+                    document.getElementById("myAudio").play();
+                } else if ((now.getUTCSeconds() >= 0 && now.getUTCSeconds() < 5) || (now.getUTCSeconds() >= 30 && now.getUTCSeconds() < 35 && every30 == 1)) {
+                    document.getElementById("countdown").innerHTML = "GO!";
+                } else {
+                    document.getElementById("countdown").innerHTML = "&nbsp;";
+                }
             
-            if (now.getUTCSeconds() == 50 || now.getUTCSeconds() == 20) {
-                document.getElementById("countdown").innerHTML = "10";
-                document.getElementById("myAudio").play();
-            } else if (now.getUTCSeconds() == 51 || now.getUTCSeconds() == 21) {
-                document.getElementById("countdown").innerHTML = "9";
-            } else if (now.getUTCSeconds() == 52 || now.getUTCSeconds() == 22) {
-                document.getElementById("countdown").innerHTML = "8";
-            } else if (now.getUTCSeconds() == 53 || now.getUTCSeconds() == 23) {
-                document.getElementById("countdown").innerHTML = "7";
-            } else if (now.getUTCSeconds() == 54 || now.getUTCSeconds() == 24) {
-                document.getElementById("countdown").innerHTML = "6";
-            } else if (now.getUTCSeconds() == 55 || now.getUTCSeconds() == 25) {
-                document.getElementById("countdown").innerHTML = "5";
-                document.getElementById("myAudio").play();
-            } else if (now.getUTCSeconds() == 56 || now.getUTCSeconds() == 26) {
-                document.getElementById("countdown").innerHTML = "4";
-                document.getElementById("myAudio").play();
-            } else if (now.getUTCSeconds() == 57 || now.getUTCSeconds() == 27) {
-                document.getElementById("countdown").innerHTML = "3";
-                document.getElementById("myAudio").play();
-            } else if (now.getUTCSeconds() == 58 || now.getUTCSeconds() == 28) {
-                document.getElementById("countdown").innerHTML = "2";
-                document.getElementById("myAudio").play();
-            } else if (now.getUTCSeconds() == 59 || now.getUTCSeconds() == 29) {
-                document.getElementById("countdown").innerHTML = "1";
-                document.getElementById("myAudio").play();
-            } else if ((now.getUTCSeconds() >= 0 && now.getUTCSeconds() < 5) || (now.getUTCSeconds() >= 30 && now.getUTCSeconds() < 35)) {
-                document.getElementById("countdown").innerHTML = "GO!";
             } else {
-                document.getElementById("countdown").innerHTML = "&nbsp;";
+            
+                document.getElementById("countdown").innerHTML = dateString;
             }
         
         }, 1000);
@@ -228,6 +304,12 @@
     <div id="mutebottonhide"> 
         <div id="mutebotton">
             <label id="settings" style="visibility: visible;">settings ----></label>
+            <label>
+                <input style="transform: scale(2); margin-right: 5px;" name="showClock" id="showClock" type="checkbox">Clock
+            </label>
+            <label>
+                <input style="transform: scale(2); margin-right: 5px;" name="every30" id="every30" type="checkbox">30
+            </label>
             <label class="delta">
                 <input id="delta" style="width: 150px; font-size: 20px;" type="text" name="delta">
             </label>
