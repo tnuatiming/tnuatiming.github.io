@@ -1,30 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-xmlns:dc="http://purl.org/dc/elements/1.1/"
-xmlns:cc="http://web.resource.org/cc/"
-xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:svg="http://www.w3.org/2000/svg"
-xmlns="http://www.w3.org/2000/svg"
-xml:space="preserve"
-version="1.0"
-id="layer1"
-width="400pt" height="400pt"
-viewBox="0 0 75 75"><metadata
-id="metadata1"><rdf:RDF><cc:Work
-rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><g
-id="g1"><polygon
-id="polygon1"
-points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769"
-style="stroke:#111111;stroke-width:5;stroke-linejoin:round;fill:#111111;"
-/><path id="path1"
-d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577"
-style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
-<path id="path2"
-d="M 55.082,20.537 C 58.777,25.523 60.966,31.694 60.966,38.377 C 60.966,44.998 58.815,51.115 55.178,56.076"
-style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
-<path id="path1"
-d="M 61.71,62.611 C 66.977,55.945 70.128,47.531 70.128,38.378 C 70.128,29.161 66.936,20.696 61.609,14.01"
-style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 5.0625 5.0625">
+  <path fill="#7f7f7f" d="M2.6228.5626a.1831.1824 0 0 0-.1143.0444L1.304 1.6448H.183A.1831.1824 0 0 0 0 1.827V3.22a.1831.1824 0 0 0 .183.1823H1.286l1.2226 1.0534a.1831.1824 0 0 0 .3028-.1379V.745a.1831.1824 0 0 0-.1885-.1823z"/>
+  <path fill="#7f7f7f" d="M3.2642 1.5675a.1831.1824 0 0 0-.1568.2823 1.277 1.277 0 0 1 .202.69c0 .2504-.0724.4821-.1966.6807a.1831.1824 0 1 0 .3108.1929 1.6438 1.6438 0 0 0 .252-.8735c0-.3258-.0961-.6298-.259-.8854a.1831.1824 0 0 0-.1524-.087z"/>
+  <path fill="#7f7f7f" d="M3.7663 1.0544a.1831.1824 0 0 0-.1358.2927c.2481.3336.3949.7451.3949 1.1928 0 .4434-.1442.8513-.3885 1.1832a.1831.1824 0 1 0 .2952.2157 2.3542 2.3542 0 0 0 .4594-1.399c0-.5272-.174-1.016-.467-1.4098a.1831.1824 0 0 0-.1582-.0756z"/>
+  <path fill="#7f7f7f" d="M4.256.5781a.1831.1824 0 0 0-.1437.298 2.6517 2.6517 0 0 1 .584 1.664c0 .6257-.2158 1.199-.5771 1.6544a.1831.1824 0 1 0 .2874.226c.4101-.517.6559-1.171.6559-1.8805 0-.7144-.249-1.3725-.6638-1.891A.1831.1824 0 0 0 4.256.578z"/>
 </svg>

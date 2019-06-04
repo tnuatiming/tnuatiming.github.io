@@ -84,6 +84,7 @@ h1 img {
     width: 1.33333333em;
     vertical-align: middle;
     margin: 0 5px;
+    filter: drop-shadow(0 0 1px #767472);
 }
 
     .australia {background-image: url(Images/CountryFlags/australia.svg);}
@@ -219,6 +220,32 @@ div#legend li {
 
 #csv {
     display: none;
+}
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    width: 50px;
+    height: 50px;
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #c00; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    font-size: 24px; /* Increase font size */
+    font-weight: 700;
+    transform: rotate(270deg);
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
 }
 
 @media (max-width:767px) {
@@ -6902,6 +6929,8 @@ div#legend li {
 
 
 </div>
+    
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&#10148;</button>
 
 <div style="width:100%;text-align:right;margin-top:10px;"><a href="https://tnuatiming.com"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></a></div>
 
@@ -6986,6 +7015,24 @@ div#legend li {
 
 </script>
 
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+</script>
 
     </body>
 </html>

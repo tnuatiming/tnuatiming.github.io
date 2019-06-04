@@ -109,9 +109,9 @@ remove all imTheLeader
 
             document.getElementById('rows').addEventListener('change', (event) => {
 
-                    rows = Number(document.getElementById("rows").value);
-                    sessionStorage.setItem('rows', rows);
-                    document.getElementById("result").innerHTML = createLiveTable(P1);
+                rows = Number(document.getElementById("rows").value);
+                sessionStorage.setItem('rows', rows);
+                document.getElementById("result").innerHTML = createLiveTable(P1);
             });
             
             if (document.getElementById("showTvHeader").checked) {
@@ -665,7 +665,7 @@ remove all imTheLeader
     async function Load() {
         
                     
-        loop;
+//        loop;
         if (TimerLoad) clearTimeout(TimerLoad);
 
 
@@ -906,7 +906,9 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
             
             
     function createLiveTable(p1) {
-        
+            
+        console.time('main');
+
         var i;
         var timeGapDisplay = 1; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLIMENTED IN THE COMPETITOR RESULTS
@@ -3079,6 +3081,8 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
     // allArray = [];
     
     tableClass = "";
+    
+    console.timeEnd('main');
             
     return finalText
 

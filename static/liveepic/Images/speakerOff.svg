@@ -1,22 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-xmlns:dc="http://purl.org/dc/elements/1.1/"
-xmlns:cc="http://web.resource.org/cc/"
-xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:svg="http://www.w3.org/2000/svg"
-xmlns="http://www.w3.org/2000/svg"
-xml:space="preserve"
-version="1.0"
-id="layer1"
-width="400pt" height="400pt"
-viewBox="0 0 75 75"><metadata
-id="metadata1"><rdf:RDF><cc:Work
-rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><g
-id="g1"><polygon
-id="polygon1"
-points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769"
-style="stroke:#111111;stroke-width:5;stroke-linejoin:round;fill:#111111;"
-/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 5.0625 5.0625">
+  <path fill="#7f7f7f" d="M2.6228.5626a.1831.1824 0 0 0-.1143.0444L1.304 1.6448H.183A.1831.1824 0 0 0 0 1.827V3.22a.1831.1824 0 0 0 .183.1823H1.286l1.2226 1.0534a.1831.1824 0 0 0 .3028-.1379V.745a.1831.1824 0 0 0-.1885-.1823z"/>
 </svg>

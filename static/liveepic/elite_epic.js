@@ -96,7 +96,7 @@
         }
         
 
-        document.getElementById('cleanResults').addEventListener('change', (event) => {
+        document.getElementById('cleanResults').addEventListener('change', event => {
             if (event.target.checked) {
                 cleanResults = 1;
                 document.getElementById("result").innerHTML = createLiveTable(P1);
@@ -116,7 +116,7 @@
         }
         
 
-        document.getElementById('enableJ1').addEventListener('change', (event) => {
+        document.getElementById('enableJ1').addEventListener('change', event => {
             if (event.target.checked) {
                 enableJ1 = 1;
 //                document.getElementById("result").innerHTML = createLiveTable(P1);
@@ -136,7 +136,7 @@
         }
         
 
-        document.getElementById('enableJ3').addEventListener('change', (event) => {
+        document.getElementById('enableJ3').addEventListener('change', event => {
             if (event.target.checked) {
                 enableJ3 = 1;
 //                document.getElementById("result").innerHTML = createLiveTable(P1);
@@ -151,7 +151,7 @@
             document.getElementById("startTime").value = startTime;
 
 
-            document.getElementById('startTime').addEventListener('change', (event) => {
+            document.getElementById('startTime').addEventListener('change', event => {
 
                     startTime = document.getElementById("startTime").value;
                     sessionStorage.setItem('startTimeX', startTime);
@@ -792,7 +792,9 @@
 */
 
     function createLiveTable(p1) {
-        
+            
+        console.time('main');
+
         var i;
         var timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
@@ -3803,7 +3805,7 @@ if (enableJ1 == 1) {
         allArrayJ = {};
         Object.keys(allArray[l]).sort().forEach(function(key) {
             if (allArray[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
-                allArray[l][key] == '';
+                allArray[l][key] = '';
             }
             allArrayJ[key] = allArray[l][key];
         });
@@ -4089,7 +4091,7 @@ if (enableJ3 == 1) {
             const allArrayJ3 = {};
             Object.keys(allArray3f[l]).sort().forEach(function(key) {
                 if (allArray3f[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
-                    allArray3f[l][key] == '';
+                    allArray3f[l][key] = '';
                 }
                 allArrayJ3[key] = allArray3f[l][key];
             });
@@ -4151,7 +4153,7 @@ if (enableJ3 == 1) {
 
                
     console.log('single day:');                
-    console.log(allArray3f);
+    console.table(allArray3f);
                 
      
     
@@ -4166,7 +4168,7 @@ if (enableJ3 == 1) {
                 
                 
     console.log('epic:');                
-    console.log(allArray);
+    console.table(allArray);
     
     
 if (enableJ1 == 1) {
@@ -4205,6 +4207,8 @@ if (enableJ1 == 1) {
     // allArray = [];
     
     tableClass = "";
+    
+    console.timeEnd('main');
     
       //  debugger;
     if (publishE == 0) {

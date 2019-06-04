@@ -78,9 +78,7 @@ add dns
                 showTvHeader = 0;
             }
             
-            const checkbox = document.getElementById('showTvHeader');
-
-            checkbox.addEventListener('change', (event) => {
+            document.getElementById('showTvHeader').addEventListener('change', (event) => {
                 if (event.target.checked) {
                     showTvHeader = 1;
                     rows = Number(document.getElementById("rows").value);
@@ -134,9 +132,8 @@ add dns
             cleanResults = 0;
         }
         
-        const checkbox = document.getElementById('cleanResults');
 
-        checkbox.addEventListener('change', (event) => {
+        document.getElementById('cleanResults').addEventListener('change', (event) => {
             if (event.target.checked) {
                 cleanResults = 1;
                 Load();
