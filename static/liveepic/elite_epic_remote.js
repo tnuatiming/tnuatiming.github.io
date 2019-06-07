@@ -33,6 +33,8 @@ remove all imTheLeader
     
     var showStopwatch = 1;
 
+    var showLog = 1;
+
     var runTime; // show elepsed time running
 
     var useHash = 1;
@@ -952,8 +954,10 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
         
         Text = allArray.shift();
 
+    if (showLog == 1) {
         console.log('header:');
         console.log(Text);
+    }
 
         var headerFlag = Text.headerFlag;
         var HeaderEventName = Text.HeaderEventName;
@@ -1394,10 +1398,12 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                
                  
              }
-             
+    
+    if (showLog == 1) {
             console.log('in:')
-             console.log(allArray);
-             
+             console.table(allArray);
+//             console.log(allArray);
+    }
              
 // BEGIN SORTING
          
@@ -3068,10 +3074,12 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
         }
         finalText += '</table></div>';
 
+    if (showLog == 1) {
             console.log('out: ')
-             console.log(allArray);
+             console.table(allArray);
+//             console.log(allArray);
       //       console.log(finalText);
-              
+    }          
       //        var allArrayJSON = JSON.stringify(allArray);             
       //        console.log(JSON.parse(allArrayJSON));     
 

@@ -29,7 +29,9 @@
     var dayCompetitors = 0;
             
     var publishE = 0;
-
+    
+    var showLog = 0;
+    
     var url = 'p1.html';
     var target = 'result';
 
@@ -87,6 +89,17 @@
     
     document.addEventListener("DOMContentLoaded", function() {
             
+
+        document.getElementById('showLog').addEventListener('change', event => {
+            if (event.target.checked) {
+                showLog = 1;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            } else {
+                showLog = 0;
+            }
+
+        });
+
 
  
         if (document.getElementById("cleanResults").checked) {
@@ -2033,7 +2046,7 @@
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">Name 2</th>';
 
                     //      headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time 2</th>';
-                    headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
+//                    headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
 
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
@@ -2875,14 +2888,14 @@ allArray[l]["Id_Arrow"]
                 
                                      
 
-
+/*
                 if (typeof allArray[l]["Id_Equipe"] == 'undefined') {           
                     finalText += '<td class="rnk_font">&nbsp;</td>';// add team name
                 } else {
                     finalText += '<td class="rnk_font left wrap"><div class="team">' + allArray[l]["Id_Equipe"] + '</div></td>';// add team name
                 }
                 
-
+*/
                 if (useCategory == "no") {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // add category
                 }            
@@ -4151,10 +4164,11 @@ if (enableJ3 == 1) {
         //       console.log(JSON.parse(allArrayJ3));     
 
 
-               
+if (showLog == 1) {                              
     console.log('single day:');                
+//    console.log(allArray3f);                
     console.table(allArray3f);
-                
+}                
      
     
     //console.log(finalText3);
@@ -4166,10 +4180,11 @@ if (enableJ3 == 1) {
                 
                 
                 
-                
+if (showLog == 1) {               
     console.log('epic:');                
+//    console.log(allArray);                
     console.table(allArray);
-    
+}
     
 if (enableJ1 == 1) {
   
