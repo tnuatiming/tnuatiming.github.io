@@ -19,6 +19,7 @@ add dns
     
     var cleanResults = 0;
 
+    var showLog = 0;
 
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     
@@ -63,6 +64,15 @@ add dns
     document.addEventListener("DOMContentLoaded", function() {
         
         
+        document.getElementById('showLog').addEventListener('change', event => {
+            if (event.target.checked) {
+                showLog = 1;
+                document.getElementById("result").innerHTML = createLiveTable();
+            } else {
+                showLog = 0;
+            }
+
+        });
         
         
         
@@ -1227,6 +1237,11 @@ add dns
                     allArray[b].Id_Status = 0;
                 }
 */               
+                allArray[b]["Id_Image_1"] = "";                    
+                allArray[b]["Id_Image_3"] = "";                    
+                allArray[b]["Id_Groupe_1"] = "";                    
+                allArray[b]["Id_Groupe_2"] = "";                    
+                allArray[b]["Id_Groupe_3"] = "";                    
                 allArray[b]["blue_1"] = 0;                    
                 allArray[b]["blue_2"] = 0;                    
                 allArray[b]["blue_3"] = 0;                    
@@ -1351,7 +1366,11 @@ add dns
                         allArray[b]["dnsfq"] = ""; // ???
                     }
                 
- /*               if (allArray[b]["blue"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["blue"] == 1) {
+                    allArray[b]["Id_Image"] = allArray[b]["Id_Image"] + allArray[b]["Id_Image_2"];
+
+                
+                
+/*               if (allArray[b]["blue"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                     allArray[b]["dnsfq"] = "dsq";
                 }*/
             }
@@ -1368,10 +1387,13 @@ add dns
                         allArray[b]["Id_FinishTime_1"] = allArray2[a]["Id_FinishTime"];
                         allArray[b]["blue_1"] = allArray2[a]["blue"];
                         allArray[b]["Id_Arrow_1"] = allArray2[a]["Id_Arrow"];
-                        allArray[b]["single"] = allArray2[a]["single"];
-                        
+                        allArray[b]["Id_Groupe_1"] = allArray2[a]["Id_Groupe"];
+                        allArray[b]["Id_Image_1"] = allArray2[a]["Id_Image"] + allArray2[a]["Id_Image_2"];
+                        if (allArray[b]["single"] == 0) {
+                            allArray[b]["single"] = allArray2[a]["single"];
+                        }
                         if (allArray2[a]["out"] == 1) {
-                            allArray[b]["out"] = 1;
+                            allArray[b]["out"] = 2;
                         }
                                 
                     }
@@ -1420,10 +1442,13 @@ add dns
                         allArray[b]["Id_FinishTime_2"] = allArray3[a]["Id_FinishTime"];
                         allArray[b]["blue_2"] = allArray3[a]["blue"];
                         allArray[b]["Id_Arrow_2"] = allArray3[a]["Id_Arrow"];
-                        allArray[b]["single"] = allArray3[a]["single"];
-                        
+                        allArray[b]["Id_Groupe_2"] = allArray3[a]["Id_Groupe"];
+                        allArray[b]["Id_Image_2"] = allArray3[a]["Id_Image"] + allArray3[a]["Id_Image_2"];
+                        if (allArray[b]["single"] == 0) {
+                            allArray[b]["single"] = allArray3[a]["single"];
+                        }
                         if (allArray3[a]["out"] == 1) {
-                            allArray[b]["out"] = 1;
+                            allArray[b]["out"] = 3;
                         }
                         
                     }
@@ -1474,10 +1499,13 @@ add dns
                         allArray[b]["Id_FinishTime_3"] = allArray4[a]["Id_FinishTime"];
                         allArray[b]["blue_3"] = allArray4[a]["blue"];
                         allArray[b]["Id_Arrow_3"] = allArray4[a]["Id_Arrow"];
-                        allArray[b]["single"] = allArray4[a]["single"];
-                        
+                        allArray[b]["Id_Groupe_3"] = allArray4[a]["Id_Groupe"];
+                        allArray[b]["Id_Image_3"] = allArray4[a]["Id_Image"] + allArray4[a]["Id_Image_2"];
+                        if (allArray[b]["single"] == 0) {
+                            allArray[b]["single"] = allArray4[a]["single"];
+                        }
                         if (allArray4[a]["out"] == 1) {
-                            allArray[b]["out"] = 1;
+                            allArray[b]["out"] = 4;
                         }
                 
                     }
@@ -2166,19 +2194,24 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
 
 
 
+if (showLog == 1) {                              
+//    console.log(allArray);                
+//const transformed = allArray.reduce((acc, {Id_Numero, ...x}) => { acc[Id_Numero] = x; return acc}, {})
+    console.table(allArray, ["Id_Numero", "Id_Position_Overall", "Id_Position_Categorie", "Id_FinishTime", "Id_FinishTime_1", "Id_FinishTime_2", "Id_FinishTime_3", "finishTimeTotal", "stagesFinished"]);
+    console.log(finalText);
+}                
 
 
 
 //download(finalText, 'finalText.txt', 'text/plain')
                 
 //        console.log('allArray after:');
-        console.log(allArray);
+//        console.log(allArray);
           
 //        console.log('allArray2:');
 //        console.log(allArray2);
 
 
-             console.log(finalText);
       
     tableClass = "";
             

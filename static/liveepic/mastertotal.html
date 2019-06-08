@@ -204,6 +204,32 @@
     div#legend li {text-align: left;}
 
     #csv {display: none; margin-top: 50px;}
+
+    #myBtn {
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed/sticky position */
+        width: 50px;
+        height: 50px;
+        bottom: 20px; /* Place the button at the bottom of the page */
+        right: 30px; /* Place the button 30px from the right */
+        z-index: 99; /* Make sure it does not overlap */
+        border: none; /* Remove borders */
+        outline: none; /* Remove outline */
+        background-color: #c00; /* Set a background color */
+        color: white; /* Text color */
+        cursor: pointer; /* Add a mouse pointer on hover */
+        text-decoration: none;
+        -webkit-border-radius: 35px;
+        -moz-border-radius: 35px;
+        border-radius: 35px;
+        font-size: 24px; /* Increase font size */
+        font-weight: 700;
+        transform: rotate(270deg);
+    }
+
+    #myBtn:hover {
+        background-color: #555; /* Add a dark-grey background on hover */
+    }
     
 @media (max-width: 767px) {
 
@@ -307,12 +333,15 @@
                 </select>
             </label>
             <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
+            <label for="showLog"><input type="checkbox" id="showLog" name="showLog" value="showLog">&nbsp;Show log</label>
             <button id="publish" class="publish" onClick="publish()">Publish</button>
     </div>
     </div>
 
 
     <div id="result"></div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&#10148;</button>
 
     <button id="csv">Download CSV Results File</button>
 
@@ -360,6 +389,25 @@
     ga('create', 'UA-38104277-1', 'auto');
     ga('set', 'anonymizeIp', true);
     ga('send', 'pageview');
+</script>
+
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 </script>
 
 
