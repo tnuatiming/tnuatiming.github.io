@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" class="hidden">
+  <symbol viewBox="0 0 512 341.333" id="usa">
+  <path fill="#b22234" d="M-.00000655.00018272h512v341.33298h-512z"/>
+  <path fill="#fff" d="M.00000655 27.719409v23.33008H512.00001v-23.33008zm0 52.51368v23.330071H512.00001V80.233089zm0 52.511711v23.33008H512.00001V132.7448zm0 52.51368v23.33008H512.00001v-23.33008zm0 52.51172v23.33007H512.00001V237.7702zm0 52.51367v23.33008H512.00001v-23.33008z"/>
+  <path fill="#3c3b6e" d="M-.00000655.00018272h224.27449v185.25887h-224.27449z"/>
+  <g fill="#fff" transform="matrix(.07508 0 0 .08753 -.00000655 .000183)">
+    <g id="d">
+      <g id="c">
+        <g id="e">
+          <g id="b">
+            <path id="a" d="M247 90l70.53423 217.08204-184.66101-134.16408h228.25356L176.46577 307.08204z"/>
+            <use width="100%" height="100%" y="420" xlink:href="#a"/>
+            <use width="100%" height="100%" y="840" xlink:href="#a"/>
+            <use width="100%" height="100%" y="1260" xlink:href="#a"/>
+          </g>
+          <use width="100%" height="100%" y="1680" xlink:href="#a"/>
+        </g>
+        <use width="100%" height="100%" x="247" y="210" xlink:href="#b"/>
+      </g>
+      <use width="100%" height="100%" x="494" xlink:href="#c"/>
+    </g>
+    <use width="100%" height="100%" x="988" xlink:href="#d"/>
+    <use width="100%" height="100%" x="1976" xlink:href="#c"/>
+    <use width="100%" height="100%" x="2470" xlink:href="#e"/>
+  </g>
+  </symbol>
+
+<symbol viewBox="0 0 512 341.33335" id="israel">
+  <defs>
+    <path id="i" fill-opacity="0" stroke="#0038b8" stroke-width="5.5" d="M25.23686 14.570508L0-29.141016l-25.23686 43.711524z"/>
+  </defs>
+  <g transform="translate(0 -85.333328)">
+    <path fill="#fff" d="M0 85.333496h512v341.33301H0z"/>
+    <path fill="#0038b8" d="M0 117.33347h512v53.333282H0zM0 341.33325h512v53.333282H0z"/>
+    <use width="100%" height="100%" fill="#0038b8" transform="matrix(2.32727 0 0 2.13333 256 256)" xlink:href="#i"/>
+    <use width="100%" height="100%" fill="#0038b8" transform="matrix(-2.32727 0 0 -2.13333 256 256)" xlink:href="#i"/>
+  </g>
+</symbol>
+
+
+<symbol viewBox="0 0 512 341.33335" id="norway">
+  <path fill="#ef2b2d" d="M-.0000025.00017175h512.000005v341.333H-.0000025z"/>
+  <path fill="#fff" d="M139.6363625.00017175h93.09091v341.333h-93.09091z"/>
+  <path fill="#fff" d="M-.0000025 128.00004675h512.000005v85.33325H-.0000025z"/>
+  <path fill="#002868" d="M162.90909.00017175h46.545455v341.333H162.90909z"/>
+  <path fill="#002868" d="M-.0000025 149.33335925h512.000005v42.666625H-.0000025z"/>
+</symbol>
+
+
+
+
+
+
+
+
+
+
+
+  <symbo viewBox="0 0 512 341.333" id="russia">
+    <path fill="#fff" d="M0 0h512v170.667H0z"></path>
+    <path fill="#d52b1e" d="M0 170.667h512v170.666H0z"></path>
+    <path fill="#0039a6" d="M0 113.778h512v113.778H0z"></path>
+  </symbol>
+
+  
+  
+  
+  
+  
+<symbol viewBox="0 0 120 80" id="UCI">
+  <g color="#000">
+    <path fill="#1e76bd" d="M35.527426 2.3e-7L72.32067466.0337555v15.86497878H35.527426z"/>
+    <path fill="#c7203c" d="M35.527426 15.86497901h36.79324866l.1350211 15.86497878H35.66244708z"/>
+    <path d="M35.527426 31.7299578h36.79324866l.10126582 16.20253151H35.62869182z"/>
+    <path fill="#f8df00" d="M35.527426 47.93248931h36.79324866c.60759493 5.46835439 1.11392404 11.00421932 2.80168774 16.20253152H35.62869182z"/>
+    <path fill="#35b24a" d="M35.527426 64.13502083h39.49367058c1.89029534 6.17721514 5.50210966 11.13924042 9.45147672 15.86497878H35.527426z"/>
+  </g>
+  <path fill="#00f" fill-opacity=".00694442" fill-rule="evenodd" d="M0 0h120v80H0z"/>
+</symbol>  
+  </svg>

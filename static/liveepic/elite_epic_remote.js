@@ -1424,44 +1424,52 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.i1Position_Overall - b.i1Position_Overall});
-             
+//            allArray.sort(function(a, b){return a.i1Position_Overall - b.i1Position_Overall});
+            allArray.sort((a, b) => a.i1Position_Overall - b.i1Position_Overall);
+
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.i1index - b.i1index});
+//            allArray.sort(function(a, b){return a.i1index - b.i1index});
+            allArray.sort((a, b) => a.i1index - b.i1index);
         }
                     
     } else if (show == 2) { // sorting intermediate 2
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.i2Position_Overall - b.i2Position_Overall});
+//            allArray.sort(function(a, b){return a.i2Position_Overall - b.i2Position_Overall});
+            allArray.sort((a, b) => a.i2Position_Overall - b.i2Position_Overall);
              
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.i2index - b.i2index});
+//            allArray.sort(function(a, b){return a.i2index - b.i2index});
+            allArray.sort((a, b) => a.i2index - b.i2index);
         }
                     
     } else if (show == 3) { // sorting intermediate 3
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.i3Position_Overall - b.i3Position_Overall});
+//            allArray.sort(function(a, b){return a.i3Position_Overall - b.i3Position_Overall});
+            allArray.sort((a, b) => a.i3Position_Overall - b.i3Position_Overall);
              
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.i3index - b.i3index});
+//            allArray.sort(function(a, b){return a.i3index - b.i3index});
+            allArray.sort((a, b) => a.i3index - b.i3index);
         }
                     
     } else if (show == 4) { // sorting finish
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.fPosition_Overall - b.fPosition_Overall});
+//            allArray.sort(function(a, b){return a.fPosition_Overall - b.fPosition_Overall});
+            allArray.sort((a, b) => a.fPosition_Overall - b.fPosition_Overall);
              
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.findex - b.findex});
+//            allArray.sort(function(a, b){return a.findex - b.findex});
+            allArray.sort((a, b) => a.findex - b.findex);
         }
                     
     }

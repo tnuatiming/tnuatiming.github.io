@@ -1572,8 +1572,10 @@
 // TEST doing ALL sorting (inc intermediate) on master         
          
 // sorting intermediate 1
-         allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//          allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             m = 0;
             prevCompCat = ""
             
@@ -1599,8 +1601,10 @@
 
             }
          
-            allArray.sort(function(a, b){return a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//            allArray.sort(function(a, b){return a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
+            allArray.sort((a, b) => a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             for (l = 0; l < allArray.length; l++) {
 
                 // reassign position number
@@ -1617,8 +1621,10 @@
          
 // sorting intermediate 2
          
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
-            
+//            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+                        
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             m = 0;
             prevCompCat = ""
             
@@ -1644,8 +1650,10 @@
 
             }
          
-            allArray.sort(function(a, b){return a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//            allArray.sort(function(a, b){return a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
+            allArray.sort((a, b) => a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             for (l = 0; l < allArray.length; l++) {
 
                 // reassign position number
@@ -1662,8 +1670,10 @@
 
 // sorting intermediate 3
          
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi3 - b.Id_Statusi3 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi3 - b.Id_Statusi3 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi3 - b.Id_Statusi3 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             m = 0;
             prevCompCat = ""
             
@@ -1690,8 +1700,10 @@
 
             }
          
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.oldBlue - b.oldBlue || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.oldBlue - b.oldBlue || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
+            allArray.sort((a, b) => a.Id_Status - b.Id_Status || a.oldBlue - b.oldBlue || a.single - b.single || a.oldBlue - b.oldBlue || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             for (l = 0; l < allArray.length; l++) {
 
                 // reassign position number
@@ -1709,8 +1721,10 @@
 // sorting finish
          
            
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             m = 0;
             prevCompCat = ""
             
@@ -1736,8 +1750,10 @@
 
             }
          
-            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
+            allArray.sort((a, b) => a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+
             for (l = 0; l < allArray.length; l++) {
 
                 // reassign position number
@@ -1764,54 +1780,55 @@
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.i1Position_Overall - b.i1Position_Overall});
+//            allArray.sort(function(a, b){return a.i1Position_Overall - b.i1Position_Overall});
+            allArray.sort((a, b) => a.i1Position_Overall - b.i1Position_Overall);
              
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.i1index - b.i1index});
+//            allArray.sort(function(a, b){return a.i1index - b.i1index});
+            allArray.sort((a, b) => a.i1index - b.i1index);
         }
                     
     } else if (show == 2) { // sorting intermediate 2
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.i2Position_Overall - b.i2Position_Overall});
+//            allArray.sort(function(a, b){return a.i2Position_Overall - b.i2Position_Overall});
+            allArray.sort((a, b) => a.i2Position_Overall - b.i2Position_Overall);
              
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.i2index - b.i2index});
+//            allArray.sort(function(a, b){return a.i2index - b.i2index});
+            allArray.sort((a, b) => a.i2index - b.i2index);
         }
                     
     } else if (show == 3) { // sorting intermediate 3
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.i3Position_Overall - b.i3Position_Overall});
+//            allArray.sort(function(a, b){return a.i3Position_Overall - b.i3Position_Overall});
+            allArray.sort((a, b) => a.i3Position_Overall - b.i3Position_Overall);
              
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.i3index - b.i3index});
+//            allArray.sort(function(a, b){return a.i3index - b.i3index});
+            allArray.sort((a, b) => a.i3index - b.i3index);
         }
                     
     } else if (show == 4) { // sorting finish
 
         if (useCategory == "no") {
                        
-            allArray.sort(function(a, b){return a.fPosition_Overall - b.fPosition_Overall});
+//            allArray.sort(function(a, b){return a.fPosition_Overall - b.fPosition_Overall});
+            allArray.sort((a, b) => a.fPosition_Overall - b.fPosition_Overall);
              
         } else if (useCategory == "yes") {
 
-            allArray.sort(function(a, b){return a.findex - b.findex});
+//            allArray.sort(function(a, b){return a.findex - b.findex});
+            allArray.sort((a, b) => a.findex - b.findex);
         }
                     
     }
-         
-         
-         
-         
-         
-         
-         
          
          
          
@@ -3933,8 +3950,9 @@ if (enableJ1 == 1) {
 
     
     
-            allArray3f.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
+//            allArray3f.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
     
+            allArray3f.sort((a, b) => a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
     
 //console.log('allArray3f:');
 //console.log(allArray3f);
@@ -4166,6 +4184,11 @@ if (enableJ3 == 1) {
 
 if (showLog == 1) {                              
     console.log('single day:');                
+
+const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})));
+
+const allArray3fObject = arrayToObject(allArray3f, "Id_Numero")
+
 //    console.log(allArray3f);                
     console.table(allArray3f);
 }                
@@ -4182,8 +4205,13 @@ if (showLog == 1) {
                 
 if (showLog == 1) {               
     console.log('epic:');                
+
+const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})));
+
+const allArrayObject = arrayToObject(allArray, "Id_Numero")
+
 //    console.log(allArray);                
-    console.table(allArray);
+    console.table(allArrayObject);
 }
     
 if (enableJ1 == 1) {

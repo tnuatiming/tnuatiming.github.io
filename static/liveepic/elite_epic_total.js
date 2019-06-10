@@ -1547,7 +1547,9 @@ add dns
 
          // THE MAGIC - sort the array after the merge to get new results
 //        if (useCategory == "no") {
-            allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
+//            allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
+            
+            allArray.sort((a, b) => a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal);
             
                 // reasign postion number
             for (l = 0; l < allArray.length; l++) {
@@ -1559,7 +1561,9 @@ add dns
             
             
 //        } else if (useCategory == "yes") {
-            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
+//            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
+
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal);
 //        }
          
     // fix the position fields of the competitors and start building the final table
@@ -1586,8 +1590,9 @@ add dns
                  
             if (useCategory == "no") {
                 
-                allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
+//                allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
                                 
+                allArray.sort((a, b) => a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal);
             }                 
 
     
@@ -2197,8 +2202,16 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
 if (showLog == 1) {                              
 //    console.log(allArray);                
 //const transformed = allArray.reduce((acc, {Id_Numero, ...x}) => { acc[Id_Numero] = x; return acc}, {})
-    console.table(allArray, ["Id_Numero", "Id_Position_Overall", "Id_Position_Categorie", "Id_FinishTime", "Id_FinishTime_1", "Id_FinishTime_2", "Id_FinishTime_3", "finishTimeTotal", "stagesFinished"]);
+
+const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})));
+  
+const allArrayObject = arrayToObject(allArray, "Id_Numero")
+console.table(allArrayObject);
+
+//console.table(allArray, ["Id_Numero", "Id_Position_Overall", "Id_Position_Categorie", "Id_FinishTime", "Id_FinishTime_1", "Id_FinishTime_2", "Id_FinishTime_3", "finishTimeTotal", "stagesFinished"]);
     console.log(finalText);
+
+    
 }                
 
 

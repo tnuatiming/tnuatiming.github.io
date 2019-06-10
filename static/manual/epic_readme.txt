@@ -131,3 +131,64 @@ after uploading t1.txt-t4.txt(from j1.txt), publish on mastertotal to get total 
 
 ## testing ##
 test.html + testEpic.py will genrate test
+
+
+## JSON shortcuts ##
+
+    B = blue; // needed for total
+    T = Id_TpsCumule;
+    TT = Id_TpsCumule_2;
+
+    PC = Id_Position_Categorie; // needed only for third party
+    PO = Id_Position_Overall; // needed only for third party
+    
+    NA2 = Id_Nationalite_2;
+    NA = Id_Nationalite;
+    
+    C = Id_Categorie;
+    E = Id_Ecart1er;
+    Q = Id_Equipe;
+
+
+    F = Id_FinishTime;
+    FB = Id_Finishblue;
+    
+    T1 = Id_Inter1Time;
+    E1 = Id_Inter1Ecart1er;
+    B1 = Id_Inter1blue;
+    T2 = Id_Inter2Time;
+    E2 = Id_Inter2Ecart1er;
+    B2 = Id_Inter2blue;
+    T3 = Id_Inter3Time;
+    E3 = Id_Inter3Ecart1er;
+    B3 = Id_Inter3blue;
+
+    FC = fPosition_Categorie;
+    FO = fPosition_Overall;
+    FI = findex;
+    I1C = i1Position_Categorie;
+    I1O = i1Position_Overall;
+    I1 = i1index;
+    I2C = i2Position_Categorie;
+    I2O = i2Position_Overall;
+    I2 = i2index;
+    I3C = i3Position_Categorie;
+    I3O = i3Position_Overall;
+    I3 = i3index;
+
+    A = Id_Arrow;
+    M = Id_Image;
+    M2 = Id_Image_2;
+
+    L = Id_Classe;
+    G = Id_Groupe;
+    P = Id_penalty;
+
+    R = Id_NbTour;
+
+    O = Id_Numero;
+    N = Id_Nom;
+    N2 = Id_Nom_2;
+
+
+
