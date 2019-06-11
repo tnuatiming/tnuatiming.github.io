@@ -64,8 +64,16 @@
             top: 0;
             background: #f0f0f0;
             z-index: 99;
+            margin-bottom: 10px;
+            height: 150px;
         }
 
+        #live th.rnkh_font {
+            position: sticky;
+            top: 150px;
+            z-index: 50;
+        }
+ 
         #live #categoryOrAll, #live #intermediateOrFinish, #live #options, #live #options1 {
             flex-grow: 0;
             order: 1;
@@ -298,9 +306,7 @@
         #live .btn {
             display: inline-block;
         }
-        #live #buttonInfo {
-            margin-bottom: 10px;
-        }
+
         #live .btn.active {
             cursor: pointer;
             filter: opacity(50%);
