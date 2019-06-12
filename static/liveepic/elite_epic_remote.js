@@ -37,6 +37,8 @@ remove all imTheLeader
 
     var runTime; // show elepsed time running
 
+    var messageX = '';
+
     var useHash = 1;
     var hash = 'hash.txt';
     var hashOld = '';
@@ -967,6 +969,12 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
         
         MaximumStageTime = timeString2ms(Text.MaximumStageTime);
         
+        messageX = Text.message;
+        
+        if (HeaderEventName.includes("prologue")) { // prologue
+            MaximumStageTime = MaximumStageTime + 18000000; // add 5 hours
+        }
+                
         startTime = (new Date((Text.startTime).substr(0, (Text.startTime).length-1))).getTime(); // subtract the "Z" so intrapted as Zulu (UTC)
 //        console.log(new Date((Text.startTime).substr(0, (Text.startTime).length-1)));
         sessionStorage.setItem('startTime', startTime);
@@ -1793,6 +1801,11 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
 
 // END HEADER
  
+        
+            if (messageX != '' && epictv == 0) {
+                finalText += `<div class="marquee"><p>${messageX}</p></div>`;
+            }
+
          
     // fix the position fields of the competitors and start building the final table
             m = 0;

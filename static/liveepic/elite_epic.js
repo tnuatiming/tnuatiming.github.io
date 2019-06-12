@@ -30,6 +30,8 @@
             
     var publishE = 0;
     
+    var messageX = '';
+    
     var showLog = 0;
     
     var url = 'p1.html';
@@ -162,7 +164,6 @@
                         
             document.getElementById("startTime").value = startTime;
 
-
             document.getElementById('startTime').addEventListener('change', event => {
 
                     startTime = document.getElementById("startTime").value;
@@ -170,9 +171,9 @@
                     document.getElementById("result").innerHTML = createLiveTable(P1);
             });
 
+
+
             document.getElementById("MaximumStageTime").value = MaximumStageTime;
-
-
             
             document.getElementById('MaximumStageTime').addEventListener('change', (event) => {
 
@@ -182,6 +183,16 @@
             });
 
 
+
+//            document.getElementById("message").value = message;
+            
+            document.getElementById('message').addEventListener('change', (event) => {
+
+                    messageX = document.getElementById("message").value;
+                    document.getElementById("result").innerHTML = createLiveTable(P1);
+            });
+
+            
         // download results csv
         document.querySelector('button[id="csv"]').addEventListener("click", function () {
             var html = document.querySelector("table").outerHTML;
@@ -2199,7 +2210,10 @@
         
         
         
-        
+            if (messageX != '') {
+                finalText += `<div class="marquee"><p>${messageX}</p></div>`;
+            }
+
         
         
         
@@ -2594,8 +2608,6 @@
     if (((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")  && epictv == 0 && cleanResults == 0) {
                  
 // if ((allArray[l]["Id_Position"] < 6 && epictv == 1) || (epictv == 0)) { // TV show only 5 competitors
-
-
 
 // add category name header and table header
             if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
@@ -4224,6 +4236,7 @@ if (enableJ1 == 1) {
         header.RemainingTime = RemainingTime;
         header.MaximumStageTime = MaximumStageTime;
         header.startTime = (new Date(startTime)).toISOString();
+        header.message = messageX;
         console.log((new Date(startTime)).toISOString());     
 
         allArray.unshift(header); // add the header at the beginning

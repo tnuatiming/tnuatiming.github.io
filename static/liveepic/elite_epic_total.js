@@ -64,23 +64,30 @@ add dns
     document.addEventListener("DOMContentLoaded", function() {
         
         
-        document.getElementById('showLog').addEventListener('change', event => {
-            if (event.target.checked) {
-                showLog = 1;
-                document.getElementById("result").innerHTML = createLiveTable();
-            } else {
-                showLog = 0;
-            }
-
-        });
-        
-        
         
         if (document.getElementById('epictv')){
             
             epictv = 1;
             
             document.getElementById("rows").value = rows;
+            
+            
+            
+
+
+            
+            document.getElementById('rows').addEventListener('change', (event) => {
+
+                    rows = document.getElementById("rows").value;
+                    sessionStorage.setItem('rows', rows);
+                    document.getElementById("result").innerHTML = createLiveTable();
+            });
+           
+            
+            
+            
+            
+            
             
             if (document.getElementById("showTvHeader").checked) {
                 showTvHeader = 1;
@@ -108,10 +115,20 @@ add dns
 
             
           
-        } // END epictv
+        } else { // END epictv
          
-        
-       
+               
+            document.getElementById('showLog').addEventListener('change', event => {
+                if (event.target.checked) {
+                    showLog = 1;
+                    document.getElementById("result").innerHTML = createLiveTable();
+                } else {
+                    showLog = 0;
+                }
+
+            });
+
+        }
         
         if (sessionStorage.getItem('stages')) {
             stages = sessionStorage.getItem('stages');

@@ -361,6 +361,27 @@
         #myBtn:hover {
             background-color: #555; /* Add a dark-grey background on hover */
         }
+        
+        .marquee {
+            width: 100%;
+            /*line-height: 50px;*/
+            color: #58585a;
+            text-shadow: 1px 1px 2px #fff;
+            font-size: 1em;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .marquee p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
 
     @media (max-width: 767px) {
 
@@ -477,6 +498,7 @@
     <div id="options1">
         <label class="startTime">Start Time:&nbsp;&nbsp;<input id="startTime" style="width: 150px;" type="text" name="startTime" value="2019-09-21 07:00:00"></label>
         <label class="MaximumStageTime">Maximum Stage Time:&nbsp;&nbsp;<input id="MaximumStageTime" style="width: 80px;" type="text" name="MaximumStageTime"><!--&nbsp; milliseconds (3600000=1hours, 18000000=5hours, 21600000=6hours)--></label>
+        <label class="message">Message:&nbsp;&nbsp;<input id="message" style="width: 250px;" type="text" name="message" value=""></label>
     </div>
     <div id="options">
         <label for="enableJ1"><input type="checkbox" id="enableJ1" name="enableJ1" value="enableJ1">&nbsp;Enable Epic</label>
