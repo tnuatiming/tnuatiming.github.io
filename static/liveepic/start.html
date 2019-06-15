@@ -9,7 +9,7 @@
 
     @import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Arimo:400,700&display=swap&subset=hebrew');
 
 @font-face { 
     font-family: 'Futura-Bold'; 
@@ -119,6 +119,20 @@
 	src:
 		url('fonts/ChronoWebMedium.woff') format('woff');
 }
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/manrope-bold.woff2") format("woff2"),
+  url("fonts/manrope-bold.woff") format("woff"),
+  url("fonts/manrope-bold.otf") format("truetype");
+  font-style: normal;
+  font-weight: 700; }
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/manrope-regular.woff2") format("woff2"),
+  url("fonts/manrope-regular.woff") format("woff"),
+  url("fonts/manrope-regular.otf") format("truetype");
+  font-style: normal;
+  font-weight: 400; }
 
 
             * {
@@ -136,10 +150,13 @@
                 width: 100%;
                 height: 100%;
                 min-height: 100%;
-                font-family: 'Roboto', 'futura medium bt', 'Noto Sans', 'Gotham Bold', 'Lato-Bold', 'DS-Digital', 'alarm clock', 'Open Sans', 'Source Code Pro', 'Futura-Bold', Arial, sans-serif;
-                font-weight: 400;
+                font-family: 'Manrope', 'Arimo', 'Roboto', 'futura medium bt', 'Noto Sans', 'Gotham Bold', 'Lato-Bold', 'DS-Digital', 'alarm clock', 'Open Sans', 'Source Code Pro', 'Futura-Bold', Arial, sans-serif;
+                font-weight: 700;
                 font-variant-numeric: tabular-nums;
                 -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                font-smoothing: antialiased;             
+                font-feature-settings: "tnum" 1, "zero" 0;
             }
         
             #mutebottonhide {
@@ -164,11 +181,12 @@
                 color: black;
                 order: 3;
                 flex: 1 1 auto;
-                margin: 4%;
+/*                margin: 4%;*/
                 width: 90%;
                 font-size: 50vh;
                 text-align: center;
                 height: 90%;
+                margin-top: 0;
             }
             .animate {
                 animation:changeSize 1s 1;
@@ -292,8 +310,12 @@
             
             if (mute == 1) {
                 document.getElementById("mute").checked = true;
+                document.getElementById("myAudio").muted = false;
+                document.getElementById("myAudio1").muted = false;
             } else {
                 document.getElementById("mute").checked = false;
+                document.getElementById("myAudio").muted = true;
+                document.getElementById("myAudio1").muted = true;
             }
 
             document.getElementById('mute').addEventListener('change', (event) => {
@@ -327,6 +349,7 @@
             if (showClock == 0) {
                             
                 document.getElementById("countdown").style.fontSize = "50vh";
+                document.getElementById("countdown").style.marginTop = "0";
                 document.getElementById("countdown").innerHTML = '';
                 document.getElementById("showStopwatch").innerHTML = dateString;
                 
@@ -387,12 +410,14 @@
                     document.getElementById("countdown").innerHTML = "GO!";
                 } else {
                     document.getElementById("countdown").style.fontSize = "22vh";
+                    document.getElementById("countdown").style.marginTop = "20%";
                     document.getElementById("countdown").innerHTML = dateString;
                     document.getElementById("showStopwatch").innerHTML = '';            
                 }
             
             } else {
                 document.getElementById("countdown").style.fontSize = "22vh";
+                document.getElementById("countdown").style.marginTop = "20%";
                 document.body.style.backgroundColor = "black";
                 document.getElementById("countdown").style.color="white";
                 document.getElementById("showStopwatch").innerHTML = '';            
