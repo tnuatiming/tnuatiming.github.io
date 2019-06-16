@@ -143,13 +143,13 @@
             body {
                 background-color: white;
                 cursor: none;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 100%;
-                min-height: 100%;
+                display: grid;
+                grid-template-columns: fit-content(70%) auto;
+                grid-template-rows: fit-content(8%) auto;
+                justify-content: stretch;
+                align-content: stretch;
+                width: 100vw;
+                height: 100vh;
                 font-family: 'Manrope', 'Arimo', 'Roboto', 'futura medium bt', 'Noto Sans', 'Gotham Bold', 'Lato-Bold', 'DS-Digital', 'alarm clock', 'Open Sans', 'Source Code Pro', 'Futura-Bold', Arial, sans-serif;
                 font-weight: 700;
                 font-variant-numeric: tabular-nums;
@@ -159,34 +159,36 @@
                 font-feature-settings: "tnum" 1, "zero" 0;
             }
         
-            #mutebottonhide {
-                order: 1;
-                flex: 0 1 auto;
-                width: 100%;
-                text-align: right;
+            #settingsContainer {
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+                justify-self: end;
+                align-self: start;
             }
             #showStopwatch {
                 cursor: none;
                 color: black;
-                order: 2;
-                flex: 0 1 auto;
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+                justify-self: start;
+                align-self: center;
                 font-size: 5vh;
-                text-align: left;
-                width: 100%;
-                padding-left: 2%;
+                padding: 1%;
             }
             
             #countdown {
                 cursor: none;
                 color: black;
-                order: 3;
-                flex: 1 1 auto;
-/*                margin: 4%;*/
+                grid-column: 1 / 3;
+                grid-row: 2 / 3;
+                justify-self: center;
+                align-self: center;
+/*                margin: 4%;
                 width: 90%;
-                font-size: 50vh;
                 text-align: center;
                 height: 90%;
-                margin-top: 0;
+                margin-top: 0;*/
+                font-size: 50vh;
             }
             .animate {
                 animation:changeSize 1s 1;
@@ -222,7 +224,7 @@
             div#mutebotton {
                 visibility: hidden;
             }
-            div#mutebottonhide:hover  div#mutebotton {
+            div#settingsContainer:hover  div#mutebotton {
                 visibility: visible;
             }
             label {
@@ -234,7 +236,12 @@
                 font-size: 20px;
                 text-align: center;
             }
-            
+    @media (max-width: 767px) {
+            #settingsContainer {
+                justify-self: start;
+            }
+    }
+    
     </style>
     <script>
     
@@ -261,7 +268,7 @@
             
         document.addEventListener("DOMContentLoaded", function() {
             
-            setTimeout(function(){ document.getElementById("settings").style.visibility = "hidden"; }, 3000);
+            setTimeout(function(){ document.getElementById("settings").style.display = "none"; }, 3000);
             
             
                 document.getElementById("delta").value = delta;
@@ -349,7 +356,7 @@
             if (showClock == 0) {
                             
                 document.getElementById("countdown").style.fontSize = "50vh";
-                document.getElementById("countdown").style.marginTop = "0";
+//                document.getElementById("countdown").style.marginTop = "0";
                 document.getElementById("countdown").innerHTML = '';
                 document.getElementById("showStopwatch").innerHTML = dateString;
                 
@@ -410,14 +417,14 @@
                     document.getElementById("countdown").innerHTML = "GO!";
                 } else {
                     document.getElementById("countdown").style.fontSize = "22vh";
-                    document.getElementById("countdown").style.marginTop = "20%";
+//                    document.getElementById("countdown").style.marginTop = "20%";
                     document.getElementById("countdown").innerHTML = dateString;
                     document.getElementById("showStopwatch").innerHTML = '';            
                 }
             
             } else {
                 document.getElementById("countdown").style.fontSize = "22vh";
-                document.getElementById("countdown").style.marginTop = "20%";
+//                document.getElementById("countdown").style.marginTop = "20%";
                 document.body.style.backgroundColor = "black";
                 document.getElementById("countdown").style.color="white";
                 document.getElementById("showStopwatch").innerHTML = '';            
@@ -440,9 +447,9 @@
     </head>
     <body>
     
-    <div id="mutebottonhide"> 
+    <div id="settingsContainer"> 
         <div id="mutebotton">
-            <label id="settings" style="visibility: visible;">settings ----></label>
+            <label id="settings" style="display: inline-block;">settings ----></label>
             <label>
                 <input style="transform: scale(2); margin-right: 5px;" name="showClock" id="showClock" type="checkbox">Clock
             </label>

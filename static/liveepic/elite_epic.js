@@ -24,8 +24,8 @@
 
     var allArrayJ = {};
     var J3text;
-    var enableJ1 = 1;   // for remote
-    var enableJ3 = 0;  // for single day
+    var enableJ1 = 0;   // create j1.txt for remote
+    var enableJ3 = 0;  // create p3.html for single day
     var dayCompetitors = 0;
             
     var publishE = 0;
@@ -89,6 +89,7 @@
 
     var csvName = '';
 
+    
     document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById('showLog').addEventListener('change', event => {
@@ -114,13 +115,14 @@
             if (event.target.checked) {
                 cleanResults = 1;
                 document.getElementById("result").innerHTML = createLiveTable(P1);
+                j1Status();
             } else {
                 cleanResults = 0;
                 document.getElementById("result").innerHTML = createLiveTable(P1);
+                j1Status();
             }
 
         });
-
 
 
         if (document.getElementById("enableJ1").checked) {
@@ -133,9 +135,11 @@
         document.getElementById('enableJ1').addEventListener('change', event => {
             if (event.target.checked) {
                 enableJ1 = 1;
+                j1Status();
 //                document.getElementById("result").innerHTML = createLiveTable(P1);
             } else {
                 enableJ1 = 0;
+                j1Status();
 //                document.getElementById("result").innerHTML = createLiveTable(P1);
             }
 
@@ -393,7 +397,17 @@
 
         }
 
- });   
+    });   
+    
+    
+    function j1Status() {
+            if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") {
+                document.getElementById("buttonInfo").style.borderBottom = "12px solid #6c3";
+            } else {
+                document.getElementById("buttonInfo").style.borderBottom = "12px solid #c00";
+            }
+    };
+
 
     var tableClass = "fadeIn";
 
@@ -490,6 +504,8 @@
         
         document.getElementById("result").innerHTML = createLiveTable(P1);
 //        alignTable();
+                
+        j1Status();
         
     }
 
@@ -658,6 +674,7 @@
         document.getElementById("result").innerHTML = createLiveTable(P1);
 //        alignTable();
 
+        j1Status();
     };
 
     async function Load() {
@@ -700,7 +717,7 @@
                         download(allArrayJ, 'j1.txt', 'text/plain');    
                         console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
                 
-                //       console.log(JSON.parse(allArrayJ));     
+                //       console.log(JSON.parse(allArrayJ));  
                     }
                     
                     if (enableJ3 == 1 && dayCompetitors == 1) { 
@@ -4201,7 +4218,7 @@ const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({
 const allArray3fObject = arrayToObject(allArray3f, "Id_Numero")
 
 //    console.log(allArray3f);                
-    console.table(allArray3f);
+    console.table(allArray3fObject);
 }                
      
     
@@ -4490,6 +4507,9 @@ function export_table_to_csv(html, filename) {
 
 
     function publish(){
+                
+        if (TimerLoad) clearTimeout(TimerLoad);
+
         var useCategoryTemp = useCategory;
         publishE = 1;
         var publishText = '';
@@ -4519,6 +4539,14 @@ function export_table_to_csv(html, filename) {
         
         publishE = 0;
         useCategory = useCategoryTemp;
+        
+        loop = function() {
+            Load();
+        };
+
+        TimerLoad = setTimeout(loop, Rafraichir);
+        
+        
     }
 
 
