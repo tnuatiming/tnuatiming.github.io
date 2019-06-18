@@ -107,12 +107,12 @@
         background: #32243fcb;
     }
     #live .OddRow {
-        background-color: #303030cb;
+        background-color: rgba(48,48,48,0.9); /*#303030*/
         color: #f0f0f0;
     }
 
     #live .EvenRow {
-        background-color: #474747cb;
+        background-color: rgba(71,71,71,0.9); /*#474747*/
         color: #f0f0f0;
     }
     td.title_font {
@@ -236,6 +236,11 @@
         vertical-align: middle;
         margin: 0 5px;
     /*    filter: drop-shadow(0 0 1px #d0d0d0);*/
+
+    /*circle flag*/
+        margin: 0 -5px; 
+        width: 2em; 
+        clip-path: circle(12px at center);
     }
     
     .australia {background-image: url(Images/CountryFlags/australia.svg);}

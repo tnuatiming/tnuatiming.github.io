@@ -34,14 +34,14 @@ add dns
     var url1 = "t1.txt";    
     var J1;
 //    var T1;
-        var url2 = "t2.txt";    
-        var J2;    
+    var url2 = "t2.txt";    
+    var J2;    
 //        var T2;    
-        var url3 = "t3.txt";    
-        var J3;
+    var url3 = "t3.txt";    
+    var J3;
 //        var T3;
-        var url4 = "t4.txt";    
-        var J4;
+    var url4 = "t4.txt";    
+    var J4;
 //        var T4;
     
     
@@ -1414,6 +1414,9 @@ add dns
                         }
                                 
                     }
+                    if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+                        break;
+                    }
                 }  // END a
                         
                         if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime_1"] != 99999999999) {
@@ -1468,6 +1471,9 @@ add dns
                             allArray[b]["out"] = 3;
                         }
                         
+                    }
+                    if (allArray[b]["Id_Numero"] == allArray3[a]["Id_Numero"]) {
+                        break;
                     }
                     
                 }  // END a
@@ -1525,6 +1531,9 @@ add dns
                             allArray[b]["out"] = 4;
                         }
                 
+                    }
+                    if (allArray[b]["Id_Numero"] == allArray4[a]["Id_Numero"]) {
+                        break;
                     }
                     
                 }  // END a

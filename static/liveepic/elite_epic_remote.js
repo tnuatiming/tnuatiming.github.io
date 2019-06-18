@@ -693,6 +693,7 @@ remove all imTheLeader
             console.log('page unavailable');
         });
 */
+
         if (self.fetch) {
 
             try {
@@ -776,32 +777,101 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
             }
 */            
         } else {
-            var xhr;
-            xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById("categoryOrAll").style.display = "block"; // if j1.html exist, display the buttons
-                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
-                    P1 = xhr.responseText;
-                    document.getElementById(target).innerHTML = createLiveTable(P1);
-                    alignTable();
-    //           } else {
-    //               document.getElementById("categoryOrAll").style.display = "none";
-                }
-            };
             
-        //    xhr.open("GET", url + "?r=" + Math.random(), true);
-            xhr.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
-            xhr.send(null);
-
-            // upload message
-        //    populatePre('uploadMsg.txt','updates');
-
-            // upload previous results            
-        //    populatePre('previousresults.txt','previousResults');
             
+            
+            if (useHash == 1) {
+                var xhr1;
+                xhr1 = new XMLHttpRequest();
+                xhr1.onreadystatechange = function() {
+                    if (xhr1.readyState == 4 && xhr1.status == 200) {
+        //console.log(response.headers.get('Date')); // get server time
+        //console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
+        timeFromServer = Date.parse((xhr1.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
+                            console.log(timeFromServer);
+
+                        hashNew = xhr1.responseText;
+
+                        if (hashOld != hashNew) {
+                            
+                            console.log('found new hash');
+                                    
+                            var xhr;
+                            xhr = new XMLHttpRequest();
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState == 4 && xhr.status == 200) {
+                                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
+                                    P1 = xhr.responseText;
+                                    document.getElementById(target).innerHTML = createLiveTable(P1);
+                                //                    alignTable();
+                                                
+                                    hashOld = hashNew;
+                                }
+                            };
+                            
+                        //    xhr.open("GET", url + "?r=" + Math.random(), true);
+                            xhr.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
+                            xhr.send(null);
+                                        
+                        } else if (typeof P1 != 'undefined') {
+                                        
+                            console.log('no new hash');
+                            document.getElementById(target).innerHTML = createLiveTable(P1);
+                //                    alignTable();
+                        }
+                                
+                    } else if (typeof P1 != 'undefined') {
+                                    
+                        console.log('no hash on server');
+                                    
+                        document.getElementById(target).innerHTML = createLiveTable(P1);
+            //                    alignTable();
+                    }
+                };
+                
+            //    xhr1.open("GET", url + "?r=" + Math.random(), true);
+                xhr1.open("GET", hash + ((/\?/).test(hash) ? "&" : "?") + (new Date()).getTime(), true);
+                xhr1.send(null);
+
+                    
+                    
+            } else {
+                var xhr;
+                xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                        document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
+    timeFromServer = Date.parse((xhr.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
+                        P1 = xhr.responseText;
+                        document.getElementById(target).innerHTML = createLiveTable(P1);
+        //                    alignTable();
+                    }
+                        
+                };
+                
+            //    xhr.open("GET", url + "?r=" + Math.random(), true);
+                xhr.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
+                xhr.send(null);
+                    
+            }
+                
+            if (epictv == 1) { 
+                alignTDforTV();
+            }
+             
+             
         }
 
+
+        
+        
+         
+        
+        
+        
+        
 /*
         await fetch('uploadMsg.txt', {cache: "no-store"})
         .then(res1 => res1.text())

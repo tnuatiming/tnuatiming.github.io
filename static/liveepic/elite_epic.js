@@ -872,7 +872,9 @@
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
         var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili;
-
+        
+// TEST        var allArrayMinimized = [], allArrayNew = [];
+        
         MaximumStageTimeMili = timeString2ms(MaximumStageTime);
 
         if (show == 1) {
@@ -1228,6 +1230,7 @@
 
         for (b = 0; b < allArray.length; b++) {  // main array
             for (a = 0; a < allArray2.length; a++) { 
+//let obj = allArray2.find(o => o.Id_Numero === allArray[b]["Id_Numero"]); // replace for a
 
 /*                // calculating total time and total laps from both arrays
                 if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != 99999999999 && allArray2[a]["Id_TpsCumule"] != 99999999999) {
@@ -1323,8 +1326,13 @@
                         allArray[b].Id_penalty = "P";   
                     }
                     
-            } // END for a
+                } // END compare
 
+                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+                    break;
+                }
+                
+            }// END for a
             
             // find finish time and check for 2 minutes difference
                         
@@ -1531,8 +1539,6 @@
                     if (allArray[b]["Id_Groupe"].includes('b')) {                    
                         allArray[b]["oldBlue"] = 1;
                     }
-                
-                }
          
 
                 if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status")) {
@@ -1573,7 +1579,7 @@
                
                
                
-               
+              
         } // END for b
          // delete the second array
          allArray2 = [];
@@ -3649,6 +3655,26 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
 // console.log("pos "+positionArray_All_Cat[allArray[l]["Id_Numero"]][1]);
 
 
+/*
+// TEST create array without keys to minimize size of sending data
+
+if (l == 0) {
+    var result = Object.keys(allArray[l]).map(function(key) {
+    return key;
+    });
+allArrayMinimized.push(result);
+    
+}
+var result = Object.keys(allArray[l]).map(function(key) {
+  return allArray[l][key];
+});
+
+allArrayMinimized.push(result);
+
+
+// END TEST
+
+*/
 
 if (enableJ1 == 1) {
 // get flag image src, DayTime, ElapsedTime, RemainingTime from header
@@ -3871,7 +3897,7 @@ if (enableJ1 == 1) {
     }
 }
 
-    }        // end for l
+    }        // END for l
          
                 
                 
@@ -3880,8 +3906,39 @@ if (enableJ1 == 1) {
         }
         finalText += '</table></div>';
              
+/*
+// TEST create array without keys to minimize size of sending data
+        
+console.log("allArrayMinimized test:");
+console.log(allArrayMinimized);
 
-                
+//download(JSON.stringify(allArrayMinimized), 'jx1.txt', 'text/plain');  // small gain, not sure worth it  
+//download(allArrayMinimized, 'jx2.txt', 'text/plain'); // ok gain, make sure no "," in data, better not to use...
+
+// extract back:
+
+var arrayKeys = allArrayMinimized.shift();
+console.log(arrayKeys);
+            
+
+for (a = 0; a < allArrayMinimized.length; a++) { 
+
+    var result =  allArrayMinimized[a].reduce(function(result, field, index) {
+    result[arrayKeys[index]] = field;
+    return result;
+    }, {})
+
+    allArrayNew.push(result);
+    
+
+}
+                        
+
+console.log(allArrayNew);
+
+// END TEST
+*/
+
                 
 // BEGIN single day   
     // BEGIN allArray31, 32                

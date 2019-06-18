@@ -675,25 +675,28 @@
                         allArray[b].Id_lap11 = "-";
                     }
 */
-/*
-            // inflating the table as laps results come in
-            for (q = laps; q >= lapsX; q--) { 
+    /*
+                // inflating the table as laps results come in
+                for (q = laps; q >= lapsX; q--) { 
 
-                if (allArray[b]["Id_lap" + q] != "-" && lapsX < q) {
-                    lapsX = q;
+                    if (allArray[b]["Id_lap" + q] != "-" && lapsX < q) {
+                        lapsX = q;
+                    }
                 }
-            }
-*/            
+    */            
 
-            if (lapsXtemp > lapsX[allArray[b]["Id_Categorie"]]) { // get max laps to show per category
-                lapsX[allArray[b]["Id_Categorie"]] = lapsXtemp;
-            }
-            if (lapsXtemp > lapsX["overAll"]) { // get max laps to show overall
-                lapsX["overAll"] = lapsXtemp;
-            }
-     //   console.log(lapsX);     
+                if (lapsXtemp > lapsX[allArray[b]["Id_Categorie"]]) { // get max laps to show per category
+                    lapsX[allArray[b]["Id_Categorie"]] = lapsXtemp;
+                }
+                if (lapsXtemp > lapsX["overAll"]) { // get max laps to show overall
+                    lapsX["overAll"] = lapsXtemp;
+                }
+        //   console.log(lapsX);     
 
-                
+                    
+                if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
+                    break;
+                }
                
             } // END for allArray2
         } // END for allArray
