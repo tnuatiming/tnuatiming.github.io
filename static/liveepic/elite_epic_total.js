@@ -391,9 +391,9 @@ add dns
             if (stages >= 2) {
             var xhr2;
                 xhr2 = new XMLHttpRequest;
-                xhr2.onreadystatechange = function () {
-                    if (xhr2.readyState == 4 && xhr2.status == 200) {
-                        J2 = xhr2.responseText;
+                xhr2.onload = function () {
+                    if (this.status == 200) {
+                        J2 = this.responseText;
                     }
                 };
                 xhr2.open("GET", url2 + ((/\?/).test(url2) ? "&" : "?") + (new Date()).getTime());
@@ -402,9 +402,9 @@ add dns
             if (stages >= 3) {
                 var xhr3;
                 xhr3 = new XMLHttpRequest;
-                xhr3.onreadystatechange = function() {
-                    if (xhr3.readyState == 4 && xhr3.status == 200) {
-                        J3 = xhr3.responseText;
+                xhr3.onload = function() {
+                    if (this.status == 200) {
+                        J3 = this.responseText;
                     }
                 };
                 xhr3.open("GET", url3 + ((/\?/).test(url3) ? "&" : "?") + (new Date()).getTime());
@@ -414,9 +414,9 @@ add dns
             if (stages == 4) {
                 var xhr4;
                 xhr4 = new XMLHttpRequest;
-                xhr4.onreadystatechange = function() {
-                    if (xhr4.readyState == 4 && xhr4.status == 200) {
-                        J4 = xhr4.responseText;
+                xhr4.onload = function() {
+                    if (this.this == 200) {
+                        J4 = this.responseText;
                     }
                 };
                 xhr4.open("GET", url4 + ((/\?/).test(url4) ? "&" : "?") + (new Date()).getTime());
@@ -424,9 +424,9 @@ add dns
             }
             
             xhr = new XMLHttpRequest;
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    J1 = xhr.responseText;
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    J1 = this.responseText;
                     document.getElementById("result").innerHTML = createLiveTable();
 //                    alignTable();
                 }

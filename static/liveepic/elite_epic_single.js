@@ -36,9 +36,9 @@
         } else {
             var xhr;
             xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    P1 = xhr.responseText;
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    P1 = this.responseText;
                     document.getElementById(target).innerHTML = P1;
                     alignTable();
                 }

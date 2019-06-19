@@ -254,11 +254,11 @@
         } else {
             var xhr;
             xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
+            xhr.onload = function() {
+                if (this.status == 200) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("center1").style.display = "block"; // if p1.html exist, display race progress
-                    P1 = response.text();
+                    P1 = this.responseText;
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                     alignTable();
     //           } else {
@@ -318,9 +318,9 @@
     // fn to upload messages
     function populatePre(url, div) {
         var xhr1 = new XMLHttpRequest();
-        xhr1.onreadystatechange = function () {
-            if (xhr1.readyState == 4 && xhr1.status == 200) {
-                document.getElementById(div).innerHTML = xhr1.responseText;
+        xhr1.onload = function () {
+            if (this.status == 200) {
+                document.getElementById(div).innerHTML = this.responseText;
             }
         };
     //    xhr1.open("GET", url + Math.random(), true);

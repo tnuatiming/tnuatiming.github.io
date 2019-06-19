@@ -44,8 +44,8 @@
     }
 
     var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/live1/sp1/p1.html";    
-    var url2 = "https://tnuatiming.com/live1/sp2/p1.html";    
+    var url1 = "https://tnuatiming.com/live/sp1/p1.html";    
+    var url2 = "https://tnuatiming.com/live/sp2/p1.html";    
     var Text1;
     var Text2;
     
@@ -155,19 +155,19 @@
         var xhr2;
 
         xhr2 = new XMLHttpRequest;
-        xhr2.onreadystatechange = function () {
-            if (xhr2.readyState == 4 && xhr2.status == 200) {
-                Text2 = xhr2.responseText;
+        xhr2.onload = function () {
+            if (this.status == 200) {
+                Text2 = this.responseText;
             }
         };
         xhr2.open("GET", url2 + "?r=" + Math.random(), true);
         xhr2.send(null);
 
         xhr = new XMLHttpRequest;
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
+        xhr.onload = function() {
+            if (this.status == 200) {
                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
-                Text1 = xhr.responseText;
+                Text1 = this.responseText;
                 document.getElementById(target).innerHTML = createLiveTable();
                 alignTable();
             }

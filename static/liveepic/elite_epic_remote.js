@@ -33,7 +33,7 @@ remove all imTheLeader
     
     var showStopwatch = 1;
 
-    var showLog = 1;
+    var showLog = 0;
 
     var runTime; // show elepsed time running
 
@@ -783,8 +783,8 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
             if (useHash == 1) {
                 var xhr1;
                 xhr1 = new XMLHttpRequest();
-                xhr1.onreadystatechange = function() {
-                    if (xhr1.readyState == 4 && xhr1.status == 200) {
+                xhr1.onload = function() {
+                    if (xhr1.status == 200) {
         //console.log(response.headers.get('Date')); // get server time
         //console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
         timeFromServer = Date.parse((xhr1.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
@@ -798,8 +798,8 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                                     
                             var xhr;
                             xhr = new XMLHttpRequest();
-                            xhr.onreadystatechange = function() {
-                                if (xhr.readyState == 4 && xhr.status == 200) {
+                            xhr.onload = function() {
+                                if (xhr.status == 200) {
                                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                                     document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                                     P1 = xhr.responseText;
@@ -839,8 +839,8 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
             } else {
                 var xhr;
                 xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
+                xhr.onload = function() {
+                    if (xhr.status == 200) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                         document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
     timeFromServer = Date.parse((xhr.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
@@ -912,7 +912,7 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
     // fn to upload messages
     function populatePre(url, div) {
         var xhr1 = new XMLHttpRequest();
-        xhr1.onreadystatechange = function () {
+        xhr1.onload = function () {
             if (xhr1.readyState == 4 && xhr1.status == 200) {
                 document.getElementById(div).innerHTML = xhr1.responseText;
             }
