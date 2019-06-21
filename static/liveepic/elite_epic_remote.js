@@ -33,7 +33,7 @@ remove all imTheLeader
     
     var showStopwatch = 1;
 
-    var showLog = 0;
+    var showLog = 1;
 
     var runTime; // show elepsed time running
 
@@ -708,8 +708,9 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
 
                         if (hashOld != hashNew) {
                     
+    if (showLog == 1) {
                             console.log('found new hash');
-                            
+    }                   
                             const response = await fetch(url, {cache: "no-store"});
                             if (response.ok) {
                                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
@@ -723,15 +724,18 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                             
                         } else if (typeof P1 != 'undefined') {
                                 
+    if (showLog == 1) {
                             console.log('no new hash');
+    }
                             document.getElementById(target).innerHTML = createLiveTable(P1);
         //                    alignTable();
                         }
                         
                     } else if (typeof P1 != 'undefined') {
                             
+    if (showLog == 1) {
                         console.log('no hash on server');
-                            
+    }      
                         document.getElementById(target).innerHTML = createLiveTable(P1);
     //                    alignTable();
                     }
@@ -788,14 +792,15 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
         //console.log(response.headers.get('Date')); // get server time
         //console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
         timeFromServer = Date.parse((xhr1.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
-                            console.log(timeFromServer);
+         //                   console.log(timeFromServer);
 
                         hashNew = xhr1.responseText;
 
                         if (hashOld != hashNew) {
                             
+    if (showLog == 1) {
                             console.log('found new hash');
-                                    
+    }                         
                             var xhr;
                             xhr = new XMLHttpRequest();
                             xhr.onload = function() {
@@ -816,15 +821,18 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                                         
                         } else if (typeof P1 != 'undefined') {
                                         
+    if (showLog == 1) {
                             console.log('no new hash');
+    }
                             document.getElementById(target).innerHTML = createLiveTable(P1);
                 //                    alignTable();
                         }
                                 
                     } else if (typeof P1 != 'undefined') {
                                     
+    if (showLog == 1) {
                         console.log('no hash on server');
-                                    
+    }             
                         document.getElementById(target).innerHTML = createLiveTable(P1);
             //                    alignTable();
                     }
@@ -3113,7 +3121,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
                 }
                 
-                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' | ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
                 finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
 

@@ -19,7 +19,7 @@ add dns
     
     var cleanResults = 0;
 
-    var showLog = 0;
+    var showLog = 1;
 
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     
@@ -2181,7 +2181,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
                 }
                 
-                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' | ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
                 finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
 

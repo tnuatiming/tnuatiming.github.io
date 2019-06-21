@@ -850,7 +850,8 @@
 //        var temp = [];
         var lineArray = {};
         var allArray = [];
-        var allArray2 = [];
+//        var allArray2 = [];
+        var allArray2obj = [];
         var allArray3 = [];
         var allArray31 = [];
         var allArray32 = [];
@@ -874,7 +875,7 @@
         var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili;
         
 // TEST        var allArrayMinimized = [], allArrayNew = [];
-        var allArray2Obj = [];
+
         MaximumStageTimeMili = timeString2ms(MaximumStageTime);
 
         if (show == 1) {
@@ -1172,8 +1173,8 @@
                     
                     
                     
-                    allArray2.push(lineArray); // push line to main array 
-                    allArray2Obj[lineArray["Id_Numero"]] = (lineArray); // push line to main array 
+//                    allArray2.push(lineArray); // push line to main array 
+                    allArray2obj[lineArray["Id_Numero"]] = (lineArray); // push line to main array 
                     
                 }
 
@@ -1230,106 +1231,106 @@
 
 
         for (b = 0; b < allArray.length; b++) {  // main array
-//            for (a = 0; a < allArray2.length; a++) {  // replaced allArray2[a] with allArray2Obj[allArray[b]["Id_Numero"]]
+//            for (a = 0; a < allArray2.length; a++) {  // replaced allArray2[a] with allArray2obj[allArray[b]["Id_Numero"]]
 //let obj = allArray2.find(o => o.Id_Numero === allArray[b]["Id_Numero"]); // replace for a
 
 /*                // calculating total time and total laps from both arrays
-                if (allArray[b]["Id_Numero"] == allArray2Obj[allArray[b]["Id_Numero"]]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != 99999999999 && allArray2Obj[allArray[b]["Id_Numero"]]["Id_TpsCumule"] != 99999999999) {
+                if (allArray[b]["Id_Numero"] == allArray2obj[allArray[b]["Id_Numero"]]["Id_Numero"] && allArray[b]["Id_TpsCumule"] != 99999999999 && allArray2obj[allArray[b]["Id_Numero"]]["Id_TpsCumule"] != 99999999999) {
                     
-          //          allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2Obj[allArray[b]["Id_Numero"]]["Id_TpsCumule"];
+          //          allArray[b]["Id_TpsCumule"] = allArray[b]["Id_TpsCumule"] + allArray2obj[allArray[b]["Id_Numero"]]["Id_TpsCumule"];
                 }
 */            
-//                if (allArray[b]["Id_Numero"] == allArray2Obj[allArray[b]["Id_Numero"]]["Id_Numero"]) {
+//                if (allArray[b]["Id_Numero"] == allArray2obj[allArray[b]["Id_Numero"]]["Id_Numero"]) {
                     
         
                     if (allArray[b]["Id_Groupe"].includes('s')) {
 
                         allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('s', 's1');
-                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2[b]["Id_NbTour"]); // need to 2* the laps as it 1 rider and not 2 
+                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2obj[b]["Id_NbTour"]); // need to 2* the laps as it 1 rider and not 2 
 
-                    } else if (allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('s')) {
+                    } else if (allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('s')) {
 
-                        allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].replace('s', 's2');
-                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2Obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
+                        allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].replace('s', 's2');
+                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
 
                     } else {
         
-                        allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2Obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
+                        allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
                     }
                     
-                    if (allArray[b]["Id_Groupe"].includes('u') && allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('u')) {
+                    if (allArray[b]["Id_Groupe"].includes('u') && allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('u')) {
 
                         allArray[b]["uci"] = 3;
                         allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('u', 'u3');
-                        allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].replace('u', '');
+                        allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].replace('u', '');
 
-                    } else if (allArray[b]["Id_Groupe"].includes('u') && !(allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('u'))) {
+                    } else if (allArray[b]["Id_Groupe"].includes('u') && !(allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('u'))) {
 
                         allArray[b]["uci"] = 1;
                         allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('u', 'u1');
 
                         
-                    } else if (!(allArray[b]["Id_Groupe"].includes('u')) && allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('u')) {
+                    } else if (!(allArray[b]["Id_Groupe"].includes('u')) && allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('u')) {
 
                         allArray[b]["uci"] = 2;
-                        allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].replace('u', 'u2');
+                        allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].replace('u', 'u2');
                     }
 
 
-                    if (allArray[b]["Id_Groupe"].includes('l') || allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('l')) {
+                    if (allArray[b]["Id_Groupe"].includes('l') || allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('l')) {
                         
                         allArray[b]["leader"] = 1; // mark leader (yellow shirt)
                         
                     }                    
                     
-                    if (allArray[b]["Id_Groupe"].includes('d') || allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('d')) {
+                    if (allArray[b]["Id_Groupe"].includes('d') || allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('d')) {
                         
                         allArray[b]["Id_Image"] = '_Status10'; // mark DSQ
                         
                     }                    
 
                     
-                    allArray[b]["Id_Groupe"] = (allArray2Obj[allArray[b]["Id_Numero"]]["Id_Groupe"] + allArray[b]["Id_Groupe"]).replace('dd', 'd').replace('ll', 'l').replace('bb', 'b'); // combine blue, single, leader
+                    allArray[b]["Id_Groupe"] = (allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"] + allArray[b]["Id_Groupe"]).replace('dd', 'd').replace('ll', 'l').replace('bb', 'b'); // combine blue, single, leader
 
 
                     
                     // transfer fields from second array to the first that needed later, use _2 to mark
-                    allArray[b]["Id_Image_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Image"];   
-                    allArray[b]["Id_Nom_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Nom"];
-                    allArray[b]["Id_Numero_Full_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Numero_Full"];
-                    allArray[b]["Id_Nationalite_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Nationalite"];
-                    allArray[b]["Id_TpsCumule_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_TpsCumule"];
-                    allArray[b]["Id_Canal_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Canal"];
+                    allArray[b]["Id_Image_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Image"];   
+                    allArray[b]["Id_Nom_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Nom"];
+                    allArray[b]["Id_Numero_Full_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Numero_Full"];
+                    allArray[b]["Id_Nationalite_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Nationalite"];
+                    allArray[b]["Id_TpsCumule_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_TpsCumule"];
+                    allArray[b]["Id_Canal_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Canal"];
                     
-                    if (typeof allArray2Obj[allArray[b]["Id_Numero"]]["Id_Inter1"] != 'undefined') {
-                        allArray[b]["Id_Inter1_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Inter1"];
+                    if (typeof allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter1"] != 'undefined') {
+                        allArray[b]["Id_Inter1_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter1"];
                     }
                     if (typeof allArray[b]["Id_Inter1"] == '-') {
                         allArray[b]["Id_Inter1"] = 99999999999;
                     }
-                    if (typeof allArray2Obj[allArray[b]["Id_Numero"]]["Id_Inter2"] != 'undefined') {
-                        allArray[b]["Id_Inter2_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Inter2"];
+                    if (typeof allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter2"] != 'undefined') {
+                        allArray[b]["Id_Inter2_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter2"];
                     }
                     if (typeof allArray[b]["Id_Inter2"] == '-') {
                         allArray[b]["Id_Inter2"] = 99999999999;
                     }
-                    if (typeof allArray2Obj[allArray[b]["Id_Numero"]]["Id_Inter3"] != 'undefined') {
-                        allArray[b]["Id_Inter3_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Inter3"];
+                    if (typeof allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter3"] != 'undefined') {
+                        allArray[b]["Id_Inter3_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter3"];
                     }
                     if (typeof allArray[b]["Id_Inter3"] == '-') {
                         allArray[b]["Id_Inter3"] = 99999999999;
                     }
- //                   if (typeof allArray2Obj[allArray[b]["Id_Numero"]]["Id_Discipline"] != 'undefined') {
- //                       allArray[b]["Id_Discipline_2"] = allArray2Obj[allArray[b]["Id_Numero"]]["Id_Discipline"];
+ //                   if (typeof allArray2obj[allArray[b]["Id_Numero"]]["Id_Discipline"] != 'undefined') {
+ //                       allArray[b]["Id_Discipline_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Discipline"];
  //                   }
 
-                    if (allArray2Obj[allArray[b]["Id_Numero"]]["Id_penalty"] == "P") {
+                    if (allArray2obj[allArray[b]["Id_Numero"]]["Id_penalty"] == "P") {
                         allArray[b].Id_penalty = "P";   
                     }
 /*                    
                 } // END compare
 
-                if (allArray[b]["Id_Numero"] == allArray2Obj[allArray[b]["Id_Numero"]]["Id_Numero"]) {
+                if (allArray[b]["Id_Numero"] == allArray2obj[allArray[b]["Id_Numero"]]["Id_Numero"]) {
                     break;
                 }
                 
@@ -1583,7 +1584,7 @@
               
         } // END for b
          // delete the second array
-         allArray2 = [];
+//         allArray2 = [];
          
 
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
@@ -4330,8 +4331,8 @@ if (enableJ1 == 1) {
           
       //       console.log(finalText);
               
-//console.log("allArray2Obj");
-//console.log(allArray2Obj);
+//console.log("allArray2obj");
+//console.log(allArray2obj);
 
     sessionStorage.setItem('positionArray_All_Cat', JSON.stringify(positionArray_All_Cat));
             
