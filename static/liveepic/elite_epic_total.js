@@ -1431,6 +1431,9 @@ add dns
                         
                         allArray[b]["Id_FinishTime_1"] = allArray2[a]["Id_FinishTime"];
                         allArray[b]["blue_1"] = allArray2[a]["blue"];
+                        if (allArray2[a]["oldBlue"] == 1) {
+                            allArray[b]["oldBlue"] = 2;
+                        }
                         allArray[b]["Id_Arrow_1"] = allArray2[a]["Id_Arrow"];
                         allArray[b]["Id_Groupe_1"] = allArray2[a]["Id_Groupe"];
                         allArray[b]["Id_Image_1"] = allArray2[a]["Id_Image"] + allArray2[a]["Id_Image_2"];
@@ -1450,6 +1453,8 @@ add dns
                         if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime_1"] != 99999999999) {
                             
                             allArray[b]["finishTimeTotal"] = allArray[b]["Id_FinishTime"] + allArray[b]["Id_FinishTime_1"];
+                        } else {
+                            allArray[b]["finishTimeTotal"] = 99999999999;
                         }
                     
                         if (allArray[b]["Id_FinishTime_1"] != 99999999999) {
@@ -1489,6 +1494,9 @@ add dns
                         
                         allArray[b]["Id_FinishTime_2"] = allArray3[a]["Id_FinishTime"];
                         allArray[b]["blue_2"] = allArray3[a]["blue"];
+                        if (allArray3[a]["oldBlue"] == 1) {
+                            allArray[b]["oldBlue"] = 3;
+                        }
                         allArray[b]["Id_Arrow_2"] = allArray3[a]["Id_Arrow"];
                         allArray[b]["Id_Groupe_2"] = allArray3[a]["Id_Groupe"];
                         allArray[b]["Id_Image_2"] = allArray3[a]["Id_Image"] + allArray3[a]["Id_Image_2"];
@@ -1509,6 +1517,8 @@ add dns
                         if (allArray[b]["finishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTime_2"] != 99999999999) {
                             
                             allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_2"];
+                        } else {
+                            allArray[b]["finishTimeTotal"] = 99999999999;
                         }
                     
                         if (allArray[b]["Id_FinishTime_2"] != 99999999999) {
@@ -1549,6 +1559,9 @@ add dns
                         
                         allArray[b]["Id_FinishTime_3"] = allArray4[a]["Id_FinishTime"];
                         allArray[b]["blue_3"] = allArray4[a]["blue"];
+                        if (allArray4[a]["oldBlue"] == 1) {
+                            allArray[b]["oldBlue"] = 4;
+                        }
                         allArray[b]["Id_Arrow_3"] = allArray4[a]["Id_Arrow"];
                         allArray[b]["Id_Groupe_3"] = allArray4[a]["Id_Groupe"];
                         allArray[b]["Id_Image_3"] = allArray4[a]["Id_Image"] + allArray4[a]["Id_Image_2"];
@@ -1570,6 +1583,8 @@ add dns
                         if (allArray[b]["finishTimeTotal"] != 99999999999 && allArray[b]["Id_FinishTime_3"] != 99999999999) {
                             
                             allArray[b]["finishTimeTotal"] = allArray[b]["finishTimeTotal"] + allArray[b]["Id_FinishTime_3"];
+                        } else {
+                            allArray[b]["finishTimeTotal"] = 99999999999;
                         }
                 
                         if (allArray[b]["Id_FinishTime_3"] != 99999999999) {
@@ -1917,7 +1932,7 @@ if (epictv == 0) {
                     finalText += '<td colspan="2" class="rnk_font"></td>\n'; // add postion
                 }
                 
-                 if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1) {
+                 if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["oldBlue"] != 0) {
                 finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
