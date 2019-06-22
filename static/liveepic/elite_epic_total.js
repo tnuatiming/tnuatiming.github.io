@@ -236,6 +236,34 @@ add dns
         useCategory = useCategoryTemp;
     }
 
+    function publishBox(){
+        var useCategoryTemp = useCategory;
+        
+        var publishText = '';
+        
+        
+        publishText += '<div id="' + showStage + '">\n';
+        
+        publishText += '<div id="finalTextCategory" style="display: block;">\n';
+
+        useCategory = "yes";
+        publishText += createLiveTable().replace(/<h1.*?<\/h1>/g, '');
+        
+        publishText += '</div>\n';
+        publishText += '\n\n\n\n\n\n\n\n\n';
+        
+        publishText += '<div id="finalTextAll" style="display: none;">\n';
+        
+        useCategory = "no";
+        publishText += createLiveTable().replace(/<h1.*?<\/h1>/g, '');
+        publishText += '</div>\n';
+        
+        
+        
+        download(publishText, 'q' + stages + '.txt', 'text/plain');        
+        
+        useCategory = useCategoryTemp;
+    }
 
     function category(choice){
         

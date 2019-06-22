@@ -190,6 +190,16 @@
         flex-direction: column;
         direction: ltr;
         padding-bottom: 10px;
+        margin-bottom: 10px;
+        position: sticky; 
+        top: 15px;
+        z-index: 99;
+        background: black;
+        padding-top: 10px;
+        opacity: 0;
+    }
+    #live div#buttonInfo:hover {
+        opacity: 1;
     }
     #live #categoryOrAll, #live #options, #live #options1 {
         flex-grow: 0;
@@ -323,14 +333,6 @@
     }
 
     #live .btn {display: inline-block;}
-    #live #buttonInfo {
-        margin-bottom: 10px;
-        position: sticky; 
-        top: 15px;
-        z-index: 99;
-        background: black;
-        padding-top: 10px;
-    }
     #live .btn.active {cursor: pointer;filter: opacity(50%);}
     #live #Title {
         justify-content: space-evenly;
