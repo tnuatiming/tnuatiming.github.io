@@ -1,0 +1,222 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background:rgba(240,240,240,1);
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    direction: rtl;
+    line-height: 1.5;
+    text-align: center;
+    font-family: 'Noto Sans Hebrew', "Noto Sans", 'Open Sans Hebrew', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: baseline;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    scroll-behavior: smooth;
+    display: table;  /*  fixes html/body not expending to the size of the content (table)*/
+/*    position: relative;*/
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin: 0;
+/*    position: relative;*/
+    border: 0;
+/*    min-width: -webkit-min-content;
+    min-width: -moz-min-content;
+    min-width: min-content;
+    min-height: -webkit-min-content;
+    min-height: -moz-min-content;
+    min-height: min-content;
+    background: rgba(240,240,240,1);*/
+}
+ 
+.main_content {
+    direction: ltr;
+    margin-top: 15px;
+    text-align: right;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    text-align: center;
+    flex: 1 0 auto;
+    justify-content: flex-start;
+    align-items: center;
+}
+.row {
+    width: 100%;
+}
+#live #buttonInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+}
+#live #categoryOrAll, #live #intermediateOrFinish {
+    flex-grow: 0;
+    order: 1;
+    align-self: flex-start;
+    vertical-align: middle;
+    margin: auto 5px;
+    padding: 0;
+    display: none;
+}
+#live #categoryOrAll button {
+    font-size: 1em;
+    padding: 2px 10px;
+    white-space: nowrap;
+    font-weight: 700;
+}
+#live .btn.active {
+    cursor: pointer;
+    filter: opacity(50%);
+}
+#live .btn {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    border-width: 0;
+    outline: 0;
+    background-color: #767472;
+    color: #ecf0f1;
+    transition: background-color .3s;
+}
+#live #result {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+#live #Title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 10px;
+}
+h1 {
+    font-size: 1.6em;
+    color: #222;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #fff;
+    text-align: center;
+}
+img {
+    border: 0;
+    max-width: 100%;
+    height: auto;
+}
+#live #Time {
+    margin: 0;
+    padding: 0 5px;
+    font-size: 1em;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#live #DayTime {
+    color: #58585a;
+    order: 3;
+    padding: 0 5px;
+    flex-grow: 1;
+    text-align: left;
+    text-shadow: 1px 1px 2px #fff;
+}
+#live #ElapsedTime {
+    color: #00843f;
+    order: 2;
+    padding: 0 5px;
+    flex-grow: 1;
+    text-align: right;
+    text-shadow: 1px 1px 2px #fff;
+}
+#live #RemainingTime {
+    color: #c8102e;
+    order: 1;
+    padding: 0 5px;
+    flex-grow: 0;
+    text-align: right;
+    text-shadow: 1px 1px 2px #fff;
+}
+#live #liveTable, #live #liveTableS, #live #previousResults, #live .PreResult {
+    width: 100%;
+}
+@media (max-width: 1024px)
+table {
+    font-size: .8em;
+}
+
+table {
+    white-space: nowrap;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+#live tr.rnkh_bkcolor {
+    color: #fff;
+    background: rgba(0,0,0,.5);
+    font-weight: 700;
+}
+
+tr.rnkh_bkcolor {
+    background: 0 0;
+    color: #fff;
+    font-weight: 700;
+}
+#live .EvenRow {
+    background-color: rgba(187,187,187,.7);
+    color: #222;
+}
+#live .OddRow {
+    background-color: rgba(208,208,208,.7);
+    color: #222;
+}
+th.rnkh_font {
+    background: rgba(118,116,114,1);
+}
+td, th {
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: collapse;
+    font-size: 1em;
+    padding-right: 0;
+}
+#live td.rnk_font, #race td.rnk_font {
+    color: #222;
+    font-weight: 400;
+    text-shadow: none;
+    white-space: nowrap;
+}
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+
+
+
+
+
