@@ -12,8 +12,8 @@ FIXME
 add "Id_Sector_FinishTime" - maybe fixed?
 fix all the crufafel with "Inter1Leader" tables - maybe fixed?
 enable google compiler for production
-postion arrow needes to be disabled after the prologue
-after removing the status colmun, need to fix the finish flag, gain/lost indicator
+postion arrow needes to be disabled after the prologue - maybe fixed?
+after removing the status colmun, need to fix the finish flag, gain/lost indicator - maybe fixed?
 use all Ecart1er from Masters
 remove all imTheLeader
 
@@ -64,6 +64,7 @@ remove all imTheLeader
     var cleanResults = 0; // not using, this is just to clean the header
     
     var prologue;
+    
     var raceEnded = 0;
     
     var precision = "tenth"; // "tenth" for 1 digit after the .
@@ -700,17 +701,17 @@ remove all imTheLeader
                 if (useHash == 1) {
                     const response = await fetch(hash, {cache: "no-store"}); // check if hash changeed, which mean we have a new j1.txt to download
                     if (response.ok) {
-//console.log(response.headers.get('Date')); // get server time
-//console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
-timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get server UTC time in milliseconds
+                        //console.log(response.headers.get('Date')); // get server time
+                        //console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
+                        timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get server UTC time in milliseconds
 
                         hashNew = await response.text();
 
                         if (hashOld != hashNew) {
                     
-    if (showLog == 1) {
-                            console.log('found new hash');
-    }                   
+                            if (showLog == 1) {
+                                console.log('found new hash');
+                            }                   
                             const response = await fetch(url, {cache: "no-store"});
                             if (response.ok) {
                                 document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
@@ -724,18 +725,18 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                             
                         } else if (typeof P1 != 'undefined') {
                                 
-    if (showLog == 1) {
-                            console.log('no new hash');
-    }
+                            if (showLog == 1) {
+                                console.log('no new hash');
+                            }
                             document.getElementById(target).innerHTML = createLiveTable(P1);
         //                    alignTable();
                         }
                         
                     } else if (typeof P1 != 'undefined') {
                             
-    if (showLog == 1) {
-                        console.log('no hash on server');
-    }      
+                        if (showLog == 1) {
+                            console.log('no hash on server');
+                        }      
                         document.getElementById(target).innerHTML = createLiveTable(P1);
     //                    alignTable();
                     }
@@ -744,7 +745,7 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                     if (response.ok) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                         document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
-timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get server UTC time in milliseconds
+                        timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get server UTC time in milliseconds
                         P1 = await response.text();
                         document.getElementById(target).innerHTML = createLiveTable(P1);
     //                    alignTable();
@@ -789,18 +790,18 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                 xhr1 = new XMLHttpRequest();
                 xhr1.onload = function() {
                     if (xhr1.status == 200) {
-        //console.log(response.headers.get('Date')); // get server time
-        //console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
-        timeFromServer = Date.parse((xhr1.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
-         //                   console.log(timeFromServer);
+                        //console.log(response.headers.get('Date')); // get server time
+                        //console.log(Date.parse((response.headers.get('Date')).slice(0, -4)));
+                        timeFromServer = Date.parse((xhr1.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
+                        //   console.log(timeFromServer);
 
                         hashNew = xhr1.responseText;
 
                         if (hashOld != hashNew) {
                             
-    if (showLog == 1) {
-                            console.log('found new hash');
-    }                         
+                            if (showLog == 1) {
+                                console.log('found new hash');
+                            }                         
                             var xhr;
                             xhr = new XMLHttpRequest();
                             xhr.onload = function() {
@@ -821,18 +822,18 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                                         
                         } else if (typeof P1 != 'undefined') {
                                         
-    if (showLog == 1) {
-                            console.log('no new hash');
-    }
+                            if (showLog == 1) {
+                                console.log('no new hash');
+                            }
                             document.getElementById(target).innerHTML = createLiveTable(P1);
                 //                    alignTable();
                         }
                                 
                     } else if (typeof P1 != 'undefined') {
                                     
-    if (showLog == 1) {
-                        console.log('no hash on server');
-    }             
+                        if (showLog == 1) {
+                            console.log('no hash on server');
+                        }             
                         document.getElementById(target).innerHTML = createLiveTable(P1);
             //                    alignTable();
                     }
@@ -851,7 +852,7 @@ timeFromServer = Date.parse((response.headers.get('Date')).slice(0, -4)); // get
                     if (xhr.status == 200) {
                         document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                         document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
-    timeFromServer = Date.parse((xhr.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
+                        timeFromServer = Date.parse((xhr.getResponseHeader("Date")).slice(0, -4)); // get server UTC time in milliseconds
                         P1 = xhr.responseText;
                         document.getElementById(target).innerHTML = createLiveTable(P1);
         //                    alignTable();

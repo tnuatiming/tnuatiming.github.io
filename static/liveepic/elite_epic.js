@@ -764,6 +764,10 @@
                     alignTable();
     //           } else {
     //               document.getElementById("categoryOrAll").style.display = "none";
+                } else if (this.status == 404) {
+                    console.log('no results on server');
+                } else {
+                    console.log(`Error ${xhr.status}: ${xhr.statusText}`);
                 }
             };
             
@@ -2845,7 +2849,7 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td title="Finished" class="finished white rnk_font">&nbsp;</td>`;
                     
-                } else if (prologue == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (allArray[l]["Id_Canal"] == 1 || allArray[l]["Id_Canal_2"] == 1)) { // on track
+                } else if (prologue == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status")) && (allArray[l]["Id_Canal"] == 1 || allArray[l]["Id_Canal_2"] == 1)) { // on track
                     
                     finalText += `<td class="rnk_font fadeIn"><span title="Started" class="Flag Started"></span></td>`;
                     
@@ -2886,7 +2890,7 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td colspan="2" title="Single Finisher" class="rnk_font">SF</td>`;
                     
-                } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 || (show != 4 && ((show >= 1 && allArray[l]["Id_Inter1blue"] == 1) || (show >= 2 && allArray[l]["Id_Inter2blue"] == 1) || (show >= 3 && allArray[l]["Id_Inter3blue"] == 1)))) { // enable show != 4, to show postion only on finish
+                } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 || (show != 4 && ((show >= 1 && allArray[l]["Id_Inter1blue"] == 1) || (show >= 2 && allArray[l]["Id_Inter2blue"] == 1) || (show >= 3 && allArray[l]["Id_Inter3blue"] == 1)))) { // enable show != 4, to show postion only on finish
                 
                     finalText += `<td class="rnk_font">&nbsp;</td>`; // dont show position if status or no finish time
                     finalText += `<td class="rnk_font">&nbsp;</td>`; // dont show position if status or no finish time
@@ -3400,7 +3404,7 @@ if (show == 4) {
 // 12 '<img class="dnsfq" src="Images/_dns.svg" alt="dns">'                    
                 
                 
-                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
                 
                     finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show position if status or no finish time
                     //allArray[l]["Id_Position_Categorie"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0

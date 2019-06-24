@@ -192,5 +192,14 @@ test.html + testEpic.py will genrate test
     N = Id_Nom;
     N2 = Id_Nom_2;
 
+    
+    ## files flow ##
+    
+p1.html - from elite live > master.html
+j1.txt - from master.html (via enable j1) > py > ftp > index.html on epic site / tt live for tv.html
+p3.html - from master.html (via enable j3) > py > ftp > single.html on epic site / tt live
+t1-4.txt - from master.html (via enable j1) > py(converted j1.txt) > ftp > tt live for tvtotal.html (virtual total standing)
+q1-4.txt -from mastertotal.html (via publish box) > total.html on epic site
+
 
 

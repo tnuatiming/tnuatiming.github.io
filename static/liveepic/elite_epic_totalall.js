@@ -192,6 +192,7 @@
                 })
                 .catch(error => {
                     if (error.status === 404) {
+                        console.log('no results on server');
                         document.getElementById("result").innerHTML = "No Results Yet";
                     } else {
                         console.log(error);
@@ -208,8 +209,11 @@
                         document.getElementById("categoryOrAll").style.display = "block"; 
                         document.getElementById("result").innerHTML = this.responseText;
                         category(useCategory);
-                    } else {
+                    } else if (this.status == 404) {
+                        console.log('no results on server');
                         document.getElementById("result").innerHTML = "No Results Yet";
+                    } else {
+                        console.log(`Error ${xhr.status}: ${xhr.statusText}`);
                     }
 
                 };
