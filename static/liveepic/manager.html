@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+<head>
+
+    <title>תנועה מדידת זמנים  &ndash; live timing</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo">
+    <meta name="description" content="תנועה מדידת זמנים עוסקת במדידת זמנים בארועי ספורט">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffcc33">
+    <meta name="apple-mobile-web-app-title" content="תנועה מדדית זמנים">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="תנועה מדדית זמנים">
+    <meta name="msapplication-TileColor" content="#ffcc33">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffcc33">
+    
+    <link rel="stylesheet" media="all" type="text/css" href="/style/global.css">
+    <link rel="stylesheet" media="print" href="/style/print.css">
+
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים">
+    <meta property="og:title" content="תנועה מדידת זמנים  &ndash; live timing">
+    <meta property="og:description" content="live timing">
+    
+    
+    <meta property="og:url" content="https://tnuatiming.com/liveepic/">
+    <meta property="og:image" content="http://tnuatiming.com/images/logo2_og.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    
+    <style>
+    
+        body#live {
+            background: none;
+        }
+        .main_content {direction: ltr;}
+
+        #live .btn {margin: 0;}
+        
+        #live #buttonInfo {
+            flex-direction: column;
+            direction: ltr;
+            position: sticky;
+            top: 0;
+            background: #f0f0f0;
+            z-index: 99;
+            margin-bottom: 10px;
+            height: 70px;
+            border-bottom: 12px solid #c00;
+        }
+
+        #live th.rnkh_font {
+            position: sticky;
+            top: 70px;
+            z-index: 50;
+        }
+ 
+        #live #categoryOrAll, #live #intermediateOrFinish, #live #options, #live #options1 {
+            flex-grow: 0;
+            order: 1;
+            align-self: flex-start;
+            vertical-align: middle;
+            margin: 5px 5px;
+            padding: 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        #live #categoryOrAll button, #live #intermediateOrFinish button {
+            font-size: 1em;
+            padding: 2px 10px;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+        #live div#options label, #live div#options1 label {
+            margin-right: 20px
+        }
+        #live #DayTime {
+            order: 1;
+            }
+        #live #ElapsedTime {
+            order: 2;
+            }
+        #live #RemainingTime {
+            order: 3;
+            }
+
+        #live td.rnk_font, #live th.rnkh_font {
+            padding: 0 2px;
+        }
+        td[aria-label]:hover:after {
+            content: attr(aria-label);
+            padding: 0 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            z-index: 50;
+            color: #fff;
+            background: rgba(17, 17, 17, 1);
+            min-width: 100%;
+        }
+
+        tbody.line, tr.rnk_bkcolor {
+            border-bottom: 1px solid #111;
+        }
+    /*  td.rnk_font, th.rnkh_font {border: 1px solid #111;}  */
+        #live table.line_color {
+            direction: ltr;
+            margin-top: 10px;
+        }
+        #live td.rnk_font.bigFont {
+            font-size: 1.5em;
+            min-width: 35px;
+        }
+    /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 50;}*/
+
+        #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
+        
+        #live td.rnk_font:nth-child(-n+3), #live th.rnkh_font:nth-child(-n+3) {
+            width: 5%;
+        }    
+    /*    #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) {
+            width: 3%;
+        }
+        #live td.rnk_font:nth-child(-n+4), #live th.rnkh_font:nth-child(-n+4) {
+            width: 5%;
+        }*/
+        #live td.blued {
+            background-image: url(Images/_LightBlueFlag.png);
+            background-position: center center; 
+            background-size: auto 40%; 
+            background-repeat: no-repeat; 
+            min-width: 26px;
+        }
+        #live td.finished {
+            background-size: auto 40%;
+            min-width: 26px;
+        }    
+        #live td.rnk_font.blueCard {
+            color:#111; 
+            background-color:#add8e6bf; 
+            font-weight:700;
+        }
+        #live td.rnk_font.DarkBlueCard {
+            color:#111; 
+            background-color:#2f5999ff; 
+            font-weight:700;
+        }
+        #live td.rnk_font.redCard {
+            color:white; 
+            background-color:red; 
+            font-weight:700;
+        }
+        #live td.rnk_font.yellowCard {
+            background-color:#fae100ff; 
+            font-weight:700;
+        }
+        #live td.rnk_font.pinkCard {
+            color:white; 
+            background-color:#ff1493ff; 
+            font-weight:700;
+        }
+        #live td.rnk_font.greenCard {
+            color:white; 
+            background-color:#427f4dfe; 
+            font-weight:700;
+        }
+        #live td.rnk_font.purpleCard {
+            color:white; 
+            background-color:#412297ff; 
+            font-weight:700;
+        }
+        th.rnkh_font {
+            white-space: normal;
+        }
+        #live td.left, #live th.left {
+            text-align: left;
+            padding-left: 10px;
+        }
+        #live td.right, #live th.right {
+            text-align: right;
+        }
+        #live td.rnk_font.wrap {
+            max-width: 200px;
+        /* white-space: normal;*/ 
+        }
+        #live #liveTableS td.rnk_font:nth-child(-n+3) {
+            width: auto;
+        }
+        #live div#result h2 {
+            text-align: center;
+        }
+        #live div.team {
+        /*    width: 200px; */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0 auto;
+        }
+        #live td img {
+            height:0.9em; 
+            vertical-align:middle; 
+            padding:0 2px;
+        }
+        .pos {
+            font-weight:700;
+        }
+        .lineThrough {
+            filter: opacity(35%)
+        }
+        h1 img {
+            height: 32px; 
+            vertical-align: middle; 
+            margin: 0 5px;
+        }
+        img.Flag {
+            vertical-align: middle; 
+            margin: 0 5px;
+        }
+
+        .Flag:before {content: "\00a0";}
+        .Flag {
+            background-size: contain;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            position: relative;
+            display: inline-block;
+            width: 1.33333333em;
+            height: 2em;
+            vertical-align: middle;
+            margin: 0 5px;
+            filter: drop-shadow(0 0 1px #767472);
+        }
+        
+        .australia {background-image: url(Images/CountryFlags/australia.svg);}
+        .austria {background-image: url(Images/CountryFlags/austria.svg);}
+        .belgium {background-image: url(Images/CountryFlags/belgium.svg);}
+        .brazil {background-image: url(Images/CountryFlags/brazil.svg);}
+        .canada {background-image: url(Images/CountryFlags/canada.svg);}
+        .czechrepublic {background-image: url(Images/CountryFlags/czechrepublic.svg);}
+        .denmark {background-image: url(Images/CountryFlags/denmark.svg);}
+        .ecuador {background-image: url(Images/CountryFlags/ecuador.svg);}
+        .england {background-image: url(Images/CountryFlags/england.svg);}
+        .finland {background-image: url(Images/CountryFlags/finland.svg);}
+        .france {background-image: url(Images/CountryFlags/france.svg);}
+        .germany {background-image: url(Images/CountryFlags/germany.svg);}
+        .greece {background-image: url(Images/CountryFlags/greece.svg);}
+        .hungary {background-image: url(Images/CountryFlags/hungary.svg);}
+        .iceland {background-image: url(Images/CountryFlags/iceland.svg);}
+        .ireland {background-image: url(Images/CountryFlags/ireland.svg);}
+        .israel {background-image: url(Images/CountryFlags/israel.svg);}
+        .italy {background-image: url(Images/CountryFlags/italy.svg);}
+        .latvia {background-image: url(Images/CountryFlags/latvia.svg);}
+        .lithuania {background-image: url(Images/CountryFlags/lithuania.svg);}
+        .netherlands {background-image: url(Images/CountryFlags/netherlands.svg);}
+        .newzealand {background-image: url(Images/CountryFlags/newzealand.svg);}
+        .norway {background-image: url(Images/CountryFlags/norway.svg);}
+        .poland {background-image: url(Images/CountryFlags/poland.svg);}
+        .portugal {background-image: url(Images/CountryFlags/portugal.svg);}
+        .russia {background-image: url(Images/CountryFlags/russia.svg);}
+        .serbia {background-image: url(Images/CountryFlags/serbia.svg);}
+        .southafrica {background-image: url(Images/CountryFlags/southafrica.svg);}
+        .spain {background-image: url(Images/CountryFlags/spain.svg);}
+        .sweden {background-image: url(Images/CountryFlags/sweden.svg);}
+        .switzerland {background-image: url(Images/CountryFlags/switzerland.svg);}
+        .ukraine {background-image: url(Images/CountryFlags/ukraine.svg);}
+        .unitedkingdom {background-image: url(Images/CountryFlags/unitedkingdom.svg);}
+        .usa {background-image: url(Images/CountryFlags/usa.svg);}
+
+        .transparent {background-image: url(Images/transparent.png);}
+        .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
+        .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
+        .Started {background-image: url(Images/_TrackPassing.svg); width: 1em;}
+        .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
+        .YellowShirt {background-image: url(Images/YellowShirt.svg);margin: 0;}
+        .PinkShirt {background-image: url(Images/PinkShirt.svg);margin: 0;}
+        .GreenShirt {background-image: url(Images/GreenShirt.svg);margin: 0;}
+        .BlueShirt {background-image: url(Images/BlueShirt.svg);margin: 0;}
+        .PurpleShirt {background-image: url(Images/PurpleShirt.svg);margin: 0;}
+        .UCI {background-image: url(Images/uci.svg);margin: 0;}
+
+        .dnf {background-image: url(Images/_dnf.svg);}
+        .dsq {background-image: url(Images/_dsq.svg);}
+        .dns {background-image: url(Images/_dns.svg);}
+
+        .uci {color: brown;}
+        span.number {padding: 0 5px;}
+        
+        #live .btn {
+            display: inline-block;
+        }
+
+        #live .btn.active {
+            cursor: pointer;
+            filter: opacity(50%);
+        }
+        #live #Title {
+            justify-content: space-evenly;
+            vertical-align: middle;
+            font-weight: 700;
+            font-size: 1em;
+            color: #58585a;
+            margin: 5px 0;
+            text-align: center;    
+        }
+        
+        #live h1#Title img {
+            margin: 0 10px;
+        }
+
+        #live td.rnk_font.bold, #live td div.bold {
+            font-weight:700; 
+            padding: 0 2px;
+        }
+        
+        div#legend {width: 100%; text-align: left;}
+        div#legend ul {width: 100%; text-align: left; float: left;}
+        div#legend li {text-align: left;}
+        
+        #csv {display: none;}
+        
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            width: 50px;
+            height: 50px;
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #c00; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            text-decoration: none;
+            -webkit-border-radius: 35px;
+            -moz-border-radius: 35px;
+            border-radius: 35px;
+            font-size: 24px; /* Increase font size */
+            font-weight: 700;
+            transform: rotate(270deg);
+        }
+
+        #myBtn:hover {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+        
+        .marquee {
+            width: 100%;
+            /*line-height: 50px;*/
+            color: #58585a;
+            text-shadow: 1px 1px 2px #fff;
+            font-size: 1em;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .marquee p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+        @keyframes marquee {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        #live #options1, #live #options  {
+            display: none;
+        }
+        
+        #live #buttonInfo {
+            border-bottom: none;
+        }
+    @media (max-width: 767px) {
+
+        #live #categoryOrAll button, #live #intermediateOrFinish button {
+            font-size: 0.8em;
+        }
+        #live #Time, #live #Title, #live #DayTime,#live #ElapsedTime, #live #RemainingTime {
+            font-size: 0.8em;
+            padding: 0;
+        }
+        #live td.rnk_font.wrap {
+            max-width: 120px;
+            white-space: nowrap;
+        }    
+        #live div.team {
+            max-width: 120px;
+        }
+        #live td.rnk_font.bigFont {
+            font-size: 1.2em;
+            min-width: 25px;
+        }
+    }
+
+    </style>
+
+
+    <script src="elite_epic.js"></script>
+</head>
+
+
+
+
+    <body  onload="Load()" id="live">
+
+
+<div class="full-bg fadeIn">
+    <div class="page">
+      <div class="row header">
+        <div class="row language">
+            <a href="/english/index.html" title="go to English home page">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="27" height="19">
+                    <clipPath id="t">
+                        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+                    </clipPath>
+                        <path d="M0,0 v30 h60 v-30 z" fill="#00247d"/>
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                        <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#cf142b" stroke-width="4"/>
+                        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                        <path d="M30,0 v30 M0,15 h60" stroke="#cf142b" stroke-width="6"/>
+                </svg>
+            </a>
+        </div>
+        <div class="logoNav">
+        <div class="logo_main">
+          <div class="logo_image">
+
+            <ul class="logo">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+      
+          </div>
+            <div class="logo_text">
+              <a class="main_logo" href="http://tnuatiming.com/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235 90"><switch><g fill="#58585a"><path d="M188.274 11.634h-8.35V1h30.586q12.656 0 18.15 5.36 5.537 5.318 5.537 17.667v31.508h-11.91V24.202q0-7.03-2.856-9.8-2.855-2.768-9.623-2.768h-9.668V34.66q0 7.648-1.76 12.174-1.713 4.527-5.36 6.636-3.647 2.065-10.59 2.065h-2.99V44.9h.748q3.076 0 4.834-1.098 1.758-1.143 2.505-3.516.747-2.373.747-7.163v-21.49zM169.51 55.535h-28.433V44.9h16.567V24.775q0-5.933-.79-8.438-.792-2.55-2.638-3.603-1.845-1.1-5.405-1.1h-5.228V1h7.47q7.56 0 11.294 2.02 3.736 2.022 5.45 6.636 1.713 4.615 1.713 12.833v33.045zM118.313 1h11.865v54.535h-11.865V1zM56.746 45.91q11.337-.174 17.622-2.24L58.81 1h12.877L84.65 38.352q4.967-4 7.076-12.656Q93.836 17.04 93.836 1h12.216q0 20.96-4.702 32.826-4.658 11.822-15.117 17.403-10.46 5.536-29.487 6.37V45.91zM13.547 55.535H1.682V22.4h11.865v33.135zm34.234 0H35.873V23.85q0-6.723-2.857-9.447-2.856-2.77-9.932-2.77H.803V1H23.83Q36.795 1 42.29 6.316q5.493 5.317 5.493 17.622v31.595z"/><path d="M223.98 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H220.97v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.385-2.44-4.703-2.44-2.966 0-4.878 2.703-1.91 2.68-3.537 9.448L212.86 89h-4.35l3.01-11.8q1.034-4.107 2.066-6.7l-5.493-8.46h4.768l2.748 4.46q1.714-2.592 3.67-3.735 1.955-1.164 4.7-1.164zM202.27 89h-4.064V65.777h-15.38V62.04h22.806v3.736h-3.362V89zM174.058 62.04h4.043v14.173h-4.042V62.04zM165.62 89h-4.065V65.777h-15.38V62.04h22.807v3.736h-3.362V89zM119.917 65.776h-4.175V62.04h14.568q6.065 0 8.7 2.593 2.638 2.57 2.638 8.57V89h-4.043V73.16q0-4.043-1.648-5.712-1.626-1.67-5.69-1.67h-6.307v12.788q0 4.043-.747 6.262-.725 2.22-2.35 3.208-1.627.967-5.12.967h-.243v-3.735h.374q1.538 0 2.417-.55.88-.57 1.253-1.757.374-1.186.374-3.58V65.775zM102.35 65.95v4.198l-2.396-.813q-1.297.68-1.802 1.275-.506.593-.725 1.428-.22.813-.22 2.065V89h-4.043V74.28q0-2.33.88-3.78.9-1.45 3.03-2.154L89.56 65.82v-4.175l12.79 4.306zM74.597 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H71.588v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.384-2.44-4.702-2.44-2.965 0-4.877 2.703-1.912 2.68-3.538 9.448L63.48 89h-4.352l3.01-11.8q1.033-4.107 2.066-6.7l-5.493-8.46h4.77l2.745 4.46q1.714-2.592 3.67-3.735Q71.85 61.6 74.597 61.6zM53.92 89H41.595v-3.735h8.284V73.62q0-3.516-.374-5.032-.35-1.516-1.208-2.153-.857-.66-2.483-.66h-2.966V62.04h2.834q3.517 0 5.12.99 1.627.966 2.374 3.207.747 2.22.747 6.24V89zM32.146 62.04h4.043v14.173h-4.044V62.04zM24.74 89H1.65V62.04h11.8q6.064 0 8.678 2.593 2.615 2.593 2.615 8.57V89zM5.69 65.777v19.49h14.986V73.157q0-4-1.626-5.69-1.604-1.692-5.647-1.692H5.69z"/></g><foreignObject width="235" height="90" requiredExtensions="http://example.com/SVGExtensions/EmbeddedXHTML"><img src="/images/logo2.png" width="235" height="90" alt="תנועה מדידת זמנים" /></foreignObject></switch></svg></a>            
+          </div>
+        </div>
+        <div class="navigation">
+          <svg style="display:none;">
+            <symbol id="live-icon" viewBox="0 0 32 32">
+              <path style="fill-opacity:1"
+                    d="M 17,6.03787 17,4 21,4 21,2 C 21,0.89544 20.104563,0 18.999938,0 L 13,0 c -1.104562,0 -2,0.89544 -2,2 l 0,2 4,0 0,2.03787 C 8.287563,6.54844 3,12.15669 3,19 3,26.17969 8.820313,32 16,32 23.179688,32 29,26.17969 29,19 29,12.15675 23.712438,6.5485 17,6.03787 Z m 6.071062,20.03319 C 21.18225,27.95981 18.671125,29 16,29 13.328875,29 10.817688,27.95981 8.928938,26.07106 7.040188,24.18231 6,21.67106 6,19 c 0,-2.67106 1.040188,-5.18231 2.928938,-7.07106 1.81375,-1.81369 4.2015,-2.84431 6.753562,-2.92338 l -0.677437,9.81313 C 14.946943,19.64025 15.394563,20 15.999938,20 16.605313,20 17.053,19.64025 16.994813,18.81869 L 16.317438,9.0055 c 2.552062,0.0791 4.939875,1.10975 6.753625,2.92344 C 24.959813,13.81769 26,16.32894 26,19 c 0,2.67106 -1.040187,5.18231 -2.928937,7.07106 z" />
+            </symbol>
+            <symbol id="home-icon" viewBox="0 0 32 32">
+              <path style="fill-opacity:1"
+                   d="m 32,18.5 -6,-6 0,-9 -4,0 0,5 -6,-6 -16,16 0,1 4,0 0,10 10,0 0,-6 4,0 0,6 10,0 0,-10 4,0 z" />
+            </symbol>
+            <symbol id="race-icon" viewBox="0 0 32 32">
+              <path style="fill-opacity:1"
+                  d="M 26,6 26,2 6,2 6,6 0,6 0,10 c 0,3.31369 2.6861875,6 6,6 0.627375,0 1.2321875,-0.0964 1.800625,-0.27506 1.4429375,2.06275 3.644,3.55612 6.199375,4.07487 L 14,26 12,26 c -2.2091875,0 -4,1.79081 -4,4 l 16,0 c 0,-2.20919 -1.790813,-4 -4,-4 l -2,0 0,-6.20019 c 2.555375,-0.51875 4.756437,-2.01206 6.199375,-4.07487 C 24.767813,15.90356 25.372625,16 26,16 c 3.313812,0 6,-2.68631 6,-6 L 32,6 26,6 Z M 6,13.625 C 4.0011875,13.625 2.375,11.99881 2.375,10 l 0,-2 L 6,8 6,10 c 0,1.25581 0.2321875,2.45725 0.6548125,3.56462 C 6.44225,13.60356 6.223625,13.625 6,13.625 Z M 29.625,10 c 0,1.99881 -1.626188,3.625 -3.625,3.625 -0.223625,0 -0.44225,-0.0214 -0.654812,-0.0604 C 25.767813,12.45725 26,11.25581 26,10 l 0,-2 3.625,0 0,2 z" />
+            </symbol>   
+          </svg>
+          <ul>
+            <li><a class=home href="/index.html"><svg class="home-icon"><use xlink:href="#home-icon"></use></svg><span>עמוד&nbsp;הבית</span></a></li>
+            <li><a class=races href="/results/index.html"><svg class="race-icon"><use xlink:href="#race-icon"></use></svg><span>תוצאות&nbsp;מרוצים</span></a></li>
+            <li class="last"><a class="live" href="/live/index.html"><span class="css3-blink"><span>live&nbsp;timing</span><svg class="live-icon"><use xlink:href="#live-icon"></use></svg></span></a></li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <div class="row main_content">
+
+ 
+
+<div id="raceheader"><h1>Live Results</h1></div>
+
+<div id="buttonInfo">
+    <div id="categoryOrAll">
+        <button id="Men" class="btn" onClick="category('yes', 'Men')">Men</button>
+        <button id="Women" class="btn" onClick="category('yes', 'Women')">Women</button>
+        <button id="Mixed" class="btn" onClick="category('yes', 'Mixed')">Mixed</button>
+        <button id="Masters" class="btn" onClick="category('yes', 'Masters')">Masters</button>
+        <button id="Grand" class="btn" onClick="category('yes', 'Grand')">Grand</button>
+        <button id="displayCatButton" class="btn" onClick="category('yes', 'None')">By Category</button>
+        <button id="displayAllButton" class="btn" onClick="category('no', 'None')">GC</button>
+    </div>
+    <div id="intermediateOrFinish">
+        <button id="intermediate1" class="btn" onClick="intermediateOrFinish('1')">Intermediate 1</button>
+        <button id="intermediate2" class="btn" onClick="intermediateOrFinish('2')">Intermediate 2</button>
+        <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
+        <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
+    </div>
+    <div id="options1">
+        <label class="startTime">Start Time:&nbsp;&nbsp;<input id="startTime" style="width: 150px;" type="text" name="startTime" value="2019-09-21 07:00:00"></label>
+        <label class="MaximumStageTime">Maximum Stage Time:&nbsp;&nbsp;<input id="MaximumStageTime" style="width: 80px;" type="text" name="MaximumStageTime"><!--&nbsp; milliseconds (3600000=1hours, 18000000=5hours, 21600000=6hours)--></label>
+        <label class="message">Message:&nbsp;&nbsp;<input id="message" style="width: 250px;" type="text" name="message" value=""></label>
+    </div>
+    <div id="options">
+        <label for="enableJ1"><input type="checkbox" id="enableJ1" name="enableJ1" value="enableJ1">&nbsp;Enable Epic</label>
+        <label for="enableJ3"><input type="checkbox" id="enableJ3" name="enableJ3" value="enableJ3">&nbsp;Enable Single</label>
+        <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
+        <label for="showLog"><input type="checkbox" id="showLog" name="showLog" value="showLog">&nbsp;Show log</label>
+        <button id="publish" class="publish" onClick="publish()">Publish</button>
+    </div>
+
+    
+</div>
+<div id="result"></div>
+    
+<!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">&#10148;</button>
+
+<div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall results</button></div>
+<button id="csv">Download CSV Results File</button>
+
+<div id="legend">
+         <ul>
+                <li><span class="Flag YellowShirt"></span> - Epic Israel Leader</li>
+                <li><span class="Flag numberOne"></span> - Intermediate Leader</li>
+                <li><span class="Flag UCI"></span> - UCI Rider</li>
+                <li><span class="Flag CheckeredFlag"></span> - Finished</li>
+                <li>DSQ - Disqualified</li>
+                <li>DNF - Did Not Finished</li>
+                <li>DNS - Did Not Started</li>
+                <li>MST - Exceed Maximum Stage Time</li>
+                <li>SF - Single Finisher</li>
+                <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
+                <li><span class="Flag Started"></span> - Started Prologue</li>
+            </ul>
+</div>
+
+
+          
+                
+      </div>
+        <div class="row footer">
+          <a class=mail href="mailto:119raz@walla.com">רז הימן - 119raz&#64;walla.com</a>
+          <a class=copyright href="/terms.html">&#169; כל הזכויות שמורות לתנועה מדידת זמנים</a>
+          <a class=logo_tiny href="http://tnuatiming.com">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <switch>
+                <g style="fill-opacity:1;stroke:none">
+                  <circle r="7" transform="matrix(0.86602544,0.49999993,-0.49999993,0.86602544,0,0)" style="fill:#ff6600;" cx="24.284611" cy="-5.9378204" />
+                  <circle r="7" transform="matrix(-0.86602544,0.49999993,-0.49999993,-0.86602544,0,0)" style="fill:#cc0000;" cx="5.9378204" cy="-24.284611" />
+                  <circle r="7" transform="matrix(0.2588191,0.96592581,-0.96592581,0.25881909,0,0)" style="fill:#003399;" cx="33.793804" cy="-33.3913" />
+                  <circle r="7" transform="matrix(0.86602544,-0.49999993,0.49999993,0.86602544,0,0)" style="fill:#66cc33;" cx="0.28461337" cy="47.507042" />
+                </g>
+                <foreignObject width="16" height="16" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><img src="/images/logo16.png" width="16" height="16" alt="לוגו תנועה מדידת זמנים" /></foreignObject>
+              </switch>
+            </svg>
+          </a>
+        </div>
+     </div>
+</div>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-38104277-1', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+</script>
+
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+</script>
+<script>
+// clear bottom border of "buttonInfo" (indicator of enbleJ1)
+            
+var allButtons = document.querySelectorAll('button');
+
+for (var i = 0; i < allButtons.length; i++) {
+  allButtons[i].addEventListener('click', function() {
+                document.getElementById("buttonInfo").style.borderBottom = "none";
+  });
+}            
+            
+            
+</script>
+
+</body>
+</html>
+ 

@@ -142,7 +142,7 @@ add dns
             
             var obj = document.getElementById("stages");
             
-            console.log(obj.options[obj.selectedIndex].value);
+            //console.log(obj.options[obj.selectedIndex].value);
             
             stages = obj.options[obj.selectedIndex].value;
             
