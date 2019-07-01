@@ -19,7 +19,7 @@ add dns
     
     var cleanResults = 0;
 
-    var showLog = 1;
+    var showLog = 0;
 
     var positionArray = []; // array with the previous competitor position. updated every Load, used to show the position change arrow between Loads 
     
@@ -2276,7 +2276,7 @@ const allArrayObject = arrayToObject(allArray, "Id_Numero")
 console.table(allArrayObject);
 
 //console.table(allArray, ["Id_Numero", "Id_Position_Overall", "Id_Position_Categorie", "Id_FinishTime", "Id_FinishTime_1", "Id_FinishTime_2", "Id_FinishTime_3", "finishTimeTotal", "stagesFinished"]);
-    console.log(finalText);
+  //  console.log(finalText);
 
     
 }                

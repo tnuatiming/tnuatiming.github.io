@@ -39,11 +39,11 @@
     var team = selectTeam();
     
     var group = '&nbsp;';
-    if (x % 5 == 0) {
-        group = 'u';
-    }
-    if (x == 8) {
+    if (x % 15 == 0) {
         group = 'b';
+    }
+    if (x % 44 == 0) {
+        group = 'u';
     }
     if (x == 78) {
         group = 's';
@@ -81,7 +81,7 @@
 
 
  // single day   
-        if (l < 50) {
+        if (l < 200) {
             arrayTest[(l + competitorsNumber) + '1'] = {["Id_Numero"]: Number(l + '1'), "Id_Nom": selectName(), "Id_NbTour": '-', "Id_TpsCumule": '-', "Id_Categorie": category, "Id_Image": '-', "Id_Canal": 1, "Id_Classe": 'ss', "Id_Nationalite": nation(), "Id_Inter1": '-', "Id_Inter2": '-', "Id_Inter3": '-', "Id_Groupe": '&nbsp;', "Id_Equipe": team};
             
             arrayTest[(l + competitorsNumber) + '2'] = {["Id_Numero"]: Number(l + '2'), "Id_Nom": selectName(), "Id_NbTour": '-', "Id_TpsCumule": '-', "Id_Categorie": category, "Id_Image": '-', "Id_Canal": 1, "Id_Classe": 'ss', "Id_Nationalite": nation(), "Id_Inter1": '-', "Id_Inter2": '-', "Id_Inter3": '-', "Id_Groupe": '&nbsp;', "Id_Equipe": team};
@@ -532,7 +532,7 @@ text += `
     
     text += '</tr>\n';
         
-    if (l < 50) {
+    if (l < 200) {
     
         text += '<tr class="OddRow">\n';
         
@@ -769,7 +769,7 @@ function genp1x() {
             
 
     // rider 1
-    if (l < 50) {
+    if (l < 200) {
     
         if (arrayTest[(l + competitorsNumber) + '1']["Id_TpsCumule"] == '-' && arrayTest[(l + competitorsNumber) + '2']["Id_TpsCumule"] == '-' && arrayTest[(l + competitorsNumber) + '3']["Id_TpsCumule"] == '-') {
 

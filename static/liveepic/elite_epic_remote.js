@@ -33,7 +33,7 @@ remove all imTheLeader
     
     var showStopwatch = 1;
 
-    var showLog = 1;
+    var showLog = 0;
 
     var runTime; // show elepsed time running
 
