@@ -56,6 +56,15 @@ elite_epic_remote.js - the js to put on the remote server, reads JSON j1.txt. ne
 riders wont get automatic blue if exceeds 2 minutes separation on intermediate , use status 5 to make the rider blue.
 
 
+## on epic site ##
+
+our code goes under:  <div class="main_content">
+add epic.css to head: <link rel="stylesheet" media="all" type="text/css" href="epic.css">
+add id="live" to body tag (maybe not needed)
+check if needed #live in the css
+
+## rpi settings ##
+
 apple magicpad:
 sudo apt-get install xserver-xorg-input-libinput
 

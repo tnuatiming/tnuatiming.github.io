@@ -56,11 +56,13 @@ body {
     flex: 1 0 auto;
     justify-content: flex-start;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 .row {
     width: 100%;
 }
-#live #buttonInfo {
+#buttonInfo {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -69,7 +71,7 @@ body {
     align-items: center;
     align-content: center;
 }
-#live #categoryOrAll, #live #intermediateOrFinish {
+#categoryOrAll, #intermediateOrFinish {
     flex-grow: 0;
     order: 1;
     align-self: flex-start;
@@ -78,17 +80,17 @@ body {
     padding: 0;
     display: none;
 }
-#live #categoryOrAll button {
+#categoryOrAll button {
     font-size: 1em;
     padding: 2px 10px;
     white-space: nowrap;
     font-weight: 700;
 }
-#live .btn.active {
+.btn.active {
     cursor: pointer;
     filter: opacity(50%);
 }
-#live .btn {
+.btn {
     position: relative;
     display: inline-block;
     padding: 0;
@@ -98,18 +100,15 @@ body {
     color: #ecf0f1;
     transition: background-color .3s;
 }
-#live #result {
+#result {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-content: flex-start;
 }
-#live #Title {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 0 10px;
-}
+
 h1 {
     font-size: 1.6em;
     color: #222;
@@ -122,7 +121,177 @@ img {
     max-width: 100%;
     height: auto;
 }
-#live #Time {
+#liveTable ,#liveTableS ,.PreResult, #previousResults {
+    width: 100%;
+}
+#previousResults {
+    margin-top: 10px;
+}
+#previousResults h2 {
+    text-align: right;
+    color: #58585a;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 5px 0;
+    padding-top: 10px;
+    vertical-align: middle;
+    border-top: 5px solid #58585a;
+}
+
+#ImageZoom {
+    width: auto;
+    height: auto;
+    max-width: 80%;
+    max-height: 80%;
+}
+/*
+#raceheader h1 {
+    color: #58585a;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    margin: 5px 0;
+    vertical-align: middle;
+}
+*/
+#buttonInfo {
+    width: 100%;
+ /*   overflow:hidden;*/
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+}
+
+#categoryOrAll, #intermediateOrFinish {
+ /*   overflow:hidden;*/
+    flex-grow: 0;
+    order: 1;
+    align-self: flex-start;
+    vertical-align: middle;
+    margin: auto 5px;
+    padding: 0;
+    display:none;
+}
+    
+.btn.active {
+    cursor: pointer;
+    filter: opacity(50%);
+    }
+
+#updates {
+    flex-grow: 0;
+    order: 2;
+    text-align: right;
+    align-self: flex-start;
+    margin: auto 5px;
+    padding: 0;
+}
+
+#updates p {
+    padding: 0 5px;
+}
+
+.msgInfo, .msgTime{
+    font-weight: 700;
+}
+
+#categoryOrAll button {
+    font-size: 1em;
+    padding: 2px 10px;
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+/*
+#displayCatButton {
+    display:none;
+}
+*/
+
+.btn {
+    position: relative;
+/*    cursor:pointer; */
+    display: inline-block;
+    padding: 0;
+  /* margin: 0 5px;
+   * overflow: hidden;*/
+    border-width: 0;
+    outline: none;
+    /* border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    */
+    background-color: #767472;
+    color: #ecf0f1;
+    transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #52514f;
+}
+
+.btn.green {
+    background-color: #2ecc71;
+}
+
+.btn.green:hover, .btn.green:focus {
+    background-color: #27ae60;
+}
+.btn.red {
+    background-color: #e74c3c;
+}
+
+.btn.red:hover, .btn.red:focus {
+    background-color: #c0392b;
+}
+
+.btn.blue {
+    background-color: #2196f3;
+}
+
+.btn.blue:hover, .btn.blue:focus {
+    background-color: #1a78c2;
+}
+
+.btn.gray {
+    background-color: #767472;
+}
+
+.btn.gray:hover, .btn.gray:focus {
+    background-color: #52514f;
+}
+
+#Title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 10px;
+}
+.TitleFlag1 {
+    order: 1;
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.TitleFlag2 {
+    order: 3;
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+#TitleH1 {
+    order: 2;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 1em;
+    color: #58585a;
+    margin: 5px 0;
+    text-align: center;
+}
+
+#Time {
     margin: 0;
     padding: 0 5px;
     font-size: 1em;
@@ -131,7 +300,8 @@ img {
     flex-direction: row;
     justify-content: space-between;
 }
-#live #DayTime {
+
+#DayTime {
     color: #58585a;
     order: 3;
     padding: 0 5px;
@@ -139,7 +309,8 @@ img {
     text-align: left;
     text-shadow: 1px 1px 2px #fff;
 }
-#live #ElapsedTime {
+
+#ElapsedTime {
     color: #00843f;
     order: 2;
     padding: 0 5px;
@@ -147,7 +318,8 @@ img {
     text-align: right;
     text-shadow: 1px 1px 2px #fff;
 }
-#live #RemainingTime {
+
+#RemainingTime {
     color: #c8102e;
     order: 1;
     padding: 0 5px;
@@ -155,68 +327,344 @@ img {
     text-align: right;
     text-shadow: 1px 1px 2px #fff;
 }
-#live #liveTable, #live #liveTableS, #live #previousResults, #live .PreResult {
-    width: 100%;
-}
-@media (max-width: 1024px)
-table {
-    font-size: .8em;
-}
-
-table {
-    white-space: nowrap;
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    vertical-align: middle;
-    text-align: center;
-}
-#live tr.rnkh_bkcolor {
-    color: #fff;
-    background: rgba(0,0,0,.5);
-    font-weight: 700;
-}
 
 tr.rnkh_bkcolor {
-    background: 0 0;
     color: #fff;
+    background: rgba(0,0,0,0.5);
     font-weight: 700;
-}
-#live .EvenRow {
-    background-color: rgba(187,187,187,.7);
-    color: #222;
-}
-#live .OddRow {
-    background-color: rgba(208,208,208,.7);
-    color: #222;
 }
 th.rnkh_font {
     background: rgba(118,116,114,1);
 }
-td, th {
-    text-align: center;
-    vertical-align: middle;
-    border-collapse: collapse;
-    font-size: 1em;
-    padding-right: 0;
-}
-#live td.rnk_font, #race td.rnk_font {
+td.rnk_font {
     color: #222;
     font-weight: 400;
     text-shadow: none;
     white-space: nowrap;
 }
-.fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+.HeaderRow {
+    font-weight: 700;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
 }
 
+.OddRow {
+    background-color: rgba(208,208,208,0.7);
+    color: #222;
+}
 
+.EvenRow {
+    background-color:  rgba(187,187,187,0.7);
+    color: #222;
+}
 
+td.title_font {
+    color: #222;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-shadow: none;
+    padding-top: 5px;
+    text-shadow: 1px 1px 2px #fff;
+}
 
+@keyframes refresh {
+ /*   0% {opacity:1;}
+    5% {opacity:0;}
+    10% {opacity:1;}
+    15% {opacity:0;}
+    20% {opacity:1;}
+    25% {opacity:0;}
+    100% {opacity:1;}*/
+  from {
+    transform: rotateX(0);
+  }
+  to {
+    transform: rotateX(2turn);
+  }
 
+}
+/*tr.gainedPosition > td:nth-child(n+3) {*/
 
+tr.gainedPosition {
+    animation: refresh 2s both;
+}
+tr.lostPosition {
+    animation: refresh 2s both;
+}
+tr.unChanged {
+    animation: refresh 2s both;
+}
+
+td.highlight {
+    font-weight: 700;
+    background-color: rgba(37, 37, 37, 0.5);
+    color: #fff;
+    text-shadow: none;
+    background-clip: padding-box;    
+}
+td.blackCat {
+    font-weight: 700;
+    background-color: rgba(17, 17, 17, 0.7);
+    color: #fff;
+}
+td.redCat {
+    font-weight: 700;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: #fff;
+}
+td.yellowCat {
+    font-weight: 700;
+    background-color: rgba(255, 255, 0, 0.7);
+    color: #222;
+}
+td.greenCat {
+    font-weight: 700;
+    background-color: rgba(146, 208, 80, 0.7);
+    color: #222;
+}
+td.pinkCat {
+    font-weight: 700;
+    background-color: rgba(204, 102, 255, 0.7);
+    color: #222;
+}
+td.orangeCat {
+    font-weight: 700;
+    background-color: rgba(255, 192, 0, 0.7);
+    color: #222;
+}
+td.blueCat {
+    font-weight: 700;
+    background-color: rgba(0, 176, 240, 0.7);
+    color: #222;
+}
+td.whiteCat {
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #222;
+}
+td.grayCat {
+    font-weight: 700;
+    background-color: rgba(191, 191, 191, 0.7);
+    color: #222;
+}
+td.purpleCat {
+    font-weight: 700;
+    background-color: rgba(128, 100, 162, 0.7);
+    color: #222;
+}
+
+td.rnk_font.penalty {
+    color: #8E022F;
+}
+    
+@keyframes fadeToGreen {
+    0% {color: #fff;}
+    25% {color: #fff;}
+    100% {color: #00843d;}
+}
+
+td.fadeToGreen {
+    animation: fadeToGreen 2s both;
+}
+@keyframes fadeToRed {
+    0% {color: #fff;}
+    25% {color: #fff;}
+    100% {color: #c8102e;}
+}
+
+td.fadeToRed {
+    animation: fadeToRed 2s both;
+}
+@keyframes up {
+    0% {transform:translateY(100%) scale(0.5);opacity:0;}
+    100% {transform:translateY(0) scale(1);opacity:1;}
+}
+@keyframes down {
+    0% {transform:translateY(-100%) scale(0.5);opacity:0;}
+    100% {transform:translateY(0) scale(1);opacity:1;}
+}
+@keyframes scale {
+    0% {transform:scale(0);opacity:0;}
+    50% {transform:scale(1);opacity:1;}
+    100% {transform:scale(0);opacity:0;}
+}
+td.scale {
+    animation: scale 2s both;
+}
+
+td.green {
+    animation: up 2s both;
+    color: #00843d;
+    font-weight: 700;
+}
+td.red {
+    animation: down 2s both;
+    color: #c8102e;
+    font-weight: 700;
+}
+td.greengreen {
+    color: #00843d;
+    font-weight: 700;
+}
+td.redred {
+    color: #c8102e;
+    font-weight: 700;
+}
+td.white {
+    color: #fff;
+    font-weight: 700;
+}
+td.yellow {
+    color: #fedd00;
+    font-weight: 700;
+}
+td.darkyellow {
+    color: #fc3;
+    font-weight: 700;
+}
+td.blue {
+    color: #2f5999;
+    /*color: #41b6e6;*/
+    font-weight: 700;
+}
+td.lightblue {
+    color: #add8e6;
+    font-weight: 700;
+}
+td.purple {
+    color: #412297;
+    font-weight: 700;
+}
+td.pink {
+    color: #ff1493;
+    font-weight: 700;
+}
+td.orange, td.dnsfq {
+    color: #ff8200;
+    font-weight: 700;
+}
+td.black {
+    color: #2d2926;
+    font-weight: 700;
+}
+td.finished {
+    background-image: url("/live/Images/_CheckeredFlag.png");
+    background-position: center center;
+    background-size: auto 50%;
+    background-repeat: no-repeat;
+    min-width: 16px;
+}
+td.rotate {
+    transform: rotate(90deg);
+}
+
+td.BestTimeOverall {
+/*    color: #ff0000;*/
+    background-color: rgba(219, 42, 255, .6);
+    color: #fff;
+    font-weight: 700;
+}
+td.BestTime {
+/*    color: #0000ff;*/
+    background-color: rgba(54, 220, 24, .6);
+    color: #222;
+    font-weight: 400;
+}
+td.BestTime1 {
+    background-color: rgba(88, 201, 241, .6);
+    color: #222;
+/*    color: #18dc8e;*/
+    font-weight: 400;
+}
+
+img.postionChanged {
+    height: 1em;
+    vertical-align: middle;
+}
+img.postionSame {
+    height: 1em;
+    vertical-align: middle;
+}
+img.dnsfq {
+    height: .8em;
+    vertical-align: middle;
+}
+td.rnk_font.slim {
+    width: 1%;
+}
+#center1 {
+/*    border-bottom: 1px dotted;*/
+    width: 100%;
+    direction: rtl;
+    text-align: right;
+    display: none;
+}
+
+#center1 h2 {
+    text-align: right;
+    color: #58585a;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 5px 0;
+    padding-top: 10px;
+    vertical-align: middle;
+} 
+/*
+@media (max-width: 1024px) {
+    table {
+        font-size: .8em;
+    }
+
+    table {
+        white-space: nowrap;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tr.rnkh_bkcolor {
+        color: #fff;
+        background: rgba(0,0,0,.5);
+        font-weight: 700;
+    }
+
+    tr.rnkh_bkcolor {
+        background: 0 0;
+        color: #fff;
+        font-weight: 700;
+    }
+    .EvenRow {
+        background-color: rgba(187,187,187,.7);
+        color: #222;
+    }
+    .OddRow {
+        background-color: rgba(208,208,208,.7);
+        color: #222;
+    }
+    th.rnkh_font {
+        background: rgba(118,116,114,1);
+    }
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+        border-collapse: collapse;
+        font-size: 1em;
+        padding-right: 0;
+    }
+    td.rnk_font, #race td.rnk_font {
+        color: #222;
+        font-weight: 400;
+        text-shadow: none;
+        white-space: nowrap;
+    }
+    .fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+    }
+
+}*/
