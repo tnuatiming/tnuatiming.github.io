@@ -305,10 +305,17 @@ Status 12,DNS,center</code></pre></li>
    
    <h2 id="C11_1" class="c4">טבלת הגדרות לפי מרוץ</h2>
        
+    <h3 id="C11_2222" class="c7">אין יותר starting schedule!!!</h3>
+    <p class="c0">אין יותר starting schedule. יש להגדיר stopwatch 1 channel 1, ובמדידה עצמה לבחור את כל המשתתפים בחלק הימני של הטבלה, עכבר ימני ולבחור insert manual passing, כל המשתתפים יקבלו היט לפי ההגדרות ובעצם זינקו ביחד</p>
+    <p class="c1"><span><img alt="image45.png" src="/manual/images/image45.png"></span></p>
     <h3 id="C11_2" class="c7">זמן ביינים</h3>
+    <p class="c1"><span><img alt="image44.png" src="/manual/images/image44.png"></span></p>
 
+    <h3 id="C11_222" class="c7">גרסאות ישנות</h3>
     <p class="c0">מגדירים את נקודת ההתחלה ונקודת הסיום. לדוגמא בין הזינוק לנקודה הראשונה. במידה והזינוק הוא starting schedule ורוצים את הזינוק כנקודת ההתחלה אז בוחרים starting schedule כנקודת ההתחלה. ב-timing יש לאפשר intermedate display על מנת שההיטים יופיעו.</p>
     <p class="c1"><span><img alt="hardenduro.png" src="/manual/images/hardenduro.png"></span></p>
+
+    <p class="c0">אין יותר starting schedule. יש להגדיר stopwatch 1 channel 1, ובמדידה עצמה לבחור את כל המשתתפים בחלק הימני של הטבלה, עכבר ימני ולבחור insert manual passing, כל המשתתפים יקבלו היט לפי ההגדרות ובעצם זינקו ביחד</p>
 
 <div>
     <table class="waffle" cellspacing="0" cellpadding="0">

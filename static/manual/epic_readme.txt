@@ -17,6 +17,36 @@ for tv, we have tv.html which uses the same elite_epic.js, at least for now.
 2b. to upload the PHRASE p1.html file use: 'python3 ftp_and_phrase_for_rpi.py'
 2c. to upload j1.txt after local converting the p1.html use: 'python3 ftp_j1_with_inotify.py'
 
+## rpi settings ##
+
+apple magicpad:
+sudo apt-get install xserver-xorg-input-libinput
+
+/etc/X11/xorg.conf.d/40-libinput.conf:
+
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+	MatchIsTouchpad "on"
+	Option "Tapping" "on"    
+EndSection
+
+## serial connection rs-232
+
+rpi/UART              db-9/USB
+-----------------------------------
+gpio 15 (RX)        RXD (usually white wire)
+gpio 14 (TX)        TXD (usually green wire)
+3v3(can be 5v)      VCC (usually red wire)
+Ground              GRD (usually black wire)
+
+
+## option for getting j1.txt using python(very slow for now): ## DO NOT USE, TAKES A LOT OF TIME AND NOT COMPLETE SOLUTION!!!
+
+sudo apt-get install python3-pandas
+
+python3 convert_p1_to_json.py
+
 
 ## Elite ##
 
@@ -62,27 +92,6 @@ our code goes under:  <div class="main_content">
 add epic.css to head: <link rel="stylesheet" media="all" type="text/css" href="epic.css">
 add id="live" to body tag (maybe not needed)
 check if needed #live in the css
-
-## rpi settings ##
-
-apple magicpad:
-sudo apt-get install xserver-xorg-input-libinput
-
-/etc/X11/xorg.conf.d/40-libinput.conf:
-
-Section "InputClass"
-    Identifier "touchpad"
-    Driver "libinput"
-	MatchIsTouchpad "on"
-	Option "Tapping" "on"    
-EndSection
-
-
-## option for getting j1.txt using python(very slow for now): ## DO NOT USE, TAKES A LOT OF TIME AND NOT COMPLETE SOLUTION!!!
-
-sudo apt-get install python3-pandas
-
-python3 convert_p1_to_json.py
 
 
 ## web pages  ##
