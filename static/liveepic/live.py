@@ -2,22 +2,24 @@
 # -*- coding: UTF-8 -*-
 # run "python -m http.server" to server the p1 file localy
 
+# use minimize var to minimize the output for upload
+
 
 import os, sys
 import hashlib
 from bs4 import BeautifulSoup
 import json
 from operator import itemgetter
-
-from datetime import datetime, timedelta
 import csv
+
+#from datetime import datetime, timedelta
 
 phash = ""
 
 BLOCKSIZE = 65536
 file = "p1.html" 
-file2 = "eeeee.csv" 
-file3 = "eeeee.txt" 
+file2 = "live.csv" 
+file3 = "live.txt" 
 
 def timeToMilliseconds(time_str):
     t, f = time_str.split('.')
@@ -42,8 +44,23 @@ def millisecondsToTime(millis):
     hours=(millis/(1000*60*60))%24
     hours = int(hours)
 
-    return str(hours).zfill(2) + ':' + str(minutes).zfill(2) + ':' + str(seconds).zfill(2) + '.' + str(milliseconds)
+    return cleanTime(str(hours).zfill(2) + ':' + str(minutes).zfill(2) + ':' + str(seconds).zfill(2) + '.' + str(milliseconds))
 
+# clean zeros at begining of time string
+def cleanTime(time):
+    if time.startswith('00:'):
+        time = time[3:]
+    if time.startswith('00:'):
+        time = time[3:]
+    if time.startswith('0:'):
+        time = time[2:]
+    if time.startswith('0') and not time.startswith('0.'):
+        time = time[1:]
+
+    return time
+
+positionArray_All_Cat = {}
+minimize = 0
 
 
 if os.path.exists(file):
@@ -71,7 +88,6 @@ if os.path.exists(file):
                             
             soup = BeautifulSoup(myfile2, 'lxml')
 
-        myfile2.close()
 
 
     
@@ -380,6 +396,27 @@ if os.path.exists(file):
 #        print(leaderFinish)
 
                     item['Id_Arrow'] = 0
+
+# gained/lost arrow FIXME, not tested and need display toggle for overall/category, also need to save to next load (need to save positionArray_All_Cat outside the fn)
+# overall
+                    if item['Id_Numero'] in positionArray_All_Cat and positionArray_All_Cat['Id_Numero'][0] != 0:
+                        if positionArray_All_Cat['Id_Numero'][0] > item['fPosition_Overall']:
+                            item["Id_Arrow"] = 4; # up :)
+        #                    positionChanged = "gainedPosition";
+                        elif positionArray_All_Cat['Id_Numero'][0] < item['fPosition_Overall']:
+                            item["Id_Arrow"] = 3; # down :(
+        #                    positionChanged = "lostPosition";
+# category
+                    if item['Id_Numero'] in positionArray_All_Cat and positionArray_All_Cat['Id_Numero'][1] != 0:
+                        if positionArray_All_Cat['Id_Numero'][1] > item['fPosition_Overall']:
+                            item["Id_Arrow"] = 44; # up :)
+        #                    positionChanged = "gainedPosition";
+                        elif positionArray_All_Cat['Id_Numero'][1] < item['fPosition_Overall']:
+                            item["Id_Arrow"] = 33; # down :(
+        #                    positionChanged = "lostPosition";
+
+
+
                     if "_Status10" in item['Id_Image'] or "_Status10" in item2['Id_Image'] or item['blue'] == 1 or item['oldBlue'] == 1:
                         item['Id_Arrow'] = 10  # DSQ
                     if "_Status5" in item['Id_Image'] or "_Status5" in item2['Id_Image']:
@@ -457,23 +494,28 @@ if os.path.exists(file):
 
         for item in sortedData:
             item['i1Position_Overall'] = x
-            x = x + 1
+            x += 1
 
 
         sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'Id_Inter1blue', 'Id_Inter1Time'))
 
         x = 1
         c = ''
+        y = 1
         
         for item in sortedData:
             if item['Id_Categorie'] == c:
                 item['i1Position_Categorie'] = x
-                x = x + 1
+                x += 1
             else:
                 x = 1
                 c = item['Id_Categorie']
                 item['i1Position_Categorie'] = x
-                x = x + 1
+                x += 1
+
+# get the order for display when using category
+            item['i1index'] = y
+            y += 1
 
 # intermediate 2
         sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'oldBlue', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter2Time', 'Id_Inter1Time'))
@@ -482,23 +524,28 @@ if os.path.exists(file):
 
         for item in sortedData:
             item['i2Position_Overall'] = x
-            x = x + 1
+            x += 1
 
 
         sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter2Time', 'Id_Inter1Time'))
 
         x = 1
         c = ''
+        y = 1
         
         for item in sortedData:
             if item['Id_Categorie'] == c:
                 item['i2Position_Categorie'] = x
-                x = x + 1
+                x += 1
             else:
                 x = 1
                 c = item['Id_Categorie']
                 item['i2Position_Categorie'] = x
-                x = x + 1
+                x += 1
+
+# get the order for display when using category
+            item['i2index'] = y
+            y += 1
 
 # intermediate 3
         sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'oldBlue', 'Id_Inter3blue', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time'))
@@ -507,41 +554,49 @@ if os.path.exists(file):
 
         for item in sortedData:
             item['i3Position_Overall'] = x
-            x = x + 1
+            x += 1
 
 
         sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'Id_Inter3blue', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time'))
 
         x = 1
         c = ''
+        y = 1
         
         for item in sortedData:
             if item['Id_Categorie'] == c:
                 item['i3Position_Categorie'] = x
-                x = x + 1
+                x += 1
             else:
                 x = 1
                 c = item['Id_Categorie']
                 item['i3Position_Categorie'] = x
-                x = x + 1
+                x += 1
 
+# get the order for display when using category
+            item['i3index'] = y
+            y += 1
 
 # finish
         sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'blue', 'oldBlue', 'Id_FinishTime', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time'))
 
         x = 1
         c = ''
+        y = 1
         
         for item in sortedData:
             if item['Id_Categorie'] == c:
                 item['fPosition_Categorie'] = x
-                x = x + 1
+                x += 1
             else:
                 x = 1
                 c = item['Id_Categorie']
                 item['fPosition_Categorie'] = x
-                x = x + 1
+                x += 1
 
+# get the order for display when using category
+            item['findex'] = y
+            y += 1
 
         sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'blue', 'oldBlue', 'Id_FinishTime', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time'))
 
@@ -549,7 +604,7 @@ if os.path.exists(file):
 
         for item in sortedData:
             item['fPosition_Overall'] = x
-            x = x + 1
+            x += 1
 
 
 
@@ -560,57 +615,65 @@ if os.path.exists(file):
 #                print(f'{val} is {cal}')
                 
 
-        positionArray_All_Cat = {}
-        
-        for item in sortedData:
-                            
-            if (item['Id_FinishTime'] != '-' and item['Id_FinishTime'] != 99999999999):
-                item['Id_FinishTime'] = millisecondsToTime(item['Id_FinishTime'])
-            if (item['Id_TpsCumule'] != '-' and item['Id_TpsCumule'] != 99999999999):
-                item['Id_TpsCumule'] = millisecondsToTime(item['Id_TpsCumule'])
-            if (item['Id_TpsCumule_2'] != '-' and item['Id_TpsCumule_2'] != 99999999999):
-                item['Id_TpsCumule_2'] = millisecondsToTime(item['Id_TpsCumule_2'])
 
-# gained/lost arrow FIXME, not tested and need display toggle for overall/category
-# overall
-            if item['Id_Numero'] in positionArray_All_Cat and positionArray_All_Cat['Id_Numero'][0] != 0:
-                if positionArray_All_Cat['Id_Numero'][0] > item['fPosition_Overall']:
-                    item["Id_Arrow"] = 4; # up :)
-#                    positionChanged = "gainedPosition";
-                elif positionArray_All_Cat['Id_Numero'][0] < item['fPosition_Overall']:
-                    item["Id_Arrow"] = 3; # down :(
-#                    positionChanged = "lostPosition";
-# category
-            if item['Id_Numero'] in positionArray_All_Cat and positionArray_All_Cat['Id_Numero'][1] != 0:
-                if positionArray_All_Cat['Id_Numero'][1] > item['fPosition_Overall']:
-                    item["Id_Arrow"] = 44; # up :)
-#                    positionChanged = "gainedPosition";
-                elif positionArray_All_Cat['Id_Numero'][1] < item['fPosition_Overall']:
-                    item["Id_Arrow"] = 33; # down :(
-#                    positionChanged = "lostPosition";
-
-# save positions for next load
-            positionArray_All_Cat[item['Id_Numero']] = [item['fPosition_Overall'], item['fPosition_Categorie']]
-
-        #print(positionArray_All_Cat)
-   
-   
-#        print(sortedData)
-        j = json.dumps(sortedData, ensure_ascii=False)
-#        print(j)
-
-        with open(file3, "w", encoding="utf-8") as myfile1:
-            myfile1.close()
-#                            print(s)
-        with open(file3, "a", encoding="utf-8") as myfile2: 
-            myfile2.write(str(j))    
-
-
-            
+# export to csv            
         keys = sortedData[0].keys()
         with open(file2, 'w') as output_file:
             dict_writer = csv.DictWriter(output_file, keys)
             dict_writer.writeheader()
             dict_writer.writerows(sortedData)
         
+        
+        for item in sortedData:
+                            
+#            if (item['Id_FinishTime'] != '-' and item['Id_FinishTime'] != 99999999999):
+#                item['Id_FinishTime'] = millisecondsToTime(item['Id_FinishTime'])
+#            if (item['Id_TpsCumule'] != '-' and item['Id_TpsCumule'] != 99999999999):
+#                item['Id_TpsCumule'] = millisecondsToTime(item['Id_TpsCumule'])
+#            if (item['Id_TpsCumule_2'] != '-' and item['Id_TpsCumule_2'] != 99999999999):
+#                item['Id_TpsCumule_2'] = millisecondsToTime(item['Id_TpsCumule_2'])
+                 
+
+# gained/lost arrow, save positions for next load
+            positionArray_All_Cat[item['Id_Numero']] = [item['fPosition_Overall'], item['fPosition_Categorie']]
+
+        #print(positionArray_All_Cat)
+
+            if minimize == 1:
+                
+                # change 99999999999 to '-' and mili to time string
+                zeroIt = ['Id_Inter1Time', 'Id_Inter2Time', 'Id_Inter3Time', 'Id_Ecart1er', 'Id_Inter1Ecart1er', 'Id_Inter2Ecart1er', 'Id_Inter3Ecart1er', 'Id_FinishTime', 'Id_TpsCumule', 'Id_TpsCumule_2']
+                    
+                for key in zeroIt:
+
+                    if item[key] == 99999999999:
+                        item[key] = 0 # '-'
+                    elif '.' not in str(item[key]) and item[key] != 0 and item[key] != '-':
+                        item[key] = millisecondsToTime(item[key])
+                
+                # minimize keys
+                mini = [['TT', 'Id_TpsCumule_2'], ['T', 'Id_TpsCumule'], ['PC', 'Id_Position_Categorie'], ['PO', 'Id_Position_Overall'], ['B','blue'], ['NA2', 'Id_Nationalite_2'], ['NA', 'Id_Nationalite'], ['C', 'Id_Categorie'], ['E', 'Id_Ecart1er'], ['Q', 'Id_Equipe'], ['F', 'Id_FinishTime'], ['FB', 'Id_Finishblue'], ['T1', 'Id_Inter1Time'], ['E1', 'Id_Inter1Ecart1er'], ['B1', 'Id_Inter1blue'], ['T2', 'Id_Inter2Time'], ['E2', 'Id_Inter2Ecart1er'], ['B2', 'Id_Inter2blue'], ['T3', 'Id_Inter3Time'], ['E3', 'Id_Inter3Ecart1er'], ['B3', 'Id_Inter3blue'], ['FC', 'fPosition_Categorie'], ['FO', 'fPosition_Overall'], ['FI', 'findex'], ['I1C', 'i1Position_Categorie'], ['I1O', 'i1Position_Overall'], ['I1', 'i1index'], ['I2C', 'i2Position_Categorie'], ['I2O', 'i2Position_Overall'], ['I2', 'i2index'], ['I3C', 'i3Position_Categorie'], ['I3O', 'i3Position_Overall'], ['I3', 'i3index'], ['A', 'Id_Arrow'], ['M', 'Id_Image'], ['M2', 'Id_Image_2'], ['L', 'Id_Classe'], ['G', 'Id_Groupe'], ['P', 'Id_penalty'], ['R', 'Id_NbTour'], ['O', 'Id_Numero'], ['N', 'Id_Nom'], ['N2', 'Id_Nom_2']]
+                
+                for key in mini:
+                
+                    if key[1] in item:
+                        item[key[0]] = item.pop(key[1])
+
+
+                # delete unnecessary keys
+                delKeys = ['Id_Inter1', 'Id_Inter1_2', 'Id_Inter2', 'Id_Inter2_2', 'Id_Inter3', 'Id_Inter3_2', 'Id_Canal', 'Id_Canal_2', 'Id_Numero_Full', 'Id_Numero_Full_2', 'Id_Ecart1er_Categorie', 'Id_Inter1Ecart1er_Categorie', 'Id_Inter2Ecart1er_Categorie', 'Id_Inter3Ecart1er_Categorie', 'Id_Status', 'leader', 'single', 'uci', 'oldBlue']
+                    
+                for key in delKeys:
+
+                    if key in item:
+                        del item[key]
+                   
+#        print(sortedData)
+
+# export to json            
+        j = json.dumps(sortedData, ensure_ascii=False)
+#        print(j)
+        with open(file3, "w", encoding="utf-8") as myfile2: 
+            myfile2.write(str(j))    
+
      

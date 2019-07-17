@@ -3782,7 +3782,6 @@ if (enableJ1 == 1) {
         delete allArray[l].uci; // will be phrased on remote from Id_Groupe
         delete allArray[l].Id_Numero_Full_2;
         delete allArray[l].Id_Numero_Full;
-        delete allArray[l].Id_Canal;
         delete allArray[l].Id_Status;
         delete allArray[l].Id_Statusi1;
         delete allArray[l].Id_Statusi2;
