@@ -471,44 +471,44 @@ def main():
                 if item['Id_FinishTime'] != 99999999999 and item['Id_FinishTime'] != leaderFinish[item['Id_Categorie']][1]:
                     item['Id_Ecart1er_Categorie'] = millisecondsToTime(item['Id_FinishTime'] - leaderFinish[item['Id_Categorie']][1])
                 else:
-                    item['Id_Ecart1er_Categorie'] = '-'
+                    item['Id_Ecart1er_Categorie'] = 99999999999
 
                 if item['Id_FinishTime'] != 99999999999 and item['Id_FinishTime'] != leaderFinish['overall'][1]:
                     item['Id_Ecart1er'] = millisecondsToTime(item['Id_FinishTime'] - leaderFinish['overall'][1])
                 else:
-                    item['Id_Ecart1er'] = '-'
+                    item['Id_Ecart1er'] = 99999999999
     # intermediate 1            
                 if item['Id_Inter1Time'] != 99999999999 and item['Id_Inter1Time'] != leaderi1Finish[item['Id_Categorie']][1]:
                     item['Id_Inter1Ecart1er_Categorie'] = millisecondsToTime(item['Id_Inter1Time'] - leaderi1Finish[item['Id_Categorie']][1])
                 else:
-                    item['Id_Inter1Ecart1er_Categorie'] = '-'
+                    item['Id_Inter1Ecart1er_Categorie'] = 99999999999
 
                 if item['Id_Inter1Time'] != 99999999999 and item['Id_Inter1Time'] != leaderi1Finish['overall'][1]:
                     item['Id_Inter1Ecart1er'] = millisecondsToTime(item['Id_Inter1Time'] - leaderi1Finish['overall'][1])
                 else:
-                    item['Id_Inter1Ecart1er'] = '-'
+                    item['Id_Inter1Ecart1er'] = 99999999999
             
     # intermediate 2            
                 if item['Id_Inter2Time'] != 99999999999 and item['Id_Inter2Time'] != leaderi2Finish[item['Id_Categorie']][1]:
                     item['Id_Inter2Ecart1er_Categorie'] = millisecondsToTime(item['Id_Inter2Time'] - leaderi2Finish[item['Id_Categorie']][1])
                 else:
-                    item['Id_Inter2Ecart1er_Categorie'] = '-'
+                    item['Id_Inter2Ecart1er_Categorie'] = 99999999999
 
                 if item['Id_Inter2Time'] != 99999999999 and item['Id_Inter2Time'] != leaderi2Finish['overall'][1]:
                     item['Id_Inter2Ecart1er'] = millisecondsToTime(item['Id_Inter2Time'] - leaderi2Finish['overall'][1])
                 else:
-                    item['Id_Inter2Ecart1er'] = '-'
+                    item['Id_Inter2Ecart1er'] = 99999999999
             
     # intermediate 3            
                 if item['Id_Inter3Time'] != 99999999999 and item['Id_Inter3Time'] != leaderi3Finish[item['Id_Categorie']][1]:
                     item['Id_Inter3Ecart1er_Categorie'] = millisecondsToTime(item['Id_Inter3Time'] - leaderi3Finish[item['Id_Categorie']][1])
                 else:
-                    item['Id_Inter3Ecart1er_Categorie'] = '-'
+                    item['Id_Inter3Ecart1er_Categorie'] = 99999999999
 
                 if item['Id_Inter3Time'] != 99999999999 and item['Id_Inter3Time'] != leaderi3Finish['overall'][1]:
                     item['Id_Inter3Ecart1er'] = millisecondsToTime(item['Id_Inter3Time'] - leaderi3Finish['overall'][1])
                 else:
-                    item['Id_Inter3Ecart1er'] = '-'
+                    item['Id_Inter3Ecart1er'] = 99999999999
             
     #        print(dataAll)
 
@@ -696,6 +696,10 @@ def main():
                         if key[1] in item:
                             item[key[0]] = item.pop(key[1])
 
+                    # add missing keys
+                    item['P'] = 0 # penalty, not used for now
+                    item['PO'] = item['FO']
+                    item['PC'] = item['FC']
 
                     # delete unnecessary keys
                     delKeys = ['Id_Inter1', 'Id_Inter1_2', 'Id_Inter2', 'Id_Inter2_2', 'Id_Inter3', 'Id_Inter3_2', 'Id_Canal', 'Id_Canal_2', 'Id_Numero_Full', 'Id_Numero_Full_2', 'Id_Ecart1er_Categorie', 'Id_Inter1Ecart1er_Categorie', 'Id_Inter2Ecart1er_Categorie', 'Id_Inter3Ecart1er_Categorie', 'Id_Status', 'leader', 'single', 'uci', 'oldBlue']
