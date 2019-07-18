@@ -469,11 +469,11 @@ def main():
             for item in dataAll:
     # finish            
                 if item['Id_FinishTime'] != 99999999999 and item['Id_Numero'] != leaderFinish[item['Id_Categorie']][0]:
-                    item['Id_Ecart1er'] = millisecondsToTime(item['Id_FinishTime'] - leaderFinish[item['Id_Categorie']][1])
+                    item['Id_Ecart1er_Category'] = millisecondsToTime(item['Id_FinishTime'] - leaderFinish[item['Id_Categorie']][1])
                 elif item['Id_FinishTime'] != 99999999999 and item['Id_Numero'] == leaderi1Finish[item['Id_Categorie']][0]:
-                    item['Id_Ecart1er'] = 99999999999
+                    item['Id_Ecart1er_Category'] = 99999999999
                 else:
-                    item['Id_Ecart1er'] = 99999999999
+                    item['Id_Ecart1er_Category'] = 99999999999
 
                 if item['Id_FinishTime'] != 99999999999 and item['Id_FinishTime'] != leaderFinish['overall'][1]:
                     item['Id_Ecart1er_Overall'] = millisecondsToTime(item['Id_FinishTime'] - leaderFinish['overall'][1])
@@ -481,11 +481,11 @@ def main():
                     item['Id_Ecart1er_Overall'] = 99999999999
     # intermediate 1            
                 if item['Id_Inter1Time'] != 99999999999 and item['Id_Numero'] != leaderi1Finish[item['Id_Categorie']][0]:
-                    item['Id_Inter1Ecart1er'] = millisecondsToTime(item['Id_Inter1Time'] - leaderi1Finish[item['Id_Categorie']][1])
+                    item['Id_Inter1Ecart1er_Category'] = millisecondsToTime(item['Id_Inter1Time'] - leaderi1Finish[item['Id_Categorie']][1])
                 elif item['Id_Inter1Time'] != 99999999999 and item['Id_Numero'] == leaderi1Finish[item['Id_Categorie']][0]:
-                    item['Id_Inter1Ecart1er'] = 99999999999
+                    item['Id_Inter1Ecart1er_Category'] = 99999999999
                 else:
-                    item['Id_Inter1Ecart1er'] = 99999999999
+                    item['Id_Inter1Ecart1er_Category'] = 99999999999
 
                 if item['Id_Inter1Time'] != 99999999999 and item['Id_Numero'] != leaderi1Finish['overall'][0]:
                     item['Id_Inter1Ecart1er_Overall'] = millisecondsToTime(item['Id_Inter1Time'] - leaderi1Finish['overall'][1])
@@ -494,11 +494,11 @@ def main():
             
     # intermediate 2            
                 if item['Id_Inter2Time'] != 99999999999 and item['Id_Numero'] != leaderi2Finish[item['Id_Categorie']][0]:
-                    item['Id_Inter2Ecart1er'] = millisecondsToTime(item['Id_Inter2Time'] - leaderi2Finish[item['Id_Categorie']][1])
+                    item['Id_Inter2Ecart1er_Category'] = millisecondsToTime(item['Id_Inter2Time'] - leaderi2Finish[item['Id_Categorie']][1])
                 elif item['Id_Inter2Time'] != 99999999999 and item['Id_Numero'] == leaderi2Finish[item['Id_Categorie']][0]:
-                    item['Id_Inter2Ecart1er'] = 99999999999
+                    item['Id_Inter2Ecart1er_Category'] = 99999999999
                 else:
-                    item['Id_Inter2Ecart1er'] = 99999999999
+                    item['Id_Inter2Ecart1er_Category'] = 99999999999
 
                 if item['Id_Inter2Time'] != 99999999999 and item['Id_Numero'] != leaderi2Finish['overall'][0]:
                     item['Id_Inter2Ecart1er_Overall'] = millisecondsToTime(item['Id_Inter2Time'] - leaderi2Finish['overall'][1])
@@ -507,11 +507,11 @@ def main():
             
     # intermediate 3            
                 if item['Id_Inter3Time'] != 99999999999 and item['Id_Numero'] != leaderi3Finish[item['Id_Categorie']][0]:
-                    item['Id_Inter3Ecart1er'] = millisecondsToTime(item['Id_Inter3Time'] - leaderi3Finish[item['Id_Categorie']][1])
+                    item['Id_Inter3Ecart1er_Category'] = millisecondsToTime(item['Id_Inter3Time'] - leaderi3Finish[item['Id_Categorie']][1])
                 elif item['Id_Inter3Time'] != 99999999999 and item['Id_Numero'] == leaderi3Finish[item['Id_Categorie']][0]:
-                    item['Id_Inter3Ecart1er'] = 99999999999
+                    item['Id_Inter3Ecart1er_Category'] = 99999999999
                 else:
-                    item['Id_Inter3Ecart1er'] = 99999999999
+                    item['Id_Inter3Ecart1er_Category'] = 99999999999
 
                 if item['Id_Inter3Time'] != 99999999999 and item['Id_Numero'] != leaderi3Finish['overall'][0]:
                     item['Id_Inter3Ecart1er_Overall'] = millisecondsToTime(item['Id_Inter3Time'] - leaderi3Finish['overall'][1])
@@ -683,7 +683,12 @@ def main():
             #print(positionArray_All_Cat)
 
                 if minimize == 1:
-                    
+
+                    item['Id_Ecart1er'] = item['Id_Ecart1er_Overall']
+                    item['Id_Inter1Ecart1er'] = item['Id_Inter1Ecart1er_Overall']
+                    item['Id_Inter2Ecart1er'] = item['Id_Inter2Ecart1er_Overall']
+                    item['Id_Inter3Ecart1er'] = item['Id_Inter3Ecart1er_Overall']
+
                     # change 99999999999 to '-' and mili to time string
                     zeroIt = ['Id_Inter1Time', 'Id_Inter2Time', 'Id_Inter3Time', 'Id_Ecart1er', 'Id_Inter1Ecart1er', 'Id_Inter2Ecart1er', 'Id_Inter3Ecart1er', 'Id_FinishTime', 'Id_TpsCumule', 'Id_TpsCumule_2']
                         
@@ -710,7 +715,7 @@ def main():
                     item['PC'] = item['FC']
 
                     # delete unnecessary keys
-                    delKeys = ['Id_Inter1', 'Id_Inter1_2', 'Id_Inter2', 'Id_Inter2_2', 'Id_Inter3', 'Id_Inter3_2', 'Id_Canal', 'Id_Canal_2', 'Id_Numero_Full', 'Id_Numero_Full_2', 'Id_Ecart1er_Categorie', 'Id_Inter1Ecart1er_Categorie', 'Id_Ecart1er_Overall', 'Id_Inter1Ecart1er_Overall','Id_Inter2Ecart1er_Overall','Id_Inter3Ecart1er_Overall', 'Id_Inter3Ecart1er_Categorie', 'Id_Status', 'leader', 'single', 'uci', 'oldBlue']
+                    delKeys = ['Id_Inter1', 'Id_Inter1_2', 'Id_Inter2', 'Id_Inter2_2', 'Id_Inter3', 'Id_Inter3_2', 'Id_Canal', 'Id_Canal_2', 'Id_Numero_Full', 'Id_Numero_Full_2', 'Id_Ecart1er_Categorie', 'Id_Inter1Ecart1er_Categorie', 'Id_Ecart1er_Overall', 'Id_Inter1Ecart1er_Overall','Id_Inter2Ecart1er_Overall','Id_Inter3Ecart1er_Overall', 'Id_Inter3Ecart1er_Categorie', 'Id_Status', 'leader', 'single', 'uci', 'oldBlue', 'Id_Ecart1er_Category', 'Id_Inter1Ecart1er_Category', 'Id_Inter2Ecart1er_Category', 'Id_Inter3Ecart1er_Category']
                         
                     for key in delKeys:
 
