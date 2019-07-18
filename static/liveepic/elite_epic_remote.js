@@ -1004,10 +1004,10 @@ remove all imTheLeader
 
         var allArray = [];
         var positionChanged = "";
-        var bestLapComp = 0;
-        var bestLap = "99999999999";
-        var bestLapComp2 = 0;
-        var bestLap2 = "99999999999";
+//        var bestLapComp = 0;
+//        var bestLap = "99999999999";
+//        var bestLapComp2 = 0;
+//        var bestLap2 = "99999999999";
         var laps = 12; // number of laps
         var NewCategoryHeader = "";
 /*        
@@ -1016,10 +1016,11 @@ remove all imTheLeader
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
-        var Inter1Leader = {}, Inter2Leader = {}, Inter3Leader = {}, arrayLeader = {};
+        var arrayLeader = {};
+//        var Inter1Leader = {}, Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorTime, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
-
+        var Text, l, m, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorTime, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
+//       var leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, eeee, ffff, gggg;
 
         if (show == 1) {
             showFull = 'Intermediate 1';
@@ -1482,12 +1483,9 @@ remove all imTheLeader
                 } else {
                     allArray[b].Id_Status = 0;
                 }
-               
-                 
-
-                 
+                                
             
-                // update  leader array
+                // create leader time array
                 if (allArray[b]["Id_Status"] == 0 && allArray[b]["oldBlue"] == 0 && allArray[b]["single"] == 0) {
                     if (typeof arrayLeader["overall"] == 'undefined') { // overall
                         arrayLeader["overall"] = 99999999999;
@@ -1946,40 +1944,26 @@ remove all imTheLeader
                     allArray[l]["Id_Position_Categorie"] = allArray[l]["fPosition_Categorie"];
                 }
                 
-                
-                
-
-                
-                
                                 
-                                
-                                if (useCategory == "yes") {
-                                    leaderTime = arrayLeader[allArray[l]["Id_Categorie"]];
-                                } else {
-                                    leaderTime = arrayLeader["overall"];
-                                }
+                // calculate the gap
+                if (useCategory == "yes") {
+                    leaderTime = arrayLeader[allArray[l]["Id_Categorie"]];
+                } else {
+                    leaderTime = arrayLeader["overall"];
+                }
 
-                                // diff to leader
-                                competitorTime = allArray[l]["Id_Sector_FinishTime"];
-                                if (competitorTime != 99999999999) {
-                                    if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
-                                    allArray[l]["Id_Sector_Ecart1er"] = competitorTime - leaderTime;
-                                     
-                                    } else {
-                                        allArray[l]["Id_Sector_Ecart1er"] = 99999999999;
-                                    }
-                                } else {
-                                    allArray[l]["Id_Sector_Ecart1er"] = 99999999999;
-                                }
-                                
-
-                 
-                
-                
-                
-                
-                
-                
+                // diff to leader
+                competitorTime = allArray[l]["Id_Sector_FinishTime"];
+                if (competitorTime != 99999999999) {
+                    if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
+                    allArray[l]["Id_Sector_Ecart1er"] = competitorTime - leaderTime;
+                        
+                    } else {
+                        allArray[l]["Id_Sector_Ecart1er"] = 99999999999;
+                    }
+                } else {
+                    allArray[l]["Id_Sector_Ecart1er"] = 99999999999;
+                }
                 
                 
 /*
@@ -2201,26 +2185,26 @@ remove all imTheLeader
          
 
        
-                    
-                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
-                        allArray[l]["Id_Arrow"] = 10; // DSQ
-                    } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
-                        allArray[l]["blue"] = 1; //FIXME
-                        showBlue = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
-                        allArray[l]["Id_Arrow"] = 11; // DNF
-                    } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
-                        allArray[l]["Id_Arrow"] = 12;
-                        allArray[l]["blue"] = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
-                        allArray[l]["Id_Arrow"] = 9;
-                    } else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
-                        allArray[l]["Id_Arrow"] = 11; // DNF
-                    } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
-                        allArray[l]["Id_Arrow"] = 8; // astrix
-                    } else if (allArray[l]["Id_penalty"] == "P") {
-                        allArray[l]["Id_Arrow"] = 7; // penalty
-                    }
+                
+                if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
+                    allArray[l]["Id_Arrow"] = 10; // DSQ
+                } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
+                    allArray[l]["blue"] = 1; //FIXME
+                    showBlue = 1;
+                } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
+                    allArray[l]["Id_Arrow"] = 11; // DNF
+                } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
+                    allArray[l]["Id_Arrow"] = 12;
+                    allArray[l]["blue"] = 1;
+                } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
+                    allArray[l]["Id_Arrow"] = 9;
+                } else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
+                    allArray[l]["Id_Arrow"] = 11; // DNF
+                } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
+                    allArray[l]["Id_Arrow"] = 8; // astrix
+                } else if (allArray[l]["Id_penalty"] == "P") {
+                    allArray[l]["Id_Arrow"] = 7; // penalty
+                }
 
             
             
