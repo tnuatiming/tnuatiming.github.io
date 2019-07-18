@@ -385,7 +385,7 @@ def main():
         # intermediate 2
 
                             if item['Id_Inter2Time'] < i2Overall:
-                                i2Overall = item['Id_Inter1Time']  
+                                i2Overall = item['Id_Inter2Time']  
                                 leaderi2Finish['overall'] = [item['Id_Numero'], item['Id_Inter2Time']]   
             
                             if item['Id_Categorie'] in leaderi2: 
@@ -513,7 +513,7 @@ def main():
     #        print(dataAll)
 
     # BEGIN sorting
-
+            order = {'Men': 0, 'Women': 1, 'Mixed': 2, 'Masters': 3, 'Grand': 4}
 
     # intermediate 1
             sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'oldBlue', 'single', 'Id_Inter1blue', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
@@ -525,7 +525,8 @@ def main():
                 x += 1
 
 
-            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'single', 'Id_Inter1blue', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+#            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'single', 'Id_Inter1blue', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+            sortedData = sorted(dataAll, key=lambda d:[order[d['Id_Categorie']], d['Id_Categorie'], d['Id_Status'], d['oldBlue'], d['single'], d['Id_Inter1blue'], d['Id_Inter1Time'], d['Id_TpsCumule'], d['Id_TpsCumule_2']])
 
             x = 1
             c = ''
@@ -554,7 +555,8 @@ def main():
                 x += 1
 
 
-            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'single', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+#            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'single', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+            sortedData = sorted(dataAll, key=lambda d:[order[d['Id_Categorie']], d['Id_Categorie'], d['Id_Status'], d['oldBlue'], d['single'], d['Id_Inter2blue'], d['Id_Inter1blue'], d['Id_Inter2Time'], d['Id_Inter1Time'], d['Id_TpsCumule'], d['Id_TpsCumule_2']])
 
             x = 1
             c = ''
@@ -583,7 +585,8 @@ def main():
                 x += 1
 
 
-            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'single', 'Id_Inter3blue', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+#            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'single', 'Id_Inter3blue', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+            sortedData = sorted(dataAll, key=lambda d:[order[d['Id_Categorie']], d['Id_Categorie'], d['Id_Status'], d['oldBlue'], d['single'], d['Id_Inter3blue'], d['Id_Inter2blue'], d['Id_Inter1blue'], d['Id_Inter3Time'], d['Id_Inter2Time'], d['Id_Inter1Time'], d['Id_TpsCumule'], d['Id_TpsCumule_2']])
 
             x = 1
             c = ''
@@ -604,7 +607,12 @@ def main():
 
     # finish
     # FIXME 'Id_NbTour' making problems, removed for now, need reversing...
-            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'blue', 'oldBlue', 'single', 'Id_FinishTime', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+
+            # this sort the 'Id_Categorie' by the defult (probably alphbetic)
+#            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'blue', 'oldBlue', 'single', 'Id_FinishTime', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+
+            # this sort the 'Id_Categorie' by the order we specified in 'order' list
+            sortedData = sorted(dataAll, key=lambda d:[order[d['Id_Categorie']], d['Id_Categorie'], d['Id_Status'], d['blue'], d['oldBlue'], d['single'], d['Id_FinishTime'], d['Id_Inter3Time'], d['Id_Inter2Time'], d['Id_Inter1Time'], d['Id_TpsCumule'], d['Id_TpsCumule_2']])
 
             x = 1
             c = ''
@@ -622,8 +630,10 @@ def main():
     # get the order for display when using category
                 item['findex'] = y
                 y += 1
+            
+            
 
-            sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'blue', 'oldBlue', 'single', 'Id_FinishTime', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+            sortedData = sorted(sortedData, key=itemgetter('Id_Status', 'blue', 'oldBlue', 'single', 'Id_FinishTime', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
 
             x = 1
 
@@ -675,6 +685,8 @@ def main():
                             item[key] = 0 # '-'
 #                        elif '.' not in str(item[key]) and item[key] != 0 and item[key] != '-':
 #                            item[key] = millisecondsToTime(item[key])
+                        elif '.' in str(item[key]) and item[key] != 0 and item[key] != '-':
+                            item[key] = timeToMilliseconds(item[key])
                     
                     # minimize keys
                     mini = [['TT', 'Id_TpsCumule_2'], ['T', 'Id_TpsCumule'], ['PC', 'Id_Position_Categorie'], ['PO', 'Id_Position_Overall'], ['B','blue'], ['NA2', 'Id_Nationalite_2'], ['NA', 'Id_Nationalite'], ['C', 'Id_Categorie'], ['E', 'Id_Ecart1er'], ['Q', 'Id_Equipe'], ['F', 'Id_FinishTime'], ['FB', 'Id_Finishblue'], ['T1', 'Id_Inter1Time'], ['E1', 'Id_Inter1Ecart1er'], ['B1', 'Id_Inter1blue'], ['T2', 'Id_Inter2Time'], ['E2', 'Id_Inter2Ecart1er'], ['B2', 'Id_Inter2blue'], ['T3', 'Id_Inter3Time'], ['E3', 'Id_Inter3Ecart1er'], ['B3', 'Id_Inter3blue'], ['FC', 'fPosition_Categorie'], ['FO', 'fPosition_Overall'], ['FI', 'findex'], ['I1C', 'i1Position_Categorie'], ['I1O', 'i1Position_Overall'], ['I1', 'i1index'], ['I2C', 'i2Position_Categorie'], ['I2O', 'i2Position_Overall'], ['I2', 'i2index'], ['I3C', 'i3Position_Categorie'], ['I3O', 'i3Position_Overall'], ['I3', 'i3index'], ['A', 'Id_Arrow'], ['M', 'Id_Image'], ['M2', 'Id_Image_2'], ['L', 'Id_Classe'], ['G', 'Id_Groupe'], ['P', 'Id_penalty'], ['R', 'Id_NbTour'], ['O', 'Id_Numero'], ['N', 'Id_Nom'], ['N2', 'Id_Nom_2']]
