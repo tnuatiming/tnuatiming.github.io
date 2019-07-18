@@ -1016,9 +1016,9 @@ remove all imTheLeader
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
-        var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
+        var Inter1Leader = {}, Inter2Leader = {}, Inter3Leader = {}, arrayLeader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorTime, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, eeee, ffff, gggg, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
 
 
         if (show == 1) {
@@ -1484,8 +1484,37 @@ remove all imTheLeader
                 }
                
                  
-             }
-    
+
+                 
+            
+                // update  leader array
+                if (allArray[b]["Id_Status"] == 0 && allArray[b]["oldBlue"] == 0 && allArray[b]["single"] == 0) {
+                    if (typeof arrayLeader["overall"] == 'undefined') { // overall
+                        arrayLeader["overall"] = 99999999999;
+                        
+                    }
+                    if (allArray[b]["Id_Sector_FinishTime"] != 99999999999 && arrayLeader["overall"] > allArray[b]["Id_Sector_FinishTime"]) {
+                        
+                        arrayLeader["overall"] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+
+                    if (typeof arrayLeader[allArray[b]["Id_Categorie"]] == 'undefined') { // category
+                        arrayLeader[allArray[b]["Id_Categorie"]] = 99999999999;
+                        
+                    }
+                    if (allArray[b]["Id_Sector_FinishTime"] != 99999999999 && arrayLeader[allArray[b]["Id_Categorie"]] > allArray[b]["Id_Sector_FinishTime"]) {
+                        
+                        arrayLeader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                        
+                }
+             //   console.log(arrayLeader);
+                 
+                 
+                 
+            } // END for b
+
+            
     if (showLog == 1) {
             console.log('in:')
              console.table(allArray);
@@ -1919,6 +1948,40 @@ remove all imTheLeader
                 
                 
                 
+
+                
+                
+                                
+                                
+                                if (useCategory == "yes") {
+                                    leaderTime = arrayLeader[allArray[l]["Id_Categorie"]];
+                                } else {
+                                    leaderTime = arrayLeader["overall"];
+                                }
+
+                                // diff to leader
+                                competitorTime = allArray[l]["Id_Sector_FinishTime"];
+                                if (competitorTime != 99999999999) {
+                                    if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
+                                    allArray[l]["Id_Sector_Ecart1er"] = competitorTime - leaderTime;
+                                     
+                                    } else {
+                                        allArray[l]["Id_Sector_Ecart1er"] = 99999999999;
+                                    }
+                                } else {
+                                    allArray[l]["Id_Sector_Ecart1er"] = 99999999999;
+                                }
+                                
+
+                 
+                
+                
+                
+                
+                
+                
+                
+                
 /*
                 // reasign postion number
                 if (useCategory == "no") {
@@ -2108,25 +2171,25 @@ remove all imTheLeader
                     allArray[l]["Id_TpsCumule_2"] = ms2TimeString(allArray[l]["Id_TpsCumule_2"]);
                 }
                             
+
+                            
+                            
+                            
                 showBlue = 0;
                // display result for selected intermediate or finish
                if (show == 1) {
-                    allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Inter1Ecart1er"];
                     if (allArray[l]["Id_Inter1blue"] == 1) {
                         showBlue = 1;
                     }
                 } else if (show == 2) {
-                    allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Inter2Ecart1er"];
                     if (allArray[l]["Id_Inter2blue"] == 1) {
                         showBlue = 1;
                     }
                 } else if (show == 3) {
-                    allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Inter3Ecart1er"];
                     if (allArray[l]["Id_Inter3blue"] == 1) {
                         showBlue = 1;
                     }
                 } else if (show == 4) {
-                    allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Ecart1er"];
                     if (allArray[l]["blue"] == 1) {
                         showBlue = 1;
                     }

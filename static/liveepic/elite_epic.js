@@ -1436,7 +1436,7 @@
                         }
                     
                 
-             //   console.log(Inter2Leader);
+             //   console.log(Inter1Leader);
                 
             // find intermediate time 2 and check for 2 minutes difference
                         if (allArray[b]["Id_Groupe"].includes("s1")) {
