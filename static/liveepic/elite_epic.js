@@ -4095,7 +4095,7 @@ console.log(allArrayNew);
             if (prevCompCat == allArray3f[l]["Id_Categorie"]) {
                 m += 1;
                 
-                if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
+                if (allArray3f[l]["Id_FinishTime"] != 99999999999 && !(allArray3f[l]["Id_Image"].includes('_Status'))) {
                     allArray3f[l]["Id_Ecart1er"] = allArray3f[l]["Id_FinishTime"] - leaderTime;
                 } else {
                     allArray3f[l]["Id_Ecart1er"] = 99999999999;

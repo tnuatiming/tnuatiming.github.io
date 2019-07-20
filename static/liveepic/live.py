@@ -5,7 +5,7 @@
 # use minimize var to minimize the output for upload
 # make sure time milis is tenth!
 
-import os, sys, time
+import os, sys, time, copy
 import hashlib
 from bs4 import BeautifulSoup
 import json
@@ -25,10 +25,12 @@ MaximumStageTime = "09:00:00"
 startTime = "2019-09-21T04:00:00.000Z"
 message = ""
 
+enableSingle = 1 # single day singles and dubels
+
 raceEnded = 0
 
 positionArray_All_Cat = {} # used to calculate the arrow for gain/lost position, FIXME do we need this?
-minimize = 1
+minimize = 1 # create minimized json
 
 def timeToMilliseconds(time_str):
     t, f = time_str.split('.')
@@ -165,6 +167,9 @@ def main():
     # BEGIN clean, calculate and sort the results
             dataAll = []
             dataAll2 = []
+            dataAllS1 = [] # single day duble
+            dataAllS2 = [] # single day duble
+            dataAllS = [] # single day single
 #            leaderFinish = {}
 #            leaderi1Finish = {}
 #            leaderi2Finish = {}
@@ -204,12 +209,146 @@ def main():
                 item['Id_Numero_Full'] = item['Id_Numero'][:-1] + '-' + item['Id_Numero'][-1]
                 item['Id_Numero'] = item['Id_Numero'][:-1]
                 
-                if (item['Id_Numero_Full'].endswith('1') and item['Id_Classe'] != 'ss'):
+                if (item['Id_Numero_Full'].endswith('1') and (item['Id_Classe'] != 'sf' or item['Id_Classe'] != 'ss')):
                     dataAll.append(item)
-                if (item['Id_Numero_Full'].endswith('2') and item['Id_Classe'] != 'ss'):
+                elif (item['Id_Numero_Full'].endswith('2') and (item['Id_Classe'] != 'sf' or item['Id_Classe'] != 'ss')):
                     dataAll2.append(item)
+                elif (item['Id_Numero_Full'].endswith('1') and (item['Id_Classe'] == 'sf' or item['Id_Classe'] == 'ss')):
+                    dataAllS1.append(item)
+                elif (item['Id_Numero_Full'].endswith('2') and (item['Id_Classe'] == 'sf' or item['Id_Classe'] == 'ss')):
+                    dataAllS2.append(item)
+                elif (item['Id_Classe'] == 'sf' or item['Id_Classe'] == 'ss'):
+                    dataAllS.append(item)
+
+# BEGIN single day
+
+            if enableSingle == 1:
+
+                for itemS in dataAllS1:
+                    for itemS2 in dataAllS2:
+
+                        if (itemS['Id_Numero'] == itemS2['Id_Numero']):
+
+                            itemS['Id_Image_2'] = itemS2['Id_Image']
+                            itemS['Id_Nom_2'] = itemS2['Id_Nom']
+                            itemS['Id_Numero_Full_2'] = itemS2['Id_Numero_Full']
+                            itemS['Id_Canal_2'] = itemS2['Id_Canal']
+                            itemS['Id_TpsCumule_2'] = itemS2['Id_TpsCumule']
+                            itemS["Id_FinishTime"] = 99999999999
+
+    # calculate combine time and 2 minutes diff
+                            if (itemS['Id_TpsCumule'] != 99999999999 and itemS2['Id_TpsCumule'] != 99999999999):
+                                if itemS2['Id_TpsCumule'] > itemS['Id_TpsCumule']:
+                                    itemS['Id_FinishTime'] = itemS2['Id_TpsCumule']
+                                elif itemS2['Id_TpsCumule'] <= itemS['Id_TpsCumule']:
+                                    itemS['Id_FinishTime'] = itemS['Id_TpsCumule']
+                            
+                                # check 2 minutes diff
+                                if abs(itemS['Id_TpsCumule'] - itemS2['Id_TpsCumule']) > 120000:
+                                    itemS['Id_Image'] = '_Status10' # DSQ
+                            
+                            else:
+                                itemS['Id_FinishTime'] = 99999999999
 
 
+                            if ('_Status' in itemS['Id_Image'] or '_Status' in itemS2['Id_Image']):
+                                itemS['Id_Status'] = 1
+                            else:
+                                itemS['Id_Status'] = 0
+                            
+                            
+                            
+                for itemS in dataAllS:
+
+                    itemS["Id_FinishTime"] = 99999999999
+                    if itemS['Id_TpsCumule'] != 99999999999:
+                        itemS['Id_FinishTime'] = itemS['Id_TpsCumule']
+                            
+                    if '_Status' in itemS['Id_Image']:
+                        itemS['Id_Status'] = 1
+                    else:
+                        itemS['Id_Status'] = 0
+                        
+                    itemS['Id_Image_2'] = ''
+                    itemS['Id_TpsCumule_2'] = 99999999999
+ 
+                dataAllS = dataAllS1 + dataAllS # combine the single day lists
+
+                sortedDataAllS1 = sorted(dataAllS, key=itemgetter('Id_Categorie', 'Id_Status', 'Id_FinishTime', 'Id_TpsCumule', 'Id_TpsCumule_2'))
+                
+            # cleaning
+                x = 1
+                c = ''
+
+                arrayLeader = {}
+
+
+                for itemS in sortedDataAllS1:
+                    
+                    
+                
+                
+                    if itemS['Id_Categorie'] == c:
+                        x += 1
+                    else:
+                        x = 1
+                        c = itemS['Id_Categorie']
+
+                    itemS['fPosition_Categorie'] = x
+
+            
+
+    # calculate the gap
+                    if x == 1:
+                        arrayLeader[itemS['Id_Categorie']] = itemS['Id_FinishTime']
+                        itemS['Id_Ecart1er_Category'] = ''
+                    elif x != 1 and itemS['Id_FinishTime'] != 99999999999:
+                        itemS['Id_Ecart1er_Category'] = millisecondsToTime(itemS['Id_FinishTime'] - arrayLeader[itemS['Id_Categorie']])
+                    else:
+                        itemS['Id_Ecart1er_Category'] = ''
+                
+                    
+                    
+                    
+                    if itemS['Id_FinishTime'] != 99999999999:
+                        itemS['Id_FinishTime'] = millisecondsToTime(itemS['Id_FinishTime'])
+                    else:
+                        itemS['Id_FinishTime'] = ''
+
+                    if ('_Status10' in itemS['Id_Image'] or '_Status10' in itemS['Id_Image_2']):
+                        itemS['Id_Status'] = 'DSQ'
+                    elif ('_Status11' in itemS['Id_Image'] or '_Status11' in itemS['Id_Image_2']):
+                        itemS['Id_Status'] = 'DNF'
+                    elif ('_Status12' in itemS['Id_Image'] or '_Status12' in itemS['Id_Image_2']):
+                        itemS['Id_Status'] = 'DNS'
+                    elif ('_Status' in itemS['Id_Image'] or '_Status' in itemS['Id_Image_2']):
+                        itemS['Id_Status'] = '*'
+                    else:
+                        itemS['Id_Status'] = ''
+                        
+                                                
+
+                    # delete unnecessary keys
+                    delKeys = ['Id_Inter1', 'Id_Inter2', 'Id_Inter3', 'Id_Canal', 'Id_Canal_2', 'Id_TpsCumule', 'Id_TpsCumule_2', 'Id_NbTour', 'Id_Nationalite', 'Id_Groupe', 'Id_Classe', 'Id_Image', 'Id_Image_2']
+                        
+                    for key in delKeys:
+
+                        if key in itemS:
+                            del itemS[key]
+                
+                
+                #print(sortedDataAllS1)
+
+# export to csv            
+                keys = sortedDataAllS1[0].keys()
+                with open('singleDay.csv', 'w') as output_file:
+                    dict_writer = csv.DictWriter(output_file, keys)
+                    dict_writer.writeheader()
+                    dict_writer.writerows(sortedDataAllS1)
+
+
+
+# END single day
             
             for item in dataAll:
                 for item2 in dataAll2:
@@ -248,7 +387,7 @@ def main():
                             item['leader'] = 0
 
                             
-                        item["single"] = 0;
+                        item["single"] = 0
                         if "s" in item['Id_Groupe']: 
                             item['Id_Groupe'] = item['Id_Groupe'].replace("s", "s1")
                             item['Id_NbTour'] = item['Id_NbTour'] * 2
@@ -256,7 +395,7 @@ def main():
                             item["Id_Inter1Time"] = item["Id_Inter1"]
                             item["Id_Inter2Time"] = item["Id_Inter2"]
                             item["Id_Inter3Time"] = item["Id_Inter3"]
-                            item["single"] = 1;
+                            item["single"] = 1
                             
                         elif "s" in item2['Id_Groupe']: 
                             item['Id_Groupe'] = item['Id_Groupe'].replace("s", "s2")
@@ -265,7 +404,7 @@ def main():
                             item["Id_Inter1Time"] = item2["Id_Inter1"]
                             item["Id_Inter2Time"] = item2["Id_Inter2"]
                             item["Id_Inter3Time"] = item2["Id_Inter3"]
-                            item["single"] = 2;
+                            item["single"] = 2
                         else:
                             item['Id_NbTour'] = item['Id_NbTour'] + item2['Id_NbTour']
                             
@@ -282,10 +421,10 @@ def main():
                             item['uci'] = 0
 
                         if "d" in item['Id_Groupe'] and "d" in item2['Id_Groupe']: 
-                            item['Id_Image'] = '_Status10'; # mark DSQ
+                            item['Id_Image'] = '_Status10' # mark DSQ
                             
                         # combine blue, single, leader
-                        item['Id_Groupe'] = (item['Id_Groupe'] + item2['Id_Groupe']).replace('dd', 'd').replace('ll', 'l').replace('bb', 'b'); 
+                        item['Id_Groupe'] = (item['Id_Groupe'] + item2['Id_Groupe']).replace('dd', 'd').replace('ll', 'l').replace('bb', 'b')
                         
                         item['oldBlue'] = 0
                         if "b" in item['Id_Groupe']: 
@@ -302,7 +441,7 @@ def main():
                         if "s" not in item['Id_Groupe'] and "s" not in item2['Id_Groupe']: 
         # finish
     #                        item['Id_Finishblue'] = 0
-                            if (item['Id_TpsCumule'] != '-' and item2['Id_TpsCumule'] != '-'):
+                            if (item['Id_TpsCumule'] != 99999999999 and item2['Id_TpsCumule'] != 99999999999):
                                 if item2['Id_TpsCumule'] > item['Id_TpsCumule']:
                                     item['Id_FinishTime'] = item2['Id_TpsCumule']
                                 elif item2['Id_TpsCumule'] <= item['Id_TpsCumule']:
@@ -439,19 +578,19 @@ def main():
     # overall
                         if item['Id_Numero'] in positionArray_All_Cat and positionArray_All_Cat['Id_Numero'][0] != 0:
                             if positionArray_All_Cat['Id_Numero'][0] > item['fPosition_Overall']:
-                                item["Id_Arrow"] = 4; # up :)
-            #                    positionChanged = "gainedPosition";
+                                item["Id_Arrow"] = 4 # up :)
+            #                    positionChanged = "gainedPosition"
                             elif positionArray_All_Cat['Id_Numero'][0] < item['fPosition_Overall']:
-                                item["Id_Arrow"] = 3; # down :(
-            #                    positionChanged = "lostPosition";
+                                item["Id_Arrow"] = 3 # down :(
+            #                    positionChanged = "lostPosition"
     # category
                         if item['Id_Numero'] in positionArray_All_Cat and positionArray_All_Cat['Id_Numero'][1] != 0:
                             if positionArray_All_Cat['Id_Numero'][1] > item['fPosition_Overall']:
-                                item["Id_Arrow"] = 44; # up :)
-            #                    positionChanged = "gainedPosition";
+                                item["Id_Arrow"] = 44 # up :)
+            #                    positionChanged = "gainedPosition"
                             elif positionArray_All_Cat['Id_Numero'][1] < item['fPosition_Overall']:
-                                item["Id_Arrow"] = 33; # down :(
-            #                    positionChanged = "lostPosition";
+                                item["Id_Arrow"] = 33 # down :(
+            #                    positionChanged = "lostPosition"
 
 
 
@@ -757,15 +896,50 @@ def main():
     #        for dic in sortedData:
     #            for val,cal in dic.items():
     #                print(f'{val} is {cal}')
+    
+            sortedDataCSV = copy.deepcopy(sortedData) 
                     
+            for item in sortedDataCSV:
 
+                if ('_Status10' in item['Id_Image'] or '_Status10' in item['Id_Image_2']):
+                    item['Id_Status'] = 'DSQ'
+                elif ('_Status11' in item['Id_Image'] or '_Status11' in item['Id_Image_2']):
+                    item['Id_Status'] = 'DNF'
+                elif ('_Status12' in item['Id_Image'] or '_Status12' in item['Id_Image_2']):
+                    item['Id_Status'] = 'DNS'
+                elif ('_Status' in item['Id_Image'] or '_Status' in item['Id_Image_2']):
+                    item['Id_Status'] = '*'
+                else:
+                    item['Id_Status'] = ''
+
+
+                # change 99999999999 to '-' and mili to time string
+                zeroIt = ['Id_Inter1Time', 'Id_Inter2Time', 'Id_Inter3Time', 'Id_Ecart1er', 'Id_Inter1Ecart1er', 'Id_Inter2Ecart1er', 'Id_Inter3Ecart1er', 'Id_FinishTime', 'Id_TpsCumule', 'Id_TpsCumule_2']
+                    
+                for key in zeroIt:
+
+                    if key in item:
+                        if item[key] == 99999999999:
+                            item[key] = '' # '-'
+                        elif '.' not in str(item[key]) and item[key] != 0 and item[key] != '-':
+                            item[key] = millisecondsToTime(item[key])
+    #                    elif '.' in str(item[key]) and item[key] != 0 and item[key] != '-':
+    #                        item[key] = timeToMilliseconds(item[key])
+
+                # delete unnecessary keys
+                delKeys = ['Id_Inter1', 'Id_Inter1_2', 'Id_Inter2', 'Id_Inter2_2', 'Id_Inter3', 'Id_Inter3_2', 'Id_Canal', 'Id_Canal_2', 'Id_Numero_Full', 'Id_Numero_Full_2', 'Id_Ecart1er_Categorie', 'Id_Inter1Ecart1er_Categorie', 'Id_Ecart1er_Overall', 'Id_Inter1Ecart1er_Overall','Id_Inter2Ecart1er_Overall','Id_Inter3Ecart1er_Overall', 'Id_Inter3Ecart1er_Categorie', 'Id_Classe', 'leader', 'single', 'uci', 'oldBlue', 'Id_Ecart1er_Category', 'Id_Inter1Ecart1er_Category', 'Id_Inter2Ecart1er_Category', 'Id_Inter3Ecart1er_Category', 'Id_NbTour', 'Id_Image', 'Id_Image_2']
+                    
+                for key in delKeys:
+
+                    if key in item:
+                        del item[key]
 
     # export to csv            
-            keys = sortedData[0].keys()
+            keys = sortedDataCSV[0].keys()
             with open(file2, 'w') as output_file:
                 dict_writer = csv.DictWriter(output_file, keys)
                 dict_writer.writeheader()
-                dict_writer.writerows(sortedData)
+                dict_writer.writerows(sortedDataCSV)
             
             
             for item in sortedData:
