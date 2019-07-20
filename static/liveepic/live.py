@@ -3,7 +3,7 @@
 # run "python -m http.server" to server the p1 file localy
 
 # use minimize var to minimize the output for upload
-
+# make sure time milis is tenth!
 
 import os, sys, time
 import hashlib
@@ -11,8 +11,8 @@ from bs4 import BeautifulSoup
 import json
 from operator import itemgetter
 import csv
-
-#from datetime import datetime, timedelta
+from datetime import datetime, timedelta
+import unicodedata
 
 phash = ""
 
@@ -27,7 +27,7 @@ message = ""
 
 raceEnded = 0
 
-positionArray_All_Cat = {} # used to calculate the arrow for gain/lost position
+positionArray_All_Cat = {} # used to calculate the arrow for gain/lost position, FIXME do we need this?
 minimize = 1
 
 def timeToMilliseconds(time_str):
@@ -81,7 +81,7 @@ def main():
         
         if os.stat(file).st_size != 0: # check if the file not empty
         
-            hasher = hashlib.md5() # blake2b apper faster on 64bit, for 32bit use md5
+            hasher = hashlib.sha1() # blake2b apper faster on 64bit, for 32bit use blake2s
             with open(file, 'rb') as afile:
                 buf = afile.read(BLOCKSIZE)
                 while len(buf) > 0:
@@ -95,7 +95,11 @@ def main():
         
         if phash != hasher.hexdigest(): # checking if the file we want to upload chenged
             phash = hasher.hexdigest()
+    
+            print(datetime.now().strftime("%Y%m%d %H:%M:%S"), 'new file...')
 
+            with open("hash.txt", "w", encoding="utf-8") as myfile1: # creating the file for upload
+                myfile1.write(str(phash))    
 
             with open(file, "r", encoding="utf-8") as myfile2: 
                                 
@@ -139,7 +143,7 @@ def main():
             for i in range(len(thead)):
                 headers[i] = thead[i].get('id')
             data = []
-    # THIS APPEND THE RACE DATA HEADER AT THE TOP
+    # THIS APPEND THE RACE DATA HEADER AT THE TOP, moved to bottom of fn
     #        data.append(head)
             rowsa = iter(rows)
             next(rowsa) # skip first row
@@ -148,29 +152,33 @@ def main():
                 if thead:
                     items = {}
                     for index in headers:
-                        items[headers[index]] = cells[index].text.replace(u'\xa0', u' ').strip()
+#                        items[headers[index]] = cells[index].text.replace(u'\xa0', u' ').strip()
+                        items[headers[index]] = unicodedata.normalize("NFKD", cells[index].text).strip()
                 else:
                     items = []
                     for index in cells:
-                        items.append(index.text.replace(u'\xa0', u' ').strip())
+#                        items.append(index.text.replace(u'\xa0', u' ').strip())
+                        items.append(unicodedata.normalize("NFKD", index.text).strip())
                 data.append(items)
     #        print(data)
 
     # BEGIN clean, calculate and sort the results
             dataAll = []
             dataAll2 = []
-            leaderFinish = {}
-            leaderi1Finish = {}
-            leaderi2Finish = {}
-            leaderi3Finish = {}
-            leaderOverall = 99999999999
-            i1Overall = 99999999999
-            i2Overall = 99999999999
-            i3Overall = 99999999999
-            leader = {}
-            leaderi1 = {}
-            leaderi2 = {}
-            leaderi3 = {}
+#            leaderFinish = {}
+#            leaderi1Finish = {}
+#            leaderi2Finish = {}
+#            leaderi3Finish = {}
+#            leaderOverall = 99999999999
+#            i1Overall = 99999999999
+#            i2Overall = 99999999999
+#            i3Overall = 99999999999
+#            leader = {}
+#            leaderi1 = {}
+#            leaderi2 = {}
+#            leaderi3 = {}
+            
+            arrayLeader = {}
             
     # convert to milis        
             for item in data:
@@ -289,6 +297,8 @@ def main():
                         item['Id_Inter1blue'] = 0
                         item['Id_Inter2blue'] = 0
                         item['Id_Inter3blue'] = 0
+
+# calculate combine time and 2 minutes diff
                         if "s" not in item['Id_Groupe'] and "s" not in item2['Id_Groupe']: 
         # finish
     #                        item['Id_Finishblue'] = 0
@@ -351,8 +361,8 @@ def main():
                             else:
                                 item['Id_Inter3Time'] = 99999999999
 
-    # find leaders
-
+                        '''
+    # find leaders, needed for finding the gap option II, not used
                         if item['Id_Status'] == 0 and item["single"] == 0 and "d" not in item['Id_Groupe'] and "b" not in item['Id_Groupe']:
         # finish
 
@@ -412,7 +422,7 @@ def main():
             
     #        print(leaderFinish)
                                 
-
+                        '''
 
                         item['mst'] = 0
                         if (item['Id_FinishTime'] != 99999999999 and item['Id_FinishTime'] > MaximumStageTimeMili) or (raceEnded == 1 and item['Id_FinishTime'] == 99999999999):
@@ -464,8 +474,8 @@ def main():
     #                        item['Id_Arrow'] = 7  # penalty
 
 
-            
-    # calculate gap
+                '''            
+    # calculate gap option II, expensive as we run for over all items just for this, moved to sorting to save. FIXME not needed as we calculate on remote
             for item in dataAll:
     # finish            
                 if item['Id_FinishTime'] != 99999999999 and item['Id_Numero'] != leaderFinish[item['Id_Categorie']][0]:
@@ -519,7 +529,7 @@ def main():
                     item['Id_Inter3Ecart1er_Overall'] = 99999999999
             
     #        print(dataAll)
-
+                '''
     # BEGIN sorting
             order = {'Men': 0, 'Women': 1, 'Mixed': 2, 'Masters': 3, 'Grand': 4}
 
@@ -527,11 +537,22 @@ def main():
             sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'oldBlue', 'single', 'Id_Inter1blue', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
 
             x = 1
+            arrayLeader = {}
 
             for item in sortedData:
                 item['i1Position_Overall'] = x
-                x += 1
+                
+# calculate the gap
+                if x == 1:
+                    arrayLeader['overall'] = item['Id_Inter1Time']
+                    item['Id_Inter1Ecart1er_Overall'] = 99999999999
+                elif x != 1 and item['Id_Inter1Time'] != 99999999999:
+                    item['Id_Inter1Ecart1er_Overall'] = millisecondsToTime(item['Id_Inter1Time'] - arrayLeader['overall'])
+                else:
+                    item['Id_Inter1Ecart1er_Overall'] = 99999999999
 
+
+                x += 1
 
 #            sortedData = sorted(dataAll, key=itemgetter('Id_Categorie', 'Id_Status', 'oldBlue', 'single', 'Id_Inter1blue', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
             sortedData = sorted(dataAll, key=lambda d:[order[d['Id_Categorie']], d['Id_Categorie'], d['Id_Status'], d['oldBlue'], d['single'], d['Id_Inter1blue'], d['Id_Inter1Time'], d['Id_TpsCumule'], d['Id_TpsCumule_2']])
@@ -539,6 +560,7 @@ def main():
             x = 1
             c = ''
             y = 1
+            arrayLeader = {}
             
             for item in sortedData:
                 if item['Id_Categorie'] == c:
@@ -553,13 +575,36 @@ def main():
                 item['i1index'] = y
                 y += 1
 
+# calculate the gap
+                if x == 1:
+                    arrayLeader[item['Id_Categorie']] = item['Id_Inter1Time']
+                    item['Id_Inter1Ecart1er_Category'] = 99999999999
+                elif x != 1 and item['Id_Inter1Time'] != 99999999999:
+                    item['Id_Inter1Ecart1er_Category'] = millisecondsToTime(item['Id_Inter1Time'] - arrayLeader[item['Id_Categorie']])
+                else:
+                    item['Id_Inter1Ecart1er_Category'] = 99999999999
+                    
+                    
+                    
     # intermediate 2
             sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'oldBlue', 'single', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
-
+                
             x = 1
+            arrayLeader = {}
 
             for item in sortedData:
                 item['i2Position_Overall'] = x
+
+# calculate the gap
+                if x == 1:
+                    arrayLeader['overall'] = item['Id_Inter2Time']
+                    item['Id_Inter2Ecart1er_Overall'] = 99999999999
+                elif x != 1 and item['Id_Inter2Time'] != 99999999999:
+                    item['Id_Inter2Ecart1er_Overall'] = millisecondsToTime(item['Id_Inter2Time'] - arrayLeader['overall'])
+                else:
+                    item['Id_Inter2Ecart1er_Overall'] = 99999999999
+
+
                 x += 1
 
 
@@ -569,6 +614,7 @@ def main():
             x = 1
             c = ''
             y = 1
+            arrayLeader = {}
             
             for item in sortedData:
                 if item['Id_Categorie'] == c:
@@ -583,13 +629,35 @@ def main():
                 item['i2index'] = y
                 y += 1
 
+# calculate the gap
+                if x == 1:
+                    arrayLeader[item['Id_Categorie']] = item['Id_Inter2Time']
+                    item['Id_Inter2Ecart1er_Category'] = 99999999999
+                elif x != 1 and item['Id_Inter2Time'] != 99999999999:
+                    item['Id_Inter2Ecart1er_Category'] = millisecondsToTime(item['Id_Inter2Time'] - arrayLeader[item['Id_Categorie']])
+                else:
+                    item['Id_Inter2Ecart1er_Category'] = 99999999999
+                    
+
     # intermediate 3
             sortedData = sorted(dataAll, key=itemgetter('Id_Status', 'oldBlue', 'single', 'Id_Inter3blue', 'Id_Inter2blue', 'Id_Inter1blue', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
 
             x = 1
+            arrayLeader = {}
 
             for item in sortedData:
                 item['i3Position_Overall'] = x
+                
+# calculate the gap
+                if x == 1:
+                    arrayLeader['overall'] = item['Id_Inter3Time']
+                    item['Id_Inter3Ecart1er_Overall'] = 99999999999
+                elif x != 1 and item['Id_Inter3Time'] != 99999999999:
+                    item['Id_Inter3Ecart1er_Overall'] = millisecondsToTime(item['Id_Inter3Time'] - arrayLeader['overall'])
+                else:
+                    item['Id_Inter3Ecart1er_Overall'] = 99999999999
+
+
                 x += 1
 
 
@@ -599,6 +667,7 @@ def main():
             x = 1
             c = ''
             y = 1
+            arrayLeader = {}
             
             for item in sortedData:
                 if item['Id_Categorie'] == c:
@@ -613,6 +682,16 @@ def main():
                 item['i3index'] = y
                 y += 1
 
+# calculate the gap
+                if x == 1:
+                    arrayLeader[item['Id_Categorie']] = item['Id_Inter3Time']
+                    item['Id_Inter3Ecart1er_Category'] = 99999999999
+                elif x != 1 and item['Id_Inter3Time'] != 99999999999:
+                    item['Id_Inter3Ecart1er_Category'] = millisecondsToTime(item['Id_Inter3Time'] - arrayLeader[item['Id_Categorie']])
+                else:
+                    item['Id_Inter3Ecart1er_Category'] = 99999999999
+                    
+
     # finish
     # FIXME 'Id_NbTour' making problems, removed for now, need reversing...
 
@@ -625,6 +704,7 @@ def main():
             x = 1
             c = ''
             y = 1
+            arrayLeader = {}
             
             for item in sortedData:
                 if item['Id_Categorie'] == c:
@@ -639,14 +719,35 @@ def main():
                 item['findex'] = y
                 y += 1
             
+
+# calculate the gap
+                if x == 1:
+                    arrayLeader[item['Id_Categorie']] = item['Id_FinishTime']
+                    item['Id_Ecart1er_Category'] = 99999999999
+                elif x != 1 and item['Id_FinishTime'] != 99999999999:
+                    item['Id_Ecart1er_Category'] = millisecondsToTime(item['Id_FinishTime'] - arrayLeader[item['Id_Categorie']])
+                else:
+                    item['Id_Ecart1er_Category'] = 99999999999
+                    
             
 
             sortedData = sorted(sortedData, key=itemgetter('Id_Status', 'blue', 'oldBlue', 'single', 'Id_FinishTime', 'Id_Inter3Time', 'Id_Inter2Time', 'Id_Inter1Time', 'Id_TpsCumule', 'Id_TpsCumule_2'))
-
+                
             x = 1
+            arrayLeader = {}
 
             for item in sortedData:
                 item['fPosition_Overall'] = x
+# calculate the gap
+                if x == 1:
+                    arrayLeader['overall'] = item['Id_FinishTime']
+                    item['Id_Ecart1er_Overall'] = 99999999999
+                elif x != 1 and item['Id_FinishTime'] != 99999999999:
+                    item['Id_Ecart1er_Overall'] = millisecondsToTime(item['Id_FinishTime'] - arrayLeader['overall'])
+                else:
+                    item['Id_Ecart1er_Overall'] = 99999999999
+
+
                 x += 1
 
 
@@ -688,6 +789,10 @@ def main():
                     item['Id_Inter1Ecart1er'] = item['Id_Inter1Ecart1er_Overall']
                     item['Id_Inter2Ecart1er'] = item['Id_Inter2Ecart1er_Overall']
                     item['Id_Inter3Ecart1er'] = item['Id_Inter3Ecart1er_Overall']
+#                    item['Id_Ecart1er'] = item['Id_Ecart1er_Category']
+#                    item['Id_Inter1Ecart1er'] = item['Id_Inter1Ecart1er_Category']
+#                    item['Id_Inter2Ecart1er'] = item['Id_Inter2Ecart1er_Category']
+#                    item['Id_Inter3Ecart1er'] = item['Id_Inter3Ecart1er_Category']
 
                     # change 99999999999 to '-' and mili to time string
                     zeroIt = ['Id_Inter1Time', 'Id_Inter2Time', 'Id_Inter3Time', 'Id_Ecart1er', 'Id_Inter1Ecart1er', 'Id_Inter2Ecart1er', 'Id_Inter3Ecart1er', 'Id_FinishTime', 'Id_TpsCumule', 'Id_TpsCumule_2']
@@ -734,6 +839,8 @@ def main():
     #        print(j)
             with open(file3, "w", encoding="utf-8") as myfile2: 
                 myfile2.write(str(j))    
+        else:
+            print(datetime.now().strftime("%Y%m%d %H:%M:%S"), 'no new file.')
 
 try:
     while True:

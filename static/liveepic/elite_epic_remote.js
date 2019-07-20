@@ -1486,7 +1486,8 @@ remove all imTheLeader
                                 
             
                 // create leader time array
-                if (allArray[b]["Id_Status"] == 0 && allArray[b]["oldBlue"] == 0 && allArray[b]["single"] == 0) {
+
+/*                if (allArray[b]["Id_Status"] == 0 && allArray[b]["oldBlue"] == 0 && allArray[b]["single"] == 0) {
                     if (typeof arrayLeader["overall"] == 'undefined') { // overall
                         arrayLeader["overall"] = 99999999999;
                         
@@ -1506,12 +1507,50 @@ remove all imTheLeader
                     }
                         
                 }
+*/                
+                
+                
+                
+               if (show == 1) {
+                    if (allArray[b]["i1Position_Overall"] == 1) {
+                        arrayLeader["overall"] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                    if (allArray[b]["i1Position_Categorie"] == 1) {
+                        arrayLeader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                } else if (show == 2) {
+                    if (allArray[b]["i2Position_Overall"] == 1) {
+                        arrayLeader["overall"] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                    if (allArray[b]["i2Position_Categorie"] == 1) {
+                        arrayLeader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                } else if (show == 3) {
+                    if (allArray[b]["i3Position_Overall"] == 1) {
+                        arrayLeader["overall"] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                    if (allArray[b]["i3Position_Categorie"] == 1) {
+                        arrayLeader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                } else {
+                    if (allArray[b]["fPosition_Overall"] == 1) {
+                        arrayLeader["overall"] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                    if (allArray[b]["fPosition_Categorie"] == 1) {
+                        arrayLeader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Sector_FinishTime"];
+                    }
+                }
+                
+                
+                
+                
              //   console.log(arrayLeader);
                  
                  
                  
             } // END for b
 
+            
             
     if (showLog == 1) {
             console.log('in:')
@@ -1945,6 +1984,7 @@ remove all imTheLeader
                 }
                 
                                 
+                // diff to leader
                 // calculate the gap
                 if (useCategory == "yes") {
                     leaderTime = arrayLeader[allArray[l]["Id_Categorie"]];
@@ -1952,7 +1992,6 @@ remove all imTheLeader
                     leaderTime = arrayLeader["overall"];
                 }
 
-                // diff to leader
                 competitorTime = allArray[l]["Id_Sector_FinishTime"];
                 if (competitorTime != 99999999999) {
                     if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h

@@ -307,9 +307,23 @@ Status 12,DNS,center</code></pre></li>
    
    <h2 id="C11_1" class="c4">טבלת הגדרות לפי מרוץ</h2>
        
-    <h3 id="C11_2222" class="c7">אין יותר starting schedule!!!</h3>
+    <h3 id="C11_2222" class="c7">אין יותר starting schedule - הוחזר בגרסה 3.6.38</h3>
+        <h3 id="C11_2123" class="c7">אופציה 1 - לא נבדק באופן מלא</h3>
+
     <p class="c0">אין יותר starting schedule. יש להגדיר stopwatch 1 channel 1, ובמדידה עצמה לבחור את כל המשתתפים בחלק הימני של הטבלה, עכבר ימני ולבחור insert manual passing, כל המשתתפים יקבלו היט לפי ההגדרות ובעצם זינקו ביחד</p>
     <p class="c1"><span><img alt="image45.png" src="/manual/images/image45.png"></span></p>
+    
+            <h3 id="C11_2123" class="c7">אופציה 2</h3>
+    <p class="c0">דגל ירוק</p>
+    <p class="c1"><span><img alt="image103.png" src="/manual/images/image103.png"></span></p>
+    <p class="c1"><span><img alt="image104.png" src="/manual/images/image104.png"></span></p>
+    <p class="c1"><span><img alt="image105.png" src="/manual/images/image105.png"></span></p>
+    <p class="c1"><span><img alt="image100.png" src="/manual/images/image100.png"></span></p>
+    <p class="c1"><span><img alt="image101.png" src="/manual/images/image101.png"></span></p>
+    <p class="c1"><span><img alt="image102.png" src="/manual/images/image102.png"></span></p>
+
+    
+    
     <h3 id="C11_2" class="c7">זמן ביינים</h3>
     <p class="c1"><span><img alt="image44.png" src="/manual/images/image44.png"></span></p>
 
