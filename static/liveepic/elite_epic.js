@@ -2226,9 +2226,9 @@
             headerText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // time
 
 
-            if (timeGapDisplay == 1) {
+//            if (timeGapDisplay == 1) {
                 headerText1 += '<th class="rnkh_font Id_Ecart1er">Gap</th>';
-            }
+//            }
                 
         headerText1 += '</tr>';
         
@@ -3514,13 +3514,13 @@ if (show == 4) {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
                     }
                 
-                if (timeGapDisplay == 1) {
+//                if (timeGapDisplay == 1) {
                     if (allArray[l]["Id_Ecart1er"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // Gap
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
                     }
-                }
+//                }
 
         
     }
