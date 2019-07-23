@@ -651,14 +651,7 @@ add dns
                 } else {
                     allArray4[b]["single"] = 0;
                 }
-                
-                if (allArray4[b]["Id_Groupe"].includes('l')) {
                     
-                    allArray4[b]["leader"] = 1; // mark leader (yellow shirt)
-                } else {
-                    allArray4[b]["leader"] = 0;
-                }                    
-    
     
                 if (allArray4[b]["Id_Groupe"].includes('b')) {                    
                     allArray4[b]["oldBlue"] = 1;
@@ -828,15 +821,7 @@ add dns
                 } else {
                     allArray3[b]["single"] = 0;
                 }
-                
-                if (allArray3[b]["Id_Groupe"].includes('l')) {
                     
-                    allArray3[b]["leader"] = 1; // mark leader (yellow shirt)
-                } else {
-                    allArray3[b]["leader"] = 0;
-                }                    
-    
-    
                 if (allArray3[b]["Id_Groupe"].includes('b')) {                    
                     allArray3[b]["oldBlue"] = 1;
                 } else {
@@ -1004,13 +989,6 @@ add dns
                     allArray2[b]["single"] = 0;
                 }
                 
-                if (allArray2[b]["Id_Groupe"].includes('l')) {
-                    
-                    allArray2[b]["leader"] = 1; // mark leader (yellow shirt)
-                } else {
-                    allArray2[b]["leader"] = 0;
-                }                    
-    
     
                 if (allArray2[b]["Id_Groupe"].includes('b')) {                    
                     allArray2[b]["oldBlue"] = 1;
@@ -1243,14 +1221,6 @@ add dns
                 } else {
                     allArray[b]["uci"] = 0;
                 }
-
-
-                if (allArray[b]["Id_Groupe"].includes('l')) {
-                    
-                    allArray[b]["leader"] = 1; // mark leader (yellow shirt)
-                } else {
-                    allArray[b]["leader"] = 0;
-                }                    
     
     
                 if (allArray[b]["Id_Groupe"].includes('b')) {                    
@@ -1293,6 +1263,7 @@ add dns
                 allArray[b]["stagesFinished"] = 0;
                 allArray[b]["Id_Position_Categorie"] = 0;
                 allArray[b]["Id_Position_Overall"] = 0;
+                allArray[b]["leader"] = 0;
 
                 if (allArray[b]["Id_Categorie"] == '&nbsp;' ) {
                     allArray[b]["Id_Categorie"] = " ";   
@@ -1442,6 +1413,7 @@ add dns
                             allArray[b]["out"] = 2;
                         }
                                 
+                        allArray[b]["leader"] = allArray2[a]["leader"];
                     }
                     if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                         break;
@@ -1505,6 +1477,7 @@ add dns
                             allArray[b]["out"] = 3;
                         }
                         
+                        allArray[b]["leader"] = allArray3[a]["leader"];
                     }
                     if (allArray[b]["Id_Numero"] == allArray3[a]["Id_Numero"]) {
                         break;
@@ -1570,6 +1543,7 @@ add dns
                             allArray[b]["out"] = 4;
                         }
                 
+                        allArray[b]["leader"] = allArray4[a]["leader"];
                     }
                     if (allArray[b]["Id_Numero"] == allArray4[a]["Id_Numero"]) {
                         break;
@@ -1649,6 +1623,9 @@ add dns
                 }
                 
                 allArray[l]["Id_Position_Categorie"] = m;
+                if (m == 1) {
+                    allArray[l]["leader"] = 1;
+                }
                  
 
             }     
@@ -1932,6 +1909,8 @@ if (epictv == 0) {
                 
                  if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["oldBlue"] != 0) {
                 finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                } else if (allArray[l]["leader"] == 1) {
+                    finalText += '<td title="Epic Leader" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }

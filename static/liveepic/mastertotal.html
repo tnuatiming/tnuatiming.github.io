@@ -88,6 +88,53 @@
         vertical-align: middle; 
         margin: 0 5px;
         }
+        
+    #live td.blued {
+        background-image: url(Images/_LightBlueFlag.png);
+        background-position: center center; 
+        background-size: auto 40%; 
+        background-repeat: no-repeat; 
+        min-width: 26px;
+    }
+    #live td.finished {
+        background-size: auto 40%;
+        min-width: 26px;
+    }    
+    #live td.rnk_font.blueCard {
+        color:#111; 
+        background-color:#add8e6bf; 
+        font-weight:700;
+    }
+    #live td.rnk_font.DarkBlueCard {
+        color:white; 
+        background-color:#2f5999ff; 
+        font-weight:700;
+    }
+    #live td.rnk_font.redCard {
+        color:white; 
+        background-color:red; 
+        font-weight:700;
+    }
+    #live td.rnk_font.yellowCard {
+        background-color:#fae100ff; 
+        font-weight:700;
+    }
+    #live td.rnk_font.pinkCard {
+        color:white; 
+        background-color:#ff1493ff; 
+        font-weight:700;
+    }
+    #live td.rnk_font.greenCard {
+        color:white; 
+        background-color:#427f4dfe; 
+        font-weight:700;
+    }
+    #live td.rnk_font.purpleCard {
+        color:white; 
+        background-color:#412297ff; 
+        font-weight:700;
+    }
+    
     .Flag:before {
         content: "\00a0";
     }
@@ -242,7 +289,12 @@
         max-width: 120px;
     }
 }
+        
+    @media print {
+        h1, #daysTotal, #csv, #legend {display: none}
     
+    }
+
 </style>
 
 

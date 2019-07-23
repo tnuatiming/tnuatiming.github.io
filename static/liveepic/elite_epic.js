@@ -55,6 +55,12 @@
     var eventName = "";    
     
     var cleanResults = 0; // alignTable for TotalIndex
+    
+    var doNotShowTime = 0; // don't display individual time
+    if (sessionStorage.getItem('doNotShowTime')) {
+        doNotShowTime = sessionStorage.getItem('doNotShowTime');
+    }
+    
         
     var prologue;
 
@@ -121,6 +127,30 @@
                 document.getElementById("result").innerHTML = createLiveTable(P1);
                 j1Status();
             }
+
+        });
+
+
+ 
+        if (document.getElementById("doNotShowTime").checked) {
+            doNotShowTime = 1;
+        } else {
+            doNotShowTime = 0;
+        }
+        
+
+        document.getElementById('doNotShowTime').addEventListener('change', event => {
+            if (event.target.checked) {
+                doNotShowTime = 1;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+                j1Status();
+            } else {
+                doNotShowTime = 0;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+                j1Status();
+            }
+                    
+            sessionStorage.setItem('doNotShowTime', doNotShowTime);
 
         });
 
@@ -843,7 +873,6 @@
         var timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
         var raceEnded = 0;
-        var doNotShowTime = 0; // don't display individual time
         var lines;
         var competitorPosition = 0;
         var competitorNumber = 0;
@@ -3453,6 +3482,10 @@ if (show == 4) {
                     
                     finalText += '<td class="rnk_font">Leader</td>';
                     
+                } else if (allArray[l]["single"] != 0 && checkeredFlag == "finished") {
+                    
+                    finalText += '<td class="rnk_font">SF</td>'; // single finished
+                    
                 } else if (checkeredFlag == "finished") { // finished
                     
                     finalText += '<td class="rnk_font">Finished</td>';
@@ -3468,14 +3501,14 @@ if (show == 4) {
                 }
 
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue').replace('s', 'Single').replace(/[0-9]/g, '') + '</td>'; // status
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue').replace('s', 'SF').replace(/[0-9]/g, '') + '</td>'; // status
                 
                         
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Rider 1 Nr
+                finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Rider 1 Nr
                 
-                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + '</td>'; // Rider 1
+                finalText += '<td class="rnk_font left ' + single1 + '">' + allArray[l]["Id_Nom"] + '</td>'; // Rider 1
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nationalite"] + '</td>'; // Nation
+                finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Nationalite"] + '</td>'; // Nation
                 
                 if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
                     finalText += '<td class="rnk_font">yes</td>'; // UCI
@@ -3483,11 +3516,11 @@ if (show == 4) {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
                  
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Rider 2 Nr
+                finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Rider 2 Nr
                 
-                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
+                finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Nationalite_2"] + '</td>'; // Nation
+                finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Nationalite_2"] + '</td>'; // Nation
                 
                 if (allArray[l]["uci"] == 2 || allArray[l]["uci"] == 3) {
                     finalText += '<td class="rnk_font">yes</td>'; // UCI

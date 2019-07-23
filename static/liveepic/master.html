@@ -163,7 +163,7 @@
             font-weight:700;
         }
         #live td.rnk_font.DarkBlueCard {
-            color:#111; 
+            color:white; 
             background-color:#2f5999ff; 
             font-weight:700;
         }
@@ -306,6 +306,10 @@
         .uci {color: brown;}
         span.number {padding: 0 5px;}
         
+        #live td.dnsfq {
+            color: #222;
+            font-weight: 400;
+        }
         #live .btn {
             display: inline-block;
         }
@@ -407,6 +411,12 @@
             min-width: 25px;
         }
     }
+    
+    
+    @media print {
+        h1, #daysTotal, #csv, #legend {display: none}
+    
+    }
 
     </style>
 
@@ -507,6 +517,7 @@
         <label for="enableJ1"><input type="checkbox" id="enableJ1" name="enableJ1" value="enableJ1">&nbsp;Enable Epic</label>
         <label for="enableJ3"><input type="checkbox" id="enableJ3" name="enableJ3" value="enableJ3">&nbsp;Enable Single</label>
         <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
+        <label for="doNotShowTime"><input type="checkbox" id="doNotShowTime" name="doNotShowTime" value="doNotShowTime">&nbsp;Do Not Show Individual Times</label>
         <label for="showLog"><input type="checkbox" id="showLog" name="showLog" value="showLog">&nbsp;Show log</label>
         <button id="publish" class="publish" onClick="publish()">Publish</button>
     </div>
