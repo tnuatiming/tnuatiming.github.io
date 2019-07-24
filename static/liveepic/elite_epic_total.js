@@ -1410,7 +1410,7 @@ add dns
                             allArray[b]["single"] = allArray2[a]["single"];
                         }
                         if (allArray2[a]["out"] == 1) {
-                            allArray[b]["out"] = 2;
+                            allArray[b]["out"] = 1;
                         }
                                 
                         allArray[b]["leader"] = allArray2[a]["leader"];
@@ -1474,7 +1474,7 @@ add dns
                             allArray[b]["single"] = allArray3[a]["single"];
                         }
                         if (allArray3[a]["out"] == 1) {
-                            allArray[b]["out"] = 3;
+                            allArray[b]["out"] = 1;
                         }
                         
                         allArray[b]["leader"] = allArray3[a]["leader"];
@@ -1540,7 +1540,7 @@ add dns
                             allArray[b]["single"] = allArray4[a]["single"];
                         }
                         if (allArray4[a]["out"] == 1) {
-                            allArray[b]["out"] = 4;
+                            allArray[b]["out"] = 1;
                         }
                 
                         allArray[b]["leader"] = allArray4[a]["leader"];
@@ -1574,6 +1574,7 @@ add dns
                             allArray[b]["dnsfq"] = ""; // ???
                         }
 
+                        
                         
 /*                        if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["finishTimeTotal"] == 99999999999 || allArray[b]["Id_Arrow"].includes('dnsfq') || allArray[b]["Id_Arrow_1"].includes('dnsfq') || allArray[b]["Id_Arrow_2"].includes('dnsfq') || allArray[b]["blue"] == 1) {
                         allArray[b]["dnsfq"] = "dsq";
@@ -1918,14 +1919,14 @@ if (epictv == 0) {
        //         finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';
        
 
-                finalText += '<td class="rnk_font left"><div class="FirstLine ' + single1 + '">' + uci1 + allArray[l]["Id_Nom"];// add the name
+                finalText += '<td class="rnk_font left"><div class="FirstLine ' + single1 + '"><span class="number">' + allArray[l]["Id_Numero_Full"] + '</span><span class="name">' + uci1 + allArray[l]["Id_Nom"] + '</span>';// add the name
                 if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
                     finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
                 }
                 finalText += '</div>';// add the name
 
                 
-                finalText += '<div class="SecoundLine ' + single2 + '">' + uci2 + allArray[l]["Id_Nom_2"];// add the name
+                finalText += '<div class="SecoundLine ' + single2 + '"><span class="number">' + allArray[l]["Id_Numero_Full_2"] + '</span><span class="name">' + uci2 + allArray[l]["Id_Nom_2"] + '</span>';// add the name
                 if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
                     finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
                 }
@@ -2380,7 +2381,12 @@ if (k<100){
         hour = hour % 24;
         millisecond = milliseconds%1e3;
         
-        time = ((day*24) + hour) + ':' + (minute<10?0:'') + minute + ':' + (seconds<10?0:'') + seconds + ':' + (millisecond<100?millisecond<10?'00':0:'') + millisecond;
+        if (precision == "tenth") {
+            time = ((day*24) + hour) + ':' + (minute<10?0:'') + minute + ':' + (seconds<10?0:'') + seconds + '.' + millisecond/100;
+        } else {
+            time = ((day*24) + hour) + ':' + (minute<10?0:'') + minute + ':' + (seconds<10?0:'') + seconds + ':' + (millisecond<100?millisecond<10?'00':0:'') + millisecond;
+        }
+        
         return time
     }
     
