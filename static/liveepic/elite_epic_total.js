@@ -666,7 +666,7 @@ add dns
                 
                    
                 
-                if (allArray4[b]["blue"] == 1 || allArray4[b]["Id_Groupe"].includes('b') || allArray4[b]["Id_Groupe"].includes('s') || allArray4[b]["Id_Arrow"] == 11 || allArray4[b]["Id_Arrow"] == 10 || allArray4[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray4[b]["blue"] == 1 || allArray4[b]["Id_Groupe"].includes('d') || allArray4[b]["Id_Groupe"].includes('b') || allArray4[b]["Id_Groupe"].includes('s') || allArray4[b]["Id_Arrow"] == 12 || allArray4[b]["Id_Arrow"] == 11 || allArray4[b]["Id_Arrow"] == 10 || allArray4[b]["Id_FinishTime"] == 99999999999) {
                     allArray4[b]["out"] = 1;
                 }
 
@@ -835,7 +835,7 @@ add dns
                 
                    
                 
-                if (allArray3[b]["blue"] == 1 || allArray3[b]["Id_Groupe"].includes('b') || allArray3[b]["Id_Groupe"].includes('s') || allArray3[b]["Id_Arrow"] == 11 || allArray3[b]["Id_Arrow"] == 10 || allArray3[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray3[b]["blue"] == 1 || allArray3[b]["Id_Groupe"].includes('d') || allArray3[b]["Id_Groupe"].includes('b') || allArray3[b]["Id_Groupe"].includes('s') || allArray3[b]["Id_Arrow"] == 12 || allArray3[b]["Id_Arrow"] == 11 || allArray3[b]["Id_Arrow"] == 10 || allArray3[b]["Id_FinishTime"] == 99999999999) {
                     allArray3[b]["out"] = 1;
                 }
 
@@ -1003,7 +1003,7 @@ add dns
                 
                    
                 
-                if (allArray2[b]["blue"] == 1 || allArray2[b]["Id_Groupe"].includes('b') || allArray2[b]["Id_Groupe"].includes('s') || allArray2[b]["Id_Arrow"] == 11 || allArray2[b]["Id_Arrow"] == 10 || allArray2[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray2[b]["blue"] == 1 || allArray2[b]["Id_Groupe"].includes('d') || allArray2[b]["Id_Groupe"].includes('b') || allArray2[b]["Id_Groupe"].includes('s') || allArray2[b]["Id_Arrow"] == 12 || allArray2[b]["Id_Arrow"] == 11 || allArray2[b]["Id_Arrow"] == 10 || allArray2[b]["Id_FinishTime"] == 99999999999) {
                     allArray2[b]["out"] = 1;
                 }
 
@@ -1236,7 +1236,7 @@ add dns
                 
                    
                 
-                if (allArray[b]["blue"] == 1 || allArray[b]["Id_Groupe"].includes('b') || allArray[b]["Id_Groupe"].includes('s') || allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray[b]["blue"] == 1 || allArray[b]["Id_Groupe"].includes('d') || allArray[b]["Id_Groupe"].includes('b') || allArray[b]["Id_Groupe"].includes('s') || allArray[b]["Id_Arrow"] == 12 || allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_FinishTime"] == 99999999999) {
                     allArray[b]["out"] = 1;
                 } else {
                     allArray[b]["out"] = 0;                    
@@ -1260,7 +1260,7 @@ add dns
                 allArray[b]["blue_3"] = 0;                    
                 allArray[b]["finishTimeTotal"] = 99999999999;
                 allArray[b]["dnsfq"] = "";
-                allArray[b]["stagesFinished"] = 0;
+                allArray[b]["stagesFinished"] = 0; // adding the stages finished^2, if finished 2 and 3 so this 13, easy for sorting
                 allArray[b]["Id_Position_Categorie"] = 0;
                 allArray[b]["Id_Position_Overall"] = 0;
                 allArray[b]["leader"] = 0;
@@ -1374,6 +1374,8 @@ add dns
                         allArray[b]["dnsfq"] = "dsq";
                     } else if (allArray[b]["Id_Arrow"] == 11) {
                         allArray[b]["dnsfq"] = "dnf";
+                    } else if (allArray[b]["Id_Arrow"] == 12) {
+                        allArray[b]["dnsfq"] = "dns";
                     } else if (allArray[b]["blue"] == 1) {
                         allArray[b]["dnsfq"] = "blue";
                     } else if (allArray[b]["finishTimeTotal"] == 99999999999) {
@@ -1429,13 +1431,15 @@ add dns
                     
                         if (allArray[b]["Id_FinishTime_1"] != 99999999999) {
                             
-                            allArray[b]["stagesFinished"] += 1;
+                            allArray[b]["stagesFinished"] += 4;
                         }
 
                         if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_1"] == 10) {
                             allArray[b]["dnsfq"] = "dsq";
                         } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_1"] == 11) {
                             allArray[b]["dnsfq"] = "dnf";
+                        } else if (allArray[b]["Id_Arrow"] == 12 || allArray[b]["Id_Arrow_1"] == 12) {
+                            allArray[b]["dnsfq"] = "dns";
                         } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1) {
                             allArray[b]["dnsfq"] = "blue";
                         } else if (allArray[b]["finishTimeTotal"] == 99999999999) {
@@ -1494,7 +1498,7 @@ add dns
                     
                         if (allArray[b]["Id_FinishTime_2"] != 99999999999) {
                             
-                            allArray[b]["stagesFinished"] += 1;
+                            allArray[b]["stagesFinished"] += 9;
                         }
                     
                 
@@ -1502,6 +1506,8 @@ add dns
                             allArray[b]["dnsfq"] = "dsq";
                         } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_1"] == 11 || allArray[b]["Id_Arrow_2"] == 11) {
                             allArray[b]["dnsfq"] = "dnf";
+                        } else if (allArray[b]["Id_Arrow"] == 12 || allArray[b]["Id_Arrow_1"] == 12 || allArray[b]["Id_Arrow_2"] == 12) {
+                            allArray[b]["dnsfq"] = "dns";
                         } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["blue_2"] == 1) {
                             allArray[b]["dnsfq"] = "blue";
                         } else if (allArray[b]["finishTimeTotal"] == 99999999999) {
@@ -1561,13 +1567,15 @@ add dns
                 
                         if (allArray[b]["Id_FinishTime_3"] != 99999999999) {
                             
-                            allArray[b]["stagesFinished"] += 1;
+                            allArray[b]["stagesFinished"] += 16;
                         }
                 
                         if (allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_Arrow_1"] == 10 || allArray[b]["Id_Arrow_2"] == 10 || allArray[b]["Id_Arrow_3"] == 10) {
                             allArray[b]["dnsfq"] = "dsq";
                         } else if (allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow_1"] == 11 || allArray[b]["Id_Arrow_2"] == 11 || allArray[b]["Id_Arrow_3"] == 11) {
                             allArray[b]["dnsfq"] = "dnf";
+                        } else if (allArray[b]["Id_Arrow"] == 12 || allArray[b]["Id_Arrow_1"] == 12 || allArray[b]["Id_Arrow_2"] == 12 || allArray[b]["Id_Arrow_3"] == 12) {
+                            allArray[b]["dnsfq"] = "dns";
                         } else if (allArray[b]["blue"] == 1 || allArray[b]["blue_1"] == 1 || allArray[b]["blue_2"] == 1 || allArray[b]["blue_3"] == 1) {
                             allArray[b]["dnsfq"] = "blue";
                         } else if (allArray[b]["finishTimeTotal"] == 99999999999) {
@@ -1591,7 +1599,7 @@ add dns
 //        if (useCategory == "no") {
 //            allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
             
-            allArray.sort((a, b) => a.out - b.out || b.stagesFinished - a.stagesFinished || b.single - a.single || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal);
+            allArray.sort((a, b) => a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || b.single - a.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
             
                 // reasign postion number
             for (l = 0; l < allArray.length; l++) {
@@ -1605,7 +1613,7 @@ add dns
 //        } else if (useCategory == "yes") {
 //            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
 
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || b.single - a.single || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal);
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || b.single - a.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
 //        }
          
     // fix the position fields of the competitors and start building the final table
@@ -1637,7 +1645,7 @@ add dns
                 
 //                allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
                                 
-                allArray.sort((a, b) => a.out - b.out || b.stagesFinished - a.stagesFinished || b.single - a.single || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal);
+                allArray.sort((a, b) => a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || b.single - a.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
             }                 
 
     
@@ -1790,7 +1798,7 @@ add dns
                 if (allArray[l]["finishTimeTotal"] != 99999999999) {
                     
                     if (allArray[l]["finishTimeTotal"] >= 86400000) { // if over 24 hours
-                        allArray[l]["finishTimeTotal"] = convertMS(allArray[l]["finishTimeTotal"]);
+                        allArray[l]["finishTimeTotal"] = ms2TimeString(allArray[l]["finishTimeTotal"]); // can use convertMS
                     } else {
                         allArray[l]["finishTimeTotal"] = ms2TimeString(allArray[l]["finishTimeTotal"]);
                     }
@@ -1899,6 +1907,8 @@ if (epictv == 0) {
                     finalText += '<td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>\n';
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dnf") {
                     finalText += '<td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>\n';
+                } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dns") {
+                    finalText += '<td colspan="2" title="Did Not Started" class="rnk_font">DNS</td>\n';
                 } else if (allArray[l]["single"] != 0) {
                     finalText += '<td colspan="2" title="Single Finisher" class="rnk_font">SF</td>\n'; // add postion
                 } else if (allArray[l]["out"] == 0) {
@@ -1971,6 +1981,8 @@ if (epictv == 0) {
                     finalText += '<td title="Disqualified" class="rnk_font">DSQ</td>\n';
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dnf") {
                     finalText += '<td title="Did Not Finished" class="rnk_font">DNF</td>\n';
+                } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dns") {
+                    finalText += '<td title="Did Not Started" class="rnk_font">DNS</td>\n';
                 } else if (allArray[l]["single"] != 0) {
                     finalText += '<td title="Single Finisher" class="rnk_font">SF</td>\n'; 
                 } else if (allArray[l]["finishTimeTotal"] != 99999999999 && allArray[l]["Id_Position_Categorie"] == 1) { // leader
@@ -2052,13 +2064,13 @@ if (epictv == 0) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
                 }
                 
-                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
+                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td class="rnk_font">-</td>\n'; // add total time
                 } else {
                     finalText += '<td class="rnk_font bold">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
                 }
                 
-                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
+                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td class="rnk_font">-</td>\n'; // add diff
                 } else {
                     finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
@@ -2211,13 +2223,13 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                 if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                     
                     
-                    if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
+                    if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
                         finalText += '<td class="rnk_font">-</td>\n'; // add total time
                     } else {
                         finalText += '<td class="rnk_font bold right">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
                     }
                 } else {
-                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf") {
+                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
                         finalText += '<td class="rnk_font">-</td>\n'; // add diff
                     } else {
                         finalText += '<td class="rnk_font right">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
@@ -2322,7 +2334,7 @@ console.table(allArrayObject);
             return k=a%1e3, // optimized by konijn
             s=a/1e3%60|0,
             m=a/6e4%60|0,
-            h=a/36e5%24|0,
+            h=a/36e5|0, // h=a/36e5%24|0, removed %24 so can be more then 24 hours
             (h?(h<10?'0'+h:h)+':':'')+ // optimized
             (m<10?0:'')+m+':'+  // optimized
             (s<10?0:'')+s+'.'+ // optimized

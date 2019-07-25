@@ -2518,7 +2518,7 @@
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
-                        allArray[l]["Id_Arrow"] = 12;
+                        allArray[l]["Id_Arrow"] = 12; // DNS
                         allArray[l]["blue"] = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
                         allArray[l]["Id_Arrow"] = 9;

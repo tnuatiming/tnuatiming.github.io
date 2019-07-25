@@ -7,7 +7,7 @@ files needed to be modified to the production dir/file names.
 
 make sure the local web server folder (tt) has the latest updates.
 
-master.html and elite_epic.js is on the timing computer, when the page is open in chromium('gc' and 'finish' must be selected) it generate j1.txt json(dont forget to enable on the bottom of elite_epic.js). it also generate p3.html for the single day competitors(FIXME - add to python). the python script below sense it and upload it to the web server. on the web server we have index.html and elite_epic_remote.js that phrase the json and show the results.
+master.html and elite_epic.js is on the timing computer, when the page is open in chromium('gc' and 'finish' must be selected) it generate j1.txt json(dont forget to enable). it also generate p3.html for the single day competitors(FIXME - add to python). the python script below sense changes and upload it to the web server. on the web server we have index.html and elite_epic_remote.js that phrase the json and show the results.
 for tv, we have tv.html which uses the same elite_epic.js, at least for now.
 
 1. run 'python3 -m http.server' in the local website folder (tt).
@@ -41,6 +41,11 @@ gpio 14 (TX)        TXD (usually green wire)
 Ground              GRD (usually black wire)
 
 
+## option for getting j1.txt using python
+
+python3 live.py
+
+
 ## option for getting j1.txt using python(very slow for now): ## DO NOT USE, TAKES A LOT OF TIME AND NOT COMPLETE SOLUTION!!!
 
 sudo apt-get install python3-pandas
@@ -71,8 +76,10 @@ build classification for epic:
     
 set race settings > others > cycling:
 
-set time precision to "tenth". MOST IMPORTANT, AS TIMING WILL BE WRONG!!! OTHER WISE.
-set "assign competitors start time at green flag date time" - need testing.
+set time precision to "tenth". MOST IMPORTANT, OTHER WISE TIMING WILL BE WRONG!!!.
+
+after green flag, update flag time, assign to all competitors . alternately, set "assign competitors start time at green flag date time" - need testing.
+for prologue, use schedule start.
 
 when importing competitors, make sure to import uci rider as "u" into "Group".
 
