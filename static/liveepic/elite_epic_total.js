@@ -2109,7 +2109,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
                     TVheaderText1 += '<th class="rnkh_font finishTimeTotal">Time</th>'; // combined time
 
                   

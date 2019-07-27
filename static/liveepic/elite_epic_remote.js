@@ -85,6 +85,8 @@ remove all imTheLeader
     var showPrevious = show;// used for empting the array when displaying back intermediate.
 
     var epictv = 0;
+    var enableKiosk = 0;
+    
 /*    var showArrow = 0; // FIXME disabled maybe not needed
     if (sessionStorage.getItem('showArrow')) {
         showArrow = sessionStorage.getItem('showArrow');
@@ -105,8 +107,13 @@ remove all imTheLeader
     document.addEventListener("DOMContentLoaded", function() {
             
     
-    
-        if (document.getElementById('epictv')){
+        if (document.getElementById('kiosk')) {
+            
+            enableKiosk = 1;
+
+        }
+        
+        if (document.getElementById('epictv')) {
             
             epictv = 1;
             
@@ -1451,6 +1458,73 @@ remove all imTheLeader
                     Inter3Leader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Inter3Time"];
                 }
 */                    
+
+
+
+
+                // for kiosk, auto advence to next intermediate/finish when 5 competitors got there 
+                if (enableKiosk == 1) {
+                    
+                    if (allArray[b]["fPosition_Overall"] == 5 && allArray[b]["Id_FinishTime"] != 99999999999) {
+                        show = 4
+                        showFull = 'Finish';
+                        document.getElementById("intermediate1").classList.add("active");
+                        document.getElementById("intermediate1").disabled = false;
+                        document.getElementById("intermediate2").classList.add("active");
+                        document.getElementById("intermediate2").disabled = false;
+                        document.getElementById("intermediate3").classList.add("active");
+                        document.getElementById("intermediate3").disabled = false;
+                        document.getElementById("finish").classList.remove("active");
+                        document.getElementById("finish").disabled = true;
+                    } else if (allArray[b]["i3Position_Overall"] == 5 && allArray[b]["Id_Inter3Time"] != 99999999999) {
+                        show = 3
+                        showFull = 'Intermediate 3';
+                        document.getElementById("intermediate1").classList.add("active");
+                        document.getElementById("intermediate1").disabled = false;
+                        document.getElementById("intermediate2").classList.add("active");
+                        document.getElementById("intermediate2").disabled = false;
+                        document.getElementById("intermediate3").classList.remove("active");
+                        document.getElementById("intermediate3").disabled = true;
+                        document.getElementById("finish").classList.add("active");
+                        document.getElementById("finish").disabled = false;
+                    } else if (allArray[b]["i2Position_Overall"] == 5 && allArray[b]["Id_Inter2Time"] != 99999999999) {
+                        show = 2
+                        showFull = 'Intermediate 2';
+                        document.getElementById("intermediate1").classList.add("active");
+                        document.getElementById("intermediate1").disabled = false;
+                        document.getElementById("intermediate2").classList.remove("active");
+                        document.getElementById("intermediate2").disabled = true;
+                        document.getElementById("intermediate3").classList.add("active");
+                        document.getElementById("intermediate3").disabled = false;
+                        document.getElementById("finish").classList.add("active");
+                        document.getElementById("finish").disabled = false;
+                    } else if (allArray[b]["i1Position_Overall"] == 5 && allArray[b]["Id_Inter1Time"] != 99999999999) {
+                        show = 1
+                        showFull = 'Intermediate 1';
+                        document.getElementById("intermediate1").classList.remove("active");
+                        document.getElementById("intermediate1").disabled = true;
+                        document.getElementById("intermediate2").classList.add("active");
+                        document.getElementById("intermediate2").disabled = false;
+                        document.getElementById("intermediate3").classList.add("active");
+                        document.getElementById("intermediate3").disabled = false;
+                        document.getElementById("finish").classList.add("active");
+                        document.getElementById("finish").disabled = false;
+                    } else {
+                        show = 4
+                        showFull = 'Finish';
+                        document.getElementById("intermediate1").classList.add("active");
+                        document.getElementById("intermediate1").disabled = false;
+                        document.getElementById("intermediate2").classList.add("active");
+                        document.getElementById("intermediate2").disabled = false;
+                        document.getElementById("intermediate3").classList.add("active");
+                        document.getElementById("intermediate3").disabled = false;
+                        document.getElementById("finish").classList.remove("active");
+                        document.getElementById("finish").disabled = true;
+                    }
+                    
+                }
+                
+                
                     
                // display result for selected intermediate or finish
                if (show == 1) {
@@ -1540,8 +1614,6 @@ remove all imTheLeader
                         arrayLeader[allArray[b]["Id_Categorie"]] = allArray[b]["Id_Sector_FinishTime"];
                     }
                 }
-                
-                
                 
                 
              //   console.log(arrayLeader);

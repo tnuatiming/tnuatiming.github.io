@@ -123,7 +123,7 @@ single day - https://tnuatiming.com/liveepic/single.html and on epic site (suppo
 
 prologue start clock - https://tnuatiming.com/liveepic/start.html (computer time must be sync, start every 30 sec)
 
-
+kiosk - https://tnuatiming.com/liveepic/kiosk.html iterate over categories and gc every 10 sec, show 14 competitors and auto jump to next intermediate/finsh when 5 competitors got there.
 
 
 

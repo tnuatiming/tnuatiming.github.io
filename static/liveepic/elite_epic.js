@@ -791,7 +791,7 @@
                     document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = this.responseText;
                     document.getElementById(target).innerHTML = createLiveTable(P1);
-                    alignTable();
+     //               alignTable();
     //           } else {
     //               document.getElementById("categoryOrAll").style.display = "none";
                 } else if (this.status == 404) {
@@ -3585,7 +3585,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font left Id_Nom">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
