@@ -65,17 +65,17 @@
             background: #f0f0f0;
             z-index: 99;
             margin-bottom: 10px;
-            height: 150px;
+            height: 175px;
             border-bottom: 12px solid #c00;
         }
 
         #live th.rnkh_font {
             position: sticky;
-            top: 150px;
+            top: 175px;
             z-index: 50;
         }
  
-        #live #categoryOrAll, #live #intermediateOrFinish, #live #options, #live #options1 {
+        #live #categoryOrAll, #live #intermediateOrFinish, #live #options, #live #options1, #live #options2 {
             flex-grow: 0;
             order: 1;
             align-self: flex-start;
@@ -520,6 +520,9 @@
         <label for="doNotShowTime"><input type="checkbox" id="doNotShowTime" name="doNotShowTime" value="doNotShowTime">&nbsp;Do Not Show Individual Times</label>
         <label for="showLog"><input type="checkbox" id="showLog" name="showLog" value="showLog">&nbsp;Show log</label>
         <button id="publish" class="publish" onClick="publish()">Publish</button>
+    </div>
+    <div id="options2">
+    <p id="status">&nbsp;</p>
     </div>
 
     

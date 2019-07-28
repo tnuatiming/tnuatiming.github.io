@@ -903,6 +903,8 @@
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
+        var finishers = [0, 0, 0, 0];
+        
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
         var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili;
@@ -1611,15 +1613,29 @@
                     allArray[b]["Id_Sector_FinishTime"] = allArray[b]["Id_FinishTime"];
                 }
                
-               
+               // get the number of finishers
+               if (allArray[b]["Id_Inter1Time"] != 99999999999) {
+                   finishers[0] += 1;
+               }
+               if (allArray[b]["Id_Inter2Time"] != 99999999999) {
+                   finishers[1] += 1;
+               }
+               if (allArray[b]["Id_Inter3Time"] != 99999999999) {
+                   finishers[2] += 1;
+               }
+               if (allArray[b]["Id_FinishTime"] != 99999999999) {
+                   finishers[3] += 1;
+               }
                
                
               
         } // END for b
          // delete the second array
 //         allArray2 = [];
+//         console.log(finishers);
+        
+         document.getElementById('status').innerHTML = `Intermediate 1: ${finishers[0]} | Intermediate 2: ${finishers[1]} | Intermediate 3: ${finishers[2]} | Finish: ${finishers[3]}`;
          
-
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
          
 //        var allArrayJ = JSON.stringify(allArray);             
