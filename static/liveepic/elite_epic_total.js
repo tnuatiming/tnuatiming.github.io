@@ -257,6 +257,10 @@ add dns
         useCategory = "no";
         publishText += createLiveTable().replace(/<h1.*?<\/h1>/g, '');
         publishText += '</div>\n';
+        
+        publishText += '</div>\n';
+        
+        publishText = publishText.replace(/<td colspan="2"/gi, '<td></td><td ');
                 
         download(publishText, 'q' + stages + '.txt', 'text/plain');        
         

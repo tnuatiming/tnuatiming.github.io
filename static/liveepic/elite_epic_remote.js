@@ -1169,6 +1169,12 @@ remove all imTheLeader
             prologue = 0;
         }
 
+        if (enableKiosk == 1) {
+            HeaderEventName = `${HeaderEventName}<br>${showFull}` 
+            document.getElementById("categoryOrAll").style.display = "none";        
+            document.getElementById("intermediateOrFinish").style.display = "none";        
+        }
+        
         var bigFont = ' bigFont';
 
  //       var finalText = Text; // clear the finalText variable and add the title and time lines
@@ -1462,10 +1468,10 @@ remove all imTheLeader
 
 
 
-                // for kiosk, auto advence to next intermediate/finish when 5 competitors got there 
+                // for kiosk, auto advence to next intermediate/finish when 3 competitors got there 
                 if (enableKiosk == 1) {
                     
-                    if (allArray[b]["fPosition_Overall"] == 5 && allArray[b]["Id_FinishTime"] != 99999999999) {
+                    if (allArray[b]["fPosition_Overall"] == 3 && allArray[b]["Id_FinishTime"] != 99999999999) {
                         show = 4
                         showFull = 'Finish';
                         document.getElementById("intermediate1").classList.add("active");
@@ -1476,7 +1482,7 @@ remove all imTheLeader
                         document.getElementById("intermediate3").disabled = false;
                         document.getElementById("finish").classList.remove("active");
                         document.getElementById("finish").disabled = true;
-                    } else if (allArray[b]["i3Position_Overall"] == 5 && allArray[b]["Id_Inter3Time"] != 99999999999) {
+                    } else if (allArray[b]["i3Position_Overall"] == 3 && allArray[b]["Id_Inter3Time"] != 99999999999) {
                         show = 3
                         showFull = 'Intermediate 3';
                         document.getElementById("intermediate1").classList.add("active");
@@ -1487,7 +1493,7 @@ remove all imTheLeader
                         document.getElementById("intermediate3").disabled = true;
                         document.getElementById("finish").classList.add("active");
                         document.getElementById("finish").disabled = false;
-                    } else if (allArray[b]["i2Position_Overall"] == 5 && allArray[b]["Id_Inter2Time"] != 99999999999) {
+                    } else if (allArray[b]["i2Position_Overall"] == 3 && allArray[b]["Id_Inter2Time"] != 99999999999) {
                         show = 2
                         showFull = 'Intermediate 2';
                         document.getElementById("intermediate1").classList.add("active");
@@ -1498,7 +1504,7 @@ remove all imTheLeader
                         document.getElementById("intermediate3").disabled = false;
                         document.getElementById("finish").classList.add("active");
                         document.getElementById("finish").disabled = false;
-                    } else if (allArray[b]["i1Position_Overall"] == 5 && allArray[b]["Id_Inter1Time"] != 99999999999) {
+                    } else if (allArray[b]["i1Position_Overall"] == 3 && allArray[b]["Id_Inter1Time"] != 99999999999) {
                         show = 1
                         showFull = 'Intermediate 1';
                         document.getElementById("intermediate1").classList.remove("active");

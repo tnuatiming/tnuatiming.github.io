@@ -567,7 +567,8 @@ function topFunction() {
     function kiosk() {
                     
         if (kioskTimer) clearTimeout(kioskTimer);
-
+        if (TimerLoad) clearTimeout(TimerLoad);
+        
         if (v % 6 == 0) { 
             document.getElementById("Men").click(); 
         } else  if (v % 6 == 1) {
@@ -579,7 +580,8 @@ function topFunction() {
         } else  if (v % 6 == 4) {
             document.getElementById("Grand").click(); 
         } else  if (v % 6 == 5) {
-            document.getElementById("displayAllButton").click(); 
+            Load();
+            document.getElementById("displayAllButton").click();
         }
             
         v += 1;

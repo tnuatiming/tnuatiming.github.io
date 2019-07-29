@@ -7,31 +7,52 @@
 
 {{ partial "header.html" . }}
 
+
+{{- if (eq .Params.tag "epic") }}
+    <div id="buttonInfo">
+        <div id="categoryOrAll" style="display: block;">
+            <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button>
+            <button id="displayAllButton" class="btn" onClick="category('no')">GC</button> 
+        </div>
+    </div>
+{{ end }}
+
+
+{{- if (eq .Params.tag "epic") }}
+    <h2>{{ .Params.tag }}{{ with .Params.season }} {{ . }}{{ end }}{{ with .Params.place }} - {{ . }}{{ end }}</h2>  
+    <h2>{{ with .Params.round }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</h2>        
+{{ else }}
     <h2>{{ .Params.tag }}{{ with .Params.sub }} - {{ . }}{{ end }}</h2>  
     <h2>{{ with .Params.round }}{{ . }}{{ end }}{{ if ne .Params.noseason "true" }}{{ with .Params.season }} עונת {{ . }} - {{ end }}{{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</h2>        
+{{ end }}
 
 {{ .Content -}}
 
 {{$title := .Params.title}}
 {{$season := .Params.season}}
 
-{{- if gt (len (where (where .Site.RegularPages "Params.category" .Params.category) "Params.season" .Params.season)) 1 -}}
 
-    <div class="erlier_races"><h2>תוצאות נוספות בעונת {{ $season }}:</h2>
-    <ul>
+{{- if (ne .Params.tag "epic") }}
 
-    {{ range where (where .Site.RegularPages.ByPublishDate.Reverse "Params.category" .Params.category) "Params.season" .Params.season -}}
+    {{- if gt (len (where (where .Site.RegularPages "Params.category" .Params.category) "Params.season" .Params.season)) 1 -}}
 
-        {{- if ne $title .Params.title -}}
-            <li><a href="{{ .URL }}">{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</a></li>
-        {{ end }}
-        {{- if eq $title .Params.title -}}
-            <li><p>{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</p></li>
-        {{ end }}
+        <div class="erlier_races"><h2>תוצאות נוספות בעונת {{ $season }}:</h2>
+        <ul>
 
-    {{- end}}
+        {{ range where (where .Site.RegularPages.ByPublishDate.Reverse "Params.category" .Params.category) "Params.season" .Params.season -}}
 
-    </ul></div>
+            {{- if ne $title .Params.title -}}
+                <li><a href="{{ .URL }}">{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</a></li>
+            {{ end }}
+            {{- if eq $title .Params.title -}}
+                <li><p>{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</p></li>
+            {{ end }}
+
+        {{- end}}
+
+        </ul></div>
+
+    {{ end }}
 
 {{ end }}
 

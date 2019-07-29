@@ -66,4 +66,48 @@
 {{ else if (eq .Params.body "live") }}
     <script src="elite.js"></script>
 {{ end -}}
+{{- if (eq .Params.tag "epic") }}
+    <style>
+        .main_content {
+            direction: ltr;
+        }
+        #race .line_color td:nth-of-type(2) {
+            font-weight: 400;
+            background-color: transparent;
+            color: #222;
+            text-shadow: none;
+        }
+        #race .line_color td:nth-of-type(3) {
+            font-weight: 700;
+            background-color: rgba(37,37,37,.5);
+            color: #fff;
+            text-shadow: none;
+        }
+        #buttonInfo {
+            width: 100%;
+            text-align: left;
+            padding-left: 50px;
+        }
+        #categoryOrAll button {
+            font-size: 1em;
+            padding: 2px 10px;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+        .btn {
+            position: relative;
+            display: inline-block;
+            padding: 0;
+            border-width: 0;
+            outline: 0;
+            background-color: #767472;
+            color: #ecf0f1;
+            transition: background-color .3s;
+        } 
+        .btn.active {
+            cursor: pointer;
+            filter: opacity(50%);
+        }
+    </style>
+{{ end -}}
 </head>

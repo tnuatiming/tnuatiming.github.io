@@ -30,6 +30,8 @@
             
     var publishE = 0;
     
+    var hideStatus = 0; // for publish hide first column
+    
     var messageX = '';
     
     var showLog = 0;
@@ -1634,7 +1636,7 @@
 //         allArray2 = [];
 //         console.log(finishers);
         
-         document.getElementById('status').innerHTML = `Intermediate 1: ${finishers[0]} | Intermediate 2: ${finishers[1]} | Intermediate 3: ${finishers[2]} | Finish: ${finishers[3]}`;
+         document.getElementById('status').innerHTML = `Inter. 1: ${finishers[0]} | Inter. 2: ${finishers[1]} | Inter. 3: ${finishers[2]} | Finish: ${finishers[3]}`;
          
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
          
@@ -2125,8 +2127,9 @@
 
     // hard coded header for now
 //        if (cleanResults == 0) {
-
-                  headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+                    if (hideStatus == 0) {
+                        headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
+                    }
 //                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>Cat</div><div>GC</div></th>';
                     headerText1 += '<th class="rnkh_font Id_Position">GC Position</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">Cat Position</th>';
@@ -2864,7 +2867,8 @@ allArray[l]["Id_Arrow"]
                
 
                 // add and style the status/arrow
-               if (showBlue == 1) {
+            if (hideStatus == 0) {
+                if (showBlue == 1) {
                 
                     finalText += `<td title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>`; //&#9608;
 
@@ -2907,6 +2911,8 @@ allArray[l]["Id_Arrow"]
                     finalText += `<td class="white rnk_font fadeIn">&nbsp;</td>`; // &#9671;
 
                 }
+                
+            } // END hideStatus
                 
                 if (allArray[l]["Id_Arrow"] == 12) {
                     finalText += `<td colspan="2" title="Did Not Started" class="rnk_font">DNS</td>`;
@@ -4661,5 +4667,53 @@ function export_table_to_csv(html, filename) {
         
     }
 
+
+
+    function publishBox(){
+                
+        if (TimerLoad) clearTimeout(TimerLoad);
+
+        var useCategoryTemp = useCategory;
+        publishE = 1;
+        var publishText = '';
+        
+        
+        publishText += '<h1 id="Title">' + eventName + '</h1>\n';
+        
+        publishText += '<div id="finalTextCategory" style="display: block;">\n';
+
+        useCategory = "yes";
+        
+        hideStatus = 1;
+        
+        publishText += createLiveTable(P1).replace(/<h1.*?<\/h1>/g, '').replace(/<p.*?<\/p>/g, '');
+        
+        publishText += '</div>\n';
+        publishText += '\n\n\n\n\n\n\n\n\n';
+        
+        publishText += '<div id="finalTextAll" style="display: none;">\n';
+        
+        useCategory = "no";
+        publishText += createLiveTable(P1).replace(/<h1.*?<\/h1>/g, '').replace(/<p.*?<\/p>/g, '');
+
+        hideStatus = 0;
+
+        publishText += '</div>\n';
+        
+        
+        
+        download(publishText, 'stageBox.html', 'text/plain');        
+        
+        publishE = 0;
+        useCategory = useCategoryTemp;
+        
+        loop = function() {
+            Load();
+        };
+
+        TimerLoad = setTimeout(loop, Rafraichir);
+        
+        
+    }
 
 
