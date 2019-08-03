@@ -356,7 +356,7 @@
             100% { transform: translate(-100%, 0); }
         }
 
-        .navigation, .language, #live #categoryOrAll, div#legend, #daysTotal, #raceheader, .header, #live tr:nth-child(n+17) {
+        .navigation, .language, #live #categoryOrAll, div#legend, #daysTotal, #raceheader, .header, #live tr:nth-child(n+13) {
             display: none;
         }
 
@@ -540,33 +540,14 @@
     ga('send', 'pageview');
 </script>
 
-<script>
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    document.getElementById("myBtn").style.display = "block";
-  } else {
-    document.getElementById("myBtn").style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-</script>
-
 
 <script>
 
-    var kioskLoop, kioskTimer;
+    var kioskLoop, TimerKiosk;
     var v = 0;
     function kiosk() {
                     
-        if (kioskTimer) clearTimeout(kioskTimer);
+        if (TimerKiosk) clearTimeout(TimerKiosk);
         if (TimerLoad) clearTimeout(TimerLoad);
         
         if (v % 6 == 0) { 
@@ -585,14 +566,15 @@ function topFunction() {
         }
             
         v += 1;
-     
+        
         document.getElementById("categoryOrAll").style.display = "none";
+        document.getElementById("intermediateOrFinish").style.display = "none";
         
         kioskLoop = function() {
             kiosk();
         };
 
-        kioskTimer = setTimeout(kioskLoop, 10000);
+        TimerKiosk = setTimeout(kioskLoop, 12000);
         
     }
     
