@@ -200,7 +200,7 @@ all times are in milis
     FB = Id_Finishblue; // blue board rider
     
     T1 = Id_Inter1Time; // intermediate 1 time
-    E1 = Id_Inter1Ecart1er; // intermediate 1 gap
+    E1 = Id_Inter1Ecart1er; // intermediate 1 overall gap
     E1C = Inter1Ecart1erCategory; // intermediate 1 gap in category
     B1 = Id_Inter1blue; // intermediate 1 blue
     T2 = Id_Inter2Time;

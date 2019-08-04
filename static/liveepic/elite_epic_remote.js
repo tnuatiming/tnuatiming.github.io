@@ -1023,7 +1023,7 @@ remove all imTheLeader
         var bestTimecomp = 0;
         var bestTime = 0;
 */        
-        var arrayLeader = {};
+//        var arrayLeader = {};
 //        var Inter1Leader = {}, Inter2Leader = {}, Inter3Leader = {};
 
         var Text, l, m, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorTime, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
@@ -1610,7 +1610,7 @@ remove all imTheLeader
 */                
                 
                 
-                
+/*                
                if (show == 1) {
                     if (allArray[b]["i1Position_Overall"] == 1) {
                         arrayLeader["overall"] = allArray[b]["Id_Sector_FinishTime"];
@@ -1643,7 +1643,7 @@ remove all imTheLeader
                 
                 
              //   console.log(arrayLeader);
-                 
+*/                 
                  
                  
             } // END for b
@@ -2070,18 +2070,38 @@ remove all imTheLeader
                if (show == 1) {
                     allArray[l]["Id_Position_Overall"] = allArray[l]["i1Position_Overall"];
                     allArray[l]["Id_Position_Categorie"] = allArray[l]["i1Position_Categorie"];
+                    if (useCategory == "yes") {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Inter1Ecart1erCategory"];
+                    } else {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Inter1Ecart1er"];
+                    }
                 } else if (show == 2) {
                     allArray[l]["Id_Position_Overall"] = allArray[l]["i2Position_Overall"];
                     allArray[l]["Id_Position_Categorie"] = allArray[l]["i2Position_Categorie"];
+                    if (useCategory == "yes") {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Inter2Ecart1erCategory"];
+                    } else {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Inter2Ecart1er"];
+                    }
                 } else if (show == 3) {
                     allArray[l]["Id_Position_Overall"] = allArray[l]["i3Position_Overall"];
                     allArray[l]["Id_Position_Categorie"] = allArray[l]["i3Position_Categorie"];
+                    if (useCategory == "yes") {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Inter3Ecart1erCategory"];
+                    } else {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Inter3Ecart1er"];
+                    }
                 } else {
                     allArray[l]["Id_Position_Overall"] = allArray[l]["fPosition_Overall"];
                     allArray[l]["Id_Position_Categorie"] = allArray[l]["fPosition_Categorie"];
+                    if (useCategory == "yes") {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["FinishEcart1erCategory"];
+                    } else {
+                        allArray[l]["Id_Sector_Ecart1er"] = allArray[l]["Id_Ecart1er"];
+                    }
                 }
                 
-                                
+/*                                
                 // diff to leader
                 // calculate the gap
                 if (useCategory == "yes") {
@@ -2101,7 +2121,9 @@ remove all imTheLeader
                 } else {
                     allArray[l]["Id_Sector_Ecart1er"] = 99999999999;
                 }
-                
+    
+    // console.log(allArray[l]["Id_Sector_Ecart1er"] + ' | ' + allArray[l]["Inter1Ecart1erCategory"] + ' | ' + allArray[l]["Inter2Ecart1erCategory"] + ' | ' + allArray[l]["Inter3Ecart1erCategory"] + ' | ' + allArray[l]["FinishEcart1erCategory"]);
+*/                
                 
 /*
                 // reasign postion number
