@@ -178,40 +178,46 @@ test.html + testEpic.py will genrate test
 
 ## JSON shortcuts ##
 
+all times are in milis
+
     B = blue; // needed for total
     T = Id_TpsCumule; // finish time rider 1
     TT = Id_TpsCumule_2; // finish time rider 2
 
-    PC = Id_Position_Categorie; // needed only for third party
-    PO = Id_Position_Overall; // needed only for third party
+    PC = Id_Position_Categorie; // needed only for third party, used to get position according to display needed (intermediate, finish)
+    PO = Id_Position_Overall; // needed only for third party, used to get position according to display needed (intermediate, finish)
     
-    NA = Id_Nationalite; // nationality
-    NA2 = Id_Nationalite_2;
+    NA = Id_Nationalite; // nationality 1
+    NA2 = Id_Nationalite_2; // nationality 2
     
-    C = Id_Categorie;
+    C = Id_Categorie; // category
     E = Id_Ecart1er; // gap
+    EC = FinishEcart1erCategory; // finish gap in category
     Q = Id_Equipe; // team
 
 
     F = Id_FinishTime; // combined time
     FB = Id_Finishblue; // blue board rider
     
-    T1 = Id_Inter1Time; // i1 time
-    E1 = Id_Inter1Ecart1er; // i1 gap
-    B1 = Id_Inter1blue;
+    T1 = Id_Inter1Time; // intermediate 1 time
+    E1 = Id_Inter1Ecart1er; // intermediate 1 gap
+    E1C = Inter1Ecart1erCategory; // intermediate 1 gap in category
+    B1 = Id_Inter1blue; // intermediate 1 blue
     T2 = Id_Inter2Time;
     E2 = Id_Inter2Ecart1er;
+    E2C = Inter2Ecart1erCategory; // intermediate 2 gap in category
     B2 = Id_Inter2blue;
     T3 = Id_Inter3Time;
     E3 = Id_Inter3Ecart1er;
+    E3C = Inter3Ecart1erCategory; // intermediate 3 gap in category
     B3 = Id_Inter3blue;
 
-    FC = fPosition_Categorie;
-    FO = fPosition_Overall;
-    FI = findex;
-    I1C = i1Position_Categorie;
-    I1O = i1Position_Overall;
-    I1 = i1index;
+    FC = fPosition_Categorie; // category position at finish
+    FO = fPosition_Overall; // overall position at finish
+    FI = findex; // order to display by category at finish
+    I1C = i1Position_Categorie; // category position at intermediate 1
+    I1O = i1Position_Overall; // overall position at intermediate 1
+    I1 = i1index; // order to display by category at intermediate 1
     I2C = i2Position_Categorie;
     I2O = i2Position_Overall;
     I2 = i2index;
@@ -230,8 +236,8 @@ test.html + testEpic.py will genrate test
     R = Id_NbTour; // laps
 
     O = Id_Numero; // combined number
-    N = Id_Nom; // name
-    N2 = Id_Nom_2;
+    N = Id_Nom; // name 1
+    N2 = Id_Nom_2; // name 2
 
     
     ## files flow ##
@@ -241,6 +247,6 @@ j1.txt - from master.html (via enable j1) > py > ftp > index.html on epic site /
 p3.html - from master.html (via enable j3) > py > ftp > single.html on epic site / tt live
 t1-4.txt - from master.html (via enable j1) > py(converted j1.txt) > ftp > tt live for tvtotal.html (virtual total standing)
 q1-4.txt -from mastertotal.html (via publish box) > total.html on epic site
-
+stageBox.html  - from master.html (via publish box, make sure to diable individual times) > prologue.html, stage1.html...
 
 

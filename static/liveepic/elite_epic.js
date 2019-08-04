@@ -1672,9 +1672,25 @@
 
                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
                         m += 1;
-                     } else {
-                         m = 1;
-                      prevCompCat = allArray[l]["Id_Categorie"];
+                        
+                    // gap in category
+                        competitorTime = allArray[l]["Id_Inter1Time"];
+                        
+                        if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
+                        allArray[l]["Inter1Ecart1erCategory"] = ms2TimeString(competitorTime - leaderTime);
+                        } else {
+                        allArray[l]["Inter1Ecart1erCategory"] = 99999999999;
+                        }
+                 //       console.log(allArray[l]["Id_Numero"] +': '+ allArray[l]["Inter1Ecart1erCategory"]);
+                        
+                    } else {
+                        m = 1;
+                        
+                        prevCompCat = allArray[l]["Id_Categorie"];
+                        leaderTime = allArray[l]["Id_Inter1Time"];
+                        allArray[l]["Inter1Ecart1erCategory"] = 99999999999;
+                //        console.log(allArray[l]["Inter1Ecart1erCategory"]);
+                        
                     }
                     allArray[l]["i1Position_Categorie"] = Number(m);
                     
@@ -1719,11 +1735,27 @@
                      allArray[l]["i2index"] = Number(l+1);
                 // reassign position number
  
-                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                    if (prevCompCat == allArray[l]["Id_Categorie"]) {
                         m += 1;
-                     } else {
-                         m = 1;
-                      prevCompCat = allArray[l]["Id_Categorie"];
+                        
+                    // gap in category
+                        competitorTime = allArray[l]["Id_Inter2Time"];
+                        
+                        if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
+                        allArray[l]["Inter2Ecart1erCategory"] = ms2TimeString(competitorTime - leaderTime);
+                        } else {
+                        allArray[l]["Inter2Ecart1erCategory"] = 99999999999;
+                        }
+                 //       console.log(allArray[l]["Id_Numero"] +': '+ allArray[l]["Inter2Ecart1erCategory"]);
+                        
+                    } else {
+                        m = 1;
+                        
+                        prevCompCat = allArray[l]["Id_Categorie"];
+                        leaderTime = allArray[l]["Id_Inter2Time"];
+                        allArray[l]["Inter2Ecart1erCategory"] = 99999999999;
+                //        console.log(allArray[l]["Inter2Ecart1erCategory"]);
+                        
                     }
                     allArray[l]["i2Position_Categorie"] = Number(m);
                     
@@ -1768,11 +1800,27 @@
                      allArray[l]["i3index"] = Number(l+1);
                 // reassign position number
  
-                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                    if (prevCompCat == allArray[l]["Id_Categorie"]) {
                         m += 1;
-                     } else {
-                         m = 1;
-                      prevCompCat = allArray[l]["Id_Categorie"];
+                        
+                    // gap in category
+                        competitorTime = allArray[l]["Id_Inter3Time"];
+                        
+                        if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
+                        allArray[l]["Inter3Ecart1erCategory"] = ms2TimeString(competitorTime - leaderTime);
+                        } else {
+                        allArray[l]["Inter3Ecart1erCategory"] = 99999999999;
+                        }
+                 //       console.log(allArray[l]["Id_Numero"] +': '+ allArray[l]["Inter3Ecart1erCategory"]);
+                        
+                    } else {
+                        m = 1;
+                        
+                        prevCompCat = allArray[l]["Id_Categorie"];
+                        leaderTime = allArray[l]["Id_Inter3Time"];
+                        allArray[l]["Inter3Ecart1erCategory"] = 99999999999;
+                //        console.log(allArray[l]["Inter3Ecart1erCategory"]);
+                        
                     }
                     allArray[l]["i3Position_Categorie"] = Number(m);
                     
@@ -1819,11 +1867,27 @@
                      allArray[l]["findex"] = Number(l+1);
                 // reassign position number
  
-                     if (prevCompCat == allArray[l]["Id_Categorie"]) {
+                    if (prevCompCat == allArray[l]["Id_Categorie"]) {
                         m += 1;
-                     } else {
-                         m = 1;
-                      prevCompCat = allArray[l]["Id_Categorie"];
+                        
+                    // gap in category
+                        competitorTime = allArray[l]["Id_FinishTime"];
+                        
+                        if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
+                        allArray[l]["FinishEcart1erCategory"] = ms2TimeString(competitorTime - leaderTime);
+                        } else {
+                        allArray[l]["FinishEcart1erCategory"] = 99999999999;
+                        }
+                 //       console.log(allArray[l]["Id_Numero"] +': '+ allArray[l]["FinishEcart1erCategory"]);
+                        
+                    } else {
+                        m = 1;
+                        
+                        prevCompCat = allArray[l]["Id_Categorie"];
+                        leaderTime = allArray[l]["Id_FinishTime"];
+                        allArray[l]["FinishEcart1erCategory"] = 99999999999;
+                //        console.log(allArray[l]["FinishEcart1erCategory"]);
+                        
                     }
                     allArray[l]["fPosition_Categorie"] = Number(m);
                     
@@ -2522,7 +2586,7 @@
                 }
                
                             
-        
+    //    console.log(allArray[l]["Id_Sector_Ecart1er"] + ' | ' + allArray[l]["Inter1Ecart1erCategory"] + ' | ' + allArray[l]["Inter2Ecart1erCategory"] + ' | ' + allArray[l]["Inter3Ecart1erCategory"] + ' | ' + allArray[l]["FinishEcart1erCategory"]);
 
        
                     
@@ -3795,6 +3859,26 @@ if (enableJ1 == 1) {
             } else {
                 allArray[l]["Id_Inter3Ecart1er"] = timeString2ms(allArray[l]["Id_Inter3Ecart1er"]);
             }
+            if (allArray[l]["Inter1Ecart1erCategory"] == 99999999999) {
+                allArray[l]["Inter1Ecart1erCategory"] = 0;
+            } else {
+                allArray[l]["Inter1Ecart1erCategory"] = timeString2ms(allArray[l]["Inter1Ecart1erCategory"]);
+            }
+            if (allArray[l]["Inter2Ecart1erCategory"] == 99999999999) {
+                allArray[l]["Inter2Ecart1erCategory"] = 0;
+            } else {
+                allArray[l]["Inter2Ecart1erCategory"] = timeString2ms(allArray[l]["Inter2Ecart1erCategory"]);
+            }
+            if (allArray[l]["Inter3Ecart1erCategory"] == 99999999999) {
+                allArray[l]["Inter3Ecart1erCategory"] = 0;
+            } else {
+                allArray[l]["Inter3Ecart1erCategory"] = timeString2ms(allArray[l]["Inter3Ecart1erCategory"]);
+            }
+            if (allArray[l]["FinishEcart1erCategory"] == 99999999999) {
+                allArray[l]["FinishEcart1erCategory"] = 0;
+            } else {
+                allArray[l]["FinishEcart1erCategory"] = timeString2ms(allArray[l]["FinishEcart1erCategory"]);
+            }
             if (allArray[l]["Id_TpsCumule"] == 99999999999) {
                 allArray[l]["Id_TpsCumule"] = 0;
             } else {
@@ -3863,6 +3947,8 @@ if (enableJ1 == 1) {
         delete allArray[l].Id_Categorie;
         allArray[l].E = allArray[l].Id_Ecart1er;
         delete allArray[l].Id_Ecart1er;
+        allArray[l].EC = allArray[l].FinishEcart1erCategory;
+        delete allArray[l].FinishEcart1erCategory;
         allArray[l].Q = allArray[l].Id_Equipe;
         delete allArray[l].Id_Equipe;
 
@@ -3876,18 +3962,24 @@ if (enableJ1 == 1) {
         delete allArray[l].Id_Inter1Time;
         allArray[l].E1 = allArray[l].Id_Inter1Ecart1er;
         delete allArray[l].Id_Inter1Ecart1er;
+        allArray[l].E1C = allArray[l].Inter1Ecart1erCategory;
+        delete allArray[l].Inter1Ecart1erCategory;
         allArray[l].B1 = allArray[l].Id_Inter1blue;
         delete allArray[l].Id_Inter1blue;
         allArray[l].T2 = allArray[l].Id_Inter2Time;
         delete allArray[l].Id_Inter2Time;
         allArray[l].E2 = allArray[l].Id_Inter2Ecart1er;
         delete allArray[l].Id_Inter2Ecart1er;
+        allArray[l].E2C = allArray[l].Inter2Ecart1erCategory;
+        delete allArray[l].Inter2Ecart1erCategory;
         allArray[l].B2 = allArray[l].Id_Inter2blue;
         delete allArray[l].Id_Inter2blue;
          allArray[l].T3 = allArray[l].Id_Inter3Time;
         delete allArray[l].Id_Inter3Time;
         allArray[l].E3 = allArray[l].Id_Inter3Ecart1er;
         delete allArray[l].Id_Inter3Ecart1er;
+        allArray[l].E3C = allArray[l].Inter3Ecart1erCategory;
+        delete allArray[l].Inter3Ecart1erCategory;
         allArray[l].B3 = allArray[l].Id_Inter3blue;
         delete allArray[l].Id_Inter3blue;
    

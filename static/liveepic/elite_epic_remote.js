@@ -1209,6 +1209,8 @@ remove all imTheLeader
                 delete allArray[b].C;
                 allArray[b].Id_Ecart1er = allArray[b].E;
                 delete allArray[b].E;
+                allArray[b].FinishEcart1erCategory = allArray[b].EC;
+                delete allArray[b].EC;
                 allArray[b].Id_Equipe = allArray[b].Q;
                 delete allArray[b].Q;
 
@@ -1222,18 +1224,24 @@ remove all imTheLeader
                 delete allArray[b].T1;
                 allArray[b].Id_Inter1Ecart1er = allArray[b].E1;
                 delete allArray[b].E1;
+                allArray[b].Inter1Ecart1erCategory = allArray[b].E1C;
+                delete allArray[b].E1C;
                 allArray[b].Id_Inter1blue = allArray[b].B1;
                 delete allArray[b].B1;
                 allArray[b].Id_Inter2Time = allArray[b].T2;
                 delete allArray[b].T2;
                 allArray[b].Id_Inter2Ecart1er = allArray[b].E2;
                 delete allArray[b].E2;
+                allArray[b].Inter2Ecart1erCategory = allArray[b].E2C;
+                delete allArray[b].E2C;
                 allArray[b].Id_Inter2blue = allArray[b].B2;
                 delete allArray[b].B2;
                 allArray[b].Id_Inter3Time = allArray[b].T3;
                 delete allArray[b].T3;
                 allArray[b].Id_Inter3Ecart1er = allArray[b].E3;
                 delete allArray[b].E3;
+                allArray[b].Inter3Ecart1erCategory = allArray[b].E3C;
+                delete allArray[b].E3C;
                 allArray[b].Id_Inter3blue = allArray[b].B3;
                 delete allArray[b].B3;
 
@@ -1303,6 +1311,9 @@ remove all imTheLeader
                 if (allArray[b]["Id_Ecart1er"] == 0) {
                     allArray[b]["Id_Ecart1er"] = 99999999999;
                 }
+                if (allArray[b]["FinishEcart1erCategory"] == 0) {
+                    allArray[b]["FinishEcart1erCategory"] = 99999999999;
+                }
                 if (allArray[b]["Id_FinishTime"] == 0) {
                     allArray[b]["Id_FinishTime"] = 99999999999;
                 }
@@ -1314,6 +1325,15 @@ remove all imTheLeader
                 }
                 if (allArray[b]["Id_Inter3Ecart1er"] == 0) {
                     allArray[b]["Id_Inter3Ecart1er"] = 99999999999;
+                }
+                if (allArray[b]["Inter1Ecart1erCategory"] == 0) {
+                    allArray[b]["Inter1Ecart1erCategory"] = 99999999999;
+                }
+                if (allArray[b]["Inter2Ecart1erCategory"] == 0) {
+                    allArray[b]["Inter2Ecart1erCategory"] = 99999999999;
+                }
+                if (allArray[b]["Inter3Ecart1erCategory"] == 0) {
+                    allArray[b]["Inter3Ecart1erCategory"] = 99999999999;
                 }
                 if (allArray[b]["Id_TpsCumule"] == 0) {
                     allArray[b]["Id_TpsCumule"] = 99999999999;
