@@ -140,10 +140,10 @@ prologue start clock - https://tnuatiming.com/liveepic/start.html (computer time
 
 kiosk - https://tnuatiming.com/liveepic/kiosk.html iterate over categories and gc every 10 sec, show 14 competitors and auto jump to next intermediate/finsh when 3 competitors got there.
 
-results - main page with links to all results pages
+results - https://tnuatiming.com/liveepic/results.html - main page with links to all results pages
 
 
-## daily update ##
+## daily update, before stage start ##
 
 Id_Groupe
 

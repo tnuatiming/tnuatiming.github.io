@@ -42,7 +42,7 @@
         {{ range where (where .Site.RegularPages.ByPublishDate.Reverse "Params.category" .Params.category) "Params.season" .Params.season -}}
 
             {{- if ne $title .Params.title -}}
-                <li><a href="{{ .URL }}">{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</a></li>
+                <li><a href="{{ .RelPermalink }}">{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</a></li>
             {{ end }}
             {{- if eq $title .Params.title -}}
                 <li><p>{{ with .Params.round }}{{ . }} - {{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</p></li>
