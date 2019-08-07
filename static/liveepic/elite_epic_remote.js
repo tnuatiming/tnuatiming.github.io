@@ -2347,10 +2347,13 @@ remove all imTheLeader
                 
                 if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
                     allArray[l]["Id_Arrow"] = 10; // DSQ
+                } else if (allArray[l]["Id_Image"].includes("_Status4") || allArray[l]["Id_Image_2"].includes("_Status4")) {
+                    allArray[l]["blue"] = 1; //FIXME
+                    showBlue = 1;
                 } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
                     allArray[l]["blue"] = 1; //FIXME
                     showBlue = 1;
-                } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
+                }  else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
                     allArray[l]["Id_Arrow"] = 11; // DNF
                 } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
                     allArray[l]["Id_Arrow"] = 12;
