@@ -1395,7 +1395,7 @@
                             
                             if (Math.abs(allArray[b]["Id_TpsCumule"] - allArray[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
                             //      allArray[b]["Id_FinishTime"] = 99999999999;
-                                allArray[b].Id_Finishblue = 1; // make blue DSQ
+                   //             allArray[b].Id_Finishblue = 1; // make blue DSQ
                                 allArray[b].e2min = 1;
 
                             }
@@ -2599,7 +2599,7 @@
                         allArray[l]["blue"] = 1; //FIXME
                         showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
-                        allArray[l]["e2min"] = 1; 
+               //         allArray[l]["e2min"] = 1; 
                         allArray[l]["blue"] = 1; //FIXME
                         showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
@@ -2939,10 +2939,13 @@ allArray[l]["Id_Arrow"]
 
                 // add and style the status/arrow
             if (hideStatus == 0) {
-                if (allArray[l]["e2min"] == 1) {
-                
-                    finalText += `<td title="${allArray[l]["Id_TpsCumule"]}\n${allArray[l]["Id_TpsCumule_2"]}" class="blued rnk_font">&nbsp;</td>`; //&#9608;
+                if (allArray[l]["Id_Image"] == "_Status5") { // e2min
+                    if (doNotShowTime == 0) {
 
+                        finalText += `<td title="${allArray[l]["Id_TpsCumule"]}\n${allArray[l]["Id_TpsCumule_2"]}" class="blued rnk_font">&nbsp;</td>`; //&#9608;
+                    } else {
+                        finalText += `<td title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>`; //&#9608;
+                    }
                 } else if (showBlue == 1) {
                 
                     finalText += `<td title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>`; //&#9608;
@@ -3012,7 +3015,7 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td colspan="2" title="Exceeded Maximum Stage Time" class="rnk_font">MST</td>`;
                     
-                } else if (allArray[l]["e2min"] == 1 && show == 4) {
+                } else if (allArray[l]["Id_Image"] == "_Status5" && show == 4) { // e2min
                     
                     finalText += `<td colspan="2" title="Exceeded 2 Minutes Separation" class="rnk_font">E2M</td>`;
                     
@@ -3194,7 +3197,12 @@ if (show == 4) {
                          if (allArray[l]["Id_Inter1Time"] == 99999999999) {
                             finalText += `<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>`; // add intermediate blue
                         } else {
-                            finalText += `<td title="${ms2TimeString(allArray[l]["Id_Inter1"])}\n${ms2TimeString(allArray[l]["Id_Inter1_2"])}" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter1Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            if (doNotShowTime == 0) {
+
+                                finalText += `<td title="${ms2TimeString(allArray[l]["Id_Inter1"])}\n${ms2TimeString(allArray[l]["Id_Inter1_2"])}" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter1Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            } else {
+                                finalText += `<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter1Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            }
 
                             if (allArray[l]["Id_Inter1Ecart1er"] == 99999999999) {
                                 finalText += '<div>-</div></td>'; // add diff
@@ -3234,7 +3242,12 @@ if (show == 4) {
                          if (allArray[l]["Id_Inter2Time"] == 99999999999) {
                             finalText += `<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>`; // add intermediate blue
                         } else {
-                            finalText += `<td title="${ms2TimeString(allArray[l]["Id_Inter2"])}\n${ms2TimeString(allArray[l]["Id_Inter2_2"])}" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter2Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            if (doNotShowTime == 0) {
+
+                                finalText += `<td title="${ms2TimeString(allArray[l]["Id_Inter2"])}\n${ms2TimeString(allArray[l]["Id_Inter2_2"])}" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter2Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            } else {
+                                finalText += `<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter2Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            }
 
                             if (allArray[l]["Id_Inter2Ecart1er"] == 99999999999) {
                                 finalText += `<div>-</div></td>`; // add diff
@@ -3273,7 +3286,12 @@ if (show == 4) {
                          if (allArray[l]["Id_Inter3Time"] == 99999999999) {
                             finalText += `<td title="Blue Board Rider" class="rnk_font mobile"><span class="Flag blueFlag"></span></td>`; // add intermediate blue
                         } else {
-                            finalText += `<td title="${ms2TimeString(allArray[l]["Id_Inter3"])}\n${ms2TimeString(allArray[l]["Id_Inter3_2"])}" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter3Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            if (doNotShowTime == 0) {
+
+                                finalText += `<td title="${ms2TimeString(allArray[l]["Id_Inter3"])}\n${ms2TimeString(allArray[l]["Id_Inter3_2"])}" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter3Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            } else {
+                                finalText += `<td title="Blue Board Rider" class="rnk_font mobile"><div class="bold">${allArray[l]["Id_Inter3Time"]}<span class="Flag blueFlag"></span></div>`; // add intermediate time
+                            }
 
                             if (allArray[l]["Id_Inter3Ecart1er"] == 99999999999) {
                                 finalText += `<div>-</div></td>`; // add diff
@@ -3411,6 +3429,12 @@ if (show == 4) {
                     if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += `<td class="rnk_font">-</td>`; // add total time
+                        } else if (allArray[l]["e2min"] == 1 && show == 4) {
+                            if (doNotShowTime == 0) {
+                                finalText += `<td title="${allArray[l]["Id_TpsCumule"]}\n${allArray[l]["Id_TpsCumule_2"]}" class="rnk_font"><div class="bold">${allArray[l]["Id_Sector_FinishTime"]}<span class="Flag blueFlag"></span></div></td>`; // add total time
+                            } else {
+                                finalText += `<td class="rnk_font"><div class="bold">${allArray[l]["Id_Sector_FinishTime"]}<span class="Flag blueFlag"></span></div></td>`; // add total time
+                            }
                         } else {
                             finalText += `<td class="rnk_font"><div class="bold">${allArray[l]["Id_Sector_FinishTime"]}</div></td>`; // add total time
                         }
@@ -3418,14 +3442,20 @@ if (show == 4) {
                     } else {
                         if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
                             finalText += `<td class="rnk_font"><div>-</div>`; // add total time
+                        } else if (allArray[l]["e2min"] == 1 && show == 4) {
+                            if (doNotShowTime == 0) {
+                                finalText += `<td title="${allArray[l]["Id_TpsCumule"]}\n${allArray[l]["Id_TpsCumule_2"]}" class="rnk_font"><div class="bold">${allArray[l]["Id_Sector_FinishTime"]}<span class="Flag blueFlag"></div>`; // add total time
+                            } else {
+                                finalText += `<td class="rnk_font"><div class="bold">${allArray[l]["Id_Sector_FinishTime"]}<span class="Flag blueFlag"></div>`; // add total time
+                            }
                         } else {
                             finalText += `<td class="rnk_font"><div class="bold">${allArray[l]["Id_Sector_FinishTime"]}</div>`; // add total time
                         }
 
                         if (allArray[l]["Id_Sector_Ecart1er"] == 99999999999) {
-                            finalText += `<div>-</td>`; // add diff
+                            finalText += `<div>-</div></td>`; // add diff
                         } else {
-                            finalText += `<div>+${allArray[l]["Id_Sector_Ecart1er"]}</td>`; // add diff
+                            finalText += `<div>+${allArray[l]["Id_Sector_Ecart1er"]}</div></td>`; // add diff
                         }
                     }
                 }
