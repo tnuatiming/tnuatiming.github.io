@@ -2687,6 +2687,10 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += '<td colspan="2" title="*" class="black ' + blued + 'rnk_font">*</td>';
                     
+                } else if (allArray[l]["mst"] == 1 && show == 4) {
+                    
+                    finalText += '<td colspan="2" title="Exceeded Maximum Stage Time" class="black ' + blued + 'rnk_font">MST</td>';
+                    
                 } else if (showBlue == 1) {
                 
                     finalText += '<td colspan="2" title="Blue Board Rider" class="blued rnk_font">&nbsp;</td>'; //&#9608;
@@ -3090,7 +3094,7 @@ if (show == 4 &&) {
 // TOTAL TIME & GAP                
                 
                 if (timeGapDisplay == 1) {
-                    if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
+                    if (allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["Id_Status"] == 1) {
                         finalText += '<td class="rnk_font">-</td>'; // add total time
                     } else {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
@@ -3100,7 +3104,7 @@ if (show == 4 &&) {
         //         }
 
     
-                    if (allArray[l]["Id_Sector_Ecart1er"] == 99999999999) {
+                    if (allArray[l]["Id_Sector_Ecart1er"] == 99999999999 || allArray[l]["Id_Status"] == 1) {
                         finalText += '<td class="rnk_font">-</td>'; // add diff
                     } else {
                         finalText += '<td class="rnk_font">+' + allArray[l]["Id_Sector_Ecart1er"] + '</td>'; // add diff
