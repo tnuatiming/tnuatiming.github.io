@@ -1922,12 +1922,26 @@ if (epictv == 0) {
                     finalText += '<td colspan="2" class="rnk_font"></td>\n'; // add postion
                 }
                 
-                 if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["oldBlue"] != 0) {
-                finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["leader"] == 1) {
-                    finalText += '<td title="Epic Leader" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                // show all array key:value in the number title
+                var keyValueLog = '';
+                if (showLog == 1) {
+                    for (var key in allArray[l]) {
+                //      var value = allArray[l][key];
+                        if ((key == "E1C" || key == "E2C" || key == "E3C" || key == "EC") && allArray[l][key] != 0) {
+                            keyValueLog += `${key}: ${ms2TimeString(allArray[l][key])}  |  `;
+                        } else {
+                            keyValueLog += `${key}: ${allArray[l][key]}  |  `;
+                        }
+                    }
+                }
+
+                
+                if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["oldBlue"] != 0) { // Blue Board Rider
+                finalText += '<td title="' + keyValueLog + '" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                } else if (allArray[l]["leader"] == 1) { // Epic Leader
+                    finalText += '<td title="' + keyValueLog + '" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
-                finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
+                finalText += '<td title="' + keyValueLog + '" class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 }
                                
        //         finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';
@@ -2269,7 +2283,8 @@ if (showLog == 1) {
 const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})));
   
 const allArrayObject = arrayToObject(allArray, "Id_Numero")
-console.table(allArrayObject);
+//console.table(allArrayObject);
+console.log(allArrayObject);
 
 //console.table(allArray, ["Id_Numero", "Id_Position_Overall", "Id_Position_Categorie", "Id_FinishTime", "Id_FinishTime_1", "Id_FinishTime_2", "Id_FinishTime_3", "finishTimeTotal", "stagesFinished"]);
   //  console.log(finalText);

@@ -3043,7 +3043,11 @@ allArray[l]["Id_Arrow"]
                 if (showLog == 1) {
                     for (var key in allArray[l]) {
                 //      var value = allArray[l][key];
-                        keyValueLog += `${key}: ${allArray[l][key]}\n`;
+                        if ((key == "Id_Inter1" || key == "Id_Inter1_2" || key == "Id_Inter2" || key == "Id_Inter2_2" || key == "Id_Inter3" || key == "Id_Inter3_2") && allArray[l][key] != 99999999999) {
+                            keyValueLog += `${key}: ${ms2TimeString(allArray[l][key])}  |  `;
+                        } else {
+                            keyValueLog += `${key}: ${allArray[l][key]}  |  `;
+                        }
                     }
                 }
 
@@ -4532,8 +4536,8 @@ const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({
 
 const allArray3fObject = arrayToObject(allArray3f, "Id_Numero")
 
-//    console.log(allArray3f);                
-    console.table(allArray3fObject);
+    console.log(allArray3fObject);                
+//    console.table(allArray3fObject);
 }                
      
     
@@ -4553,8 +4557,8 @@ const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({
 
 const allArrayObject = arrayToObject(allArray, "Id_Numero")
 
-//    console.log(allArray);                
-    console.table(allArrayObject);
+    console.log(allArrayObject);                
+//    console.table(allArrayObject);
 }
     
 if (enableJ1 == 1) {
