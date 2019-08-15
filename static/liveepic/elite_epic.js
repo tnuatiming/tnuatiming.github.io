@@ -2972,7 +2972,7 @@ allArray[l]["Id_Arrow"]
                         finalText += `<td class="${checkeredFlag} green rnk_font"></td>`;
                     }
                     
-                } else if (checkeredFlag == "finished ") { // finished
+                } else if (checkeredFlag == "finished " || (show == 4 && allArray[l]["Id_FinishTime"] != 99999999999)) { // finished
                     
                     finalText += `<td title="Finished" class="finished white rnk_font">&nbsp;</td>`;
                     

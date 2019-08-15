@@ -386,6 +386,21 @@ php_value session.cookie_httponly true
     
 </IfModule>
 
+# password protect single file
+<Files master.html>
+AuthName "please, log in"
+AuthType Basic
+AuthUserFile /home/raz/public_html/.htpasswd
+Require valid-user
+</Files>
+<Files mastertotal.html>
+AuthName "please, log in"
+AuthType Basic
+AuthUserFile /home/raz/public_html/.htpasswd
+Require valid-user
+</Files>
+
+
 Redirect permanent /races/enduro/enduro2012r5.html /results/enduro/2013/enduro2013r5.html
 Redirect permanent /races/supermoto_superbike/supermoto_superbike2013r1.html /results/supermoto/2013/supermoto2013r1.html
 Redirect permanent /races/baja/2013/baja2013r1.html /results/rally/2013/rally2013r1.html

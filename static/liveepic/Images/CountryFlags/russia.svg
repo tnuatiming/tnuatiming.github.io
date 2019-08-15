@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
-  <path fill="#fff" d="M0-.00000105h360V119.9999933H0z"/>
-  <path fill="#d52b1e" d="M0 120.00000033h360V240.0000003H0z"/>
-  <path fill="#0039a6" d="M0 80.00000362h360v79.99999623H0z"/>
+  <path fill="#fff" d="M0 0h360v120H0z"/>
+  <path fill="#d52b1e" d="M0 120h360v120H0z"/>
+  <path fill="#0039a6" d="M0 80h360v80H0z"/>
 </svg>

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 360 240">
-  <path fill="#b22234" d="M-7e-7.00012858h359.99998976v239.99974474H-7e-7z"/>
-  <path fill="#fff" d="M.00000851 19.490209v16.40396204H360.0000007V19.490209zm0 36.9236802v16.40395571H360.0000007v-16.4039557zm0 36.92229575v16.40396203H360.0000007V93.33618495zm0 36.9236802v16.40396203H360.0000007v-16.40396203zm0 36.92230208v16.403955H360.0000007v-16.403955zm0 36.92367316v16.40396204H360.0000007v-16.40396204z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal" white-space="normal"/>
-  <path fill="#3c3b6e" d="M-7e-7.00012858h157.6929963v130.26013926H-7e-7z"/>
-  <g fill="#fff" transform="matrix(.05279 0 0 .06155 -7e-7 .00012878)">
+  <path fill="#b22234" d="M-.000015.000003h360.00003v239.999994H-.000015z"/>
+  <path stroke="#fff" stroke-width="300" d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" transform="matrix(.04858 0 0 .06154 -.000015 .000003)"/>
+  <path fill="#3c3b6e" d="M-.000015.000003h144.000012v129.230766H-.000015z"/>
+  <g fill="#fff" transform="matrix(.04858 0 0 .06154 -.000015 .000003)">
     <g id="d">
       <g id="c">
         <g id="e">
