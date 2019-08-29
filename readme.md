@@ -126,6 +126,7 @@ or
 sudo gem install jekyll
 
 sudo pip3 install beautifulsoup4 (for python csv convert)
+sudo pip3 install inotify (for python ftp_with_inotify_and_log.py)
 
 and add: , encoding='utf-8' to file options in convert_html_to_csv.py and import_posts.py
 and: # -*- coding: utf-8 -*- at the top

@@ -67,7 +67,7 @@ remove all imTheLeader
     
     var raceEnded = 0;
     
-    var precision = "tenth"; // "tenth" for 1 digit after the .
+    var precision = "tenth"; // "tenth" for 1 digit after the . , "second" no mili
     
     var catcat = "None";
     if (sessionStorage.getItem('catcat')) {
@@ -1162,11 +1162,13 @@ remove all imTheLeader
             document.getElementById("intermediate1").style.display = "none";        
             document.getElementById("intermediate2").style.display = "none";        
             document.getElementById("intermediate3").style.display = "none";        
+//            precision = "tenth";
         } else {
             document.getElementById("intermediate1").style.display = "inline-block";        
             document.getElementById("intermediate2").style.display = "inline-block";        
             document.getElementById("intermediate3").style.display = "inline-block";        
             prologue = 0;
+//            precision = "second";
         }
 
         if (enableKiosk == 1) {
@@ -3431,6 +3433,11 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
             b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
             a=a[0].split(':'),
             (b*1e2)+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+        } else if (precision == "second") {
+            return a=a.split('.'), // optimized
+            b= 0, // mili is 0
+            a=a[0].split(':'),
+            b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
         } else {
             return a=a.split('.'), // optimized
             b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
@@ -3449,6 +3456,14 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
             (m<10?0:'')+m+':'+  // optimized
             (s<10?0:'')+s+'.'+ // optimized
             +(k/1e2) // optimized
+        } else if (precision == "second") {
+            return k=a%1e3, // optimized by konijn
+            s=a/1e3%60|0,
+            m=a/6e4%60|0,
+            h=a/36e5%24|0,
+            (h?(h<10?'0'+h:h)+':':'')+ // optimized
+            (m<10?0:'')+m+':'+  // optimized
+            (s<10?0:'')+s
         } else {
             return k=a%1e3, // optimized by konijn
             s=a/1e3%60|0,

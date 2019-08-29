@@ -109,6 +109,11 @@ riders wont get automatic blue if exceeds 2 minutes separation on intermediate ,
 use status 4 to make the rider blue for other resones.
 
 
+## intermediate without Tag server ##
+
+each intermediate time run its own race with mass start (same time as main timing) and finished at the intermediate (ch 4). the results live uploaded to the server (liveepic/i1/p1.html) and get combined on the pi. the live only has to have competitor number((מספר) - Id_Numero) , time((זמן) - Id_TpsCumule) and class((Class) - Id_Classe) (the p1 file is very lean)
+
+
 ## on epic site ##
 
 our code goes under:  <div class="main_content">

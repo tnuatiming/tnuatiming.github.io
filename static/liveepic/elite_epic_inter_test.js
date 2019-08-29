@@ -47,6 +47,22 @@
 
     var P1;
     
+    var enableInter1 = 1; // enable getting intermediate1 from elite live
+    var I1;
+    var inter1Array = {};
+    var urlInter1 = 'https://tnuatiming.com/liveepic/i1/p1.html'; 
+    
+    var enableInter2 = 1; // enable getting intermediate2 from elite live
+    var I2;
+    var inter2Array = {};
+    var urlInter2 = 'https://tnuatiming.com/liveepic/i2/p1.html'; 
+    
+    var enableInter3 = 1; // enable getting intermediate3 from elite live
+    var I3;
+    var inter3Array = {};
+    var urlInter3 = 'https://tnuatiming.com/liveepic/i3/p1.html'; 
+    
+    
     var positionArray_All_Cat = {}; // array with the previous competitor overall and category position. updated every Load, used to show the position change arrow between Loads 
     if (sessionStorage.getItem('positionArray_All_Cat')) {
         positionArray_All_Cat = JSON.parse(sessionStorage.getItem('positionArray_All_Cat'));
@@ -66,7 +82,7 @@
         
     var prologue;
 
-    var precision = "tenth"; // "tenth" for 1 digit after the . , "second" no mili
+    var precision = "second"; // "tenth" for 1 digit after the . , "second" no mili
     
     var catcat = "None";
     if (sessionStorage.getItem('catcat')) {
@@ -710,7 +726,8 @@
     };
 
     async function Load() {
-        
+                
+        console.time('total');
                     
         if (TimerLoad) clearTimeout(TimerLoad);
 
@@ -736,6 +753,63 @@
         });
 */
         if (self.fetch) {
+            
+            if (enableInter1 == 1) {
+                
+                
+                try {
+                const response = await fetch(urlInter1, {cache: "no-store"});
+                if (response.ok) {
+                    I1 = await response.text();
+                    interTable(I1, 1);
+  
+                    }
+                }
+                catch (err) {
+                    console.log('results fetch failed', err);
+                }
+
+                    
+                
+            }
+
+            if (enableInter2 == 1) {
+                
+                
+                try {
+                const response = await fetch(urlInter2, {cache: "no-store"});
+                if (response.ok) {
+                    I2 = await response.text();
+                    interTable(I2, 2);
+  
+                    }
+                }
+                catch (err) {
+                    console.log('results fetch failed', err);
+                }
+
+                    
+                
+            }
+
+            if (enableInter3 == 1) {
+                
+                
+                try {
+                const response = await fetch(urlInter3, {cache: "no-store"});
+                if (response.ok) {
+                    I3 = await response.text();
+                    interTable(I3, 3);
+  
+                    }
+                }
+                catch (err) {
+                    console.log('results fetch failed', err);
+                }
+
+                    
+                
+            }
 
             try {
                 const response = await fetch(url, {cache: "no-store"});
@@ -848,6 +922,8 @@
 
         TimerLoad = setTimeout(loop, Rafraichir);
         Rafraichir = 60000; // every 60 seconds
+        
+        console.timeEnd('total');
 
     }
 
@@ -866,6 +942,79 @@
         xhr1.send();
     }
 */
+
+    function interTable(ii, ix) {
+        
+        var Text, lines, pp, ttt, b, id;
+        var lineArray = {};
+        var hhhPro = [];
+        if (ix == 1) {
+            inter1Array = {};
+        } else if (ix == 2) {
+            inter2Array = {};
+        } else if (ix == 3) {
+            inter3Array = {};
+        }
+        
+        Text = ii.split('<table'); // split the text to title/time and the table
+        Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
+      //  console.log(Text[1]);
+
+        lines = Text[1].split("\n");
+
+        ttt = 0;
+        pp = 0;
+            
+        for (b = 0; b < lines.length; b++) { 
+           
+            if (lines[b].includes('<td id="Id_')) { // header cell
+                id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
+                hhhPro.push(id);
+
+            } else if (lines[b].includes("OddRow") || lines[b].includes("EvenRow")) { // competitor line
+                ttt = 1;
+            } else if (lines[b].includes("</tr>") && ttt == 1) { // end competitor line
+                ttt = 0;
+                
+                 if (lineArray["Id_Classe"] != 'ss' && lineArray["Id_Classe"] != 'sf' && lineArray["Id_Nom"] != '???') { 
+                                   
+                    
+                    if (ix == 1) {
+                        inter1Array[lineArray["Id_Numero"]] = (lineArray["Id_TpsCumule"]); 
+                    //    console.log(inter1Array);
+                    } else if (ix == 2) {
+                        inter2Array[lineArray["Id_Numero"]] = (lineArray["Id_TpsCumule"]);  
+                    //    console.log(inter2Array);
+                    } else if (ix == 3) {
+                        inter3Array[lineArray["Id_Numero"]] = (lineArray["Id_TpsCumule"]);  
+                    //    console.log(inter3Array);
+                    }
+                    
+                }
+
+                lineArray = {};
+                pp = 0;
+                
+            } else if ((lines[b].includes("<td ") && ttt == 1)) { // clean and add competitor cell
+
+                lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
+
+                if (lineArray[hhhPro[pp]] == '&nbsp;' ) {
+                    lineArray[hhhPro[pp]] = "";   
+                }
+                
+
+                pp += 1;
+      //    console.log(lineArray);
+
+            }
+            
+        }
+                
+     };
+
+
+
 
     function createLiveTable(p1) {
             
@@ -909,7 +1058,7 @@
         
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, fullNumber;
         
 // TEST        var allArrayMinimized = [], allArrayNew = [];
 
@@ -968,10 +1117,13 @@
 
         if (Text[0].includes("prologue")) { // prologue
             prologue = 1;
-//            precision = "tenth";
+            enableInter1 = 0;
+            enableInter2 = 0;
+            enableInter3 = 0;
+            precision = "tenth";
         } else {
             prologue = 0;
-//            precision = "second";
+            precision = "second";
         }
 
         if (Text[0].includes("_Stop.png") || Text[0].includes("_CheckeredFlag.png")) { // check if race ended
@@ -1099,6 +1251,27 @@
 //                    lineArray.Id_penalty = "";   
                     lineArray.e2min = 0; // exedded 2 minutes
 
+
+                    
+/*    // intermediate from file                
+                    
+                    if (inter1Array.hasOwnProperty(lineArray["Id_Numero_Full"].replace('-', ''))) {
+                        console.log(lineArray["Id_Numero_Full"] + ' : ' + inter1Array[lineArray["Id_Numero_Full"].replace('-', '')] + ' : ' + timeString2ms(lineArray["Id_TpsCumule"]));
+                    }
+                    
+                    
+                    if (inter2Array.hasOwnProperty(lineArray["Id_Numero_Full"].replace('-', ''))) {
+                        console.log(lineArray["Id_Numero_Full"] + ' : ' + inter2Array[lineArray["Id_Numero_Full"].replace('-', '')] + ' : ' + timeString2ms(lineArray["Id_TpsCumule"]));
+                    }
+                    
+                    if (inter3Array.hasOwnProperty(lineArray["Id_Numero_Full"].replace('-', ''))) {
+                        console.log(lineArray["Id_Numero_Full"] + ' : ' + inter3Array[lineArray["Id_Numero_Full"].replace('-', '')] + ' : ' + timeString2ms(lineArray["Id_TpsCumule"]));
+                    }
+  
+*/  
+  
+                    
+                    
                     if (lineArray["Id_Groupe"] == '&nbsp;') {
                         lineArray["Id_Groupe"] = "";   
                     }
@@ -1118,7 +1291,8 @@
                         }
 */                    } else {
                         lineArray["Id_Inter1"] = 99999999999;   
-                    }
+                    }                    
+                    
                     if (lineArray["Id_Inter2"] != "-") {
                         lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
                         
@@ -1137,6 +1311,50 @@
 */                    } else {
                         lineArray["Id_Inter3"] = 99999999999;   
                     }
+
+// intermediate from file 
+                    fullNumber = lineArray["Id_Numero_Full"].replace('-', '');
+                    
+                    if (inter1Array.hasOwnProperty(fullNumber)) {
+
+                        if (lineArray["Id_TpsCumule"] != "-" ) {
+                            lineArray["Id_Inter1"] = timeString2ms(inter1Array[fullNumber]); 
+                        } else {
+                            lineArray["Id_Inter1"] = 99999999999;   
+                        }
+                        
+                    } else {
+                        
+                        lineArray["Id_Inter1"] = 99999999999;   
+                    }
+                                        
+                    if (inter2Array.hasOwnProperty(fullNumber)) {
+
+                        if (lineArray["Id_TpsCumule"] != "-" ) {
+                            lineArray["Id_Inter2"] = timeString2ms(inter2Array[fullNumber]); 
+                        } else {
+                            lineArray["Id_Inter2"] = 99999999999;   
+                        }
+                        
+                    } else {
+                        
+                        lineArray["Id_Inter2"] = 99999999999;   
+                    }
+                     
+                    if (inter3Array.hasOwnProperty(fullNumber)) {
+
+                        if (lineArray["Id_TpsCumule"] != "-" ) {
+                            lineArray["Id_Inter3"] = timeString2ms(inter3Array[fullNumber]); 
+                        } else {
+                            lineArray["Id_Inter3"] = 99999999999;   
+                        }
+                        
+                    } else {
+                        
+                        lineArray["Id_Inter3"] = 99999999999;   
+                    }
+                    
+                    
                     
                     // convert total time to miliseconds
                     if (lineArray["Id_TpsCumule"] != "-" ) {
@@ -1157,7 +1375,26 @@
                 } else if (pair_num == 2 && lineArray["Id_Nom"] != '???') { // to epic secoundry array
                     
  
+/*    // intermediate from file                
 
+                    
+                    if (inter1Array.hasOwnProperty(lineArray["Id_Numero_Full"].replace('-', ''))) {
+                        console.log(lineArray["Id_Numero_Full"] + ' : ' + inter1Array[lineArray["Id_Numero_Full"].replace('-', '')] + ' : ' + timeString2ms(lineArray["Id_TpsCumule"]));
+                    }
+                    
+                    if (inter2Array.hasOwnProperty(lineArray["Id_Numero_Full"].replace('-', ''))) {
+                        console.log(lineArray["Id_Numero_Full"] + ' : ' + inter2Array[lineArray["Id_Numero_Full"].replace('-', '')] + ' : ' + timeString2ms(lineArray["Id_TpsCumule"]));
+                    }
+                    
+                    if (inter3Array.hasOwnProperty(lineArray["Id_Numero_Full"].replace('-', ''))) {
+                        console.log(lineArray["Id_Numero_Full"] + ' : ' + inter3Array[lineArray["Id_Numero_Full"].replace('-', '')] + ' : ' + timeString2ms(lineArray["Id_TpsCumule"]));
+                    }
+                    
+*/                     
+                    
+                    
+                    
+                    
                     
                     if (lineArray["Id_Groupe"] == '&nbsp;') {
                         lineArray["Id_Groupe"] = "";   
@@ -1179,6 +1416,7 @@
 */                    } else {
                         lineArray["Id_Inter1"] = 99999999999;   
                     }
+                    
                     if (lineArray["Id_Inter2"] != "-") {
                         lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
                         
@@ -1197,6 +1435,50 @@
 */                    } else {
                         lineArray["Id_Inter3"] = 99999999999;   
                     }
+                    
+// intermediate from file                    
+                    fullNumber = lineArray["Id_Numero_Full"].replace('-', '');
+                    
+                    if (inter1Array.hasOwnProperty(fullNumber)) {
+
+                        if (lineArray["Id_TpsCumule"] != "-" ) {
+                            lineArray["Id_Inter1"] = timeString2ms(inter1Array[fullNumber]); 
+                        } else {
+                            lineArray["Id_Inter1"] = 99999999999;   
+                        }
+                        
+                    } else {
+                        
+                        lineArray["Id_Inter1"] = 99999999999;   
+                    }
+                                        
+                    if (inter2Array.hasOwnProperty(fullNumber)) {
+
+                        if (lineArray["Id_TpsCumule"] != "-" ) {
+                            lineArray["Id_Inter2"] = timeString2ms(inter2Array[fullNumber]); 
+                        } else {
+                            lineArray["Id_Inter2"] = 99999999999;   
+                        }
+                        
+                    } else {
+                        
+                        lineArray["Id_Inter2"] = 99999999999;   
+                    }
+                     
+                    if (inter3Array.hasOwnProperty(fullNumber)) {
+
+                        if (lineArray["Id_TpsCumule"] != "-" ) {
+                            lineArray["Id_Inter3"] = timeString2ms(inter3Array[fullNumber]); 
+                        } else {
+                            lineArray["Id_Inter3"] = 99999999999;   
+                        }
+                        
+                    } else {
+                        
+                        lineArray["Id_Inter3"] = 99999999999;   
+                    }
+                  
+                    
                     
                     // convert total time to miliseconds
                     if (lineArray["Id_TpsCumule"] != "-" ) {
