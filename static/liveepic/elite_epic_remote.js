@@ -3414,15 +3414,15 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
 
     function ms2TimeString(mili){
         
-        var gfg = ms2TimeStringSub(mili);
+        var z = ms2TimeStringSub(mili);
         
-        if (gfg.toString().substring(0, 3) == "00:") {
-            gfg = gfg.substr(3);
+        if (z.toString().substring(0, 3) == "00:" && ((z.length > 5 && precision == "second") || (z.length > 7 && precision == "tenth"))) {
+            z = z.substr(3);
         }
-        if (gfg.toString().substring(0, 1) == "0" && gfg.toString().substring(1, 2) != ".") {
-            gfg = gfg.substr(1);
+        if (z.toString().substring(0, 1) == "0" && z.toString().substring(1, 2) != ".") {
+            z = z.substr(1);
         }
-    return gfg
+    return z
         
     };
 

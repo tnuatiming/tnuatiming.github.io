@@ -34,6 +34,8 @@
     
     var messageX = '';
     
+    var singleLine = 0;
+    
     var showLog = 0;
     
     var url = 'p1.html';
@@ -757,7 +759,7 @@
                         console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
                     }
                                         
-//                    alignTable();
+                    alignTable();
                 }
             }
             catch (err) {
@@ -2297,6 +2299,7 @@
         
 // HEADER cleanResults = 1              
     if (cleanResults == 1) {                            
+    if (singleLine == 1) {                            
         headerText1 = '<tr class="rnkh_bkcolor">';
 
                 headerText1 += '<th class="rnkh_font Id_Position_Overall">GC Position</th>';
@@ -2319,6 +2322,7 @@
                 headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
+                headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
                 if (doNotShowTime == 0) {
                     headerText1 += '<th class="rnkh_font Id_TpsCumule">Rider 1 Time</th>';
                     headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Rider 2 Time</th>';
@@ -2347,6 +2351,59 @@
         headerText1 += '</tr>';
         
        //    console.log(headerText1);
+    
+        
+     
+    } else {
+        headerText1 = '<tr class="rnkh_bkcolor">';
+
+                headerText1 += '<th class="rnkh_font Id_Position_Overall">GC Position</th>';
+                headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Position</th>';
+                headerText1 += '<th class="rnkh_font Id_Numero">Number</th>';
+
+                if (useCategory == "no") {
+                    headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
+                }            
+                headerText1 += '<th class="rnkh_font Id_Arrow">finish status</th>';
+                headerText1 += '<th class="rnkh_font Id_Groupe">start status</th>';
+
+                
+                headerText1 += '<th class="rnkh_font Id_Nom">Name</th>';
+                headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
+                headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
+                headerText1 += '<th class="rnkh_font UCI">UCI</th>';
+
+                if (doNotShowTime == 0) {
+                    headerText1 += '<th class="rnkh_font Id_TpsCumule">Rider Time</th>';
+                }
+// display intermediate in cleanResults
+//                if (show == 4) {
+
+//                    headerText1 += '<th class="rnkh_font Id_Inter1Time">Inter. 1</th>'; // intermediate 1 time
+//                    headerText1 += '<th class="rnkh_font Id_Inter2Time">Inter. 2</th>'; // intermediate 2 time
+//                    headerText1 += '<th class="rnkh_font Id_Inter3Time">Inter. 3</th>'; // intermediate 3 time
+//                    if (timeGapDisplayInter == 1) {
+//                        headerText1 += '<th class="rnkh_font Id_Inter1Ecart1er">Inter. 1 Gap</th>'; // intermediate 1 time diff
+//                        headerText1 += '<th class="rnkh_font Id_Inter2Ecart1er">Inter. 2 Gap</th>'; // intermediate 2 time diff
+//                        headerText1 += '<th class="rnkh_font Id_Inter3Ecart1er">Inter. 3 Gap</th>'; // intermediate 3 time diff
+//                    }
+//                }
+        
+
+            headerText1 += '<th class="rnkh_font Id_FinishTime">Time</th>'; // time
+
+
+//            if (timeGapDisplay == 1) {
+                headerText1 += '<th class="rnkh_font Id_Ecart1er">Gap</th>';
+//            }
+                
+        headerText1 += '</tr>';
+        
+       //    console.log(headerText1);
+        
+        
+    }
+        
     }
 // END HEADER cleanResults = 1
         
@@ -3588,6 +3645,7 @@ if (show == 4) {
  // DATA cleanResults = 1
  
     if (cleanResults == 1) { 
+        if (singleLine == 1) {
         
 // add category name header and table header
             if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
@@ -3725,6 +3783,8 @@ if (show == 4) {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
                 
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
+
                 if (doNotShowTime == 0) {
                     if (allArray[l]["Id_TpsCumule"] == 99999999999) {
                         finalText += '<td class="rnk_font">-</td>'; // Time Rider 1
@@ -3751,9 +3811,314 @@ if (show == 4) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
                     }
 //                }
+                
+                finalText += '</tr>';
 
+        } else {
+
+// first rider                
         
+// add category name header and table header
+            if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
+//                finalText += '<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1;
+                
+                if (allArray[l]["Id_Categorie"] != NewCategoryHeader && l > 0 && catcat == 'None') { // add table end tag
+                    finalText += `</table>`;
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                } else if (l == 0) {
+                    NewCategoryHeader = allArray[l]["Id_Categorie"];
+                }
+                            
+                finalText += `<table class="${tableClass} line_color"><tr><td colspan="99" class="title_font">${allArray[l]["Id_Categorie"]}</td></tr>${headerText1}`;                
+            } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
+                    finalText += `<tr><td colspan="99" class="title_font">GC</td></tr>${headerText1}`;
+            }
+            
+            
+            
+            if (l % 2 == 0) { // start building competitor line
+                finalText += `<tr class="${positionChanged} rnk_bkcolor OddRow">`;
+            } else {
+                finalText += `<tr class="${positionChanged} rnk_bkcolor EvenRow">`;
+            }
+        
+                 
+
+// allArray[l]["Id_Arrow"]                    
+// 0 ''
+
+// 3 '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'
+// 4 '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'
+
+// 7 'P'                    
+// 8 '<img class="dnsfq" src="Images/_status.svg" alt="status">'                    
+// 9 '<img class="dnsfq" src="Images/_nq.svg" alt="nq">'
+// 10 '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">'
+// 11 '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">'
+// 12 '<img class="dnsfq" src="Images/_dns.svg" alt="dns">'                    
+                
+                
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
+                
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show position if status or no finish time
+                    //allArray[l]["Id_Position_Categorie"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
+
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show  position if status or no finish time
+                    //allArray[l]["Id_Position_Overall"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
+                    
+                } else {
+                        
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall position
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
+                    
+                }
+
+                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Nr
+       
+                if (useCategory == "no") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // CAT
+                }
+                
+                // add and style the status/arrow
+                if (allArray[l]["Id_Arrow"] == 12) {
+                    finalText += '<td class="rnk_font">DNS</td>';
+
+                } else if (allArray[l]["Id_Arrow"] == 11) {
+                    
+                    finalText += '<td class="rnk_font">DNF</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 10) {
+                    
+                    finalText += '<td class="rnk_font">DSQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 9) {
+                    
+                    finalText += '<td class="rnk_font">NQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 8) {
+                    
+                    finalText += '<td class="rnk_font">*</td>';
+                    
+                } else if (showBlue == 1) {
+                
+                    finalText += '<td class="rnk_font">Blue</td>';
+
+                } else if (checkeredFlag == "finished" && allArray[l]["Id_Position_Categorie"] == 1) { // leader
+                    
+                    finalText += '<td class="rnk_font">Leader</td>';
+                    
+                } else if (allArray[l]["single"] == 2 && checkeredFlag == "finished") {
+                    
+                    finalText += '<td class="rnk_font">SF</td>'; // single finished
+                    
+                } else if (allArray[l]["single"] == 1 && checkeredFlag == "finished") {
+                    
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
+                    
+                } else if (checkeredFlag == "finished") { // finished
+                    
+                    finalText += '<td class="rnk_font">Finished</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 7) { // black
+                    
+                    finalText += '<td class="rnk_font">Penalty</td>';
+                    
+                } else {
+
+                    finalText += '<td class="rnk_font">&nbsp;</td>';
+
+                }
+
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue').replace('s', 'SF').replace(/[0-9]/g, '') + '</td>'; // status
+                
+                        
+                
+                finalText += '<td class="rnk_font left ' + single1 + '">' + allArray[l]["Id_Nom"] + '</td>'; // Rider 1
+                
+                finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Nationalite"] + '</td>'; // Nation
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
+
+                if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
+                    finalText += '<td class="rnk_font">yes</td>'; // UCI
+                } else {
+                    finalText += '<td class="rnk_font">no</td>'; // UCI
+                }
+                 
+                
+                if (doNotShowTime == 0) {
+                    if (allArray[l]["Id_TpsCumule"] == 99999999999 || allArray[l]["single"] == 1) {
+                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 1
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // Time Rider 1
+                    }
+                }
+                
+                    if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 1) {
+                        finalText += '<td class="rnk_font">-</td>'; // time
+                    } else {
+                        finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
+                    }
+                
+//                if (timeGapDisplay == 1) {
+                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 1) {
+                        finalText += '<td class="rnk_font">-</td>'; // Gap
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
+                    }
+//                }
+                
+                finalText += '</tr>';
+
+
+                
+                
+                
+// secound rider                
+                
+                
+            
+            if (l % 2 == 0) { // start building competitor line
+                finalText += `<tr class="${positionChanged} rnk_bkcolor OddRow">`;
+            } else {
+                finalText += `<tr class="${positionChanged} rnk_bkcolor EvenRow">`;
+            }
+        
+                 
+
+// allArray[l]["Id_Arrow"]                    
+// 0 ''
+
+// 3 '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'
+// 4 '<img class="postionChanged" src="Images/_PlusPosition.svg" alt="gained places">'
+
+// 7 'P'                    
+// 8 '<img class="dnsfq" src="Images/_status.svg" alt="status">'                    
+// 9 '<img class="dnsfq" src="Images/_nq.svg" alt="nq">'
+// 10 '<img class="dnsfq" src="Images/_dsq.svg" alt="dsq">'
+// 11 '<img class="dnsfq" src="Images/_dnf.svg" alt="dnf">'
+// 12 '<img class="dnsfq" src="Images/_dns.svg" alt="dns">'                    
+                
+                
+                if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
+                
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show position if status or no finish time
+                    //allArray[l]["Id_Position_Categorie"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
+
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show  position if status or no finish time
+                    //allArray[l]["Id_Position_Overall"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
+                    
+                } else {
+                        
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // overall position
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // category position
+                    
+                }
+
+                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Nr
+       
+                if (useCategory == "no") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // CAT
+                }
+                
+                // add and style the status/arrow
+                if (allArray[l]["Id_Arrow"] == 12) {
+                    finalText += '<td class="rnk_font">DNS</td>';
+
+                } else if (allArray[l]["Id_Arrow"] == 11) {
+                    
+                    finalText += '<td class="rnk_font">DNF</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 10) {
+                    
+                    finalText += '<td class="rnk_font">DSQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 9) {
+                    
+                    finalText += '<td class="rnk_font">NQ</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 8) {
+                    
+                    finalText += '<td class="rnk_font">*</td>';
+                    
+                } else if (showBlue == 1) {
+                
+                    finalText += '<td class="rnk_font">Blue</td>';
+
+                } else if (checkeredFlag == "finished" && allArray[l]["Id_Position_Categorie"] == 1) { // leader
+                    
+                    finalText += '<td class="rnk_font">Leader</td>';
+                    
+                } else if (allArray[l]["single"] == 1 && checkeredFlag == "finished") {
+                    
+                    finalText += '<td class="rnk_font">SF</td>'; // single finished
+                    
+                } else if (allArray[l]["single"] == 2 && checkeredFlag == "finished") {
+                    
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
+                    
+                } else if (checkeredFlag == "finished") { // finished
+                    
+                    finalText += '<td class="rnk_font">Finished</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 7) { // black
+                    
+                    finalText += '<td class="rnk_font">Penalty</td>';
+                    
+                } else {
+
+                    finalText += '<td class="rnk_font">&nbsp;</td>';
+
+                }
+
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue').replace('s', 'SF').replace(/[0-9]/g, '') + '</td>'; // status
+                
+                        
+                 
+                
+                finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
+                
+                finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Nationalite_2"] + '</td>'; // Nation
+                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
+
+                if (allArray[l]["uci"] == 2 || allArray[l]["uci"] == 3) {
+                    finalText += '<td class="rnk_font">yes</td>'; // UCI
+                } else {
+                    finalText += '<td class="rnk_font">no</td>'; // UCI
+                }
+                
+                if (doNotShowTime == 0) {
+                    if (allArray[l]["Id_TpsCumule_2"] == 99999999999 || allArray[l]["single"] == 2) {
+                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 2
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // Time Rider 2
+                    }
+                }
+                
+                    if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 2) {
+                        finalText += '<td class="rnk_font">-</td>'; // time
+                    } else {
+                        finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
+                    }
+                
+//                if (timeGapDisplay == 1) {
+                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 2) {
+                        finalText += '<td class="rnk_font">-</td>'; // Gap
+                    } else {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
+                    }
+//                }
+                
+                finalText += '</tr>';            
+            
+        }
+    
     }
+    
 // END DATA cleanResults = 1
 
  
@@ -4638,7 +5003,7 @@ if (enableJ1 == 1) {
             z = (g ? (10 > g ? "0" + g : g) + ":" : "") + (10 > f ? 0 : "") + f + ":" + (10 > a ? 0 : "") + a + "." + (100 > d ? 10 > d ? "00" : 0 : "") + d ;       
         }     
                 
-        if (z.toString().substring(0, 3) == "00:") {
+        if (z.toString().substring(0, 3) == "00:" && ((z.length > 5 && precision == "second") || (z.length > 7 && precision == "tenth"))) {
             z = z.substr(3);
         }
         if (z.toString().substring(0, 1) == "0" && z.toString().substring(1, 2) != ".") {

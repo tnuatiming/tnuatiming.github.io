@@ -91,7 +91,7 @@ build classification for epic:
     
 set race settings > others > cycling:
 
-set time precision to "tenth". MOST IMPORTANT, OTHER WISE TIMING WILL BE WRONG!!!.
+set time precision to "tenth" for prologue ans "second" for rest of stages. MOST IMPORTANT, OTHER WISE TIMING WILL BE WRONG!!!.
 
 after green flag, update flag time, assign to all competitors . alternately, set "assign competitors start time at green flag date time" - need testing.
 for prologue, use schedule start.
@@ -111,7 +111,7 @@ use status 4 to make the rider blue for other resones.
 
 ## intermediate without Tag server ##
 
-each intermediate time run its own race with mass start (same time as main timing) and finished at the intermediate (ch 4). the results live uploaded to the server (liveepic/i1/p1.html) and get combined on the pi. the live only has to have competitor number((מספר) - Id_Numero) , time((זמן) - Id_TpsCumule) and class((Class) - Id_Classe) (the p1 file is very lean)
+each intermediate time run its own race with mass start (same time as main timing) and finished at the intermediate (ch 4). the results live uploaded to the server (liveepic/{i1-i3}/p1.html) and get combined on the pi. the live only has to have competitor number((מספר) - Id_Numero) , time((זמן) - Id_TpsCumule) and class((Class) - Id_Classe)-not needed (the p1 file is very lean)
 
 
 ## on epic site ##
