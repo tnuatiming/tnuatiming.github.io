@@ -38,7 +38,7 @@
     
     var showLog = 0;
     
-    var url = 'p1.html';
+    var url = 'https://tnuatiming.com/liveepic/p1.html';
     var target = 'result';
 
 //    var enableDelta = 0; // time delta only on epic (not single day)
@@ -47,24 +47,24 @@
     var TimerLoad;
     var Rafraichir = 60000; // every 60 seconds
 
-    var P1;
+    var P1 = '';
     
     var useKellner = 1; // get timing info from kellner
     var K1;
     var kellnerArray = {};
     var urlKellner = 'https://tnuatiming.com/liveepic/k1.json'; 
     
-    var enableInter1 = 1; // enable getting intermediate1 from elite live
+    var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
     var inter1Array = {};
     var urlInter1 = 'https://tnuatiming.com/liveepic/i1/p1.html'; 
     
-    var enableInter2 = 1; // enable getting intermediate2 from elite live
+    var enableInter2 = 0; // enable getting intermediate2 from elite live
     var I2;
     var inter2Array = {};
     var urlInter2 = 'https://tnuatiming.com/liveepic/i2/p1.html'; 
     
-    var enableInter3 = 1; // enable getting intermediate3 from elite live
+    var enableInter3 = 0; // enable getting intermediate3 from elite live
     var I3;
     var inter3Array = {};
     var urlInter3 = 'https://tnuatiming.com/liveepic/i3/p1.html'; 
@@ -81,6 +81,11 @@
     
     var cleanResults = 0; // alignTable for TotalIndex
     
+    var raceEnded = 0;
+    if (sessionStorage.getItem('raceEnded')) {
+        raceEnded = sessionStorage.getItem('raceEnded');
+    }
+
     var doNotShowTime = 0; // don't display individual time
     if (sessionStorage.getItem('doNotShowTime')) {
         doNotShowTime = sessionStorage.getItem('doNotShowTime');
@@ -155,6 +160,27 @@
 
         });
 
+        if (document.getElementById("raceEnded").checked) {
+            raceEnded = 1;
+        } else {
+            raceEnded = 0;
+        }
+        
+
+        document.getElementById('raceEnded').addEventListener('change', event => {
+            if (event.target.checked) {
+                raceEnded = 1;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+                j1Status();
+            } else {
+                raceEnded = 0;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+                j1Status();
+            }
+                    
+            sessionStorage.setItem('raceEnded', raceEnded);
+
+        });
 
  
         if (document.getElementById("doNotShowTime").checked) {
@@ -837,7 +863,7 @@
                 
             }
 
-            try {
+/*            try {
                 const response = await fetch(url, {cache: "no-store"});
                 if (response.ok) {
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
@@ -863,7 +889,30 @@
             catch (err) {
                 console.log('results fetch failed', err);
             }
+*/
 
+            
+            
+            if (P1 != '') {
+                    document.getElementById(target).innerHTML = createLiveTable(P1);
+  
+                    if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
+                        download(allArrayJ, 'j1.txt', 'text/plain');    
+                        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
+                
+                //       console.log(JSON.parse(allArrayJ));  
+                    }
+                    
+                    if (enableJ3 == 1 && dayCompetitors == 1) { 
+                        download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
+                        console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
+                    }
+            
+            }
+            
+            
+            
+            
 /*            try {
                 const response1 = await fetch('uploadMsg.txt', {cache: "no-store"});
                 if (response1.ok) {
@@ -969,6 +1018,53 @@
     }
 */
 
+    async function importCompetitors() {
+        if (self.fetch) {
+
+            
+            try {
+                const response = await fetch(url, {cache: "no-store"});
+                if (response.ok) {
+                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
+                    P1 = await response.text();
+                    document.getElementById(target).innerHTML = createLiveTable(P1);
+                                          
+//                    alignTable();
+                }
+            }
+            catch (err) {
+                console.log('results fetch failed', err);
+            }
+            
+            
+            
+            
+        } else {
+            var xhr;
+            xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
+                    document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
+                    P1 = this.responseText;
+                    document.getElementById(target).innerHTML = createLiveTable(P1);
+                } else if (this.status == 404) {
+                    console.log('no results on server');
+                } else {
+                    console.log(`Error ${xhr.status}: ${xhr.statusText}`);
+                }
+            };
+            
+            xhr.open("GET", url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
+            xhr.send(null);
+
+            
+        }
+        
+    };
+
+
     function kellnerTable(k1) {
         
         kellnerArray = {};
@@ -1067,7 +1163,6 @@
         var i;
         var timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
         var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
-        var raceEnded = 0;
         var lines;
         var competitorPosition = 0;
         var competitorNumber = 0;
@@ -1173,7 +1268,12 @@
         if (Text[0].includes("_Stop.png") || Text[0].includes("_CheckeredFlag.png")) { // check if race ended
             raceEnded = 1;
         }
-        
+                
+        if (raceEnded == 1) {
+            Text[0] = Text[0].replace(/_GreenFlag.png/g, "_CheckeredFlag.png")
+            
+        }
+
         if (cleanResults == 1) {
             document.getElementById("csv").style.display = "block";  
             document.getElementById("Men").style.display = "none";  
@@ -1589,16 +1689,16 @@
                     if (allArray[b]["Id_Groupe"].includes('s')) {
 
                         allArray[b]["Id_Groupe"] = allArray[b]["Id_Groupe"].replace('s', 's1');
-                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2obj[b]["Id_NbTour"]); // need to 2* the laps as it 1 rider and not 2 
+// remove for kellner                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2obj[b]["Id_NbTour"]); // need to 2* the laps as it 1 rider and not 2 
 
                     } else if (allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('s')) {
 
                         allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].replace('s', 's2');
-                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
+// remove for kellner                        allArray[b]["Id_NbTour"] = 2 * Number(allArray2obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
 
-                    } else {
+// remove for kellner                    } else {
         
-                        allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
+// remove for kellner                        allArray[b]["Id_NbTour"] = Number(allArray[b]["Id_NbTour"]) + Number(allArray2obj[allArray[b]["Id_Numero"]]["Id_NbTour"]);
                     }
                     
                     if (allArray[b]["Id_Groupe"].includes('u') && allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('u')) {
@@ -2165,7 +2265,7 @@
            
 //            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single /*|| b.Id_NbTour - a.Id_NbTour*/ || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2); // remove Id_NbTour for kellner
 
             m = 0;
             prevCompCat = ""
@@ -2210,7 +2310,7 @@
          
 //            allArray.sort(function(a, b){return a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
-            allArray.sort((a, b) => a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+            allArray.sort((a, b) => a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single/* || b.Id_NbTour - a.Id_NbTour*/ || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2); // remove Id_NbTour for kellner
 
             for (l = 0; l < allArray.length; l++) {
 
@@ -2756,10 +2856,10 @@
                  
                 if (allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") {
                     leaderTime = allArray[l]["Id_Sector_FinishTime"];
-                    leaderLaps = allArray[l]["Id_NbTour"];
+// remove for kellner                    leaderLaps = allArray[l]["Id_NbTour"];
                 } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
                     leaderTime = allArray[l]["Id_Sector_FinishTime"];
-                    leaderLaps = allArray[l]["Id_NbTour"];
+// remove for kellner                    leaderLaps = allArray[l]["Id_NbTour"];
                 }  
 /*
                             if (allArray[l]["Id_Position"] == 1) {
@@ -2768,7 +2868,7 @@
                             }
 */
                                     // fix the diff fields of the competitors
-                                competitorLaps = allArray[l]["Id_NbTour"];
+// remove for kellner                                competitorLaps = allArray[l]["Id_NbTour"];
                                 
                                 
                                 if (useCategory == "yes") {
@@ -2842,8 +2942,9 @@
 
                                 
                                 // diff on total time
-                                if (competitorLaps == leaderLaps) {
-                                    competitorTime = allArray[l]["Id_Sector_FinishTime"];
+                                competitorTime = allArray[l]["Id_Sector_FinishTime"];
+// remove for kellner                                if (competitorLaps == leaderLaps) {
+                                if (competitorTime != 99999999999 && leaderTime != 99999999999) {
                                     
                                     if (competitorTime != leaderTime && (competitorTime - leaderTime) > 0 && (competitorTime - leaderTime) < 86400000) { // check time is between 0 and 24h
                                     allArray[l]["Id_Ecart1er"] = ms2TimeString(competitorTime - leaderTime);
@@ -4582,6 +4683,10 @@ if (enableJ1 == 1) {
 
     if (cleanResults == 0) {
         var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
+        if (raceEnded == 1) {
+            headerFlag = '_CheckeredFlag.png';
+            
+        }
 
         var div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 
@@ -4966,7 +5071,7 @@ console.log(allArrayNew);
     
 //            allArray3f.sort(function(a, b){return a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
     
-            allArray3f.sort((a, b) => a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+            allArray3f.sort((a, b) => a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status/* || b.Id_NbTour - a.Id_NbTour*/ || a.Id_FinishTime - b.Id_FinishTime || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);// remove Id_NbTour for kellner
     
 //console.log('allArray3f:');
 //console.log(allArray3f);
