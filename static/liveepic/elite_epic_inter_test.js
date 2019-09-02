@@ -791,12 +791,27 @@
                 
                 
                 try {
-                const response = await fetch(urlKellner, {cache: "no-store"});
-                if (response.ok) {
-                    K1 = await response.text();
-                    kellnerTable(K1);
+                    const response = await fetch(urlKellner, {cache: "no-store"});
+                    if (response.ok) {
+                        K1 = await response.text();
+                        kellnerTable(K1);
+            if (P1 != '') {
+                    document.getElementById(target).innerHTML = createLiveTable(P1);
   
+                    if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
+                        download(allArrayJ, 'j1.txt', 'text/plain');    
+                        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
+                
+                //       console.log(JSON.parse(allArrayJ));  
                     }
+                    
+                    if (enableJ3 == 1 && dayCompetitors == 1) { 
+                        download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
+                        console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
+                    }
+            
+            }
+                     }
                 }
                 catch (err) {
                     console.log('results fetch failed', err);
@@ -893,22 +908,6 @@
 
             
             
-            if (P1 != '') {
-                    document.getElementById(target).innerHTML = createLiveTable(P1);
-  
-                    if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
-                        download(allArrayJ, 'j1.txt', 'text/plain');    
-                        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
-                
-                //       console.log(JSON.parse(allArrayJ));  
-                    }
-                    
-                    if (enableJ3 == 1 && dayCompetitors == 1) { 
-                        download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
-                        console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
-                    }
-            
-            }
             
             
             
@@ -1078,7 +1077,7 @@
             delete kellnerArray[kellnerArrayTemp[i].No].No;
         }
 
-//        console.log(kellnerArray);
+        console.log(kellnerArray);
     };
 
 
