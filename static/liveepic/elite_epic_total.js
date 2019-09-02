@@ -28,7 +28,7 @@ add dns
         useCategory = sessionStorage.getItem('categoryOrAll');
     }
 
-    var precision = "tenth"; // "tenth" for 1 digit after the .
+    var precision = "tenth"; // "tenth" for 1 digit after the . , "second" no mili
     
     var tableClass = "fadeIn ";
     var url1 = "t1.txt";    
@@ -1949,14 +1949,14 @@ if (epictv == 0) {
 
                 finalText += '<td class="rnk_font left"><div class="FirstLine ' + single1 + '"><span class="number">' + allArray[l]["Id_Numero_Full"] + '</span><span class="name">' + uci1 + allArray[l]["Id_Nom"] + '</span>';// add the name
                 if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
-                    finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                    finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite"] + '"></span>'/* + leader*/; // add flag
                 }
                 finalText += '</div>';// add the name
 
                 
                 finalText += '<div class="SecoundLine ' + single2 + '"><span class="number">' + allArray[l]["Id_Numero_Full_2"] + '</span><span class="name">' + uci2 + allArray[l]["Id_Nom_2"] + '</span>';// add the name
                 if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
-                    finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                    finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite_2"] + '"></span>'/* + leader*/; // add flag
                 }
                 finalText += '</div></td>';// add the name
                 
@@ -2234,7 +2234,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                 
                 finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' | ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
-                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
+                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"] + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"] + '"></span></td>'; // add flags
 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
                 
@@ -2319,17 +2319,18 @@ console.log(allArrayObject);
         a.click();
     };
     
+
     function ms2TimeString(mili){
         
-        var gfg = ms2TimeStringSub(mili);
+        var z = ms2TimeStringSub(mili);
         
-        if (gfg.toString().substring(0, 3) == "00:") {
-            gfg = gfg.substr(3);
+        if (z.toString().substring(0, 3) == "00:" && ((z.length > 5 && precision == "second") || (z.length > 7 && precision == "tenth"))) {
+            z = z.substr(3);
         }
-        if (gfg.toString().substring(0, 1) == "0" && gfg.toString().substring(1, 2) != ".") {
-            gfg = gfg.substr(1);
+        if (z.toString().substring(0, 1) == "0" && z.toString().substring(1, 2) != ".") {
+            z = z.substr(1);
         }
-    return gfg
+    return z
         
     };
 
@@ -2340,6 +2341,11 @@ console.log(allArrayObject);
             b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
             a=a[0].split(':'),
             (b*1e2)+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
+        } else if (precision == "second") {
+            return a=a.split('.'), // optimized
+            b= 0, // mili is 0
+            a=a[0].split(':'),
+            b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3 // optimized
         } else {
             return a=a.split('.'), // optimized
             b=a[1]*1||0, // optimized, if a[1] defined, use it, else use 0
@@ -2358,6 +2364,14 @@ console.log(allArrayObject);
             (m<10?0:'')+m+':'+  // optimized
             (s<10?0:'')+s+'.'+ // optimized
             +(k/1e2) // optimized
+        } else if (precision == "second") {
+            return k=a%1e3, // optimized by konijn
+            s=a/1e3%60|0,
+            m=a/6e4%60|0,
+            h=a/36e5%24|0,
+            (h?(h<10?'0'+h:h)+':':'')+ // optimized
+            (m<10?0:'')+m+':'+  // optimized
+            (s<10?0:'')+s
         } else {
             return k=a%1e3, // optimized by konijn
             s=a/1e3%60|0,

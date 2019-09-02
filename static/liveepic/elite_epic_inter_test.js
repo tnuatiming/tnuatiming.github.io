@@ -3414,19 +3414,19 @@ allArray[l]["Id_Arrow"]
 
                    
                 if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["Id_TpsCumule_2"] == 99999999999 /*&& cleanResults == 0 */&& allArray[l]["single"] == 0) { // only rider 1 finished at this point
-                    finalText += `<td class="rnk_font left"><div class="FirstLine ${single2}"><span class="number">${allArray[l]["Id_Numero_Full"]}</span>${finished1} ${uci1} ${allArray[l]["Id_Nom"]}</span><span title="${allArray[l]["Id_Nationalite"]}" class="nation ${allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase()} Flag"></span>${leader} ${markBlue}</div>`;// add the name
+                    finalText += `<td class="rnk_font left"><div class="FirstLine ${single2}"><span class="number">${allArray[l]["Id_Numero_Full"]}</span>${finished1} ${uci1} ${allArray[l]["Id_Nom"]}</span><span title="${allArray[l]["Id_Nationalite"]}" class="nation ${allArray[l]["Id_Nationalite"]} Flag"></span>${leader} ${markBlue}</div>`;// add the name
                     
                 } else {
-                    finalText += `<td class="rnk_font left"><div class="FirstLine ${single2}"><span class="number">${allArray[l]["Id_Numero_Full"]}</span><span class="name">${uci1} ${allArray[l]["Id_Nom"]}</span><span title="${allArray[l]["Id_Nationalite"]}" class="nation ${allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase()} Flag"></span>${leader} ${markBlue}</div>`;// add the name
+                    finalText += `<td class="rnk_font left"><div class="FirstLine ${single2}"><span class="number">${allArray[l]["Id_Numero_Full"]}</span><span class="name">${uci1} ${allArray[l]["Id_Nom"]}</span><span title="${allArray[l]["Id_Nationalite"]}" class="nation ${allArray[l]["Id_Nationalite"]} Flag"></span>${leader} ${markBlue}</div>`;// add the name
                 }
 
                     
                     
                 if (allArray[l]["Id_TpsCumule"] == 99999999999 && allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 0) { // only rider 2 finished at this point
-                    finalText += `<div class="SecoundLine ${single1}"><span class="number">${allArray[l]["Id_Numero_Full_2"]}</span>${finished2 + uci2} ${allArray[l]["Id_Nom_2"]}</span><span title="${allArray[l]["Id_Nationalite_2"]}" class="nation ${allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase()} Flag"></span>${leader} ${markBlue}</div></td>`;// add the name
+                    finalText += `<div class="SecoundLine ${single1}"><span class="number">${allArray[l]["Id_Numero_Full_2"]}</span>${finished2 + uci2} ${allArray[l]["Id_Nom_2"]}</span><span title="${allArray[l]["Id_Nationalite_2"]}" class="nation ${allArray[l]["Id_Nationalite_2"]} Flag"></span>${leader} ${markBlue}</div></td>`;// add the name
                     
                 } else {
-                    finalText += `<div class="SecoundLine ${single1}"><span class="number">${allArray[l]["Id_Numero_Full_2"]}</span><span class="name">${uci2} ${allArray[l]["Id_Nom_2"]}</span><span title="${allArray[l]["Id_Nationalite_2"]}" class="nation ${allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase()} Flag"></span>${leader} ${markBlue}</div></td>`;// add the name
+                    finalText += `<div class="SecoundLine ${single1}"><span class="number">${allArray[l]["Id_Numero_Full_2"]}</span><span class="name">${uci2} ${allArray[l]["Id_Nom_2"]}</span><span title="${allArray[l]["Id_Nationalite_2"]}" class="nation ${allArray[l]["Id_Nationalite_2"]} Flag"></span>${leader} ${markBlue}</div></td>`;// add the name
                 }
                 
                                      
@@ -4494,7 +4494,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                 
                 finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' / ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
-                finalText += '<td class="rnk_font"><span class="Flag tv ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag tv ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
+                finalText += '<td class="rnk_font"><span class="Flag tv ' + allArray[l]["Id_Nationalite"] + '"></span>' + ' ' + '<span class="Flag tv ' + allArray[l]["Id_Nationalite_2"] + '"></span></td>'; // add flags
 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
                 

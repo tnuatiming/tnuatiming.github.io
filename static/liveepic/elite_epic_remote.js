@@ -92,6 +92,8 @@ remove all imTheLeader
         showArrow = sessionStorage.getItem('showArrow');
     }
 */    
+    var showComp = '';
+
     var showTvHeader = 0;
     if (sessionStorage.getItem('showTvHeader')) {
         showTvHeader = sessionStorage.getItem('showTvHeader');
@@ -117,6 +119,15 @@ remove all imTheLeader
             
             epictv = 1;
             
+            document.getElementById("showComp").value = showComp;
+
+            document.getElementById('showComp').addEventListener('change', (event) => {
+
+                showComp = document.getElementById("showComp").value;
+                document.getElementById("result").innerHTML = createLiveTable(P1);
+            });
+
+
             document.getElementById("rows").value = rows;
 
             document.getElementById('rows').addEventListener('change', (event) => {
@@ -408,6 +419,9 @@ remove all imTheLeader
         show = section;
 
         if (epictv == 1) {
+
+            showComp = document.getElementById("showComp").value;
+
             rows = Number(document.getElementById("rows").value);
             sessionStorage.setItem('rows', rows);
             
@@ -510,6 +524,9 @@ remove all imTheLeader
         catcat = cat;
 
         if (epictv == 1) { 
+
+            showComp = document.getElementById("showComp").value;
+
             rows = Number(document.getElementById("rows").value);
             sessionStorage.setItem('rows', rows);
                         
@@ -1017,6 +1034,7 @@ remove all imTheLeader
 //        var bestLap2 = "99999999999";
         var laps = 12; // number of laps
         var NewCategoryHeader = "";
+        var showHeaderOnce = 0; // for TV
 /*        
         var bestTime2comp = 0;
         var bestTime2 = 0;
@@ -2770,7 +2788,7 @@ allArray[l]["Id_Arrow"]
                         
 //                        if (cleanResults == 0) {
                                 
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"] + '"></span>'/* + leader*/; // add flag
  //                       }
                     }
                     finalText += '</div>';// add the name
@@ -2780,7 +2798,7 @@ allArray[l]["Id_Arrow"]
                     if (typeof allArray[l]["Id_Nationalite"] != 'undefined') {
  //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
     //                    if (cleanResults == 0) {
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite"] + '" class="Flag ' + single2 + ' ' + allArray[l]["Id_Nationalite"] + '"></span>'/* + leader*/; // add flag
     //                    }
                     }
                     finalText += '</div>';// add the name
@@ -2804,7 +2822,7 @@ allArray[l]["Id_Arrow"]
                         finalText += '<div class="SecoundLine ' + single1 + '"><span class="number">' + allArray[l]["Id_Numero_Full_2"] + '</span>' + finished2 + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "") + '"></span>'/* + leader*/; // add flag
                         }
                         finalText += '</div></td>';// add the name
                         
@@ -2812,7 +2830,7 @@ allArray[l]["Id_Arrow"]
                         finalText += '<div class="SecoundLine ' + single1 + '"><span class="number">' + allArray[l]["Id_Numero_Full_2"] + '</span>' + uci2 + allArray[l]["Id_Nom_2"];// add the name
                         if (typeof allArray[l]["Id_Nationalite_2"] != 'undefined') {
     //                       finalText += '<img class="Flag" src="Images/CountryFlags/' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '.svg">'; // add flag
-                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span>'/* + leader*/; // add flag
+                            finalText += '<span title="' + allArray[l]["Id_Nationalite_2"] + '" class="Flag ' + single1 + ' ' + allArray[l]["Id_Nationalite_2"].replace(" ", "") + '"></span>'/* + leader*/; // add flag
                         }
                         finalText += '</div></td>';// add the name
                     }
@@ -3209,7 +3227,120 @@ if (show == 4 &&) {
 
 // BEGIN TV
 
-if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 'rows' competitors
+if (epictv == 1 && showComp != '') { // show only selected competitors
+
+    showComp = showComp.toString().replace(/\s+/g, '');
+
+    if (showComp.includes(',')) {
+        var compToShow = showComp.split(',');
+    } else {
+        var compToShow = [showComp];
+    }
+
+//console.log(compToShow);
+
+// HEADER for tv            
+                            
+        TVheaderText1 = '<tr class="rnkh_bkcolor">';
+
+   //     for (b = 0; b < qqq.length; b++) { 
+   //         if (qqq[b][0] != "Id_MeilleurTour" && qqq[b][0] != "Id_Arrow" && qqq[b][0] != "Id_TpsTour1" && qqq[b][0] != "Id_TpsTour2" && qqq[b][0] != "Id_TpsTour3" && qqq[b][0] != "Id_Sector_Ecart1er" && qqq[b][0] != "Id_Position" && qqq[b][0] != "Id_Categorie" && qqq[b][0] != "Id_Image") {
+   //             temp.push(b);
+   //         headerText1 += '<th class="rnkh_font" id="' +qqq[b][0]+ '">' +qqq[b][1]+ '</th>';
+   //         }
+   //     }          
+
+       
+                    TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
+
+                  
+        TVheaderText1 += '</tr>';
+        
+       //    console.log(TVheaderText1);
+
+// END HEADER for tv
+    
+    
+
+                if (showHeaderOnce == 0) {
+                finalText += '<table class="' + tableClass + 'line_color">\n';
+                
+                
+                finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 10px;" class="title_font"></td>&nbsp;</tr>\n'; // just to fill
+                
+                
+                finalText += TVheaderText1 + '\n';
+
+                showHeaderOnce = 1;
+                }
+    if (compToShow.includes(allArray[l]["Id_Numero"].toString())) {
+
+        
+            if (l % 2 == 0) { // start building competitor line
+                finalText += '<tr class="rnk_bkcolor OddRow">';
+            } else {
+                finalText += '<tr class="rnk_bkcolor EvenRow">';
+            }
+    
+      
+    
+ 
+                if (useCategory == "no") {
+
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>'; // add overall position
+                
+                } else {
+                    
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Categorie"] + '</td>'; // add category position
+                }
+                
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' | ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
+                
+                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"] + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"] + '"></span></td>'; // add flags
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
+                
+
+                    if ((allArray[l]["Id_Position_Categorie"] == 1 && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no")) {
+                        if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
+                            finalText += '<td class="rnk_font">-</td>'; // add total time
+                        } else {
+                            finalText += '<td class="rnk_font right">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
+                        }
+                        
+                    } else {
+                        if (allArray[l]["Id_Sector_Ecart1er"] == 99999999999) {
+                            finalText += '<td class="rnk_font">-</td>'; // add diff
+                        } else {
+                            finalText += '<td class="rnk_font right">+' + allArray[l]["Id_Sector_Ecart1er"] + '</td>'; // add diff
+                        }
+                    }
+
+                
+        finalText += '</tr>\n';
+    
+    }
+    
+    
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+} else if ((epictv == 1 && showComp == '' && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && allArray[l]["single"] == 0 && allArray[l]["Id_Status"] == 0 && showBlue == 0 && allArray[l]["oldBlue"] == 0) && ((catcat != "None" && allArray[l]["Id_Categorie"] == catcat && useCategory == "yes") || (catcat == "None" && useCategory == "yes") || useCategory == "no")) { // TV show only 'rows' competitors
     
     
     
@@ -3339,7 +3470,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
                 
                 finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + ' | ' + allArray[l]["Id_Nom_2"] + ' ' + leader + '</td>'; // add riders name
                 
-                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"].replace(" ", "").toLowerCase() + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"].replace(" ", "").toLowerCase() + '"></span></td>'; // add flags
+                finalText += '<td class="rnk_font"><span class="Flag ' + allArray[l]["Id_Nationalite"] + '"></span>' + ' ' + '<span class="Flag ' + allArray[l]["Id_Nationalite_2"] + '"></span></td>'; // add flags
 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero"] + '</td>'; // add number
                 
