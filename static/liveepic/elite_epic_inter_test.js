@@ -49,6 +49,11 @@
 
     var P1;
     
+    var useKellner = 1; // get timing info from kellner
+    var K1;
+    var kellnerArray = {};
+    var urlKellner = 'https://tnuatiming.com/liveepic/k1.json'; 
+    
     var enableInter1 = 1; // enable getting intermediate1 from elite live
     var I1;
     var inter1Array = {};
@@ -756,6 +761,25 @@
 */
         if (self.fetch) {
             
+            if (useKellner == 1) {
+                
+                
+                try {
+                const response = await fetch(urlKellner, {cache: "no-store"});
+                if (response.ok) {
+                    K1 = await response.text();
+                    kellnerTable(K1);
+  
+                    }
+                }
+                catch (err) {
+                    console.log('results fetch failed', err);
+                }
+
+                    
+                
+            }
+
             if (enableInter1 == 1) {
                 
                 
@@ -945,6 +969,24 @@
     }
 */
 
+    function kellnerTable(k1) {
+        
+        kellnerArray = {};
+        var kellnerArrayTemp = JSON.parse(k1);
+        
+   //     Text = kellnerArray.shift();
+
+        for (var i in kellnerArrayTemp) {
+
+            kellnerArray[kellnerArrayTemp[i]["No"]] = kellnerArrayTemp[i]; 
+            delete kellnerArray[kellnerArrayTemp[i]["No"]].No;
+        }
+
+//        console.log(kellnerArray);
+    };
+
+
+     
     function interTable(ii, ix) {
         
         var Text, lines, pp, ttt, b, id;
@@ -1284,6 +1326,49 @@
                         lineArray["Id_Categorie"] = "-";   
                     }
                     
+// intermediate from file 
+                    fullNumber = lineArray["Id_Numero_Full"].replace('-', '');
+
+                    if (enableInter1 == 1 && inter1Array.hasOwnProperty(fullNumber)) {
+
+                        lineArray["Id_Inter1"] = inter1Array[fullNumber]; 
+                    }
+                                        
+                    if (enableInter2 == 1 && inter2Array.hasOwnProperty(fullNumber)) {
+
+                        lineArray["Id_Inter2"] = inter2Array[fullNumber]; 
+                    }
+                     
+                    if (enableInter3 == 1 && inter3Array.hasOwnProperty(fullNumber)) {
+
+                        lineArray["Id_Inter3"] = inter3Array[fullNumber]; 
+                    }
+                    
+// time from kellner                    
+                    if (useKellner == 1) {
+                        
+                        if (kellnerArray.hasOwnProperty(fullNumber)) {
+
+                                lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
+                                lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
+                                lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
+                                lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
+                        }
+                        
+                    }
+                    
+                    
+                    // convert total time to miliseconds
+                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"] + delta;
+                        }
+*/                    } else {
+                        lineArray["Id_TpsCumule"] = 99999999999;   
+                    }
+
                     // convert intermediate time to miliseconds
                     if (lineArray["Id_Inter1"] != "-") {
                         lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
@@ -1312,61 +1397,6 @@
                         }
 */                    } else {
                         lineArray["Id_Inter3"] = 99999999999;   
-                    }
-
-// intermediate from file 
-                    fullNumber = lineArray["Id_Numero_Full"].replace('-', '');
-                    
-                    if (inter1Array.hasOwnProperty(fullNumber)) {
-
-                        if (lineArray["Id_TpsCumule"] != "-" ) {
-                            lineArray["Id_Inter1"] = timeString2ms(inter1Array[fullNumber]); 
-                        } else {
-                            lineArray["Id_Inter1"] = 99999999999;   
-                        }
-                        
-                    } else {
-                        
-                        lineArray["Id_Inter1"] = 99999999999;   
-                    }
-                                        
-                    if (inter2Array.hasOwnProperty(fullNumber)) {
-
-                        if (lineArray["Id_TpsCumule"] != "-" ) {
-                            lineArray["Id_Inter2"] = timeString2ms(inter2Array[fullNumber]); 
-                        } else {
-                            lineArray["Id_Inter2"] = 99999999999;   
-                        }
-                        
-                    } else {
-                        
-                        lineArray["Id_Inter2"] = 99999999999;   
-                    }
-                     
-                    if (inter3Array.hasOwnProperty(fullNumber)) {
-
-                        if (lineArray["Id_TpsCumule"] != "-" ) {
-                            lineArray["Id_Inter3"] = timeString2ms(inter3Array[fullNumber]); 
-                        } else {
-                            lineArray["Id_Inter3"] = 99999999999;   
-                        }
-                        
-                    } else {
-                        
-                        lineArray["Id_Inter3"] = 99999999999;   
-                    }
-                    
-                    
-                    
-                    // convert total time to miliseconds
-                    if (lineArray["Id_TpsCumule"] != "-" ) {
-                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
-                        
-/*                        if (enableDelta == 1) {
-                            lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"] + delta;
-                        }
-*/                    } else {
-                        lineArray["Id_TpsCumule"] = 99999999999;   
                     }
 
                    
@@ -1408,6 +1438,51 @@
                         lineArray["Id_Categorie"] = "-";   
                     }
 
+                    
+// intermediate from file                    
+                    fullNumber = lineArray["Id_Numero_Full"].replace('-', '');
+                    
+                    if (enableInter1 == 1 && inter1Array.hasOwnProperty(fullNumber)) {
+
+                        lineArray["Id_Inter1"] = inter1Array[fullNumber]; 
+                    }
+                                        
+                    if (enableInter2 == 1 && inter2Array.hasOwnProperty(fullNumber)) {
+
+                        lineArray["Id_Inter2"] = inter2Array[fullNumber]; 
+                    }
+                     
+                    if (enableInter3 == 1 && inter3Array.hasOwnProperty(fullNumber)) {
+
+                        lineArray["Id_Inter3"] = inter3Array[fullNumber]; 
+                    }
+                  
+// time from kellner                    
+                    if (useKellner == 1) {
+                        
+                        if (kellnerArray.hasOwnProperty(fullNumber)) {
+
+                                lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
+                                lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
+                                lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
+                                lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
+                       }
+                        
+                    }
+                    
+                    
+                    
+                    // convert total time to miliseconds
+                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]); 
+                        
+/*                        if (enableDelta == 1) {
+                            lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"] + delta;
+                        }
+*/                    } else {
+                        lineArray["Id_TpsCumule"] = 99999999999;   
+                    }
+                
                     // convert intermediate time to miliseconds
                     if (lineArray["Id_Inter1"] != "-") {
                         lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
@@ -1437,62 +1512,6 @@
 */                    } else {
                         lineArray["Id_Inter3"] = 99999999999;   
                     }
-                    
-// intermediate from file                    
-                    fullNumber = lineArray["Id_Numero_Full"].replace('-', '');
-                    
-                    if (inter1Array.hasOwnProperty(fullNumber)) {
-
-                        if (lineArray["Id_TpsCumule"] != "-" ) {
-                            lineArray["Id_Inter1"] = timeString2ms(inter1Array[fullNumber]); 
-                        } else {
-                            lineArray["Id_Inter1"] = 99999999999;   
-                        }
-                        
-                    } else {
-                        
-                        lineArray["Id_Inter1"] = 99999999999;   
-                    }
-                                        
-                    if (inter2Array.hasOwnProperty(fullNumber)) {
-
-                        if (lineArray["Id_TpsCumule"] != "-" ) {
-                            lineArray["Id_Inter2"] = timeString2ms(inter2Array[fullNumber]); 
-                        } else {
-                            lineArray["Id_Inter2"] = 99999999999;   
-                        }
-                        
-                    } else {
-                        
-                        lineArray["Id_Inter2"] = 99999999999;   
-                    }
-                     
-                    if (inter3Array.hasOwnProperty(fullNumber)) {
-
-                        if (lineArray["Id_TpsCumule"] != "-" ) {
-                            lineArray["Id_Inter3"] = timeString2ms(inter3Array[fullNumber]); 
-                        } else {
-                            lineArray["Id_Inter3"] = 99999999999;   
-                        }
-                        
-                    } else {
-                        
-                        lineArray["Id_Inter3"] = 99999999999;   
-                    }
-                  
-                    
-                    
-                    // convert total time to miliseconds
-                    if (lineArray["Id_TpsCumule"] != "-" ) {
-                        lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]); 
-                        
-/*                        if (enableDelta == 1) {
-                            lineArray["Id_TpsCumule"] = lineArray["Id_TpsCumule"] + delta;
-                        }
-*/                    } else {
-                        lineArray["Id_TpsCumule"] = 99999999999;   
-                    }
-                
                     
                     
                     
