@@ -978,8 +978,8 @@
 
         for (var i in kellnerArrayTemp) {
 
-            kellnerArray[kellnerArrayTemp[i]["No"]] = kellnerArrayTemp[i]; 
-            delete kellnerArray[kellnerArrayTemp[i]["No"]].No;
+            kellnerArray[kellnerArrayTemp[i].No] = kellnerArrayTemp[i]; 
+            delete kellnerArray[kellnerArrayTemp[i].No].No;
         }
 
 //        console.log(kellnerArray);
