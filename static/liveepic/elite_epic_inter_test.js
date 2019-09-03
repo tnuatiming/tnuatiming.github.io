@@ -1357,6 +1357,7 @@
                     
                     delete lineArray.Id_penalty;   
                     delete lineArray.Id_Groupe;   
+                    lineArray.Id_Ecart1er = 99999999999;
                     
                     if (lineArray["Id_Categorie"] == '&nbsp;' ) {
                         lineArray["Id_Categorie"] = "";   
@@ -5277,7 +5278,45 @@ if (enableJ3 == 1) {
         delete allArray3f[l].Id_Nationalite;
         delete allArray3f[l].Id_Nationalite_2;
 
+
+        delete allArray3f[l].blue;
+        delete allArray3f[l].Id_NbTour;
+        delete allArray3f[l].Id_Classe;
+        delete allArray3f[l].Id_TpsCumule;
+        delete allArray3f[l].Id_TpsCumule_2;
+        delete allArray3f[l].Id_Image;
+        delete allArray3f[l].Id_Image_2;
+        delete allArray3f[l].Id_Status;
+
             
+            if (allArray3f[l]["Id_FinishTime"] == 99999999999) {
+                allArray3f[l]["Id_FinishTime"] = 0;
+            } else {
+                allArray3f[l]["Id_FinishTime"] = timeString2ms(allArray3f[l]["Id_FinishTime"]);
+            }
+
+            if (allArray3f[l]["Id_Ecart1er"] == 99999999999) {
+                allArray3f[l]["Id_Ecart1er"] = 0;
+            } else {
+                allArray3f[l]["Id_Ecart1er"] = timeString2ms(allArray3f[l]["Id_Ecart1er"]);
+            }
+             
+        allArray3f[l].O = allArray3f[l].Id_Numero;
+        delete allArray3f[l].Id_Numero;
+        allArray3f[l].N = allArray3f[l].Id_Nom;
+        delete allArray3f[l].Id_Nom;
+        allArray3f[l].N2 = allArray3f[l].Id_Nom_2;
+        delete allArray3f[l].Id_Nom_2;
+        allArray3f[l].C = allArray3f[l].Id_Categorie;
+        delete allArray3f[l].Id_Categorie;
+        allArray3f[l].F = allArray3f[l].Id_FinishTime;
+        delete allArray3f[l].Id_FinishTime;
+        allArray3f[l].E = allArray3f[l].Id_Ecart1er;
+        delete allArray3f[l].Id_Ecart1er;
+        allArray3f[l].Q = allArray3f[l].Id_Equipe;
+        delete allArray3f[l].Id_Equipe;
+        allArray3f[l].PC = allArray3f[l].Id_Position; // needed only for third party
+        delete allArray3f[l].Id_Position;
             
             const allArrayJ3 = {};
             Object.keys(allArray3f[l]).sort().forEach(function(key) {
@@ -5309,7 +5348,7 @@ if (enableJ3 == 1) {
             finalText3 += '</div>\n';  // close "liveTableS" 
         }
 
-/*        
+        
 if (enableJ3 == 1) {
 
         var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
@@ -5335,7 +5374,7 @@ if (enableJ3 == 1) {
         download(allArrayJ3, 'j3.txt', 'text/plain');    
         console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt')
 }
-*/
+
 //    }
  
         

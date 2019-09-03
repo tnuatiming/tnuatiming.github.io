@@ -1072,6 +1072,11 @@ remove all imTheLeader
 //        ElapsedTime = Text.ElapsedTime;
         var RemainingTime = Text.RemainingTime;
         
+// for kellner
+        DayTime = "&nbsp;&nbsp;&nbsp;";
+        RemainingTime = "&nbsp;&nbsp;&nbsp;";
+        
+        
         MaximumStageTime = timeString2ms(Text.MaximumStageTime);
         
         messageX = Text.message;
