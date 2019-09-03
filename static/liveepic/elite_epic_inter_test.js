@@ -22,6 +22,8 @@
     }
     var loop;
 
+    var hash;
+    
     var allArrayJ = {};
     var J3text;
     var enableJ1 = 0;   // create j1.txt for remote
@@ -786,40 +788,6 @@
         });
 */
         if (self.fetch) {
-            
-            if (useKellner == 1) {
-                
-                
-                try {
-                    const response = await fetch(urlKellner, {cache: "no-store"});
-                    if (response.ok) {
-                        K1 = await response.text();
-                        kellnerTable(K1);
-            if (P1 != '') {
-                    document.getElementById(target).innerHTML = createLiveTable(P1);
-  
-                    if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
-                        download(allArrayJ, 'j1.txt', 'text/plain');    
-                        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
-                
-                //       console.log(JSON.parse(allArrayJ));  
-                    }
-                    
-                    if (enableJ3 == 1 && dayCompetitors == 1) { 
-                        download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
-                        console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
-                    }
-            
-            }
-                     }
-                }
-                catch (err) {
-                    console.log('results fetch failed', err);
-                }
-
-                    
-                
-            }
 
             if (enableInter1 == 1) {
                 
@@ -869,6 +837,40 @@
                     interTable(I3, 3);
   
                     }
+                }
+                catch (err) {
+                    console.log('results fetch failed', err);
+                }
+
+                    
+                
+            }
+            
+            if (useKellner == 1) {
+                
+                
+                try {
+                    const response = await fetch(urlKellner, {cache: "no-store"});
+                    if (response.ok) {
+                        K1 = await response.text();
+                        kellnerTable(K1);
+                        if (P1 != '') {
+                                document.getElementById(target).innerHTML = createLiveTable(P1);
+            
+                                if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
+                                    download(allArrayJ, 'j1.txt', 'text/plain');    
+                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
+                            
+                            //       console.log(JSON.parse(allArrayJ));  
+                                }
+                                
+                                if (enableJ3 == 1 && dayCompetitors == 1) { 
+                                    download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
+                                    console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
+                                }
+                        
+                        }
+                     }
                 }
                 catch (err) {
                     console.log('results fetch failed', err);
@@ -1063,6 +1065,16 @@
         
     };
 
+    String.prototype.hashCode = function(){
+        var hash = 0;
+        if (this.length == 0) return hash;
+        for (i = 0; i < this.length; i++) {
+            char = this.charCodeAt(i);
+            hash = ((hash<<5)-hash)+char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    }
 
     function kellnerTable(k1) {
         
@@ -1071,13 +1083,29 @@
         
    //     Text = kellnerArray.shift();
 
-        for (var i in kellnerArrayTemp) {
+// option 1
+        const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})));
+        kellnerArray = arrayToObject(kellnerArrayTemp, "No")
+
+// option 2
+/*        for (var i in kellnerArrayTemp) {
 
             kellnerArray[kellnerArrayTemp[i].No] = kellnerArrayTemp[i]; 
             delete kellnerArray[kellnerArrayTemp[i].No].No;
         }
+*/
+//        console.log("hash: " + k1.hashCode());
+        
+        if (hash != k1.hashCode()) {
+            const d = new Date()
+            document.getElementById("lastUpdated").innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+            hash = k1.hashCode();
+        }
 
-        console.log(kellnerArray);
+        if (showLog == 1) {
+            console.log("K1:");
+            console.log(kellnerArray);
+        }
     };
 
 
@@ -1336,6 +1364,20 @@
                         lineArray["Id_Categorie"] = "-";   
                     }
                     
+                    
+                  
+// time from kellner                    
+                    fullNumber = lineArray["Id_Numero_Full"].replace('-', '');
+                    
+                    if (useKellner == 1) {
+                        
+                        if (kellnerArray.hasOwnProperty(fullNumber)) {
+
+                            lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
+                       }
+                        
+                    }
+                    
                     // convert total time to miliseconds
                     if (lineArray["Id_TpsCumule"] != "-" ) {
                         lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
@@ -1448,10 +1490,10 @@
                         
                         if (kellnerArray.hasOwnProperty(fullNumber)) {
 
-                                lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
-                                lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
-                                lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
-                                lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
+                            lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
+                            lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
+                            lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
+                            lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
                         }
                         
                     }
@@ -1561,10 +1603,10 @@
                         
                         if (kellnerArray.hasOwnProperty(fullNumber)) {
 
-                                lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
-                                lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
-                                lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
-                                lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
+                            lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
+                            lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
+                            lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
+                            lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
                        }
                         
                     }
