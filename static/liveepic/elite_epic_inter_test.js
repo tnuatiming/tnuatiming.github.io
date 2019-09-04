@@ -54,7 +54,7 @@
     var useKellner = 1; // get timing info from kellner
     var K1;
     var kellnerArray = {};
-    var urlKellner = 'https://tnuatiming.com/liveepic/k1.json'; 
+    var urlKellner = 'https://tnuatiming.com/liveepic/apic2019.txt'; 
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -1380,7 +1380,7 @@
                     }
                     
                     // convert total time to miliseconds
-                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                    if (lineArray["Id_TpsCumule"] != "" ) { // "-"
                         lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
                     } else {
                         lineArray["Id_TpsCumule"] = 99999999999;   
@@ -1501,7 +1501,7 @@
                     
                     
                     // convert total time to miliseconds
-                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                    if (typeof lineArray["Id_TpsCumule"] != 'undefined' && lineArray["Id_TpsCumule"] != "" ) { // "-"
                         lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]);   
                         
 /*                        if (enableDelta == 1) {
@@ -1512,7 +1512,7 @@
                     }
 
                     // convert intermediate time to miliseconds
-                    if (lineArray["Id_Inter1"] != "-") {
+                    if (typeof lineArray["Id_Inter1"] != 'undefined' && lineArray["Id_Inter1"] != "" ) { // "-"
                         lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
                         
 /*                        if (enableDelta == 1) {
@@ -1522,7 +1522,7 @@
                         lineArray["Id_Inter1"] = 99999999999;   
                     }                    
                     
-                    if (lineArray["Id_Inter2"] != "-") {
+                    if (typeof lineArray["Id_Inter2"] != 'undefined' && lineArray["Id_Inter2"] != "" ) { // "-"
                         lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
                         
 /*                        if (enableDelta == 1) {
@@ -1531,7 +1531,7 @@
 */                    } else {
                         lineArray["Id_Inter2"] = 99999999999;   
                     }
-                    if (lineArray["Id_Inter3"] != "-") {
+                    if (typeof lineArray["Id_Inter3"] != 'undefined' && lineArray["Id_Inter3"] != "" ) { // "-"
                         lineArray["Id_Inter3"] = timeString2ms(lineArray["Id_Inter3"]);   
                         
 /*                        if (enableDelta == 1) {
@@ -1615,7 +1615,7 @@
                     
                     
                     // convert total time to miliseconds
-                    if (lineArray["Id_TpsCumule"] != "-" ) {
+                    if (typeof lineArray["Id_TpsCumule"] != 'undefined' && lineArray["Id_TpsCumule"] != "" ) { // "-"
                         lineArray["Id_TpsCumule"] = timeString2ms(lineArray["Id_TpsCumule"]); 
                         
 /*                        if (enableDelta == 1) {
@@ -1626,7 +1626,7 @@
                     }
                 
                     // convert intermediate time to miliseconds
-                    if (lineArray["Id_Inter1"] != "-") {
+                    if (typeof lineArray["Id_Inter1"] != 'undefined' && lineArray["Id_Inter1"] != "" ) { // "-"
                         lineArray["Id_Inter1"] = timeString2ms(lineArray["Id_Inter1"]);   
                         
 /*                        if (enableDelta == 1) {
@@ -1636,7 +1636,7 @@
                         lineArray["Id_Inter1"] = 99999999999;   
                     }
                     
-                    if (lineArray["Id_Inter2"] != "-") {
+                    if (typeof lineArray["Id_Inter2"] != 'undefined' && lineArray["Id_Inter2"] != "" ) { // "-"
                         lineArray["Id_Inter2"] = timeString2ms(lineArray["Id_Inter2"]);   
                         
 /*                        if (enableDelta == 1) {
@@ -1645,7 +1645,7 @@
 */                    } else {
                         lineArray["Id_Inter2"] = 99999999999;   
                     }
-                    if (lineArray["Id_Inter3"] != "-") {
+                    if (typeof lineArray["Id_Inter3"] != 'undefined' && lineArray["Id_Inter3"] != "" ) { // "-"
                         lineArray["Id_Inter3"] = timeString2ms(lineArray["Id_Inter3"]);   
                         
 /*                        if (enableDelta == 1) {
