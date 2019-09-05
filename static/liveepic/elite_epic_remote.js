@@ -221,7 +221,7 @@ remove all imTheLeader
                     document.getElementById("showStopwatch").innerHTML = hours.toString() + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0") + "." + milliseconds.toString().substring(0, 1);
                         
                     // If the count down is over, write some text 
-                } else if (distance > (-72000000) && distance < 0) {
+                } else if (distance > (-72000000) && distance < 0) { // less then 20 hours to go
                     //clearInterval(x);
                 // Find the distance between now and the start time
                     var distance = startTime - now + 10800000; // subtract 3 hours

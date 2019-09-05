@@ -11,7 +11,7 @@
  json all i3Position_Overall and i3index
  
 */
-    var startTime = "2019-09-21 07:00:00"; // start time "2019-09-21 07:00:00"
+    var startTime = "2019-09-06 07:15:00"; // start time "2019-09-21 07:00:00"
     if (sessionStorage.getItem('startTimeX')) {
         startTime = sessionStorage.getItem('startTimeX');
     }
@@ -54,7 +54,7 @@
     var useKellner = 1; // get timing info from kellner
     var K1;
     var kellnerArray = {};
-    var urlKellner = 'https://tnuatiming.com/liveepic/apic2019.txt'; 
+    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -850,6 +850,8 @@
                 
                 
                 try {
+//                    const response = await fetch(urlKellner, {cache: "no-store", mode: "no-cors"});
+                    // use to bypass cors:  https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
                     const response = await fetch(urlKellner, {cache: "no-store"});
                     if (response.ok) {
                         K1 = await response.text();
@@ -1078,7 +1080,7 @@
 
     function kellnerTable(k1) {
         
-        kellnerArray = {};
+       kellnerArray = {};
         var kellnerArrayTemp = JSON.parse(k1);
         
    //     Text = kellnerArray.shift();
@@ -1098,7 +1100,7 @@
         
         if (hash != k1.hashCode()) {
             const d = new Date()
-            document.getElementById("lastUpdated").innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+            document.getElementById("lastUpdated").innerHTML = d.getHours() + ":" + (d.getMinutes()).toString().padStart(2, "0") + ":" + (d.getSeconds()).toString().padStart(2, "0");
             hash = k1.hashCode();
         }
 
@@ -1325,9 +1327,14 @@
             var bigFont = ' bigFont';
         }
 
+        if (useKellner == 1) {
+
+            Text[0] = Text[0].replace(/ElapsedTime">\S*</g, 'ElapsedTime">&nbsp;&nbsp;&nbsp;<');
+            Text[0] = Text[0].replace(/RemainingTime">\S*</g, 'RemainingTime">&nbsp;&nbsp;&nbsp;<');
+        }
+
+        
         var finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
-
-
 
 
          // console.log(allArray2);
@@ -1492,9 +1499,9 @@
                         if (kellnerArray.hasOwnProperty(fullNumber)) {
 
                             lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
-                            lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
-                            lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
-                            lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
+                            lineArray["Id_Inter1"] = kellnerArray[fullNumber]['T1']; 
+                            lineArray["Id_Inter2"] = kellnerArray[fullNumber]['T2']; 
+                            lineArray["Id_Inter3"] = kellnerArray[fullNumber]['T3']; 
                         }
                         
                     }
@@ -1605,9 +1612,9 @@
                         if (kellnerArray.hasOwnProperty(fullNumber)) {
 
                             lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
-                            lineArray["Id_Inter1"] = kellnerArray[fullNumber]['I1']; 
-                            lineArray["Id_Inter2"] = kellnerArray[fullNumber]['I2']; 
-                            lineArray["Id_Inter3"] = kellnerArray[fullNumber]['I3']; 
+                            lineArray["Id_Inter1"] = kellnerArray[fullNumber]['T1']; 
+                            lineArray["Id_Inter2"] = kellnerArray[fullNumber]['T2']; 
+                            lineArray["Id_Inter3"] = kellnerArray[fullNumber]['T3']; 
                        }
                         
                     }
@@ -1694,6 +1701,14 @@
                     }
                 }
 
+                if (useKellner == 1) {
+                    lineArray.Id_TpsCumule = "";
+                    lineArray.Id_Inter1 = "";
+                    lineArray.Id_Inter2 = "";
+                    lineArray.Id_Inter3 = "";
+                    
+                }
+                
                 pp += 1;
       //    console.log(lineArray);
 
@@ -2086,7 +2101,7 @@
 //         allArray2 = [];
 //         console.log(finishers);
         
-         document.getElementById('status').innerHTML = `Inter. 1: ${finishers[0]} | Inter. 2: ${finishers[1]} | Inter. 3: ${finishers[2]} | Finish: ${finishers[3]}`;
+         document.getElementById('status').innerHTML = `  I1: ${finishers[0]}  |  I2: ${finishers[1]}  |  I3: ${finishers[2]}  |  Finish: ${finishers[3]}`;
          
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
          
@@ -5363,12 +5378,25 @@ if (enableJ3 == 1) {
 
 
         var header = {};
+/*        
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
         header.DayTime = DayTime;
         header.ElapsedTime = ElapsedTime;
         header.RemainingTime = RemainingTime;
-
+*/
+// same header as j1
+        header.headerFlag = headerFlag;
+        header.HeaderEventName = HeaderEventName;
+        header.DayTime = DayTime;
+        header.ElapsedTime = ElapsedTime;
+        header.RemainingTime = RemainingTime;
+        header.MaximumStageTime = MaximumStageTime;
+        header.startTime = (new Date(startTime)).toISOString();
+        header.message = messageX;
+        
+        
+        
         allArray3f.unshift(header); // add the header at the beginning
         allArrayJ3 = JSON.stringify(allArray3f);             
         download(allArrayJ3, 'j3.txt', 'text/plain');    

@@ -399,6 +399,12 @@ AuthType Basic
 AuthUserFile /home/raz/public_html/.htpasswd
 Require valid-user
 </Files>
+<Files mastertest.html>
+AuthName "please, log in"
+AuthType Basic
+AuthUserFile /home/raz/public_html/.htpasswd
+Require valid-user
+</Files>
 
 
 Redirect permanent /races/enduro/enduro2012r5.html /results/enduro/2013/enduro2013r5.html

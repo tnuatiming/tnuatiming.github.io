@@ -253,6 +253,7 @@
             filter: drop-shadow(0 0 1px #767472);
         }
         
+        .ARG {background-image: url(Images/CountryFlags/argentina.svg);}
         .AUS {background-image: url(Images/CountryFlags/australia.svg);}
         .AUT {background-image: url(Images/CountryFlags/austria.svg);}
         .BEL {background-image: url(Images/CountryFlags/belgium.svg);}
@@ -271,6 +272,7 @@
         .IRL {background-image: url(Images/CountryFlags/ireland.svg);}
         .ISR {background-image: url(Images/CountryFlags/israel.svg);}
         .ITA {background-image: url(Images/CountryFlags/italy.svg);}
+        .KAZ {background-image: url(Images/CountryFlags/kazakhstan.svg);}
         .LAT {background-image: url(Images/CountryFlags/latvia.svg);}
         .LTU {background-image: url(Images/CountryFlags/lithuania.svg);}
         .NED {background-image: url(Images/CountryFlags/netherlands.svg);}
@@ -412,8 +414,16 @@
             min-width: 25px;
         }
     }
+    @media (max-width: 1100px) {
     
-    
+        #live #buttonInfo {
+            height: 225px;
+        }
+
+        #live th.rnkh_font {
+            top: 225px;
+        }
+}    
     @media print {
         h1, #daysTotal, #csv, #legend {display: none}
     

@@ -71,7 +71,7 @@
     #live #buttonInfo {
         flex-direction: column;
         direction: ltr;
-        opacity: 0;
+/*        opacity: 0;*/
     }
     #live div#buttonInfo:hover {
         opacity: 1;
@@ -175,7 +175,7 @@
         margin-left: 40px; 
     }
     #live input#rows, #live input#showComp {
-        margin-right: 20px; 
+        margin: 0 10px; 
         transform: scale(1.2);
     }
     #live input#showTvHeader, #live input#showArrow {
@@ -454,7 +454,7 @@
         <button id="intermediate2" class="btn" onClick="intermediateOrFinish('2')">Intermediate 2</button>
         <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
         <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
-        <label class="showComp">show competitor:&nbsp;&nbsp;<input id="showComp" style="width: 100px;" type="text" name="showComp"></label>
+        <label class="showComp">show competitors (,):&nbsp;&nbsp;<input id="showComp" style="width: 100px;" type="text" name="showComp"></label>
         <label class="Stopwatch"><div id="showStopwatch"></div></label>
     </div>
 </div>

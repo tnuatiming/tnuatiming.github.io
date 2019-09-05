@@ -1643,7 +1643,7 @@
 //         allArray2 = [];
 //         console.log(finishers);
         
-         document.getElementById('status').innerHTML = `Inter. 1: ${finishers[0]} | Inter. 2: ${finishers[1]} | Inter. 3: ${finishers[2]} | Finish: ${finishers[3]}`;
+         document.getElementById('status').innerHTML = `  I1: ${finishers[0]}  |  I2: ${finishers[1]}  |  I3: ${finishers[2]}  |  Finish: ${finishers[3]}`;
          
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
          

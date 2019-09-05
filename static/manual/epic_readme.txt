@@ -55,6 +55,32 @@ sudo service dhcpcd restart
 or
 reboot
 
+## wireless ##
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+network={
+    ssid="testing"
+    psk="testingPassword"
+}
+
+
+multiple wireless networks:
+
+network={
+    ssid="HomeOneSSID"
+    psk="passwordOne"
+    priority=1
+    id_str="homeOne"
+}
+
+network={
+    ssid="HomeTwoSSID"
+    psk="passwordTwo"
+    priority=2
+    id_str="homeTwo"
+}
+
 
 ## option for getting j1.txt using python
 
@@ -112,6 +138,12 @@ use status 4 to make the rider blue for other resones.
 ## intermediate without Tag server ##
 
 each intermediate time run its own race with mass start (same time as main timing) and finished at the intermediate (ch 4). the results live uploaded to the server (liveepic/{i1-i3}/p1.html) and get combined on the pi. the live only has to have competitor number((מספר) - Id_Numero) , time((זמן) - Id_TpsCumule) and class((Class) - Id_Classe)-not needed (the p1 file is very lean)
+
+
+## kellner ##
+
+need to use extention on chrome to get data from 3 party due to cors:
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
 
 
 ## on epic site ##
