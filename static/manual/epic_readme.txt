@@ -156,7 +156,9 @@ check if needed #live in the css
 
 ## web pages  ##
 
-master management - https://tnuatiming.com/liveepic/master.html (wiil have csv download on stage end)
+master management - https://tnuatiming.com/liveepic/master.html (will have csv download on stage end)
+
+master management with kellner - https://tnuatiming.com/liveepic/mastertest.html (will have csv download on stage end)
 
 TV - https://tnuatiming.com/liveepic/tv.html (manual refresh?)
 

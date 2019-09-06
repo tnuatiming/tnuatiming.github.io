@@ -1979,7 +1979,7 @@ remove all imTheLeader
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
 */
-                    headerText1 += '<th class="rnkh_font Id_Position">GC Position</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Position</th>';
                     headerText1 += '<th class="rnkh_font Id_Position">Cat Position</th>';
 
                     headerText1 += '<th class="rnkh_font Id_Numero">No.</th>';
@@ -2551,7 +2551,7 @@ remove all imTheLeader
                 finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
             } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
-                    finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1 + '\n';
+                    finalText += '<tr><td colspan="99" class="title_font">Overall</td></tr>' + headerText1 + '\n';
             }
             
             
@@ -3318,10 +3318,10 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                         }
                         
                     } else {
-                        if (allArray[l]["Id_Sector_Ecart1er"] == 99999999999) {
-                            finalText += '<td class="rnk_font">-</td>'; // add diff
+                        if (allArray[l]["Id_Sector_FinishTime"] == 99999999999) {
+                            finalText += '<td class="rnk_font">-</td>'; // add total time
                         } else {
-                            finalText += '<td class="rnk_font right">+' + allArray[l]["Id_Sector_Ecart1er"] + '</td>'; // add diff
+                            finalText += '<td class="rnk_font right">' + allArray[l]["Id_Sector_FinishTime"] + '</td>'; // add total time
                         }
                     }
 
@@ -3422,7 +3422,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow.svg"></td></tr>\n';
 
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">' + showFull + '</div></td></tr>\n';
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/overall.svg"></div><div class="subHeader">' + showFull + '</div></td></tr>\n';
                 } else {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font">&nbsp;</td></tr>\n'; // just to fill
                 }

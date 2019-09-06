@@ -1,1 +1,0 @@
-[{"headerFlag":"Images/_GreenFlag.png","HeaderEventName":"Migdal Epic Israel - Prologue","DayTime":"9/5/2019 10:27:55 AM","ElapsedTime":"00:00:00","RemainingTime":" ","MaximumStageTime":"09:00:00","startTime":"2019-09-06T04:15:00.000Z","message":""}]

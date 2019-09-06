@@ -1671,14 +1671,14 @@ add dns
             headerText1 += '<th class="rnkh_font Id_Numero">No.</th>\n';
         }
        if (cleanResults == 1) {
-            headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Number</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Nom">Rider 1 Name</th>\n';
+//            headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Number</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Nom">Name</th>\n';
             headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>\n';
             headerText1 += '<th class="rnkh_font uci">UCI</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Number</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Nationalite_2">Nationality</th>\n';
-            headerText1 += '<th class="rnkh_font uci">UCI</th>\n';
+//            headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Number</th>\n';
+//            headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>\n';
+//            headerText1 += '<th class="rnkh_font Id_Nationalite_2">Nationality</th>\n';
+//            headerText1 += '<th class="rnkh_font uci">UCI</th>\n';
 
             
        } else {
@@ -1995,6 +1995,8 @@ if (epictv == 0) {
                 
             } else { // cleanResults == 1
                 
+                // rider 1
+                
                 if (allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "blue") {
                     finalText += '<td title="Disqualified" class="rnk_font">DSQ</td>\n';
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dnf") {
@@ -2026,13 +2028,13 @@ if (epictv == 0) {
                     
                 }
                 
-         
+/*         
                  if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1) {
                 finalText += '<td title="Blue Board Rider" class="rnk_font blueCard">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
                 }
-                               
+*/                               
        //         finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';
        
        
@@ -2048,6 +2050,116 @@ if (epictv == 0) {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
         
+/*                
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>\n';// add the full number 2
+                    
+                    finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom_2"] + '</td>\n';// add the name 2
+
+                    finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nationalite_2"] + '</td>\n';// add Id_Nationalite 2
+                    
+                    
+                if (allArray[l]["uci"] == 2 || allArray[l]["uci"] == 3) {
+                    finalText += '<td class="rnk_font">yes</td>'; // UCI
+                } else {
+                    finalText += '<td class="rnk_font">no</td>'; // UCI
+                }
+*/             
+                finalText += '<td class="rnk_font wrap">' + allArray[l]["Id_Equipe"] + '</td>\n';// add the Team
+                
+                
+                if (useCategory == "no") {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the Category
+                }
+       
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
+                
+                if (stages >= 2) {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
+                }
+                if (stages >= 3) {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
+                }
+                if (stages == 4) {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
+                }
+                
+                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
+                    finalText += '<td class="rnk_font">-</td>\n'; // add total time
+                } else {
+                    finalText += '<td class="rnk_font bold">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
+                }
+                
+                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
+                    finalText += '<td class="rnk_font">-</td>\n'; // add diff
+                } else {
+                    finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
+                }
+ 
+                finalText += '</tr>\n';
+
+                
+                
+                
+                
+                
+                
+                
+                                // rider 2
+                
+                if (allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "blue") {
+                    finalText += '<td title="Disqualified" class="rnk_font">DSQ</td>\n';
+                } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dnf") {
+                    finalText += '<td title="Did Not Finished" class="rnk_font">DNF</td>\n';
+                } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dns") {
+                    finalText += '<td title="Did Not Started" class="rnk_font">DNS</td>\n';
+                } else if (allArray[l]["single"] != 0) {
+                    finalText += '<td title="Single Finisher" class="rnk_font">SF</td>\n'; 
+                } else if (allArray[l]["finishTimeTotal"] != 99999999999 && allArray[l]["Id_Position_Categorie"] == 1) { // leader
+                    
+                    finalText += '<td class="rnk_font">Leader</td>';
+                    
+                } else if (allArray[l]["finishTimeTotal"] != 99999999999) { // finished
+                    
+                    finalText += '<td class="rnk_font">Finished</td>';
+                    
+                } else {
+                    finalText += '<td class="rnk_font"></td>\n'; 
+                }
+                    
+                
+                if (allArray[l]["out"] == 0) {
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Position_Overall"] + '</td>\n'; // add postion
+                    finalText += '<td class="rnk_font ' + catCol + '">' + allArray[l]["Id_Position_Categorie"] + '</td>\n'; // add postion
+                } else {
+                     
+                    finalText += '<td class="rnk_font"></td>\n'; // add postion
+                    finalText += '<td class="rnk_font"></td>\n'; // add postion
+                    
+                }
+                
+/*         
+                 if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1) {
+                finalText += '<td title="Blue Board Rider" class="rnk_font blueCard">' + allArray[l]["Id_Numero"] + '</td>';
+                } else {
+                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>';
+                }
+*/                               
+       //         finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';
+       
+/*       
+                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>\n';// add the full number
+                        
+                    finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + '</td>\n';// add the name
+                    
+                    finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nationalite"] + '</td>\n';// add Id_Nationalite 
+                        
+                if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
+                    finalText += '<td class="rnk_font">yes</td>'; // UCI
+                } else {
+                    finalText += '<td class="rnk_font">no</td>'; // UCI
+                }
+*/        
                 
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>\n';// add the full number 2
                     
@@ -2095,7 +2207,7 @@ if (epictv == 0) {
                 }
  
                 finalText += '</tr>\n';
-   
+
                 
             }
         
