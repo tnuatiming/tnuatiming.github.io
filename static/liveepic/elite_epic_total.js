@@ -1841,7 +1841,7 @@ add dns
                     } else if (allArray[l]["Id_Categorie"] == 'Masters') {
                     leader = '<span title="Masters Leader" class="Flag BlueShirt"></span>';
                     leaderCard = 'DarkBlueCard';
-                    } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    } else if (allArray[l]["Id_Categorie"] == 'Grand Masters') {
                     leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
                     leaderCard = 'purpleCard';
                     } else {
@@ -1868,7 +1868,7 @@ add dns
                 catCol = 'greengreen';
             } else if (allArray[l]["Id_Categorie"] == 'Masters') {
                 catCol = 'blue';
-            } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+            } else if (allArray[l]["Id_Categorie"] == 'Grand Masters') {
                 catCol = 'purple';
             } else if (allArray[l]["Id_Categorie"] == 'Men'){
                 catCol = 'yellow';
@@ -1914,7 +1914,7 @@ if (epictv == 0) {
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td colspan="2" title="Did Not Started" class="rnk_font">DNS</td>\n';
                 } else if (allArray[l]["single"] != 0) {
-                    finalText += '<td colspan="2" title="Single Finisher" class="rnk_font">SF</td>\n'; // add postion
+                    finalText += '<td colspan="2" title="Individual Finisher" class="rnk_font">IF</td>\n'; // add postion
                 } else if (allArray[l]["out"] == 0) {
                     finalText += '<td class="rnk_font ' + bigFont + '">' + allArray[l]["Id_Position_Overall"] + '</td>\n'; // add postion
                     finalText += '<td class="rnk_font ' + bigFont + ' ' + catCol + '">' + allArray[l]["Id_Position_Categorie"] + '</td>\n'; // add postion
@@ -2003,8 +2003,8 @@ if (epictv == 0) {
                     finalText += '<td title="Did Not Finished" class="rnk_font">DNF</td>\n';
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td title="Did Not Started" class="rnk_font">DNS</td>\n';
-                } else if (allArray[l]["single"] != 0) {
-                    finalText += '<td title="Single Finisher" class="rnk_font">SF</td>\n'; 
+                } else if (allArray[l]["single"] == 1) {
+                    finalText += '<td title="Individual Finisher" class="rnk_font">IF1</td>\n'; 
                 } else if (allArray[l]["finishTimeTotal"] != 99999999999 && allArray[l]["Id_Position_Categorie"] == 1) { // leader
                     
                     finalText += '<td class="rnk_font">Leader</td>';
@@ -2113,8 +2113,8 @@ if (epictv == 0) {
                     finalText += '<td title="Did Not Finished" class="rnk_font">DNF</td>\n';
                 } else if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td title="Did Not Started" class="rnk_font">DNS</td>\n';
-                } else if (allArray[l]["single"] != 0) {
-                    finalText += '<td title="Single Finisher" class="rnk_font">SF</td>\n'; 
+                } else if (allArray[l]["single"] == 2) {
+                    finalText += '<td title="Individual Finisher" class="rnk_font">IF2</td>\n'; 
                 } else if (allArray[l]["finishTimeTotal"] != 99999999999 && allArray[l]["Id_Position_Categorie"] == 1) { // leader
                     
                     finalText += '<td class="rnk_font">Leader</td>';
@@ -2252,7 +2252,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                 if (useCategory == "no") {
                     var arrowC = "Men";
                 } else {
-                    var arrowC = allArray[l]["Id_Categorie"];
+                    var arrowC = allArray[l]["Id_Categorie"].replace(/\s/g, '');
                 }
    
                 var lll = 0;

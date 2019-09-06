@@ -1205,9 +1205,8 @@ remove all imTheLeader
  //       var finalText = Text; // clear the finalText variable and add the title and time lines
   
   
-        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + HeaderEventName.replace(" - ", "<br>") + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
+        var finalText = '<h1 id="Title"><img src="Images/' + headerFlag + '" alt="flag color">' + HeaderEventName.replace(" - ", "<br>") + '<img src="Images/' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
 
-        
 
              for (b = 0; b < allArray.length; b++) {
                  
@@ -2445,7 +2444,7 @@ remove all imTheLeader
                     } else if (allArray[l]["Id_Categorie"] == 'Masters') {
                     leader = '<span title="Masters Leader" class="Flag BlueShirt"></span>';
                     leaderCard = 'DarkBlueCard';
-                    } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    } else if (allArray[l]["Id_Categorie"] == 'Grand Masters') {
                     leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
                     leaderCard = 'purpleCard';
                     } else {
@@ -2464,7 +2463,7 @@ remove all imTheLeader
                     catCol = 'greengreen';
                 } else if (allArray[l]["Id_Categorie"] == 'Masters') {
                     catCol = 'blue';
-                } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                } else if (allArray[l]["Id_Categorie"] == 'Grand Masters') {
                     catCol = 'purple';
                 } else if (allArray[l]["Id_Categorie"] == 'Men'){
                     catCol = 'yellow';
@@ -2722,7 +2721,7 @@ allArray[l]["Id_Arrow"]
 
                 } else if (allArray[l]["single"] != 0 && show == 4) {
                     
-                    finalText += '<td colspan="2" title="Single Finisher" class="black ' + blued + 'rnk_font">SF</td>';
+                    finalText += '<td colspan="2" title="Individual Finisher" class="black ' + blued + 'rnk_font">IF</td>';
                     
                 } else if (allArray[l]["Id_Sector_FinishTime"] != 99999999999 /*&& show == 4*/ && allArray[l]["oldBlue"] == 0 && allArray[l]["single"] == 0 && !allArray[l]["Id_Image"].includes("_Status") && !(show != 4 && ((show >= 1 && allArray[l]["Id_Inter1blue"] == 1) || (show >= 2 && allArray[l]["Id_Inter2blue"] == 1) || (show >= 3 && allArray[l]["Id_Inter3blue"] == 1))) ) {
                     
@@ -3381,7 +3380,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                 if (useCategory == "no") {
                     var arrowC = "Men";
                 } else {
-                    var arrowC = allArray[l]["Id_Categorie"];
+                    var arrowC = allArray[l]["Id_Categorie"].replace(/\s/g, '');
                 }
    
                 var lll = 0;

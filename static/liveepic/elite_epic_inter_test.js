@@ -54,8 +54,8 @@
     var useKellner = 1; // get timing info from kellner
     var K1;
     var kellnerArray = {};
-    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
-//    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt'; 
+//    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
+    var urlKellner = 'https://tnuatiming.com/liveepic/f1.txt'; 
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -3186,7 +3186,7 @@
                     } else if (allArray[l]["Id_Categorie"] == 'Masters') {
                         leader = '<span title="Masters Leader" class="Flag BlueShirt"></span>';
                         leaderCard = 'DarkBlueCard';
-                    } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                    } else if (allArray[l]["Id_Categorie"] == 'Grand Masters') {
                         leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
                         leaderCard = 'purpleCard';
                     } else {
@@ -3204,7 +3204,7 @@
                     catCol = 'greengreen';
                 } else if (allArray[l]["Id_Categorie"] == 'Masters') {
                     catCol = 'blue';
-                } else if (allArray[l]["Id_Categorie"] == 'Grand') {
+                } else if (allArray[l]["Id_Categorie"] == 'Grand Masters') {
                     catCol = 'purple';
                 } else if (allArray[l]["Id_Categorie"] == 'Men'){
                     catCol = 'yellow';
@@ -3495,7 +3495,7 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td title="Finished" class="finished white rnk_font">&nbsp;</td>`;
                     
-                } else if (prologue == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status")) && (allArray[l]["Id_Canal"] == 1 || allArray[l]["Id_Canal_2"] == 1)) { // on track
+                } else if ((prologue == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status")) && (allArray[l]["Id_Canal"] == 1 || allArray[l]["Id_Canal_2"] == 1)) || (kellnerArray.hasOwnProperty(fullNumber))) { // on track
                     
                     finalText += `<td class="rnk_font fadeIn"><span title="Started" class="Flag Started"></span></td>`;
                     
@@ -3540,11 +3540,11 @@ allArray[l]["Id_Arrow"]
                     
                 } else if (allArray[l]["single"] == 1 && show == 4) {
                     
-                    finalText += `<td colspan="2" title="Single Finisher" class="rnk_font">IF1</td>`;
+                    finalText += `<td colspan="2" title="Individual Finisher" class="rnk_font">IF1</td>`;
                     
                 } else if (allArray[l]["single"] == 2 && show == 4) {
                     
-                    finalText += `<td colspan="2" title="Single Finisher" class="rnk_font">IF2</td>`;
+                    finalText += `<td colspan="2" title="Individual Finisher" class="rnk_font">IF2</td>`;
                     
                 } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0 || (show != 4 && ((show >= 1 && allArray[l]["Id_Inter1blue"] == 1) || (show >= 2 && allArray[l]["Id_Inter2blue"] == 1) || (show >= 3 && allArray[l]["Id_Inter3blue"] == 1)))) { // enable show != 4, to show postion only on finish
                 
