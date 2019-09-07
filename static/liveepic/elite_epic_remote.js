@@ -357,7 +357,7 @@ remove all imTheLeader
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
 
-        } else if (useCategory == "yes" && catcat == "Grand") {
+        } else if (useCategory == "yes" && catcat == "Grand Masters") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.add("active");
@@ -521,7 +521,11 @@ remove all imTheLeader
 //        positionArray = []; // empting the array as the info inside is incorrect due to canging between position/category position.
         
         useCategory = choice;
-        catcat = cat;
+        if (cat == 'Grand') {
+            catcat = 'Grand Masters';
+        } else {
+            catcat = cat;
+        }
 
         if (epictv == 1) { 
 
@@ -619,7 +623,7 @@ remove all imTheLeader
 
             sessionStorage.setItem('catcat', 'Masters');
             sessionStorage.setItem('categoryOrAll', 'yes');
-        } else if (useCategory == "yes" && catcat == "Grand") {
+        } else if (useCategory == "yes" && catcat == "Grand Masters") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.add("active");
@@ -635,7 +639,7 @@ remove all imTheLeader
             document.getElementById("Grand").classList.remove("active");
             document.getElementById("Grand").disabled = true;
 
-            sessionStorage.setItem('catcat', 'Grand');
+            sessionStorage.setItem('catcat', 'Grand Masters');
             sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "yes") {
             document.getElementById("displayAllButton").classList.add("active");

@@ -381,7 +381,7 @@
             document.getElementById("Grand").classList.add("active");
             document.getElementById("Grand").disabled = false;
 
-        } else if (useCategory == "yes" && catcat == "Grand") {
+        } else if (useCategory == "yes" && catcat == "Grand Masters") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.add("active");
@@ -556,7 +556,11 @@
             
         
         useCategory = choice;
-        catcat = cat;
+        if (cat == 'Grand') {
+            catcat = 'Grand Masters';
+        } else {
+            catcat = cat;
+        }
 
         if (epictv == 1) {
             rows = Number(document.getElementById("rows").value);
@@ -642,7 +646,7 @@
 
             sessionStorage.setItem('catcat', 'Masters');
             sessionStorage.setItem('categoryOrAll', 'yes');
-        } else if (useCategory == "yes" && catcat == "Grand") {
+        } else if (useCategory == "yes" && catcat == "Grand Masters") {
             document.getElementById("displayAllButton").classList.add("active");
             document.getElementById("displayAllButton").disabled = false;
             document.getElementById("displayCatButton").classList.add("active");
@@ -658,7 +662,7 @@
             document.getElementById("Grand").classList.remove("active");
             document.getElementById("Grand").disabled = true;
 
-            sessionStorage.setItem('catcat', 'Grand');
+            sessionStorage.setItem('catcat', 'Grand Masters');
             sessionStorage.setItem('categoryOrAll', 'yes');
         } else if (useCategory == "yes") {
             document.getElementById("displayAllButton").classList.add("active");
