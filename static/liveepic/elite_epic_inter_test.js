@@ -2145,10 +2145,10 @@
 // sorting intermediate 1
 //          allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie == "Masters")-(a.Id_Categorie == "Masters") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi1 - b.Id_Statusi1 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
 
             m = 0;
-            prevCompCat = ""
+            prevCompCat = "";
             
             for (l = 0; l < allArray.length; l++) {
 
@@ -2210,7 +2210,7 @@
          
 //            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
                         
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie == "Masters")-(a.Id_Categorie == "Masters") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi2 - b.Id_Statusi2 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
 
             m = 0;
             prevCompCat = ""
@@ -2275,7 +2275,7 @@
          
 //            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi3 - b.Id_Statusi3 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi3 - b.Id_Statusi3 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie == "Masters")-(a.Id_Categorie == "Masters") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Statusi3 - b.Id_Statusi3 || a.oldBlue - b.oldBlue || a.single - b.single || a.Id_Inter3blue - b.Id_Inter3blue || a.Id_Inter2blue - b.Id_Inter2blue || a.Id_Inter1blue - b.Id_Inter1blue || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2);
 
             m = 0;
             prevCompCat = ""
@@ -2342,7 +2342,7 @@
            
 //            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single || a.blue - b.blue || b.Id_NbTour - a.Id_NbTour || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2});
             
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single /*|| b.Id_NbTour - a.Id_NbTour*/ || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2); // remove Id_NbTour for kellner
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie == "Masters")-(a.Id_Categorie == "Masters") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single /*|| b.Id_NbTour - a.Id_NbTour*/ || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2); // remove Id_NbTour for kellner
 
             m = 0;
             prevCompCat = ""
@@ -4399,11 +4399,11 @@ if (show == 4) {
                     
                 } else if (allArray[l]["single"] == 2 && checkeredFlag == "finished") {
                     
-                    finalText += '<td class="rnk_font">IF2</td>'; // single finished
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
                     
                 } else if (allArray[l]["single"] == 1 && checkeredFlag == "finished") {
                     
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
+                    finalText += '<td class="rnk_font">IF1</td>'; // single finished
                     
                 } else if (checkeredFlag == "finished") { // finished
                     
@@ -4423,9 +4423,9 @@ if (show == 4) {
                 
                         
                 
-                finalText += '<td class="rnk_font left ' + single1 + '">' + allArray[l]["Id_Nom"] + '</td>'; // Rider 1
+                finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom"] + '</td>'; // Rider 1
                 
-                finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Nationalite"] + '</td>'; // Nation
+                finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Nationalite"] + '</td>'; // Nation
                 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
 
@@ -4437,21 +4437,34 @@ if (show == 4) {
                  
                 
                 if (doNotShowTime == 0) {
-                    if (allArray[l]["Id_TpsCumule"] == 99999999999 || allArray[l]["single"] == 1) {
+                    if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["single"] == 2) {
+                
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // Time Rider 1
+                
+                    } else if (allArray[l]["Id_TpsCumule"] == 99999999999 || allArray[l]["single"] == 2) {
+                        
                         finalText += '<td class="rnk_font">-</td>'; // Time Rider 1
+                        
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // Time Rider 1
                     }
                 }
                 
-                    if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 1) {
+
+                    if (allArray[l]["Id_TpsCumule"] != 99999999999 && allArray[l]["single"] == 2) {
+                
+                        finalText += '<td class="rnk_font bold">' + allArray[l]["Id_TpsCumule"] + '</td>'; // time
+                
+                    } else if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 2) {
+                        
                         finalText += '<td class="rnk_font">-</td>'; // time
+                        
                     } else {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
                     }
                 
 //                if (timeGapDisplay == 1) {
-                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 1) {
+                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 2) {
                         finalText += '<td class="rnk_font">-</td>'; // Gap
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
@@ -4541,11 +4554,11 @@ if (show == 4) {
                     
                 } else if (allArray[l]["single"] == 1 && checkeredFlag == "finished") {
                     
-                    finalText += '<td class="rnk_font">IF1</td>'; // single finished
+                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
                     
                 } else if (allArray[l]["single"] == 2 && checkeredFlag == "finished") {
                     
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
+                    finalText += '<td class="rnk_font">IF2</td>'; // single finished
                     
                 } else if (checkeredFlag == "finished") { // finished
                     
@@ -4566,9 +4579,9 @@ if (show == 4) {
                         
                  
                 
-                finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
+                finalText += '<td class="rnk_font left ' + single1 + '">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
                 
-                finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Nationalite_2"] + '</td>'; // Nation
+                finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Nationalite_2"] + '</td>'; // Nation
                 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
 
@@ -4579,21 +4592,33 @@ if (show == 4) {
                 }
                 
                 if (doNotShowTime == 0) {
-                    if (allArray[l]["Id_TpsCumule_2"] == 99999999999 || allArray[l]["single"] == 2) {
+                    if (allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 1) {
+                
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // Time Rider 2
+                
+                    } else if (allArray[l]["Id_TpsCumule_2"] == 99999999999 || allArray[l]["single"] == 1) {
+                        
                         finalText += '<td class="rnk_font">-</td>'; // Time Rider 2
+                        
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // Time Rider 2
                     }
                 }
                 
-                    if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 2) {
+                    if (allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 1) {
+                
+                        finalText += '<td class="rnk_font bold">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // time
+                
+                    } else if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 1) {
+                        
                         finalText += '<td class="rnk_font">-</td>'; // time
+                        
                     } else {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
                     }
                 
 //                if (timeGapDisplay == 1) {
-                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 2) {
+                    if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 1) {
                         finalText += '<td class="rnk_font">-</td>'; // Gap
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap

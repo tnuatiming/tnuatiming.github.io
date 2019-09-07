@@ -670,7 +670,7 @@ add dns
                 
                    
                 
-                if (allArray4[b]["blue"] == 1 || allArray4[b]["Id_Groupe"].includes('d') || allArray4[b]["Id_Groupe"].includes('b') || allArray4[b]["Id_Groupe"].includes('s') || allArray4[b]["Id_Arrow"] == 12 || allArray4[b]["Id_Arrow"] == 11 || allArray4[b]["Id_Arrow"] == 10 || allArray4[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray4[b]["blue"] == 1 || allArray4[b]["Id_Groupe"].includes('d') || allArray4[b]["Id_Groupe"].includes('b') || allArray4[b]["Id_Groupe"].includes('s') || allArray4[b]["Id_Arrow"] == 12 || allArray4[b]["Id_Arrow"] == 11 || allArray4[b]["Id_Arrow"] == 10 || allArray4[b]["Id_FinishTime"] == 99999999999 || allArray4[b]["single"] != 0) {
                     allArray4[b]["out"] = 1;
                 }
 
@@ -839,7 +839,7 @@ add dns
                 
                    
                 
-                if (allArray3[b]["blue"] == 1 || allArray3[b]["Id_Groupe"].includes('d') || allArray3[b]["Id_Groupe"].includes('b') || allArray3[b]["Id_Groupe"].includes('s') || allArray3[b]["Id_Arrow"] == 12 || allArray3[b]["Id_Arrow"] == 11 || allArray3[b]["Id_Arrow"] == 10 || allArray3[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray3[b]["blue"] == 1 || allArray3[b]["Id_Groupe"].includes('d') || allArray3[b]["Id_Groupe"].includes('b') || allArray3[b]["Id_Groupe"].includes('s') || allArray3[b]["Id_Arrow"] == 12 || allArray3[b]["Id_Arrow"] == 11 || allArray3[b]["Id_Arrow"] == 10 || allArray3[b]["Id_FinishTime"] == 99999999999 || allArray3[b]["single"] != 0) {
                     allArray3[b]["out"] = 1;
                 }
 
@@ -1007,7 +1007,7 @@ add dns
                 
                    
                 
-                if (allArray2[b]["blue"] == 1 || allArray2[b]["Id_Groupe"].includes('d') || allArray2[b]["Id_Groupe"].includes('b') || allArray2[b]["Id_Groupe"].includes('s') || allArray2[b]["Id_Arrow"] == 12 || allArray2[b]["Id_Arrow"] == 11 || allArray2[b]["Id_Arrow"] == 10 || allArray2[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray2[b]["blue"] == 1 || allArray2[b]["Id_Groupe"].includes('d') || allArray2[b]["Id_Groupe"].includes('b') || allArray2[b]["Id_Groupe"].includes('s') || allArray2[b]["Id_Arrow"] == 12 || allArray2[b]["Id_Arrow"] == 11 || allArray2[b]["Id_Arrow"] == 10 || allArray2[b]["Id_FinishTime"] == 99999999999 || allArray2[b]["single"] != 0) {
                     allArray2[b]["out"] = 1;
                 }
 
@@ -1240,7 +1240,7 @@ add dns
                 
                    
                 
-                if (allArray[b]["blue"] == 1 || allArray[b]["Id_Groupe"].includes('d') || allArray[b]["Id_Groupe"].includes('b') || allArray[b]["Id_Groupe"].includes('s') || allArray[b]["Id_Arrow"] == 12 || allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_FinishTime"] == 99999999999) {
+                if (allArray[b]["blue"] == 1 || allArray[b]["Id_Groupe"].includes('d') || allArray[b]["Id_Groupe"].includes('b') || allArray[b]["Id_Groupe"].includes('s') || allArray[b]["Id_Arrow"] == 12 || allArray[b]["Id_Arrow"] == 11 || allArray[b]["Id_Arrow"] == 10 || allArray[b]["Id_FinishTime"] == 99999999999 || allArray[b]["single"] != 0) {
                     allArray[b]["out"] = 1;
                 } else {
                     allArray[b]["out"] = 0;                    
@@ -1617,7 +1617,7 @@ add dns
 //        } else if (useCategory == "yes") {
 //            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
 
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || a.single - b.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie == "Masters")-(a.Id_Categorie == "Masters") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || a.single - b.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
 //        }
          
     // fix the position fields of the competitors and start building the final table
@@ -2042,7 +2042,7 @@ if (epictv == 0) {
        //         finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>\n';
        
        
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full"] + '</td>\n';// add the full number
+                    finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero_Full"] + '</td>\n';// add the full number
                         
                     finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom"] + '</td>\n';// add the name
                     
@@ -2076,25 +2076,41 @@ if (epictv == 0) {
                 }
        
 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
+                    if (allArray[l]["single"] != 2) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n';
+                    }
                 
                 if (stages >= 2) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
+                    if (allArray[l]["single"] != 2) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n'; // add time 2
+                    }
                 }
                 if (stages >= 3) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
+                    if (allArray[l]["single"] != 2) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n';
+                    }
                 }
                 if (stages == 4) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
+                    if (allArray[l]["single"] != 2) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n';
+                    }
                 }
                 
-                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
+                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns" || allArray[l]["single"] == 2) {
                     finalText += '<td class="rnk_font">-</td>\n'; // add total time
                 } else {
                     finalText += '<td class="rnk_font bold">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
                 }
                 
-                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
+                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns" || allArray[l]["single"] == 2) {
                     finalText += '<td class="rnk_font">-</td>\n'; // add diff
                 } else {
                     finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
@@ -2105,11 +2121,16 @@ if (epictv == 0) {
                 
                 
                 
+     // rider 2
+               
+                
+            if (l % 2 == 0) { // start building competitor line
+                finalText += '<tr class="rnk_bkcolor OddRow">\n';
+            } else {
+                finalText += '<tr class="rnk_bkcolor EvenRow">\n';
+            }
                 
                 
-                
-                
-                                // rider 2
                 
                 if (allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "blue") {
                     finalText += '<td title="Disqualified" class="rnk_font">DSQ</td>\n';
@@ -2167,7 +2188,7 @@ if (epictv == 0) {
                 }
 */        
                 
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>\n';// add the full number 2
+                    finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero_Full_2"] + '</td>\n';// add the full number 2
                     
                     finalText += '<td class="rnk_font left">' + allArray[l]["Id_Nom_2"] + '</td>\n';// add the name 2
 
@@ -2188,25 +2209,41 @@ if (epictv == 0) {
                 }
        
 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
+                    if (allArray[l]["single"] != 1) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n';
+                    }
                 
                 if (stages >= 2) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
+                    if (allArray[l]["single"] != 1) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n';
+                    }
                 }
                 if (stages >= 3) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
+                    if (allArray[l]["single"] != 1) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n';
+                    }
                 }
                 if (stages == 4) {
-                    finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
+                    if (allArray[l]["single"] != 1) {
+                        finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
+                    } else {
+                        finalText += '<td class="rnk_font">-</td>\n';
+                    }
                 }
                 
-                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
+                if (allArray[l]["finishTimeTotal"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns" || allArray[l]["single"] == 1) {
                     finalText += '<td class="rnk_font">-</td>\n'; // add total time
                 } else {
                     finalText += '<td class="rnk_font bold">' + allArray[l]["finishTimeTotal"] + '</td>\n'; // add total time
                 }
                 
-                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns") {
+                if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["dnsfq"] == "dsq" || allArray[l]["dnsfq"] == "dnf" || allArray[l]["dnsfq"] == "dns" || allArray[l]["single"] == 1) {
                     finalText += '<td class="rnk_font">-</td>\n'; // add diff
                 } else {
                     finalText += '<td class="rnk_font">+' + allArray[l]["Id_Ecart1er"] + '</td>\n'; // add diff
