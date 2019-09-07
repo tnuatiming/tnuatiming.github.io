@@ -1837,12 +1837,22 @@
                 
             }// END for a
 */            
-            // find finish time and check for 2 minutes difference
+
+
+// check status for individual finisher
+                        if (allArray[b]["Id_Image_2"].includes("_Status6")) {
+                            allArray[b]["single"] = 2;
+                        } else if (allArray[b]["Id_Image"].includes("_Status6")) {
+                            allArray[b]["single"] = 1;
+                        }
                         
-                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                        
+// find finish time and check for 2 minutes difference
+                        
+                        if (allArray[b]["Id_Groupe"].includes("s1") || allArray[b]["single"] == 1) {
                             allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule"]);
                             allArray[b]["single"] = 1;
-                        } else if ( allArray[b]["Id_Groupe"].includes("s2")) {
+                        } else if (allArray[b]["Id_Groupe"].includes("s2") || allArray[b]["single"] == 2) {
                             allArray[b]["Id_FinishTime"] = Number(allArray[b]["Id_TpsCumule_2"]);
                             allArray[b]["single"] = 2;
                         } else if (allArray[b]["Id_TpsCumule"] != 99999999999 && allArray[b]["Id_TpsCumule_2"] != 99999999999) {
@@ -1864,12 +1874,12 @@
                             }
                             
                             
-                            
-                        } else if (raceEnded == 1 && (allArray[b]["Id_TpsCumule"] == 99999999999 || allArray[b]["Id_TpsCumule_2"] == 99999999999)) {
+// FIXME not sure if needed or corecked                            
+/*                        } else if (raceEnded == 1 && ((allArray[b]["Id_TpsCumule"] == 99999999999 && allArray[b]["single"] == 1) || (allArray[b]["Id_TpsCumule_2"] == 99999999999) && allArray[b]["single"] == 2) || (allArray[b]["Id_TpsCumule"] == 99999999999 && allArray[b]["Id_TpsCumule_2"] == 99999999999 && allArray[b]["single"] == 0)) {
                             
                             allArray[b]["Id_FinishTime"] = 99999999999;
                             allArray[b].Id_Finishblue = 1; // make blue DSQ
-                            
+*/                            
                         }
 
  // make blue if exceed MaximumStageTime, ENABLE after testing
@@ -1887,12 +1897,10 @@
                 
         
             // find intermediate time 1 and check for 2 minutes difference
-                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                        if (allArray[b]["Id_Groupe"].includes("s1") || allArray[b]["single"] == 1) {
                             allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
-                            allArray[b]["single"] = 1;
-                        } else if (allArray[b]["Id_Groupe"].includes("s2")) {
+                        } else if (allArray[b]["Id_Groupe"].includes("s2") || allArray[b]["single"] == 2) {
                             allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1_2"]);
-                            allArray[b]["single"] = 2;
                         } else if (allArray[b]["Id_Inter1"] != 99999999999 && allArray[b]["Id_Inter1_2"] != 99999999999) {
                             if (allArray[b]["Id_Inter1"] > allArray[b]["Id_Inter1_2"]) {
                                 allArray[b]["Id_Inter1Time"] = Number(allArray[b]["Id_Inter1"]);
@@ -1938,12 +1946,10 @@
              //   console.log(Inter1Leader);
                 
             // find intermediate time 2 and check for 2 minutes difference
-                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                        if (allArray[b]["Id_Groupe"].includes("s1") || allArray[b]["single"] == 1) {
                             allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
-                            allArray[b]["single"] = 1;
-                        } else if (allArray[b]["Id_Groupe"].includes("s2")) {
+                        } else if (allArray[b]["Id_Groupe"].includes("s2") || allArray[b]["single"] == 2) {
                             allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2_2"]);
-                            allArray[b]["single"] = 2;
                         } else if (allArray[b]["Id_Inter2"] != 99999999999 && allArray[b]["Id_Inter2_2"] != 99999999999) {
                             if (allArray[b]["Id_Inter2"] > allArray[b]["Id_Inter2_2"]) {
                                 allArray[b]["Id_Inter2Time"] = Number(allArray[b]["Id_Inter2"]);
@@ -1989,12 +1995,10 @@
              //   console.log(Inter2Leader);
                 
             // find intermediate time 3 and check for 2 minutes difference
-                        if (allArray[b]["Id_Groupe"].includes("s1")) {
+                        if (allArray[b]["Id_Groupe"].includes("s1") || allArray[b]["single"] == 1) {
                             allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
-                            allArray[b]["single"] = 1;
-                        } else if (allArray[b]["Id_Groupe"].includes("s2")) {
+                        } else if (allArray[b]["Id_Groupe"].includes("s2") || allArray[b]["single"] == 2) {
                             allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3_2"]);
-                            allArray[b]["single"] = 2;
                         } else if (allArray[b]["Id_Inter3"] != 99999999999 && allArray[b]["Id_Inter3_2"] != 99999999999) {
                             if (allArray[b]["Id_Inter3"] > allArray[b]["Id_Inter3_2"]) {
                                 allArray[b]["Id_Inter3Time"] = Number(allArray[b]["Id_Inter3"]);
@@ -2046,12 +2050,23 @@
                     }
          
 
-                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status")) {
+                if (allArray[b]["Id_Image"].includes("_Status6") || allArray[b]["Id_Image_2"].includes("_Status6")) {
+                    allArray[b].Id_Statusi1 = 0;
+                    allArray[b].Id_Statusi2 = 0;
+                    allArray[b].Id_Statusi3 = 0;
+                    allArray[b].Id_Status = 0;
+                } else if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status")){
                     allArray[b].Id_Statusi1 = 1;
+                    allArray[b].Id_Statusi2 = 1;
+                    allArray[b].Id_Statusi3 = 1;
+                    allArray[b].Id_Status = 1;
                 } else {
                     allArray[b].Id_Statusi1 = 0;
+                    allArray[b].Id_Statusi2 = 0;
+                    allArray[b].Id_Statusi3 = 0;
+                    allArray[b].Id_Status = 0;
                 }
-                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status")) {
+/*                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status")) {
                     allArray[b].Id_Statusi2 = 1;
                 } else {
                     allArray[b].Id_Statusi2 = 0;
@@ -2067,7 +2082,7 @@
                 } else {
                     allArray[b].Id_Status = 0;
                 }
-            
+ */           
                
 
                // display result for selected intermediate or finish
@@ -3121,6 +3136,8 @@
                //         allArray[l]["e2min"] = 1; 
                         allArray[l]["blue"] = 1; //FIXME
                         showBlue = 1;
+                    } else if (allArray[l]["Id_Image"].includes("_Status6") || allArray[l]["Id_Image_2"].includes("_Status6")) {
+                        allArray[l]["Id_Arrow"] = 6; // IF
                     } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
                         allArray[l]["Id_Arrow"] = 11; // DNF
                     } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {

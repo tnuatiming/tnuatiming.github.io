@@ -133,6 +133,7 @@ elite_epic_remote.js - the js to put on the remote server, reads JSON j1.txt. ne
 
 riders wont get automatic blue if exceeds 2 minutes separation on intermediate , use status 5 to make the rider blue.
 use status 4 to make the rider blue for other resones.
+use status 6 to make the rider individual finisher.
 
 
 ## intermediate without Tag server ##
