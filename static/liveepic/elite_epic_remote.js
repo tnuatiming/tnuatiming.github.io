@@ -7,6 +7,8 @@
 // 20180701 - added penalty indicator.  
 // 20181030 - epic israel version.  
 
+//'use strict';
+
 /*
 FIXME
 add "Id_Sector_FinishTime" - maybe fixed?
@@ -1048,18 +1050,10 @@ remove all imTheLeader
 //        var arrayLeader = {};
 //        var Inter1Leader = {}, Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorTime, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
+        var showFull = '';
+        
+        var Text, l, m, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorTime, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, leader, showBlue, uci1, uci2, main_num, pair_num, blued, leaderCard, catCol;
 //       var leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, eeee, ffff, gggg;
-
-        if (show == 1) {
-            showFull = 'Intermediate 1';
-        } else if (show == 2) {
-            showFull = 'Intermediate 2';
-        } else if (show == 3) {
-            showFull = 'Intermediate 3';
-        } else {
-            showFull = 'Finish';
-        }
         
         allArray = JSON.parse(p1);
         
@@ -1176,7 +1170,7 @@ remove all imTheLeader
 //            positionArray = []; 
         }
         
-        eventName = HeaderEventName;  // tickerTest
+        eventName = HeaderEventName;
         
 
         if (HeaderEventName.includes("---")) { // do not show individuall times
@@ -1198,8 +1192,32 @@ remove all imTheLeader
 //            precision = "second";
         }
 
+        if (show == 1) {
+            showFull = 'Intermediate 1';
+        } else if (show == 2) {
+            showFull = 'Intermediate 2';
+        } else if (show == 3) {
+            showFull = 'Intermediate 3';
+        } else {
+            if (HeaderEventName.includes("rologue")) {
+                showFull = 'Prologue';
+            } else if (HeaderEventName.includes("tage 1")) {
+                showFull = 'Stage 1';
+            } else if (HeaderEventName.includes("tage 2")) {
+                showFull = 'Stage 2';
+            } else if (HeaderEventName.includes("tage 3")) {
+                showFull = 'Stage 3';
+            } else {
+                showFull = 'Finish';
+            }
+        }
+
         if (enableKiosk == 1) {
-            HeaderEventName = `${HeaderEventName}<br>${showFull}` 
+            if (show != 4) {
+                HeaderEventName = `${HeaderEventName}<br>${showFull}` 
+            } else {
+                HeaderEventName = `${HeaderEventName}<br><br>` 
+            }
             document.getElementById("categoryOrAll").style.display = "none";        
             document.getElementById("intermediateOrFinish").style.display = "none";        
         }
@@ -2019,13 +2037,13 @@ remove all imTheLeader
 */
 
 /*       } else {
-                    headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 No</th>';
                     
                     headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
                     if (doNotShowTime == 0) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule">Time Rider 1</th>';
                     }
-                    headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Nr</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 No</th>';
                     headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2</th>';
                     if (doNotShowTime == 0) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time Rider 2</th>';
@@ -3264,7 +3282,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
@@ -3373,7 +3391,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">Nr</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
 
                   

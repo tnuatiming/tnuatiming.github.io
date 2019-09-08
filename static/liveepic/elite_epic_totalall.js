@@ -138,16 +138,16 @@
 
             if (stages == 1) {
                 fetchResults(url1);
-                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>After Prologue";
+                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>GC Prologue";
             } else if (stages == 2) {
                 fetchResults(url2);
-                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>After Stage 1";
+                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>GC Stage 1";
             } else if (stages == 3) {
                 fetchResults(url3);
-                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>After Stage 2";
+                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>GC Stage 2";
             } else if (stages == 4) {
                 fetchResults(url4);
-                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>After Stage 3";
+                document.getElementById("totalHeader").innerHTML = "Migdal Epic Israel<br>GC Stage 3";
             }
 
             

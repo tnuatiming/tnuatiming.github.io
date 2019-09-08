@@ -914,9 +914,11 @@
 */        
         var finishers = [0, 0, 0, 0];
         
+        var bigFont = '';
+
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, uci1, uci2, finalText3, headerText31, headerText32;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, uci1, uci2, finalText3, headerText31, headerText32;
         
 // TEST        var allArrayMinimized = [], allArrayNew = [];
 
@@ -947,6 +949,7 @@
         var HeaderEventName = div.textContent || div.innerText || "";  
         var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
         csvName = HeaderRaceName.split(' ').join('_'); // replace all spaces with _
+        var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
 
     //    console.log(HeaderEventName);
 
@@ -995,7 +998,7 @@
             document.getElementById("intermediate1").style.display = "none";  
             document.getElementById("intermediate2").style.display = "none";  
             document.getElementById("intermediate3").style.display = "none";  
-            var bigFont = '';
+            bigFont = '';
         } else {
             document.getElementById("csv").style.display = "none";  
             document.getElementById("Men").style.display = "inline-block";  
@@ -1006,7 +1009,7 @@
             document.getElementById("intermediate1").style.display = "inline-block";  
             document.getElementById("intermediate2").style.display = "inline-block";  
             document.getElementById("intermediate3").style.display = "inline-block";  
-            var bigFont = ' bigFont';
+            bigFont = ' bigFont';
         }
 
         var finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
@@ -2207,8 +2210,8 @@
                         headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     }
 //                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>Cat</div><div>GC</div></th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">GC Position</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">Cat Position</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Rank</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Category Rank</th>';
 /*        } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Position_Categorie">Cat</th>';
@@ -4151,8 +4154,8 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
         
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font left Id_Nom">Name</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No.</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
@@ -4286,7 +4289,6 @@ if (enableJ1 == 1) {
 // get flag image src, DayTime, ElapsedTime, RemainingTime from header
 
     if (cleanResults == 0) {
-        var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
 
         var div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 

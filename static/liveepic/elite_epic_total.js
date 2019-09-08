@@ -50,6 +50,11 @@ add dns
     
     var epictv = 0;
     
+    var provisional = '';
+    if (sessionStorage.getItem('provisional')) {
+        provisional = sessionStorage.getItem('provisional');
+    }
+    
     var showTvHeader = 0;
     if (sessionStorage.getItem('showTvHeader')) {
         showTvHeader = sessionStorage.getItem('showTvHeader');
@@ -112,6 +117,25 @@ add dns
             });
             
             
+            if (document.getElementById("provisional").checked) {
+                Provisional = "Provisional ";
+            } else {
+                Provisional = "";
+            }
+            
+            document.getElementById('provisional').addEventListener('change', (event) => {
+                if (event.target.checked) {
+                    Provisional = "Provisional ";
+                    sessionStorage.setItem('provisional', provisional);
+                    document.getElementById("result").innerHTML = createLiveTable();
+                    alignTDforTV();
+                } else {
+                    Provisional = "";
+                    sessionStorage.setItem('provisional', provisional);
+                    document.getElementById("result").innerHTML = createLiveTable();
+                    alignTDforTV();
+                }
+            });
 
             
           
@@ -212,7 +236,7 @@ add dns
         
         publishText += `<!DOCTYPE html><html class="no-js" lang="he" xml:lang="he" dir="rtl"><head> <title>תנועה מדידת זמנים &ndash; live timing</title> <meta charset="utf-8"> <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo"> <meta name="description" content="תנועה מדידת זמנים עוסקת במדידת זמנים בארועי ספורט"> <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"> <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"> <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"> <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"> <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"> <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"> <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"> <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"> <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"> <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194"> <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"> <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192"> <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"> <link rel="manifest" href="/manifest.json"> <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffcc33"> <meta name="apple-mobile-web-app-title" content="תנועה מדדית זמנים"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="application-name" content="תנועה מדדית זמנים"> <meta name="msapplication-TileColor" content="#ffcc33"> <meta name="msapplication-TileImage" content="/mstile-144x144.png"> <meta name="theme-color" content="#ffcc33"> <link rel="stylesheet" media="all" type="text/css" href="/style/global.css"> <link rel="stylesheet" media="print" href="/style/print.css"> <meta property="og:locale" content="he_IL"> <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים"> <meta property="og:title" content="תנועה מדידת זמנים &ndash; live timing"> <meta property="og:description" content="live timing"> <meta property="og:url" content="https://tnuatiming.com/liveepic/"> <meta property="og:image" content="http://tnuatiming.com/images/logo2_og.png"> <meta property="og:image:type" content="image/png"> <meta property="og:image:width" content="1200"> <meta property="og:image:height" content="630"> <style>#live #buttonInfo{flex-direction: column; direction: ltr;}#live table.line_color{margin-top: 10px; direction: ltr;}#live #finalTextAll, #live #finalTextCategory{width: 100%;}#live tr.rnk_bkcolor:hover{background-color: #f0f0f0bf;}h1 img{height: 32px; vertical-align: middle; margin: 0 5px;}.Flag:before{content: "\\00a0";}.Flag{background-size: contain; background-position: 50%; background-repeat: no-repeat; position: relative; display: inline-block; width: 1.33333333em; vertical-align: middle; margin: 0 5px;}.australia{background-image: url(Images/CountryFlags/australia.svg);}.austria{background-image: url(Images/CountryFlags/austria.svg);}.belgium{background-image: url(Images/CountryFlags/belgium.svg);}.brazil{background-image: url(Images/CountryFlags/brazil.svg);}.canada{background-image: url(Images/CountryFlags/canada.svg);}.czechrepublic{background-image: url(Images/CountryFlags/czechrepublic.svg);}.denmark{background-image: url(Images/CountryFlags/denmark.svg);}.ecuador{background-image: url(Images/CountryFlags/ecuador.svg);}.england{background-image: url(Images/CountryFlags/england.svg);}.finland{background-image: url(Images/CountryFlags/finland.svg);}.france{background-image: url(Images/CountryFlags/france.svg);}.germany{background-image: url(Images/CountryFlags/germany.svg);}.greece{background-image: url(Images/CountryFlags/greece.svg);}.hungary{background-image: url(Images/CountryFlags/hungary.svg);}.iceland{background-image: url(Images/CountryFlags/iceland.svg);}.ireland{background-image: url(Images/CountryFlags/ireland.svg);}.israel{background-image: url(Images/CountryFlags/israel.svg);}.italy{background-image: url(Images/CountryFlags/italy.svg);}.latvia{background-image: url(Images/CountryFlags/latvia.svg);}.lithuania{background-image: url(Images/CountryFlags/lithuania.svg);}.netherlands{background-image: url(Images/CountryFlags/netherlands.svg);}.newzealand{background-image: url(Images/CountryFlags/newzealand.svg);}.norway{background-image: url(Images/CountryFlags/norway.svg);}.poland{background-image: url(Images/CountryFlags/poland.svg);}.portugal{background-image: url(Images/CountryFlags/portugal.svg);}.russia{background-image: url(Images/CountryFlags/russia.svg);}.serbia{background-image: url(Images/CountryFlags/serbia.svg);}.southafrica{background-image: url(Images/CountryFlags/southafrica.svg);}.spain{background-image: url(Images/CountryFlags/spain.svg);}.sweden{background-image: url(Images/CountryFlags/sweden.svg);}.switzerland{background-image: url(Images/CountryFlags/switzerland.svg);}.ukraine{background-image: url(Images/CountryFlags/ukraine.svg);}.unitedkingdom{background-image: url(Images/CountryFlags/unitedkingdom.svg);}.usa{background-image: url(Images/CountryFlags/usa.svg);}.transparent{background-image: url(Images/transparent.png);}.blueFlag{background-image: url(Images/_LightBlueFlag.png);}.CheckeredFlag{background-image: url(Images/_CheckeredFlag.png);}.numberOne{background-image: url(Images/numbreOne.svg); width: 1em;}.YellowShirt{background-image: url(Images/YellowShirt.svg);margin: 0;}.PinkShirt{background-image: url(Images/PinkShirt.svg);margin: 0;}.GreenShirt{background-image: url(Images/GreenShirt.svg);margin: 0;}.BlueShirt{background-image: url(Images/BlueShirt.svg);margin: 0;}.PurpleShirt{background-image: url(Images/PurpleShirt.svg);margin: 0;}.UCI{background-image: url(Images/uci.svg);margin: 0;}.dnf{background-image: url(Images/_dnf.svg);}.dsq{background-image: url(Images/_dsq.svg);}.dns{background-image: url(Images/_dns.svg);}#live td.rnk_font, #live th.rnkh_font{padding: 0 2px;}#live td.rnk_font.blueCard{color: #111; background-color: #add8e6bf; font-weight: 700;}#live td.left, #live th.left{text-align: left; padding-left: 10px;}#live td.right,#live th.right{text-align: right;}.lineThrough{filter: opacity(35%);}#live td.rnk_font.wrap{max-width: 200px; overflow: hidden; text-overflow: ellipsis;}#live td.rnk_font.bold{font-weight: 700;}#live td.rnk_font.bigFont{font-size: 1.5em; min-width: 35px;}#live .btn{display: inline-block;}#live #buttonInfo{margin-bottom: 10px;}#live .btn.active{cursor: pointer; filter: opacity(50%);}#live #Title{justify-content: space-evenly; vertical-align: middle; font-weight: 700; font-size: 1em; color: #58585a; margin: 5px 0; text-align: center;}#live h1#Title img{margin: 0 10px;}div#legend{width: 100%; text-align: left; direction: ltr;}div#legend ul{width: 100%; text-align: left; float: left;}div#legend li{text-align: left;}#csv{display: none;}@media (max-width:767px){#live td.rnk_font.bigFont{font-size: 1.2em; min-width: 25px;}#live td.rnk_font.wrap{max-width: 120px;}}</style></head> <body id="live"><div class="full-bg fadeIn"> <div class="page"> <div class="row header"> <div class="row language"> <a href="/english/index.html" title="go to English home page"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="27" height="19"> <clipPath id="t"> <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/> </clipPath> <path d="M0,0 v30 h60 v-30 z" fill="#00247d"/> <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/> <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#cf142b" stroke-width="4"/> <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/> <path d="M30,0 v30 M0,15 h60" stroke="#cf142b" stroke-width="6"/> </svg> </a> </div><div class="logoNav"> <div class="logo_main"> <div class="logo_image"> <ul class="logo"> <li></li><li></li><li></li><li></li></ul> </div><div class="logo_text"> <a class="main_logo" href="http://tnuatiming.com/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235 90"><switch><g fill="#58585a"><path d="M188.274 11.634h-8.35V1h30.586q12.656 0 18.15 5.36 5.537 5.318 5.537 17.667v31.508h-11.91V24.202q0-7.03-2.856-9.8-2.855-2.768-9.623-2.768h-9.668V34.66q0 7.648-1.76 12.174-1.713 4.527-5.36 6.636-3.647 2.065-10.59 2.065h-2.99V44.9h.748q3.076 0 4.834-1.098 1.758-1.143 2.505-3.516.747-2.373.747-7.163v-21.49zM169.51 55.535h-28.433V44.9h16.567V24.775q0-5.933-.79-8.438-.792-2.55-2.638-3.603-1.845-1.1-5.405-1.1h-5.228V1h7.47q7.56 0 11.294 2.02 3.736 2.022 5.45 6.636 1.713 4.615 1.713 12.833v33.045zM118.313 1h11.865v54.535h-11.865V1zM56.746 45.91q11.337-.174 17.622-2.24L58.81 1h12.877L84.65 38.352q4.967-4 7.076-12.656Q93.836 17.04 93.836 1h12.216q0 20.96-4.702 32.826-4.658 11.822-15.117 17.403-10.46 5.536-29.487 6.37V45.91zM13.547 55.535H1.682V22.4h11.865v33.135zm34.234 0H35.873V23.85q0-6.723-2.857-9.447-2.856-2.77-9.932-2.77H.803V1H23.83Q36.795 1 42.29 6.316q5.493 5.317 5.493 17.622v31.595z"/><path d="M223.98 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H220.97v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.385-2.44-4.703-2.44-2.966 0-4.878 2.703-1.91 2.68-3.537 9.448L212.86 89h-4.35l3.01-11.8q1.034-4.107 2.066-6.7l-5.493-8.46h4.768l2.748 4.46q1.714-2.592 3.67-3.735 1.955-1.164 4.7-1.164zM202.27 89h-4.064V65.777h-15.38V62.04h22.806v3.736h-3.362V89zM174.058 62.04h4.043v14.173h-4.042V62.04zM165.62 89h-4.065V65.777h-15.38V62.04h22.807v3.736h-3.362V89zM119.917 65.776h-4.175V62.04h14.568q6.065 0 8.7 2.593 2.638 2.57 2.638 8.57V89h-4.043V73.16q0-4.043-1.648-5.712-1.626-1.67-5.69-1.67h-6.307v12.788q0 4.043-.747 6.262-.725 2.22-2.35 3.208-1.627.967-5.12.967h-.243v-3.735h.374q1.538 0 2.417-.55.88-.57 1.253-1.757.374-1.186.374-3.58V65.775zM102.35 65.95v4.198l-2.396-.813q-1.297.68-1.802 1.275-.506.593-.725 1.428-.22.813-.22 2.065V89h-4.043V74.28q0-2.33.88-3.78.9-1.45 3.03-2.154L89.56 65.82v-4.175l12.79 4.306zM74.597 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H71.588v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.384-2.44-4.702-2.44-2.965 0-4.877 2.703-1.912 2.68-3.538 9.448L63.48 89h-4.352l3.01-11.8q1.033-4.107 2.066-6.7l-5.493-8.46h4.77l2.745 4.46q1.714-2.592 3.67-3.735Q71.85 61.6 74.597 61.6zM53.92 89H41.595v-3.735h8.284V73.62q0-3.516-.374-5.032-.35-1.516-1.208-2.153-.857-.66-2.483-.66h-2.966V62.04h2.834q3.517 0 5.12.99 1.627.966 2.374 3.207.747 2.22.747 6.24V89zM32.146 62.04h4.043v14.173h-4.044V62.04zM24.74 89H1.65V62.04h11.8q6.064 0 8.678 2.593 2.615 2.593 2.615 8.57V89zM5.69 65.777v19.49h14.986V73.157q0-4-1.626-5.69-1.604-1.692-5.647-1.692H5.69z"/></g><foreignObject width="235" height="90" requiredExtensions="http://example.com/SVGExtensions/EmbeddedXHTML"><img src="/images/logo2.png" width="235" height="90" alt="תנועה מדידת זמנים"/></foreignObject></switch></svg></a> </div></div><div class="navigation"> <svg style="display:none;"> <symbol id="live-icon" viewBox="0 0 32 32"> <path style="fill-opacity:1" d="M 17,6.03787 17,4 21,4 21,2 C 21,0.89544 20.104563,0 18.999938,0 L 13,0 c -1.104562,0 -2,0.89544 -2,2 l 0,2 4,0 0,2.03787 C 8.287563,6.54844 3,12.15669 3,19 3,26.17969 8.820313,32 16,32 23.179688,32 29,26.17969 29,19 29,12.15675 23.712438,6.5485 17,6.03787 Z m 6.071062,20.03319 C 21.18225,27.95981 18.671125,29 16,29 13.328875,29 10.817688,27.95981 8.928938,26.07106 7.040188,24.18231 6,21.67106 6,19 c 0,-2.67106 1.040188,-5.18231 2.928938,-7.07106 1.81375,-1.81369 4.2015,-2.84431 6.753562,-2.92338 l -0.677437,9.81313 C 14.946943,19.64025 15.394563,20 15.999938,20 16.605313,20 17.053,19.64025 16.994813,18.81869 L 16.317438,9.0055 c 2.552062,0.0791 4.939875,1.10975 6.753625,2.92344 C 24.959813,13.81769 26,16.32894 26,19 c 0,2.67106 -1.040187,5.18231 -2.928937,7.07106 z"/> </symbol> <symbol id="home-icon" viewBox="0 0 32 32"> <path style="fill-opacity:1" d="m 32,18.5 -6,-6 0,-9 -4,0 0,5 -6,-6 -16,16 0,1 4,0 0,10 10,0 0,-6 4,0 0,6 10,0 0,-10 4,0 z"/> </symbol> <symbol id="race-icon" viewBox="0 0 32 32"> <path style="fill-opacity:1" d="M 26,6 26,2 6,2 6,6 0,6 0,10 c 0,3.31369 2.6861875,6 6,6 0.627375,0 1.2321875,-0.0964 1.800625,-0.27506 1.4429375,2.06275 3.644,3.55612 6.199375,4.07487 L 14,26 12,26 c -2.2091875,0 -4,1.79081 -4,4 l 16,0 c 0,-2.20919 -1.790813,-4 -4,-4 l -2,0 0,-6.20019 c 2.555375,-0.51875 4.756437,-2.01206 6.199375,-4.07487 C 24.767813,15.90356 25.372625,16 26,16 c 3.313812,0 6,-2.68631 6,-6 L 32,6 26,6 Z M 6,13.625 C 4.0011875,13.625 2.375,11.99881 2.375,10 l 0,-2 L 6,8 6,10 c 0,1.25581 0.2321875,2.45725 0.6548125,3.56462 C 6.44225,13.60356 6.223625,13.625 6,13.625 Z M 29.625,10 c 0,1.99881 -1.626188,3.625 -3.625,3.625 -0.223625,0 -0.44225,-0.0214 -0.654812,-0.0604 C 25.767813,12.45725 26,11.25581 26,10 l 0,-2 3.625,0 0,2 z"/> </symbol> </svg> <ul> <li><a class=home href="/index.html"><svg class="home-icon"><use xlink:href="#home-icon"></use></svg><span>עמוד&nbsp;הבית</span></a></li><li><a class=races href="/results/index.html"><svg class="race-icon"><use xlink:href="#race-icon"></use></svg><span>תוצאות&nbsp;מרוצים</span></a></li><li class="last"><a class="live" href="/live/index.html"><span class="css3-blink"><span>live&nbsp;timing</span><svg class="live-icon"><use xlink:href="#live-icon"></use></svg></span></a></li></ul> </div></div></div><div class="row main_content"> <div id="raceheader"><h1>Results Total</h1></div><div id="buttonInfo"> <div id="categoryOrAll" style="display: block;"> <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button> <button id="displayAllButton" class="btn" onClick="category('no')">GC</button> </div></div>`;
         
-        publishText += '\n<h1 id="Title">Migdal Epic Israel<br>After '+ showStage + '</h1>\n';
+        publishText += '\n<h1 id="Title">Migdal Epic Israel<br>GC '+ showStage + '</h1>\n';
         
         publishText += '<div id="finalTextCategory" style="display: block;">\n';
 
@@ -279,6 +303,15 @@ add dns
                 showTvHeader = 0;
             }
             sessionStorage.setItem('showTvHeader', showTvHeader);
+
+            if (document.getElementById("provisional").checked) {
+                provisional = "Provisional ";
+            } else {
+                provisional = "";
+            }
+            sessionStorage.setItem('provisional', provisional);
+            
+            
 /*            
             if (document.getElementById("showArrow").checked) {
                 showArrow = 1;
@@ -1121,7 +1154,7 @@ add dns
         var st = 'Stage ' + (stages - 1);
         }
         
-        var finalText = '<h1 id="Title">Migdal Epic Israel<br>After '+ st + '</h1>\n';
+        var finalText = '<h1 id="Title">Migdal Epic Israel<br>GC '+ st + '</h1>\n';
 
         showStage = st;
         
@@ -1675,12 +1708,12 @@ add dns
     // hard coded header for now
         if (cleanResults == 1) {
             headerText1 += '<th class="rnkh_font Id_Arrow">Status</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Position_Overall">GC Position</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Position</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Overall">Rank</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Rank</th>\n';
             headerText1 += '<th class="rnkh_font Id_Numero">Number</th>\n';
         } else {
-            headerText1 += '<th class="rnkh_font Id_Position_Overall">GC Position</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Position_Categorie">Cat Position</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Overall">Rank</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Rank</th>\n';
             headerText1 += '<th class="rnkh_font Id_Numero">No.</th>\n';
         }
        if (cleanResults == 1) {
@@ -2311,7 +2344,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No.</th>';
                     TVheaderText1 += '<th class="rnkh_font finishTimeTotal">Time</th>'; // combined time
 
                   
@@ -2350,7 +2383,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow' + arrowC + '.svg"></td></tr>\n';
 
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">After ' + showStage + '</div></td></tr>\n';
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/' + allArray[l]["Id_Categorie"].replace(" ", "").toLowerCase() + '.svg"></div><div class="subHeader">' + provisional + showStage + '</div></td></tr>\n';
                 } else {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font"></td>&nbsp;</tr>\n'; // just to fill
                 }
@@ -2365,7 +2398,7 @@ if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory
                 if (showTvHeader == 1) {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; margin-buttom: 50px;" class="title_font"><img style="margin: 0; padding: 0; height: 120px; transform: rotate(90deg); " src="Images/arrow.svg"></td></tr>\n';
 
-                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">After ' + showStage + '</div></td></tr>\n';
+                    finalText += '<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">' + provisional + showStage + '</div></td></tr>\n';
                 } else {
                     finalText += '<tr><td colspan="99" style="width: 100%; height: 100% text-align:center; padding-top: 500px;" class="title_font">&nbsp;</td></tr>\n'; // just to fill
                 }

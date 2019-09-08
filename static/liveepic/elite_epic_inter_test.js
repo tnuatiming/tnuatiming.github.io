@@ -96,6 +96,7 @@
         doNotShowTime = sessionStorage.getItem('doNotShowTime');
     }
     
+    var tableClass = "fadeIn";
         
     var prologue;
 
@@ -493,9 +494,6 @@
                 document.getElementById("buttonInfo").style.borderBottom = "12px solid #c00";
             }
     };
-
-
-    var tableClass = "fadeIn";
 
 
     function intermediateOrFinish(section){
@@ -944,7 +942,7 @@
             }
 */            
         } else {
-            var xhr;
+            let xhr;
             xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (this.status == 200) {
@@ -1051,7 +1049,7 @@
             
             
         } else {
-            var xhr;
+            let xhr;
             xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (this.status == 200) {
@@ -1098,7 +1096,7 @@
         kellnerArray = arrayToObject(kellnerArrayTemp, "No")
 
 // option 2
-/*        for (var i in kellnerArrayTemp) {
+/*        for (let i in kellnerArrayTemp) {
 
             kellnerArray[kellnerArrayTemp[i].No] = kellnerArrayTemp[i]; 
             delete kellnerArray[kellnerArrayTemp[i].No].No;
@@ -1122,9 +1120,9 @@
      
     function interTable(ii, ix) {
         
-        var Text, lines, pp, ttt, b, id;
-        var lineArray = {};
-        var hhhPro = [];
+        let Text, lines, pp, ttt, b, id;
+        let lineArray = {};
+        let hhhPro = [];
         if (ix == 1) {
             inter1Array = {};
         } else if (ix == 2) {
@@ -1197,47 +1195,49 @@
             
         console.time('main');
 
-        var i;
-        var timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
-        var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
-        var lines;
-        var competitorPosition = 0;
-        var competitorNumber = 0;
-        var competitorLaps = 0;
-//        var qqq = [];
-//        var hhh = [];
-        var hhhPro = [];
-//        var temp = [];
-        var lineArray = {};
-        var allArray = [];
-//        var allArray2 = [];
-        var allArray2obj = [];
-        var allArray3 = [];
-        var allArray31 = [];
-        var allArray32 = [];
-        var allArray3f = [];
-        var allArrayJ3 = {};
-        var ttt = 0;
-        var pp = 0;
-        var b;
-        var a;
-        var id;
-        var positionChanged = "";
-        var laps = 12; // number of laps
-        var NewCategoryHeader = "";
+        let i;
+        let timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
+        let timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
+        let lines;
+        let competitorPosition = 0;
+        let competitorNumber = 0;
+        let competitorLaps = 0;
+//        let qqq = [];
+//        let hhh = [];
+        let hhhPro = [];
+//        let temp = [];
+        let lineArray = {};
+        let allArray = [];
+//        let allArray2 = [];
+        let allArray2obj = [];
+        let allArray3 = [];
+        let allArray31 = [];
+        let allArray32 = [];
+        let allArray3f = [];
+        let allArrayJ3 = {};
+        let ttt = 0;
+        let pp = 0;
+        let b;
+        let a;
+        let id;
+        let positionChanged = "";
+        let laps = 12; // number of laps
+        let NewCategoryHeader = "";
 /*        
-        var bestTime2comp = 0;
-        var bestTime2 = 0;
-        var bestTimecomp = 0;
-        var bestTime = 0;
+        let bestTime2comp = 0;
+        let bestTime2 = 0;
+        let bestTimecomp = 0;
+        let bestTime = 0;
 */        
-        var finishers = [0, 0, 0, 0];
+        let finishers = [0, 0, 0, 0];
         
-        var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
+        let bigFont = '';
+        
+        let Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, fullNumber, uci1, uci2, finalText3, headerText31, headerText32;
+        let Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, fullNumber, uci1, uci2, finalText3, headerText31, headerText32;
         
-// TEST        var allArrayMinimized = [], allArrayNew = [];
+// TEST        let allArrayMinimized = [], allArrayNew = [];
 
         MaximumStageTimeMili = timeString2ms(MaximumStageTime);
 
@@ -1260,12 +1260,13 @@
     //  console.log(lines.length);
      //   console.log(lines);
 
-        var HeaderName = Text[0].split("\n");  
-        var div = document.createElement("div");  
+        let HeaderName = Text[0].split("\n");  
+        let div = document.createElement("div");  
         div.innerHTML = HeaderName[0]; 
-        var HeaderEventName = div.textContent || div.innerText || "";  
-        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
+        let HeaderEventName = div.textContent || div.innerText || "";  
+        let HeaderRaceName = HeaderEventName.split('-')[1].trim();  
         csvName = HeaderRaceName.split(' ').join('_'); // replace all spaces with _
+        let headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
 
     //    console.log(HeaderEventName);
 
@@ -1322,7 +1323,7 @@
             document.getElementById("intermediate1").style.display = "none";  
             document.getElementById("intermediate2").style.display = "none";  
             document.getElementById("intermediate3").style.display = "none";  
-            var bigFont = '';
+            bigFont = '';
         } else {
             document.getElementById("csv").style.display = "none";  
             document.getElementById("Men").style.display = "inline-block";  
@@ -1333,7 +1334,7 @@
             document.getElementById("intermediate1").style.display = "inline-block";  
             document.getElementById("intermediate2").style.display = "inline-block";  
             document.getElementById("intermediate3").style.display = "inline-block";  
-            var bigFont = ' bigFont';
+            bigFont = ' bigFont';
         }
 
         if (useKellner == 1) {
@@ -1343,7 +1344,7 @@
         }
 
         
-        var finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
+        let finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
 
 
          // console.log(allArray2);
@@ -1358,7 +1359,7 @@
             if (lines[b].includes('<td id="Id_')) { // header cell
                 id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
                 hhhPro.push(id);
- //               var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
+ //               let idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
  //               hhh[id] = idName;
  //               temp.push(id,idName);
  //               qqq.push(temp);
@@ -2129,7 +2130,7 @@
          
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
          
-//        var allArrayJ = JSON.stringify(allArray);             
+//        let allArrayJ = JSON.stringify(allArray);             
 //        console.log(JSON.parse(allArrayJ));     
 //        download(allArrayJ, 'j1.txt', 'text/plain');    
          
@@ -2684,8 +2685,8 @@
                         headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     }
 //                    headerText1 += '<th colspan="2" class="rnkh_font Id_Position"><div>Cat</div><div>GC</div></th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">Position</th>'; // overall
-                    headerText1 += '<th class="rnkh_font Id_Position">Cat Position</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Rank</th>'; // overall
+                    headerText1 += '<th class="rnkh_font Id_Position">Rank Category</th>';
 /*        } else {
                     headerText1 += '<th class="rnkh_font Id_Arrow">&nbsp;&nbsp;&nbsp;</th>';
                     headerText1 += '<th class="rnkh_font Id_Position_Categorie">Cat</th>';
@@ -2721,13 +2722,13 @@
                 }
                 
 /*        } else {
-                    headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Nr</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 No</th>';
                     
                     headerText1 += '<th class="rnkh_font Id_Nom">Rider 1</th>';
                     if (doNotShowTime == 0) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule">Time Rider 1</th>';
                     }
-                    headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Nr</th>';
+                    headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 No</th>';
                     headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2</th>';
                     if (doNotShowTime == 0) {
                         headerText1 += '<th class="rnkh_font Id_TpsCumule_2">Time Rider 2</th>';
@@ -2784,9 +2785,9 @@
     if (singleLine == 1) {                            
         headerText1 = '<tr class="rnkh_bkcolor">';
 
-                headerText1 += '<th class="rnkh_font Id_Position_Overall">Overall Position</th>';
-                headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Position</th>';
-                headerText1 += '<th class="rnkh_font Id_Numero">Number</th>';
+                headerText1 += '<th class="rnkh_font Id_Position_Overall">Rank</th>';
+                headerText1 += '<th class="rnkh_font Id_Position_Categorie">Category Rank</th>';
+                headerText1 += '<th class="rnkh_font Id_Numero">No.</th>';
 
                 if (useCategory == "no") {
                     headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
@@ -2794,13 +2795,13 @@
                 headerText1 += '<th class="rnkh_font Id_Arrow">finish status</th>';
                 headerText1 += '<th class="rnkh_font Id_Groupe">start status</th>';
 
-                headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 Number</th>';
+                headerText1 += '<th class="rnkh_font Id_Numero_Full">Rider 1 No.</th>';
                 
                 headerText1 += '<th class="rnkh_font Id_Nom">Rider 1 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
 
-                headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Number</th>';
+                headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 No.</th>';
                 headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
@@ -3345,8 +3346,8 @@ if (cleanResults == 0) {
             }
         
         
-    //        for(var key in allArray[l]) {
-    //        var opt3 = allArray[l][key];
+    //        for(let key in allArray[l]) {
+    //        let opt3 = allArray[l][key];
  
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
@@ -3587,10 +3588,10 @@ allArray[l]["Id_Arrow"]
                 }
 
                 // show all array key:value in the number title
-                var keyValueLog = '';
+                let keyValueLog = '';
                 if (showLog == 1) {
                     for (let key in allArray[l]) {
-                //      var value = allArray[l][key];
+                //      let value = allArray[l][key];
                         if ((key == "Id_Inter1" || key == "Id_Inter1_2" || key == "Id_Inter2" || key == "Id_Inter2_2" || key == "Id_Inter3" || key == "Id_Inter3_2") && allArray[l][key] != 99999999999) {
                             keyValueLog += `${key}: ${ms2TimeString(allArray[l][key])}  |  `;
                         } else {
@@ -3752,7 +3753,7 @@ allArray[l]["Id_Arrow"]
 if (show == 4) {
 
 // BEGIN intermediate 1
-                    var title1 = '';
+                    let title1 = '';
                     if (doNotShowTime == 0) {
                         if (allArray[l]["Id_Inter1"] != 99999999999 && allArray[l]["Id_Inter1_2"] != 99999999999) {
                             title1 = `${ms2TimeString(allArray[l]["Id_Inter1"])}\n${ms2TimeString(allArray[l]["Id_Inter1_2"])}`;
@@ -3812,7 +3813,7 @@ if (show == 4) {
 // END intermediate 1
                     
 // BEGIN intermediate 2
-                    var title2 = '';
+                    let title2 = '';
                     if (doNotShowTime == 0) {
                         if (allArray[l]["Id_Inter2"] != 99999999999 && allArray[l]["Id_Inter2_2"] != 99999999999) {
                             title2 = `${ms2TimeString(allArray[l]["Id_Inter2"])}\n${ms2TimeString(allArray[l]["Id_Inter2_2"])}`;
@@ -3872,7 +3873,7 @@ if (show == 4) {
 // END intermediate 2
                     
 // BEGIN intermediate 3
-                    var title3 = '';
+                    let title3 = '';
                     if (doNotShowTime == 0) {
                         if (allArray[l]["Id_Inter3"] != 99999999999 && allArray[l]["Id_Inter3_2"] != 99999999999) {
                             title3 = `${ms2TimeString(allArray[l]["Id_Inter3"])}\n${ms2TimeString(allArray[l]["Id_Inter3_2"])}`;
@@ -4192,7 +4193,7 @@ if (show == 4) {
                     
                 }
 
-                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>'; // Nr
+                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero"] + '</td>'; // No
        
                 if (useCategory == "no") {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // CAT
@@ -4252,7 +4253,7 @@ if (show == 4) {
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Groupe"].replace(/u/g, '').replace('d', 'DSQ').replace('l', 'Leader').replace('b', 'Blue').replace('s', 'IF').replace(/[0-9]/g, '') + '</td>'; // status
                 
                         
-                finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Rider 1 Nr
+                finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Numero_Full"] + '</td>'; // Rider 1 No
                 
                 finalText += '<td class="rnk_font left ' + single1 + '">' + allArray[l]["Id_Nom"] + '</td>'; // Rider 1
                 
@@ -4264,7 +4265,7 @@ if (show == 4) {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
                  
-                finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Rider 2 Nr
+                finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Rider 2 No
                 
                 finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
                 
@@ -4522,7 +4523,7 @@ if (show == 4) {
                     
                 }
 
-                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Nr
+                finalText += '<td class="rnk_font highlight">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // No
        
                 if (useCategory == "no") {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>'; // CAT
@@ -4661,8 +4662,8 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
         
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font left Id_Nom">Name</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nation</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No.</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
@@ -4775,13 +4776,13 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
 // TEST create array without keys to minimize size of sending data
 
 if (l == 0) {
-    var result = Object.keys(allArray[l]).map(function(key) {
+    let result = Object.keys(allArray[l]).map(function(key) {
     return key;
     });
 allArrayMinimized.push(result);
     
 }
-var result = Object.keys(allArray[l]).map(function(key) {
+let result = Object.keys(allArray[l]).map(function(key) {
   return allArray[l][key];
 });
 
@@ -4796,19 +4797,18 @@ if (enableJ1 == 1) {
 // get flag image src, DayTime, ElapsedTime, RemainingTime from header
 
     if (cleanResults == 0) {
-        var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
         if (raceEnded == 1) {
             headerFlag = '_CheckeredFlag.png';
             
         }
 
-        var div1 = document.createElement("div");  
+        let div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 
-        var header2 = div1.getElementsByTagName("span");
+        let header2 = div1.getElementsByTagName("span");
    
-        var DayTime =  header2[0].textContent || div.innerText || "";
-        var ElapsedTime =  header2[1].textContent || div.innerText || "";
-        var RemainingTime =  header2[2].textContent || div.innerText || "";
+        let DayTime =  header2[0].textContent || div.innerText || "";
+        let ElapsedTime =  header2[1].textContent || div.innerText || "";
+        let RemainingTime =  header2[2].textContent || div.innerText || "";
 
 // order the array for JSON.stringify
         
@@ -5065,13 +5065,13 @@ console.log(allArrayMinimized);
 
 // extract back:
 
-var arrayKeys = allArrayMinimized.shift();
+let arrayKeys = allArrayMinimized.shift();
 console.log(arrayKeys);
             
 
 for (a = 0; a < allArrayMinimized.length; a++) { 
 
-    var result =  allArrayMinimized[a].reduce(function(result, field, index) {
+    let result =  allArrayMinimized[a].reduce(function(result, field, index) {
     result[arrayKeys[index]] = field;
     return result;
     }, {})
@@ -5195,13 +5195,13 @@ console.log(allArrayNew);
 
 
 
-        var flagText = HeaderName[0].match(/Images\/\s*(.*?)\s*\.png/);
+        let flagText = HeaderName[0].match(/Images\/\s*(.*?)\s*\.png/);
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">מגדל אפיק ישראל - חד יומי</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        let finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">מגדל אפיק ישראל - חד יומי</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
 
-//        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+//        let finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText3header += HeaderName[1];
         finalText3 = '\n<div id="liveTableS">\n';
@@ -5229,7 +5229,7 @@ console.log(allArrayNew);
             prevCompCat = ""
         
             leaderTime = 0;
-            var t = 1;
+            let t = 1;
 
         for (let l = 0; l < allArray3f.length; l++) {
             
@@ -5422,18 +5422,17 @@ if (enableJ3 == 1) {
         
 if (enableJ3 == 1) {
 
-        var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
 
-        var div1 = document.createElement("div");  
+        let div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 
-        var header2 = div1.getElementsByTagName("span");
+        let header2 = div1.getElementsByTagName("span");
    
-        var DayTime =  header2[0].textContent || div.innerText || "";
-        var ElapsedTime =  header2[1].textContent || div.innerText || "";
-        var RemainingTime =  header2[2].textContent || div.innerText || "";
+        let DayTime =  header2[0].textContent || div.innerText || "";
+        let ElapsedTime =  header2[1].textContent || div.innerText || "";
+        let RemainingTime =  header2[2].textContent || div.innerText || "";
 
 
-        var header = {};
+        let header = {};
 /*        
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
@@ -5500,7 +5499,7 @@ const allArrayObject = arrayToObject(allArray, "Id_Numero")
 if (enableJ1 == 1) {
   
     if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
-        var header = {};
+        let header = {};
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
         header.DayTime = DayTime;
@@ -5550,7 +5549,7 @@ if (enableJ1 == 1) {
 
     function ms2TimeString(mili){
         
-        var d, a, f, g, z;
+        let d, a, f, g, z;
 
         if (precision == "tenth") {
             d = mili % 1E3;
@@ -5654,7 +5653,7 @@ if (k<100){
             for (let kk = 0; kk < tt.length; kk++) {
 
         /*
-                var numCols = 0;
+                let numCols = 0;
 
                 for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
 
@@ -5720,7 +5719,7 @@ if (k<100){
 
  
     function msToTime(duration) {
-        var milliseconds = parseInt(duration % 1000),
+        let milliseconds = parseInt(duration % 1000),
             seconds = parseInt((duration / 1000) % 60),
             minutes = parseInt((duration / (1000 * 60)) % 60),
             hours = parseInt((duration / (1000 * 60 * 60)) % 24);
@@ -5737,7 +5736,7 @@ if (k<100){
     };
 
     function sortObjKeysAlphabetically(obj) {
-        var ordered = {};
+        let ordered = {};
         Object.keys(obj).sort().forEach(function(key) {
         ordered[key] = obj[key];
         });
