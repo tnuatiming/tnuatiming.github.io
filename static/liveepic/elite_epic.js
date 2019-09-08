@@ -897,6 +897,7 @@
         var allArray31 = [];
         var allArray32 = [];
         var allArray3f = [];
+        var allArrayJ3 = {};
         var ttt = 0;
         var pp = 0;
         var b;
@@ -915,7 +916,7 @@
         
         var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, competitorLaps, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, uci1, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, uci1, uci2, finalText3, headerText31, headerText32;
         
 // TEST        var allArrayMinimized = [], allArrayNew = [];
 
@@ -4837,7 +4838,6 @@ if (enableJ3 == 1) {
 
             
             
-            const allArrayJ3 = {};
             Object.keys(allArray3f[l]).sort().forEach(function(key) {
                 if (allArray3f[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
                     allArray3f[l][key] = '';

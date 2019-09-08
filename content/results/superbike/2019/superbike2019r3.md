@@ -5,7 +5,7 @@ type: results
 tag: "סופרבייק"
 place: "שדה תימן"
 season: "2019"
-round: "מרוץ 3"
+round: "ליגת צ'יף - מרוץ 3"
 category: "superbike"
 ---
 <table class="line_color">
@@ -23,8 +23,8 @@ category: "superbike"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font">1</td>
-        <td class="rnk_font">77</td>
-        <td class="rnk_font">יוגב הרוש</td>
+        <td class="rnk_font">22</td>
+        <td class="rnk_font">אייל חוברה</td>
         <td class="rnk_font">20</td>
         <td class="rnk_font">59.380</td>
         <td class="rnk_font">20:13.290</td>
@@ -32,8 +32,8 @@ category: "superbike"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
-        <td class="rnk_font">22</td>
-        <td class="rnk_font">אייל חוברה</td>
+        <td class="rnk_font">77</td>
+        <td class="rnk_font">יוגב הרוש</td>
         <td class="rnk_font">20</td>
         <td class="rnk_font">59.567</td>
         <td class="rnk_font">20:15.829</td>

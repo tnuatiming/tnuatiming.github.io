@@ -5,7 +5,7 @@ type: results
 tag: "סופרבייק"
 place: "שדה תימן"
 season: "2019"
-round: "מרוץ 4"
+round: "ליגת צ'יף - מרוץ 4"
 category: "superbike"
 ---
 <table class="line_color">

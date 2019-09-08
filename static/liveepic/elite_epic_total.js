@@ -1167,6 +1167,10 @@ add dns
                 allArray[b].Id_Nom_2 = allArray[b].N2;
                 delete allArray[b].N2;
                 
+                allArray[b].T11 = allArray[b].T; // rider 1 time in mili
+                delete allArray[b].T;
+                allArray[b].T12 = allArray[b].TT; // rider 2 time in mili
+                delete allArray[b].TT;
                 
                 delete allArray[b].B1;
                 delete allArray[b].B2;
@@ -1179,11 +1183,11 @@ add dns
                 delete allArray[b].PC;
                 delete allArray[b].PO;
                 delete allArray[b].R;
-                delete allArray[b].T;
                 delete allArray[b].T1;
                 delete allArray[b].T2;
                 delete allArray[b].T3;
-                delete allArray[b].TT;
+//                delete allArray[b].T;
+//                delete allArray[b].TT;
                 
                 
 
@@ -1404,6 +1408,9 @@ add dns
 
                     if (allArray[b]["Id_Numero"] == allArray2[a]["Id_Numero"]) {
                         
+                        allArray[b]["T21"] = allArray2[a]["T"]; // rider 1 time in mili
+                        allArray[b]["T22"] = allArray2[a]["TT"]; // rider 2 time in mili
+
                         allArray[b]["Id_FinishTime_1"] = allArray2[a]["Id_FinishTime"];
                         allArray[b]["blue_1"] = allArray2[a]["blue"];
                         if (allArray2[a]["oldBlue"] == 1) {
@@ -1470,6 +1477,9 @@ add dns
 
                     if (allArray[b]["Id_Numero"] == allArray3[a]["Id_Numero"]) {
                         
+                        allArray[b]["T31"] = allArray3[a]["T"]; // rider 1 time in mili
+                        allArray[b]["T32"] = allArray3[a]["TT"]; // rider 2 time in mili
+
                         allArray[b]["Id_FinishTime_2"] = allArray3[a]["Id_FinishTime"];
                         allArray[b]["blue_2"] = allArray3[a]["blue"];
                         if (allArray3[a]["oldBlue"] == 1) {
@@ -1538,6 +1548,9 @@ add dns
 
                     if (allArray[b]["Id_Numero"] == allArray4[a]["Id_Numero"]) {
                         
+                        allArray[b]["T41"] = allArray4[a]["T"]; // rider 1 time in mili
+                        allArray[b]["T42"] = allArray4[a]["TT"]; // rider 2 time in mili
+
                         allArray[b]["Id_FinishTime_3"] = allArray4[a]["Id_FinishTime"];
                         allArray[b]["blue_3"] = allArray4[a]["blue"];
                         if (allArray4[a]["oldBlue"] == 1) {
@@ -2075,9 +2088,11 @@ if (epictv == 0) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the Category
                 }
        
-
+//FIXME
                     if (allArray[l]["single"] != 2) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
+                    } else if (allArray[l]["single"] == 2 && allArray[l]["T11"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T11"]) + '</td>\n'; // add time 1
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
@@ -2085,6 +2100,8 @@ if (epictv == 0) {
                 if (stages >= 2) {
                     if (allArray[l]["single"] != 2) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
+                    } else if (allArray[l]["single"] == 2 && allArray[l]["T21"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T21"]) + '</td>\n'; // add time 2
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n'; // add time 2
                     }
@@ -2092,6 +2109,8 @@ if (epictv == 0) {
                 if (stages >= 3) {
                     if (allArray[l]["single"] != 2) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
+                    } else if (allArray[l]["single"] == 2 && allArray[l]["T31"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T31"]) + '</td>\n'; // add time 3
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
@@ -2099,6 +2118,8 @@ if (epictv == 0) {
                 if (stages == 4) {
                     if (allArray[l]["single"] != 2) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
+                    } else if (allArray[l]["single"] == 2 && allArray[l]["T41"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T41"]) + '</td>\n'; // add time 1
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
@@ -2208,16 +2229,20 @@ if (epictv == 0) {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the Category
                 }
        
-
+//FIXME
                     if (allArray[l]["single"] != 1) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime"] + '</td>\n'; // add time 1
+                    } else if (allArray[l]["single"] == 1 && allArray[l]["T12"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T12"]) + '</td>\n'; // add time 1
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
-                
+
                 if (stages >= 2) {
                     if (allArray[l]["single"] != 1) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_1"] + '</td>\n'; // add time 2
+                    } else if (allArray[l]["single"] == 1 && allArray[l]["T22"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T22"]) + '</td>\n'; // add time 2
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
@@ -2225,6 +2250,8 @@ if (epictv == 0) {
                 if (stages >= 3) {
                     if (allArray[l]["single"] != 1) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_2"] + '</td>\n'; // add time 3
+                    } else if (allArray[l]["single"] == 1 && allArray[l]["T32"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T32"]) + '</td>\n'; // add time 3
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
@@ -2232,6 +2259,8 @@ if (epictv == 0) {
                 if (stages == 4) {
                     if (allArray[l]["single"] != 1) {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_FinishTime_3"] + '</td>\n'; // add time 4
+                    } else if (allArray[l]["single"] == 1 && allArray[l]["T42"] != 0) {
+                        finalText += '<td class="rnk_font">' + ms2TimeString(allArray[l]["T42"]) + '</td>\n'; // add time 4
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
