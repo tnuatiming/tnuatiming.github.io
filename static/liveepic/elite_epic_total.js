@@ -1731,7 +1731,7 @@ add dns
             headerText1 += '<th class="rnkh_font Id_Nom">Name</th>\n';
             headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>\n';
             headerText1 += '<th class="rnkh_font uci">UCI</th>\n';
-            headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+            headerText1 += '<th class="rnkh_font Id_Federation">UCI ID</th>';
             headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
 //            headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Number</th>\n';
 //            headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>\n';

@@ -98,6 +98,10 @@ python3 convert_p1_to_json.py
 
 make sure live settings are pointing to the rpi web server (192.168.0.4, 22, passive, pi, raspberry, /home/pi/tt/liveepic/, use sftp, temp.html, upgrade every 30 sec).
 
+folder name: Migdal Epic Israel
+race name day 1: prologue
+race name day 2: Stage 1
+
 build classification for epic: 
 
     (מספר) - Id_Numero
@@ -136,6 +140,16 @@ elite_epic_remote.js - the js to put on the remote server, reads JSON j1.txt. ne
 riders wont get automatic blue if exceeds 2 minutes separation on intermediate , use status 5 to make the rider blue.
 use status 4 to make the rider blue for other resones.
 use status 6 to make the rider individual finisher.
+
+### status ###
+Status3 - blue (exceeds Maximum Stage Time)
+Status4 - blue
+Status5 - blue (exceeds 2 minutes separation)
+Status6 - individual finisher
+Status10 - DSQ
+Status10 - DNF
+Status10 - DNS
+
 
 
 ## intermediate without Tag server ##

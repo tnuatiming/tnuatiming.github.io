@@ -1906,7 +1906,13 @@
 
  // make blue if exceed MaximumStageTime, ENABLE after testing
                         allArray[b].mst = 0;
-                        if ((allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTimeMili) || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
+                        if (allArray[b]["Id_Image"].includes("_Status3") || allArray[b]["Id_Image_2"].includes("_Status3")) {
+                            allArray[b]["mst"] = 1;
+                            if (show == 4) {
+                                allArray[b]["blue"] = 1;
+                            }
+                        }
+/*                        if ((allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTimeMili) || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
                             allArray[b]["Id_FinishTime"] = 99999999999;
                             allArray[b].Id_Finishblue = 1; // make blue DSQ
                             allArray[b].mst = 1;
@@ -1915,7 +1921,7 @@
                         if (allArray[b]["Id_Finishblue"] == 1 && show == 4) {
                             allArray[b]["blue"] = 1;
                         }
-               
+*/               
                 
         
             // find intermediate time 1 and check for 2 minutes difference
@@ -2813,14 +2819,14 @@
                 headerText1 += '<th class="rnkh_font Id_Nom">Rider 1 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
-                headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+                headerText1 += '<th class="rnkh_font Id_Federation">UCI ID</th>';
                 headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
 
                 headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 No.</th>';
                 headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
-                headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+                headerText1 += '<th class="rnkh_font Id_Federation">UCI ID</th>';
                 headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
                 headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
                 if (doNotShowTime == 0) {
@@ -2872,7 +2878,7 @@
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
-                headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+                headerText1 += '<th class="rnkh_font Id_Federation">UCI ID</th>';
                 headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
 
                 if (doNotShowTime == 0) {
@@ -3157,12 +3163,15 @@
                     
                     if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
                         allArray[l]["Id_Arrow"] = 10; // DSQ
+                    } else if (allArray[l]["Id_Image"].includes("_Status3") || allArray[l]["Id_Image_2"].includes("_Status3")) {
+                        allArray[l]["blue"] = 1; //FIXME mst
+                        showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status4") || allArray[l]["Id_Image_2"].includes("_Status4")) {
-                        allArray[l]["blue"] = 1; //FIXME
+                        allArray[l]["blue"] = 1; //FIXME general blue
                         showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
                //         allArray[l]["e2min"] = 1; 
-                        allArray[l]["blue"] = 1; //FIXME
+                        allArray[l]["blue"] = 1; //FIXME e2m
                         showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status6") || allArray[l]["Id_Image_2"].includes("_Status6")) {
                         allArray[l]["Id_Arrow"] = 6; // IF
@@ -5161,7 +5170,7 @@ console.log(allArrayNew);
                         if (Math.abs(allArray31[b]["Id_TpsCumule"] - allArray31[b]["Id_TpsCumule_2"]) > 120000) { // check more then 2 minutes apart
                         //      allArray31[b]["Id_FinishTime"] = 99999999999;
                         // allArray31[b]["Id_Arrow"] == 10; // make DSQ
-                        allArray31[b]["Id_Image"] = ("_Status10"); // make DSQ
+ //                       allArray31[b]["Id_Image"] = ("_Status10"); // make DSQ
                         allArray31[b]["blue"] = "blueCard"; // make blue
                         }
                         
@@ -5319,6 +5328,8 @@ console.log(allArrayNew);
             finalText3 += '<td class="rnk_font dnsfq">DSQ</td>\n';
            } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
             finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
+           } else if (allArray3f[l]["Id_Image"].includes('_Status12')) {
+            finalText3 += '<td class="rnk_font dnsfq">DNS</td>\n';
            } else if (allArray3f[l]["Id_Status"] == 1) {
             finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
            } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
