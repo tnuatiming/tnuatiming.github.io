@@ -1,16 +1,3 @@
-// 20180518 - array refactoring with all/category toggle, display arrows for position change 
-// 20180522 - add fades and competitor info on arrows display 
-// 20180523 - add competitor number color/background according to category 
-// 20180527 - add message uploading 
-// 20180607 - special edition for 2 specials run individually and computation done in live. special 1 live points to: https://tnuatiming.com/live1/livea/p1.html and special 2 live points to: https://tnuatiming.com/live1/liveb/p1.html 
-// 20180610 - refactor special edition for 2 specials run individually and computation done in live, added laps time in correct order.  
-// 20180701 - added penalty indicator.  
-// 20181030 - epic israel version.  
-/*
- TODO
- json all i3Position_Overall and i3index
- 
-*/
 //'use strict';
 
     var startTime = "2019-09-25 13:30:00"; // start time "2019-09-21 07:00:00"
@@ -18,7 +5,7 @@
         startTime = sessionStorage.getItem('startTimeX');
     }
         
-    var MaximumStageTime = "09:00:00"; // Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
+    var MaximumStageTime = "09:00:00"; // format "09:00:00"   Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
     if (sessionStorage.getItem('MaximumStageTime')) {
         MaximumStageTime = sessionStorage.getItem('MaximumStageTime');
     }
@@ -27,6 +14,7 @@
     var hash;
     
     var allArrayJ = {};
+    var allArrayJ3 = {};
     var J3text;
     var enableJ1 = 0;   // create j1.txt for remote
     var enableJ3 = 0;  // create p3.html for single day
@@ -866,14 +854,16 @@
             
                                 if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
                                     download(allArrayJ, 'j1.txt', 'text/plain');    
-                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
+                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt');
                             
                             //       console.log(JSON.parse(allArrayJ));  
                                 }
                                 
                                 if (enableJ3 == 1 && dayCompetitors == 1) { 
                                     download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
-                                    console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html')
+                                    console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html');
+                                    download(allArrayJ3, 'j3.txt', 'text/plain');    
+                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt');
                                 }
                         
                         }
@@ -1214,7 +1204,7 @@
         let allArray31 = [];
         let allArray32 = [];
         let allArray3f = [];
-        let allArrayJ3 = {};
+//        let allArrayJ3 = {};
         let ttt = 0;
         let pp = 0;
         let b;
@@ -5505,8 +5495,8 @@ if (enableJ3 == 1) {
         
         allArray3f.unshift(header); // add the header at the beginning
         allArrayJ3 = JSON.stringify(allArray3f);             
-        download(allArrayJ3, 'j3.txt', 'text/plain');    
-        console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt')
+//        download(allArrayJ3, 'j3.txt', 'text/plain');    
+//        console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt')
 }
 
 //    }
