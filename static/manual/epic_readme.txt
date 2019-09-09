@@ -114,6 +114,8 @@ build classification for epic:
     (Group) - Id_Groupe - add letters as follows: "u" - UCI Rider(convert xls "yes" on UCI colnum to "u" and import into Group), "b" - blue rider, "s" - single Rider, "l" - leader(yellow shirt), "d" - DSQ.
     (Team) - Id_Equipe - team name
     (Channel) - Id_Canal - mark "started" for prologue
+    (Federation) - Id_Federation - UCI number
+    (Id_Perso1) - Custom1 - gender
     
 set race settings > others > cycling:
 

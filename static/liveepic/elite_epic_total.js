@@ -1205,6 +1205,16 @@ add dns
                 allArray[b].T12 = allArray[b].TT; // rider 2 time in mili
                 delete allArray[b].TT;
                 
+                allArray[b].Id_Perso1 = allArray[b].G1; // gender
+                delete allArray[b].G1;
+                allArray[b].Id_Perso1_2 = allArray[b].G2;
+                delete allArray[b].G2;
+                allArray[b].Id_Federation = allArray[b].U1; // uci no.
+                delete allArray[b].U1;
+                allArray[b].Id_Federation_2 = allArray[b].U2;
+                delete allArray[b].U2;
+
+        
                 delete allArray[b].B1;
                 delete allArray[b].B2;
                 delete allArray[b].B3;
@@ -1721,6 +1731,8 @@ add dns
             headerText1 += '<th class="rnkh_font Id_Nom">Name</th>\n';
             headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>\n';
             headerText1 += '<th class="rnkh_font uci">UCI</th>\n';
+            headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+            headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
 //            headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 Number</th>\n';
 //            headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>\n';
 //            headerText1 += '<th class="rnkh_font Id_Nationalite_2">Nationality</th>\n';
@@ -1940,8 +1952,8 @@ if (epictv == 0) {
                             
                 finalText += '\n<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>\n' + headerText1 + '\n';                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
-                    finalText += '\n<tr><td colspan="99" class="title_font">GC</td></tr>\n' + headerText1 + '\n';
+//                finalText += '<tr><td colspan="99" class="title_font">Overall</td></tr>' + headerText1;
+                    finalText += '\n<tr><td colspan="99" class="title_font">Overall</td></tr>\n' + headerText1 + '\n';
             }
 
 
@@ -2099,6 +2111,9 @@ if (epictv == 0) {
                 } else {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Federation"] + '</td>'; // uci no.
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Perso1"] + '</td>'; // gender
         
 /*                
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Numero_Full_2"] + '</td>\n';// add the full number 2
@@ -2255,8 +2270,10 @@ if (epictv == 0) {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
              
-                finalText += '<td class="rnk_font wrap">' + allArray[l]["Id_Equipe"] + '</td>\n';// add the Team
-                
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Federation_2"] + '</td>'; // uci no.
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Perso1_2"] + '</td>'; // gender
+
+                finalText += '<td class="rnk_font wrap">' + allArray[l]["Id_Equipe"] + '</td>\n';// add the Team                
                 
                 if (useCategory == "no") {
                     finalText += '<td class="rnk_font">' + allArray[l]["Id_Categorie"] + '</td>\n';// add the Category

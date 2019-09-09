@@ -1438,6 +1438,8 @@
                     lineArray.Id_Inter3Time = 99999999999;
                     lineArray.Id_Inter3Ecart1er = 99999999999; // maybe needs to be '-'
                     lineArray.Id_Nom_2 = "";
+                    lineArray.Id_Federation_2 = ""; // uci no.
+                    lineArray.Id_Perso1_2 = ""; // gender
                     lineArray.Id_Nationalite_2 = "";
                     lineArray.Id_Canal_2 = "";
                     lineArray.Id_Arrow = 0;
@@ -1477,6 +1479,15 @@
                     
                     if (lineArray["Id_Groupe"] == '&nbsp;') {
                         lineArray["Id_Groupe"] = "";   
+                    }
+                    if (lineArray["Id_Federation"] == '&nbsp;') {
+                        lineArray["Id_Federation"] = "";   
+                    }
+                    if (lineArray["Id_Perso1"] == '&nbsp;') {
+                        lineArray["Id_Perso1"] = "";   
+                    }
+                    if (lineArray["Id_Equipe"] == '&nbsp;') {
+                        lineArray["Id_Equipe"] = "";   
                     }
 
                     if (lineArray["Id_Categorie"] == '&nbsp;' ) {
@@ -1811,6 +1822,8 @@
                     allArray[b]["Id_Nationalite_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Nationalite"];
                     allArray[b]["Id_TpsCumule_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_TpsCumule"];
                     allArray[b]["Id_Canal_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Canal"];
+                    allArray[b]["Id_Federation_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Federation"];
+                    allArray[b]["Id_Perso1_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Perso1"];
                     
                     if (typeof allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter1"] != 'undefined') {
                         allArray[b]["Id_Inter1_2"] = allArray2obj[allArray[b]["Id_Numero"]]["Id_Inter1"];
@@ -2800,11 +2813,15 @@
                 headerText1 += '<th class="rnkh_font Id_Nom">Rider 1 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
+                headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+                headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
 
                 headerText1 += '<th class="rnkh_font Id_Numero_Full_2">Rider 2 No.</th>';
                 headerText1 += '<th class="rnkh_font Id_Nom_2">Rider 2 Name</th>';
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
+                headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+                headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
                 headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
                 if (doNotShowTime == 0) {
                     headerText1 += '<th class="rnkh_font Id_TpsCumule">Rider 1 Time</th>';
@@ -2855,6 +2872,8 @@
                 headerText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                 headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
                 headerText1 += '<th class="rnkh_font UCI">UCI</th>';
+                headerText1 += '<th class="rnkh_font Id_Federation">UCI No.</th>';
+                headerText1 += '<th class="rnkh_font Id_Perso1">Gender</th>';
 
                 if (doNotShowTime == 0) {
                     headerText1 += '<th class="rnkh_font Id_TpsCumule">Rider Time</th>';
@@ -4265,6 +4284,9 @@ if (show == 4) {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
                  
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Federation"] + '</td>'; // uci no.
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Perso1"] + '</td>'; // gender
+
                 finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Numero_Full_2"] + '</td>'; // Rider 2 No
                 
                 finalText += '<td class="rnk_font left ' + single2 + '">' + allArray[l]["Id_Nom_2"] + '</td>'; // Rider 2
@@ -4276,6 +4298,9 @@ if (show == 4) {
                 } else {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Federation_2"] + '</td>'; // uci no.
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Perso1_2"] + '</td>'; // gender
                 
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
 
@@ -4439,6 +4464,9 @@ if (show == 4) {
                 } else {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Federation"] + '</td>'; // uci no.
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Perso1"] + '</td>'; // gender
                  
                 
                 if (doNotShowTime == 0) {
@@ -4595,6 +4623,9 @@ if (show == 4) {
                 } else {
                     finalText += '<td class="rnk_font">no</td>'; // UCI
                 }
+
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Federation_2"] + '</td>'; // uci no.
+                finalText += '<td class="rnk_font">' + allArray[l]["Id_Perso1_2"] + '</td>'; // gender
                 
                 if (doNotShowTime == 0) {
                     if (allArray[l]["Id_TpsCumule_2"] != 99999999999 && allArray[l]["single"] == 1) {
@@ -4701,7 +4732,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
             } else if (allArray[l]["Id_Position_Overall"] == 1 && useCategory == "no") {
                 
                 if (showTvHeader == 1) {
-                    finalText += `<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/gc.svg"></div><div class="subHeader">Results at ${showFull}</div></td></tr>`;
+                    finalText += `<tr><td colspan="99" class="title_font"><div><img class="CategoryHeader" src="Images/overall.svg"></div><div class="subHeader">Results at ${showFull}</div></td></tr>`;
                 }
 //                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + TVheaderText1;
                 finalText += TVheaderText1 + '\n';
@@ -5031,6 +5062,15 @@ if (enableJ1 == 1) {
         delete allArray[l].Id_Nom;
         allArray[l].N2 = allArray[l].Id_Nom_2;
         delete allArray[l].Id_Nom_2;
+
+        allArray[l].G1 = allArray[l].Id_Perso1; // gender
+        delete allArray[l].Id_Perso1;
+        allArray[l].G2 = allArray[l].Id_Perso1_2;
+        delete allArray[l].Id_Perso1_2;
+        allArray[l].U1 = allArray[l].Id_Federation; // uci no.
+        delete allArray[l].Id_Federation;
+        allArray[l].U2 = allArray[l].Id_Federation_2;
+        delete allArray[l].Id_Federation_2;
 
 
 //        const allArrayJ = {};
