@@ -1103,6 +1103,18 @@
         if (showLog == 1) {
             console.log("K1:");
             console.log(kellnerArray);
+
+            const userKeyRegExp = /^[0-1]?[0-9]:[0-5][0-9]:[0-5][0-9].[0-9]{0,3}/; // regEx for time string between "4:05:02." to  "12:46:53.764"
+            console.log("K1 Errors:");
+
+            for (let b in kellnerArray) { 
+                
+                if (kellnerArray[b].Time != '' && !(userKeyRegExp.test(kellnerArray[b].Time)) || kellnerArray[b].T1 != '' && !(userKeyRegExp.test(kellnerArray[b].T1)) || kellnerArray[b].T2 != '' && !(userKeyRegExp.test(kellnerArray[b].T2)) || kellnerArray[b].T3 != '' && !(userKeyRegExp.test(kellnerArray[b].T3))) {
+
+                    console.log(kellnerArray[b]);
+                }
+            }
+            
         }
     };
 
@@ -1283,7 +1295,7 @@
         }
 
 
-        if (Text[0].includes("prologue")) { // prologue
+        if (Text[0].toLowerCase().includes("prologue")) { // prologue
             prologue = 1;
             enableInter1 = 0;
             enableInter2 = 0;
@@ -1294,9 +1306,9 @@
             precision = "second";
         }
 
-        if (Text[0].includes("_Stop.png") || Text[0].includes("_CheckeredFlag.png")) { // check if race ended
-            raceEnded = 1;
-        }
+//        if (Text[0].includes("_Stop.png") || Text[0].includes("_CheckeredFlag.png")) { // check if race ended
+//            raceEnded = 1;
+//        }
                 
         if (raceEnded == 1) {
             Text[0] = Text[0].replace(/_GreenFlag.png/g, "_CheckeredFlag.png")
@@ -1370,6 +1382,9 @@
                         lineArray["Id_Categorie"] = "";   
                     } else if (lineArray["Id_Categorie"] == 'undefined' ) {
                         lineArray["Id_Categorie"] = "-";   
+                    }
+                    if (lineArray["Id_Equipe"] == '&nbsp;') {
+                        lineArray["Id_Equipe"] = "";   
                     }
                     
                     
@@ -5298,7 +5313,7 @@ console.log(allArrayNew);
 
                 t = 0;
                 
-                if (allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                if (allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד')) {
                     finalText3 += '<table class="line_color fadeIn">\n<tr>\n<td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td>\n</tr>' + headerText31 + '\n';
                 } else {
                     finalText3 += '<table class="line_color fadeIn">\n<tr>\n<td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td>\n</tr>' + headerText32 + '\n';
@@ -5331,7 +5346,7 @@ console.log(allArrayNew);
             finalText3 += '<td class="rnk_font ' + allArray3f[l]["blue"] + '">' + allArray3f[l]["Id_Numero"] + '</td>\n';
             finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom"] + '</td>\n';
             
-            if (!allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+            if (!(allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד'))) {
                 finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom_2"] + '</td>\n';
             }
             

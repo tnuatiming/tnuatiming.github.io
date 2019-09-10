@@ -141,7 +141,14 @@ riders wont get automatic blue if exceeds 2 minutes separation on intermediate ,
 use status 4 to make the rider blue for other resones.
 use status 6 to make the rider individual finisher.
 
+### single day ###
+
+Class- mark 1 day competitors: 'sf' for Friday and 'ss' for Saturday.
+individual riders must have 'סולו' or 'יחיד' in category.
+
+
 ### status ###
+
 Status3 - blue (exceeds Maximum Stage Time)
 Status4 - blue
 Status5 - blue (exceeds 2 minutes separation)
