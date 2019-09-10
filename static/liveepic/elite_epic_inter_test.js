@@ -45,7 +45,7 @@
     var K1;
     var kellnerArray = {};
 //    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
-    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt' 
+    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -1104,12 +1104,12 @@
             console.log("K1:");
             console.log(kellnerArray);
 
-            const userKeyRegExp = /^[0-1]?[0-9]:[0-5][0-9]:[0-5][0-9].[0-9]{0,3}/; // regEx for time string between "4:05:02." to  "12:46:53.764"
+            const testTimeRegExp = /^[0-1]?[0-9]:[0-5][0-9]:[0-5][0-9].[0-9]{0,3}/; // regEx for time string between "4:05:02." to  "12:46:53.764"
             console.log("K1 Errors:");
 
             for (let b in kellnerArray) { 
                 
-                if (kellnerArray[b].Time != '' && !(userKeyRegExp.test(kellnerArray[b].Time)) || kellnerArray[b].T1 != '' && !(userKeyRegExp.test(kellnerArray[b].T1)) || kellnerArray[b].T2 != '' && !(userKeyRegExp.test(kellnerArray[b].T2)) || kellnerArray[b].T3 != '' && !(userKeyRegExp.test(kellnerArray[b].T3))) {
+                if (kellnerArray[b].Time != '' && !(testTimeRegExp.test(kellnerArray[b].Time)) || kellnerArray[b].T1 != '' && !(testTimeRegExp.test(kellnerArray[b].T1)) || kellnerArray[b].T2 != '' && !(testTimeRegExp.test(kellnerArray[b].T2)) || kellnerArray[b].T3 != '' && !(testTimeRegExp.test(kellnerArray[b].T3))) {
 
                     console.log(kellnerArray[b]);
                 }
@@ -3554,9 +3554,35 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td title="Finished" class="finished white rnk_font">&nbsp;</td>`;
                     
-                } else if ((prologue == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status")) && (allArray[l]["Id_Canal"] == 1 || allArray[l]["Id_Canal_2"] == 1)) || (kellnerArray.hasOwnProperty(fullNumber))) { // on track
+/*                } else if ((prologue == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status")) && (allArray[l]["Id_Canal"] == 1 || allArray[l]["Id_Canal_2"] == 1)) || (kellnerArray.hasOwnProperty(fullNumber))) { // on track
                     
                     finalText += `<td class="rnk_font fadeIn"><span title="Started" class="Flag Started"></span></td>`;
+                    
+*/                } else if (allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status"))) { // check on track using kellner
+    
+                    const fullNumber1 = allArray[l]["Id_Numero_Full"].replace('-', '');
+                    const fullNumber2 = allArray[l]["Id_Numero_Full_2"].replace('-', '');
+                    
+                    finalText += `<td class="white rnk_font fadeIn">`;
+
+                    if (kellnerArray.hasOwnProperty(fullNumber1) && allArray[l]["Id_TpsCumule"] == 99999999999) { // rider 1 on track
+                        finalText += `<span title="Started" class="Flag Started"></span>&nbsp;`;
+                    } else if (kellnerArray.hasOwnProperty(fullNumber1) && allArray[l]["Id_TpsCumule"] != 99999999999) {// rider 1 finished
+                        finalText += `&nbsp;&nbsp;&nbsp;`;
+                    } 
+                    
+                    if (kellnerArray.hasOwnProperty(fullNumber2) && allArray[l]["Id_TpsCumule_2"] == 99999999999) { // rider 2 on track
+                        finalText += `<span title="Started" class="Flag Started"></span>`;
+                    } else if (kellnerArray.hasOwnProperty(fullNumber2) && allArray[l]["Id_TpsCumule_2"] != 99999999999) {// rider 2 finished
+                        finalText += `&nbsp;&nbsp;`;
+                    } else {
+                        
+                        finalText += `&nbsp;&nbsp;&nbsp;&nbsp;`; // both finished
+                    }
+
+                    finalText += `</td>`;
+                    
+                    
                     
                 } else if (allArray[l]["Id_Arrow"] == 7) { // black
                     
@@ -5329,19 +5355,55 @@ console.log(allArrayNew);
             }
            
            
-           if (allArray3f[l]["Id_Image"].includes('_Status10')) {
-            finalText3 += '<td class="rnk_font dnsfq">DSQ</td>\n';
-           } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
-            finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
-           } else if (allArray3f[l]["Id_Image"].includes('_Status12')) {
-            finalText3 += '<td class="rnk_font dnsfq">DNS</td>\n';
-           } else if (allArray3f[l]["Id_Status"] == 1) {
-            finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
-           } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
-            finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Position"] + '</td>\n';
-           }  else {
+            if (allArray3f[l]["Id_Image"].includes('_Status10')) {
+                finalText3 += '<td class="rnk_font dnsfq">DSQ</td>\n';
+            } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
+                finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
+            } else if (allArray3f[l]["Id_Image"].includes('_Status12')) {
+                finalText3 += '<td class="rnk_font dnsfq">DNS</td>\n';
+            } else if (allArray3f[l]["Id_Status"] == 1) {
+                finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
+            } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
+                finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Position"] + '</td>\n';
+            } else if (allArray3f[l]["Id_FinishTime"] == 99999999999) { // check on track using kellner
+    
+
+                if (allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                    
+                    if (kellnerArray.hasOwnProperty(allArray3f[l]["Id_Numero_Full"].replace('-', ''))) { //  on track
+                        finalText3 += `<td class="rnk_font fadeIn">&nbsp;<span title="Started" class="Flag Started"></span>&nbsp;</td>`;
+                    }  else {
+                        finalText3 += `<td class="white rnk_font fadeIn">&nbsp;&nbsp;&nbsp;</td>`; // &#9671;
+                    } 
+                    
+                } else {
+
+                    const fullNumber1 = allArray3f[l]["Id_Numero_Full"].replace('-', '');
+                    const fullNumber2 = allArray3f[l]["Id_Numero_Full_2"].replace('-', '');
+                    
+                    finalText3 += `<td class="white rnk_font fadeIn">`;
+
+                    if (kellnerArray.hasOwnProperty(fullNumber1) && allArray3f[l]["Id_TpsCumule"] == 99999999999) { // rider 1 on track
+                        finalText3 += `<span title="Started" class="Flag Started"></span>&nbsp;`;
+                    } else if (kellnerArray.hasOwnProperty(fullNumber1) && allArray3f[l]["Id_TpsCumule"] != 99999999999) {// rider 1 finished
+                        finalText3 += `&nbsp;&nbsp;&nbsp;`;
+                    }
+                    
+                    if (kellnerArray.hasOwnProperty(fullNumber2) && allArray3f[l]["Id_TpsCumule_2"] == 99999999999) { // rider 2 on track
+                        finalText3 += `<span title="Started" class="Flag Started"></span>`;
+                    } else if (kellnerArray.hasOwnProperty(fullNumber2) && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {// rider 2 finished
+                        finalText3 += `&nbsp;&nbsp;`;
+                    } else {
+                        
+                        finalText3 += `&nbsp;&nbsp;&nbsp;&nbsp;`; // both finished
+                    }
+
+                    finalText3 += `</td>`;
+                }
+
+            }  else {
             finalText3 += '<td class="rnk_font"></td>\n';
-           }
+            }
             
             finalText3 += '<td class="rnk_font ' + allArray3f[l]["blue"] + '">' + allArray3f[l]["Id_Numero"] + '</td>\n';
             finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom"] + '</td>\n';

@@ -154,8 +154,8 @@ Status4 - blue
 Status5 - blue (exceeds 2 minutes separation)
 Status6 - individual finisher
 Status10 - DSQ
-Status10 - DNF
-Status10 - DNS
+Status11 - DNF
+Status12 - DNS
 
 
 
@@ -169,6 +169,7 @@ each intermediate time run its own race with mass start (same time as main timin
 need to use extention on chrome to get data from 3 party due to cors:
 https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
 
+make sure "https://www.4sport-services.com/epic2019/out.txt" is enabled
 
 ## on epic site ##
 
