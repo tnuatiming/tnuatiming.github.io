@@ -16,6 +16,7 @@
     var allArrayJ = {};
     var allArrayJ3 = {};
     var J3text;
+    var showInt = 1; // show int on single day
     var enableJ1 = 0;   // create j1.txt for remote
     var enableJ3 = 0;  // create p3.html for single day
     var dayCompetitors = 0;
@@ -1397,6 +1398,9 @@
                         if (kellnerArray.hasOwnProperty(fullNumber)) {
 
                             lineArray["Id_TpsCumule"] = kellnerArray[fullNumber]['Time']; 
+                            lineArray["Id_Inter1"] = kellnerArray[fullNumber]['T1']; 
+                            lineArray["Id_Inter2"] = kellnerArray[fullNumber]['T2']; 
+                            lineArray["Id_Inter3"] = kellnerArray[fullNumber]['T3']; 
                        }
                         
                     }
@@ -5169,7 +5173,8 @@ console.log(allArrayNew);
 
                 
 // BEGIN single day   
-    // BEGIN allArray31, 32                
+    // BEGIN allArray31, 32 
+    
                 
         for (let b = 0; b < allArray31.length; b++) {  // main array
             for (let a = 0; a < allArray32.length; a++) { 
@@ -5182,6 +5187,9 @@ console.log(allArrayNew);
                     allArray31[b]["Id_Nom_2"] = allArray32[a]["Id_Nom"];
                     allArray31[b]["Id_Numero_Full_2"] = allArray32[a]["Id_Numero_Full"];
                     allArray31[b]["Id_TpsCumule_2"] = allArray32[a]["Id_TpsCumule"];
+                    allArray31[b]["Id_Inter1_2"] = allArray32[a]["Id_Inter1"];
+                    allArray31[b]["Id_Inter2_2"] = allArray32[a]["Id_Inter2"];
+                    allArray31[b]["Id_Inter3_2"] = allArray32[a]["Id_Inter3"];
                 }
             }                  // END allArray32
                         
@@ -5291,6 +5299,11 @@ console.log(allArrayNew);
                 headerText31 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
                 headerText31 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
                 headerText31 += '<th class="rnkh_font">רוכב</th>\n'; // Id_Nom
+                if (showInt == 1 && cleanResults == 0 && doNotShowTime == 0) {
+                    headerText31 += '<th class="rnkh_font">1</th>\n'; // Id_Inter1
+                    headerText31 += '<th class="rnkh_font">2</th>\n'; // Id_Inter2
+                    headerText31 += '<th class="rnkh_font">3</th>\n'; // Id_Inter3
+                }
                 headerText31 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
                 headerText31 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
                 headerText31 += '</tr>\n';
@@ -5300,6 +5313,14 @@ console.log(allArrayNew);
                 headerText32 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
                 headerText32 += '<th class="rnkh_font">רוכב 1</th>\n'; // Id_Nom
                 headerText32 += '<th class="rnkh_font">רוכב 2</th>\n'; // Id_Nom_2
+                if (showInt == 1 && cleanResults == 0 && doNotShowTime == 0) {
+                    headerText32 += '<th class="rnkh_font">1</th>\n'; // Id_Inter1
+                    headerText32 += '<th class="rnkh_font">2</th>\n'; // Id_Inter2
+                    headerText32 += '<th class="rnkh_font">3</th>\n' // Id_Inter3
+                }
+                if (doNotShowTime == 0 ) {
+                    headerText32 += '<th class="rnkh_font">זמן אישי</th>\n'; // Id_TpsCumule
+                }
                 headerText32 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
                 headerText32 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
                 headerText32 += '</tr>\n';
@@ -5411,7 +5432,32 @@ console.log(allArrayNew);
             if (!(allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד'))) {
                 finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom_2"] + '</td>\n';
             }
+                        
+            if (showInt == 1 && cleanResults == 0 && doNotShowTime == 0) {
+                if (allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                    finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Inter1"] + '</td>\n';
+                    finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Inter2"] + '</td>\n';
+                    finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Inter3"] + '</td>\n';
+                } else {
+                    finalText3 += `<td class="rnk_font">${allArray3f[l]["Id_Inter1"]}<br>${allArray3f[l]["Id_Inter1_2"]}</td>\n`;
+                    finalText3 += `<td class="rnk_font">${allArray3f[l]["Id_Inter2"]}<br>${allArray3f[l]["Id_Inter2_2"]}</td>\n`;
+                    finalText3 += `<td class="rnk_font">${allArray3f[l]["Id_Inter3"]}<br>${allArray3f[l]["Id_Inter3_2"]}</td>\n`;
+                }
+            }
             
+            if (doNotShowTime == 0 && (!(allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד'))) ) { // individual time
+
+                if (allArray3f[l]["Id_TpsCumule"] != 99999999999 && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {  
+                    finalText3 += `<td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule"])}<br>${ms2TimeString(allArray3f[l]["Id_TpsCumule_2"])}</td>\n`;
+                } else if (allArray3f[l]["Id_TpsCumule"] == 99999999999 && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {  
+                    finalText3 += `<td class="rnk_font">-<br>${ms2TimeString(allArray3f[l]["Id_TpsCumule_2"])}</td>\n`;
+                } else if (allArray3f[l]["Id_TpsCumule"] != 99999999999 && allArray3f[l]["Id_TpsCumule_2"] == 99999999999) {  
+                    finalText3 += `<td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule"])}<br>-</td>\n`;
+                } else {
+                    finalText3 += `<td class="rnk_font">-<br>-</td>\n`;
+                }
+            }
+                        
             if (allArray3f[l]["Id_FinishTime"] != 99999999999) {  
                 allArray3f[l]["Id_FinishTime"] = ms2TimeString(allArray3f[l]["Id_FinishTime"]);
                 finalText3 += '<td class="rnk_font bold">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';

@@ -138,7 +138,7 @@
 
         #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
         
-        #live td.rnk_font:nth-child(-n+3), #live th.rnkh_font:nth-child(-n+3) {
+        #live #liveTable td.rnk_font:nth-child(-n+3), #live #liveTable th.rnkh_font:nth-child(-n+3) {
             width: 5%;
         }    
     /*    #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) {
@@ -206,8 +206,11 @@
             max-width: 200px;
         /* white-space: normal;*/ 
         }
-        #live #liveTableS td.rnk_font:nth-child(-n+3) {
+        #live #liveTableS td.rnk_font:nth-child(-n+3), #live #liveTableS th.rnkh_font:nth-child(-n+3) {
             width: auto;
+        }
+        #live #liveTableS td.rnk_font:nth-child(-n+2), #live #liveTableS th.rnkh_font:nth-child(-n+2) {
+            width: 5%;
         }
         #live div#result h2 {
             text-align: center;
