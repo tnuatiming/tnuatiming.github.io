@@ -1376,8 +1376,8 @@
 
         if (useKellner == 1) {
 
-            Text[0] = Text[0].replace(/ElapsedTime">\S*</g, 'ElapsedTime">' + ElapsedTime + '<');
-            Text[0] = Text[0].replace(/RemainingTime">\S*</g, 'RemainingTime">&nbsp;&nbsp;&nbsp;<');
+            Text[0] = Text[0].replace(/ElapsedTime">[0-9A-Za-z:]*</g, 'ElapsedTime">' + ElapsedTime + '<');
+            Text[0] = Text[0].replace(/RemainingTime">[0-9A-Za-z:]*</g, 'RemainingTime">&nbsp;&nbsp;&nbsp;<');
             Text[0] = Text[0].replace(/DayTime">[0-9AMP\s\/:]*</g, 'DayTime">' + DayTime + '<');
         }
 
@@ -1993,6 +1993,7 @@
 //                                    allArray[b].blue = 1; // make blue DSQ
 //                                }
                                 allArray[b].Id_Inter1blue = 1; // make blue DSQ
+                                allArray[b].e2min = 1;
                             }
                             
                         }                
@@ -2042,6 +2043,7 @@
 //                                    allArray[b].blue = 1; // make blue DSQ
 //                                }
                                 allArray[b].Id_Inter2blue = 1; // make blue DSQ
+                                allArray[b].e2min = 1;
                             }
                             
                         }                
@@ -2091,6 +2093,7 @@
 //                                    allArray[b].blue = 1; // make blue DSQ
 //                                }
                                 allArray[b].Id_Inter3blue = 1; // make blue DSQ
+                                allArray[b].e2min = 1;
                             }
                             
                         }                
@@ -3231,9 +3234,9 @@
                         allArray[l]["blue"] = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
                         allArray[l]["Id_Arrow"] = 9;
-                    } else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
+                    } /*else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
                         allArray[l]["Id_Arrow"] = 11; // DNF
-                    } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
+                    }*/ else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
                         allArray[l]["Id_Arrow"] = 8; // astrix
                     } else if (allArray[l]["Id_penalty"] == "P") {
                         allArray[l]["Id_Arrow"] = 7; // penalty
@@ -3610,18 +3613,18 @@ allArray[l]["Id_Arrow"]
                     finalText += `<td class="white rnk_font fadeIn">`;
 
                     if (kellnerArray.hasOwnProperty(fullNumber1) && allArray[l]["Id_TpsCumule"] == 99999999999) { // rider 1 on track
-                        finalText += `<span title="Started" class="Flag Started"></span>&nbsp;`;
+                        finalText += `<span title="Started" class="Flag Started"></span>`;
                     } else if (kellnerArray.hasOwnProperty(fullNumber1) && allArray[l]["Id_TpsCumule"] != 99999999999) {// rider 1 finished
-                        finalText += `&nbsp;&nbsp;&nbsp;`;
+                        finalText += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
                     } 
                     
                     if (kellnerArray.hasOwnProperty(fullNumber2) && allArray[l]["Id_TpsCumule_2"] == 99999999999) { // rider 2 on track
                         finalText += `<span title="Started" class="Flag Started"></span>`;
                     } else if (kellnerArray.hasOwnProperty(fullNumber2) && allArray[l]["Id_TpsCumule_2"] != 99999999999) {// rider 2 finished
-                        finalText += `&nbsp;&nbsp;`;
+                        finalText += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
                     } else {
                         
-                        finalText += `&nbsp;&nbsp;&nbsp;&nbsp;`; // both finished
+                        finalText += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`; // both finished
                     }
 
                     finalText += `</td>`;
@@ -3659,11 +3662,11 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td colspan="2" title="*" class="rnk_font">*</td>`;
                     
-                } else if (allArray[l]["mst"] == 1 && show == 4) {
+                } else if (raceEnded == 1 && allArray[l]["mst"] == 1 && show == 4) { // mst
                     
                     finalText += `<td colspan="2" title="Exceeded Maximum Stage Time" class="rnk_font">MST</td>`;
                     
-                } else if (allArray[l]["Id_Image"] == "_Status5" && show == 4) { // e2min
+                } else if (((allArray[l]["e2min"] == 1 && raceEnded == 1) || (allArray[l]["Id_Image"] == "_Status5" || allArray[l]["Id_Image_2"] == "_Status5")) && show == 4) { // e2min
                     
                     finalText += `<td colspan="2" title="Exceeded 2 Minutes Separation" class="rnk_font">E2M</td>`;
                     
@@ -5366,8 +5369,8 @@ console.log(allArrayNew);
 
         
         if (useKellner == 1) {
-            HeaderName[1] = HeaderName[1].replace(/ElapsedTime">\S*</g, 'ElapsedTime">' + ElapsedTime + '<');
-            HeaderName[1] = HeaderName[1].replace(/RemainingTime">\S*</g, 'RemainingTime">&nbsp;&nbsp;&nbsp;<');
+            HeaderName[1] = HeaderName[1].replace(/ElapsedTime">[0-9A-Za-z:]*</g, 'ElapsedTime">' + ElapsedTime + '<');
+            HeaderName[1] = HeaderName[1].replace(/RemainingTime">[0-9A-Za-z:]*</g, 'RemainingTime">&nbsp;&nbsp;&nbsp;<');
             HeaderName[1] = HeaderName[1].replace(/DayTime">[0-9AMP\s\/:]*</g, 'DayTime">' + DayTime + '<');
         }
         finalText3header += HeaderName[1];
@@ -5484,18 +5487,18 @@ console.log(allArrayNew);
                     finalText3 += `<td class="white rnk_font fadeIn">`;
 
                     if (kellnerArray.hasOwnProperty(fullNumber1) && allArray3f[l]["Id_TpsCumule"] == 99999999999) { // rider 1 on track
-                        finalText3 += `<span title="Started" class="Flag Started"></span>&nbsp;`;
+                        finalText3 += `<span title="Started" class="Flag Started"></span>`;
                     } else if (kellnerArray.hasOwnProperty(fullNumber1) && allArray3f[l]["Id_TpsCumule"] != 99999999999) {// rider 1 finished
-                        finalText3 += `&nbsp;&nbsp;&nbsp;`;
+                        finalText3 += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
                     }
                     
                     if (kellnerArray.hasOwnProperty(fullNumber2) && allArray3f[l]["Id_TpsCumule_2"] == 99999999999) { // rider 2 on track
                         finalText3 += `<span title="Started" class="Flag Started"></span>`;
                     } else if (kellnerArray.hasOwnProperty(fullNumber2) && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {// rider 2 finished
-                        finalText3 += `&nbsp;&nbsp;`;
+                        finalText3 += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
                     } else {
                         
-                        finalText3 += `&nbsp;&nbsp;&nbsp;&nbsp;`; // both finished
+                        finalText3 += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`; // both finished
                     }
 
                     finalText3 += `</td>`;
