@@ -1271,6 +1271,8 @@
         csvName = HeaderRaceName.split(' ').join('_'); // replace all spaces with _
         let headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
 
+        HeaderEventName = HeaderEventName.replace("\n", "");  
+
     //    console.log(HeaderEventName);
 
         if (eventName != HeaderEventName) {  
@@ -1279,6 +1281,37 @@
         }
         
         eventName = HeaderEventName;
+        
+// calculate ElapsedTime
+        let ElapsedTimeTemp = "";
+        const now = new Date().getTime();
+        const startTimeMili = new Date(startTime).getTime();
+        const etTemp = now - startTimeMili;
+        if (etTemp > 0 && etTemp < MaximumStageTimeMili) {
+            ElapsedTimeTemp = ms2TimeString(now - startTimeMili);
+        } else if (etTemp > 0 && etTemp > MaximumStageTimeMili) {
+            ElapsedTimeTemp = "Finished";
+        }
+            
+            
+        
+        let div1 = document.createElement("div");  
+        div1.innerHTML = HeaderName[1]; 
+        let header2 = div1.getElementsByTagName("span");
+   
+        let dateNow, DayTime, ElapsedTime, RemainingTime;
+        
+        if (useKellner == 1) {
+            dateNow = new Date();
+            DayTime =  dateNow.getDate() + "/" + (dateNow.getMonth()+1) + "/" + dateNow.getFullYear() + " " + dateNow.getHours() + ":" + (dateNow.getMinutes()).toString().padStart(2, "0") + ":" + (dateNow.getSeconds()).toString().padStart(2, "0");
+            ElapsedTime =  ElapsedTimeTemp;
+            RemainingTime =  "";
+        } else {
+            DayTime =  header2[0].textContent || div.innerText || "";
+            ElapsedTime =  header2[1].textContent || div.innerText || "";
+            RemainingTime =  header2[2].textContent || div.innerText || "";
+        }
+        
         
 /*        
         if (Text[0].includes("+++")) { // clean table for results page
@@ -1340,17 +1373,17 @@
             bigFont = ' bigFont';
         }
 
+
         if (useKellner == 1) {
 
-            Text[0] = Text[0].replace(/ElapsedTime">\S*</g, 'ElapsedTime">&nbsp;&nbsp;&nbsp;<');
+            Text[0] = Text[0].replace(/ElapsedTime">\S*</g, 'ElapsedTime">' + ElapsedTime + '<');
             Text[0] = Text[0].replace(/RemainingTime">\S*</g, 'RemainingTime">&nbsp;&nbsp;&nbsp;<');
+            Text[0] = Text[0].replace(/DayTime">[0-9AMP\s\/:]*</g, 'DayTime">' + DayTime + '<');
         }
 
-        
         let finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
 
 
-         // console.log(allArray2);
 
             
         ttt = 0;
@@ -1921,6 +1954,11 @@
                                 allArray[b]["blue"] = 1;
                             }
                         }
+                        if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTimeMili) {
+//                            allArray[b]["Id_FinishTime"] = 99999999999;
+                            allArray[b].mst = 1;
+                        }
+                        
 /*                        if ((allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTimeMili) || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {
                             allArray[b]["Id_FinishTime"] = 99999999999;
                             allArray[b].Id_Finishblue = 1; // make blue DSQ
@@ -3173,12 +3211,14 @@
                     if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
                         allArray[l]["Id_Arrow"] = 10; // DSQ
                     } else if (allArray[l]["Id_Image"].includes("_Status3") || allArray[l]["Id_Image_2"].includes("_Status3")) {
+                        allArray[l]["Id_Arrow"] = 13; // mst
                         allArray[l]["blue"] = 1; //FIXME mst
                         showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status4") || allArray[l]["Id_Image_2"].includes("_Status4")) {
                         allArray[l]["blue"] = 1; //FIXME general blue
                         showBlue = 1;
                     } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
+                        allArray[l]["Id_Arrow"] = 14; // e2m
                //         allArray[l]["e2min"] = 1; 
                         allArray[l]["blue"] = 1; //FIXME e2m
                         showBlue = 1;
@@ -4282,6 +4322,14 @@ if (show == 4) {
                     
                     finalText += '<td class="rnk_font">*</td>';
                     
+                } else if (allArray[l]["Id_Arrow"] == 13) {
+                    
+                    finalText += '<td class="rnk_font">Blue(MST)</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 14) {
+                    
+                    finalText += '<td class="rnk_font">Blue(E2M)</td>';
+                    
                 } else if (showBlue == 1) {
                 
                     finalText += '<td class="rnk_font">Blue</td>';
@@ -4463,6 +4511,14 @@ if (show == 4) {
                     
                     finalText += '<td class="rnk_font">*</td>';
                     
+                } else if (allArray[l]["Id_Arrow"] == 13) {
+                    
+                    finalText += '<td class="rnk_font">Blue(MST)</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 14) {
+                    
+                    finalText += '<td class="rnk_font">Blue(E2M)</td>';
+                    
                 } else if (showBlue == 1) {
                 
                     finalText += '<td class="rnk_font">Blue</td>';
@@ -4620,6 +4676,14 @@ if (show == 4) {
                 } else if (allArray[l]["Id_Arrow"] == 8) {
                     
                     finalText += '<td class="rnk_font">*</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 13) {
+                    
+                    finalText += '<td class="rnk_font">Blue(MST)</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 14) {
+                    
+                    finalText += '<td class="rnk_font">Blue(E2M)</td>';
                     
                 } else if (showBlue == 1) {
                 
@@ -4876,15 +4940,24 @@ if (enableJ1 == 1) {
             headerFlag = '_CheckeredFlag.png';
             
         }
-
-        let div1 = document.createElement("div");  
+/*
+        div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 
-        let header2 = div1.getElementsByTagName("span");
+        header2 = div1.getElementsByTagName("span");
    
-        let DayTime =  header2[0].textContent || div.innerText || "";
-        let ElapsedTime =  header2[1].textContent || div.innerText || "";
-        let RemainingTime =  header2[2].textContent || div.innerText || "";
 
+        if (useKellner == 1) {
+            dateNow = new Date();
+            DayTime =  dateNow.getHours() + ":" + (dateNow.getMinutes()).toString().padStart(2, "0") + ":" + (dateNow.getSeconds()).toString().padStart(2, "0") + "&nbsp;&nbsp;" + dateNow.getDate() + "-" + dateNow.getMonth() + "-" + dateNow.getFullYear();
+            ElapsedTime =  "";
+            RemainingTime =  "";
+        } else {
+            DayTime =  header2[0].textContent || div.innerText || "";
+            ElapsedTime =  header2[1].textContent || div.innerText || "";
+            RemainingTime =  header2[2].textContent || div.innerText || "";
+        }
+*/        
+        
 // order the array for JSON.stringify
         
 
@@ -5290,7 +5363,13 @@ console.log(allArrayNew);
         let finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">מגדל אפיק ישראל - חד יומי</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
 
 //        let finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+
         
+        if (useKellner == 1) {
+            HeaderName[1] = HeaderName[1].replace(/ElapsedTime">\S*</g, 'ElapsedTime">' + ElapsedTime + '<');
+            HeaderName[1] = HeaderName[1].replace(/RemainingTime">\S*</g, 'RemainingTime">&nbsp;&nbsp;&nbsp;<');
+            HeaderName[1] = HeaderName[1].replace(/DayTime">[0-9AMP\s\/:]*</g, 'DayTime">' + DayTime + '<');
+        }
         finalText3header += HeaderName[1];
         finalText3 = '\n<div id="liveTableS">\n';
 
@@ -5587,14 +5666,23 @@ if (enableJ3 == 1) {
 if (enableJ3 == 1) {
 
 
-        let div1 = document.createElement("div");  
+/*
+        div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 
-        let header2 = div1.getElementsByTagName("span");
+        header2 = div1.getElementsByTagName("span");
    
-        let DayTime =  header2[0].textContent || div.innerText || "";
-        let ElapsedTime =  header2[1].textContent || div.innerText || "";
-        let RemainingTime =  header2[2].textContent || div.innerText || "";
 
+        if (useKellner == 1) {
+            dateNow = new Date();
+            DayTime =  dateNow.getHours() + ":" + (dateNow.getMinutes()).toString().padStart(2, "0") + ":" + (dateNow.getSeconds()).toString().padStart(2, "0") + "&nbsp;&nbsp;" + dateNow.getDate() + "-" + dateNow.getMonth() + "-" + dateNow.getFullYear();
+            ElapsedTime =  "";
+            RemainingTime =  "";
+        } else {
+            DayTime =  header2[0].textContent || div.innerText || "";
+            ElapsedTime =  header2[1].textContent || div.innerText || "";
+            RemainingTime =  header2[2].textContent || div.innerText || "";
+        }
+*/        
 
         let header = {};
 /*        
