@@ -1954,7 +1954,7 @@
                                 allArray[b]["blue"] = 1;
                             }
                         }
-                        if (allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTimeMili) {
+                        if (raceEnded == 1 && allArray[b]["Id_FinishTime"] != 99999999999 && allArray[b]["Id_FinishTime"] > MaximumStageTimeMili) {
 //                            allArray[b]["Id_FinishTime"] = 99999999999;
                             allArray[b].mst = 1;
                         }
@@ -3662,7 +3662,7 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td colspan="2" title="*" class="rnk_font">*</td>`;
                     
-                } else if (raceEnded == 1 && allArray[l]["mst"] == 1 && show == 4) { // mst
+                } else if (allArray[l]["mst"] == 1 && show == 4) { // mst
                     
                     finalText += `<td colspan="2" title="Exceeded Maximum Stage Time" class="rnk_font">MST</td>`;
                     

@@ -51,6 +51,7 @@ module.exports = function(grunt) {
                     './_site/liveepic/elite_epic_total.js': ['./_site/liveepic/elite_epic_total.js'],
                     './_site/liveepic/elite_epic_remote.js': ['./_site/liveepic/elite_epic_remote.js'],
                     './_site/liveepic/elite_epic.js': ['./_site/liveepic/elite_epic.js'],
+//                    './_site/liveepic/elite_epic_inter_test.js': ['./_site/liveepic/elite_epic_inter_test.js'],
                     './_site/live1/elite.js': ['./_site/live1/elite.js'],
                     './_site/live/elite.js': ['./_site/live/elite.js']
 //                    '_includes/alignTable.min.js': ['_includes/alignTable.js'],

@@ -2735,9 +2735,13 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += '<td colspan="2" title="*" class="black ' + blued + 'rnk_font">*</td>';
                     
-                } else if (allArray[l]["mst"] == 1 && show == 4) {
+                } else if (allArray[l]["mst"] == 1 && show == 4) { //mst
                     
                     finalText += '<td colspan="2" title="Exceeded Maximum Stage Time" class="black ' + blued + 'rnk_font">MST</td>';
+                    
+                } else if (allArray[l]["Id_Arrow"] == 14 && show == 4) { // e2min
+                    
+                    finalText += `<td colspan="2" title="Exceeded 2 Minutes Separation" class="rnk_font">E2M</td>`;
                     
                 } else if (showBlue == 1) {
                 
