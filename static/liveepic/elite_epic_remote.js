@@ -3288,7 +3288,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
+                    TVheaderText1 += '<th class="rnkh_font right Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
         TVheaderText1 += '</tr>';
@@ -3397,7 +3397,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Sector_FinishTime">Time</th>'; // combined time
+                    TVheaderText1 += '<th class="rnkh_font right Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
         TVheaderText1 += '</tr>';
