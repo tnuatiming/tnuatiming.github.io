@@ -1462,7 +1462,7 @@ add dns
 
                         allArray[b]["Id_FinishTime_1"] = allArray2[a]["Id_FinishTime"];
                         allArray[b]["blue_1"] = allArray2[a]["blue"];
-                        if (allArray2[a]["oldBlue"] == 1) {
+                        if (allArray2[a]["oldBlue"] == 1 && allArray[b]["oldBlue"] == 0) {
                             allArray[b]["oldBlue"] = 2;
                         }
                         allArray[b]["Id_Arrow_1"] = allArray2[a]["Id_Arrow"];
@@ -1537,7 +1537,7 @@ add dns
 
                         allArray[b]["Id_FinishTime_2"] = allArray3[a]["Id_FinishTime"];
                         allArray[b]["blue_2"] = allArray3[a]["blue"];
-                        if (allArray3[a]["oldBlue"] == 1) {
+                        if (allArray3[a]["oldBlue"] == 1 && allArray[b]["oldBlue"] == 0) {
                             allArray[b]["oldBlue"] = 3;
                         }
                         allArray[b]["Id_Arrow_2"] = allArray3[a]["Id_Arrow"];
@@ -1614,7 +1614,7 @@ add dns
 
                         allArray[b]["Id_FinishTime_3"] = allArray4[a]["Id_FinishTime"];
                         allArray[b]["blue_3"] = allArray4[a]["blue"];
-                        if (allArray4[a]["oldBlue"] == 1) {
+                        if (allArray4[a]["oldBlue"] == 1 && allArray[b]["oldBlue"] == 0) {
                             allArray[b]["oldBlue"] = 4;
                         }
                         allArray[b]["Id_Arrow_3"] = allArray4[a]["Id_Arrow"];
@@ -1996,7 +1996,7 @@ if (epictv == 0) {
                 } else if (allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td colspan="2" title="Did Not Started" class="rnk_font">DNS</td>\n';
                 } else if (allArray[l]["dnsfq"] == "blue") {
-                    finalText += '<td colspan="2" title="Blue Board Rider" class="rnk_font">BLUE</td>\n';
+                    finalText += '<td colspan="2" title="Blue Board Rider" class="rnk_font blued">&nbsp;</td>\n'; // blue
                 } else if (allArray[l]["single"] == 1) {
                     finalText += '<td colspan="2" title="Individual Finisher" class="rnk_font">IF1</td>\n';
                 } else if (allArray[l]["single"] == 2) {
@@ -2022,7 +2022,9 @@ if (epictv == 0) {
                 }
 
                 
-                if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["oldBlue"] != 0) { // Blue Board Rider
+                if (allArray[l]["oldBlue"] != 0 && (stages >= 2 && allArray[l]["oldBlue"] <= 2 || stages >= 3 && allArray[l]["oldBlue"] <= 3 || stages == 4 && allArray[l]["oldBlue"] <= 4)) { // Blue Board Rider
+                
+/*                if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["oldBlue"] != 0) { // Blue Board Rider */
                 finalText += '<td title="' + keyValueLog + '" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else if (allArray[l]["leader"] == 1) { // Epic Leader
                     finalText += '<td title="' + keyValueLog + '" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
@@ -2090,7 +2092,7 @@ if (epictv == 0) {
                 } else if (allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td title="Did Not Started" class="rnk_font">DNS</td>\n';
                 } else if (allArray[l]["dnsfq"] == "blue") {
-                    finalText += '<td title="Blue Board Rider" class="rnk_font">BLUE</td>\n';
+                    finalText += '<td title="Blue Board Rider" class="rnk_font">BLUE</td>\n'; // blue
                 } else if (allArray[l]["single"] == 1) {
                     finalText += '<td title="Individual Finisher" class="rnk_font">IF1</td>\n'; 
                 } else if (allArray[l]["single"] == 2) {
@@ -2236,7 +2238,7 @@ if (epictv == 0) {
                 } else if (allArray[l]["dnsfq"] == "dns") {
                     finalText += '<td title="Did Not Started" class="rnk_font">DNS</td>\n';
                 } else if (allArray[l]["dnsfq"] == "blue") {
-                    finalText += '<td title="Blue Board Rider" class="rnk_font">BLUE</td>\n';
+                    finalText += '<td title="Blue Board Rider" class="rnk_font">BLUE</td>\n'; // blue
                 } else if (allArray[l]["single"] == 2) {
                     finalText += '<td title="Individual Finisher" class="rnk_font">IF2</td>\n'; 
                 } else if (allArray[l]["single"] == 1) {
@@ -2369,7 +2371,7 @@ if (epictv == 0) {
     
 // BEGIN TV
     
-if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["finishTimeTotal"] != 99999999999) { // TV show only 'rows' competitors
+if (epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategory == "yes") || (allArray[l]["Id_Position_Overall"] <= rows && useCategory == "no")) && allArray[l]["finishTimeTotal"] != 99999999999  && allArray[l]["dnsfq"] == '') { // TV show only 'rows' competitors
         
     
  // HEADER for tv            
