@@ -2768,7 +2768,7 @@
 
 //                    headerText1 += '<th class="rnkh_font uci">&nbsp;</th>';
  //                   headerText1 += '<th class="rnkh_font Id_Numero">&nbsp;</th>';
-                    headerText1 += '<th class="rnkh_font Id_Nom">Riders</th>';
+                    headerText1 += '<th class="rnkh_font left Id_Nom">Riders</th>';
  //                   headerText1 += '<th class="rnkh_font Id_Nationalite">&nbsp;</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">Name 2</th>';
 
@@ -3124,7 +3124,7 @@
                     
                     positionChanged = "";
 
-                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no" && allArray[l]["Id_Sector_FinishTime"] != 99999999999) {
+                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no" && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
                         
                         if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] < allArray[l]["Id_Position_Overall"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
                             allArray[l]["Id_Arrow"] = 3; // down :(
@@ -3136,7 +3136,7 @@
                             
                         }
                         
-                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes" && allArray[l]["Id_Sector_FinishTime"] != 99999999999) {
+                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes" && allArray[l]["Id_Sector_FinishTime"] != 99999999999 && !(allArray[l]["Id_Image"].includes("_Status")) && !(allArray[l]["Id_Image_2"].includes("_Status"))) {
                         
                         if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] < allArray[l]["Id_Position_Categorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
                             allArray[l]["Id_Arrow"] = 3; // down :(
@@ -5442,7 +5442,7 @@ console.log(allArrayNew);
 
                 t = 0;
                 
-                if (allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                if (allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo')) {
                     finalText3 += '<table class="line_color fadeIn">\n<tr>\n<td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td>\n</tr>' + headerText31 + '\n';
                 } else {
                     finalText3 += '<table class="line_color fadeIn">\n<tr>\n<td colspan="99" class="title_font">' + allArray3f[l]["Id_Categorie"] + '</td>\n</tr>' + headerText32 + '\n';
@@ -5471,7 +5471,7 @@ console.log(allArrayNew);
             } else if (allArray3f[l]["Id_FinishTime"] == 99999999999) { // check on track using kellner
     
 
-                if (allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                if (allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo')) {
                     
                     if (kellnerArray.hasOwnProperty(allArray3f[l]["Id_Numero_Full"].replace('-', ''))) { //  on track
                         finalText3 += `<td class="rnk_font fadeIn">&nbsp;<span title="Started" class="Flag Started"></span>&nbsp;</td>`;
@@ -5511,12 +5511,12 @@ console.log(allArrayNew);
             finalText3 += '<td class="rnk_font ' + allArray3f[l]["blue"] + '">' + allArray3f[l]["Id_Numero"] + '</td>\n';
             finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom"] + '</td>\n';
             
-            if (!(allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד'))) {
+            if (!(allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo'))) {
                 finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Nom_2"] + '</td>\n';
             }
                         
             if (showInt == 1 && cleanResults == 0 && doNotShowTime == 0) {
-                if (allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד')) {
+                if (allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo')) {
                     finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Inter1"] + '</td>\n';
                     finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Inter2"] + '</td>\n';
                     finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Inter3"] + '</td>\n';
@@ -5527,7 +5527,7 @@ console.log(allArrayNew);
                 }
             }
             
-            if (doNotShowTime == 0 && (!(allArray3f[l]["Id_Categorie"].includes('סולו') || allArray3f[l]["Id_Categorie"].includes('יחיד'))) ) { // individual time
+            if (doNotShowTime == 0 && (!(allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo'))) ) { // individual time
 
                 if (allArray3f[l]["Id_TpsCumule"] != 99999999999 && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {  
                     finalText3 += `<td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule"])}<br>${ms2TimeString(allArray3f[l]["Id_TpsCumule_2"])}</td>\n`;

@@ -67,7 +67,7 @@ remove all imTheLeader
     
     var prologue;
     
-    var raceEnded = 0;
+  //  var raceEnded = 0;
     
     var precision = "tenth"; // "tenth" for 1 digit after the . , "second" no mili
     
@@ -988,7 +988,7 @@ remove all imTheLeader
             }
             runTime = setTimeout(updateRT, 1000);
             
-        } else if (timeTemp > MaximumStageTime || raceEnded == 1) {
+        } else if (timeTemp > MaximumStageTime /*|| raceEnded == 1*/) {
             
             ElapsedTime = 'Finished';
             document.getElementById("ElapsedTime").style.color = "#c8102e"; //red
@@ -1088,10 +1088,11 @@ remove all imTheLeader
         sessionStorage.setItem('startTime', startTime);
         
 //        startTimeUTC = startTime - 10800000; // subtract 3 hours (compare to server time) to get to UTC
-        if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
+
+/*        if (headerFlag.includes("_Stop.png") || headerFlag.includes("_CheckeredFlag.png")) { // check if race ended
             raceEnded = 1;
         }
-        
+*/        
         
 /*
     
@@ -1624,7 +1625,7 @@ remove all imTheLeader
                 }
 
                 
-                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1 || (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)) {// FIXME Id_Status drops blue competitor to buttom , check if this is what needed
+                if (allArray[b]["Id_Image"].includes("_Status") || allArray[b]["Id_Image_2"].includes("_Status") || allArray[b]["blue"] == 1 /*|| (raceEnded == 1 && allArray[b]["Id_FinishTime"] == 99999999999)*/) {// FIXME Id_Status drops blue competitor to buttom , check if this is what needed
                     allArray[b].Id_Status = 1;
                 } else {
                     allArray[b].Id_Status = 0;
@@ -2008,9 +2009,9 @@ remove all imTheLeader
 
  //       if (cleanResults == 0) {
 
-                    headerText1 += '<th class="rnkh_font Id_Nom">Riders</th>';
+                    headerText1 += '<th class="rnkh_font left Id_Nom">Riders</th>';
             //        headerText1 += '<th class="rnkh_font Id_Nom_2">Name 2</th>';
-                    headerText1 += '<th class="rnkh_font Id_Equipe">Team</th>';
+                    headerText1 += '<th class="rnkh_font left Id_Equipe">Team</th>';
 
                     if (useCategory == "no") {
                         headerText1 += '<th class="rnkh_font Id_Categorie">Category</th>';
@@ -2408,9 +2409,9 @@ remove all imTheLeader
                     allArray[l]["blue"] = 1;
                 } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
                     allArray[l]["Id_Arrow"] = 9;
-                } else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
+                }/* else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
                     allArray[l]["Id_Arrow"] = 11; // DNF
-                } else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
+                }*/ else if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status")) {
                     allArray[l]["Id_Arrow"] = 8; // astrix
                 } else if (allArray[l]["Id_penalty"] == "P") {
                     allArray[l]["Id_Arrow"] = 7; // penalty
