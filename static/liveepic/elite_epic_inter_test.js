@@ -80,9 +80,9 @@
     var cleanResults = 0; // alignTable for TotalIndex
     
     var raceEnded = 0;
-    if (sessionStorage.getItem('raceEnded')) {
-        raceEnded = sessionStorage.getItem('raceEnded');
-    }
+//    if (sessionStorage.getItem('raceEnded')) {
+//        raceEnded = sessionStorage.getItem('raceEnded');
+//    }
 
     var doNotShowTime = 0; // don't display individual time
     if (sessionStorage.getItem('doNotShowTime')) {
@@ -177,7 +177,7 @@
                 j1Status();
             }
                     
-            sessionStorage.setItem('raceEnded', raceEnded);
+//            sessionStorage.setItem('raceEnded', raceEnded);
 
         });
 
@@ -3650,11 +3650,15 @@ allArray[l]["Id_Arrow"]
                 if (allArray[l]["Id_Arrow"] == 12) {
                     finalText += `<td colspan="2" title="Did Not Started" class="rnk_font">DNS</td>`;
 
-                } else if (allArray[l]["Id_Arrow"] == 11) {
+                } else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && show == 4 && (allArray[l]["Id_TpsCumule"] != 99999999999 || allArray[l]["Id_TpsCumule_2"] != 99999999999) && !(allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status"))) { // check  IF if race ended (only for display)
+                    
+                    finalText += `<td colspan="2" title="Individual Finisher" class="rnk_font">IF</td>`;
+                    
+                } else if (allArray[l]["Id_Arrow"] == 11 || (raceEnded == 1 && allArray[l]["oldBlue"] == 0 && allArray[l]["Id_FinishTime"] == 99999999999 && show == 4)) {
                     
                     finalText += `<td colspan="2" title="Did Not Finished" class="rnk_font">DNF</td>`;
                     
-                } else if (allArray[l]["Id_Arrow"] == 10) {
+                } else if (allArray[l]["Id_Arrow"] == 10 || (raceEnded == 1 && allArray[l]["oldBlue"] == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && show == 4)) {
                     
                     finalText += `<td colspan="2" title="Disqualified" class="rnk_font">DSQ</td>`;
                     
