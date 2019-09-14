@@ -301,6 +301,12 @@
         div#legend ul {width: 100%; text-align: left; float: left;}
         div#legend li {text-align: left;}
 
+        #live #warning {
+            text-align: left;
+            margin: 10px 0;
+            width: 100%;
+        }
+        
         #myBtn {
             display: none; /* Hidden by default */
             position: fixed; /* Fixed/sticky position */
@@ -384,7 +390,7 @@
     </style>
 
 
-    <script src="elite_epic_remote.js?v=1" defer></script>
+    <script src="elite_epic_remote.js" defer></script>
 </head>
 
 
@@ -480,6 +486,7 @@
 <div style="width:100%;text-align:right;margin-top:10px;"><a href="https://tnuatiming.com"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></a></div>
 
 <!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
+<div id="warning">The results are not final or official. They may not include penalties or decisions made by the commissaries and the race organizers. They may include errors which will be rectified at later date. </div>
 
 
 <div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall results</button></div>
@@ -494,7 +501,8 @@
         <li>DNS - Did Not Started</li>
         <li>MST - Exceeded Maximum Stage Time</li>
         <li>E2M - Exceeded 2 Minutes Separation</li>
-        <li>IF - Individual Finisher</li>
+        <li>IF1 - Individual Finisher Rider 1</li>
+        <li>IF2 - Individual Finisher Rider 2</li>
         <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
     </ul>
 </div>

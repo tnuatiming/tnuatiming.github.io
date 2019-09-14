@@ -1071,8 +1071,8 @@ remove all imTheLeader
         var RemainingTime = Text.RemainingTime;
         
 // for kellner
-        DayTime = "&nbsp;&nbsp;&nbsp;";
-        RemainingTime = "&nbsp;&nbsp;&nbsp;";
+//        DayTime = "&nbsp;&nbsp;&nbsp;";
+//        RemainingTime = "&nbsp;&nbsp;&nbsp;";
         
         
         MaximumStageTime = timeString2ms(Text.MaximumStageTime);
@@ -2001,8 +2001,8 @@ remove all imTheLeader
                     headerText1 += '<th class="rnkh_font Id_Position">GC</th>';
         }
 */
-                    headerText1 += '<th class="rnkh_font Id_Position">Position</th>';
-                    headerText1 += '<th class="rnkh_font Id_Position">Cat Position</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Overall Position</th>';
+                    headerText1 += '<th class="rnkh_font Id_Position">Category Position</th>';
 
                     headerText1 += '<th class="rnkh_font Id_Numero">No.</th>';
 
@@ -3287,7 +3287,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No.</th>';
                     TVheaderText1 += '<th class="rnkh_font right Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
@@ -3396,7 +3396,7 @@ if (epictv == 1 && showComp != '') { // show only selected competitors
                     TVheaderText1 += '<th class="rnkh_font Id_Position">Rank</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nom left">Name</th>';
                     TVheaderText1 += '<th class="rnkh_font Id_Nationalite">Nationality</th>';
-                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No</th>';
+                    TVheaderText1 += '<th class="rnkh_font Id_Numero">No.</th>';
                     TVheaderText1 += '<th class="rnkh_font right Id_Sector_FinishTime">Time</th>'; // combined time
 
                   
