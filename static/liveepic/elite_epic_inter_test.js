@@ -850,6 +850,8 @@
                 try {
 //                    const response = await fetch(urlKellner, {cache: "no-store", mode: "no-cors"});
                     // use to bypass cors:  https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
+                    document.getElementById("kellnerStatus").style.color = "white";
+                    
                     const response = await fetch(urlKellner, {cache: "no-store"});
                     if (response.ok) {
                         K1 = await response.text();
@@ -1108,19 +1110,22 @@
         if (showLog == 1) {
             console.log("K1:");
             console.log(kellnerArray);
+        }
 
+            document.getElementById("kellnerStatus").style.color = "green"; 
+                    
             const testTimeRegExp = /^[0-1]?[0-9]:[0-5][0-9]:[0-5][0-9].[0-9]{0,3}/; // regEx for time string between "4:05:02." to  "12:46:53.764"
-            console.log("K1 Errors:");
 
             for (let b in kellnerArray) { 
                 
                 if (kellnerArray[b].Time != '' && !(testTimeRegExp.test(kellnerArray[b].Time)) || kellnerArray[b].T1 != '' && !(testTimeRegExp.test(kellnerArray[b].T1)) || kellnerArray[b].T2 != '' && !(testTimeRegExp.test(kellnerArray[b].T2)) || kellnerArray[b].T3 != '' && !(testTimeRegExp.test(kellnerArray[b].T3))) {
-
+            
+                    console.log("K1 Error:");
                     console.log(kellnerArray[b]);
+                    document.getElementById("kellnerStatus").style.color = "red"; 
                 }
             }
             
-        }
     };
 
 
