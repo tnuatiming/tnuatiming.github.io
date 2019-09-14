@@ -1,8 +1,12 @@
 //'use strict';
 
-    var startTime = "2019-09-25 13:30:00"; // start time "2019-09-21 07:00:00"
+    const timeNow = new Date();
+    var startTime = timeNow.getFullYear() + "-" + (timeNow.getMonth()+1).toString().padStart(2, "0") + "-" + timeNow.getDate().toString().padStart(2, "0") + " " + timeNow.getHours() + ":" + (timeNow.getMinutes()).toString().padStart(2, "0") + ":00"; // + (timeNow.getSeconds()).toString().padStart(2, "0");
+//    var startTime = "2019-09-25 13:30:00"; // start time "2019-09-21 07:00:00"
     if (sessionStorage.getItem('startTimeX')) {
         startTime = sessionStorage.getItem('startTimeX');
+    } else {
+        sessionStorage.setItem('startTimeX', startTime);
     }
         
     var MaximumStageTime = "09:00:00"; // format "09:00:00"   Maximum stage time in milliseconds, 18000000=5hours, 21600000=6hours, 36000000=10hours
