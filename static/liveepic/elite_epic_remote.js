@@ -1428,6 +1428,11 @@ remove all imTheLeader
                 if (allArray[b]["Id_Groupe"].includes('l')) {
                     
                     allArray[b]["leader"] = 1; // mark leader (yellow shirt)
+                    
+                } else if (allArray[b]["Id_Groupe"].includes('i')) {
+                    
+                    allArray[b]["leader"] = 2; // mark israeli leader (white shirt)
+                    
                 } else {
                     allArray[b]["leader"] = 0;
                 }                    
@@ -2473,9 +2478,12 @@ remove all imTheLeader
                     leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
                     leaderCard = 'purpleCard';
                     } else {
-                    leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
-                    leaderCard = 'yellowCard';
+                        leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
+                        leaderCard = 'yellowCard';
                     }
+                } else if (allArray[l]["leader"] == 2) {
+                        leader = '<span title="Israeli Leader" class="Flag WhiteShirt"></span>';
+                        leaderCard = 'whiteCard';
                 } else {
                     leader = '';
                     leaderCard = '';
@@ -2804,7 +2812,7 @@ allArray[l]["Id_Arrow"]
 
                 if (allArray[l]["oldBlue"] == 1) {
                     finalText += '<td title="Blue Board Rider" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["leader"] == 1) {
+                } else if (allArray[l]["leader"] == 1 || allArray[l]["leader"] == 2) {
                     finalText += '<td title="Epic Leader" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                     finalText += '<td class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';

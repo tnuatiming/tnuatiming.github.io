@@ -115,7 +115,7 @@ build classification for epic:
     (Inter. 2) - Id_Inter2 - intermediate time 2
     (Inter. 3) - Id_Inter3 - intermediate time 3
     (Class) - Id_Classe - mark 1 day competitors ('sf' for Friday and 'ss' for Saturday)
-    (Group) - Id_Groupe - add letters as follows: "u" - UCI Rider(convert xls "yes" on UCI colnum to "u" and import into Group), "b" - blue rider, "s" - single Rider, "l" - leader(yellow shirt), "d" - DSQ.
+    (Group) - Id_Groupe - add letters as follows: "u" - UCI Rider(convert xls "yes" on UCI colnum to "u" and import into Group), "b" - blue rider, "s" - single Rider, "i" - israeli leader(white shirt), "l" - leader(all other shirts), "d" - DSQ.
     (Team) - Id_Equipe - team name
     (Channel) - Id_Canal - mark "started" for prologue
     (Federation) - Id_Federation - UCI number
@@ -132,7 +132,7 @@ when importing competitors, make sure to import uci rider as "u" into "Group".
 
 on prologue stage, make sure to have "prologue" in race name as it active the position arrow display (not needed in other stages)
 
-before start of stage, make sure to update "Group" - ("ubsld").
+before start of stage, make sure to update "Group" - ("ubsild").
 make sure 'MaximumStageTime' set correctly, as it auto finish the day stage.
 
 elite_epic_remote.js - the js to put on the remote server, reads JSON j1.txt. needs to enable in elite_epic.js which run as in between.
@@ -144,7 +144,7 @@ use status 6 to make the rider individual finisher.
 ### single day ###
 
 Class- mark 1 day competitors: 'sf' for Friday and 'ss' for Saturday.
-individual riders must have 'סולו' or 'יחיד' in category.
+individual riders must have 'solo' in category.
 
 
 ### status ###

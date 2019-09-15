@@ -1,7 +1,8 @@
 //'use strict';
 
     const timeNow = new Date();
-    var startTime = timeNow.getFullYear() + "-" + (timeNow.getMonth()+1).toString().padStart(2, "0") + "-" + timeNow.getDate().toString().padStart(2, "0") + " " + timeNow.getHours() + ":" + (timeNow.getMinutes()).toString().padStart(2, "0") + ":00"; // + (timeNow.getSeconds()).toString().padStart(2, "0");
+    var startTime = timeNow.getFullYear() + "-" + (timeNow.getMonth()+1).toString().padStart(2, "0") + "-" + timeNow.getDate().toString().padStart(2, "0") + " " + "00:07:00";
+//    var startTime = timeNow.getFullYear() + "-" + (timeNow.getMonth()+1).toString().padStart(2, "0") + "-" + timeNow.getDate().toString().padStart(2, "0") + " " + timeNow.getHours() + ":" + (timeNow.getMinutes()).toString().padStart(2, "0") + ":00"; // + (timeNow.getSeconds()).toString().padStart(2, "0");
 //    var startTime = "2019-09-25 13:30:00"; // start time "2019-09-21 07:00:00"
     if (sessionStorage.getItem('startTimeX')) {
         startTime = sessionStorage.getItem('startTimeX');
@@ -1853,6 +1854,10 @@
                         
                         allArray[b]["leader"] = 1; // mark leader (yellow shirt)
                         
+                    } else if (allArray[b]["Id_Groupe"].includes('i') || allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('i')) {
+                        
+                        allArray[b]["leader"] = 2; // mark israeli leader (white shirt)
+                        
                     }                    
                     
                     if (allArray[b]["Id_Groupe"].includes('d') || allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"].includes('d')) {
@@ -1862,7 +1867,7 @@
                     }                    
 
                     
-                    allArray[b]["Id_Groupe"] = (allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"] + allArray[b]["Id_Groupe"]).replace('dd', 'd').replace('ll', 'l').replace('bb', 'b'); // combine blue, single, leader
+                    allArray[b]["Id_Groupe"] = (allArray2obj[allArray[b]["Id_Numero"]]["Id_Groupe"] + allArray[b]["Id_Groupe"]).replace('dd', 'd').replace('ll', 'l').replace('bb', 'b').replace('ii', 'i'); // combine blue, single, leader
 
 
                     
@@ -2472,6 +2477,7 @@
             
             allArray.sort((a, b) => a.Id_Status - b.Id_Status || a.blue - b.blue || a.oldBlue - b.oldBlue || a.single - b.single/* || b.Id_NbTour - a.Id_NbTour*/ || a.Id_FinishTime - b.Id_FinishTime || a.Id_Inter3Time - b.Id_Inter3Time || a.Id_Inter2Time - b.Id_Inter2Time || a.Id_Inter1Time - b.Id_Inter1Time || a.Id_TpsCumule - b.Id_TpsCumule || a.Id_TpsCumule_2 - b.Id_TpsCumule_2); // remove Id_NbTour for kellner
 
+
             for (let l = 0; l < allArray.length; l++) {
 
                 // reassign position number
@@ -2483,7 +2489,7 @@
                             allArray[l]["Id_Position"] = Number(l+1);
                         }
                     }
-
+                
             }
          
 
@@ -3308,6 +3314,9 @@
                         leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
                         leaderCard = 'yellowCard';
                     }
+                } else if (allArray[l]["leader"] == 2) {
+                        leader = '<span title="Israeli Leader" class="Flag WhiteShirt"></span>';
+                        leaderCard = 'whiteCard';
                 } else {
                     leader = '';
                     leaderCard = '';
@@ -3721,7 +3730,7 @@ allArray[l]["Id_Arrow"]
 
                 if (allArray[l]["oldBlue"] == 1) { // "Blue Board Rider"
                     finalText += `<td title="${keyValueLog}" class="rnk_font blueCard ${bigFont}">${allArray[l]["Id_Numero"]}</td>`;
-                } else if (allArray[l]["leader"] == 1) { // "Epic Leader"
+                } else if (allArray[l]["leader"] == 1 || allArray[l]["leader"] == 2) { // "Epic Leader"
                     finalText += `<td title="${keyValueLog}" class="rnk_font ${leaderCard} ${bigFont}">${allArray[l]["Id_Numero"]}</td>`;
                 } else {
                     finalText += `<td title="${keyValueLog}" class="rnk_font highlight ${bigFont}">${allArray[l]["Id_Numero"]}</td>`;

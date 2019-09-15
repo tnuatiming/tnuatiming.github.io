@@ -1693,10 +1693,21 @@ add dns
             
             allArray.sort((a, b) => a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || a.single - b.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
             
-                // reasign postion number
+            var israelLeader = 0;
+            var il = 0;
+
+            // reasign postion number
             for (l = 0; l < allArray.length; l++) {
 
                 allArray[l]["Id_Position_Overall"] = l+1;
+
+                if (allArray[l]["Id_Nationalite"] == 'ISR' && allArray[l]["Id_Nationalite_2"] == 'ISR' && allArray[l]["finishTimeTotal"] != 99999999999 && il == 0) {
+                    israelLeader = allArray[l]["Id_Numero"];
+                    il = 1;
+                }
+                
+                
+                
             }
             
             
@@ -1935,9 +1946,12 @@ add dns
                     leader = '<span title="Grand Leader" class="Flag PurpleShirt"></span>';
                     leaderCard = 'purpleCard';
                     } else {
-                    leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
-                    leaderCard = 'yellowCard';
+                        leader = '<span title="Men Leader" class="Flag YellowShirt"></span>';
+                        leaderCard = 'yellowCard';
                     }
+                } else if (allArray[l]["Id_Numero"] == israelLeader) {
+                        leader = '<span title="Israeli Leader" class="Flag WhiteShirt"></span>';
+                        leaderCard = 'whiteCard';
                 } else {
                     leader = '';
                     leaderCard = '';
@@ -2034,7 +2048,7 @@ if (epictv == 0) {
                 
 /*                if (allArray[l]["blue"] == 1 || allArray[l]["blue_1"] == 1 || allArray[l]["blue_2"] == 1 || allArray[l]["blue_3"] == 1 || allArray[l]["oldBlue"] != 0) { // Blue Board Rider */
                 finalText += '<td title="' + keyValueLog + '" class="rnk_font blueCard ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
-                } else if (allArray[l]["leader"] == 1) { // Epic Leader
+                } else if (allArray[l]["leader"] == 1 || allArray[l]["Id_Numero"] == israelLeader) { // Epic Leader
                     finalText += '<td title="' + keyValueLog + '" class="rnk_font ' + leaderCard + ' ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
                 } else {
                 finalText += '<td title="' + keyValueLog + '" class="rnk_font highlight ' + bigFont + '">' + allArray[l]["Id_Numero"] + '</td>';
