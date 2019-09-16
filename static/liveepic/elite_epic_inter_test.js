@@ -5429,33 +5429,33 @@ console.log(allArrayNew);
 
                                                             
                 headerText31 = '<tr class="rnkh_bkcolor">\n';
-                headerText31 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
-                headerText31 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
-                headerText31 += '<th class="rnkh_font">רוכב</th>\n'; // Id_Nom
+                headerText31 += '<th class="rnkh_font">Rank</th>\n'; //  Id_Position
+                headerText31 += '<th class="rnkh_font">No.</th>\n'; // Id_Nom
+                headerText31 += '<th class="rnkh_font">Rider</th>\n'; // Id_Nom
                 if (showInt == 1 && cleanResults == 0 && doNotShowTime == 0) {
-                    headerText31 += '<th class="rnkh_font">1</th>\n'; // Id_Inter1
-                    headerText31 += '<th class="rnkh_font">2</th>\n'; // Id_Inter2
-                    headerText31 += '<th class="rnkh_font">3</th>\n'; // Id_Inter3
+                    headerText31 += '<th class="rnkh_font">Inter. 1</th>\n'; // Id_Inter1
+                    headerText31 += '<th class="rnkh_font">Inter. 2</th>\n'; // Id_Inter2
+                    headerText31 += '<th class="rnkh_font">Inter. 3</th>\n'; // Id_Inter3
                 }
-                headerText31 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
-                headerText31 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
+                headerText31 += '<th class="rnkh_font">Time</th>\n'; // Id_TpsCumule
+                headerText31 += '<th class="rnkh_font">Gap</th>\n'; // Id_Ecart1er
                 headerText31 += '</tr>\n';
 
                 headerText32 = '<tr class="rnkh_bkcolor">\n';
-                headerText32 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
-                headerText32 += '<th class="rnkh_font">מספר</th>\n'; // Id_Nom
-                headerText32 += '<th class="rnkh_font">רוכב 1</th>\n'; // Id_Nom
-                headerText32 += '<th class="rnkh_font">רוכב 2</th>\n'; // Id_Nom_2
+                headerText32 += '<th class="rnkh_font">Rank</th>\n'; //  Id_Position
+                headerText32 += '<th class="rnkh_font">No.</th>\n'; // Id_Nom
+                headerText32 += '<th class="rnkh_font">Rider 1</th>\n'; // Id_Nom
+                headerText32 += '<th class="rnkh_font">Rider 2</th>\n'; // Id_Nom_2
                 if (showInt == 1 && cleanResults == 0 && doNotShowTime == 0) {
-                    headerText32 += '<th class="rnkh_font">1</th>\n'; // Id_Inter1
-                    headerText32 += '<th class="rnkh_font">2</th>\n'; // Id_Inter2
-                    headerText32 += '<th class="rnkh_font">3</th>\n' // Id_Inter3
+                    headerText32 += '<th class="rnkh_font">Inter. 1</th>\n'; // Id_Inter1
+                    headerText32 += '<th class="rnkh_font">Inter. 2</th>\n'; // Id_Inter2
+                    headerText32 += '<th class="rnkh_font">Inter. 3</th>\n' // Id_Inter3
                 }
                 if (doNotShowTime == 0 ) {
-                    headerText32 += '<th class="rnkh_font">זמן אישי</th>\n'; // Id_TpsCumule
+                    headerText32 += '<th class="rnkh_font">Individual Time</th>\n'; // Id_TpsCumule
                 }
-                headerText32 += '<th class="rnkh_font">זמן</th>\n'; // Id_TpsCumule
-                headerText32 += '<th class="rnkh_font">פער</th>\n'; // Id_Ecart1er
+                headerText32 += '<th class="rnkh_font">Time</th>\n'; // Id_TpsCumule
+                headerText32 += '<th class="rnkh_font">Gap</th>\n'; // Id_Ecart1er
                 headerText32 += '</tr>\n';
 
                 
