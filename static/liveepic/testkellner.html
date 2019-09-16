@@ -1,0 +1,364 @@
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="rtl">
+
+<head>
+
+
+
+    <style>
+
+    </style>
+
+
+    <script>
+   var enableDownload = 0;
+   var endTest = 0;
+   
+   var createFull = 0; // 0 - start empty and fill every 10 sec, 1 - create full results
+   
+   var competitorsNumber = 400;
+   
+   var arrayTest = {};
+    if (sessionStorage.getItem('arrayTest')) {
+        arrayTest = JSON.parse(sessionStorage.getItem('arrayTest'));
+    }
+    
+    /*   if (sessionStorage.getItem('arrayTest')) {
+        arrayTest = JSON.parse(sessionStorage.getItem('arrayTest'));
+    } else {
+    
+        var leader = 0;
+   
+        for (l = 1; l < competitorsNumber; l++) {
+        
+        
+    var x = Math.floor(Math.random() * 100);
+   
+         
+        
+
+        arrayTest[l + '1'] = {["No"]: Number(l + '1'), "Time": "", "T1": "", "T2": "", "T3": ""};
+        
+        arrayTest[l + '2'] = {["No"]: Number(l + '2'), "Time": "", "T1": "", "T2": "", "T3": ""};
+
+
+ // single day   
+        if (l < 200) {
+            arrayTest[(l + competitorsNumber) + '1'] = {["No"]: Number(l + '1'), "Time": "", "T1": "", "T2": "", "T3": ""};
+            
+            arrayTest[(l + competitorsNumber) + '2'] = {["No"]: Number(l + '2'), "Time": "", "T1": "", "T2": "", "T3": ""};
+            
+            arrayTest[(l + competitorsNumber) + '3'] = {["No"]: Number(l + '2'), "Time": "", "T1": "", "T2": "", "T3": ""};
+        }
+         
+        }
+   
+   }
+ */  
+   
+console.log(arrayTest);   
+   
+function randomN(min, max) {
+
+//    var min=0; 
+//    var max=59;  
+    var random =Math.floor(Math.random() * (+max - +min)) + +min; 
+    document.write("Random Number Generated : " + random );  
+    return random
+}
+
+
+
+function maketime(start, end) { // start, end hour
+    
+    var blue = (Math.floor(Math.random() * 100));
+    var time  = [];
+    var hours = ((Math.floor(Math.random() * (end + 1))) + start);
+    var min = (Math.floor(Math.random() * 60));
+    var sec = (Math.floor(Math.random() * 60));
+
+        if (blue >= 74 && blue <= 84) {
+            time.push('');
+        } else {
+            time.push((hours).toString().padStart(2, "0") + ':' + (min).toString().padStart(2, "0") + ':' + (sec).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));   
+        }
+    if (min >= 0 && min <= 30) {
+        if (blue == 12) {
+            var min1 = min + 3;
+        } else {
+            var min1 = min + 1;
+        }
+    } else {
+        if (blue == 12) {
+            var min1 = min - 4;
+        } else {
+            var min1 = min - 1;
+        }
+    }
+
+    if (sec >= 0 && sec <= 30) {
+        var sec1 = sec + (Math.floor(Math.random() * 30));
+    } else {
+        var sec1 = sec - (Math.floor(Math.random() * 30));
+    }
+    
+        if (blue >= 64 && blue <= 80) {
+            time.push('');
+        } else {
+            time.push((hours).toString().padStart(2, "0") + ':' + (min1).toString().padStart(2, "0") + ':' + (sec1).toString().padStart(2, "0") + '.' + Math.floor(Math.random() * 10));
+        }
+        
+//    console.log(time);
+    return time;
+}
+
+
+function genp1() {
+
+
+        
+        var text = '[';
+        
+    var time, timeInt1, timeInt2, timeInt3;
+
+    for (l = 1; l < competitorsNumber; l++) {
+                            
+    var x = Math.floor(Math.random() * 100);
+   
+    
+    time = maketime(4, 7);
+    if (x < 5) {
+        time = ['', ''];
+    } else if (x > 98) {
+        time[0] = '';
+    }
+
+    timeInt1 = maketime(1, 2);
+    timeInt2 = maketime(2, 3);
+    timeInt3 = maketime(3, 4);
+
+    if (x % 30 == 0) {
+        timeInt1 = ['', ''];
+    } else if (x == 89) {
+        timeInt1[0] = '';
+    }
+    if (x % 75 == 0) {
+        timeInt2 = ['', ''];
+    } else if (x == 79) {
+        timeInt2[0] = '';
+    }
+    if (x % 25 == 0) {
+        timeInt3 = ['', ''];
+    } else if (x == 99) {
+        timeInt3[0] = '';
+    }
+     
+     
+    
+// rider 1
+    
+    text += `{"No]: ${Number(l + '1')}, "Time": "${time[0]}", "T1": "${timeInt1[0]}", "T2": "${timeInt2[0]}", "T3": "${timeInt3[0]}"}`;
+
+    
+    text += ',';
+            
+            
+// rider 2
+    text += `{"No]: ${Number(l + '2')}, "Time": "${time[1]}", "T1": "${timeInt1[1]}", "T2": "${timeInt2[1]}", "T3": "${timeInt3[1]}"}`;
+             
+    text += ',';
+if (l % 3 == 0) { 
+            
+// single day rider 1
+    text += `{"No]: ${Number((l + competitorsNumber) + '1')}, "Time": "${time[0]}", "T1": "${timeInt1[0]}", "T2": "${timeInt2[0]}", "T3": "${timeInt3[0]}"}`;
+    
+    
+    text += ',';
+// single day rider 2
+    text += `{"No]: ${Number((l + competitorsNumber) + '2')}, "Time": "${time[1]}", "T1": "${timeInt1[1]}", "T2": "${timeInt2[1]}", "T3": "${timeInt3[1]}"}`;
+
+    text += ',';
+            
+// single day single
+    text += `{"No]: ${Number((l + competitorsNumber) + '3')}, "Time": "${time[1]}", "T1": "${timeInt1[1]}", "T2": "${timeInt2[1]}", "T3": "${timeInt3[1]}"}`;
+    
+    
+    text += ',';
+            
+            
+}
+    
+    } // END l
+    
+    text = text.replace(/,\s*$/, ""); // remove last ,
+
+    text += ']';
+   
+                        
+              //console.log(text);
+    download(text, 'fx.txt', 'text/plain');    
+
+    return text
+              
+ }     
+ 
+ 
+
+function genp1x() {
+
+
+    
+
+ //   for (l = 1; l < competitorsNumber; l++) {
+for (let a = 1; a < 9; a++) {
+    
+    var x = Math.floor(Math.random() * 100);
+    var l = Math.floor(Math.random() * competitorsNumber) + 1;
+    
+    if (!(arrayTest.hasOwnProperty(l + '1'))) {
+        arrayTest[l + '1'] = {"No": Number(l + '1'), "Time": "", "T1": "", "T2": "", "T3": ""};
+        
+        arrayTest[l + '2'] = {"No": Number(l + '2'), "Time": "", "T1": "", "T2": "", "T3": ""};
+    
+    } else if (arrayTest[l + '1']["T1"] == '' && arrayTest[l + '2']["T1"] == '') {
+        var timeInt1 = maketime(1, 2);
+        arrayTest[l + '1']["T1"] = timeInt1[0]; // T1
+        arrayTest[l + '2']["T1"] = timeInt1[1]; // T1
+        endTest = 0;
+        console.log('competitor ' + l + ' int1');
+    } else if (arrayTest[l + '1']["T2"] == '' && arrayTest[l + '2']["T2"] == '') {
+        var timeInt1 = maketime(2, 3);
+        arrayTest[l + '1']["T2"] = timeInt1[0]; // T1
+        arrayTest[l + '2']["T2"] = timeInt1[1]; // T1
+        endTest = 0;
+        console.log('competitor ' + l + ' int2');
+    } else if (arrayTest[l + '1']["T3"] == '' && arrayTest[l + '2']["T3"] == '') {
+        var timeInt1 = maketime(3, 4);
+        arrayTest[l + '1']["T3"] = timeInt1[0]; // T1
+        arrayTest[l + '2']["T3"] = timeInt1[1]; // T1
+        endTest = 0;
+        console.log('competitor ' + l + ' int3');
+    } else if (arrayTest[l + '1']["Time"] == '' && arrayTest[l + '2']["Time"] == '') {
+        var time = maketime(4, 7);
+        if (x < 5) {
+            time = ['', ''];
+        } else if (x > 98) {
+            time[0] = '';
+        }
+    
+        
+    // rider 1
+        
+        arrayTest[l + '1']["Time"] = time[0]; // Id_TpsCumule
+                
+    // rider 2
+
+        arrayTest[l + '2']["Time"] = time[1]; // Id_TpsCumule
+    
+        endTest = 0;
+        console.log('competitor ' + l + ' finish');
+    } else {
+        endTest += 1;
+        if (endTest > Math.floor(competitorsNumber / 4)) {
+            clearInterval(iterateTest);
+        }
+    }
+                            
+   
+}
+    
+
+/*
+    if (x % 30 == 0) {
+        timeInt1 = ['-', '-'];
+    } else if (x == 89) {
+        timeInt1[0] = '-';
+    }
+    if (x % 75 == 0) {
+        timeInt2 = ['-', '-'];
+    } else if (x == 79) {
+        timeInt2[0] = '-';
+    }
+    if (x % 25 == 0) {
+        timeInt3 = ['-', '-'];
+    } else if (x == 99) {
+        timeInt3[0] = '-';
+    }
+*/    
+    
+    
+    
+    
+
+//    } // END for l    
+        sessionStorage.setItem('arrayTest', JSON.stringify(arrayTest));
+
+        //console.log(arrayTest);
+        
+        var array = [];
+        
+        for (var key in arrayTest) {
+            array.push(arrayTest[key]);
+        }
+        
+        //console.log(array);
+                    
+        var myJSON = JSON.stringify(array);
+            
+        download(myJSON, 'fx.txt', 'text/plain');    
+        
+    return myJSON;
+ }                       
+ 
+ 
+ 
+ 
+ 
+    document.addEventListener("DOMContentLoaded", function() {
+      
+        if (createFull == 0) {  
+            var iterateTest = window.setInterval(function(){
+                            
+                document.getElementById("result").innerHTML = genp1x();
+        
+            }, 7000);
+        
+        } else {
+            document.getElementById("result").innerHTML = genp1();
+     
+        }
+        
+    });
+    
+    
+    
+    
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    a.setAttribute("id", "download");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+};
+    
+    </script>
+</head>
+
+
+
+
+    <body>
+
+
+
+<div id="result"></div>
+
+
+
+    </body>
+</html>
+ 

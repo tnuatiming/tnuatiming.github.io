@@ -1,7 +1,7 @@
 //'use strict';
 
     const timeNow = new Date();
-    var startTime = timeNow.getFullYear() + "-" + (timeNow.getMonth()+1).toString().padStart(2, "0") + "-" + timeNow.getDate().toString().padStart(2, "0") + " " + "00:07:00";
+    var startTime = timeNow.getFullYear() + "-" + (timeNow.getMonth()+1).toString().padStart(2, "0") + "-" + timeNow.getDate().toString().padStart(2, "0") + " 07:00:00";
 //    var startTime = timeNow.getFullYear() + "-" + (timeNow.getMonth()+1).toString().padStart(2, "0") + "-" + timeNow.getDate().toString().padStart(2, "0") + " " + timeNow.getHours() + ":" + (timeNow.getMinutes()).toString().padStart(2, "0") + ":00"; // + (timeNow.getSeconds()).toString().padStart(2, "0");
 //    var startTime = "2019-09-25 13:30:00"; // start time "2019-09-21 07:00:00"
     if (sessionStorage.getItem('startTimeX')) {
@@ -50,8 +50,9 @@
     var useKellner = 1; // get timing info from kellner
     var K1;
     var kellnerArray = {};
-    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
-//    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
+//    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
+    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
+//    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -870,8 +871,8 @@
                                 if (enableJ3 == 1 && dayCompetitors == 1) { 
                                     download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
                                     console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html');
-                                    download(allArrayJ3, 'j3.txt', 'text/plain');    
-                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt');
+//                                    download(allArrayJ3, 'j3.txt', 'text/plain');    
+//                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt');
                                 }
                         
                         }
@@ -940,7 +941,7 @@
             }
 */            
         } else {
-            let xhr;
+            var xhr;
             xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (this.status == 200) {
@@ -1047,7 +1048,7 @@
             
             
         } else {
-            let xhr;
+            var xhr;
             xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (this.status == 200) {
@@ -1071,8 +1072,8 @@
     };
 
     String.prototype.hashCode = function(){
-        let hash = 0;
-        let char;
+        var hash = 0;
+        var char;
         if (this.length == 0) return hash;
         for (let i = 0; i < this.length; i++) {
             char = this.charCodeAt(i);
@@ -1085,16 +1086,16 @@
     function kellnerTable(k1) {
         
        kellnerArray = {};
-        let kellnerArrayTemp = JSON.parse(k1);
+        var kellnerArrayTemp = JSON.parse(k1);
         
    //     Text = kellnerArray.shift();
 
 // option 1
-        const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})));
+         const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({[item[keyField]]: item})));
         kellnerArray = arrayToObject(kellnerArrayTemp, "No")
 
 // option 2
-/*        for (let i in kellnerArrayTemp) {
+/*       for (let i in kellnerArrayTemp) {
 
             kellnerArray[kellnerArrayTemp[i].No] = kellnerArrayTemp[i]; 
             delete kellnerArray[kellnerArrayTemp[i].No].No;
@@ -1133,9 +1134,9 @@
      
     function interTable(ii, ix) {
         
-        let Text, lines, pp, ttt, b, id;
-        let lineArray = {};
-        let hhhPro = [];
+        var Text, lines, pp, ttt, b, id;
+        var lineArray = {};
+        var hhhPro = [];
         if (ix == 1) {
             inter1Array = {};
         } else if (ix == 2) {
@@ -1208,49 +1209,49 @@
             
         console.time('main');
 
-        let i;
-        let timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
-        let timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
-        let lines;
-        let competitorPosition = 0;
-        let competitorNumber = 0;
-        let competitorLaps = 0;
-//        let qqq = [];
-//        let hhh = [];
-        let hhhPro = [];
-//        let temp = [];
-        let lineArray = {};
-        let allArray = [];
-//        let allArray2 = [];
-        let allArray2obj = [];
-        let allArray3 = [];
-        let allArray31 = [];
-        let allArray32 = [];
-        let allArray3f = [];
-//        let allArrayJ3 = {};
-        let ttt = 0;
-        let pp = 0;
-        let b;
-        let a;
-        let id;
-        let positionChanged = "";
-        let laps = 12; // number of laps
-        let NewCategoryHeader = "";
+        var i;
+        var timeGapDisplay = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell
+        var timeGapDisplayInter = 3; // 1 - separate time/gap ; 2 - combined ; 3 - both in same cell. FIXME - ONLY 3 IS IMPLEMENTED IN THE COMPETITOR RESULTS
+        var lines;
+        var competitorPosition = 0;
+        var competitorNumber = 0;
+        var competitorLaps = 0;
+//        var qqq = [];
+//        var hhh = [];
+        var hhhPro = [];
+//        var temp = [];
+        var lineArray = {};
+        var allArray = [];
+//        var allArray2 = [];
+        var allArray2obj = [];
+        var allArray3 = [];
+        var allArray31 = [];
+        var allArray32 = [];
+        var allArray3f = [];
+//        allArrayJ3 = {};
+        var ttt = 0;
+        var pp = 0;
+        var b;
+        var a;
+        var id;
+        var positionChanged = "";
+        var laps = 12; // number of laps
+        var NewCategoryHeader = "";
 /*        
-        let bestTime2comp = 0;
-        let bestTime2 = 0;
-        let bestTimecomp = 0;
-        let bestTime = 0;
+        var bestTime2comp = 0;
+        var bestTime2 = 0;
+        var bestTimecomp = 0;
+        var bestTime = 0;
 */        
-        let finishers = [0, 0, 0, 0];
+        var finishers = [0, 0, 0, 0];
         
-        let bigFont = '';
+        var bigFont = '';
         
-        let Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
+        var Inter1Leader = {},Inter2Leader = {}, Inter3Leader = {};
 
-        let Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, fullNumber, uci1, uci2, finalText3, headerText31, headerText32;
+        var Text, l, m, leaderInter1Time, leaderInter2Time, leaderInter3Time, leaderLaps, leaderTime, prevCompCat, competitorId_Inter1Time, competitorId_Inter2Time, competitorId_Inter3Time, imTheLeaderInter1, imTheLeaderInter2, imTheLeaderInter3, headerText1, TVheaderText1, competitorTime, finished1, finished2, single1, single2, checkeredFlag, showFull, leader, showBlue, main_num, pair_num, blued, leaderCard, catCol, markBlue, MaximumStageTimeMili, fullNumber, uci1, uci2, finalText3, headerText31, headerText32;
         
-// TEST        let allArrayMinimized = [], allArrayNew = [];
+// TEST        var allArrayMinimized = [], allArrayNew = [];
 
         MaximumStageTimeMili = timeString2ms(MaximumStageTime);
 
@@ -1273,13 +1274,13 @@
     //  console.log(lines.length);
      //   console.log(lines);
 
-        let HeaderName = Text[0].split("\n");  
-        let div = document.createElement("div");  
+        var HeaderName = Text[0].split("\n");  
+        var div = document.createElement("div");  
         div.innerHTML = HeaderName[0]; 
-        let HeaderEventName = div.textContent || div.innerText || "";  
-        let HeaderRaceName = HeaderEventName.split('-')[1].trim();  
+        var HeaderEventName = div.textContent || div.innerText || "";  
+        var HeaderRaceName = HeaderEventName.split('-')[1].trim();  
         csvName = HeaderRaceName.split(' ').join('_'); // replace all spaces with _
-        let headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
+        var headerFlag = (div.getElementsByTagName("img"))[0].getAttribute("src");
 
         HeaderEventName = HeaderEventName.replace("\n", "");  
 
@@ -1293,7 +1294,7 @@
         eventName = HeaderEventName;
         
 // calculate ElapsedTime
-        let ElapsedTimeTemp = "";
+        var ElapsedTimeTemp = "";
         const now = new Date().getTime();
         const startTimeMili = new Date(startTime).getTime();
         const etTemp = now - startTimeMili;
@@ -1305,16 +1306,17 @@
             
             
         
-        let div1 = document.createElement("div");  
+        var div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 
-        let header2 = div1.getElementsByTagName("span");
+        var header2 = div1.getElementsByTagName("span");
    
-        let dateNow, DayTime, ElapsedTime, RemainingTime;
+        var dateNow, DayTime, ElapsedTime, RemainingTime;
         
         if (useKellner == 1) {
             dateNow = new Date();
             DayTime =  dateNow.getDate() + "/" + (dateNow.getMonth()+1) + "/" + dateNow.getFullYear() + " " + dateNow.getHours() + ":" + (dateNow.getMinutes()).toString().padStart(2, "0") + ":" + (dateNow.getSeconds()).toString().padStart(2, "0");
-            ElapsedTime =  ElapsedTimeTemp;
+            ElapsedTime =  ElapsedTimeTemp.split('.')[0];
+//            ElapsedTime =  ElapsedTimeTemp;
             RemainingTime =  "";
         } else {
             DayTime =  header2[0].textContent || div.innerText || "";
@@ -1391,7 +1393,7 @@
             Text[0] = Text[0].replace(/DayTime">[0-9AMP\s\/:]*</g, 'DayTime">' + DayTime + '<');
         }
 
-        let finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
+        var finalText = Text[0].replace(" - ", "<br>"); // clear the finalText variable and add the title and time lines
 
 
 
@@ -1405,7 +1407,7 @@
             if (lines[b].includes('<td id="Id_')) { // header cell
                 id = (lines[b].substring(lines[b].indexOf(' id="')+4).split('"')[1]);
                 hhhPro.push(id);
- //               let idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
+ //               var idName = (lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")));
  //               hhh[id] = idName;
  //               temp.push(id,idName);
  //               qqq.push(temp);
@@ -1455,7 +1457,29 @@
                         lineArray["Id_TpsCumule"] = 99999999999;   
                     }
 
+
                     
+                    if (lineArray["Id_Categorie"].toLowerCase().includes('solo')) {
+                    
+                        allArray3.push(lineArray); // push line to single day solo array 
+                        
+                    } else if (pair_num == 1) {
+                        
+                        lineArray.Id_Image_2 = "";
+                        
+                        allArray31.push(lineArray); // push line to single day pair 1 array 
+                        
+                    } else if (pair_num == 2) {
+                        
+                        allArray32.push(lineArray); // push line to single day pair 2 array
+                        
+                    } else {
+                        
+                        console.log('lineArray not belong noway!');
+                        console.log(lineArray);
+                    }
+
+/*                    
                     if (pair_num == 1) {
                         
                         lineArray.Id_Image_2 = "";
@@ -1471,8 +1495,11 @@
                         allArray3.push(lineArray); // push line to main array 
                         
                     }
+*/                    
+  
                     
-               } else if (pair_num == 1 && lineArray["Id_Nom"] != '???') { // to epic main array 
+
+                } else if (pair_num == 1 && lineArray["Id_Nom"] != '???') { // to epic main array 
                    
                    
                    
@@ -2213,7 +2240,7 @@
          
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
          
-//        let allArrayJ = JSON.stringify(allArray);             
+//        var allArrayJ = JSON.stringify(allArray);             
 //        console.log(JSON.parse(allArrayJ));     
 //        download(allArrayJ, 'j1.txt', 'text/plain');    
          
@@ -3445,7 +3472,7 @@ if (cleanResults == 0) {
         
         
     //        for(let key in allArray[l]) {
-    //        let opt3 = allArray[l][key];
+    //        var opt3 = allArray[l][key];
  
             
     //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
@@ -3716,10 +3743,10 @@ allArray[l]["Id_Arrow"]
                 }
 
                 // show all array key:value in the number title
-                let keyValueLog = '';
+                var keyValueLog = '';
                 if (showLog == 1) {
                     for (let key in allArray[l]) {
-                //      let value = allArray[l][key];
+                //      var value = allArray[l][key];
                         if ((key == "Id_Inter1" || key == "Id_Inter1_2" || key == "Id_Inter2" || key == "Id_Inter2_2" || key == "Id_Inter3" || key == "Id_Inter3_2") && allArray[l][key] != 99999999999) {
                             keyValueLog += `${key}: ${ms2TimeString(allArray[l][key])}  |  `;
                         } else {
@@ -3881,7 +3908,7 @@ allArray[l]["Id_Arrow"]
 if (show == 4) {
 
 // BEGIN intermediate 1
-                    let title1 = '';
+                    var title1 = '';
                     if (doNotShowTime == 0) {
                         if (allArray[l]["Id_Inter1"] != 99999999999 && allArray[l]["Id_Inter1_2"] != 99999999999) {
                             title1 = `${ms2TimeString(allArray[l]["Id_Inter1"])}\n${ms2TimeString(allArray[l]["Id_Inter1_2"])}`;
@@ -3941,7 +3968,7 @@ if (show == 4) {
 // END intermediate 1
                     
 // BEGIN intermediate 2
-                    let title2 = '';
+                    var title2 = '';
                     if (doNotShowTime == 0) {
                         if (allArray[l]["Id_Inter2"] != 99999999999 && allArray[l]["Id_Inter2_2"] != 99999999999) {
                             title2 = `${ms2TimeString(allArray[l]["Id_Inter2"])}\n${ms2TimeString(allArray[l]["Id_Inter2_2"])}`;
@@ -4001,7 +4028,7 @@ if (show == 4) {
 // END intermediate 2
                     
 // BEGIN intermediate 3
-                    let title3 = '';
+                    var title3 = '';
                     if (doNotShowTime == 0) {
                         if (allArray[l]["Id_Inter3"] != 99999999999 && allArray[l]["Id_Inter3_2"] != 99999999999) {
                             title3 = `${ms2TimeString(allArray[l]["Id_Inter3"])}\n${ms2TimeString(allArray[l]["Id_Inter3_2"])}`;
@@ -4940,7 +4967,7 @@ if ((epictv == 1 && ((allArray[l]["Id_Position_Categorie"] <= rows && useCategor
 // TEST create array without keys to minimize size of sending data
 
 if (l == 0) {
-    let result = Object.keys(allArray[l]).map(function(key) {
+    var result = Object.keys(allArray[l]).map(function(key) {
     return key;
     });
 allArrayMinimized.push(result);
@@ -5253,7 +5280,7 @@ console.log(arrayKeys);
 
 for (a = 0; a < allArrayMinimized.length; a++) { 
 
-    let result =  allArrayMinimized[a].reduce(function(result, field, index) {
+    var result =  allArrayMinimized[a].reduce(function(result, field, index) {
     result[arrayKeys[index]] = field;
     return result;
     }, {})
@@ -5269,6 +5296,7 @@ console.log(allArrayNew);
 // END TEST
 */
 
+//if (enableJ3 == 1) {
                 
 // BEGIN single day   
     // BEGIN allArray31, 32 
@@ -5360,7 +5388,8 @@ console.log(allArrayNew);
                 
     allArray3f = allArray3.concat(allArray31); // combine arrays                
                 
-                
+ // console.log(allArray3f);
+               
     allArray3 = [];               
     allArray31 = [];               
     allArray32 = [];               
@@ -5381,13 +5410,13 @@ console.log(allArrayNew);
 
 
 
-        let flagText = HeaderName[0].match(/Images\/\s*(.*?)\s*\.png/);
+        var flagText = HeaderName[0].match(/Images\/\s*(.*?)\s*\.png/);
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        let finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">מגדל אפיק ישראל - חד יומי</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">מגדל אפיק ישראל - חד יומי</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
 
-//        let finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+//        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
 
         
         if (useKellner == 1) {
@@ -5434,7 +5463,7 @@ console.log(allArrayNew);
             prevCompCat = ""
         
             leaderTime = 0;
-            let t = 1;
+            var t = 1;
 
         for (let l = 0; l < allArray3f.length; l++) {
             
@@ -5580,7 +5609,8 @@ console.log(allArrayNew);
             finalText3 += '</tr>\n';
             
             
-            
+            //            console.log(finalText3);
+
             
             
 if (enableJ3 == 1) {
@@ -5628,6 +5658,10 @@ if (enableJ3 == 1) {
         delete allArray3f[l].Id_Image_2;
         delete allArray3f[l].Id_Status;
 
+        delete allArray3f[l].Id_Perso1;
+        delete allArray3f[l].Id_Perso1_2;
+        delete allArray3f[l].Id_Federation;
+//        delete allArray3f[l].Id_Club;
             
             if (allArray3f[l]["Id_FinishTime"] == 99999999999) {
                 allArray3f[l]["Id_FinishTime"] = 0;
@@ -5657,8 +5691,10 @@ if (enableJ3 == 1) {
         delete allArray3f[l].Id_Equipe;
         allArray3f[l].PC = allArray3f[l].Id_Position; // needed only for third party
         delete allArray3f[l].Id_Position;
-            
-            Object.keys(allArray3f[l]).sort().forEach(function(key) {
+        
+        allArrayJ3 = {};
+
+        Object.keys(allArray3f[l]).sort().forEach(function(key) {
                 if (allArray3f[l][key] == '&nbsp;') { // FIXME 99999999999 need checking
                     allArray3f[l][key] = '';
                 }
@@ -5709,7 +5745,7 @@ if (enableJ3 == 1) {
         }
 */        
 
-        let header = {};
+        var header = {};
 /*        
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
@@ -5727,18 +5763,18 @@ if (enableJ3 == 1) {
         header.startTime = (new Date(startTime)).toISOString();
         header.message = messageX;
         
-        
+   //            console.log(header);     
         
         allArray3f.unshift(header); // add the header at the beginning
         allArrayJ3 = JSON.stringify(allArray3f);             
-//        download(allArrayJ3, 'j3.txt', 'text/plain');    
-//        console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt')
+        download(allArrayJ3, 'j3.txt', 'text/plain');    
+        console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt')
 }
 
 //    }
  
         
-        //       console.log(JSON.parse(allArrayJ3));     
+      //         console.log(JSON.parse(allArrayJ3));     
 
 
 if (showLog == 1) {                              
@@ -5748,7 +5784,7 @@ const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({
 
 const allArray3fObject = arrayToObject(allArray3f, "Id_Numero")
 
-    console.log(allArray3fObject);                
+ //   console.log(allArray3fObject);                
 //    console.table(allArray3fObject);
 }                
      
@@ -5756,7 +5792,7 @@ const allArray3fObject = arrayToObject(allArray3f, "Id_Numero")
     //console.log(finalText3);
     
     // END single day    
-                
+//} // END if enableJ3 == 1                
                 
                 
                 
@@ -5776,7 +5812,7 @@ const allArrayObject = arrayToObject(allArray, "Id_Numero")
 if (enableJ1 == 1) {
   
     if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
-        let header = {};
+        var header = {};
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
         header.DayTime = DayTime;
@@ -5826,7 +5862,7 @@ if (enableJ1 == 1) {
 
     function ms2TimeString(mili){
         
-        let d, a, f, g, z;
+        var d, a, f, g, z;
 
         if (precision == "tenth") {
             d = mili % 1E3;
@@ -5925,12 +5961,12 @@ if (k<100){
         if (cleanResults == 0 && epictv == 0) {
             
             // aligning table columns according to number of columns
-            let tt = document.querySelectorAll('.line_color');
+            var tt = document.querySelectorAll('.line_color');
 
             for (let kk = 0; kk < tt.length; kk++) {
 
         /*
-                let numCols = 0;
+                var numCols = 0;
 
                 for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
 
@@ -5941,10 +5977,10 @@ if (k<100){
                     }
                     row = null;
                 }
-                let ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+                var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
         */
-                let trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
-                let tds = trs[0].querySelectorAll('th.rnkh_font');
+                var trs = tt[kk].querySelectorAll('tr.rnkh_bkcolor');
+                var tds = trs[0].querySelectorAll('th.rnkh_font');
 
                 if (tds.length > 15) {
                     tt[kk].classList.add("huge_table");
@@ -5952,7 +5988,7 @@ if (k<100){
                     tt[kk].classList.add("big_table");
                 }
 
-                let ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+                var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
 
                 tt[kk].querySelectorAll('td.rnk_font:nth-child(n+4)').forEach(function(element) { // all from column 4
                     element.style.width = ddd + "%";
@@ -5967,9 +6003,9 @@ if (k<100){
     }; 
     
     function download(content, fileName, contentType) {
-        let a = document.createElement("a");
+        var a = document.createElement("a");
         a.setAttribute("id", "download");
-        let file = new Blob([content], {type: contentType});
+        var file = new Blob([content], {type: contentType});
         a.href = URL.createObjectURL(file);
         a.download = fileName;
         a.click();
@@ -5996,7 +6032,7 @@ if (k<100){
 
  
     function msToTime(duration) {
-        let milliseconds = parseInt(duration % 1000),
+        var milliseconds = parseInt(duration % 1000),
             seconds = parseInt((duration / 1000) % 60),
             minutes = parseInt((duration / (1000 * 60)) % 60),
             hours = parseInt((duration / (1000 * 60 * 60)) % 24);
@@ -6013,7 +6049,7 @@ if (k<100){
     };
 
     function sortObjKeysAlphabetically(obj) {
-        let ordered = {};
+        var ordered = {};
         Object.keys(obj).sort().forEach(function(key) {
         ordered[key] = obj[key];
         });
@@ -6028,8 +6064,8 @@ if (k<100){
 
 // csv file create and download
     function download_csv(csv, filename) {
-        let csvFile;
-        let downloadLink;
+        var csvFile;
+        var downloadLink;
 
         // CSV FILE
         csvFile = new Blob([csv], {type: "text/csv"});
@@ -6054,12 +6090,12 @@ if (k<100){
     };
 
     function export_table_to_csv(html, filename) {
-        let csv = [];
+        var csv = [];
         csv.push('Migdal Epic Israel -' + csvName.split('_').join(' '));
-        let rowx = document.querySelectorAll("table tr");
+        var rowx = document.querySelectorAll("table tr");
         
         for (let i = 0; i < rowx.length; i++) {
-            let row = [], cols = rowx[i].querySelectorAll("td, th");
+            var row = [], cols = rowx[i].querySelectorAll("td, th");
             
             for (let j = 0; j < cols.length; j++) 
                 row.push(cols[j].innerText);
@@ -6076,9 +6112,9 @@ if (k<100){
                 
         if (TimerLoad) clearTimeout(TimerLoad);
 
-        let useCategoryTemp = useCategory;
+        var useCategoryTemp = useCategory;
         publishE = 1;
-        let publishText = '';
+        var publishText = '';
         
         publishText += `<!DOCTYPE html><html class="no-js" lang="he" xml:lang="he" dir="rtl"><head> <title>תנועה מדידת זמנים &ndash; live timing</title> <meta charset="utf-8"> <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo"> <meta name="description" content="תנועה מדידת זמנים עוסקת במדידת זמנים בארועי ספורט"> <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"> <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"> <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"> <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"> <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"> <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"> <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"> <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"> <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"> <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194"> <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"> <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192"> <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"> <link rel="manifest" href="/manifest.json"> <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffcc33"> <meta name="apple-mobile-web-app-title" content="תנועה מדדית זמנים"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="application-name" content="תנועה מדדית זמנים"> <meta name="msapplication-TileColor" content="#ffcc33"> <meta name="msapplication-TileImage" content="/mstile-144x144.png"> <meta name="theme-color" content="#ffcc33"> <link rel="stylesheet" media="all" type="text/css" href="/style/global.css"> <link rel="stylesheet" media="print" href="/style/print.css"> <meta property="og:locale" content="he_IL"> <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים"> <meta property="og:title" content="תנועה מדידת זמנים &ndash; live timing"> <meta property="og:description" content="live timing"> <meta property="og:url" content="https://tnuatiming.com/liveepic/"> <meta property="og:image" content="http://tnuatiming.com/images/logo2_og.png"> <meta property="og:image:type" content="image/png"> <meta property="og:image:width" content="1200"> <meta property="og:image:height" content="630"> <style>#live #buttonInfo{flex-direction: column; direction: ltr;}#live table.line_color{margin-top: 10px; direction: ltr;}#live tr.rnk_bkcolor:hover{background-color: #f0f0f0bf;}h1 img{height: 32px; vertical-align: middle; margin: 0 5px;}.Flag:before{content: "\\00a0";}.Flag{background-size: contain; background-position: 50%; background-repeat: no-repeat; position: relative; display: inline-block; width: 1.33333333em; vertical-align: middle; margin: 0 5px;}.ARG{background-image:url(Images/CountryFlags/argentina.svg)}.AUS{background-image:url(Images/CountryFlags/australia.svg)}.AUT{background-image:url(Images/CountryFlags/austria.svg)}.BEL{background-image:url(Images/CountryFlags/belgium.svg)}.BRA{background-image:url(Images/CountryFlags/brazil.svg)}.CAN{background-image:url(Images/CountryFlags/canada.svg)}.CZE{background-image:url(Images/CountryFlags/czechrepublic.svg)}.DEN{background-image:url(Images/CountryFlags/denmark.svg)}.ECU{background-image:url(Images/CountryFlags/ecuador.svg)}.EST{background-image:url(Images/CountryFlags/estonia.svg)}.FIN{background-image:url(Images/CountryFlags/finland.svg)}.FRA{background-image:url(Images/CountryFlags/france.svg)}.GER{background-image:url(Images/CountryFlags/germany.svg)}.GRC{background-image:url(Images/CountryFlags/greece.svg)}.HUN{background-image:url(Images/CountryFlags/hungary.svg)}.ISL{background-image:url(Images/CountryFlags/iceland.svg)}.IRL{background-image:url(Images/CountryFlags/ireland.svg)}.ISR{background-image:url(Images/CountryFlags/israel.svg)}.ITA{background-image:url(Images/CountryFlags/italy.svg)}.KAZ{background-image:url(Images/CountryFlags/kazakhstan.svg)}.LAT{background-image:url(Images/CountryFlags/latvia.svg)}.LTU{background-image:url(Images/CountryFlags/lithuania.svg)}.NED{background-image:url(Images/CountryFlags/netherlands.svg)}.NZL{background-image:url(Images/CountryFlags/newzealand.svg)}.NOR{background-image:url(Images/CountryFlags/norway.svg)}.POL{background-image:url(Images/CountryFlags/poland.svg)}.POR{background-image:url(Images/CountryFlags/portugal.svg)}.RUS{background-image:url(Images/CountryFlags/russia.svg)}.SRB{background-image:url(Images/CountryFlags/serbia.svg)}.RSA{background-image:url(Images/CountryFlags/southafrica.svg)}.ESP{background-image:url(Images/CountryFlags/spain.svg)}.SWE{background-image:url(Images/CountryFlags/sweden.svg)}.SUI{background-image:url(Images/CountryFlags/switzerland.svg)}.UKR{background-image:url(Images/CountryFlags/ukraine.svg)}.GBR{background-image:url(Images/CountryFlags/unitedkingdom.svg)}.USA{background-image:url(Images/CountryFlags/usa.svg)}.ZAM{background-image:url(Images/CountryFlags/zambia.svg)}.transparent{background-image: url(Images/transparent.png);}.blueFlag{background-image: url(Images/_LightBlueFlag.png);}.CheckeredFlag{background-image: url(Images/_CheckeredFlag.png);}.numberOne{background-image: url(Images/numbreOne.svg); width: 1em;}.YellowShirt{background-image: url(Images/YellowShirt.svg);margin: 0;}.PinkShirt{background-image: url(Images/PinkShirt.svg);margin: 0;}.GreenShirt{background-image: url(Images/GreenShirt.svg);margin: 0;}.BlueShirt{background-image: url(Images/BlueShirt.svg);margin: 0;}.PurpleShirt{background-image: url(Images/PurpleShirt.svg);margin: 0;}.UCI{background-image: url(Images/uci.svg);margin: 0;}.dnf{background-image: url(Images/_dnf.svg);}.dsq{background-image: url(Images/_dsq.svg);}.dns{background-image: url(Images/_dns.svg);}#live td.blued{background-image: url(Images/_LightBlueFlag.png); background-position: center center; background-size: auto 50%; background-repeat: no-repeat; min-width: 16px;}#live td.rnk_font.blueCard{color:#111; background-color:#add8e6bf; font-weight:700;}#live td.rnk_font.DarkBlueCard{color:#111; background-color:#2f5999ff; font-weight:700;}#live td.rnk_font.redCard{color:white; background-color:red; font-weight:700;}#live td.rnk_font.yellowCard{background-color:#fae100ff; font-weight:700;}#live td.rnk_font.pinkCard{color:white; background-color:#ff1493ff; font-weight:700;}#live td.rnk_font.greenCard{color:white; background-color:#427f4dfe; font-weight:700;}#live td.rnk_font.purpleCard{color:white; background-color:#412297ff; font-weight:700;}#live td.left,#live th.left{text-align: left;}#live td.right,#live th.right{text-align: right;}.lineThrough{filter: opacity(35%);}#live td.rnk_font.wrap{max-width: 200px; overflow: hidden; text-overflow: ellipsis;}#live td.rnk_font.bold{font-weight: 700;}#live td.rnk_font.bigFont{font-size: 1.5em; min-width: 35px;}#live .btn{display: inline-block;}#live #buttonInfo{margin-bottom: 10px;}#live .btn.active{cursor: pointer; filter: opacity(50%);}#live #Title{justify-content: space-evenly; vertical-align: middle; font-weight: 700; font-size: 1em; color: #58585a; margin: 5px 0; text-align: center;}#live h1#Title img{margin: 0 10px;}div#legend{width: 100%; text-align: left; direction: ltr;}div#legend ul{width: 100%; text-align: left; float: left;}div#legend li{text-align: left;}#csv{display: none;}@media (max-width:767px){#live td.rnk_font.bigFont{font-size: 1.2em; min-width: 25px;}#live td.rnk_font.wrap{max-width: 120px;}}</style></head> <body id="live"><div class="full-bg fadeIn"> <div class="page"> <div class="row header"> <div class="row language"> <a href="/english/index.html" title="go to English home page"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="27" height="19"> <clipPath id="t"> <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/> </clipPath> <path d="M0,0 v30 h60 v-30 z" fill="#00247d"/> <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/> <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#cf142b" stroke-width="4"/> <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/> <path d="M30,0 v30 M0,15 h60" stroke="#cf142b" stroke-width="6"/> </svg> </a> </div><div class="logoNav"> <div class="logo_main"> <div class="logo_image"> <ul class="logo"> <li></li><li></li><li></li><li></li></ul> </div><div class="logo_text"> <a class="main_logo" href="http://tnuatiming.com/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 235 90"><switch><g fill="#58585a"><path d="M188.274 11.634h-8.35V1h30.586q12.656 0 18.15 5.36 5.537 5.318 5.537 17.667v31.508h-11.91V24.202q0-7.03-2.856-9.8-2.855-2.768-9.623-2.768h-9.668V34.66q0 7.648-1.76 12.174-1.713 4.527-5.36 6.636-3.647 2.065-10.59 2.065h-2.99V44.9h.748q3.076 0 4.834-1.098 1.758-1.143 2.505-3.516.747-2.373.747-7.163v-21.49zM169.51 55.535h-28.433V44.9h16.567V24.775q0-5.933-.79-8.438-.792-2.55-2.638-3.603-1.845-1.1-5.405-1.1h-5.228V1h7.47q7.56 0 11.294 2.02 3.736 2.022 5.45 6.636 1.713 4.615 1.713 12.833v33.045zM118.313 1h11.865v54.535h-11.865V1zM56.746 45.91q11.337-.174 17.622-2.24L58.81 1h12.877L84.65 38.352q4.967-4 7.076-12.656Q93.836 17.04 93.836 1h12.216q0 20.96-4.702 32.826-4.658 11.822-15.117 17.403-10.46 5.536-29.487 6.37V45.91zM13.547 55.535H1.682V22.4h11.865v33.135zm34.234 0H35.873V23.85q0-6.723-2.857-9.447-2.856-2.77-9.932-2.77H.803V1H23.83Q36.795 1 42.29 6.316q5.493 5.317 5.493 17.622v31.595z"/><path d="M223.98 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H220.97v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.385-2.44-4.703-2.44-2.966 0-4.878 2.703-1.91 2.68-3.537 9.448L212.86 89h-4.35l3.01-11.8q1.034-4.107 2.066-6.7l-5.493-8.46h4.768l2.748 4.46q1.714-2.592 3.67-3.735 1.955-1.164 4.7-1.164zM202.27 89h-4.064V65.777h-15.38V62.04h22.806v3.736h-3.362V89zM174.058 62.04h4.043v14.173h-4.042V62.04zM165.62 89h-4.065V65.777h-15.38V62.04h22.807v3.736h-3.362V89zM119.917 65.776h-4.175V62.04h14.568q6.065 0 8.7 2.593 2.638 2.57 2.638 8.57V89h-4.043V73.16q0-4.043-1.648-5.712-1.626-1.67-5.69-1.67h-6.307v12.788q0 4.043-.747 6.262-.725 2.22-2.35 3.208-1.627.967-5.12.967h-.243v-3.735h.374q1.538 0 2.417-.55.88-.57 1.253-1.757.374-1.186.374-3.58V65.775zM102.35 65.95v4.198l-2.396-.813q-1.297.68-1.802 1.275-.506.593-.725 1.428-.22.813-.22 2.065V89h-4.043V74.28q0-2.33.88-3.78.9-1.45 3.03-2.154L89.56 65.82v-4.175l12.79 4.306zM74.597 61.6q5.317 0 7.756 3.253 2.46 3.23 2.46 10.283V89H71.588v-3.735h9.14V75.64q0-5.382-1.384-7.82-1.384-2.44-4.702-2.44-2.965 0-4.877 2.703-1.912 2.68-3.538 9.448L63.48 89h-4.352l3.01-11.8q1.033-4.107 2.066-6.7l-5.493-8.46h4.77l2.745 4.46q1.714-2.592 3.67-3.735Q71.85 61.6 74.597 61.6zM53.92 89H41.595v-3.735h8.284V73.62q0-3.516-.374-5.032-.35-1.516-1.208-2.153-.857-.66-2.483-.66h-2.966V62.04h2.834q3.517 0 5.12.99 1.627.966 2.374 3.207.747 2.22.747 6.24V89zM32.146 62.04h4.043v14.173h-4.044V62.04zM24.74 89H1.65V62.04h11.8q6.064 0 8.678 2.593 2.615 2.593 2.615 8.57V89zM5.69 65.777v19.49h14.986V73.157q0-4-1.626-5.69-1.604-1.692-5.647-1.692H5.69z"/></g><foreignObject width="235" height="90" requiredExtensions="http://example.com/SVGExtensions/EmbeddedXHTML"><img src="/images/logo2.png" width="235" height="90" alt="תנועה מדידת זמנים"/></foreignObject></switch></svg></a> </div></div><div class="navigation"> <svg style="display:none;"> <symbol id="live-icon" viewBox="0 0 32 32"> <path style="fill-opacity:1" d="M 17,6.03787 17,4 21,4 21,2 C 21,0.89544 20.104563,0 18.999938,0 L 13,0 c -1.104562,0 -2,0.89544 -2,2 l 0,2 4,0 0,2.03787 C 8.287563,6.54844 3,12.15669 3,19 3,26.17969 8.820313,32 16,32 23.179688,32 29,26.17969 29,19 29,12.15675 23.712438,6.5485 17,6.03787 Z m 6.071062,20.03319 C 21.18225,27.95981 18.671125,29 16,29 13.328875,29 10.817688,27.95981 8.928938,26.07106 7.040188,24.18231 6,21.67106 6,19 c 0,-2.67106 1.040188,-5.18231 2.928938,-7.07106 1.81375,-1.81369 4.2015,-2.84431 6.753562,-2.92338 l -0.677437,9.81313 C 14.946943,19.64025 15.394563,20 15.999938,20 16.605313,20 17.053,19.64025 16.994813,18.81869 L 16.317438,9.0055 c 2.552062,0.0791 4.939875,1.10975 6.753625,2.92344 C 24.959813,13.81769 26,16.32894 26,19 c 0,2.67106 -1.040187,5.18231 -2.928937,7.07106 z"/> </symbol> <symbol id="home-icon" viewBox="0 0 32 32"> <path style="fill-opacity:1" d="m 32,18.5 -6,-6 0,-9 -4,0 0,5 -6,-6 -16,16 0,1 4,0 0,10 10,0 0,-6 4,0 0,6 10,0 0,-10 4,0 z"/> </symbol> <symbol id="race-icon" viewBox="0 0 32 32"> <path style="fill-opacity:1" d="M 26,6 26,2 6,2 6,6 0,6 0,10 c 0,3.31369 2.6861875,6 6,6 0.627375,0 1.2321875,-0.0964 1.800625,-0.27506 1.4429375,2.06275 3.644,3.55612 6.199375,4.07487 L 14,26 12,26 c -2.2091875,0 -4,1.79081 -4,4 l 16,0 c 0,-2.20919 -1.790813,-4 -4,-4 l -2,0 0,-6.20019 c 2.555375,-0.51875 4.756437,-2.01206 6.199375,-4.07487 C 24.767813,15.90356 25.372625,16 26,16 c 3.313812,0 6,-2.68631 6,-6 L 32,6 26,6 Z M 6,13.625 C 4.0011875,13.625 2.375,11.99881 2.375,10 l 0,-2 L 6,8 6,10 c 0,1.25581 0.2321875,2.45725 0.6548125,3.56462 C 6.44225,13.60356 6.223625,13.625 6,13.625 Z M 29.625,10 c 0,1.99881 -1.626188,3.625 -3.625,3.625 -0.223625,0 -0.44225,-0.0214 -0.654812,-0.0604 C 25.767813,12.45725 26,11.25581 26,10 l 0,-2 3.625,0 0,2 z"/> </symbol> </svg> <ul> <li><a class=home href="/index.html"><svg class="home-icon"><use xlink:href="#home-icon"></use></svg><span>עמוד&nbsp;הבית</span></a></li><li><a class=races href="/results/index.html"><svg class="race-icon"><use xlink:href="#race-icon"></use></svg><span>תוצאות&nbsp;מרוצים</span></a></li><li class="last"><a class="live" href="/live/index.html"><span class="css3-blink"><span>live&nbsp;timing</span><svg class="live-icon"><use xlink:href="#live-icon"></use></svg></span></a></li></ul> </div></div></div><div class="row main_content"> <div id="raceheader"><h1>Stage Results</h1></div><div id="buttonInfo"> <div id="categoryOrAll" style="display: block;"> <button id="displayCatButton" class="btn" onClick="category('yes')">By Category</button> <button id="displayAllButton" class="btn" onClick="category('no')">Overall</button> </div></div>`;
         
@@ -6120,9 +6156,9 @@ if (k<100){
                 
         if (TimerLoad) clearTimeout(TimerLoad);
 
-        let useCategoryTemp = useCategory;
+        var useCategoryTemp = useCategory;
         publishE = 1;
-        let publishText = '';
+        var publishText = '';
         
         
         publishText += '<h1 id="Title">' + eventName + '</h1>\n';
