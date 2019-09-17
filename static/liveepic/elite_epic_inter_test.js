@@ -48,6 +48,8 @@
     var P1 = '';
     
     var useKellner = 1; // get timing info from kellner
+    var checkKellnerJson = 0; // check json recived from kellner
+    
     var K1;
     var kellnerArray = {};
 //    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
@@ -203,6 +205,25 @@
             }
                     
             sessionStorage.setItem('doNotShowTime', doNotShowTime);
+
+        });
+
+
+        if (document.getElementById("checkJson").checked) {
+            checkKellnerJson = 1;
+        } else {
+            checkKellnerJson = 0;
+        }
+        
+
+        document.getElementById('checkJson').addEventListener('change', event => {
+            if (event.target.checked) {
+                checkKellnerJson = 1;
+//                document.getElementById("result").innerHTML = createLiveTable(P1);
+            } else {
+                checkKellnerJson = 0;
+//                document.getElementById("result").innerHTML = createLiveTable(P1);
+            }
 
         });
 
@@ -1114,6 +1135,7 @@
             console.log(kellnerArray);
         }
 
+        if (checkKellnerJson == 1) {
             document.getElementById("kellnerStatus").style.color = "green"; 
                     
             const testTimeRegExp = /^[0-1]?[0-9]:[0-5][0-9]:[0-5][0-9].[0-9]{0,3}/; // regEx for time string between "4:05:02." to  "12:46:53.764"
@@ -1127,7 +1149,7 @@
                     document.getElementById("kellnerStatus").style.color = "red"; 
                 }
             }
-            
+        }    
     };
 
 
@@ -3650,7 +3672,7 @@ allArray[l]["Id_Arrow"]
                     
                     finalText += `<td class="rnk_font fadeIn"><span title="Started" class="Flag Started"></span></td>`;
                     
-*/                } else if (allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status"))) { // check on track using kellner
+*/                } else if (useKellner == 1 && allArray[l]["Id_FinishTime"] == 99999999999 && (!allArray[l]["Id_Image"].includes("_Status")) && (!allArray[l]["Id_Image_2"].includes("_Status"))) { // check on track using kellner
     
                     const fullNumber1 = allArray[l]["Id_Numero_Full"].replace('-', '');
                     const fullNumber2 = allArray[l]["Id_Numero_Full_2"].replace('-', '');
@@ -5519,7 +5541,7 @@ console.log(allArrayNew);
                 finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
             } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
                 finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Position"] + '</td>\n';
-            } else if (allArray3f[l]["Id_FinishTime"] == 99999999999) { // check on track using kellner
+            } else if (useKellner == 1 && allArray3f[l]["Id_FinishTime"] == 99999999999) { // check on track using kellner
     
 
                 if (allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo')) {
