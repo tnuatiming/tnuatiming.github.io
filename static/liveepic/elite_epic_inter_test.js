@@ -53,8 +53,8 @@
     var K1;
     var kellnerArray = {};
 //    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
-    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
-//    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
+//    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
+    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -1482,6 +1482,8 @@
 
                     
                     if (lineArray["Id_Categorie"].toLowerCase().includes('solo')) {
+                                                
+                        lineArray["Id_Numero"] = lineArray["Id_Numero_Full"].replace('-', '');
                     
                         allArray3.push(lineArray); // push line to single day solo array 
                         
@@ -5806,7 +5808,7 @@ const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({
 
 const allArray3fObject = arrayToObject(allArray3f, "Id_Numero")
 
- //   console.log(allArray3fObject);                
+    console.log(allArray3fObject);                
 //    console.table(allArray3fObject);
 }                
      

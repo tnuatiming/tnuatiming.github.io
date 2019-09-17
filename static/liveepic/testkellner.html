@@ -17,9 +17,9 @@
    var enableDownload = 0;
    var endTest = 0;
    
-   var createFull = 0; // 0 - start empty and fill every 10 sec, 1 - create full results
+   var createFull = 1; // 0 - start empty and fill every 10 sec, 1 - create full results
    
-   var competitorsNumber = 400;
+   var competitorsNumber = 1000;
    
    var arrayTest = {};
     if (sessionStorage.getItem('arrayTest')) {
@@ -157,39 +157,54 @@ function genp1() {
     }
      
      
+if (l < 900) { 
     
 // rider 1
     
-    text += `{"No]: ${Number(l + '1')}, "Time": "${time[0]}", "T1": "${timeInt1[0]}", "T2": "${timeInt2[0]}", "T3": "${timeInt3[0]}"}`;
+    text += `{"No":${Number(l + '1')},"Time":"${time[0]}","T1":"${timeInt1[0]}","T2":"${timeInt2[0]}","T3":"${timeInt3[0]}"}`;
 
     
     text += ',';
             
             
 // rider 2
-    text += `{"No]: ${Number(l + '2')}, "Time": "${time[1]}", "T1": "${timeInt1[1]}", "T2": "${timeInt2[1]}", "T3": "${timeInt3[1]}"}`;
+    text += `{"No":${Number(l + '2')},"Time":"${time[1]}","T1":"${timeInt1[1]}","T2":"${timeInt2[1]}","T3":"${timeInt3[1]}"}`;
              
     text += ',';
-if (l % 3 == 0) { 
+}
+    
+/*if (l % 3 == 0) { 
             
 // single day rider 1
-    text += `{"No]: ${Number((l + competitorsNumber) + '1')}, "Time": "${time[0]}", "T1": "${timeInt1[0]}", "T2": "${timeInt2[0]}", "T3": "${timeInt3[0]}"}`;
+    text += `{"No":${Number((l + competitorsNumber) + '1')},"Time":"${time[0]}","T1":"${timeInt1[0]}","T2":"${timeInt2[0]}","T3":"${timeInt3[0]}"}`;
     
     
     text += ',';
 // single day rider 2
-    text += `{"No]: ${Number((l + competitorsNumber) + '2')}, "Time": "${time[1]}", "T1": "${timeInt1[1]}", "T2": "${timeInt2[1]}", "T3": "${timeInt3[1]}"}`;
+    text += `{"No":${Number((l + competitorsNumber) + '2')},"Time":"${time[1]}","T1":"${timeInt1[1]}","T2":"${timeInt2[1]}","T3":"${timeInt3[1]}"}`;
 
     text += ',';
             
 // single day single
-    text += `{"No]: ${Number((l + competitorsNumber) + '3')}, "Time": "${time[1]}", "T1": "${timeInt1[1]}", "T2": "${timeInt2[1]}", "T3": "${timeInt3[1]}"}`;
+    text += `{"No":${Number((l + competitorsNumber) + '3')},"Time":"${time[1]}","T1":"${timeInt1[1]}","T2":"${timeInt2[1]}","T3":"${timeInt3[1]}"}`;
     
     
     text += ',';
             
             
 }
+*/
+if (l >= 900) { 
+            
+// single day rider 1
+    text += `{"No":${Number(l)},"Time":"${time[0]}","T1":"${timeInt1[0]}","T2":"${timeInt2[0]}","T3":"${timeInt3[0]}"}`;
+    
+    
+    text += ',';
+            
+            
+}
+
     
     } // END l
     
