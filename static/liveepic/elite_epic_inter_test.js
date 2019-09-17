@@ -1834,7 +1834,7 @@
                 }
                 
                 pp += 1;
-      //    console.log(lineArray);
+//          console.log(lineArray);
 
             }
             
@@ -4359,10 +4359,10 @@ if (show == 4) {
                 
                 if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
                 
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show position if status or no finish time
+                    finalText += '<td class="rnk_font"></td>'; // don't show position if status or no finish time
                     //allArray[l]["Id_Position_Categorie"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
 
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show  position if status or no finish time
+                    finalText += '<td class="rnk_font"></td>'; // don't show  position if status or no finish time
                     //allArray[l]["Id_Position_Overall"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
                     
                 } else {
@@ -4432,7 +4432,7 @@ if (show == 4) {
                     
                 } else {
 
-                    finalText += '<td class="rnk_font">&nbsp;</td>';
+                    finalText += '<td class="rnk_font"></td>';
 
                 }
 
@@ -4474,26 +4474,26 @@ if (show == 4) {
 
                 if (doNotShowTime == 0) {
                     if (allArray[l]["Id_TpsCumule"] == 99999999999) {
-                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 1
+                        finalText += '<td class="rnk_font"></td>'; // Time Rider 1
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // Time Rider 1
                     }
                     if (allArray[l]["Id_TpsCumule_2"] == 99999999999) {
-                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 2
+                        finalText += '<td class="rnk_font"></td>'; // Time Rider 2
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // Time Rider 2
                     }
                 }
                 
                     if (allArray[l]["Id_FinishTime"] == 99999999999) {
-                        finalText += '<td class="rnk_font">-</td>'; // time
+                        finalText += '<td class="rnk_font"></td>'; // time
                     } else {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
                     }
                 
 //                if (timeGapDisplay == 1) {
                     if (allArray[l]["Id_Ecart1er"] == 99999999999) {
-                        finalText += '<td class="rnk_font">-</td>'; // Gap
+                        finalText += '<td class="rnk_font"></td>'; // Gap
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
                     }
@@ -4548,10 +4548,10 @@ if (show == 4) {
                 
                 if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
                 
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show position if status or no finish time
+                    finalText += '<td class="rnk_font"></td>'; // don't show position if status or no finish time
                     //allArray[l]["Id_Position_Categorie"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
 
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show  position if status or no finish time
+                    finalText += '<td class="rnk_font"></td>'; // don't show  position if status or no finish time
                     //allArray[l]["Id_Position_Overall"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
                     
                 } else {
@@ -4605,7 +4605,7 @@ if (show == 4) {
                     
                 } else if (allArray[l]["single"] == 2 && checkeredFlag == "finished") {
                     
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
+                    finalText += '<td class="rnk_font"></td>'; // single finished
                     
                 } else if (allArray[l]["single"] == 1 && checkeredFlag == "finished") {
                     
@@ -4621,7 +4621,7 @@ if (show == 4) {
                     
                 } else {
 
-                    finalText += '<td class="rnk_font">&nbsp;</td>';
+                    finalText += '<td class="rnk_font"></td>';
 
                 }
 
@@ -4633,7 +4633,7 @@ if (show == 4) {
                 
                 finalText += '<td class="rnk_font ' + single2 + '">' + allArray[l]["Id_Nationalite"] + '</td>'; // Nation
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
 
                 if (allArray[l]["uci"] == 1 || allArray[l]["uci"] == 3) {
                     finalText += '<td class="rnk_font">yes</td>'; // UCI
@@ -4652,7 +4652,7 @@ if (show == 4) {
                 
                     } else if (allArray[l]["Id_TpsCumule"] == 99999999999 || allArray[l]["single"] == 2) {
                         
-                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 1
+                        finalText += '<td class="rnk_font"></td>'; // Time Rider 1
                         
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // Time Rider 1
@@ -4666,7 +4666,7 @@ if (show == 4) {
                 
                     } else if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 2) {
                         
-                        finalText += '<td class="rnk_font">-</td>'; // time
+                        finalText += '<td class="rnk_font"></td>'; // time
                         
                     } else {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
@@ -4674,7 +4674,7 @@ if (show == 4) {
                 
 //                if (timeGapDisplay == 1) {
                     if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 2) {
-                        finalText += '<td class="rnk_font">-</td>'; // Gap
+                        finalText += '<td class="rnk_font"></td>'; // Gap
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
                     }
@@ -4714,10 +4714,10 @@ if (show == 4) {
                 
                 if (allArray[l]["Id_Image"].includes("_Status") || allArray[l]["Id_Image_2"].includes("_Status") || allArray[l]["Id_Sector_FinishTime"] == 99999999999 || allArray[l]["oldBlue"] == 1 || showBlue == 1 || allArray[l]["single"] != 0) {
                 
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show position if status or no finish time
+                    finalText += '<td class="rnk_font"></td>'; // don't show position if status or no finish time
                     //allArray[l]["Id_Position_Categorie"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
 
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // don't show  position if status or no finish time
+                    finalText += '<td class="rnk_font"></td>'; // don't show  position if status or no finish time
                     //allArray[l]["Id_Position_Overall"] = 0; // for upload json, not needed, its for third party FIXME wrong place needs to move up to clean results 0
                     
                 } else {
@@ -4771,7 +4771,7 @@ if (show == 4) {
                     
                 } else if (allArray[l]["single"] == 1 && checkeredFlag == "finished") {
                     
-                    finalText += '<td class="rnk_font">&nbsp;</td>'; // single finished
+                    finalText += '<td class="rnk_font"></td>'; // single finished
                     
                 } else if (allArray[l]["single"] == 2 && checkeredFlag == "finished") {
                     
@@ -4787,7 +4787,7 @@ if (show == 4) {
                     
                 } else {
 
-                    finalText += '<td class="rnk_font">&nbsp;</td>';
+                    finalText += '<td class="rnk_font"></td>';
 
                 }
 
@@ -4800,7 +4800,7 @@ if (show == 4) {
                 
                 finalText += '<td class="rnk_font ' + single1 + '">' + allArray[l]["Id_Nationalite_2"] + '</td>'; // Nation
                 
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
+                finalText += '<td class="rnk_font left">' + allArray[l]["Id_Equipe"] + '</td>'; // Team
 
                 if (allArray[l]["uci"] == 2 || allArray[l]["uci"] == 3) {
                     finalText += '<td class="rnk_font">yes</td>'; // UCI
@@ -4818,7 +4818,7 @@ if (show == 4) {
                 
                     } else if (allArray[l]["Id_TpsCumule_2"] == 99999999999 || allArray[l]["single"] == 1) {
                         
-                        finalText += '<td class="rnk_font">-</td>'; // Time Rider 2
+                        finalText += '<td class="rnk_font"></td>'; // Time Rider 2
                         
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule_2"] + '</td>'; // Time Rider 2
@@ -4831,7 +4831,7 @@ if (show == 4) {
                 
                     } else if (allArray[l]["Id_FinishTime"] == 99999999999 || allArray[l]["single"] == 1) {
                         
-                        finalText += '<td class="rnk_font">-</td>'; // time
+                        finalText += '<td class="rnk_font"></td>'; // time
                         
                     } else {
                         finalText += '<td class="rnk_font bold">' + allArray[l]["Id_FinishTime"] + '</td>'; // time
@@ -4839,7 +4839,7 @@ if (show == 4) {
                 
 //                if (timeGapDisplay == 1) {
                     if (allArray[l]["Id_Ecart1er"] == 99999999999 || allArray[l]["single"] == 1) {
-                        finalText += '<td class="rnk_font">-</td>'; // Gap
+                        finalText += '<td class="rnk_font"></td>'; // Gap
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_Ecart1er"] + '</td>'; // Gap
                     }
@@ -5476,7 +5476,13 @@ console.log(allArrayNew);
                     headerText32 += '<th class="rnkh_font">Inter. 3</th>\n' // Id_Inter3
                 }
                 if (doNotShowTime == 0 ) {
+                    if (cleanResults == 0) {
                     headerText32 += '<th class="rnkh_font">Individual Time</th>\n'; // Id_TpsCumule
+                    } else {
+                    headerText32 += '<th class="rnkh_font">Rider 1 Time</th>\n'; // Id_TpsCumule
+                    headerText32 += '<th class="rnkh_font">Rider 2 Time</th>\n'; // Id_TpsCumule
+                        
+                    }
                 }
                 headerText32 += '<th class="rnkh_font">Time</th>\n'; // Id_TpsCumule
                 headerText32 += '<th class="rnkh_font">Gap</th>\n'; // Id_Ecart1er
@@ -5543,7 +5549,7 @@ console.log(allArrayNew);
                 finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
             } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
                 finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Position"] + '</td>\n';
-            } else if (useKellner == 1 && allArray3f[l]["Id_FinishTime"] == 99999999999) { // check on track using kellner
+            } else if (cleanResults == 0 && useKellner == 1 && allArray3f[l]["Id_FinishTime"] == 99999999999) { // check on track using kellner
     
 
                 if (allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo')) {
@@ -5602,7 +5608,7 @@ console.log(allArrayNew);
                 }
             }
             
-            if (doNotShowTime == 0 && (!(allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo'))) ) { // individual time
+            if (cleanResults == 0 && doNotShowTime == 0 && (!(allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo'))) ) { // individual time
 
                 if (allArray3f[l]["Id_TpsCumule"] != 99999999999 && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {  
                     finalText3 += `<td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule"])}<br>${ms2TimeString(allArray3f[l]["Id_TpsCumule_2"])}</td>\n`;
@@ -5613,13 +5619,28 @@ console.log(allArrayNew);
                 } else {
                     finalText3 += `<td class="rnk_font">-<br>-</td>\n`;
                 }
+            } else if (doNotShowTime == 0 && (!(allArray3f[l]["Id_Categorie"].toLowerCase().includes('solo'))) ) { // individual time
+
+                if (allArray3f[l]["Id_TpsCumule"] != 99999999999 && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {  
+                    finalText3 += `<td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule"])}</td><td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule_2"])}</td>\n`;
+                } else if (allArray3f[l]["Id_TpsCumule"] == 99999999999 && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {  
+                    finalText3 += `<td class="rnk_font"></td><td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule_2"])}</td>\n`;
+                } else if (allArray3f[l]["Id_TpsCumule"] != 99999999999 && allArray3f[l]["Id_TpsCumule_2"] == 99999999999) {  
+                    finalText3 += `<td class="rnk_font">${ms2TimeString(allArray3f[l]["Id_TpsCumule"])}</td><td class="rnk_font"></td>\n`;
+                } else {
+                    finalText3 += `<td class="rnk_font"></td><td class="rnk_font"></td>\n`;
+                }
             }
                         
             if (allArray3f[l]["Id_FinishTime"] != 99999999999) {  
                 allArray3f[l]["Id_FinishTime"] = ms2TimeString(allArray3f[l]["Id_FinishTime"]);
                 finalText3 += '<td class="rnk_font bold">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';
             } else {
-                finalText3 += '<td class="rnk_font">-</td>\n';
+                if (cleanResults == 0) {
+                    finalText3 += '<td class="rnk_font">-</td>\n';
+                } else {
+                    finalText3 += '<td class="rnk_font"></td>\n';
+                }
             }                                
             
             
@@ -5627,7 +5648,11 @@ console.log(allArrayNew);
                 allArray3f[l]["Id_Ecart1er"] = ms2TimeString(allArray3f[l]["Id_Ecart1er"]);
                 finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Ecart1er"] + '</td>\n';
             } else {
-                finalText3 += '<td class="rnk_font">-</td>\n';
+                if (cleanResults == 0) {
+                    finalText3 += '<td class="rnk_font">-</td>\n';
+                } else {
+                    finalText3 += '<td class="rnk_font"></td>\n';
+                }
             }
             
             finalText3 += '</tr>\n';
