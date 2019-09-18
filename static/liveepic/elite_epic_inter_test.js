@@ -5391,6 +5391,7 @@ console.log(allArrayNew);
         for (let b = 0; b < allArray3.length; b++) {  
 
             allArray3[b]["Id_FinishTime"] = allArray3[b]["Id_TpsCumule"];
+            allArray3[b]["Id_Image_2"] = ''; // just place holder
             
             allArray3[b]["blue"] = "highlight";
             
@@ -5502,7 +5503,7 @@ console.log(allArrayNew);
             if (prevCompCat == allArray3f[l]["Id_Categorie"]) {
                 m += 1;
                 
-                if (allArray3f[l]["Id_FinishTime"] != 99999999999 && !(allArray3f[l]["Id_Image"].includes('_Status'))) {
+                if (allArray3f[l]["Id_FinishTime"] != 99999999999 && !(allArray3f[l]["Id_Image"].includes('_Status')) && !(allArray3f[l]["Id_Image_2"].includes('_Status'))) {
                     allArray3f[l]["Id_Ecart1er"] = allArray3f[l]["Id_FinishTime"] - leaderTime;
                 } else {
                     allArray3f[l]["Id_Ecart1er"] = 99999999999;
@@ -5539,12 +5540,16 @@ console.log(allArrayNew);
             }
            
            
-            if (allArray3f[l]["Id_Image"].includes('_Status10')) {
+            if (allArray3f[l]["Id_Image"].includes('_Status10') || allArray3f[l]["Id_Image_2"].includes('_Status10')) {
                 finalText3 += '<td class="rnk_font dnsfq">DSQ</td>\n';
-            } else if (allArray3f[l]["Id_Image"].includes('_Status11')) {
+            } else if (allArray3f[l]["Id_Image"].includes('_Status11') || allArray3f[l]["Id_Image_2"].includes('_Status11')) {
                 finalText3 += '<td class="rnk_font dnsfq">DNF</td>\n';
-            } else if (allArray3f[l]["Id_Image"].includes('_Status12')) {
+            } else if (allArray3f[l]["Id_Image"].includes('_Status12') || allArray3f[l]["Id_Image_2"].includes('_Status12')) {
                 finalText3 += '<td class="rnk_font dnsfq">DNS</td>\n';
+            } else if (allArray3f[l]["Id_Image"].includes('_Status6')) {
+                finalText3 += '<td class="rnk_font dnsfq">IF1</td>\n';
+            } else if (allArray3f[l]["Id_Image_2"].includes('_Status6')) {
+                finalText3 += '<td class="rnk_font dnsfq">IF2</td>\n';
             } else if (allArray3f[l]["Id_Status"] == 1) {
                 finalText3 += '<td class="rnk_font dnsfq">*</td>\n';
             } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {
@@ -5632,7 +5637,16 @@ console.log(allArrayNew);
                 }
             }
                         
-            if (allArray3f[l]["Id_FinishTime"] != 99999999999) {  
+            
+            if (allArray3f[l]["Id_Image"].includes('_Status6') && allArray3f[l]["Id_TpsCumule"] != 99999999999) {
+                allArray3f[l]["Id_FinishTime"] = ms2TimeString(allArray3f[l]["Id_TpsCumule"]);
+                finalText3 += '<td class="rnk_font bold">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';
+            
+            } else if (allArray3f[l]["Id_Image_2"].includes('_Status6') && allArray3f[l]["Id_TpsCumule_2"] != 99999999999) {
+                allArray3f[l]["Id_FinishTime"] = ms2TimeString(allArray3f[l]["Id_TpsCumule_2"]);
+                finalText3 += '<td class="rnk_font bold">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';
+            
+            } else if (allArray3f[l]["Id_FinishTime"] != 99999999999) {  
                 allArray3f[l]["Id_FinishTime"] = ms2TimeString(allArray3f[l]["Id_FinishTime"]);
                 finalText3 += '<td class="rnk_font bold">' + allArray3f[l]["Id_FinishTime"] + '</td>\n';
             } else {
@@ -5644,12 +5658,12 @@ console.log(allArrayNew);
             }                                
             
             
-            if (allArray3f[l]["Id_Ecart1er"] != 99999999999 && allArray3f[l]["Id_Position"] != 1) {  
+            if (!(allArray3f[l]["Id_Image_2"].includes('_Status6')) && !(allArray3f[l]["Id_Image"].includes('_Status6')) && allArray3f[l]["Id_Ecart1er"] != 99999999999 && allArray3f[l]["Id_Position"] != 1) {  
                 allArray3f[l]["Id_Ecart1er"] = ms2TimeString(allArray3f[l]["Id_Ecart1er"]);
                 finalText3 += '<td class="rnk_font">' + allArray3f[l]["Id_Ecart1er"] + '</td>\n';
             } else {
                 if (cleanResults == 0) {
-                    finalText3 += '<td class="rnk_font">-</td>\n';
+                    finalText3 += '<td class="rnk_font">-</td>\n'
                 } else {
                     finalText3 += '<td class="rnk_font"></td>\n';
                 }
