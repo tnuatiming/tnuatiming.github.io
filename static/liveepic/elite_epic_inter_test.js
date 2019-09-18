@@ -52,7 +52,7 @@
     
     var K1;
     var kellnerArray = {};
-//    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'; 
+//    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
     var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
     
@@ -1138,7 +1138,7 @@
         if (checkKellnerJson == 1) {
             document.getElementById("kellnerStatus").style.color = "green"; 
                     
-            const testTimeRegExp = /^[0-1]?[0-9]:[0-5][0-9]:[0-5][0-9].[0-9]{0,3}/; // regEx for time string between "4:05:02." to  "12:46:53.764"
+            const testTimeRegExp = /^[0-1]?[0-9]:[0-5][0-9]:[0-5][0-9](.[0-9]{1,3}|)/; // regEx for time string between "4:05:02." to  "12:46:53.764"
 
             for (let b in kellnerArray) { 
                 
