@@ -219,6 +219,7 @@
         document.getElementById('checkJson').addEventListener('change', event => {
             if (event.target.checked) {
                 checkKellnerJson = 1;
+                Load();
 //                document.getElementById("result").innerHTML = createLiveTable(P1);
             } else {
                 checkKellnerJson = 0;
@@ -499,7 +500,7 @@
             document.getElementById("Grand").disabled = false;
 
         }
-
+        
     });   
     
     
@@ -1060,8 +1061,8 @@
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = await response.text();
-            const d = new Date()
-            document.getElementById("compLastUpdated").innerHTML = d.getHours() + ":" + (d.getMinutes()).toString().padStart(2, "0") + ":" + (d.getSeconds()).toString().padStart(2, "0");
+                    const d = new Date()
+                    document.getElementById("compLastUpdated").innerHTML = d.getHours() + ":" + (d.getMinutes()).toString().padStart(2, "0") + ":" + (d.getSeconds()).toString().padStart(2, "0");
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                                           
 //                    alignTable();
@@ -1082,8 +1083,8 @@
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = this.responseText;
-            const d = new Date()
-            document.getElementById("compLastUpdated").innerHTML = d.getHours() + ":" + (d.getMinutes()).toString().padStart(2, "0") + ":" + (d.getSeconds()).toString().padStart(2, "0");
+                    const d = new Date()
+                    document.getElementById("compLastUpdated").innerHTML = d.getHours() + ":" + (d.getMinutes()).toString().padStart(2, "0") + ":" + (d.getSeconds()).toString().padStart(2, "0");
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                 } else if (this.status == 404) {
                     console.log('no results on server');
