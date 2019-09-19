@@ -783,6 +783,10 @@
 
     async function Load() {
                 
+        if (P1 == '') {
+            document.getElementById('status').innerHTML = `  NO COMPETITORS LIST!`;
+        }
+        
         console.time('total');
                     
         if (TimerLoad) clearTimeout(TimerLoad);
@@ -1056,6 +1060,8 @@
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = await response.text();
+            const d = new Date()
+            document.getElementById("compLastUpdated").innerHTML = d.getHours() + ":" + (d.getMinutes()).toString().padStart(2, "0") + ":" + (d.getSeconds()).toString().padStart(2, "0");
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                                           
 //                    alignTable();
@@ -1076,6 +1082,8 @@
                     document.getElementById("categoryOrAll").style.display = "block"; // if p1.html exist, display the buttons
                     document.getElementById("intermediateOrFinish").style.display = "block"; // if p1.html exist, display the buttons
                     P1 = this.responseText;
+            const d = new Date()
+            document.getElementById("compLastUpdated").innerHTML = d.getHours() + ":" + (d.getMinutes()).toString().padStart(2, "0") + ":" + (d.getSeconds()).toString().padStart(2, "0");
                     document.getElementById(target).innerHTML = createLiveTable(P1);
                 } else if (this.status == 404) {
                     console.log('no results on server');
@@ -1264,7 +1272,8 @@
         var bestTime2 = 0;
         var bestTimecomp = 0;
         var bestTime = 0;
-*/        
+*/ 
+        var starters = 0;
         var finishers = [0, 0, 0, 0];
         
         var bigFont = '';
@@ -2239,6 +2248,28 @@
                     allArray[b]["Id_Sector_FinishTime"] = allArray[b]["Id_FinishTime"];
                 }
                
+               // get the number of starters
+                if (useKellner == 1) {
+                    
+                    if (kellnerArray.hasOwnProperty(allArray[b]["Id_Numero_Full"].replace('-', ''))) {
+                        starters += 1;
+                    }
+                    if (kellnerArray.hasOwnProperty(allArray[b]["Id_Numero_Full_2"].replace('-', ''))) {
+                        starters += 1;
+                    }
+                    
+                } else {
+                    
+                    if (allArray[b]["Id_Canal"] != 0) {
+                        starters += 1;
+                    }
+                    if (allArray[b]["Id_Canal_2"] != 0) {
+                        starters += 1;
+                    }
+                    
+                }
+               
+               
                // get the number of finishers
                if (allArray[b]["Id_Inter1Time"] != 99999999999) {
                    finishers[0] += 1;
@@ -2260,8 +2291,10 @@
 //         allArray2 = [];
 //         console.log(finishers);
         
-         document.getElementById('status').innerHTML = `  I1: ${finishers[0]}  |  I2: ${finishers[1]}  |  I3: ${finishers[2]}  |  Finish: ${finishers[3]}`;
-         
+        document.getElementById('status').innerHTML = `  Start: ${starters}  |  I1: ${finishers[0]}  |  I2: ${finishers[1]}  |  I3: ${finishers[2]}  |  Finish: ${finishers[3]}`;
+        
+        
+        
 //  CONVERT allArray to JSON for uploading to remote. FIXME Inter1Leader tables needs addressing.
          
 //        var allArrayJ = JSON.stringify(allArray);             
@@ -5869,7 +5902,7 @@ const arrayToObject = (arr, keyField) => Object.assign({}, ...arr.map(item => ({
 const allArrayObject = arrayToObject(allArray, "Id_Numero")
 
     console.log(allArrayObject);                
-//    console.table(allArrayObject);
+//    console.table(allArrayObject, ['Id_Numero', 'fPosition_Overall', 'fPosition_Categorie', 'Id_FinishTime', 'Id_Ecart1er']);
 }
     
 if (enableJ1 == 1) {

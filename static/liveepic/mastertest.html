@@ -539,24 +539,24 @@
         <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
     </div>
     <div id="options1">
-        <button id="importCompetitors" class="importCompetitors" onClick="importCompetitors()">Import Competitors</button>
-        <label class="startTime">Start Time:&nbsp;&nbsp;<input id="startTime" style="width: 170px;" type="text" name="startTime" value="2019-09-21 07:00:00"></label>
+        <label class="startTime">&nbsp;&nbsp;Start Time:&nbsp;&nbsp;<input id="startTime" style="width: 170px;" type="text" name="startTime" value="2019-09-21 07:00:00"></label>
         <label class="MaximumStageTime">Maximum Stage Time:&nbsp;&nbsp;<input id="MaximumStageTime" style="width: 80px;" type="text" name="MaximumStageTime"><!--&nbsp; milliseconds (3600000=1hours, 18000000=5hours, 21600000=6hours)--></label>
         <label class="message">Message:&nbsp;&nbsp;<input id="message" style="width: 250px;" type="text" name="message" value=""></label>
+        <button id="publish" class="publish" onClick="publish()">Publish</button>
+        <button id="publishBox" class="publishBox" onClick="publishBox()">Publish Box</button>
     </div>
     <div id="options">
-        <label for="enableJ1" title="enable uploading epic json to server"><input type="checkbox" id="enableJ1" name="enableJ1" value="enableJ1">&nbsp;Enable Epic</label>
+        <label for="compLastUpdated" title="competitors list last update">last updated:&nbsp;<span id="compLastUpdated"></span></label>
+        <button id="importCompetitors" class="importCompetitors" onClick="importCompetitors()">Import Competitors</button>
+        <label for="enableJ1" title="enable uploading epic json to server">&nbsp;&nbsp;&nbsp;<input type="checkbox" id="enableJ1" name="enableJ1" value="enableJ1">&nbsp;Enable Epic</label>
         <label for="enableJ3" title="enable uploading single day json and html to server"><input type="checkbox" id="enableJ3" name="enableJ3" value="enableJ3">&nbsp;Enable Single</label>
         <label for="raceEnded" title="show MST, E2M and IF"><input type="checkbox" id="raceEnded" name="raceEnded" value="raceEnded">&nbsp;Race Ended</label>
         <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
         <label for="doNotShowTime"><input type="checkbox" id="doNotShowTime" name="doNotShowTime" value="doNotShowTime">&nbsp;Do Not Show Individual Times</label>
         <label for="showLog"><input type="checkbox" id="showLog" name="showLog" value="showLog">&nbsp;Show log</label>
-        <button id="publish" class="publish" onClick="publish()">Publish</button>
-        <button id="publishBox" class="publishBox" onClick="publishBox()">Publish Box</button>
-        
     </div>
     <div id="options2">
-    <p><label for="checkJson" title="check json recieved from kellner"><input type="checkbox" id="checkJson" name="checkJson" value="checkJson">&nbsp;Check JSON</label><span title="Kellner JSON Status" id="kellnerStatus" style="color: white; font-size: 20px; padding: 0 5px;">&#9679;</span>last updated:&nbsp;<span id="lastUpdated">&nbsp;</span>&nbsp;||&nbsp;<span id="status">&nbsp;</span></p>
+    <p><label for="checkJson" title="check json recieved from kellner"><input type="checkbox" id="checkJson" name="checkJson" value="checkJson">&nbsp;Check JSON</label><span title="Kellner JSON Status" id="kellnerStatus" style="color: white; font-size: 20px; padding: 0 5px;">&#9679;</span><label for="lastUpdated" title="kellner json last update">last updated:&nbsp;<span id="lastUpdated">&nbsp;</span></label>&nbsp;||&nbsp;<span id="status">&nbsp;</span></p>
     </div>
 
     
