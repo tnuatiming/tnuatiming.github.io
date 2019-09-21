@@ -785,7 +785,7 @@
     async function Load() {
                 
         if (P1 == '') {
-            document.getElementById('status').innerHTML = `  NO COMPETITORS LIST!`;
+            document.getElementById('status').innerHTML = `  NO COMPETITORS DATA!`;
         }
         
         console.time('total');
