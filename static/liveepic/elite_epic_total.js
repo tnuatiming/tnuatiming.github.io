@@ -2799,7 +2799,7 @@ function download_csv(csv, filename) {
 
 function export_table_to_csv(html, filename) {
 	var csv = [];
-    csv.push('Migdal Epic Israel - after' + csvName.split('_').join(' '));
+    csv.push('Migdal Epic Israel - ' + csvName.split('_').join(' '));
 	var rows = document.querySelectorAll("table tr");
 	
     for (var i = 0; i < rows.length; i++) {

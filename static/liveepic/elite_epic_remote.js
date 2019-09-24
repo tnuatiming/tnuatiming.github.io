@@ -196,6 +196,7 @@ remove all imTheLeader
 
                 // Get todays date and time
                 var now = new Date().getTime();
+//                var now = Date.now();
                     
                 // Find the distance between now and the start time
                 var distance = now - startTime - 10800000; // subtract 3 hours

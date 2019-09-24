@@ -52,9 +52,9 @@
     
     var K1;
     var kellnerArray = {};
-//    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
+    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
-    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
+//    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -876,33 +876,40 @@
                 
                 
                 try {
-//                    const response = await fetch(urlKellner, {cache: "no-store", mode: "no-cors"});
-                    // use to bypass cors:  https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
-                    document.getElementById("kellnerStatus").style.color = "white";
-                    
-                    const response = await fetch(urlKellner, {cache: "no-store"});
-                    if (response.ok) {
-                        K1 = await response.text();
-                        kellnerTable(K1);
-                        if (P1 != '') {
-                                document.getElementById(target).innerHTML = createLiveTable(P1);
-            
-                                if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
-                                    download(allArrayJ, 'j1.txt', 'text/plain');    
-                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt');
-                            
-                            //       console.log(JSON.parse(allArrayJ));  
-                                }
-                                
-                                if (enableJ3 == 1 && dayCompetitors == 1) { 
-                                    download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
-                                    console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html');
-//                                    download(allArrayJ3, 'j3.txt', 'text/plain');    
-//                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt');
-                                }
+    //                    const response = await fetch(urlKellner, {cache: "no-store", mode: "no-cors"});
+                        // use to bypass cors:  https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
+                        document.getElementById("kellnerStatus").style.color = "white";
                         
+                        const response = await fetch(urlKellner, {cache: "no-store"});
+                        if (response.ok) {
+                            K1 = await response.text();
+                            if (K1 != '') {
+                                        kellnerTable(K1);
+                                        if (P1 != '') {
+                                                document.getElementById(target).innerHTML = createLiveTable(P1);
+                            
+                                                if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
+                                                    download(allArrayJ, 'j1.txt', 'text/plain');    
+                                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt');
+                                            
+                                            //       console.log(JSON.parse(allArrayJ));  
+                                                }
+                                                
+                                                if (enableJ3 == 1 && dayCompetitors == 1) { 
+                                                    download(J3text, 'p3.html', 'text/plain');    // download the html for single day 
+                                                    console.log((new Date()).toLocaleTimeString() + ' downloaded p3.html');
+                //                                    download(allArrayJ3, 'j3.txt', 'text/plain');    
+                //                                    console.log((new Date()).toLocaleTimeString() + ' downloaded j3.txt');
+                                                }
+                                        
+                                        }
+                            } else {
+                                console.error('kellner JSON empty');  
+                                document.getElementById("kellnerStatus").style.color = "yellow";
+                            
+                            }
+                                        
                         }
-                     }
                 }
                 catch (err) {
                     console.log('results fetch failed', err);
@@ -1029,7 +1036,7 @@
         };
 
         TimerLoad = setTimeout(loop, Rafraichir);
-        Rafraichir = 30000; // every 30 seconds
+        Rafraichir = 20000; // every 20 seconds
         
         console.timeEnd('total');
 
@@ -1153,7 +1160,7 @@
                 
                 if (kellnerArray[b].Time != '' && !(testTimeRegExp.test(kellnerArray[b].Time)) || kellnerArray[b].T1 != '' && !(testTimeRegExp.test(kellnerArray[b].T1)) || kellnerArray[b].T2 != '' && !(testTimeRegExp.test(kellnerArray[b].T2)) || kellnerArray[b].T3 != '' && !(testTimeRegExp.test(kellnerArray[b].T3))) {
             
-                    console.log("K1 Error:");
+                    console.error("K1 Error:");
                     console.log(kellnerArray[b]);
                     document.getElementById("kellnerStatus").style.color = "red"; 
                 }

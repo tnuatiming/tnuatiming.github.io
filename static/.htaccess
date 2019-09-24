@@ -306,9 +306,9 @@ php_value session.cookie_httponly true
     
     # SCRIPTS
     ExpiresByType text/css                            "now plus 1 week" 
-    ExpiresByType text/javascript                     "access plus 1 month" 
-    ExpiresByType application/javascript              "access plus 1 month" 
-    ExpiresByType application/x-javascript            "access plus 1 month" 
+    ExpiresByType text/javascript                     "access plus 1 day" 
+    ExpiresByType application/javascript              "access plus 1 day" 
+    ExpiresByType application/x-javascript            "access plus 1 day" 
     
     # IMAGES
     ExpiresByType image/gif                           "access plus 1 month"
