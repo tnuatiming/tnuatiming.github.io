@@ -2277,18 +2277,41 @@
                     
                 }
                
-               
                // get the number of finishers
-               if (allArray[b]["Id_Inter1Time"] != 99999999999) {
+//               if (allArray[b]["Id_Inter1Time"] != 99999999999) {
+//                   finishers[0] += 1;
+//               }
+               if (allArray[b]["Id_Inter1"] != 99999999999) {
                    finishers[0] += 1;
                }
-               if (allArray[b]["Id_Inter2Time"] != 99999999999) {
+               if (allArray[b]["Id_Inter1_2"] != 99999999999) {
+                   finishers[0] += 1;
+               }
+//               if (allArray[b]["Id_Inter2Time"] != 99999999999) {
+//                   finishers[1] += 1;
+//               }
+               if (allArray[b]["Id_Inter2"] != 99999999999) {
                    finishers[1] += 1;
                }
-               if (allArray[b]["Id_Inter3Time"] != 99999999999) {
+               if (allArray[b]["Id_Inter2_2"] != 99999999999) {
+                   finishers[1] += 1;
+               }
+//               if (allArray[b]["Id_Inter3Time"] != 99999999999) {
+//                   finishers[2] += 1;
+//               }
+               if (allArray[b]["Id_Inter3"] != 99999999999) {
                    finishers[2] += 1;
                }
-               if (allArray[b]["Id_FinishTime"] != 99999999999) {
+               if (allArray[b]["Id_Inter3_2"] != 99999999999) {
+                   finishers[2] += 1;
+               }
+//               if (allArray[b]["Id_FinishTime"] != 99999999999) {
+//                   finishers[3] += 1;
+//               }
+               if (allArray[b]["Id_TpsCumule"] != 99999999999) {
+                   finishers[3] += 1;
+               }
+               if (allArray[b]["Id_TpsCumule_2"] != 99999999999) {
                    finishers[3] += 1;
                }
                
