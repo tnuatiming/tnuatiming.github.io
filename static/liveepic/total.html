@@ -202,7 +202,10 @@ h1 img {
 #live td.rnk_font, #live th.rnkh_font {
     padding: 0 2px;
 }
-
+#live th.rnkh_font {
+    white-space: normal;
+    max-width: 10ch;
+}
 #live td.rnk_font.blueCard {
     color: #111;
     background-color: #add8e6bf;
@@ -222,13 +225,13 @@ h1 img {
 .lineThrough {
     filter: opacity(35%);
 }
-
+/*
 #live td.rnk_font.wrap {
     max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+*/
 #live td.rnk_font.bold {
     font-weight: 700;
 }
@@ -323,6 +326,8 @@ span.number {
     }
     #live td.rnk_font.wrap {
         max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 </style>
