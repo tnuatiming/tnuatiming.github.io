@@ -1229,7 +1229,7 @@ remove all imTheLeader
  //       var finalText = Text; // clear the finalText variable and add the title and time lines
   
   
-        var finalText = '<h1 id="Title"><img src="Images/' + headerFlag + '" alt="flag color">' + HeaderEventName.replace(" - ", "<br>") + '<img src="Images/' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
+        var finalText = '<h1 id="Title"><img src="' + headerFlag + '" alt="flag color">' + HeaderEventName.replace(" - ", "<br>") + '<img src="' + headerFlag + '" alt="flag color"></h1>\n<p id="Time"><span id="DayTime">' + DayTime + '</span><span id="ElapsedTime">' + ElapsedTime + '</span><span id="RemainingTime">' + RemainingTime + '</span></p>\n';
 
 
              for (b = 0; b < allArray.length; b++) {

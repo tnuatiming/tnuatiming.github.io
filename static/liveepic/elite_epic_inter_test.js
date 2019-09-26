@@ -52,7 +52,7 @@
     
     var K1;
     var kellnerArray = {};
-    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
+    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'
 //    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
     
@@ -1281,8 +1281,7 @@
         var bestTimecomp = 0;
         var bestTime = 0;
 */ 
-        var starters = 0;
-        var finishers = [0, 0, 0, 0];
+        var atPoint = [0, 0, 0, 0, 0]; // [start,i1,i2,i3,finish]
         
         var bigFont = '';
         
@@ -2260,59 +2259,59 @@
                 if (useKellner == 1) {
                     
                     if (kellnerArray.hasOwnProperty(allArray[b]["Id_Numero_Full"].replace('-', ''))) {
-                        starters += 1;
+                        atPoint[0] += 1;
                     }
                     if (kellnerArray.hasOwnProperty(allArray[b]["Id_Numero_Full_2"].replace('-', ''))) {
-                        starters += 1;
+                        atPoint[0] += 1;
                     }
                     
                 } else {
                     
                     if (allArray[b]["Id_Canal"] != 0) {
-                        starters += 1;
+                        atPoint[0] += 1;
                     }
                     if (allArray[b]["Id_Canal_2"] != 0) {
-                        starters += 1;
+                        atPoint[0] += 1;
                     }
                     
                 }
                
                // get the number of finishers
 //               if (allArray[b]["Id_Inter1Time"] != 99999999999) {
-//                   finishers[0] += 1;
+//                   atPoint[1] += 1;
 //               }
                if (allArray[b]["Id_Inter1"] != 99999999999) {
-                   finishers[0] += 1;
+                   atPoint[1] += 1;
                }
                if (allArray[b]["Id_Inter1_2"] != 99999999999) {
-                   finishers[0] += 1;
+                   atPoint[1] += 1;
                }
 //               if (allArray[b]["Id_Inter2Time"] != 99999999999) {
-//                   finishers[1] += 1;
+//                   atPoint[2] += 1;
 //               }
                if (allArray[b]["Id_Inter2"] != 99999999999) {
-                   finishers[1] += 1;
+                   atPoint[2] += 1;
                }
                if (allArray[b]["Id_Inter2_2"] != 99999999999) {
-                   finishers[1] += 1;
+                   atPoint[2] += 1;
                }
 //               if (allArray[b]["Id_Inter3Time"] != 99999999999) {
-//                   finishers[2] += 1;
+//                   atPoint[3] += 1;
 //               }
                if (allArray[b]["Id_Inter3"] != 99999999999) {
-                   finishers[2] += 1;
+                   atPoint[3] += 1;
                }
                if (allArray[b]["Id_Inter3_2"] != 99999999999) {
-                   finishers[2] += 1;
+                   atPoint[3] += 1;
                }
 //               if (allArray[b]["Id_FinishTime"] != 99999999999) {
-//                   finishers[3] += 1;
+//                   atPoint[4] += 1;
 //               }
                if (allArray[b]["Id_TpsCumule"] != 99999999999) {
-                   finishers[3] += 1;
+                   atPoint[4] += 1;
                }
                if (allArray[b]["Id_TpsCumule_2"] != 99999999999) {
-                   finishers[3] += 1;
+                   atPoint[4] += 1;
                }
                
                
@@ -2320,9 +2319,9 @@
         } // END for b
          // delete the second array
 //         allArray2 = [];
-//         console.log(finishers);
+//         console.log(atPoint);
         
-        document.getElementById('status').innerHTML = `  Start: ${starters}  |  I1: ${finishers[0]}  |  I2: ${finishers[1]}  |  I3: ${finishers[2]}  |  Finish: ${finishers[3]}`;
+        document.getElementById('status').innerHTML = `&nbsp;&nbsp;Start: ${atPoint[0]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I1: ${atPoint[1]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I2: ${atPoint[2]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I3: ${atPoint[3]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finish: ${atPoint[4]}`;
         
         
         
