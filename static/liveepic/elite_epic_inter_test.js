@@ -52,7 +52,7 @@
     
     var K1;
     var kellnerArray = {};
-    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt'
+    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
     
