@@ -209,7 +209,7 @@ add dns
                 var ma = new Date();
                 var dateString = ma.getUTCFullYear() + ("0" + (ma.getUTCMonth()+1)).slice(-2) + ("0" + ma.getUTCDate()).slice(-2) + "_" + ("0" + (ma.getUTCHours()+3)).slice(-2) + ("0" + ma.getUTCMinutes()).slice(-2) + ("0" + ma.getUTCSeconds()).slice(-2);
                 
-                export_table_to_csv(html, dateString + "_results_total_" + csvName + ".csv");
+                export_table_to_csv(html, dateString + "_results_GC_" + csvName + ".csv");
             });
             
         }
@@ -523,7 +523,7 @@ add dns
                 var ma = new Date();
                 var dateString = ma.getUTCFullYear() + ("0" + (ma.getUTCMonth()+1)).slice(-2) + ("0" + ma.getUTCDate()).slice(-2) + "_" + ("0" + (ma.getUTCHours()+3)).slice(-2) + ("0" + ma.getUTCMinutes()).slice(-2) + ("0" + ma.getUTCSeconds()).slice(-2);
                 
-                export_table_to_csv(html, dateString + "_results_total_" + csvName + ".csv");
+                export_table_to_csv(html, dateString + "_results_GC_" + csvName + ".csv");
             });
             
         } else {
@@ -1155,14 +1155,14 @@ add dns
             cleanResults = 0;
         }
 */
-        var HeaderRaceName = HeaderEventName.split('-');
-        csvName = (HeaderRaceName[1]).split(' ').join('_'); // replace all spaces with _
 
         if (stages == 1) {
         var st = 'Prologue';
         } else {
         var st = 'Stage ' + (stages - 1);
         }
+        
+        csvName = st.split(' ').join('_'); // replace all spaces with _
         
         var finalText = '<h1 id="Title">Migdal Epic Israel<br>GC '+ st + '</h1>\n';
 
