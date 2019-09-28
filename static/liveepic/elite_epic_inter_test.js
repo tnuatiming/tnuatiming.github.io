@@ -54,7 +54,7 @@
     var kellnerArray = {};
     var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
-//    var urlKellner = 'https://tnuatiming.com/liveepic/fx.txt';
+//    var urlKellner = 'https://tnuatiming.com/liveepic/fz.txt';
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
