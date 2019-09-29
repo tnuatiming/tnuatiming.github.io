@@ -1691,7 +1691,7 @@ add dns
 //        if (useCategory == "no") {
 //            allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
             
-            allArray.sort((a, b) => a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || a.single - b.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
+            allArray.sort((a, b) => a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || (a.single != 0) - (b.single != 0) || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
             
             var israelLeader = 0;
             var il = 0;
@@ -1716,7 +1716,7 @@ add dns
 //        } else if (useCategory == "yes") {
 //            allArray.sort(function(a, b){return (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie.includes("Masters"))-(a.Id_Categorie.includes("Masters")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
 
-            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie == "Masters")-(a.Id_Categorie == "Masters") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || a.single - b.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
+            allArray.sort((a, b) => (b.Id_Categorie.includes("Men"))-(a.Id_Categorie.includes("Men")) || (b.Id_Categorie.includes("Women"))-(a.Id_Categorie.includes("Women")) || (b.Id_Categorie.includes("Mixed"))-(a.Id_Categorie.includes("Mixed")) || (b.Id_Categorie == "Masters")-(a.Id_Categorie == "Masters") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || (a.single != 0) - (b.single != 0) || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
 //        }
          
     // fix the position fields of the competitors and start building the final table
@@ -1748,7 +1748,7 @@ add dns
                 
 //                allArray.sort(function(a, b){return a.out - b.out || b.stagesFinished - a.stagesFinished || a.dnsfq.localeCompare(b.dnsfq) || a.finishTimeTotal - b.finishTimeTotal});
                                 
-                allArray.sort((a, b) => a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || a.single - b.single || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
+                allArray.sort((a, b) => a.out - b.out || a.dnsfq.localeCompare(b.dnsfq) || b.stagesFinished - a.stagesFinished || (a.single != 0) - (b.single != 0) || b.blue - a.blue || a.finishTimeTotal - b.finishTimeTotal);
             }                 
 
     

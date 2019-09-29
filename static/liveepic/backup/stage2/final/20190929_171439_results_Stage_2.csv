@@ -325,8 +325,8 @@ Overall Position,Category Position,No.,Category,finish status,start status,Name,
 161,11,222-2,Mixed,Finished,,Saar Burshtein,ISR,Roc team,no,,F,6:23:55,6:23:55,2:50:01
 162,73,99-1,Men,Finished,,Tomáš Trávníček,CZE,INVEST MTB TEAM III,no,,M,6:24:02,6:24:02,2:50:08
 162,73,99-2,Men,Finished,,Martin Kantor,CZE,INVEST MTB TEAM III,no,,M,6:24:01,6:24:02,2:50:08
-163,52,356-1,Masters,Finished,,Eyal Michaely,ISR,,,no,,M,6:26:46,6:26:46,2:52:52
-163,52,356-2,Masters,Finished,,Itay Teperberg,ISR,,,no,,M,6:26:46,6:26:46,2:52:52
+163,52,356-1,Masters,Finished,,Eyal Michaely,ISR,itay@eyal,no,,M,6:26:46,6:26:46,2:52:52
+163,52,356-2,Masters,Finished,,Itay Teperberg,ISR,itay@eyal,no,,M,6:26:46,6:26:46,2:52:52
 164,53,307-1,Masters,Finished,,Guy Zukerman,USA,Team Israel Los Angeles,no,,M,6:27:20,6:27:20,2:53:26
 164,53,307-2,Masters,Finished,,Ronen Ben Hamo,USA,Team Israel Los Angeles,no,,M,6:27:20,6:27:20,2:53:26
 165,54,368-1,Masters,Finished,,Haim Solomon,ISR,TBW-Gadi-Haim,no,,M,6:32:44,6:32:44,2:58:50
@@ -375,8 +375,8 @@ Overall Position,Category Position,No.,Category,finish status,start status,Name,
 186,62,366-2,Masters,Finished,,Erez Winshtat,ISR,Hoad lion heart,no,,M,6:58:22,6:58:22,3:24:28
 187,24,541-1,Grand Masters,Finished,,Matityahu Eldad,ISR,Team Bill 2,no,,M,6:58:41,6:58:41,3:24:47
 187,24,541-2,Grand Masters,Finished,,Erez Cohen,ISR,Team Bill 2,no,,M,6:58:40,6:58:41,3:24:47
-188,63,326-1,Masters,Finished,,Amit Novich,ISR,,,no,,M,7:00:56,7:00:56,3:27:02
-188,63,326-2,Masters,Finished,,Nir Nahmani,ISR,,,no,,M,7:00:55,7:00:56,3:27:02
+188,63,326-1,Masters,Finished,,Amit Novich,ISR,Nir@Amit,no,,M,7:00:56,7:00:56,3:27:02
+188,63,326-2,Masters,Finished,,Nir Nahmani,ISR,Nir@Amit,no,,M,7:00:55,7:00:56,3:27:02
 189,13,214-1,Mixed,Finished,,Sharon Vardi,ISR,GORDONIA,no,,M,7:01:38,7:01:38,3:27:44
 189,13,214-2,Mixed,Finished,,Leeat Atkins,ISR,GORDONIA,no,,F,7:01:38,7:01:38,3:27:44
 190,64,393-1,Masters,Finished,,Yossi Asulin,ISR,TeamFun,no,,M,7:03:03,7:03:03,3:29:09
@@ -461,10 +461,20 @@ Overall Position,Category Position,No.,Category,finish status,start status,Name,
 229,84,348-2,Masters,Finished,,Idan Laifer,ISR,Mega Or,no,,M,8:59:57,8:59:58,5:26:04
 ,,62-1,Men,IF1,IF,Lior Haklay,ISR,Team BikeWay,no,,M,4:31:12,4:31:12,57:18
 ,,62-2,Men,,IF,Guy Abadi,ISR,Team BikeWay,no,,M,,,
+,,335-1,Masters,,IF,Ziv Ben-Yehuda,ISR,Team HOBIT,no,,M,,,
+,,335-2,Masters,IF2,IF,Moran Mainz,ISR,Team HOBIT,no,,M,4:40:15,4:40:15,1:06:21
+,,502-1,Grand Masters,,IF,Issy Zimmerman,GBR,TEAM JOC CYCLES,no,,M,,,
+,,502-2,Grand Masters,IF2,IF,John O'Connor,RSA,TEAM JOC CYCLES,no,,M,4:50:47,4:50:47,1:16:53
 ,,357-1,Masters,IF1,IF,Lior Biton,ISR,grand ncc,no,,M,5:00:37,5:00:37,1:26:43
 ,,357-2,Masters,,IF,Vitaly Frost,ISR,grand ncc,no,,M,,,
+,,365-1,Masters,,,Adi Froumin,ISR,A-team,no,,M,,,
+,,365-2,Masters,IF2,,Amit Avrahami,ISR,A-team,no,,M,5:26:19,5:26:19,1:52:25
 ,,331-1,Masters,IF1,IF,Matan Philipson,ISR,Matan&Shamai,no,,M,5:29:01,5:29:01,1:55:07
 ,,331-2,Masters,,IF,Shamai Becker,ISR,Matan&Shamai,no,,M,,,
+,,97-1,Men,,IF,Mosa Shogan,ISR,Adiga Cycling,no,,M,,,
+,,97-2,Men,IF2,IF,Sausar Sagas,ISR,Adiga Cycling,no,,M,5:32:23,5:32:23,1:58:29
+,,376-1,Masters,,IF,Ronen Fidel,ISR,R&R team,no,,M,,,
+,,376-2,Masters,IF2,IF,Ruby Saadon,ISR,R&R team,no,,M,5:37:39,5:37:39,2:03:45
 ,,513-1,Grand Masters,IF1,IF,Doron Dicastro,ISR,Pieter & Doron,no,,M,5:45:46,5:45:46,2:11:52
 ,,513-2,Grand Masters,,IF,Pieter Van Rooyen,USA,Pieter & Doron,no,,M,,,
 ,,533-1,Grand Masters,IF1,IF,Noam Biran,ISR,HD TREK Galilee,no,,M,5:53:55,5:53:55,2:20:01
@@ -473,40 +483,30 @@ Overall Position,Category Position,No.,Category,finish status,start status,Name,
 ,,44-2,Men,,IF,Yaacov Saar Idan,ISR,Uri & Kiko,no,,M,,,
 ,,79-1,Men,IF1,IF,Aviad Rayfer,ISR,THE RAYFER'S,no,,M,6:02:09,6:02:09,2:28:15
 ,,79-2,Men,,IF,Itay Rayfer,ISR,THE RAYFER'S,no,,M,6:02:09,6:02:09,
-,,312-1,Masters,IF1,IF,Tomer Osher,ISR,Team Snoopy,no,,M,6:10:26,6:10:26,2:36:32
-,,312-2,Masters,,IF,Amit Adar,ISR,Team Snoopy,no,,M,,,
-,,369-1,Masters,IF1,IF,Ruben Sher,ISR,Cyclink Israel,no,,M,6:20:56,6:20:56,2:47:02
-,,369-2,Masters,,IF,Kobi Pinto,ISR,Cyclink Israel,no,,M,,,
-,,55-1,Men,IF1,IF,Elad Bleistein,ISR,Freedom Riders,no,,M,6:49:15,6:49:15,3:15:21
-,,55-2,Men,,IF,Yaron Lavie,ISR,Freedom Riders,no,,M,,,
-,,89-1,Men,IF1,,Waseem Hussein,ISR,Shfaram riders,no,,M,7:08:23,7:08:23,3:34:29
-,,89-2,Men,,,Bassam Talhamy,ISR,Shfaram riders,no,,M,,,
-,,217-1,Mixed,IF1,,Felix Baron,ISR,Team Shafan,no,,M,7:25:50,7:25:50,3:51:56
-,,217-2,Mixed,,,Yulia Libman,ISR,Team Shafan,no,,F,,,
-,,209-1,Mixed,IF1,,Gil Aizengart,ISR,,no,,M,8:02:09,8:02:09,4:28:15
-,,209-2,Mixed,,,Orna Ratson,ISR,,no,,F,,,
-,,335-1,Masters,,IF,Ziv Ben-Yehuda,ISR,Team HOBIT,no,,M,,,
-,,335-2,Masters,IF2,IF,Moran Mainz,ISR,Team HOBIT,no,,M,4:40:15,4:40:15,1:06:21
-,,502-1,Grand Masters,,IF,Issy Zimmerman,GBR,TEAM JOC CYCLES,no,,M,,,
-,,502-2,Grand Masters,IF2,IF,John O'Connor,RSA,TEAM JOC CYCLES,no,,M,4:50:47,4:50:47,1:16:53
-,,365-1,Masters,,,Adi Froumin,ISR,A-team,no,,M,,,
-,,365-2,Masters,IF2,,Amit Avrahami,ISR,A-team,no,,M,5:26:19,5:26:19,1:52:25
-,,97-1,Men,,IF,Mosa Shogan,ISR,Adiga Cycling,no,,M,,,
-,,97-2,Men,IF2,IF,Sausar Sagas,ISR,Adiga Cycling,no,,M,5:32:23,5:32:23,1:58:29
-,,376-1,Masters,,IF,Ronen Fidel,ISR,R&R team,no,,M,,,
-,,376-2,Masters,IF2,IF,Ruby Saadon,ISR,R&R team,no,,M,5:37:39,5:37:39,2:03:45
 ,,396-1,Masters,,IF,Raz Alon,USA,SV707,no,,M,,,
 ,,396-2,Masters,IF2,IF,Refael Levi,USA,SV707,no,,M,6:10:10,6:10:10,2:36:16
+,,312-1,Masters,IF1,IF,Tomer Osher,ISR,Team Snoopy,no,,M,6:10:26,6:10:26,2:36:32
+,,312-2,Masters,,IF,Amit Adar,ISR,Team Snoopy,no,,M,,,
 ,,69-1,Men,,,Ran Trifon,ISR,Sigma,no,,M,,,
 ,,69-2,Men,IF2,,Yotam Fiibish,ISR,Sigma,no,,M,6:20:24,6:20:24,2:46:30
+,,369-1,Masters,IF1,IF,Ruben Sher,ISR,Cyclink Israel,no,,M,6:20:56,6:20:56,2:47:02
+,,369-2,Masters,,IF,Kobi Pinto,ISR,Cyclink Israel,no,,M,,,
 ,,544-1,Grand Masters,,IF,Avihu Raymond,ISR,Avi & Moti,no,,M,,,
 ,,544-2,Grand Masters,IF2,IF,Moti Cohen,RSA,Avi & Moti,no,,M,6:37:23,6:37:23,3:03:29
 ,,210-1,Mixed,,,Avia Mor,ISR,stavia,no,,M,,,
 ,,210-2,Mixed,IF2,,Stav Ginat,ISR,stavia,no,,F,6:39:18,6:39:18,3:05:24
+,,55-1,Men,IF1,IF,Elad Bleistein,ISR,Freedom Riders,no,,M,6:49:15,6:49:15,3:15:21
+,,55-2,Men,,IF,Yaron Lavie,ISR,Freedom Riders,no,,M,,,
+,,89-1,Men,IF1,,Waseem Hussein,ISR,Shfaram riders,no,,M,7:08:23,7:08:23,3:34:29
+,,89-2,Men,,,Bassam Talhamy,ISR,Shfaram riders,no,,M,,,
 ,,43-1,Men,,,Arie Margalit,ISR,Arie & Guy,no,,M,,,
 ,,43-2,Men,IF2,,Guy Shuster,ISR,Arie & Guy,no,,M,7:11:55,7:11:55,3:38:01
+,,217-1,Mixed,IF1,,Felix Baron,ISR,Team Shafan,no,,M,7:25:50,7:25:50,3:51:56
+,,217-2,Mixed,,,Yulia Libman,ISR,Team Shafan,no,,F,,,
 ,,384-1,Masters,,,Emanuel Stanciu,ISR,Egozi,no,,M,,,
 ,,384-2,Masters,IF2,,Gilles Attal,ISR,Egozi,no,,M,7:44:58,7:44:58,4:11:04
+,,209-1,Mixed,IF1,,Gil Aizengart,ISR,,no,,M,8:02:09,8:02:09,4:28:15
+,,209-2,Mixed,,,Orna Ratson,ISR,,no,,F,,,
 ,,542-1,Grand Masters,,IF,Darek Kurek,POL,Absolutebikes,no,,M,8:47:36,8:47:36,
 ,,542-2,Grand Masters,IF2,IF,Krzysztof Marciniak,POL,Absolutebikes,no,,M,8:47:35,8:47:35,5:13:41
 ,,527-1,Grand Masters,Finished,Blue,Barak Pikarski,ISR,The next challenge,no,,M,8:15:45,8:15:45,4:41:51
