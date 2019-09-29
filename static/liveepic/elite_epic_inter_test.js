@@ -36,7 +36,8 @@
     
     var showLog = 0;
     
-    var url = 'https://tnuatiming.com/liveepic/p1.html';
+//    var url = 'https://tnuatiming.com/liveepic/p1.html';
+    var url = 'https://tnuatiming.com/liveepic/backup/stage2/final/p1.html';
     var target = 'result';
 
 //    var enableDelta = 0; // time delta only on epic (not single day)
@@ -52,9 +53,9 @@
     
     var K1;
     var kellnerArray = {};
-    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
+//    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
-//    var urlKellner = 'https://tnuatiming.com/liveepic/fz.txt';
+    var urlKellner = 'https://tnuatiming.com/liveepic/backup/stage2/final/out.txt';
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
