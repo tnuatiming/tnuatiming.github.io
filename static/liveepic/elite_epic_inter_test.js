@@ -37,7 +37,7 @@
     var showLog = 0;
     
 //    var url = 'https://tnuatiming.com/liveepic/p1.html';
-    var url = 'https://tnuatiming.com/liveepic/backup/stage2/final/p1.html';
+    var url = 'https://tnuatiming.com/liveepic/backup/stage3/p1.html';
     var target = 'result';
 
 //    var enableDelta = 0; // time delta only on epic (not single day)
@@ -55,7 +55,7 @@
     var kellnerArray = {};
 //    var urlKellner = 'https://www.4sport-services.com/epic2019/out.txt';
 //    var urlKellner = 'https://tnuatiming.com/liveepic/f2.txt';
-    var urlKellner = 'https://tnuatiming.com/liveepic/backup/stage2/final/out.txt';
+    var urlKellner = 'https://tnuatiming.com/liveepic/backup/stage3/out.txt';
     
     var enableInter1 = 0; // enable getting intermediate1 from elite live
     var I1;
@@ -94,6 +94,8 @@
         doNotShowTime = sessionStorage.getItem('doNotShowTime');
     }
     
+    var showComp = '';
+
     var tableClass = "fadeIn";
         
     var prologue;
@@ -131,6 +133,20 @@
 
     
     document.addEventListener("DOMContentLoaded", function() {
+
+
+        document.getElementById("showComp").value = showComp;
+
+        document.getElementById('showComp').addEventListener('change', (event) => {
+
+            showComp = document.getElementById("showComp").value;
+            document.getElementById("result").innerHTML = createLiveTable(P1);
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
+
+
+
 
         document.getElementById('showLog').addEventListener('change', event => {
             if (event.target.checked) {
@@ -520,6 +536,8 @@
 
 //        positionArray_All_Cat = {}; // emptying the array
 
+        showComp = document.getElementById("showComp").value;
+
         startTime = document.getElementById("startTime").value;
         sessionStorage.setItem('startTimeX', startTime);
 
@@ -615,6 +633,8 @@
     function category(choice, cat){
         
 //        positionArray = []; // emptying the array as the info inside is incorrect due to changing between position/category position.
+            
+        showComp = document.getElementById("showComp").value;
 
         startTime = document.getElementById("startTime").value;
         sessionStorage.setItem('startTimeX', startTime);
@@ -3119,6 +3139,22 @@
             }           
 
             
+if (showComp != '') { // show only selected competitors
+
+    showComp = showComp.toString().replace(/\s+/g, '');
+
+    if (showComp.includes(',')) {
+        var compToShow = showComp.split(',');
+    } else {
+        var compToShow = [showComp];
+    }
+}
+            
+            
+            
+            
+            
+            
             for (let l = 0; l < allArray.length; l++) {
 /*
                 // reassign position number
@@ -3534,6 +3570,7 @@
             
             
             
+    if (showComp != '' && compToShow.includes(allArray[l]["Id_Numero"].toString()) || showComp == '') {
             
             
 /*
@@ -4364,6 +4401,7 @@ if (show == 4) {
             }
 */
  
+    } //     END if (compToShow.includes(allArray[l]["Id_Numero"].toString())) 
 
 
 

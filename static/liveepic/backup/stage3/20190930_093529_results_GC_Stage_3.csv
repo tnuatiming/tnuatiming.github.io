@@ -445,16 +445,18 @@ Finished,221,80,372-1,Adi Deutsch,ISR,no,,M,team giant,Masters,1:05:28.4,8:42:02
 Finished,221,80,372-2,Lahat Mayan,ISR,no,,M,team giant,Masters,1:05:28.4,8:42:02.0,8:47:26.0,5:49:57.0,24:24:53.4,+13:46:32.2
 Finished,222,81,391-1,Udi Abadi-Fishel,ISR,no,,M,Country Club Gan Evron,Masters,1:49:15.3,8:09:45.0,8:51:28.0,5:36:20.0,24:26:48.3,+13:48:27.1
 Finished,222,81,391-2,Alon Cohen,ISR,no,,M,Country Club Gan Evron,Masters,1:49:15.3,8:09:45.0,8:51:28.0,5:36:20.0,24:26:48.3,+13:48:27.1
-Finished,,,78-1,Oran Gonen,ISR,no,,M,Fitzone,Men,48:27.1,5:22:13.0,5:48:45.0,3:29:06.0,15:28:31.1,+4:50:09.9
-Finished,,,78-2,Asaf Brode,ISR,no,,M,Fitzone,Men,48:27.1,5:22:13.0,5:48:45.0,3:29:06.0,15:28:31.1,+4:50:09.9
 IF1,,,62-1,Lior Haklay,ISR,no,,M,Team Bikeway,Men,47:26.6,5:05:57.0,4:31:12.0,3:14:27.0,13:39:02.6,+3:00:41.4
 ,,,62-2,Guy Abadi,ISR,no,,M,Team Bikeway,Men,47:26.1,5:05:57.0,-,-,-,-
 IF1,,,507-1,Ronen Shirizly,ISR,no,,M,eshkolot team,Grand Masters,47:42.6,5:04:12.0,4:55:34.0,3:16:56.0,14:04:24.6,+3:26:03.4
 ,,,507-2,Hagay Anaby,ISR,no,,M,eshkolot team,Grand Masters,47:41.9,5:04:11.0,4:55:34.0,-,-,-
 IF1,,,357-1,Lior Biton,ISR,no,,M,grand ncc,Masters,48:02.7,5:01:52.0,5:00:37.0,3:27:57.0,14:18:28.7,+3:40:07.5
 ,,,357-2,Vitaly Frost,ISR,no,,M,grand ncc,Masters,48:02.2,5:01:52.0,-,-,-,-
+,,,335-1,Ziv Ben-Yehuda,ISR,no,,M,Team HOBIT,Masters,48:17.4,6:06:37.0,-,-,-,-
+IF2,,,335-2,Moran Mainz,ISR,no,,M,Team HOBIT,Masters,48:17.4,6:06:37.0,4:40:15.0,3:17:40.0,14:52:49.4,+4:14:28.2
 IF1,,,365-1,Adi Froumin,ISR,no,,M,A-team,Masters,51:22.5,5:24:45.0,5:26:19.0,3:28:59.0,15:11:25.5,+4:33:04.3
 ,,,365-2,Amit Avrahami,ISR,no,,M,A-team,Masters,51:22.5,5:24:45.0,5:26:19.0,3:28:59.0,-,-
+,,,97-1,Mosa Shogan,ISR,no,,M,Adiga Cycling,Men,-,-,-,-,-,-
+IF2,,,97-2,Sausar Sagas,ISR,no,,M,Adiga Cycling,Men,49:43.8,5:40:46.0,5:32:23.0,3:31:04.0,15:33:56.8,+4:55:35.6
 IF1,,,502-1,Issy Zimmerman,GBR,no,,M,TEAM JOC CYCLES,Grand Masters,48:02.7,6:47:40.0,4:50:47.0,3:25:56.0,15:52:25.7,+5:14:04.5
 ,,,502-2,John O'Connor,RSA,no,,M,TEAM JOC CYCLES,Grand Masters,48:02.7,6:47:40.0,4:50:47.0,3:25:56.0,-,-
 IF1,,,331-1,Matan Philipson,ISR,no,,M,Matan&Shamai,Masters,50:33.1,6:11:15.0,5:29:01.0,3:24:31.0,15:55:20.1,+5:16:58.9
@@ -503,10 +505,8 @@ IF1,,,542-1,Darek Kurek,POL,no,,M,Absolutebikes,Grand Masters,1:03:17.1,8:07:31.
 ,,,542-2,Krzysztof Marciniak,POL,no,,M,Absolutebikes,Grand Masters,1:03:17.1,8:07:31.0,8:47:35.0,5:33:02.0,-,-
 IF1,,,348-1,Erez Latner,ISR,no,,M,Mega Or,Masters,1:00:54.7,8:04:47.0,8:59:58.0,5:28:06.0,23:33:45.7,+12:55:24.5
 ,,,348-2,Idan Laifer,ISR,no,,M,Mega Or,Masters,1:00:54.7,8:04:47.0,8:59:57.0,-,-,-
-,,,335-1,Ziv Ben-Yehuda,ISR,no,,M,Team HOBIT,Masters,48:17.4,6:06:37.0,-,-,-,-
-IF2,,,335-2,Moran Mainz,ISR,no,,M,Team HOBIT,Masters,48:17.4,6:06:37.0,4:40:15.0,3:17:40.0,14:52:49.4,+4:14:28.2
-,,,97-1,Mosa Shogan,ISR,no,,M,Adiga Cycling,Men,-,-,-,-,-,-
-IF2,,,97-2,Sausar Sagas,ISR,no,,M,Adiga Cycling,Men,49:43.8,5:40:46.0,5:32:23.0,3:31:04.0,15:33:56.8,+4:55:35.6
+Blue,,,78-1,Oran Gonen,ISR,no,,M,Fitzone,Men,48:27.1,5:22:13.0,5:48:45.0,3:29:06.0,-,-
+Blue,,,78-2,Asaf Brode,ISR,no,,M,Fitzone,Men,48:27.1,5:22:13.0,5:48:45.0,3:29:06.0,-,-
 Blue,,,537-1,Noam Feig,ISR,no,,M,Cycologia,Grand Masters,1:04:32.6,9:43:38.0,8:45:25.0,5:50:13.0,-,-
 Blue,,,537-2,Eli Ben Shushan,ISR,no,,M,Cycologia,Grand Masters,1:04:32.6,9:43:38.0,8:45:25.0,5:50:13.0,-,-
 DNF,,,527-1,Barak Pikarski,ISR,no,,M,The next challenge,Grand Masters,1:08:40.1,-,8:15:45.0,5:31:36.0,-,-
