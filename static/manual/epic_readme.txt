@@ -1,4 +1,11 @@
 
+## for next time ##
+
+gc should only use the end of day _Status for dnsfq and blue which mean we need to add statuses for dnsfq and blue simultaneously(status8 for blue and dns....). the Id_Groupe should only be used for the daily stage status at begging of the stage and not carried to the gc page.
+
+make it possible to give diffrent status to team mates.(2 lines in the status/flag cell and maybe time/gap)
+
+
 ## raspberry pi ##
 
 using the rpi as local web server, to get results locally and then uploading them to site.
@@ -180,6 +187,8 @@ check if needed #live in the css
 
 
 ## web pages  ##
+
+MASTERTEST IS UPDATED(IT USES KELLNER), MASTER IS NOT UPDATED!!! DO NOT USE.
 
 master management - https://tnuatiming.com/liveepic/master.html (will have csv download on stage end)
 
