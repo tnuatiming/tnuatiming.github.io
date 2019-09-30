@@ -1,9 +1,22 @@
 
 ## for next time ##
 
-gc should only use the end of day _Status for dnsfq and blue which mean we need to add statuses for dnsfq and blue simultaneously(status8 for blue and dns....). the Id_Groupe should only be used for the daily stage status at begging of the stage and not carried to the gc page.
+move liveepic to new folder
 
-make it possible to give diffrent status to team mates.(2 lines in the status/flag cell and maybe time/gap)
+changing Id_Groupe, also affect previos stages, need to check if it's a problem.
+
+MASTERTEST IS UPDATED(IT USES KELLNER/NO KELLNER), MASTER IS NOT UPDATED!!! DO NOT USE.
+
+gc should only use the end of day _Status for dnsfq and blue which mean we need to add statuses for dnsfq and blue simultaneously(status8 for blue and dsq....). the Id_Groupe should only be used for the daily stage status at start of the stage and not carried to the gc page(a part for uci).
+add:
+Status8 - DSQ & blue
+Status9 - DNF & blue
+Status10 - DNS & blue
+Status2 - out, partner of IF (needed? or leaving without status is enough)
+
+make it possible to give different status to team mates.(if status is different, make 2 lines in the status/flag cell and maybe time/gap).
+
+consider moving uci status from Id_Groupe to its on key.
 
 
 ## raspberry pi ##
