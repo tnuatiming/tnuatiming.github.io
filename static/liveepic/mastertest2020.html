@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html class="no-js" lang="he" xml:lang="he" dir="rtl">
 
@@ -49,45 +46,76 @@
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
-
+    
+    
     <style>
-        .main_content {direction: ltr;}
+    
+        body#live {
+            background: none;
+        }
+        .page {
+            max-width: initial;
+        }
+.navigation, .language {
+    display: none;
+}
+.logo_main {
+    margin-bottom: 0; 
+}
+.main_content {direction: ltr;margin-top: 0;}
 
         #live .btn {margin: 0;}
         
         #live #buttonInfo {
             flex-direction: column;
             direction: ltr;
-
+            position: sticky;
+            top: 0;
+            background: #f0f0f0;
+            z-index: 99;
+            margin-bottom: 10px;
+            height: 175px;
+            border-bottom: 12px solid #c00;
         }
 
-        #live #categoryOrAll, #live #intermediateOrFinish {
+        #live th.rnkh_font {
+            position: sticky;
+            top: 175px;
+            z-index: 50;
+        }
+ 
+        #live #categoryOrAll, #live #intermediateOrFinish, #live #options, #live #options1, #live #options2 {
             flex-grow: 0;
             order: 1;
             align-self: flex-start;
             vertical-align: middle;
-            margin: 5px 5px;
+            margin: 4px 5px;
             padding: 0;
+            width: 100%;
+            text-align: left;
         }
 
-    #live #categoryOrAll button, #live #intermediateOrFinish button {
+        #live #categoryOrAll button, #live #intermediateOrFinish button {
             font-size: 1em;
             padding: 2px 10px;
             white-space: nowrap;
             font-weight: 700;
         }
-
+        #live div#options label, #live div#options1 label {
+            margin-right: 20px
+        }
+        #live #options button, #live #options1 button, #live #options2 button {
+            padding: 3px 5px;
+        }
         #live #DayTime {
             order: 1;
-        }
+            }
         #live #ElapsedTime {
             order: 2;
-            color: #58585a;
-        }
+            }
         #live #RemainingTime {
             order: 3;
-        }
+            }
 
         #live td.rnk_font, #live th.rnkh_font {
             padding: 0 2px;
@@ -99,7 +127,7 @@
             left: 0;
             top: 0;
             white-space: nowrap;
-            z-index: 99;
+            z-index: 50;
             color: #fff;
             background: rgba(17, 17, 17, 1);
             min-width: 100%;
@@ -113,32 +141,34 @@
             direction: ltr;
             margin-top: 10px;
         }
-        th.rnkh_font {
-            white-space: normal;
-        }
-
         #live td.rnk_font.bigFont {
             font-size: 1.5em;
+            min-width: 35px;
         }
-    /*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 999;}*/
+
+/*  tbody.line:hover, #live tr.rnk_bkcolor:hover ~ tr {background-color: #ffcc33; z-index: 50;}*/
 
         #live tr.rnk_bkcolor:hover {background-color: #f0f0f0bf;} 
-    
+        
+        #live #liveTable td.rnk_font:nth-child(-n+3), #live #liveTable th.rnkh_font:nth-child(-n+3) {
+            width: 5%;
+        }    
     /*    #live th.rnkh_font:nth-child(-n+2), #live td.rnk_font:nth-child(-n+3) {
             width: 3%;
-        } */
-        #live td.rnk_font:nth-child(-n+3), #live th.rnkh_font:nth-child(-n+3) {
-            width: 5%;
         }
+        #live td.rnk_font:nth-child(-n+4), #live th.rnkh_font:nth-child(-n+4) {
+            width: 5%;
+        }*/
         #live td.blued {
             background-image: url(Images/_LightBlueFlag.png);
             background-position: center center; 
-            background-size: auto 50%; 
+            background-size: auto 40%; 
             background-repeat: no-repeat; 
             min-width: 26px;
         }
         #live td.finished {
-            background-size: auto 30%;
+            background-size: auto 40%;
+            min-width: 26px;
         }    
         #live td.rnk_font.blueCard {
             color:#111; 
@@ -153,10 +183,6 @@
         #live td.rnk_font.redCard {
             color:white; 
             background-color:red; 
-            font-weight:700;
-        }
-        #live td.rnk_font. {
-            background-color:#fae100ff; 
             font-weight:700;
         }
         #live td.rnk_font.whiteCard {
@@ -182,12 +208,35 @@
             background-color:#412297ff; 
             font-weight:700;
         }
+        th.rnkh_font {
+            white-space: normal;
+            max-width: 10ch;
+        }
         #live td.left, #live th.left {
             text-align: left;
             padding-left: 10px;
         }
         #live td.right, #live th.right {
             text-align: right;
+        }
+        #live td.rnk_font.wrap {
+            max-width: 200px;
+        /* white-space: normal;*/ 
+        }
+        #live #liveTableS td.rnk_font:nth-child(-n+3), #live #liveTableS th.rnkh_font:nth-child(-n+3) {
+            width: auto;
+        }
+        #live #liveTableS td.rnk_font:nth-child(-n+2), #live #liveTableS th.rnkh_font:nth-child(-n+2) {
+            width: 5%;
+        }
+        #live div#result h2 {
+            text-align: center;
+        }
+        #live div.team {
+        /*    width: 200px; */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0 auto;
         }
         #live td img {
             height:0.9em; 
@@ -218,6 +267,7 @@
             position: relative;
             display: inline-block;
             width: 1.33333333em;
+            height: 2em;
             vertical-align: middle;
             margin: 0 5px;
             filter: drop-shadow(0 0 1px #767472);
@@ -264,6 +314,7 @@
         .transparent {background-image: url(Images/transparent.png);}
         .blueFlag {background-image: url(Images/_LightBlueFlag.png);}
         .CheckeredFlag {background-image: url(Images/_CheckeredFlag.png);}
+        .Started {background-image: url(Images/_TrackPassing.svg); width: 1em;}
         .numberOne {background-image: url(Images/numbreOne.svg); width: 1em;}
         .WhiteShirt {background-image: url(Images/WhiteShirt.svg);margin: 0;}
         .YellowShirt {background-image: url(Images/YellowShirt.svg);margin: 0;}
@@ -278,11 +329,20 @@
         .dns {background-image: url(Images/_dns.svg);}
 
         .uci {color: brown;}
-        span.number {padding-right: 8px;}
+        span.number {padding: 0 5px;}
         
-        #live .btn {display: inline-block;}
-        #live #buttonInfo {margin-bottom: 10px;}
-        #live .btn.active {cursor: pointer;filter: opacity(50%);}
+        #live td.dnsfq {
+            color: #222;
+            font-weight: 400;
+        }
+        #live .btn {
+            display: inline-block;
+        }
+
+        #live .btn.active {
+            cursor: pointer;
+            filter: opacity(50%);
+        }
         #live #Title {
             justify-content: space-evenly;
             vertical-align: middle;
@@ -292,29 +352,21 @@
             margin: 5px 0;
             text-align: center;    
         }
-        #live h1#Title img {margin: 0 10px;}
-
-        #live td div.bold, #live td.rnk_font.bold {font-weight:700;}
-        #live td.rnk_font.wrap {
-            max-width: 200px;
-        /* white-space: normal;*/ 
+        
+        #live h1#Title img {
+            margin: 0 10px;
         }
-        #live div.team {
-        /*    width: 200px; */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin: 0 auto;
+
+        #live td.rnk_font.bold, #live td div.bold {
+            font-weight:700; 
+            padding: 0 2px;
         }
         
         div#legend {width: 100%; text-align: left;}
         div#legend ul {width: 100%; text-align: left; float: left;}
         div#legend li {text-align: left;}
-
-        #live #warning {
-            text-align: left;
-            margin: 10px 0;
-            width: 100%;
-        }
+        
+        #csv {display: none;}
         
         #myBtn {
             display: none; /* Hidden by default */
@@ -341,19 +393,7 @@
         #myBtn:hover {
             background-color: #555; /* Add a dark-grey background on hover */
         }
-
-        .marquee {
-            height: 25px;
-            width: 90%;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-            color: #58585a;
-            text-shadow: 1px 1px 2px #fff;
-            font-size: 1em;
-            font-weight: 700;
-        }
-
+        
         .marquee {
             width: 100%;
             /*line-height: 50px;*/
@@ -375,7 +415,7 @@
         }
 
 
-@media (max-width: 767px) {
+    @media (max-width: 767px) {
 
         #live #categoryOrAll button, #live #intermediateOrFinish button {
             font-size: 0.8em;
@@ -384,9 +424,6 @@
             font-size: 0.8em;
             padding: 0;
         }
-        #live td.rnk_font.bigFont {
-            font-size: 1.2em;
-        }
         #live td.rnk_font.wrap {
             max-width: 120px;
             white-space: nowrap;
@@ -394,100 +431,36 @@
         #live div.team {
             max-width: 120px;
         }
+        #live td.rnk_font.bigFont {
+            font-size: 1.2em;
+            min-width: 25px;
+        }
+    }
+    @media (max-width: 1100px) {
+    
+        #live #buttonInfo {
+            height: 225px;
+        }
+
+        #live th.rnkh_font {
+            top: 225px;
+        }
+}    
+    @media print {
+        h1, #daysTotal, #csv, #legend {display: none}
+    
     }
 
-
-/* 
-RESPONSIVE TABLE
-
-Max width before this PARTICULAR table gets nasty
-This query will take effect for any screen smaller than 760px
-and also iPads specifically.
-
-need to disable alignTable
-
-@media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
-
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-	
-	tr.rnkh_bkcolor { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
-	#live tr { border: 1px solid #ccc; }
-	
-	#live td.rnk_font { 
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%;
-		line-height: 2em;
-		font-size: 1em;
-	}
-	
-	#live td.rnk_font:before { 
-		position: absolute;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-text-align: left;
-}
-	
-	td:nth-of-type(1):before { content: "Overall Position"; }
-	td:nth-of-type(2):before { content: "Category Position"; color: #222;}
-	td:nth-of-type(3):before { content: "No.";background-color: none; }
-	td:nth-of-type(4):before { content: "Riders"; }
-	td:nth-of-type(5):before { content: "Team"; }
-	td:nth-of-type(6):before { content: "Category"; }
-	td:nth-of-type(7):before { content: "Time"; }
-	td:nth-of-type(8):before { content: "Gap"; }
-
-	
-        #live td.rnk_font.wrap {
-            max-width: 0;
-        }
-	
-        #live td.rnk_font.wrap {
-            max-width: 0;
-            white-space: nowrap;
-        }    
-	
-#live div.team {
-            max-width: 0;
-    overflow: visible;
-    text-overflow: unset;
-    margin: 0 auto;
-}	
-#live .EvenRow, #live .OddRow {
-		border-top: 3px solid #eee; 
-}	
-	
-td.rnk_font.bigFont {
-    font-size: 1em;
-}	
-	
-}
-*/
-    
-    
-    
     </style>
 
 
-    <script src="elite_epic_remote.js" defer></script>
+    <script src="elite_epic_inter_test2020.js" defer></script>
 </head>
 
 
 
 
-    <body  onload="Load();" id="live">
+    <body  onload="Load()" id="live">
 
 
 <div class="full-bg fadeIn">
@@ -549,6 +522,7 @@ td.rnk_font.bigFont {
       <div class="row main_content">
 
  
+
 <div id="raceheader"><h1>Live Results</h1></div>
 
 <div id="buttonInfo">
@@ -567,35 +541,55 @@ td.rnk_font.bigFont {
         <button id="intermediate3" class="btn" onClick="intermediateOrFinish('3')">Intermediate 3</button>
         <button id="finish" class="btn" onClick="intermediateOrFinish('4')">Finish</button>
     </div>
+    <div id="options1">
+        <label class="startTime">&nbsp;&nbsp;Start Time:&nbsp;&nbsp;<input id="startTime" style="width: 170px;" type="text" name="startTime" value="2019-09-21 07:00:00"></label>
+        <label class="MaximumStageTime">Maximum Stage Time:&nbsp;&nbsp;<input id="MaximumStageTime" style="width: 80px;" type="text" name="MaximumStageTime"><!--&nbsp; milliseconds (3600000=1hours, 18000000=5hours, 21600000=6hours)--></label>
+        <label class="message">Message:&nbsp;&nbsp;<input id="message" style="width: 250px;" type="text" name="message" value=""></label>
+        <button id="publish" class="publish btn" onClick="publish()">Publish</button>
+        <button id="publishBox" class="publishBox btn" onClick="publishBox()">Publish Box</button>
+    </div>
+    <div id="options">
+        <label for="compLastUpdated" title="competitors list last update">last updated:&nbsp;<span id="compLastUpdated"></span></label>
+        <button title="update competitors data from elite" id="importCompetitors" class="importCompetitors btn" onClick="importCompetitors()">Update Competitors</button>
+        <label for="enableJ1" title="enable uploading epic json to server">&nbsp;&nbsp;&nbsp;<input type="checkbox" id="enableJ1" name="enableJ1" value="enableJ1">&nbsp;Enable Epic</label>
+        <label for="enableJ3" title="enable uploading single day json and html to server"><input type="checkbox" id="enableJ3" name="enableJ3" value="enableJ3">&nbsp;Enable Single</label>
+        <label for="raceEnded" title="show MST, E2M and IF"><input type="checkbox" id="raceEnded" name="raceEnded" value="raceEnded">&nbsp;Race Ended</label>
+        <label for="cleanResults"><input type="checkbox" id="cleanResults" name="cleanResults" value="cleanResults">&nbsp;Clean Results</label>
+        <label for="doNotShowTime"><input type="checkbox" id="doNotShowTime" name="doNotShowTime" value="doNotShowTime">&nbsp;Do Not Show Individual Times</label>
+        <label for="showLog"><input type="checkbox" id="showLog" name="showLog" value="showLog">&nbsp;Show log</label>
+    </div>
+    <div id="options2">
+    <p><label for="checkJson" title="check json recieved from kellner"><input type="checkbox" id="checkJson" name="checkJson" value="checkJson">&nbsp;Check JSON&nbsp;</label><span title="Kellner JSON Status:&#10;white: download or unknown&#10;yellow: empty&#10;green: ok&#10;red: error" id="kellnerStatus" style="color: white; font-size: 20px; padding: 0 5px;">&#9679;</span><label for="lastUpdated" title="kellner json last update">&nbsp;last updated:&nbsp;<span id="lastUpdated">&nbsp;</span></label>&nbsp;||&nbsp;<span id="status">&nbsp;</span>        <label class="showComp">&nbsp;&nbsp;||&nbsp;&nbsp;show competitors (,):&nbsp;&nbsp;<input id="showComp" style="width: 100px;" type="text" name="showComp"></label>
+</p>
+    </div>
 
+    
 </div>
-
 <div id="result"></div>
     
+<!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
+
     <button onclick="topFunction()" id="myBtn" title="Go to top">&#10148;</button>
 
-<div style="width:100%;text-align:right;margin-top:10px;"><a href="https://tnuatiming.com"><img  style="height: 40px;" class="CategoryHeader" src="Images/logo2_full_engB.svg"></a></div>
-
-<!--<div id="warning">התוצאות המופיעות אינן סופיות או רשמיות. הן אינן כוללות עונשין והחלטות שיפוט, וייתכן והן כוללות טעויות אשר יתוקנו בהמשך.</div>-->
-<div id="warning">The results are not final or official. They may not include penalties or decisions made by the commissaries and the race organizers. They may include errors which will be rectified at later date. </div>
-
-
 <div id="daysTotal" style="width: 100%;text-align:right"><button style="padding:10px; margin-top: 20px; font-weight:700;" class="btn" onclick="location.href='./total.html'" type="button">overall results</button></div>
-
+<button id="csv">Download CSV Results File</button>
 
 <div id="legend">
-    <ul>
-        <li><span class="Flag UCI"></span> - UCI Rider</li>
-        <li><span class="Flag CheckeredFlag"></span> - Finished</li>
-        <li>DSQ - Disqualified</li>
-        <li>DNF - Did Not Finished</li>
-        <li>DNS - Did Not Started</li>
-        <li>MST - Exceeded Maximum Stage Time</li>
-        <li>E2M - Exceeded 2 Minutes Separation</li>
-        <li>IF1 - Individual Finisher Rider 1</li>
-        <li>IF2 - Individual Finisher Rider 2</li>
-        <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
-    </ul>
+         <ul>
+                <li><span class="Flag YellowShirt"></span> - Epic Israel Leader</li>
+                <li><span class="Flag numberOne"></span> - Intermediate Leader</li>
+                <li><span class="Flag UCI"></span> - UCI Rider</li>
+                <li><span class="Flag CheckeredFlag"></span> - Finished</li>
+                <li>DSQ - Disqualified</li>
+                <li>DNF - Did Not Finished</li>
+                <li>DNS - Did Not Started</li>
+                <li>MST - Exceeded Maximum Stage Time</li>
+                <li>E2M - Exceeded 2 Minutes Separation</li>
+                <li>IF1 - Individual Finisher Rider 1</li>
+                <li>IF2 - Individual Finisher Rider 2</li>
+                <li><span class="Flag blueFlag"></span> - Blue Board Rider</li>
+                <li><span class="Flag Started"></span> - Started Stage</li>
+            </ul>
 </div>
 
 
@@ -622,35 +616,35 @@ td.rnk_font.bigFont {
      </div>
 </div>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-38104277-1', 'auto');
-    ga('set', 'anonymizeIp', true);
-    ga('send', 'pageview');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-38104277-1', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
 </script>
 
 <script>
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    document.getElementById("myBtn").style.display = "block";
-  } else {
-    document.getElementById("myBtn").style.display = "none";
-  }
-}
+    function scrollFunction() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+    }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
 </script>
 
 
-    </body>
+</body>
 </html>
  
