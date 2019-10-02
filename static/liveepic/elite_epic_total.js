@@ -679,7 +679,7 @@ add dns
                  
                 // phrase Id_Groupe         
                  
-                if (allArray4[b]["Id_Groupe"].includes('s1') || allArray4[b]["Id_Image_2"] == '_Status6') {
+                if (allArray4[b]["Id_Groupe"].includes('s1') || allArray4[b]["Id_Image"] == '_Status6') {
 
                     allArray4[b]["single"] = 1;
 
@@ -851,7 +851,7 @@ add dns
                  
                 // phrase Id_Groupe         
                  
-                if (allArray3[b]["Id_Groupe"].includes('s1') || allArray3[b]["Id_Image_2"] == '_Status6') {
+                if (allArray3[b]["Id_Groupe"].includes('s1') || allArray3[b]["Id_Image"] == '_Status6') {
 
                     allArray3[b]["single"] = 1;
 
@@ -1021,7 +1021,7 @@ add dns
                  
                 // phrase Id_Groupe         
                  
-                if (allArray2[b]["Id_Groupe"].includes('s1') || allArray2[b]["Id_Image_2"] == '_Status6') {
+                if (allArray2[b]["Id_Groupe"].includes('s1') || allArray2[b]["Id_Image"] == '_Status6') {
 
                     allArray2[b]["single"] = 1;
 

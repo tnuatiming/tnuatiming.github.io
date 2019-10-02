@@ -2355,6 +2355,93 @@
                    atPoint[4] += 1;
                }
                
+
+               
+               
+                allArray[b]["Score"] = 0;
+               
+                if (allArray[b]["Id_Image"] == '_Status1' || allArray[b]["Id_Image_2"] == '_Status1') {
+                   
+ //                  allArray[b]["Score"] += 1;
+                   allArray[b]["leader"] = 1;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status10' || allArray[b]["Id_Image_2"] == '_Status10') { // dsq
+                   
+                    allArray[b]["Score"] += 7;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status11' || allArray[b]["Id_Image_2"] == '_Status11') { // dnf
+                   
+                    allArray[b]["Score"] += 8;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status12' || allArray[b]["Id_Image_2"] == '_Status12') { // dns
+                   
+                    allArray[b]["Score"] += 9;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status7' || allArray[b]["Id_Image_2"] == '_Status7') { // dsq + blue
+                   
+                    allArray[b]["Score"] += 7;
+                    allArray[b]["blue"] == 1;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status8' || allArray[b]["Id_Image_2"] == '_Status8') { // dnf + blue
+                   
+                    allArray[b]["Score"] += 8;
+                    allArray[b]["blue"] == 1;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status9' || allArray[b]["Id_Image_2"] == '_Status9') { // dns + blue
+                   
+                    allArray[b]["Score"] += 9;
+                    allArray[b]["blue"] == 1;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status4' || allArray[b]["Id_Image_2"] == '_Status4') { // blue
+                   
+                    allArray[b]["blue"] == 1;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status3' || allArray[b]["Id_Image_2"] == '_Status3') { // mst
+                   
+                    allArray[b]["blue"] == 1;
+                    allArray[b]["mst"] = 1;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status5' || allArray[b]["Id_Image_2"] == '_Status5') { // e2m
+                   
+                    allArray[b]["blue"] == 1;
+                    allArray[b]["e2min"] = 1;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status6' || allArray[b]["Id_Image_2"] == '_Status6') { // IF
+                   
+                    allArray[b]["Score"] += 6;
+                   
+                } else if (allArray[b]["Id_Image"] == '_Status2' || allArray[b]["Id_Image_2"] == '_Status2') { // IF + blue
+                   
+                    allArray[b]["Score"] += 6;
+                    allArray[b]["blue"] == 1;
+                   
+                }   
+               
+                // for display only
+                if (allArray[b]["blue"] == 1) {
+                   
+                    allArray[b]["Score"] += 20;
+                   
+                }               
+               
+                // for display only 
+                if (allArray[b]["e2min"] == 1 && allArray[b]["mst"] == 1) {
+                   
+                    allArray[b]["Score"] += 500;
+                   
+                } else if (allArray[b]["e2min"] == 1) {
+                   
+                    allArray[b]["Score"] += 400;
+                   
+                } else if (allArray[b]["mst"] == 1) {
+                   
+                    allArray[b]["Score"] += 300;
+                   
+                }              
+               
+               allArray[b]["Score"] = allArray[b]["Score"].toString();
+               // 428 = e2min + blue + dnf
+               
                
               
         } // END for b

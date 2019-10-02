@@ -12,7 +12,7 @@ add:
 Status7 - DSQ & blue
 Status8 - DNF & blue
 Status9 - DNS & blue
-Status2 - out, partner of IF (needed? or leaving without status is enough)
+Status2 - out, partner of IF (needed? or leaving without status is enough) or use it for IF + blue
 Status1 - leader
 
 make it possible to give different status to team mates.(if status is different, make 2 lines in the status/flag cell and maybe time/gap).
@@ -24,6 +24,9 @@ more then 1 team has the same leading time in intermediate (just the display of 
 make wide use of Template literals (with Conditional (ternary) operator) for the display as it simplefys greatly, ex: 
 finalText += `<td class="rnk_font${(allArray[l]["Id_Club"] == 'Yes') ? ' UCI' : ''}">${allArray[l]["Id_Nom"]}</td>`; 
 
+looks like we need to leave leader and oldblue in Id_Groupe...
+
+trying "score" system, not sure its the way to go...
 
 ## raspberry pi ##
 
