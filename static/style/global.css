@@ -1465,11 +1465,11 @@ a.main_logo {
 .epic #finalTextAll, .epic #finalTextCategory {
     width: 100%;
 }
-.epic tr.rnk_bkcolor:hover {
+body#race.epic tr.rnk_bkcolor:hover {
     background-color: #f0f0f0bf;
 }
 
-.epic h1 img {
+body#race.epic h1 img {
     height: 32px;
     vertical-align: middle;
     margin: 0 5px;
@@ -1598,40 +1598,40 @@ body#race.epic td.black {
     background-size: auto 40%;
     min-width: 26px;
 }    
-.epic td.rnk_font.blueCard {
+body#race.epic td.rnk_font.blueCard {
     color:#111; 
     background-color:#add8e6bf; 
     font-weight:700;
 }
-.epic td.rnk_font.DarkBlueCard {
+body#race.epic td.rnk_font.DarkBlueCard {
     color:white; 
     background-color:#2f5999ff; 
     font-weight:700;
 }
-.epic td.rnk_font.redCard {
+body#race.epic td.rnk_font.redCard {
     color:white; 
     background-color:red; 
     font-weight:700;
 }
-.epic td.rnk_font.whiteCard {
+body#race.epic td.rnk_font.whiteCard {
     background-color:#eeeeeeff; 
     font-weight:700;
 }
-.epic td.rnk_font.yellowCard {
+body#race.epic td.rnk_font.yellowCard {
     background-color:#fae100ff; 
     font-weight:700;
 }
-.epic td.rnk_font.pinkCard {
+body#race.epic td.rnk_font.pinkCard {
     color:white; 
     background-color:#ff1493ff; 
     font-weight:700;
 }
-.epic td.rnk_font.greenCard {
+body#race.epic td.rnk_font.greenCard {
     color:white; 
     background-color:#427f4dfe; 
     font-weight:700;
 }
-.epic td.rnk_font.purpleCard {
+body#race.epic td.rnk_font.purpleCard {
     color:white; 
     background-color:#412297ff; 
     font-weight:700;
@@ -1723,7 +1723,7 @@ body#race.epic td.black {
     white-space: normal;
     max-width: 10ch;
 }
-.epic td.rnk_font.blueCard {
+body#race.epic td.rnk_font.blueCard {
     color: #111;
     background-color: #add8e6bf;
     font-weight: 700;
