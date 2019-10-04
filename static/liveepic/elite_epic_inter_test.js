@@ -3377,28 +3377,30 @@ if (showComp != '') { // show only selected competitors
 
        
                     
-                    if (allArray[l]["Id_Image"].includes("_Status10") || allArray[l]["Id_Image_2"].includes("_Status10") || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)) {
+                    if (allArray[l]["Id_Image"] == "_Status10" || allArray[l]["Id_Image_2"] == "_Status10"/* || (allArray[l]["blue"] == 1 && allArray[l]["oldBlue"] == 1)*/) {
                         allArray[l]["Id_Arrow"] = 10; // DSQ
-                    } else if (allArray[l]["Id_Image"].includes("_Status3") || allArray[l]["Id_Image_2"].includes("_Status3")) {
+                        allArray[l]["blue"] = 1;
+                    } else if (allArray[l]["Id_Image"] == "_Status3" || allArray[l]["Id_Image_2"] == "_Status3") {
                         allArray[l]["Id_Arrow"] = 13; // mst
                         allArray[l]["blue"] = 1; //FIXME mst
                         showBlue = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status4") || allArray[l]["Id_Image_2"].includes("_Status4")) {
+                    } else if (allArray[l]["Id_Image"] == "_Status4" || allArray[l]["Id_Image_2"] == "_Status4") {
                         allArray[l]["blue"] = 1; //FIXME general blue
                         showBlue = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status5") || allArray[l]["Id_Image_2"].includes("_Status5")) {
+                    } else if (allArray[l]["Id_Image"] == "_Status5" || allArray[l]["Id_Image_2"] == "_Status5") {
                         allArray[l]["Id_Arrow"] = 14; // e2m
                //         allArray[l]["e2min"] = 1; 
                         allArray[l]["blue"] = 1; //FIXME e2m
                         showBlue = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status6") || allArray[l]["Id_Image_2"].includes("_Status6")) {
+                    } else if (allArray[l]["Id_Image"] == "_Status6" || allArray[l]["Id_Image_2"] == "_Status6") {
                         allArray[l]["Id_Arrow"] = 6; // IF
-                    } else if (allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image_2"].includes("_Status11")) {
+                    } else if (allArray[l]["Id_Image"] == "_Status11" || allArray[l]["Id_Image_2"] == "_Status11") {
                         allArray[l]["Id_Arrow"] = 11; // DNF
-                    } else if (allArray[l]["Id_Image"].includes("_Status12") || allArray[l]["Id_Image_2"].includes("_Status12")) {
+                        allArray[l]["blue"] = 1;
+                    } else if (allArray[l]["Id_Image"] == "_Status12" || allArray[l]["Id_Image_2"] == "_Status12") {
                         allArray[l]["Id_Arrow"] = 12; // DNS
                         allArray[l]["blue"] = 1;
-                    } else if (allArray[l]["Id_Image"].includes("_Status2") || allArray[l]["Id_Image_2"].includes("_Status2")) {
+                    } else if (allArray[l]["Id_Image"] == "_Status2" || allArray[l]["Id_Image_2"] == "_Status2") {
                         allArray[l]["Id_Arrow"] = 9;
                     } /*else if (raceEnded == 1 && allArray[l]["Id_FinishTime"] == 99999999999) {
                         allArray[l]["Id_Arrow"] = 11; // DNF

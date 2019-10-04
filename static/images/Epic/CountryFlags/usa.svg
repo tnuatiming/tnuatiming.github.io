@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 360 240">
+  <path fill="#b22234" d="M-.000015.000003h360.00003v239.999994H-.000015z"/>
+  <path stroke="#fff" stroke-width="300" d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" transform="matrix(.04858 0 0 .06154 -.000015 .000003)"/>
+  <path fill="#3c3b6e" d="M-.000015.000003h144.000012v129.230766H-.000015z"/>
+  <g fill="#fff" transform="matrix(.04858 0 0 .06154 -.000015 .000003)">
+    <g id="d">
+      <g id="c">
+        <g id="e">
+          <g id="b">
+            <path id="a" d="M247 90l70.53423 217.08204-184.66101-134.16408h228.25356L176.46577 307.08204z"/>
+            <use width="100%" height="100%" y="420" xlink:href="#a"/>
+            <use width="100%" height="100%" y="840" xlink:href="#a"/>
+            <use width="100%" height="100%" y="1260" xlink:href="#a"/>
+          </g>
+          <use width="100%" height="100%" y="1680" xlink:href="#a"/>
+        </g>
+        <use width="100%" height="100%" x="247" y="210" xlink:href="#b"/>
+      </g>
+      <use width="100%" height="100%" x="494" xlink:href="#c"/>
+    </g>
+    <use width="100%" height="100%" x="988" xlink:href="#d"/>
+    <use width="100%" height="100%" x="1976" xlink:href="#c"/>
+    <use width="100%" height="100%" x="2470" xlink:href="#e"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 360 240">
+  <defs>
+    <path id="a" d="M50 173.061h1100v641.67603H50z"/>
+    <clipPath id="b">
+      <use width="100%" height="100%" overflow="visible" xlink:href="#a"/>
+    </clipPath>
+  </defs>
+  <path fill="#fff" d="M50 173.061h1100v641.67603H50z" clip-path="url(#b)" transform="matrix(.32727 0 0 .37402 -16.363638 -64.728185)"/>
+  <path fill="#c8102e" d="M1150 201.61v-28.549h-25.095l-414.425 232h76.067zM1150 808.611v-42.587L845.424 595.643h-76.069zM375.587 405.061h76.076L50 179.296v42.658zM50 811.018v3.718h69.411l391.118-219.093h-76.067z" clip-path="url(#b)" transform="matrix(.32727 0 0 .37402 -16.363638 -64.728185)"/>
+  <path fill="#012169" d="M1074.762 173.061H689.607v215.738zM519.516 173.061H135.92l383.596 215.738zM1150 405.061V257.867L888.749 405.061zM1150 741.231V595.643H888.749zM157.696 814.736h361.82V611.94z" clip-path="url(#b)" transform="matrix(.32727 0 0 .37402 -16.363638 -64.728185)"/>
+  <path fill="#012169" fill-opacity=".99444442" d="M689.607 814.736h362.959L689.607 611.94z" clip-path="url(#b)" transform="matrix(.32727 0 0 .37402 -16.363638 -64.728185)"/>
+  <path fill="#012169" d="M50 595.643v152.152l270.367-152.152zM50 405.061h270.367L50 252.653z" clip-path="url(#b)" transform="matrix(.32727 0 0 .37402 -16.363638 -64.728185)"/>
+  <path fill="#c8102e" d="M1150 443.2H655.589V173.061H553.525V443.2H50v114.341h503.525v257.195h102.064V557.541H1150z" clip-path="url(#b)" transform="matrix(.32727 0 0 .37402 -16.363638 -64.728185)"/>
+</svg>

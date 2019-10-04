@@ -1427,6 +1427,452 @@ a.main_logo {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
+
+
+
+
+
+
+
+
+
+
+
+/*  epic israel */
+
+.epic #buttonInfo {
+    flex-direction: column;
+    direction: ltr;
+    text-align: left;
+    width: 100%;
+}
+.epic #categoryOrAll, .epic #intermediateOrFinish {
+    vertical-align: middle;
+    margin: 5px 5px;
+    padding: 0;
+}
+.epic #categoryOrAll button, .epic #intermediateOrFinish button {
+    font-size: 1em;
+    padding: 2px 10px;
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+.epic table.line_color {
+    margin-top: 10px;
+    direction: ltr;
+}
+.epic #finalTextAll, .epic #finalTextCategory {
+    width: 100%;
+}
+.epic tr.rnk_bkcolor:hover {
+    background-color: #f0f0f0bf;
+}
+
+.epic h1 img {
+    height: 32px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+body#race.epic td.highlight {
+    font-weight: 700;
+    background-color: rgba(37, 37, 37, 0.5);
+    color: #fff;
+    text-shadow: none;
+    background-clip: padding-box;    
+}
+body#race.epic td.green {
+    animation: up 2s both;
+    color: #00843d;
+    font-weight: 700;
+}
+body#race.epic td.red {
+    animation: down 2s both;
+    color: #c8102e;
+    font-weight: 700;
+}
+body#race.epic td.greengreen {
+    color: #00843d;
+    font-weight: 700;
+}
+body#race.epic td.redred {
+    color: #c8102e;
+    font-weight: 700;
+}
+body#race.epic td.white {
+    color: #fff;
+    font-weight: 700;
+}
+body#race.epic td.yellow {
+    color: #fedd00;
+    font-weight: 700;
+}
+body#race.epic td.darkyellow {
+    color: #fc3;
+    font-weight: 700;
+}
+body#race.epic td.blue {
+    color: #2f5999;
+    /*color: #41b6e6;*/
+    font-weight: 700;
+}
+body#race.epic td.lightblue {
+    color: #add8e6;
+    font-weight: 700;
+}
+body#race.epic td.purple {
+    color: #412297;
+    font-weight: 700;
+}
+body#race.epic td.pink {
+    color: #ff1493;
+    font-weight: 700;
+}
+body#race.epic td.orange, body#race.epic td.dnsfq {
+    color: #ff8200;
+    font-weight: 700;
+}
+body#race.epic td.black {
+    color: #2d2926;
+    font-weight: 700;
+}
+.epic td.blackCat {
+    font-weight: 700;
+    background-color: rgba(17, 17, 17, 0.7);
+    color: #fff;
+}
+.epic td.redCat {
+    font-weight: 700;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: #fff;
+}
+.epic td.yellowCat {
+    font-weight: 700;
+    background-color: rgba(255, 255, 0, 0.7);
+    color: #222;
+}
+.epic td.greenCat {
+    font-weight: 700;
+    background-color: rgba(146, 208, 80, 0.7);
+    color: #222;
+}
+.epic td.pinkCat {
+    font-weight: 700;
+    background-color: rgba(204, 102, 255, 0.7);
+    color: #222;
+}
+.epic td.orangeCat {
+    font-weight: 700;
+    background-color: rgba(255, 192, 0, 0.7);
+    color: #222;
+}
+.epic td.blueCat {
+    font-weight: 700;
+    background-color: rgba(0, 176, 240, 0.7);
+    color: #222;
+}
+.epic td.whiteCat {
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #222;
+}
+.epic td.grayCat {
+    font-weight: 700;
+    background-color: rgba(191, 191, 191, 0.7);
+    color: #222;
+}
+.epic td.purpleCat {
+    font-weight: 700;
+    background-color: rgba(128, 100, 162, 0.7);
+    color: #222;
+}
+
+.epic td.blued {
+    background-image: url(Images/_LightBlueFlag.png);
+    background-position: center center; 
+    background-size: auto 40%; 
+    background-repeat: no-repeat; 
+    min-width: 26px;
+}
+.epic td.finished {
+    background-size: auto 40%;
+    min-width: 26px;
+}    
+.epic td.rnk_font.blueCard {
+    color:#111; 
+    background-color:#add8e6bf; 
+    font-weight:700;
+}
+.epic td.rnk_font.DarkBlueCard {
+    color:white; 
+    background-color:#2f5999ff; 
+    font-weight:700;
+}
+.epic td.rnk_font.redCard {
+    color:white; 
+    background-color:red; 
+    font-weight:700;
+}
+.epic td.rnk_font.whiteCard {
+    background-color:#eeeeeeff; 
+    font-weight:700;
+}
+.epic td.rnk_font.yellowCard {
+    background-color:#fae100ff; 
+    font-weight:700;
+}
+.epic td.rnk_font.pinkCard {
+    color:white; 
+    background-color:#ff1493ff; 
+    font-weight:700;
+}
+.epic td.rnk_font.greenCard {
+    color:white; 
+    background-color:#427f4dfe; 
+    font-weight:700;
+}
+.epic td.rnk_font.purpleCard {
+    color:white; 
+    background-color:#412297ff; 
+    font-weight:700;
+}
+.epic .btn {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    border-width: 0;
+    outline: 0;
+    background-color: #767472;
+    color: #ecf0f1;
+    transition: background-color .3s;
+}
+.epic .btn:hover, .epic .btn:focus {
+    background-color: #52514f;
+}
+.epic .Flag:before {
+    content: "\00a0";
+}
+
+.epic .Flag {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    vertical-align: middle;
+    margin: 0 5px;
+    filter: drop-shadow(0 0 1px #767472);
+}
+
+        .AUS {background-image: url(/images/Epic/CountryFlags/australia.svg);}
+        .AUT {background-image: url(/images/Epic/CountryFlags/austria.svg);}
+        .BEL {background-image: url(/images/Epic/CountryFlags/belgium.svg);}
+        .BRA {background-image: url(/images/Epic/CountryFlags/brazil.svg);}
+        .CAN {background-image: url(/images/Epic/CountryFlags/canada.svg);}
+        .CZE {background-image: url(/images/Epic/CountryFlags/czechrepublic.svg);}
+        .DEN {background-image: url(/images/Epic/CountryFlags/denmark.svg);}
+        .ECU {background-image: url(/images/Epic/CountryFlags/ecuador.svg);}
+        .EST {background-image: url(/images/Epic/CountryFlags/estonia.svg);}
+        .FIN {background-image: url(/images/Epic/CountryFlags/finland.svg);}
+        .FRA {background-image: url(/images/Epic/CountryFlags/france.svg);}
+        .GER {background-image: url(/images/Epic/CountryFlags/germany.svg);}
+        .GRC {background-image: url(/images/Epic/CountryFlags/greece.svg);}
+        .HUN {background-image: url(/images/Epic/CountryFlags/hungary.svg);}
+        .ISL {background-image: url(/images/Epic/CountryFlags/iceland.svg);}
+        .IRL {background-image: url(/images/Epic/CountryFlags/ireland.svg);}
+        .ISR {background-image: url(/images/Epic/CountryFlags/israel.svg);}
+        .ITA {background-image: url(/images/Epic/CountryFlags/italy.svg);}
+        .LAT {background-image: url(/images/Epic/CountryFlags/latvia.svg);}
+        .LTU {background-image: url(/images/Epic/CountryFlags/lithuania.svg);}
+        .NED {background-image: url(/images/Epic/CountryFlags/netherlands.svg);}
+        .NZL {background-image: url(/images/Epic/CountryFlags/newzealand.svg);}
+        .NOR {background-image: url(/images/Epic/CountryFlags/norway.svg);}
+        .POL {background-image: url(/images/Epic/CountryFlags/poland.svg);}
+        .POR {background-image: url(/images/Epic/CountryFlags/portugal.svg);}
+        .RUS {background-image: url(/images/Epic/CountryFlags/russia.svg);}
+        .SRB {background-image: url(/images/Epic/CountryFlags/serbia.svg);}
+        .RSA {background-image: url(/images/Epic/CountryFlags/southafrica.svg);}
+        .ESP {background-image: url(/images/Epic/CountryFlags/spain.svg);}
+        .SWE {background-image: url(/images/Epic/CountryFlags/sweden.svg);}
+        .SUI {background-image: url(/images/Epic/CountryFlags/switzerland.svg);}
+        .UKR {background-image: url(/images/Epic/CountryFlags/ukraine.svg);}
+        .GBR {background-image: url(/images/Epic/CountryFlags/unitedkingdom.svg);}
+        .USA {background-image: url(/images/Epic/CountryFlags/usa.svg);}
+
+    .transparent {background-image: url(/images/Epic/transparent.png);}
+    .blueFlag {background-image: url(/images/Epic/_LightBlueFlag.png);}
+    .CheckeredFlag {background-image: url(/images/Epic/_CheckeredFlag.png);}
+    .numberOne {background-image: url(/images/Epic/numbreOne.svg); width: 1em;}
+    .WhiteShirt {background-image: url(/images/Epic/WhiteShirt.svg);margin: 0;}
+    .YellowShirt {background-image: url(/images/Epic/YellowShirt.svg);margin: 0;}
+    .PinkShirt {background-image: url(/images/Epic/PinkShirt.svg);margin: 0;}
+    .GreenShirt {background-image: url(/images/Epic/GreenShirt.svg);margin: 0;}
+    .BlueShirt {background-image: url(/images/Epic/BlueShirt.svg);margin: 0;}
+    .PurpleShirt {background-image: url(/images/Epic/PurpleShirt.svg);margin: 0;}
+    .UCI {background-image: url(/images/Epic/uci.svg);margin: 0;}
+
+    .dnf {background-image: url(/images/Epic/_dnf.svg);}
+    .dsq {background-image: url(/images/Epic/_dsq.svg);}
+    .dns {background-image: url(/images/Epic/_dns.svg);}
+
+.epic td.rnk_font, .epic th.rnkh_font {
+    padding: 0 2px;
+}
+.epic th.rnkh_font {
+    white-space: normal;
+    max-width: 10ch;
+}
+.epic td.rnk_font.blueCard {
+    color: #111;
+    background-color: #add8e6bf;
+    font-weight: 700;
+}
+body#race.epic .line_color td:nth-of-type(2) {
+    font-weight: 700;
+    background: none;
+    /* color: #fff; */
+    text-shadow: none;
+}
+.epic td.left, .epic th.left {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.epic td.right,
+.epic th.right {
+    text-align: right;
+}
+
+.epic .lineThrough {
+    filter: opacity(35%);
+}
+
+.epic td.rnk_font.wrap {
+/*    max-width: 200px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body#race.epic td.rnk_font.bold {
+    font-weight: 700;
+}
+
+.epic td.rnk_font.bigFont {
+    font-size: 1.5em;
+    min-width: 35px;
+}
+
+.epic .btn {
+    display: inline-block;
+}
+
+.epic #buttonInfo {
+    margin-bottom: 10px;
+}
+
+.epic .btn.active {
+    cursor: pointer;
+    filter: opacity(50%);
+}
+
+.epic #Title, .epic #totalHeader {
+    justify-content: space-evenly;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 1em;
+    color: #58585a;
+    margin: 5px 0;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #fff;
+    }
+
+.epic h1#Title img {
+    margin: 0 10px;
+}
+.epic div#legend {
+    width: 100%;
+    text-align: left;
+    direction: ltr;
+}
+
+.epic div#legend ul {
+    width: 100%;
+    text-align: left;
+    float: left;
+}
+
+.epic div#legend li {
+    text-align: left;
+}
+
+.epic #csv {
+    display: none;
+}
+
+.epic #myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    width: 50px;
+    height: 50px;
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #c00; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    font-size: 24px; /* Increase font size */
+    font-weight: 700;
+    transform: rotate(270deg);
+}
+
+.epic #myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+.epic span.number {
+    padding: 0 5px;
+}
+        
+
+@media (max-width:767px) {
+    .epic td.rnk_font.bigFont {
+        font-size: 1.2em;
+        min-width: 25px;
+    }
+    .epic td.rnk_font.wrap {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 1200px) {
     table.big_table {
         font-size: 0.8em;
@@ -1788,6 +2234,9 @@ a.main_logo {
 
     body#race.rockcrawling {
         background-image: url("/images/rockcrawling.jpg");
+    }
+    body#race.epic {
+        background-image: url("/images/epic.jpg");
     }
 /*
     #live tr.rnk_bkcolor:nth-of-type(odd), #race tr.rnk_bkcolor:nth-of-type(odd) {
