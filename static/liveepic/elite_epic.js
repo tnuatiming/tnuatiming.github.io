@@ -2429,13 +2429,13 @@
             m = 0;
             prevCompCat = ""
 
-//            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
+//            finalText += '<div class="liveTable"><table class="' + tableClass + 'line_color">';
 
             if (useCategory == "no") {
-                finalText += `\n<div id="liveTable">\n<table class="${tableClass} line_color">\n`;
+                finalText += `\n<div class="liveTable">\n<table class="${tableClass} line_color">\n`;
             } else {
 
-                finalText += `\n<div id="liveTable">\n`;
+                finalText += `\n<div class="liveTable">\n`;
             }           
 
             
@@ -4692,7 +4692,7 @@ console.log(allArrayNew);
 //        var finalText3header = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + ' - Single Day</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText3header += HeaderName[1];
-        finalText3 = '\n<div id="liveTableS">\n';
+        finalText3 = '\n<div class="liveTableS">\n';
 
                                                             
                 headerText31 = '<tr class="rnkh_bkcolor">\n';

@@ -3129,13 +3129,13 @@
             m = 0;
             prevCompCat = ""
 
-//            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
+//            finalText += '<div class="liveTable"><table class="' + tableClass + 'line_color">';
 
             if (useCategory == "no") {
-                finalText += `\n<div id="liveTable">\n<table class="${tableClass} line_color">\n`;
+                finalText += `\n<div class="liveTable">\n<table class="${tableClass} line_color">\n`;
             } else {
 
-                finalText += `\n<div id="liveTable">\n`;
+                finalText += `\n<div class="liveTable">\n`;
             }           
 
             
@@ -5554,7 +5554,7 @@ console.log(allArrayNew);
             HeaderName[1] = HeaderName[1].replace(/DayTime">[0-9AMP\s\/:]*</g, 'DayTime">' + DayTime + '<');
         }
         finalText3header += HeaderName[1];
-        finalText3 = '\n<div id="liveTableS">\n';
+        finalText3 = '\n<div class="liveTableS">\n';
 
                                                             
                 headerText31 = '<tr class="rnkh_bkcolor">\n';

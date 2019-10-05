@@ -1814,13 +1814,13 @@ add dns
 //            m = 0;
 //            prevCompCat = ""
 
-//            finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
+//            finalText += '\n<div class="liveTable"><table class="' + tableClass + 'line_color">\n';
             
             if (useCategory == "no") {
-                finalText += '\n<div id="liveTable">\n<table class="' + tableClass + 'line_color">\n';
+                finalText += '\n<div class="liveTable">\n<table class="' + tableClass + 'line_color">\n';
             } else {
 
-                finalText += '\n<div id="liveTable">\n';
+                finalText += '\n<div class="liveTable">\n';
             }           
             
             for (l = 0; l < allArray.length; l++) {

@@ -27,7 +27,7 @@ module.exports = function(grunt) {
                 command: 'python convert_html_to_csv.py'
             },
             htmlproof: {
-                command: 'htmlproofer ./_site --disable-external --check-html  --alt-ignore "/.*/" --trace --file-ignore /liveepic/'
+                command: 'htmlproofer ./_site --disable-external --check-html  --alt-ignore "/.*/" --trace --file-ignore "/liveepic/,/results/epic/"'
             },
         //     googleClosureCompiler: {
         //       command: 'npx google-closure-compiler --compilation_level SIMPLE --js=live1/elite.js --js_output_file=live1/elite.min.js && npx google-closure-compiler --compilation_level SIMPLE --js=live/elite.js --js_output_file=live/elite.min.js'

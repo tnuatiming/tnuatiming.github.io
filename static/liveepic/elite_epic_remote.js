@@ -2107,13 +2107,13 @@ remove all imTheLeader
             m = 0;
             prevCompCat = ""
 
-//            finalText += '<div id="liveTable"><table class="' + tableClass + 'line_color">';
+//            finalText += '<div class="liveTable"><table class="' + tableClass + 'line_color">';
 
             if (useCategory == "no") {
-                finalText += '\n<div id="liveTable"><table class="' + tableClass + 'line_color">\n';
+                finalText += '\n<div class="liveTable"><table class="' + tableClass + 'line_color">\n';
             } else {
 
-                finalText += '\n<div id="liveTable">\n';
+                finalText += '\n<div class="liveTable">\n';
             }           
 
             
