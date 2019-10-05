@@ -26,7 +26,13 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
         noseason=''
         place=''
         date=''
+        
+        next(f0) # skip the first line (---)
+
         for line in f0:
+            if "---" in line: # the secound line with --- , no need to go forward, as we finished phraseing the header
+                break
+            else:
                 if "tag" in line:
                     line=line.replace('"','')
                     tag=line.replace('tag: ','').rstrip()

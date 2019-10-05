@@ -28,7 +28,7 @@
               <ul>
 
 {{ range first 4 (where .Site.Pages "Params.tag" "!=" nil) }}
-    <li><a href="{{ .RelPermalink }}"><span class="sp_tag">{{ .Params.tag }}:</span> {{ with .Params.round }}{{ . }}{{ end }}{{ with .Params.season }} עונת {{ . }}{{ end }} - {{ .Params.place }}</a></li>
+    <li><a href="{{ .RelPermalink }}"><span class="sp_tag">{{ .Params.tag }}:</span> {{ with .Params.round }}{{ . }}{{ end }}{{ if ne .Params.noseason "true" }}{{ with .Params.season }} עונת {{ . }}{{ end }}{{ end }}{{ with .Params.place }} - {{ . }}{{ end }}</a></li>
 {{ end }}
 
 {{/*<!--

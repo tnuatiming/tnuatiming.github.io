@@ -18,9 +18,9 @@
 {{ end }}
 
 
-{{- if (eq .Params.tag "epic") }}
+{{- if (eq .Params.tag "Epic Israel") }}
     <h2>{{ .Params.tag }}{{ with .Params.season }} {{ . }}{{ end }}{{ with .Params.place }} - {{ . }}{{ end }}</h2>  
-    <h2>{{ with .Params.round }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</h2>        
+    <h2>{{ with .Params.round }}{{ . }}{{ end }}</h2>        
 {{ else }}
     <h2>{{ .Params.tag }}{{ with .Params.sub }} - {{ . }}{{ end }}</h2>  
     <h2>{{ with .Params.round }}{{ . }}{{ end }}{{ if ne .Params.noseason "true" }}{{ with .Params.season }} עונת {{ . }} - {{ end }}{{ end }}{{ with .Params.place }}{{ . }} - {{ end }}{{ .Date.Format "2-1-2006" }}</h2>        

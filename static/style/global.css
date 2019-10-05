@@ -1749,7 +1749,7 @@ body#race.epic .line_color td:nth-of-type(2) {
 }
 
 .epic td.rnk_font.wrap {
-/*    max-width: 200px;*/
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
