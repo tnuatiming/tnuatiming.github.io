@@ -974,8 +974,8 @@
 <td class="rnk_font">+6:49:20.9</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">69</td><td class="rnk_font left"><div class="FirstLine "><span class="number">69-1</span><span class="name">Ran Trifon</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">69-2</span><span class="name">Yotam Fiibish</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Sigma</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">69</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">69-1</span><span class="name">Ran Trifon</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">69-2</span><span class="name">Yotam Fiibish</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Sigma</td>
 <td class="rnk_font">51:07.8</td>
 <td class="rnk_font">6:39:57.0</td>
 <td class="rnk_font">6:20:24.0</td>
@@ -1004,8 +1004,8 @@
 <td class="rnk_font">+9:42:11.6</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">43</td><td class="rnk_font left"><div class="FirstLine "><span class="number">43-1</span><span class="name">Arie Margalit</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">43-2</span><span class="name">Guy Shuster</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Arie & Guy</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">43</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">43-1</span><span class="name">Arie Margalit</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">43-2</span><span class="name">Guy Shuster</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Arie & Guy</td>
 <td class="rnk_font">1:04:12.9</td>
 <td class="rnk_font">8:08:02.0</td>
 <td class="rnk_font">7:11:55.0</td>
@@ -1399,8 +1399,8 @@
 <td class="rnk_font">+7:13:13.4</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">210</td><td class="rnk_font left"><div class="FirstLine "><span class="number">210-1</span><span class="name">Avia Mor</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">210-2</span><span class="name">Stav Ginat</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">stavia</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">210</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">210-1</span><span class="name">Avia Mor</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">210-2</span><span class="name">Stav Ginat</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">stavia</td>
 <td class="rnk_font">1:01:33.4</td>
 <td class="rnk_font">7:44:02.0</td>
 <td class="rnk_font">6:39:18.0</td>
@@ -1460,7 +1460,7 @@
 </tr>
 <tr class="rnk_bkcolor EvenRow">
 <td></td><td  title="Disqualified" class="rnk_font">DSQ</td>
-<td title="" class="rnk_font blueCard bigFont">220</td><td class="rnk_font left"><div class="FirstLine "><span class="number">220-1</span><span class="name">Dany Yakovson</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">220-2</span><span class="name">Maor Meir Shafrir</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">d.m</td>
+<td title="" class="rnk_font blueCard bigFont">220</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">220-1</span><span class="name">Dany Yakovson</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">220-2</span><span class="name">Maor Meir Shafrir</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">d.m</td>
 <td class="rnk_font">59:18.4</td>
 <td class="rnk_font">-</td>
 <td class="rnk_font">-</td>
@@ -2399,8 +2399,8 @@
 <td class="rnk_font">+1:55:02.1</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">365</td><td class="rnk_font left"><div class="FirstLine "><span class="number">365-1</span><span class="name">Adi Froumin</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">365-2</span><span class="name">Amit Avrahami</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">A-team</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">365</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">365-1</span><span class="name">Adi Froumin</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">365-2</span><span class="name">Amit Avrahami</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">A-team</td>
 <td class="rnk_font">51:22.5</td>
 <td class="rnk_font">5:24:45.0</td>
 <td class="rnk_font">5:26:19.0</td>
@@ -2419,8 +2419,8 @@
 <td class="rnk_font">+2:57:32.8</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">376</td><td class="rnk_font left"><div class="FirstLine "><span class="number">376-1</span><span class="name">Ronen Fidel</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">376-2</span><span class="name">Ruby Saadon</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">R&R team</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">376</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">376-1</span><span class="name">Ronen Fidel</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">376-2</span><span class="name">Ruby Saadon</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">R&R team</td>
 <td class="rnk_font">53:04.0</td>
 <td class="rnk_font">6:36:10.0</td>
 <td class="rnk_font">5:37:39.0</td>
@@ -2439,8 +2439,8 @@
 <td class="rnk_font">+5:17:56.7</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">396</td><td class="rnk_font left"><div class="FirstLine "><span class="number">396-1</span><span class="name">Raz Alon</span><span title="USA" class="Flag  USA"></span></div><div class="SecoundLine lineThrough"><span class="number">396-2</span><span class="name">Refael Levi</span><span title="USA" class="Flag lineThrough USA"></span></div></td><td class="rnk_font left wrap">SV707</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">396</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">396-1</span><span class="name">Raz Alon</span><span title="USA" class="Flag lineThrough USA"></span></div><div class="SecoundLine "><span class="number">396-2</span><span class="name">Refael Levi</span><span title="USA" class="Flag  USA"></span></div></td><td class="rnk_font left wrap">SV707</td>
 <td class="rnk_font">1:00:45.9</td>
 <td class="rnk_font">6:54:20.0</td>
 <td class="rnk_font">6:10:10.0</td>
@@ -2449,8 +2449,8 @@
 <td class="rnk_font">+5:19:30.6</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">349</td><td class="rnk_font left"><div class="FirstLine "><span class="number">349-1</span><span class="name">Kobi Yaffe</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">349-2</span><span class="name">Paz Bernart</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Menashkes Beer</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">349</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">349-1</span><span class="name">Kobi Yaffe</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">349-2</span><span class="name">Paz Bernart</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Menashkes Beer</td>
 <td class="rnk_font">58:01.2</td>
 <td class="rnk_font">6:55:37.0</td>
 <td class="rnk_font">6:44:44.0</td>
@@ -2469,8 +2469,8 @@
 <td class="rnk_font">+6:27:26.4</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">399</td><td class="rnk_font left"><div class="FirstLine "><span class="number">399-1</span><span class="name">Zvika Neeman</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">399-2</span><span class="name">Udi Mizrachi</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Law and Econ</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">399</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">399-1</span><span class="name">Zvika Neeman</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">399-2</span><span class="name">Udi Mizrachi</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Law and Econ</td>
 <td class="rnk_font">54:03.2</td>
 <td class="rnk_font">7:05:16.0</td>
 <td class="rnk_font">7:13:33.0</td>
@@ -2479,8 +2479,8 @@
 <td class="rnk_font">+7:56:05.9</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">384</td><td class="rnk_font left"><div class="FirstLine "><span class="number">384-1</span><span class="name">Emanuel Stanciu</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">384-2</span><span class="name">Gilles Attal</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Egozi</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">384</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">384-1</span><span class="name">Emanuel Stanciu</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">384-2</span><span class="name">Gilles Attal</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Egozi</td>
 <td class="rnk_font">1:14:34.2</td>
 <td class="rnk_font">8:02:14.0</td>
 <td class="rnk_font">7:44:58.0</td>
@@ -2899,8 +2899,8 @@
 <td class="rnk_font">+19:22.2</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">502</td><td class="rnk_font left"><div class="FirstLine "><span class="number">502-1</span><span class="name">Issy Zimmerman</span><span title="GBR" class="Flag  GBR"></span></div><div class="SecoundLine lineThrough"><span class="number">502-2</span><span class="name">John O'Connor</span><span title="RSA" class="Flag lineThrough RSA"></span></div></td><td class="rnk_font left wrap">TEAM JOC CYCLES</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">502</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">502-1</span><span class="name">Issy Zimmerman</span><span title="GBR" class="Flag lineThrough GBR"></span></div><div class="SecoundLine "><span class="number">502-2</span><span class="name">John O'Connor</span><span title="RSA" class="Flag  RSA"></span></div></td><td class="rnk_font left wrap">TEAM JOC CYCLES</td>
 <td class="rnk_font">48:02.7</td>
 <td class="rnk_font">6:47:40.0</td>
 <td class="rnk_font">4:50:47.0</td>
@@ -2929,8 +2929,8 @@
 <td class="rnk_font">+3:20:40.7</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">544</td><td class="rnk_font left"><div class="FirstLine "><span class="number">544-1</span><span class="name">Avihu Raymond</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">544-2</span><span class="name">Moti Cohen</span><span title="RSA" class="Flag lineThrough RSA"></span></div></td><td class="rnk_font left wrap">Avi & Moti</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">544</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">544-1</span><span class="name">Avihu Raymond</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">544-2</span><span class="name">Moti Cohen</span><span title="RSA" class="Flag  RSA"></span></div></td><td class="rnk_font left wrap">Avi & Moti</td>
 <td class="rnk_font">1:15:02.9</td>
 <td class="rnk_font">6:56:32.0</td>
 <td class="rnk_font">6:37:23.0</td>
@@ -2939,8 +2939,8 @@
 <td class="rnk_font">+5:15:44.5</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">542</td><td class="rnk_font left"><div class="FirstLine "><span class="number">542-1</span><span class="name">Darek Kurek</span><span title="POL" class="Flag  POL"></span></div><div class="SecoundLine lineThrough"><span class="number">542-2</span><span class="name">Krzysztof Marciniak</span><span title="POL" class="Flag lineThrough POL"></span></div></td><td class="rnk_font left wrap">Absolutebikes</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">542</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">542-1</span><span class="name">Darek Kurek</span><span title="POL" class="Flag lineThrough POL"></span></div><div class="SecoundLine "><span class="number">542-2</span><span class="name">Krzysztof Marciniak</span><span title="POL" class="Flag  POL"></span></div></td><td class="rnk_font left wrap">Absolutebikes</td>
 <td class="rnk_font">1:03:17.1</td>
 <td class="rnk_font">8:07:31.0</td>
 <td class="rnk_font">8:47:35.0</td>
@@ -2950,7 +2950,7 @@
 </tr>
 <tr class="rnk_bkcolor EvenRow">
 <td></td><td  title="Blue Board Rider" class="rnk_font blued">&nbsp;</td>
-<td title="" class="rnk_font blueCard bigFont">537</td><td class="rnk_font left"><div class="FirstLine "><span class="number">537-1</span><span class="name">Noam Feig</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine "><span class="number">537-2</span><span class="name">Eli Ben Shushan</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Cycologia</td>
+<td title="" class="rnk_font blueCard bigFont">537</td><td class="rnk_font left"><div class="FirstLine "><span class="number">537-1</span><span class="name">Noam Feig</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">537-2</span><span class="name">Eli Ben Shushan</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Cycologia</td>
 <td class="rnk_font">1:04:32.6</td>
 <td class="rnk_font">9:43:38.0</td>
 <td class="rnk_font">8:45:25.0</td>
@@ -5726,8 +5726,8 @@
 <td class="rnk_font">+4:14:28.2</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">365</td><td class="rnk_font left"><div class="FirstLine "><span class="number">365-1</span><span class="name">Adi Froumin</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">365-2</span><span class="name">Amit Avrahami</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">A-team</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">365</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">365-1</span><span class="name">Adi Froumin</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">365-2</span><span class="name">Amit Avrahami</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">A-team</td>
 <td class="rnk_font">Masters</td>
 <td class="rnk_font">51:22.5</td>
 <td class="rnk_font">5:24:45.0</td>
@@ -5748,8 +5748,8 @@
 <td class="rnk_font">+4:55:35.6</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">502</td><td class="rnk_font left"><div class="FirstLine "><span class="number">502-1</span><span class="name">Issy Zimmerman</span><span title="GBR" class="Flag  GBR"></span></div><div class="SecoundLine lineThrough"><span class="number">502-2</span><span class="name">John O'Connor</span><span title="RSA" class="Flag lineThrough RSA"></span></div></td><td class="rnk_font left wrap">TEAM JOC CYCLES</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">502</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">502-1</span><span class="name">Issy Zimmerman</span><span title="GBR" class="Flag lineThrough GBR"></span></div><div class="SecoundLine "><span class="number">502-2</span><span class="name">John O'Connor</span><span title="RSA" class="Flag  RSA"></span></div></td><td class="rnk_font left wrap">TEAM JOC CYCLES</td>
 <td class="rnk_font">Grand Masters</td>
 <td class="rnk_font">48:02.7</td>
 <td class="rnk_font">6:47:40.0</td>
@@ -5803,8 +5803,8 @@
 <td class="rnk_font">+6:37:55.6</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">376</td><td class="rnk_font left"><div class="FirstLine "><span class="number">376-1</span><span class="name">Ronen Fidel</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">376-2</span><span class="name">Ruby Saadon</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">R&R team</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">376</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">376-1</span><span class="name">Ronen Fidel</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">376-2</span><span class="name">Ruby Saadon</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">R&R team</td>
 <td class="rnk_font">Masters</td>
 <td class="rnk_font">53:04.0</td>
 <td class="rnk_font">6:36:10.0</td>
@@ -5825,8 +5825,8 @@
 <td class="rnk_font">+6:49:20.9</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">69</td><td class="rnk_font left"><div class="FirstLine "><span class="number">69-1</span><span class="name">Ran Trifon</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">69-2</span><span class="name">Yotam Fiibish</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Sigma</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">69</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">69-1</span><span class="name">Ran Trifon</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">69-2</span><span class="name">Yotam Fiibish</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Sigma</td>
 <td class="rnk_font">Men</td>
 <td class="rnk_font">51:07.8</td>
 <td class="rnk_font">6:39:57.0</td>
@@ -5847,8 +5847,8 @@
 <td class="rnk_font">+7:37:22.8</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">396</td><td class="rnk_font left"><div class="FirstLine "><span class="number">396-1</span><span class="name">Raz Alon</span><span title="USA" class="Flag  USA"></span></div><div class="SecoundLine lineThrough"><span class="number">396-2</span><span class="name">Refael Levi</span><span title="USA" class="Flag lineThrough USA"></span></div></td><td class="rnk_font left wrap">SV707</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">396</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">396-1</span><span class="name">Raz Alon</span><span title="USA" class="Flag lineThrough USA"></span></div><div class="SecoundLine "><span class="number">396-2</span><span class="name">Refael Levi</span><span title="USA" class="Flag  USA"></span></div></td><td class="rnk_font left wrap">SV707</td>
 <td class="rnk_font">Masters</td>
 <td class="rnk_font">1:00:45.9</td>
 <td class="rnk_font">6:54:20.0</td>
@@ -5869,8 +5869,8 @@
 <td class="rnk_font">+8:08:06.4</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">349</td><td class="rnk_font left"><div class="FirstLine "><span class="number">349-1</span><span class="name">Kobi Yaffe</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">349-2</span><span class="name">Paz Bernart</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Menashkes Beer</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">349</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">349-1</span><span class="name">Kobi Yaffe</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">349-2</span><span class="name">Paz Bernart</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Menashkes Beer</td>
 <td class="rnk_font">Masters</td>
 <td class="rnk_font">58:01.2</td>
 <td class="rnk_font">6:55:37.0</td>
@@ -5880,8 +5880,8 @@
 <td class="rnk_font">+8:11:57.0</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">544</td><td class="rnk_font left"><div class="FirstLine "><span class="number">544-1</span><span class="name">Avihu Raymond</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">544-2</span><span class="name">Moti Cohen</span><span title="RSA" class="Flag lineThrough RSA"></span></div></td><td class="rnk_font left wrap">Avi & Moti</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">544</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">544-1</span><span class="name">Avihu Raymond</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">544-2</span><span class="name">Moti Cohen</span><span title="RSA" class="Flag  RSA"></span></div></td><td class="rnk_font left wrap">Avi & Moti</td>
 <td class="rnk_font">Grand Masters</td>
 <td class="rnk_font">1:15:02.9</td>
 <td class="rnk_font">6:56:32.0</td>
@@ -5902,8 +5902,8 @@
 <td class="rnk_font">+8:46:52.5</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">210</td><td class="rnk_font left"><div class="FirstLine "><span class="number">210-1</span><span class="name">Avia Mor</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">210-2</span><span class="name">Stav Ginat</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">stavia</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">210</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">210-1</span><span class="name">Avia Mor</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">210-2</span><span class="name">Stav Ginat</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">stavia</td>
 <td class="rnk_font">Mixed</td>
 <td class="rnk_font">1:01:33.4</td>
 <td class="rnk_font">7:44:02.0</td>
@@ -5935,8 +5935,8 @@
 <td class="rnk_font">+9:42:11.6</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">43</td><td class="rnk_font left"><div class="FirstLine "><span class="number">43-1</span><span class="name">Arie Margalit</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">43-2</span><span class="name">Guy Shuster</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Arie & Guy</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">43</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">43-1</span><span class="name">Arie Margalit</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">43-2</span><span class="name">Guy Shuster</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Arie & Guy</td>
 <td class="rnk_font">Men</td>
 <td class="rnk_font">1:04:12.9</td>
 <td class="rnk_font">8:08:02.0</td>
@@ -5946,8 +5946,8 @@
 <td class="rnk_font">+10:13:14.7</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">399</td><td class="rnk_font left"><div class="FirstLine "><span class="number">399-1</span><span class="name">Zvika Neeman</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">399-2</span><span class="name">Udi Mizrachi</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Law and Econ</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">399</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">399-1</span><span class="name">Zvika Neeman</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">399-2</span><span class="name">Udi Mizrachi</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Law and Econ</td>
 <td class="rnk_font">Masters</td>
 <td class="rnk_font">54:03.2</td>
 <td class="rnk_font">7:05:16.0</td>
@@ -5957,8 +5957,8 @@
 <td class="rnk_font">+10:15:32.0</td>
 </tr>
 <tr class="rnk_bkcolor EvenRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">384</td><td class="rnk_font left"><div class="FirstLine "><span class="number">384-1</span><span class="name">Emanuel Stanciu</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">384-2</span><span class="name">Gilles Attal</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Egozi</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">384</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">384-1</span><span class="name">Emanuel Stanciu</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">384-2</span><span class="name">Gilles Attal</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Egozi</td>
 <td class="rnk_font">Masters</td>
 <td class="rnk_font">1:14:34.2</td>
 <td class="rnk_font">8:02:14.0</td>
@@ -5990,8 +5990,8 @@
 <td class="rnk_font">+12:32:45.9</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">542</td><td class="rnk_font left"><div class="FirstLine "><span class="number">542-1</span><span class="name">Darek Kurek</span><span title="POL" class="Flag  POL"></span></div><div class="SecoundLine lineThrough"><span class="number">542-2</span><span class="name">Krzysztof Marciniak</span><span title="POL" class="Flag lineThrough POL"></span></div></td><td class="rnk_font left wrap">Absolutebikes</td>
+<td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
+<td title="" class="rnk_font highlight bigFont">542</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">542-1</span><span class="name">Darek Kurek</span><span title="POL" class="Flag lineThrough POL"></span></div><div class="SecoundLine "><span class="number">542-2</span><span class="name">Krzysztof Marciniak</span><span title="POL" class="Flag  POL"></span></div></td><td class="rnk_font left wrap">Absolutebikes</td>
 <td class="rnk_font">Grand Masters</td>
 <td class="rnk_font">1:03:17.1</td>
 <td class="rnk_font">8:07:31.0</td>
@@ -6024,7 +6024,7 @@
 </tr>
 <tr class="rnk_bkcolor EvenRow">
 <td></td><td  title="Blue Board Rider" class="rnk_font blued">&nbsp;</td>
-<td title="" class="rnk_font blueCard bigFont">537</td><td class="rnk_font left"><div class="FirstLine "><span class="number">537-1</span><span class="name">Noam Feig</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine "><span class="number">537-2</span><span class="name">Eli Ben Shushan</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Cycologia</td>
+<td title="" class="rnk_font blueCard bigFont">537</td><td class="rnk_font left"><div class="FirstLine "><span class="number">537-1</span><span class="name">Noam Feig</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">537-2</span><span class="name">Eli Ben Shushan</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">Cycologia</td>
 <td class="rnk_font">Grand Masters</td>
 <td class="rnk_font">1:04:32.6</td>
 <td class="rnk_font">9:43:38.0</td>
@@ -6145,7 +6145,7 @@
 </tr>
 <tr class="rnk_bkcolor OddRow">
 <td></td><td  title="Disqualified" class="rnk_font">DSQ</td>
-<td title="" class="rnk_font blueCard bigFont">220</td><td class="rnk_font left"><div class="FirstLine "><span class="number">220-1</span><span class="name">Dany Yakovson</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">220-2</span><span class="name">Maor Meir Shafrir</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">d.m</td>
+<td title="" class="rnk_font blueCard bigFont">220</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">220-1</span><span class="name">Dany Yakovson</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">220-2</span><span class="name">Maor Meir Shafrir</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">d.m</td>
 <td class="rnk_font">Mixed</td>
 <td class="rnk_font">59:18.4</td>
 <td class="rnk_font">-</td>

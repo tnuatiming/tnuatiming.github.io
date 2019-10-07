@@ -105,7 +105,7 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
 
 
     with open(CWD+"/static/csv/index.html", 'a') as f2:
-        url="<li><a href=http://tnuatiming.com/csv/"+file+".csv>"+tag+" - "+round+"עונת "+season+" - "+place+" - "+date+"</a></li>"
+        url="<li><a href=https://tnuatiming.com/csv/"+file+".csv>"+tag+" - "+round+"עונת "+season+" - "+place+" - "+date+"</a></li>"
         f2.write(url+'\n') 
     f2.close()
 

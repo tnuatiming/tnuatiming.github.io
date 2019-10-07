@@ -754,18 +754,18 @@
 <td class="rnk_font">+1:02:35.0</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">79</td><td class="rnk_font left"><div class="FirstLine "><span class="number">79-1</span><span class="name">Aviad Rayfer</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">79-2</span><span class="name">Itay Rayfer</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">THE RAYFER'S</td>
-<td class="rnk_font">58:36.8</td>
-<td class="rnk_font bold">58:36.8</td>
-<td class="rnk_font">+21:27.6</td>
-</tr>
-<tr class="rnk_bkcolor EvenRow">
 <td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
 <td title="" class="rnk_font highlight bigFont">97</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">97-1</span><span class="name">Mosa Shogan</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">97-2</span><span class="name">Sausar Sagas</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Adiga Cycling</td>
 <td class="rnk_font">49:43.8</td>
 <td class="rnk_font bold">49:43.8</td>
 <td class="rnk_font">+12:34.6</td>
+</tr>
+<tr class="rnk_bkcolor EvenRow">
+<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
+<td title="" class="rnk_font highlight bigFont">79</td><td class="rnk_font left"><div class="FirstLine "><span class="number">79-1</span><span class="name">Aviad Rayfer</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">79-2</span><span class="name">Itay Rayfer</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">THE RAYFER'S</td>
+<td class="rnk_font">58:36.8</td>
+<td class="rnk_font bold">58:36.8</td>
+<td class="rnk_font">+21:27.6</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
 <td></td><td  title="Did Not Started" class="rnk_font">DNS</td>
@@ -4597,20 +4597,20 @@
 <td class="rnk_font">+1:12:06.1</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
-<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
-<td title="" class="rnk_font highlight bigFont">79</td><td class="rnk_font left"><div class="FirstLine "><span class="number">79-1</span><span class="name">Aviad Rayfer</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">79-2</span><span class="name">Itay Rayfer</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">THE RAYFER'S</td>
-<td class="rnk_font">Men</td>
-<td class="rnk_font">58:36.8</td>
-<td class="rnk_font bold">58:36.8</td>
-<td class="rnk_font">+21:27.6</td>
-</tr>
-<tr class="rnk_bkcolor EvenRow">
 <td></td><td  title="Individual Finisher" class="rnk_font">IF2</td>
 <td title="" class="rnk_font highlight bigFont">97</td><td class="rnk_font left"><div class="FirstLine lineThrough"><span class="number">97-1</span><span class="name">Mosa Shogan</span><span title="ISR" class="Flag lineThrough ISR"></span></div><div class="SecoundLine "><span class="number">97-2</span><span class="name">Sausar Sagas</span><span title="ISR" class="Flag  ISR"></span></div></td><td class="rnk_font left wrap">Adiga Cycling</td>
 <td class="rnk_font">Men</td>
 <td class="rnk_font">49:43.8</td>
 <td class="rnk_font bold">49:43.8</td>
 <td class="rnk_font">+12:34.6</td>
+</tr>
+<tr class="rnk_bkcolor EvenRow">
+<td></td><td  title="Individual Finisher" class="rnk_font">IF1</td>
+<td title="" class="rnk_font highlight bigFont">79</td><td class="rnk_font left"><div class="FirstLine "><span class="number">79-1</span><span class="name">Aviad Rayfer</span><span title="ISR" class="Flag  ISR"></span></div><div class="SecoundLine lineThrough"><span class="number">79-2</span><span class="name">Itay Rayfer</span><span title="ISR" class="Flag lineThrough ISR"></span></div></td><td class="rnk_font left wrap">THE RAYFER'S</td>
+<td class="rnk_font">Men</td>
+<td class="rnk_font">58:36.8</td>
+<td class="rnk_font bold">58:36.8</td>
+<td class="rnk_font">+21:27.6</td>
 </tr>
 <tr class="rnk_bkcolor OddRow">
 <td></td><td  title="Did Not Started" class="rnk_font">DNS</td>

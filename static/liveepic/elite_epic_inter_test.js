@@ -3544,8 +3544,6 @@ if (showComp != '') { // show only selected competitors
                     markBlue = '';
                 }
               
-
-
                  
 // MAIN TABLE DATA, build table for web (cleanResults & TV comes later)  
 
