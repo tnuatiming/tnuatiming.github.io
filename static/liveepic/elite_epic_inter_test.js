@@ -5110,14 +5110,32 @@ allArrayMinimized.push(result);
 
 */
 
-if (enableJ1 == 1) {
+                
+
+    
+    
+    
+if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") {// FIXME check if need all(mainly show), so we can watch different results on timing computer)
+    
 // get flag image src, DayTime, ElapsedTime, RemainingTime from header
 
-    if (cleanResults == 0) {
         if (raceEnded == 1) {
             headerFlag = '_CheckeredFlag.png';
             
         }
+
+        
+// TEST make array for upload which does not change on selecting intermediate or category
+//            var allArrayForUpload = JSON.parse(JSON.stringify(allArray));
+//            allArray.sort((a, b) => a.fPosition_Overall - b.fPosition_Overall);
+//            console.log('allArray For Upload:');
+//            console.log(allArray);
+
+        
+//             for (let l = 0; l < allArray.length; l++) {
+       
+        
+        
 /*
         div1 = document.createElement("div");  
         div1.innerHTML = HeaderName[1]; 
@@ -5377,10 +5395,15 @@ if (enableJ1 == 1) {
             allArrayJ[key] = allArray[l][key];
         });
         allArray[l] = allArrayJ;
-    }
-}
 
-    }        // END for l
+                 
+//            } // END for l
+
+        
+    } // END enableJ1
+
+
+            }        // END for l
          
                 
                 
@@ -5974,9 +5997,8 @@ const allArrayObject = arrayToObject(allArray, "Id_Numero")
 //    console.table(allArrayObject, ['Id_Numero', 'fPosition_Overall', 'fPosition_Categorie', 'Id_FinishTime', 'Id_Ecart1er']);
 }
     
-if (enableJ1 == 1) {
+if (enableJ1 == 1 && cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
   
-    if (cleanResults == 0 && show == 4 && useCategory == "no") { // FIXME check if need all(mainly show), so we can watch different results on timing computer
         var header = {};
         header.headerFlag = headerFlag;
         header.HeaderEventName = HeaderEventName;
@@ -5992,7 +6014,7 @@ if (enableJ1 == 1) {
         allArrayJ = JSON.stringify(allArray);             
 //        download(allArrayJ, 'j1.txt', 'text/plain');    
 //        console.log((new Date()).toLocaleTimeString() + ' downloaded j1.txt')
-    }
+    
  //       console.log(JSON.parse(allArrayJ));     
 }
 

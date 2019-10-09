@@ -1998,8 +1998,8 @@ if (epictv == 0) {
                             
                 finalText += '\n<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>\n' + headerText1 + '\n';                
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
-//                finalText += '<tr><td colspan="99" class="title_font">Overall</td></tr>' + headerText1;
-                    finalText += '\n<tr><td colspan="99" class="title_font">Overall</td></tr>\n' + headerText1 + '\n';
+//                finalText += '<tr><td colspan="99" class="title_font">GC</td></tr>' + headerText1;
+                    finalText += '\n<tr><td colspan="99" class="title_font">GC</td></tr>\n' + headerText1 + '\n';
             }
 
 
