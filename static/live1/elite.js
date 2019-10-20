@@ -1238,7 +1238,7 @@ switch(option) {  // tickerTest
                     finalText += '<td aria-label="סיים" class="rnk_font finished black' + slim + '"></td>\n';
         //            finalText += '<td class="rnk_font finished black">'+allArray[l]["Id_penalty"]+'</td>\n'; // + P penalty
                     
-                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing")) { // black
+                } else if (allArray[l]["Id_Arrow"].includes("_TrackPassing") && !(flagText[0].includes('_Stop.png'))) { // black
                     
                     finalText += '<td aria-label="על המסלול" class="rnk_font black fadeIn' + slim + '">' + allArray[l]["Id_Arrow"] + '</td>\n';
                     
@@ -1246,13 +1246,14 @@ switch(option) {  // tickerTest
                     
                     finalText += '<td class="rnk_font black fadeIn' + slim + '">P</td>\n';
                     
-                } else if (allArray[l]["Id_Arrow"] == "&#9670;") { // white
+                } else if (allArray[l]["Id_Arrow"] == "&#9670;" && !(flagText[0].includes('_Stop.png'))) { // white
                     
                     finalText += '<td class="rnk_font white scale' + slim + '">&#9670;</td>\n';
                     
                 } else {
 
-                    finalText += '<td class="rnk_font orange' + slim + '">' + allArray[l]["Id_Arrow"] + '</td>\n';
+//                    finalText += '<td class="rnk_font orange' + slim + '">' + allArray[l]["Id_Arrow"] + '</td>\n';
+                    finalText += '<td class="rnk_font white' + slim + '"></td>\n';
 
                 }
             }
