@@ -24,7 +24,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה 5</th>
         <th class="rnkh_font">הקפה 6</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor">
@@ -39,7 +38,6 @@ category: "enduro"
         <td class="rnk_font">5:34.765</td>
         <td class="rnk_font">34:13.464</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor">
         <td class="rnk_font">2</td>
@@ -52,7 +50,6 @@ category: "enduro"
         <td class="rnk_font">5:46.729</td>
         <td class="rnk_font">5:53.075</td>
         <td class="rnk_font">35:23.066</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1:09.602</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -66,7 +63,6 @@ category: "enduro"
         <td class="rnk_font">6:00.357</td>
         <td class="rnk_font">5:50.883</td>
         <td class="rnk_font">36:08.886</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1:55.422</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -80,7 +76,6 @@ category: "enduro"
         <td class="rnk_font">5:47.988</td>
         <td class="rnk_font">5:49.776</td>
         <td class="rnk_font">36:12.366</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1:58.902</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -94,7 +89,6 @@ category: "enduro"
         <td class="rnk_font">5:57.693</td>
         <td class="rnk_font">6:04.811</td>
         <td class="rnk_font">36:16.152</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2:02.688</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -108,7 +102,6 @@ category: "enduro"
         <td class="rnk_font">6:00.091</td>
         <td class="rnk_font">6:06.952</td>
         <td class="rnk_font">37:18.439</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3:04.975</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -122,7 +115,6 @@ category: "enduro"
         <td class="rnk_font">6:35.258</td>
         <td class="rnk_font">6:25.176</td>
         <td class="rnk_font">39:28.121</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">5:14.657</td>
     </tr>
     <tr>
@@ -139,7 +131,6 @@ category: "enduro"
         <td class="rnk_font">6:48.122</td>
         <td class="rnk_font">6:35.700</td>
         <td class="rnk_font">28:42.339</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2 הקפות</td>
     </tr>
     <tr>
@@ -156,7 +147,6 @@ category: "enduro"
         <td class="rnk_font">7:01.895</td>
         <td class="rnk_font">6:56.599</td>
         <td class="rnk_font">29:31.873</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2 הקפות</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -170,7 +160,6 @@ category: "enduro"
         <td class="rnk_font">6:50.974</td>
         <td class="rnk_font">6:48.578</td>
         <td class="rnk_font">13:39.552</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">4 הקפות</td>
     </tr>
     <tr>
@@ -192,7 +181,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה 5</th>
         <th class="rnkh_font">הקפה 6</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor">
@@ -207,7 +195,6 @@ category: "enduro"
         <td class="rnk_font">6:07.279</td>
         <td class="rnk_font">36:22.940</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor">
         <td class="rnk_font">2</td>
@@ -220,7 +207,6 @@ category: "enduro"
         <td class="rnk_font">6:02.206</td>
         <td class="rnk_font">5:58.330</td>
         <td class="rnk_font">36:23.721</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">0.781</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -234,7 +220,6 @@ category: "enduro"
         <td class="rnk_font">6:26.944</td>
         <td class="rnk_font">6:23.929</td>
         <td class="rnk_font">38:37.868</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2:14.928</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -248,7 +233,6 @@ category: "enduro"
         <td class="rnk_font">6:42.718</td>
         <td class="rnk_font">6:48.656</td>
         <td class="rnk_font">41:40.606</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">5:17.666</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -262,7 +246,6 @@ category: "enduro"
         <td class="rnk_font">6:08.256</td>
         <td class="rnk_font">6:05.379</td>
         <td class="rnk_font">24:33.246</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2 הקפות</td>
     </tr>
     <tr>
@@ -284,7 +267,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה 5</th>
         <th class="rnkh_font">הקפה 6</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor">
@@ -299,7 +281,6 @@ category: "enduro"
         <td class="rnk_font">5:54.905</td>
         <td class="rnk_font">36:00.420</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor">
         <td class="rnk_font">2</td>
@@ -312,7 +293,6 @@ category: "enduro"
         <td class="rnk_font">5:38.108</td>
         <td class="rnk_font">5:46.998</td>
         <td class="rnk_font">36:05.482</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">5.062</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -326,7 +306,6 @@ category: "enduro"
         <td class="rnk_font">6:04.095</td>
         <td class="rnk_font">6:03.715</td>
         <td class="rnk_font">37:11.159</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1:10.739</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -340,7 +319,6 @@ category: "enduro"
         <td class="rnk_font">6:20.462</td>
         <td class="rnk_font">6:19.993</td>
         <td class="rnk_font">38:42.530</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2:42.110</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -354,7 +332,6 @@ category: "enduro"
         <td class="rnk_font">6:38.635</td>
         <td class="rnk_font">6:46.297</td>
         <td class="rnk_font">40:30.515</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">4:30.095</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -368,7 +345,6 @@ category: "enduro"
         <td class="rnk_font">6:37.502</td>
         <td class="rnk_font">6:30.511</td>
         <td class="rnk_font">42:20.841</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">6:20.421</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -382,7 +358,6 @@ category: "enduro"
         <td class="rnk_font">6:19.419</td>
         <td class="rnk_font">6:00.218</td>
         <td class="rnk_font">31:41.601</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -396,7 +371,6 @@ category: "enduro"
         <td class="rnk_font">6:33.157</td>
         <td class="rnk_font">6:53.759</td>
         <td class="rnk_font">20:11.177</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3 הקפות</td>
     </tr>
     <tr>
@@ -418,7 +392,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה 5</th>
         <th class="rnkh_font">הקפה 6</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor">
@@ -433,7 +406,6 @@ category: "enduro"
         <td class="rnk_font">6:27.758</td>
         <td class="rnk_font">33:49.969</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor">
         <td class="rnk_font">2</td>
@@ -446,7 +418,6 @@ category: "enduro"
         <td class="rnk_font">6:44.576</td>
         <td class="rnk_font">6:41.477</td>
         <td class="rnk_font">34:57.808</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1:07.839</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -460,7 +431,6 @@ category: "enduro"
         <td class="rnk_font">6:58.544</td>
         <td class="rnk_font">6:47.169</td>
         <td class="rnk_font">35:31.818</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1:41.849</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -474,7 +444,6 @@ category: "enduro"
         <td class="rnk_font">7:10.561</td>
         <td class="rnk_font">7:18.471</td>
         <td class="rnk_font">36:25.956</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2:35.987</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -488,7 +457,6 @@ category: "enduro"
         <td class="rnk_font">7:18.350</td>
         <td class="rnk_font">7:15.724</td>
         <td class="rnk_font">36:56.330</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3:06.361</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -502,7 +470,6 @@ category: "enduro"
         <td class="rnk_font">7:31.515</td>
         <td class="rnk_font">7:24.006</td>
         <td class="rnk_font">38:21.606</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">4:31.637</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -516,7 +483,6 @@ category: "enduro"
         <td class="rnk_font">7:25.908</td>
         <td class="rnk_font">7:19.182</td>
         <td class="rnk_font">38:25.683</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">4:35.714</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -530,7 +496,6 @@ category: "enduro"
         <td class="rnk_font">8:14.945</td>
         <td class="rnk_font">8:02.775</td>
         <td class="rnk_font">42:47.281</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">8:57.312</td>
     </tr>
     <tr>
@@ -547,7 +512,6 @@ category: "enduro"
         <td class="rnk_font">7:26.082</td>
         <td class="rnk_font">7:19.841</td>
         <td class="rnk_font">14:45.923</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3 הקפות</td>
     </tr>
     <tr>
@@ -557,7 +521,6 @@ category: "enduro"
         <td class="rnk_font"></td>
         <td class="rnk_font">111</td>
         <td class="rnk_font">יוסי גוטמן</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
@@ -743,7 +706,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה 5</th>
         <th class="rnkh_font">הקפה 6</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor">
@@ -758,7 +720,6 @@ category: "enduro"
         <td class="rnk_font">6:56.495</td>
         <td class="rnk_font">34:41.266</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor">
         <td class="rnk_font">2</td>
@@ -771,7 +732,6 @@ category: "enduro"
         <td class="rnk_font">6:54.748</td>
         <td class="rnk_font">6:56.859</td>
         <td class="rnk_font">35:17.540</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">36.274</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -785,7 +745,6 @@ category: "enduro"
         <td class="rnk_font">6:55.904</td>
         <td class="rnk_font">6:57.447</td>
         <td class="rnk_font">35:34.672</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">53.406</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -799,7 +758,6 @@ category: "enduro"
         <td class="rnk_font">7:14.867</td>
         <td class="rnk_font">7:07.321</td>
         <td class="rnk_font">36:54.057</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2:12.791</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -813,7 +771,6 @@ category: "enduro"
         <td class="rnk_font">7:35.491</td>
         <td class="rnk_font">7:12.804</td>
         <td class="rnk_font">38:13.394</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3:32.128</td>
     </tr>
     <tr>
@@ -830,7 +787,6 @@ category: "enduro"
         <td class="rnk_font">7:34.590</td>
         <td class="rnk_font">7:26.791</td>
         <td class="rnk_font">22:25.490</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">2 הקפות</td>
     </tr>
     <tr>
@@ -840,7 +796,6 @@ category: "enduro"
         <td class="rnk_font"></td>
         <td class="rnk_font">656</td>
         <td class="rnk_font">עוז נהוראי</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
@@ -869,7 +824,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה 5</th>
         <th class="rnkh_font">הקפה 6</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor">
@@ -884,7 +838,6 @@ category: "enduro"
         <td class="rnk_font">7:03.401</td>
         <td class="rnk_font">35:46.153</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor">
         <td class="rnk_font">2</td>
@@ -897,7 +850,6 @@ category: "enduro"
         <td class="rnk_font">7:11.008</td>
         <td class="rnk_font">7:05.316</td>
         <td class="rnk_font">35:51.840</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">5.687</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -911,7 +863,6 @@ category: "enduro"
         <td class="rnk_font">8:04.551</td>
         <td class="rnk_font">7:29.078</td>
         <td class="rnk_font">39:56.347</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">4:10.194</td>
     </tr>
     <tr>
@@ -928,7 +879,6 @@ category: "enduro"
         <td class="rnk_font">-</td>
         <td class="rnk_font">7:30.391</td>
         <td class="rnk_font">7:30.391</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">4 הקפות</td>
     </tr>
     <tr>
@@ -945,7 +895,6 @@ category: "enduro"
         <td class="rnk_font">7:35.586</td>
         <td class="rnk_font">7:21.091</td>
         <td class="rnk_font">30:42.295</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor">
@@ -959,7 +908,6 @@ category: "enduro"
         <td class="rnk_font">6:41.929</td>
         <td class="rnk_font">6:52.046</td>
         <td class="rnk_font">13:33.975</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3 הקפות</td>
     </tr>
     <tr>
@@ -969,7 +917,6 @@ category: "enduro"
         <td class="rnk_font"></td>
         <td class="rnk_font">89</td>
         <td class="rnk_font">ישראל בוזגלו</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
