@@ -21,7 +21,7 @@
         
         {{- range .Pages.ByPublishDate.Reverse }}
 
-                <li><a title="{{ .Date.Format "2-1-2006" }}{{ with .Params.sub }} - {{ . }}{{ end }}" href="{{ .RelPermalink }}">{{ with .Params.round }}{{ . }}{{ end }}{{ with .Params.place }} - {{ . }}{{ end }}</a></li>
+                <li><a title="{{ .Date.Format "2-1-2006" }}{{ with .Params.sub }} - {{ . }}{{ end }}" href="{{ .RelPermalink }}">{{ with .Params.round }}{{ . }}{{ end }}{{ if (and (.Params.round) (.Params.place)) }} - {{ end }}{{ with .Params.place }}{{ . }}{{ end }}</a></li>
         
         {{- end }}
 
