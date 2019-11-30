@@ -1,0 +1,150 @@
+---
+title: "rallysprint2019r2"
+date: 2019-11-30
+type: results
+tag: "ראלי ספרינט"
+place: "בית קמה"
+season: "2019"
+round: "מרוץ 2"
+category: "rallysprint"
+---
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">CK</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפה 1</th>
+        <th class="rnkh_font">הקפה 2</th>
+        <th class="rnkh_font">הקפה 3</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">28</td>
+        <td class="rnk_font">יובל שרון</td>
+        <td class="rnk_font">2:56.618</td>
+        <td class="rnk_font">2:51.272</td>
+        <td class="rnk_font">2:51.038</td>
+        <td class="rnk_font">2:51.038</td>
+        <td class="rnk_font">-</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">CUP</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפה 1</th>
+        <th class="rnkh_font">הקפה 2</th>
+        <th class="rnkh_font">הקפה 3</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">4</td>
+        <td class="rnk_font">אלעד הדר</td>
+        <td class="rnk_font">4:49.215</td>
+        <td class="rnk_font">3:16.742</td>
+        <td class="rnk_font">3:12.083</td>
+        <td class="rnk_font">3:12.083</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">15</td>
+        <td class="rnk_font">מארק קרייצמן</td>
+        <td class="rnk_font">3:28.861</td>
+        <td class="rnk_font">-</td>
+        <td class="rnk_font">-</td>
+        <td class="rnk_font">3:28.861</td>
+        <td class="rnk_font">16.778</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">14</td>
+        <td class="rnk_font">גיל ניב</td>
+        <td class="rnk_font">4:00.090</td>
+        <td class="rnk_font">3:54.045</td>
+        <td class="rnk_font">4:06.111</td>
+        <td class="rnk_font">3:54.045</td>
+        <td class="rnk_font">41.962</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">STI</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפה 1</th>
+        <th class="rnkh_font">הקפה 2</th>
+        <th class="rnkh_font">הקפה 3</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">21</td>
+        <td class="rnk_font">חמאדה עודה</td>
+        <td class="rnk_font">2:54.909</td>
+        <td class="rnk_font">2:54.944</td>
+        <td class="rnk_font">2:53.516</td>
+        <td class="rnk_font">2:53.516</td>
+        <td class="rnk_font">-</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">2</td>
+        <td class="rnk_font">46</td>
+        <td class="rnk_font">אייל בן ארי</td>
+        <td class="rnk_font">3:01.476</td>
+        <td class="rnk_font">2:59.385</td>
+        <td class="rnk_font">2:58.676</td>
+        <td class="rnk_font">2:58.676</td>
+        <td class="rnk_font">5.160</td>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">3</td>
+        <td class="rnk_font">10</td>
+        <td class="rnk_font">קובי כהן</td>
+        <td class="rnk_font">3:07.345</td>
+        <td class="rnk_font">3:01.368</td>
+        <td class="rnk_font">3:01.849</td>
+        <td class="rnk_font">3:01.368</td>
+        <td class="rnk_font">7.852</td>
+    </tr>
+</table>
+<table class="line_color">
+    <tr>
+        <td colspan="99" class="title_font">T2</td>
+    </tr>
+    <tr class="rnkh_bkcolor">
+        <th class="rnkh_font">מקום</th>
+        <th class="rnkh_font">מספר</th>
+        <th class="rnkh_font">שם</th>
+        <th class="rnkh_font">הקפה 1</th>
+        <th class="rnkh_font">הקפה 2</th>
+        <th class="rnkh_font">הקפה 3</th>
+        <th class="rnkh_font">הקפה מהירה</th>
+        <th class="rnkh_font">פער</th>
+    </tr>
+    <tr class="rnk_bkcolor">
+        <td class="rnk_font">1</td>
+        <td class="rnk_font">30</td>
+        <td class="rnk_font">דדי שפרונץ</td>
+        <td class="rnk_font">3:52.754</td>
+        <td class="rnk_font">3:54.334</td>
+        <td class="rnk_font">3:46.771</td>
+        <td class="rnk_font">3:46.771</td>
+        <td class="rnk_font">-</td>
+    </tr>
+</table>
