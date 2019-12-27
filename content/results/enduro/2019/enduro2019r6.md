@@ -1298,7 +1298,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה 2</th>
         <th class="rnkh_font">הקפה 3</th>
         <th class="rnkh_font">הקפה 4</th>
-        <th class="rnkh_font">הקפה 5</th>
         <th class="rnkh_font">זמן</th>
         <th class="rnkh_font">פער</th>
     </tr>
@@ -1310,7 +1309,6 @@ category: "enduro"
         <td class="rnk_font">7:51.879</td>
         <td class="rnk_font BestTime">7:49.883</td>
         <td class="rnk_font">7:50.686</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">31:27.476</td>
         <td class="rnk_font">-</td>
     </tr>
@@ -1322,7 +1320,6 @@ category: "enduro"
         <td class="rnk_font">7:56.816</td>
         <td class="rnk_font BestTime">7:53.921</td>
         <td class="rnk_font">8:07.677</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">32:08.008</td>
         <td class="rnk_font">40.532</td>
     </tr>
@@ -1334,7 +1331,6 @@ category: "enduro"
         <td class="rnk_font">8:33.310</td>
         <td class="rnk_font">7:52.186</td>
         <td class="rnk_font BestTime">7:43.804</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">32:27.064</td>
         <td class="rnk_font">59.588</td>
     </tr>
@@ -1346,7 +1342,6 @@ category: "enduro"
         <td class="rnk_font">8:20.190</td>
         <td class="rnk_font BestTime">7:46.604</td>
         <td class="rnk_font">7:49.157</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">34:24.549</td>
         <td class="rnk_font">2:57.073</td>
     </tr>
@@ -1358,7 +1353,6 @@ category: "enduro"
         <td class="rnk_font">9:55.996</td>
         <td class="rnk_font">8:22.618</td>
         <td class="rnk_font BestTime">8:08.044</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">36:02.745</td>
         <td class="rnk_font">4:35.269</td>
     </tr>
@@ -1370,7 +1364,6 @@ category: "enduro"
         <td class="rnk_font">10:02.716</td>
         <td class="rnk_font">9:43.104</td>
         <td class="rnk_font BestTime">9:36.694</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">40:14.016</td>
         <td class="rnk_font">8:46.540</td>
     </tr>
@@ -1382,7 +1375,6 @@ category: "enduro"
         <td class="rnk_font">9:59.833</td>
         <td class="rnk_font BestTime">9:49.130</td>
         <td class="rnk_font">10:03.459</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">40:19.190</td>
         <td class="rnk_font">8:51.714</td>
     </tr>
@@ -1394,7 +1386,6 @@ category: "enduro"
         <td class="rnk_font">9:39.073</td>
         <td class="rnk_font">10:28.762</td>
         <td class="rnk_font BestTime">9:06.379</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">42:13.787</td>
         <td class="rnk_font">10:46.311</td>
     </tr>
@@ -1408,7 +1399,6 @@ category: "enduro"
         <td class="rnk_font">9:29.978</td>
         <td class="rnk_font">9:36.369</td>
         <td class="rnk_font BestTime">8:47.396</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">27:53.743</td>
         <td class="rnk_font">1 הקפה</td>

@@ -744,6 +744,8 @@ switch(option) {  // tickerTest
                         
                     // reorder laps as elite3 does something wrong with the order 
             if (allArray[l]["Id_TpsTour1"] && showIndividualLaps == 1) { 
+                
+                var reverseLapsOrder = 0; // 0 - reverse, 1 - do not reverse
 
                 g = laps; // number of laps
                 for (gg = g; gg > -1; gg--) { 
@@ -753,12 +755,17 @@ switch(option) {  // tickerTest
                         ff = gg;
                         for (z = 1; z <= g; z++)  {
                             
-                            if (ff > 0) {
-                                allArray[l]["Id_lap"+z] = allArray[l]["Id_TpsTour"+ff];
+                            
+                            if (reverseLapsOrder == 1) {
+                                if (ff > 0) {
+                                    allArray[l]["Id_lap"+z] = allArray[l]["Id_TpsTour"+ff];
+                                } else {
+                                    allArray[l]["Id_lap"+z] = "-";
+                                }
                             } else {
-                                allArray[l]["Id_lap"+z] = "-";
+                                    allArray[l]["Id_lap"+z] = allArray[l]["Id_TpsTour"+z];
+                                
                             }
-                
                             ff--; 
                         }     
             
@@ -824,13 +831,11 @@ switch(option) {  // tickerTest
             }            
                             
             if (specialTest == 1 && useCategory == "yes" && lapsNum == 0) {
-                if (allArray[l]["Id_Categorie"].includes("מקצועית")) {
-                    lapsX = 6;
+                if (allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("סופר ג'וניור")) {
+                    lapsX = 4;
                 } else if (allArray[l]["Id_Categorie"].includes("סניורים") || allArray[l]["Id_Categorie"].includes("עממית") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי")) {
                     lapsX = 5;
-                } else if (allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("סופר ג'וניור")) {
-                    lapsX = 4;
-                } else {
+                } else { // this include מקצועית
                     lapsX = 6;
                 }                
             }
@@ -1008,7 +1013,7 @@ switch(option) {  // tickerTest
                     
                     positionChanged = "";
 
-                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no") {
+                    if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "no" && allArray[l]["Id_TpsCumule"] != "-") {
                         
                         if (positionArray_All_Cat[allArray[l]["Id_Numero"]][0] < allArray[l]["Id_Position"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][0] > 0) {
                             allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
@@ -1020,7 +1025,7 @@ switch(option) {  // tickerTest
                             
                         }
                         
-                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes") {
+                    } else if (typeof positionArray_All_Cat[allArray[l]["Id_Numero"]] != 'undefined' && useCategory == "yes" && allArray[l]["Id_TpsCumule"] != "-") {
                         
                         if (positionArray_All_Cat[allArray[l]["Id_Numero"]][1] < allArray[l]["Id_PositionCategorie"] && positionArray_All_Cat[allArray[l]["Id_Numero"]][1] > 0) {
                             allArray[l]["Id_Arrow"] = '<img class="postionChanged" src="Images/_MinusPosition.svg" alt="lost places">'; // down :(
@@ -1201,7 +1206,7 @@ switch(option) {  // tickerTest
         
         //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
             
-            if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && allArray[l]["Id_Categorie"].includes("מתחילים")) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+            if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && (allArray[l]["Id_Categorie"].includes("סופר ג'וניור") || allArray[l]["Id_Categorie"].includes("מתחילים"))) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
                 checkeredFlag = "finished ";
             } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
                 checkeredFlag = "finished ";
