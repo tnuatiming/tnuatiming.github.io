@@ -611,32 +611,6 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
-        <td class="rnk_font">851</td>
-        <td class="rnk_font">מוחמד אלקריני</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-    </tr>
-    <tr class="rnk_bkcolor EvenRow">
-        <td class="rnk_font"></td>
-        <td class="rnk_font">850</td>
-        <td class="rnk_font">חאפד אלקריני</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-    </tr>
-    <tr class="rnk_bkcolor OddRow">
-        <td class="rnk_font"></td>
         <td class="rnk_font">318</td>
         <td class="rnk_font">גבי פלוטקין</td>
         <td class="rnk_font">-</td>
@@ -652,19 +626,6 @@ category: "enduro"
         <td class="rnk_font"></td>
         <td class="rnk_font">150</td>
         <td class="rnk_font">מעין חמוי</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-    </tr>
-    <tr class="rnk_bkcolor OddRow">
-        <td class="rnk_font"></td>
-        <td class="rnk_font">853</td>
-        <td class="rnk_font">בראא חרחרה</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
@@ -775,19 +736,6 @@ category: "enduro"
         <td class="rnk_font">19:58.685</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">2 הקפות</td>
-    </tr>
-    <tr class="rnk_bkcolor EvenRow">
-        <td class="rnk_font"></td>
-        <td class="rnk_font">852</td>
-        <td class="rnk_font">בני ג'אבר נדיר</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">4 הקפות</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>

@@ -745,7 +745,7 @@ switch(option) {  // tickerTest
                     // reorder laps as elite3 does something wrong with the order 
             if (allArray[l]["Id_TpsTour1"] && showIndividualLaps == 1) { 
                 
-                var reverseLapsOrder = 0; // 0 - reverse, 1 - do not reverse
+                var reverseLapsOrder = 0; // 0 - do not reverse, 1 - reverse
 
                 g = laps; // number of laps
                 for (gg = g; gg > -1; gg--) { 
