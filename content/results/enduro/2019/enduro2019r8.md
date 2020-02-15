@@ -1210,17 +1210,6 @@ category: "enduro"
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
     </tr>
-    <tr class="rnk_bkcolor EvenRow">
-        <td class="rnk_font"></td>
-        <td class="rnk_font">950</td>
-        <td class="rnk_font">אחמד סטודי</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-    </tr>
     <tr class="rnk_bkcolor OddRow">
         <td class="rnk_font"></td>
         <td class="rnk_font">968</td>
