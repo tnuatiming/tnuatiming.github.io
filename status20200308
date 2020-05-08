@@ -1,0 +1,158 @@
+● strangelove
+    State: running
+     Jobs: 0 queued
+   Failed: 0 units
+    Since: Sat 2020-03-07 16:34:48 IST; 17h ago
+   CGroup: /
+           ├─user.slice 
+           │ └─user-1000.slice 
+           │   ├─user@1000.service …
+           │   │ ├─pulseaudio.service 
+           │   │ │ ├─698 /usr/bin/pulseaudio --daemonize=no
+           │   │ │ └─778 /usr/lib/pulse/gsettings-helper
+           │   │ ├─init.scope 
+           │   │ │ ├─570 /usr/lib/systemd/systemd --user
+           │   │ │ └─571 (sd-pam)
+           │   │ ├─at-spi-dbus-bus.service 
+           │   │ │ └─1314 /usr/lib/at-spi-bus-launcher
+           │   │ └─dbus.service 
+           │   │   ├─  584 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+           │   │   ├─  613 /usr/lib/dconf-service
+           │   │   ├─  634 /usr/lib/kactivitymanagerd
+           │   │   ├─  638 /usr/bin/kglobalaccel5
+           │   │   ├─  673 /usr/lib/kf5/kscreen_backend_launcher
+           │   │   └─52142 /usr/lib/kf5/kiod5
+           │   └─session-2.scope 
+           │     ├─  566 /usr/lib/sddm/sddm-helper --socket /tmp/sddm-auth4c3513d2-62ea-442c-b0d4-0f605f8c0b08 --id 1 --start /usr/bin/startplasma-x11 --user amir
+           │     ├─  577 /usr/bin/kwalletd5 --pam-login 7 3
+           │     ├─  578 /usr/bin/startplasma-x11
+           │     ├─  594 /usr/lib/kf5/start_kdeinit --kded +kcminit_startup
+           │     ├─  595 kdeinit5: Running...
+           │     ├─  596 /usr/lib/kf5/klauncher --fd=9
+           │     ├─  599 kded5
+           │     ├─  619 /usr/bin/kaccess
+           │     ├─  623 /usr/bin/plasma_session
+           │     ├─  631 /usr/bin/ksmserver
+           │     ├─  652 /usr/bin/kwin_x11
+           │     ├─  654 /usr/bin/plasmashell
+           │     ├─  656 /usr/bin/xembedsniproxy
+           │     ├─  658 /usr/lib/polkit-kde-authentication-agent-1
+           │     ├─  660 /usr/bin/baloo_file
+           │     ├─  680 /usr/bin/gmenudbusmenuproxy
+           │     ├─  685 /usr/lib/kdeconnectd
+           │     ├─  692 /usr/lib/org_kde_powerdevil
+           │     ├─  696 /usr/bin/latte-dock
+           │     ├─  791 /usr/bin/ksysguardd
+           │     ├─  842 /usr/lib/kf5/kio_http_cache_cleaner
+           │     ├─  873 file.so [kdeinit5] file local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/kded5UcMsol.1.slave-socket
+           │     ├─ 1045 /usr/lib/chromium/chromium --password-store=basic
+           │     ├─ 1049 /usr/lib/chromium/chromium --type=zygote
+           │     ├─ 1051 /usr/lib/chromium/chromium --type=zygote
+           │     ├─ 1071 /usr/lib/chromium/chromium --type=gpu-process --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --gpu-preferences=KAAAAAAAAAAgAAAgAAAAAAAAYAAAAAAAEAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA --shared-files
+           │     ├─ 1073 /usr/lib/chromium/chromium --type=utility --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --service-sandbox-type=network --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --shared-files=v8_snapshot_data:100
+           │     ├─ 1095 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=11 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1097 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --extension-process --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=4 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1103 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --extension-process --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=5 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1121 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --extension-process --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=6 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1141 /usr/lib/chromium/chromium --type=broker
+           │     ├─ 1161 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --extension-process --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=7 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1201 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --extension-process --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=8 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1219 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --extension-process --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=10 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1250 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --extension-process --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=65 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1261 /usr/bin/plasma-browser-integration-host chrome-extension://cimiefiiaegbelhefglklhhakcgmhkai/
+           │     ├─ 1266 /usr/bin/birdtray
+           │     ├─ 1272 /usr/lib/thunderbird/thunderbird
+           │     ├─ 1284 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=20 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1345 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=19 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1423 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=21 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1472 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=22 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1507 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=23 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1521 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=30 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1535 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=49 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1553 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=53 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1568 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=24 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1582 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=25 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1601 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=35 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1614 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=12 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1650 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=78 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1666 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=34 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1695 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=15 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1722 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=56 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1733 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=84 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1756 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=55 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1795 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=88 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1807 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=29 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1819 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=58 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1917 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=47 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1945 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=63 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─ 1958 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=13 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─12471 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=51 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─14256 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=14 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─15381 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=319 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─40966 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=43 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─41074 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=44 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─50307 /usr/bin/dolphin
+           │     ├─50319 thumbnail.so [kdeinit5] thumbnail local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinnpvAup.7.slave-socket
+           │     ├─52017 /usr/bin/kate -b /home/amir/tnuatiming_2/_posts/2020-03-07-enduro2020r2.md
+           │     ├─52197 konsole [kdeinit5] --workdir /home/amir/tnuatiming_2/
+           │     ├─52200 /bin/bash
+           │     ├─52854 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=756 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─52869 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=62 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─53257 /usr/lib/firefox/firefox
+           │     ├─53366 /usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -prefsLen 6236 -prefMapSize 213802 -parentBuildID 20200218215850 -greomni /usr/lib/firefox/omni.ja -appomni /usr/lib/firefox/browser/omni.ja -appdir /usr/lib/firefox/browser 53257 true tab
+           │     ├─53402 /usr/lib/firefox/firefox -contentproc -childID 3 -isForBrowser -prefsLen 6904 -prefMapSize 213802 -parentBuildID 20200218215850 -greomni /usr/lib/firefox/omni.ja -appomni /usr/lib/firefox/browser/omni.ja -appdir /usr/lib/firefox/browser 53257 true tab
+           │     ├─53486 /usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -prefsLen 7333 -prefMapSize 213802 -parentBuildID 20200218215850 -greomni /usr/lib/firefox/omni.ja -appomni /usr/lib/firefox/browser/omni.ja -appdir /usr/lib/firefox/browser 53257 true tab
+           │     ├─53553 /usr/lib/firefox/firefox -contentproc -childID 5 -isForBrowser -prefsLen 7333 -prefMapSize 213802 -parentBuildID 20200218215850 -greomni /usr/lib/firefox/omni.ja -appomni /usr/lib/firefox/browser/omni.ja -appdir /usr/lib/firefox/browser 53257 true tab
+           │     ├─53736 /usr/lib/firefox/firefox -contentproc -childID 6 -isForBrowser -prefsLen 7333 -prefMapSize 213802 -parentBuildID 20200218215850 -greomni /usr/lib/firefox/omni.ja -appomni /usr/lib/firefox/browser/omni.ja -appdir /usr/lib/firefox/browser 53257 true tab
+           │     ├─57276 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=33 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─57708 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=933 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─59896 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=934 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─59934 /usr/lib/chromium/chromium --type=utility --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --service-sandbox-type=audio --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --shared-files=v8_snapshot_data:100
+           │     ├─61345 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=1013 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─61409 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=1014 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─61421 /usr/lib/chromium/chromium --type=renderer --enable-experimental-web-platform-features --disable-webrtc-apm-in-audio-service --field-trial-handle=8002588540513772731,14438173790205221580,131072 --enable-features=CookieDeprecationMessages --lang=en-US --disable-oor-cors --enable-auto-reload --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=1015 --no-v8-untrusted-code-mitigations --shared-files=v8_snapshot_data:100
+           │     ├─61574 /usr/bin/dolphin
+           │     ├─61580 tags.so [kdeinit5] tags local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinsOlLfn.1.slave-socket
+           │     ├─61707 sftp.so [kdeinit5] sftp local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinYwOcKY.9.slave-socket
+           │     ├─61713 thumbnail.so [kdeinit5] thumbnail local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphingNBRaq.10.slave-socket
+           │     ├─61741 sftp.so [kdeinit5] sftp local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinvDFykh.11.slave-socket
+           │     ├─61742 sftp.so [kdeinit5] sftp local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinmaygwN.12.slave-socket
+           │     ├─61744 sftp.so [kdeinit5] sftp local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinGCcXjW.13.slave-socket
+           │     ├─61746 sftp.so [kdeinit5] sftp local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinwoZtap.14.slave-socket
+           │     ├─61753 file.so [kdeinit5] file local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphintCCxVh.15.slave-socket
+           │     ├─61809 file.so [kdeinit5] file local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinpRhCfQ.16.slave-socket
+           │     ├─61810 file.so [kdeinit5] file local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphintfSLis.17.slave-socket
+           │     ├─61919 sftp.so [kdeinit5] sftp local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinOeOTNo.30.slave-socket
+           │     ├─61957 sftp.so [kdeinit5] sftp local:/run/user/1000/klauncheryhKvoF.1.slave-socket local:/run/user/1000/dolphinDIcCIs.31.slave-socket
+           │     ├─62011 sudo systemctl status
+           │     └─62013 systemctl status
+           ├─init.scope 
+           │ └─1 /sbin/init
+           └─system.slice 
+             ├─systemd-networkd.service 
+             │ └─307 /usr/lib/systemd/systemd-networkd
+             ├─systemd-udevd.service 
+             │ └─297 /usr/lib/systemd/systemd-udevd
+             ├─polkit.service 
+             │ └─514 /usr/lib/polkit-1/polkitd --no-debug
+             ├─rtkit-daemon.service 
+             │ └─731 /usr/lib/rtkit-daemon
+             ├─systemd-journald.service 
+             │ └─282 /usr/lib/systemd/systemd-journald
+             ├─lvm2-lvmetad.service 
+             │ └─289 /usr/bin/lvmetad -f
+             ├─upower.service 
+             │ └─538 /usr/lib/upowerd
+             ├─sddm.service 
+             │ ├─481 /usr/bin/sddm
+             │ └─483 /usr/lib/Xorg -nolisten tcp -auth /var/run/sddm/{f17e97e9-956f-462a-a976-7b7135575c07} -background none -noreset -displayfd 17 -seat seat0 vt1
+             ├─systemd-resolved.service 
+             │ └─450 /usr/lib/systemd/systemd-resolved
+             ├─udisks2.service 
+             │ └─510 /usr/lib/udisks2/udisksd
+             ├─dbus.service 
+             │ └─468 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+             ├─systemd-timesyncd.service 
+             │ └─452 /usr/lib/systemd/systemd-timesyncd
+             └─systemd-logind.service 
+               └─470 /usr/lib/systemd/systemd-logind

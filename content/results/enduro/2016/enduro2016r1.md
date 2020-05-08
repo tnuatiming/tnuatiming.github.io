@@ -507,7 +507,6 @@ url: /results/enduro/2016/enduro2016r1.html
         <td colspan="99" class="comment_font">הקפה מהירה: (89) בן בניזרי - 12:40.847</td>
     </tr>
 </table>
-
 <table class="no_num_color big_table">
     <tr>
         <td colspan="99" class="title_font">מהלך המירוץ</td>
@@ -1113,9 +1112,7 @@ url: /results/enduro/2016/enduro2016r1.html
         <td class="rnk_font"></td>
     </tr>
 </table>
-
 <h3>ילדים ונוער</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס</td>

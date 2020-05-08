@@ -1454,6 +1454,4 @@ category: "enduro"
     <tr>
         <td colspan="99" class="comment_font">הקפה מהירה: (11) ניסים ישראל סויסה - 6:39.111</td>
     </tr>
-
 </table>     
-                

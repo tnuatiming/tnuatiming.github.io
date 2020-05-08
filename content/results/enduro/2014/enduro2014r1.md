@@ -113,7 +113,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">E2 מקצועית</td>
@@ -189,7 +188,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">E3 מקצועית</td>
@@ -237,7 +235,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">C1 עממית</td>
@@ -321,7 +318,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font">4:00.000</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">C2 עממית</td>
@@ -457,7 +453,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font">14:00.000</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">C3 עממית</td>
@@ -515,7 +510,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">סניורים</td>
@@ -638,7 +632,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font">20:00.000</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">מתחילים</td>
@@ -692,7 +685,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font">8:00.000</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">נוער</td>
@@ -767,7 +759,6 @@ url: /results/enduro/2014/enduro2014r1.html
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">ילדים</td>

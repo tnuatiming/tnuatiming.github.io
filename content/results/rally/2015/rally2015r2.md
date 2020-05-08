@@ -119,7 +119,6 @@ url: /results/rally/2015/rally2015r2.html
     <th class="rnkh_font">עונשין</th>
     <th class="rnkh_font">פער</th>
 </tr>
-
 <tr class="rnk_bkcolor">
     <td class="rnk_font">1</td>
     <td class="rnk_font">40</td>

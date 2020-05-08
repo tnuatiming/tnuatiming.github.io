@@ -9,8 +9,6 @@ season: "2019"
 round: "מרוץ 2"
 category: "enduro"
 ---
-
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית E1</td>
@@ -1569,7 +1567,6 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (163) שירן פרוחי - 7:43.713</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניור מתחילים</td>
@@ -2029,5 +2026,3 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (44) עומר כהן - 8:24.530</td>
     </tr>
 </table>
-             
- 

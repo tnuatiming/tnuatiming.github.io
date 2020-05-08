@@ -1147,8 +1147,6 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (251) בן אלמגור - 12:18.766</td>
     </tr>
 </table>
-
-
 <table class="no_num_color">
     <tr>
         <td colspan="99" class="title_font">מהלך המירוץ</td>
@@ -2498,9 +2496,6 @@ category: "enduro"
         <td class="rnk_font"></td>
     </tr>
 </table>
-
-
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניור מתחילים</td>
@@ -2918,7 +2913,6 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (47) נבו בזה - 2:21.371</td>
     </tr>
 </table>
-
 <table class="no_num_color big_table">
     <tr>
         <td colspan="99" class="title_font">מהלך המירוץ</td>

@@ -61,7 +61,22 @@ for file in sorted(glob.glob("*.md"), reverse=True):# go trough the files
 #    print (fileNew)
 
     pathlib.Path(CWD+'/content/results/' + category + '/' + season).mkdir(parents=True, exist_ok=True) 
-    copyfile(file, CWD+'/content/results/' + category + '/' + season + '/' + fileNew)
+
+
+#    copyfile(file, CWD+'/content/results/' + category + '/' + season + '/' + fileNew)
+# replaced the above line so empty lines are deleted, as they are phrased as <pre><code> by hugo (need to verefied this)
+    with open(file) as infile, open(CWD+'/content/results/' + category + '/' + season + '/' + fileNew, 'w') as outfile:
+#option 1
+#        for line in infile:
+#            if not line.strip(): continue  # skip the empty line
+#            outfile.write(line)  # non-empty line. Write it to output
+
+#option 2
+        lines = infile.readlines()
+#        lines = filter(lambda x: x.strip(), lines)
+        lines = filter(str.strip, lines)
+        outfile.writelines(lines)   
+
 
     date = datetime.datetime.strptime(file[:10], '%Y-%m-%d').strftime('%Y-%m-%d').rstrip()# extract date from file name and make it beutyfull
 #    date = datetime.datetime.strptime(file[:10], '%Y-%m-%d').isoformat(timespec='seconds')# extract date from file name and make it beutyfull

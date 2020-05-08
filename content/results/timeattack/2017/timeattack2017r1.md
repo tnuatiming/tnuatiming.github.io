@@ -8,9 +8,7 @@ season: "2017"
 round: "מרוץ 1"
 category: "timeattack"
 ---
-
 <h3>מקצה דרוג 1</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">קטגוריה א' - עד 200 כח סוּס</td>
@@ -386,9 +384,7 @@ category: "timeattack"
         <td class="rnk_font">7.723</td>
     </tr>
 </table>
-
 <h3>מקצה דרוג 2</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">קטגוריה א' - עד 200 כח סוּס</td>
@@ -767,9 +763,7 @@ category: "timeattack"
         <td class="rnk_font">5.088</td>
     </tr>
 </table>
-
 <h3>גמר</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">קטגוריה א' - עד 200 כח סוּס</td>

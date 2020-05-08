@@ -97,7 +97,6 @@ category: "superbike"
     <td colspan="99" class="comment_font">הקפה מהירה: (95) אלי חן - 46.345</td>
 </tr>
 </table>
-
 <table class="no_num_color">
 <tr>
     <td colspan="99" class="title_font">מקצועית - מהלך המירוץ</td>
@@ -312,7 +311,6 @@ category: "superbike"
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">רוקיז עד 1000</td>
@@ -410,7 +408,6 @@ category: "superbike"
     <td colspan="99" class="comment_font">הקפה מהירה: (18) אליעד איטח - 52.964</td>
 </tr>
 </table>
-
 <table class="no_num_color">
 <tr>
     <td colspan="99" class="title_font">רוקיז - מהלך המירוץ</td>

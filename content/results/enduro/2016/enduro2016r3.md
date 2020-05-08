@@ -24,7 +24,6 @@ category: "enduro"
         <th class="rnkh_font">הקפה מהירה</th>
         <th class="rnkh_font">עונשין</th>
     </tr>
-
     <tr class="rnk_bkcolor">
         <td class="rnk_font">1</td>
         <td class="rnk_font">25</td>
@@ -615,9 +614,7 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (103) ברק פולקמר - 18:22.829</td>
     </tr>
 </table>
-
 <h3>ילדים ונוער</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס</td>
@@ -631,7 +628,6 @@ category: "enduro"
         <th class="rnkh_font">פער</th>
         <th class="rnkh_font">הקפה מהירה</th>
     </tr>
-
     <tr class="rnk_bkcolor">
         <td class="rnk_font">1</td>
         <td class="rnk_font">47</td>

@@ -1,0 +1,14 @@
+<Files liveadmin.html>
+AuthName "please, log in"
+AuthType Basic
+AuthUserFile /home/raz/public_html/.htpasswd
+Require valid-user
+</Files>
+<Files msg.html>
+AuthName "please, log in"
+AuthType Basic
+AuthUserFile /home/raz/public_html/.htpasswd
+Require valid-user
+</Files>
+ 
+ 

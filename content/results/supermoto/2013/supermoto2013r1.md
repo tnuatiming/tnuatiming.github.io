@@ -106,7 +106,6 @@ category: "supermoto"
     <td colspan="99" class="comment_font">הקפה מהירה: (19) אליהב אלעד - 30.089</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופרמוטו S1 - מרוץ 2</td>
@@ -196,7 +195,6 @@ category: "supermoto"
     <td colspan="99" class="comment_font">הקפה מהירה: (19) אליהב אלעד - 30.011</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופרמוטו S2 - מרוץ 1</td>
@@ -262,7 +260,6 @@ category: "supermoto"
     <td colspan="99" class="comment_font">הקפה מהירה: (17) מירון איתמר - 32.354</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופרמוטו עממית - מרוץ 1</td>
@@ -355,7 +352,6 @@ category: "supermoto"
     <td colspan="99" class="comment_font">הקפה מהירה: (10) בן זקן גלעד - 34.923</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופרמוטו עממית - מרוץ 2</td>
@@ -436,9 +432,7 @@ category: "supermoto"
     <td colspan="99" class="comment_font">הקפה מהירה: (88) זגלסקי יבגני - 34.409</td>
 </tr>
 </table>
-
 <h2>מקצי דירוג</h2>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">דירוג סופרמוטו S1</td>
@@ -516,7 +510,6 @@ category: "supermoto"
     <td class="rnk_font">25</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">דירוג סופרמוטו S2</td>
@@ -570,7 +563,6 @@ category: "supermoto"
     <td class="rnk_font">21</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">דירוג סופרמוטו עממית</td>

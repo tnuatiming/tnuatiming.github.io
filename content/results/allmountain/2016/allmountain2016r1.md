@@ -103,7 +103,6 @@ category: "allmountain"
     <td class="rnk_font">9:17.097</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">נשים</td>
@@ -865,7 +864,6 @@ category: "allmountain"
     <td class="rnk_font">3:21.260</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">בנות 10-13</td>

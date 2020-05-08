@@ -1301,5 +1301,3 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (27) אופיר קייסי צמח - 2:01.762</td>
     </tr>
 </table>
-
-                

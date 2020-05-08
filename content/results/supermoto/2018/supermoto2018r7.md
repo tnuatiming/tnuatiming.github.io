@@ -55,7 +55,6 @@ category: "supermoto"
     <tr>
         <td colspan="99" class="comment_font">הקפה מהירה: (696) לי ברדה - 1:15.887</td>
     </tr>
-
 </table>
 <table class="line_color">
     <tr>
@@ -102,7 +101,6 @@ category: "supermoto"
     </tr>
 </table>
 <table class="line_color">
-
     <tr>
         <td colspan="99" class="title_font">S2 - מקצה ראשון</td>
     </tr>

@@ -10,7 +10,6 @@ round: "מרוץ 6"
 category: "enduro"
 ---
 <p class="message">לתשומת לבכם: ההקפות מופיעות בסדר הפוך - כך שהקפה 1 היא ההקפה האחרונה - הקפה 2 היא ההקפה הלפני אחרונה וכך הלאה.</p>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">E1</td>

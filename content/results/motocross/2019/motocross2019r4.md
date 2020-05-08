@@ -1423,4 +1423,3 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (15) איתמר עמר - 2:02.511</td>
     </tr>
 </table>
- 

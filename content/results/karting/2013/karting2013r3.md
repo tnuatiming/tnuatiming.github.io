@@ -112,7 +112,6 @@ category: "karting"
     <td class="rnk_font">10</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">חצי גמר YAMAHA</td>
@@ -166,7 +165,6 @@ category: "karting"
     <td colspan="99" class="comment_font">הקפה מהירה: (1) שרלינג מיכאל - 30.334</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">חצי גמר 125</td>
@@ -245,7 +243,6 @@ category: "karting"
     <td colspan="99" class="comment_font">הקפה מהירה: (69) בלנגה דביר - 27.757</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">גמר YAMAHA</td>
@@ -299,7 +296,6 @@ category: "karting"
     <td colspan="99" class="comment_font">הקפה מהירה: (1) שרלינג מיכאל - 29.791</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">גמר 125</td>

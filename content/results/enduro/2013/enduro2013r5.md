@@ -206,7 +206,6 @@ category: "enduro"
     <td class="rnk_font">35:25.491</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">E1 עממית</td>
@@ -539,7 +538,6 @@ category: "enduro"
     <td class="rnk_font">46:23.285</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">מתחילים</td>

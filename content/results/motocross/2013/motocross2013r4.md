@@ -97,7 +97,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (47) סלע סוף - 1:10.291</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס 8-12 - מקצה שני</td>
@@ -190,7 +189,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (47) סלע סוף - 1:09.864</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס 12-16 - מקצה ראשון</td>
@@ -322,7 +320,6 @@ category: "motocross"
         <td class="rnk_font">1:13.941</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס 12-16 - מקצה שני</td>
@@ -448,7 +445,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (90) מלאכי גל - 53.499</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">אנדורו עממית - מקצה ראשון</td>
@@ -592,7 +588,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (12) ישראל עדי - 1:08.983</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">אנדורו עממית - מקצה שני</td>
@@ -739,7 +734,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (60) שחם ניר - 1:09.196</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מוטוקרוס עממית - מקצה ראשון</td>
@@ -973,7 +967,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (51) שטיין דודי - 1:05.454</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית לייטס - מקצה ראשון</td>
@@ -1090,7 +1083,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (21) הראל תומר - 1:02.240</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית לייטס - מקצה שני</td>
@@ -1207,7 +1199,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (21) הראל תומר - 1:01.924</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית פתוחה - מקצה ראשון</td>
@@ -1369,7 +1360,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (222) לוי יונתן - 1:00.438</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית פתוחה - מקצה שני</td>
@@ -1450,7 +1440,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (222) לוי יונתן - 59.678</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית אנדורו - מקצה ראשון</td>
@@ -1508,7 +1497,6 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (51) שטפל רון - 1:05.080</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">מקצועית אנדורו - מקצה שני</td>

@@ -727,7 +727,6 @@ category: "enduro"
     <td colspan="99" class="comment_font">הקפה מהירה: יונתן לוי (22) 8:08.120</td>
 </tr>
 </table>
-
 <table class="no_num_color big_table">
 <tr>
     <td colspan="99" class="title_font" > מהלך המירוץ</td>

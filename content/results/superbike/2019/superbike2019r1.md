@@ -482,4 +482,3 @@ category: "superbike"
         <td colspan="99" class="comment_font">הקפה מהירה: (93) יונתן מאירי - 52.316</td>
     </tr>
 </table>
-                    

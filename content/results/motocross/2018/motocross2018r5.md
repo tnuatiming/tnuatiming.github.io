@@ -1376,4 +1376,3 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (1) בן אלמגור - 2:02.267</td>
     </tr>
 </table>
-            

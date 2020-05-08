@@ -97,7 +97,6 @@ category: "superbike"
     <td colspan="99" class="comment_font">הקפה מהירה: (33) אביוב חן - 31.294</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופרבייק GP1 - מרוץ 2</td>
@@ -169,7 +168,6 @@ category: "superbike"
     <td colspan="99" class="comment_font">הקפה מהירה: (5) ארדזי ערן - 30.975</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופרבייק GP2 - מרוץ 1</td>
@@ -253,7 +251,6 @@ category: "superbike"
     <td colspan="99" class="comment_font">הקפה מהירה: (19) לב ליעד - 32.568</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופרבייק GP2 - מרוץ 2</td>
@@ -328,9 +325,7 @@ category: "superbike"
     <td colspan="99" class="comment_font">הקפה מהירה: (19) לב ליעד - 32.893</td>
 </tr>
 </table>
-
 <h2>מקצי דירוג</h2>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">דירוג סופרבייק GP1</td>
@@ -408,7 +403,6 @@ category: "superbike"
     <td class="rnk_font">21</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">דירוג סופרבייק GP2</td>

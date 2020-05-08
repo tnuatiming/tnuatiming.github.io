@@ -224,7 +224,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (108) קורי נאמט - 51.384</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">MX2 - מקצה ראשון</td>
@@ -343,7 +342,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (100) אליקו אוחנה - 53.503</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">MX2 - מקצה שני</td>
@@ -462,7 +460,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (25) דור עטיה - 53.590</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">MX3 - מקצה ראשון</td>
@@ -621,7 +618,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (15) גיא אליתים - 53.871</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">MX3 - מקצה שני</td>
@@ -780,7 +776,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (22) אריאל דדיה - 56.061</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סניורים - מקצה ראשון</td>
@@ -879,7 +874,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (616) ירון גולדשטיין - 55.294</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סניורים - מקצה שני</td>
@@ -978,7 +972,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (6) מאור אברהם - 58.286</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מתחילים בוגרים - מקצה ראשון</td>
@@ -1167,7 +1160,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (9) לידור גואטה - 58.032</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מתחילים בוגרים - מקצה שני</td>
@@ -1356,7 +1348,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (9) לידור גואטה - 58.114</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מתחילים ג'וניורס - מקצה ראשון</td>
@@ -1455,7 +1446,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (17) הראל הימן - 1:08.632</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מתחילים ג'וניורס - מקצה שני</td>
@@ -1554,7 +1544,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (4) ניב סבן - 1:09.388</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">ג'וניורס - מקצה ראשון</td>
@@ -1673,7 +1662,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (22) איתי דב - 58.630</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">ג'וניורס - מקצה שני</td>
@@ -1792,7 +1780,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (22) איתי דב - 1:00.739</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופר ג'וניורס - מקצה ראשון</td>
@@ -1871,7 +1858,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (22) אקרם אלחמידי - 1:10.643</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">סופר ג'וניורס - מקצה שני</td>

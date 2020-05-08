@@ -321,7 +321,6 @@ category: "enduro"
     <td class="rnk_font">01:36:40.278</td>
     <td class="rnk_font">1 הקפה</td>
 </tr>
-
 <tr class="rnk_bkcolor">
     <td class="rnk_font">8</td>
     <td class="rnk_font">576</td>
@@ -497,7 +496,6 @@ category: "enduro"
     <th class="rnkh_font">זמן כולל</th>
     <th class="rnkh_font">פער</th>
 </tr>
-
 <tr class="rnk_bkcolor">
     <td class="rnk_font">1</td>
     <td class="rnk_font">811</td>
@@ -506,7 +504,6 @@ category: "enduro"
     <td class="rnk_font">01:02:03.816</td>
     <td class="rnk_font">-</td>
 </tr>
-
 <tr class="rnk_bkcolor">
     <td class="rnk_font">2</td>
     <td class="rnk_font">77</td>

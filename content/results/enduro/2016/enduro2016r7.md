@@ -632,9 +632,7 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (212) אמיר ויצמן - 13:09.193</td>
     </tr>
 </table>
-
 <h3>ילדים ונוער</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס מקצועית</td>
@@ -1113,4 +1111,3 @@ category: "enduro"
         <td class="rnk_font"></td>
     </tr>
 </table>
-

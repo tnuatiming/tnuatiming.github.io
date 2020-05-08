@@ -881,7 +881,6 @@ category: "motocross"
     <tr>
         <td colspan="99" class="comment_font">הקפה מהירה: (15) מתן ניר - 1:57.810</td>
     </tr>
-
 </table>
 <table class="line_color">
     <tr>
@@ -1221,5 +1220,3 @@ category: "motocross"
         <td colspan="99" class="comment_font">הקפה מהירה: (48) שי אשכנזי - 2:16.354</td>
     </tr>
 </table>
-
-                

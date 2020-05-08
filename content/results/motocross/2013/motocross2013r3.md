@@ -88,7 +88,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (222) לוי יונתן - 42.062</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מקצועית פתוחה - מקצה שני</td>
@@ -169,7 +168,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (5) כרמי זיו - 41.673</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מקצועית לייטס - מקצה ראשון</td>
@@ -289,7 +287,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (219) בן אהרון אסף - 42.656</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מקצועית לייטס - מקצה שני</td>
@@ -409,7 +406,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (146) רגף רוני - 43.387</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">אנדורו מקצועית - מקצה ראשון</td>
@@ -463,7 +459,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (94) נוב בר - 43.343</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">אנדורו מקצועית - מקצה שני</td>
@@ -526,7 +521,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (61) שטפל רון - 43.776</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מוטוקרוס עממית - מקצה ראשון</td>
@@ -607,7 +601,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (35) רונן נדב - 44.888</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">מוטוקרוס עממית - מקצה שני</td>
@@ -688,7 +681,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (35) רונן נדב - 44.846</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">אנדורו עממית - מקצה ראשון</td>
@@ -814,7 +806,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (71) דודאי ברק - 48.290</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">אנדורו עממית - מקצה שני</td>
@@ -931,7 +922,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (65) גלילי זוהר - 46.806</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">ג'וניורס 8-12 - מקצה ראשון</td>
@@ -994,7 +984,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (101) פורמנוב גלב - 1:02.644</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">ג'וניורס 8-12 - מקצה שני</td>
@@ -1057,7 +1046,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (97) אלאל נועם - 58.491</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">ג'וניורס 12-16 - מקצה ראשון</td>
@@ -1138,7 +1126,6 @@ category: "motocross"
     <td colspan="99" class="comment_font">הקפה מהירה: (90) מלאכי גל - 49.321</td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">ג'וניורס 12-16 - מקצה שני</td>

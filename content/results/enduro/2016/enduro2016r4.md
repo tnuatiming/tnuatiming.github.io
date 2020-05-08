@@ -704,9 +704,7 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (777) לאי זכור - 15:29.696</td>
     </tr>
 </table>
-
 <h3>ילדים ונוער</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס מקצועית</td>
@@ -719,7 +717,6 @@ category: "enduro"
         <th class="rnkh_font">זמן כולל</th>
         <th class="rnkh_font">פער</th>
     </tr>
-
     <tr class="rnk_bkcolor">
         <td class="rnk_font">1</td>
         <td class="rnk_font">47</td>
@@ -981,7 +978,6 @@ category: "enduro"
         <td class="rnk_font">2 הקפות</td>
     </tr>
 </table>
-
 <table class="no_num_color big_table">
     <tr >
         <td colspan="99" class="title_font">מהלך המירוץ</td>
@@ -1015,7 +1011,6 @@ category: "enduro"
         <th class="rnkh_font">25</th>
         <th class="rnkh_font">26</th>
         </tr>
-    
     <tr class="rnk_bkcolor">
         <td class="rnk_font">הקפה 1</td>
         <td class="rnk_font">45</td>
@@ -1771,4 +1766,3 @@ category: "enduro"
         <td class="rnk_font"></td>
     </tr>
 </table>
-

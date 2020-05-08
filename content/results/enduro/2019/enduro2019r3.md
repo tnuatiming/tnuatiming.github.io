@@ -1308,5 +1308,3 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (44) עומר כהן - 2:44.000</td>
     </tr>
 </table>
-            
- 

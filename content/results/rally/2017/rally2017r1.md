@@ -11,7 +11,6 @@ category: "rally"
     <tr>
         <td colspan="99" class="title_font">Group N</td>
     </tr>
-
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
         <th class="rnkh_font">מספר</th>
@@ -61,7 +60,6 @@ category: "rally"
     <tr>
         <td colspan="99" class="title_font">Group N cup</td>
     </tr>
-
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
         <th class="rnkh_font">מספר</th>
@@ -136,7 +134,6 @@ category: "rally"
     <tr>
         <td colspan="99" class="title_font">OPEN</td>
     </tr>
-
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
         <th class="rnkh_font">מספר</th>
@@ -178,7 +175,6 @@ category: "rally"
     <tr>
         <td colspan="99" class="title_font">T3</td>
     </tr>
-
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
         <th class="rnkh_font">מספר</th>
@@ -239,7 +235,6 @@ category: "rally"
     <tr>
         <td colspan="99" class="title_font">באחה</td>
     </tr>
-
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
         <th class="rnkh_font">מספר</th>

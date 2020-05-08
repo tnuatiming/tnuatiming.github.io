@@ -650,9 +650,7 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (777) אורן זכור - 6:34.388</td>
     </tr>
 </table>
-
 <h3>ילדים ונוער</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס מקצועית</td>
@@ -879,7 +877,6 @@ category: "enduro"
     <tr>
         <td colspan="99" class="title_font">סופר ג'וניורס - מתחילים</td>
     </tr>
-
     <tr class="rnkh_bkcolor">
         <th class="rnkh_font">מקום</th>
         <th class="rnkh_font">מספר</th>
@@ -911,7 +908,6 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (31) איתמר ברדה - 7:56.589</td>
     </tr>
 </table>
-
 <table class="no_num_color big_table">
     <tr >
         <td colspan="99" class="title_font">מהלך המירוץ</td>
@@ -1313,4 +1309,3 @@ category: "enduro"
         <td class="rnk_font"></td>
     </tr>
 </table>
-

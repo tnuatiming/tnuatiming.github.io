@@ -73,7 +73,6 @@ category: "allmountain"
         <td class="rnk_font">1:43.136</td>
     </tr>
 </table>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">אינדורו נשים</td>

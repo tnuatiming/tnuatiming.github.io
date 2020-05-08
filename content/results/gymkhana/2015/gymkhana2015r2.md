@@ -764,9 +764,7 @@ category: "gymkhana"
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <h3>גמר</h3>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">הנעה אחורית</td>
@@ -1047,9 +1045,7 @@ category: "gymkhana"
     <td class="rnk_font">0.901</td>
 </tr>
 </table>
-
 <h3>אלוף האלופים</h3>
-
 <table class="line_color big_table">
 <tr class="rnkh_bkcolor">
     <th class="rnkh_font">מקום</th>

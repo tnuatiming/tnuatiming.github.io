@@ -713,7 +713,6 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (447) סוף סלע - 13:07.274</td>
     </tr>
 </table>
-
 <table class="no_num_color big_table">
     <tr>
     <td colspan="99" class="title_font">מהלך המירוץ</td>
@@ -1679,9 +1678,7 @@ category: "enduro"
         <td class="rnk_font"></td>
     </tr>
 </table>
-
 <h3>ילדים ונוער</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס מקצועית</td>
@@ -1948,7 +1945,6 @@ category: "enduro"
         <td colspan="99" class="comment_font">הקפה מהירה: (119) ניב הימן - 13:47.345</td>
     </tr>
 </table>
-
 <table class="no_num_color big_table">
     <tr >
         <td colspan="99" class="title_font">מהלך המירוץ</td>
@@ -2230,4 +2226,3 @@ category: "enduro"
         <td class="rnk_font"></td>
     </tr>
 </table>
-

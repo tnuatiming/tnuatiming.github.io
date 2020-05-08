@@ -207,7 +207,6 @@ url: /results/enduro/2014/enduro2014r2.html
     <td class="rnk_font">41.849</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">C1 - עממית קטנה</td>
@@ -495,7 +494,6 @@ url: /results/enduro/2014/enduro2014r2.html
     <td class="rnk_font">10:12.483</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">מתחילים</td>
@@ -622,7 +620,6 @@ url: /results/enduro/2014/enduro2014r2.html
     <td class="rnk_font">8:01.195</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">J2 - נוער</td>
@@ -672,7 +669,6 @@ url: /results/enduro/2014/enduro2014r2.html
     <td class="rnk_font">3:20.708</td>
 </tr>
 </table>
-
 <table class="line_color big_table">
 <tr>
     <td colspan="99" class="title_font">J1 - ילדים</td>

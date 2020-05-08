@@ -8,7 +8,6 @@ season: "2019"
 round: "ליגת צ'יף - מרוץ 6"
 category: "superbike"
 ---
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">600 סופרספורט</td>

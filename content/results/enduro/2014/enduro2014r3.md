@@ -721,7 +721,6 @@ category: "enduro"
     <td colspan="99" class="comment_font">הקפה מהירה: (700) גוטמן יוסי - 14:21.442</td>
 </tr>
 </table>
-
 <table class="no_num_color big_table">
 <tr>
     <td colspan="99" class="title_font">מהלך המירוץ</td>
@@ -1637,7 +1636,6 @@ category: "enduro"
     <td class="rnk_font"></td>
 </tr>
 </table>
-
 <table class="line_color">
 <tr>
     <td colspan="99" class="title_font">J1</td>
@@ -1754,7 +1752,6 @@ category: "enduro"
     <td colspan="99" class="comment_font">הקפה מהירה: (47) סלע גב - 2:48.765</td>
 </tr>
 </table>
-
 <table class="no_num_color">
 <tr>
     <td colspan="99" class="title_font" > מהלך המרוץ</td>
@@ -1925,4 +1922,3 @@ category: "enduro"
     <td class="rnk_font"></td>
 </tr>
 </table>
-

@@ -1,0 +1,10 @@
+NEXT                         LEFT     LAST                         PASSED     UNIT                         ACTIVATES
+Sun 2020-03-08 16:50:12 IST  7h left  Sat 2020-03-07 16:50:12 IST  16h ago    systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Mon 2020-03-09 00:00:00 IST  14h left Mon 2020-03-02 00:00:07 IST  6 days ago fstrim.timer                 fstrim.service
+Mon 2020-03-09 00:00:00 IST  14h left Mon 2020-03-02 00:00:07 IST  6 days ago hosts.timer                  hosts.service
+Mon 2020-03-09 00:00:00 IST  14h left Sun 2020-03-08 00:00:25 IST  9h ago     logrotate.timer              logrotate.service
+Mon 2020-03-09 00:00:00 IST  14h left Sun 2020-03-08 00:00:25 IST  9h ago     man-db.timer                 man-db.service
+Mon 2020-03-09 00:00:00 IST  14h left Sun 2020-03-08 00:00:25 IST  9h ago     shadow.timer                 shadow.service
+
+6 timers listed.
+Pass --all to see loaded but inactive timers, too.

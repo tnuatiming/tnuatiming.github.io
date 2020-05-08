@@ -9,7 +9,6 @@ season: "2018"
 round: "מרוץ 2"
 category: "enduro"
 ---
-
 <table class="line_color big_table">
     <tr>
         <td colspan="99" class="title_font">מקצועית E1</td>

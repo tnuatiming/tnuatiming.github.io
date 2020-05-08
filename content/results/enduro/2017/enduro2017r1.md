@@ -2675,9 +2675,7 @@ url: /results/enduro/2017/enduro2017r1.html
         <td class="rnk_font"></td>
     </tr>
 </table>
-
 <h3>ילדים ונוער</h3>
-
 <table class="line_color">
     <tr>
         <td colspan="99" class="title_font">ג'וניורס מקצועי</td>
