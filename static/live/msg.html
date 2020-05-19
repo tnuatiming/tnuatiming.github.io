@@ -1,4 +1,3 @@
-<?php include("/home/raz/public_html/password_protect.php"); ?>
 <!DOCTYPE html>
 <html class="no-js" lang="he" xml:lang="he">
 <head>
