@@ -16,6 +16,7 @@
     "load-grunt-tasks": "^5.1.0"
   },
   "dependencies": {
-    "google-closure-compiler": "^20200517.0.0"
+    "google-closure-compiler": "^20200517.0.0",
+    "lodash": "^4.17.15"
   }
 }
