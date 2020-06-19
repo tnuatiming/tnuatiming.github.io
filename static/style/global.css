@@ -667,6 +667,11 @@ span#name, span#rund, span#date {
     background-color: rgba(0, 176, 240, 0.7);
     color: #222;
 }
+#live td.blue1Cat {
+    font-weight: 700;
+    background-color: rgba(0, 64, 255, 0.7);
+    color: #fff;
+}
 #live td.whiteCat {
     font-weight: 700;
     background-color: rgba(255, 255, 255, 0.7);
@@ -893,7 +898,7 @@ td[aria-label] {
     position: relative;
 }
 
-td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after, td.purpleCat[aria-label]:hover:after {
+td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.blue1Cat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after, td.purpleCat[aria-label]:hover:after {
     content: attr(aria-label);
     padding: 0 8px;
     position: absolute;
