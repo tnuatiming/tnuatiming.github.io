@@ -677,7 +677,7 @@ switch(option) {  // tickerTest
            
            // MAGIC sort the array after the merge to get new results
         if (useCategory == "yes" && HeaderName[0].includes("נדורו")) { // this sort discreminate aginst empty category so it shown last
-            allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || (b.Id_Categorie.includes("מקצועית"))-(a.Id_Categorie.includes("מקצועית")) || (b.Id_Categorie.includes("אקספרט"))-(a.Id_Categorie.includes("אקספרט")) || (b.Id_Categorie.includes("עממית"))-(a.Id_Categorie.includes("עממית")) || (b.Id_Categorie.includes("סניורים"))-(a.Id_Categorie.includes("סניורים")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
+            allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || (b.Id_Categorie.includes("מקצועית"))-(a.Id_Categorie.includes("מקצועית")) || (b.Id_Categorie.includes("אקספרט"))-(a.Id_Categorie.includes("אקספרט")) || (b.Id_Categorie.includes("עממית"))-(a.Id_Categorie.includes("עממית")) || (b.Id_Categorie.includes("סניור"))-(a.Id_Categorie.includes("סניור")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         } else if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
             allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         } 
@@ -833,7 +833,7 @@ switch(option) {  // tickerTest
             if (specialTest == 1 && useCategory == "yes" && lapsNum == 0) {
                 if (allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("סופר ג'וניור")) {
                     lapsX = 4;
-                } else if (allArray[l]["Id_Categorie"].includes("סניורים") || allArray[l]["Id_Categorie"].includes("עממית") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי")) {
+                } else if (allArray[l]["Id_Categorie"].includes("סניור") || allArray[l]["Id_Categorie"].includes("עממית") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי")) {
                     lapsX = 5;
                 } else { // this include מקצועית
                     lapsX = 6;
@@ -1191,13 +1191,13 @@ switch(option) {  // tickerTest
             harescrambleFinished = 0;
             if (hareScramble == 1) {
                 
-                if ((allArray[l]["Id_Categorie"].toUpperCase().includes("E") || allArray[l]["Id_Categorie"].toUpperCase().includes("אקספרט")) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) {
+                if ((allArray[l]["Id_Categorie"].toUpperCase().includes("E") || allArray[l]["Id_Categorie"].toUpperCase().includes("אקספרט")) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) { // 2 hours
                     harescrambleFinished = 1;
-                } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishBeginers) {
+                } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("סופר ג'וניור") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleSuperJuniors) { // 40 minutes
                     harescrambleFinished = 1;
-                } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניורים")) || ((allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניור")) && (allArray[l]["Id_Categorie"].toUpperCase().includes("מקצועי")))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishC) {
+                } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") || (allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניור"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishBeginers) { // 1 hour
                     harescrambleFinished = 1;
-                } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("סופר ג'וניור") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleSuperJuniors) {
+                } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניור"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishC) { // 1.5 hours
                     harescrambleFinished = 1;
                 } else {
                     harescrambleFinished = 0;
@@ -1326,7 +1326,7 @@ switch(option) {  // tickerTest
                         finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     }
 
-                } else if (useCategory == "no" && (HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו"))) {
+                } else if (/*useCategory == "no" && */(HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו"))) {
                     
                     if (opt4.toUpperCase().includes("E1")) {
                         finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
