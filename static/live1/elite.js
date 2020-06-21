@@ -1445,7 +1445,7 @@ switch(option) {  // tickerTest
 
             // for overall display
     
-            if (showBestLap == 1 && bestLapCompOverallDisplay != "0" && allArray[l]["Id_Numero"] == bestLapCompOverallDisplay && allArray[l]["Id_MeilleurTour"] != "-") {
+            if (showBestLap == 1 && bestLapCompOverallDisplay != "0" && allArray[l]["Id_Numero"] == bestLapCompOverallDisplay && allArray[l]["Id_MeilleurTour"] != "-" && BestTimeTemp != 99999999999) {
                 
                 BestTimeForOverallDisplay = '<tr><td colspan="99" class="comment_font">הקפה מהירה כללית: (' + allArray[l]["Id_Numero"] + ') ' + allArray[l]["Id_Nom"] + ' - ' + allArray[l]["Id_MeilleurTour"] + '</td></tr>\n'; 
 

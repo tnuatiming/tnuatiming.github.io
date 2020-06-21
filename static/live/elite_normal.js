@@ -357,8 +357,7 @@
         var allArray = [];
         var bestLapComp = 0;
         var bestLap = "99999999999";
-        var bestLapCompOverallDisplay = 0;
-        var bestLapOverallDisplay = "99999999999";
+        var bestLapCompOverallDisplay = 0;// for overall display of best lap
         var BestTimeTemp = "99999999999";
         var bestTime = [];
         var category = "&nbsp;";
@@ -574,7 +573,6 @@
                 if (BestTimeTemp > timeString2ms(lineArray["Id_MeilleurTour"])) {
                     BestTimeTemp = timeString2ms(lineArray["Id_MeilleurTour"]);
                     // for overall display of best lap
-                    bestLapOverallDisplay = BestTimeTemp;
                     bestLapCompOverallDisplay = lineArray["Id_Numero"];
                 }
                     
@@ -1445,16 +1443,13 @@ switch(option) {  // tickerTest
             }
 
 
-            
             // for overall display
     
-            if (showBestLap == 1 && allArray[l]["Id_Numero"] == bestLapCompOverallDisplay && allArray[l]["Id_MeilleurTour"] != "-") {
-                
+            if (showBestLap == 1 && bestLapCompOverallDisplay != "0" && allArray[l]["Id_Numero"] == bestLapCompOverallDisplay && allArray[l]["Id_MeilleurTour"] != "-" && BestTimeTemp != 99999999999) {
                 
                 BestTimeForOverallDisplay = '<tr><td colspan="99" class="comment_font">הקפה מהירה כללית: (' + allArray[l]["Id_Numero"] + ') ' + allArray[l]["Id_Nom"] + ' - ' + allArray[l]["Id_MeilleurTour"] + '</td></tr>\n'; 
 
             }            
-            
             
             
             if (showIndividualLaps == 1 && allArray[l]["Id_lap1"]) {
@@ -1633,7 +1628,7 @@ switch(option) {  // tickerTest
 
         if (useCategory == "no") {
             
-            if (BestTimeForOverallDisplay != "" && showBestLap == 1) { // for Overall Display
+            if (showBestLap == 1 && BestTimeForOverallDisplay != "" && bestLapCompOverallDisplay != "0") { // for Overall Display
 
                 finalText += BestTimeForOverallDisplay;
                 
