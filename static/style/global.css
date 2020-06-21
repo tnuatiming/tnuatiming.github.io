@@ -655,19 +655,19 @@ span#name, span#rund, span#date {
 #live td.pinkCat {
     font-weight: 700;
     background-color: rgba(204, 102, 255, 0.7);
-    color: #222;
+    color: #fff;
 }
 #live td.orangeCat {
     font-weight: 700;
     background-color: rgba(255, 192, 0, 0.7);
     color: #222;
 }
-#live td.blueCat {
+#live td.lightblueCat {
     font-weight: 700;
     background-color: rgba(0, 176, 240, 0.7);
     color: #222;
 }
-#live td.blue1Cat {
+#live td.blueCat {
     font-weight: 700;
     background-color: rgba(0, 64, 255, 0.7);
     color: #fff;
@@ -685,7 +685,7 @@ span#name, span#rund, span#date {
 #live td.purpleCat {
     font-weight: 700;
     background-color: rgba(128, 100, 162, 0.7);
-    color: #222;
+    color: #fff;
 }
 
 #live td.rnk_font.penalty {
@@ -794,22 +794,25 @@ span#name, span#rund, span#date {
 }
 
 #live td.BestTimeOverall {
-/*    color: #ff0000;*/
+/*    color: #ff0000;
     background-color: rgba(219, 42, 255, .6);
-    color: #fff;
+    color: #fff;*/
+    color: #db2aff;
     font-weight: 700;
 }
 #live td.BestTime {
-/*    color: #0000ff;*/
+/*    color: #0000ff;
     background-color: rgba(54, 220, 24, .6);
-    color: #222;
-    font-weight: 400;
+    color: #222;*/
+    color: #00843e;
+    font-weight: 700;
 }
 #live td.BestTime1 {
-    background-color: rgba(88, 201, 241, .6);
+/*    background-color: rgba(88, 201, 241, .6);
     color: #222;
-/*    color: #18dc8e;*/
-    font-weight: 400;
+    color: #18dc8e;*/
+    color: #18dc8e;
+    font-weight: 700;
 }
 
 #live img.postionChanged {
@@ -898,7 +901,7 @@ td[aria-label] {
     position: relative;
 }
 
-td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.blue1Cat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after, td.purpleCat[aria-label]:hover:after {
+td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.lightblueCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after, td.purpleCat[aria-label]:hover:after {
     content: attr(aria-label);
     padding: 0 8px;
     position: absolute;

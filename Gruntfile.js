@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         //     },
             lftp: {
         //        command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname false ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ -vvv ./_site/ ./public_html/ ; cache flush ; rm ./public_html/live/p1.html ; rm ./public_html/live1/p1.html ; exit" | tee "log/lftp_$(date +%Y%m%d_%H%M).log"'
-                command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname no ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ --exclude-glob .directory --exclude-glob */2013/* --exclude-glob */2014/* --exclude-glob */2015/* --exclude-glob */2016/* --exclude-glob */2017/* --exclude-glob */*.kate-swp -vvv ./_site/ ./public_html/ ; cache flush ; exit" | tee "lftp.log"'
+                command: 'lftp -u raz tnuatiming.com/ -e "set ssl:verify-certificate no ; set ssl:check-hostname no ; set ftp:ssl-allow no ; set mirror:set-permissions off ; mirror --reverse --parallel=5 --ignore-time --exclude .well-known/ --exclude-glob .directory --exclude-glob */2013/* --exclude-glob */2014/* --exclude-glob */2015/* --exclude-glob */2016/* --exclude-glob */2017/* -X *.kate-swp -vvv ./_site/ ./public_html/ ; cache flush ; exit" | tee "lftp.log"'
             },
             clean: {
                 command: 'if [ -d "_site" ]; then rm -Rf _site; fi && if [ -d "hugo_backup" ]; then rm -Rf hugo_backup; fi  && if [ -d "static/csv" ]; then rm -Rf "static/csv"; fi'
