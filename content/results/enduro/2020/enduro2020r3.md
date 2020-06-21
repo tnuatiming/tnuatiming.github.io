@@ -67,15 +67,6 @@ category: "enduro"
         <td class="rnk_font">2:00:21.381</td>
         <td class="rnk_font">3 הקפות</td>
     </tr>
-    <tr class="rnk_bkcolor EvenRow">
-        <td class="rnk_font"></td>
-        <td class="rnk_font blackCat" aria-label="מקצועית E1">310</td>
-        <td class="rnk_font">בועז סאסי</td>
-        <td class="rnk_font">0</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-    </tr>
     <tr>
         <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
     </tr>
@@ -87,6 +78,15 @@ category: "enduro"
         <td class="rnk_font">8:21.493</td>
         <td class="rnk_font">25:33.581</td>
         <td class="rnk_font">12 הקפות</td>
+    </tr>
+    <tr class="rnk_bkcolor EvenRow">
+        <td class="rnk_font"></td>
+        <td class="rnk_font blackCat" aria-label="מקצועית E1">310</td>
+        <td class="rnk_font">בועז סאסי</td>
+        <td class="rnk_font">0</td>
+        <td class="rnk_font">-</td>
+        <td class="rnk_font">-</td>
+        <td class="rnk_font">-</td>
     </tr>
     <tr>
         <td colspan="99" class="comment_font">הקפה מהירה: (33) גיל זרקו - 7:43.661</td>
@@ -133,7 +133,7 @@ category: "enduro"
         <td class="rnk_font">15</td>
         <td class="rnk_font">8:04.142</td>
         <td class="rnk_font penalty">P 2:06:09.292</td>
-        <td class="rnk_font">20</td>
+        <td class="rnk_font">00:20</td>
         <td class="rnk_font">3:58.179</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -143,7 +143,7 @@ category: "enduro"
         <td class="rnk_font">15</td>
         <td class="rnk_font">8:11.515</td>
         <td class="rnk_font penalty">P 2:07:23.085</td>
-        <td class="rnk_font">20</td>
+        <td class="rnk_font">00:20</td>
         <td class="rnk_font">5:11.972</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -163,7 +163,7 @@ category: "enduro"
         <td class="rnk_font">14</td>
         <td class="rnk_font">7:50.917</td>
         <td class="rnk_font penalty">P 2:00:29.150</td>
-        <td class="rnk_font">20</td>
+        <td class="rnk_font">00:20</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -354,7 +354,7 @@ category: "enduro"
         <td class="rnk_font">13</td>
         <td class="rnk_font">8:59.719</td>
         <td class="rnk_font penalty">P 2:01:59.375</td>
-        <td class="rnk_font">60</td>
+        <td class="rnk_font">01:00</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -684,7 +684,7 @@ category: "enduro"
         <td class="rnk_font">9</td>
         <td class="rnk_font">9:49.904</td>
         <td class="rnk_font penalty">P 1:34:52.520</td>
-        <td class="rnk_font">120</td>
+        <td class="rnk_font">02:00</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr>
@@ -962,7 +962,7 @@ category: "enduro"
         <td class="rnk_font">6</td>
         <td class="rnk_font">10:21.968</td>
         <td class="rnk_font penalty">P 1:09:35.657</td>
-        <td class="rnk_font">120</td>
+        <td class="rnk_font">02:00</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr>

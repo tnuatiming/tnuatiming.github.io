@@ -1530,7 +1530,7 @@ switch(option) {  // tickerTest
                     }                
 
                     if (typeof allArray[l]["Id_PenaliteTpsCumule"] != 'undefined' && allArray[l]["Id_PenaliteTpsCumule"] != '-' && allArray[l]["Id_PenaliteTpsCumule"] != '0'){
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_PenaliteTpsCumule"] + '</td>\n';
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_PenaliteTpsCumule"] + '</td>\n'; //FIXME penalty in seconds? or as time? need to run ms2TimeString(timeString2ms())?
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }
