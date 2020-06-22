@@ -133,7 +133,7 @@ category: "enduro"
         <td class="rnk_font">15</td>
         <td class="rnk_font">8:04.142</td>
         <td class="rnk_font penalty">P 2:06:09.292</td>
-        <td class="rnk_font">00:20</td>
+        <td class="rnk_font">00:20.000</td>
         <td class="rnk_font">3:58.179</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -143,7 +143,7 @@ category: "enduro"
         <td class="rnk_font">15</td>
         <td class="rnk_font">8:11.515</td>
         <td class="rnk_font penalty">P 2:07:23.085</td>
-        <td class="rnk_font">00:20</td>
+        <td class="rnk_font">00:20.000</td>
         <td class="rnk_font">5:11.972</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -163,7 +163,7 @@ category: "enduro"
         <td class="rnk_font">14</td>
         <td class="rnk_font">7:50.917</td>
         <td class="rnk_font penalty">P 2:00:29.150</td>
-        <td class="rnk_font">00:20</td>
+        <td class="rnk_font">00:20.000</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -354,7 +354,7 @@ category: "enduro"
         <td class="rnk_font">13</td>
         <td class="rnk_font">8:59.719</td>
         <td class="rnk_font penalty">P 2:01:59.375</td>
-        <td class="rnk_font">01:00</td>
+        <td class="rnk_font">01:00.000</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -684,7 +684,7 @@ category: "enduro"
         <td class="rnk_font">9</td>
         <td class="rnk_font">9:49.904</td>
         <td class="rnk_font penalty">P 1:34:52.520</td>
-        <td class="rnk_font">02:00</td>
+        <td class="rnk_font">02:00.000</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr>
@@ -962,7 +962,7 @@ category: "enduro"
         <td class="rnk_font">6</td>
         <td class="rnk_font">10:21.968</td>
         <td class="rnk_font penalty">P 1:09:35.657</td>
-        <td class="rnk_font">02:00</td>
+        <td class="rnk_font">02:00.000</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr>
