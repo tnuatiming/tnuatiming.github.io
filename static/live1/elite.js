@@ -1331,7 +1331,7 @@ switch(option) {  // tickerTest
                         finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     }
 
-                } else if (/*useCategory == "no" && */(HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו"))) {
+                } else if (/*useCategory == "no" && (to show only in overall uncomment and remove the cleanResults == 0)*/cleanResults == 0 && (HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו"))) {
                     
                     if (opt4.toUpperCase().includes("E1")) {
                         finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
