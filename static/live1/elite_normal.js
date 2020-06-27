@@ -1311,43 +1311,26 @@ switch(option) {  // tickerTest
                 opt3 = allArray[l]["Id_Numero"];                        
                 opt4 = allArray[l]["Id_Categorie"];
                 
-                if (useCategory == "no" && HeaderName[0].includes("מוטוקרוס")) {
-                    
-                    if (opt4.toUpperCase().includes("MX2") || opt4.toUpperCase().includes("רוקיז")) {
-                        finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("פתוחה") || opt4.toUpperCase().includes("אקספרט")) {
-                        finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("עממית") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("נדורו")) {
-                        finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
-                        finalText += '<td class="rnk_font lightblueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("ג'וניור")) {
-                        finalText += '<td class="rnk_font grayCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("סניור") ||opt4.toUpperCase().includes("SENIOR") || opt4.toUpperCase().includes("MX1")) {
-                        finalText += '<td class="rnk_font whiteCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("נשים")) {
-                        finalText += '<td class="rnk_font pinkCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else {
-                        finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    }
-
-                } else if (/*useCategory == "no" && (to show only in overall uncomment and remove the cleanResults == 0)*/cleanResults == 0 && (HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו"))) {
-                    
-                    if (opt4.toUpperCase().includes("E1")) {
+                
+                  if (cleanResults == 1) {
+                        finalText += '<td class="rnk_font">' + opt3 + '</td>\n';
+                } else if (/*useCategory == "no" && (to show only in overall uncomment)*/(HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו") || HeaderName[0].includes("מוטוקרוס"))) {
+                
+                    if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2")) {
                         finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
                     } else if (opt4.toUpperCase().includes("E2")) {
                         finalText += '<td class="rnk_font redCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("סופר ג'וניור מתחילים")) {
+                    } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("סופר ג'וניור מתחילים") || opt4.toUpperCase().includes("רוקיז")) {
                         finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
                         finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("סופר ג'וניור")) {
+                    } else if (opt4.toUpperCase().includes("סופר ג'וניור מקצועי")) {
                         finalText += '<td class="rnk_font lightblueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     } else if (opt4.toUpperCase().includes("ג'וניור מקצועי")) {
                         finalText += '<td class="rnk_font grayCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("EXPERT") || opt4.toUpperCase().includes("אקספרט")) {
+                    } else if (opt4.toUpperCase().includes("EXPERT") || opt4.toUpperCase().includes("אקספרט") || opt4.toUpperCase().includes("MX3")) {
                         finalText += '<td class="rnk_font blueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                    } else if (opt4.toUpperCase().includes("סופר סניור") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("B1") || opt4.toUpperCase().includes("B2") || opt4.toUpperCase().includes("B3")) {
+                    } else if (opt4.toUpperCase().includes("סופר סניור") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("B1") || opt4.toUpperCase().includes("B2") || opt4.toUpperCase().includes("B3") || opt4.toUpperCase().includes("MX1") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
                         finalText += '<td class="rnk_font whiteCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
                     } else if (opt4.toUpperCase().includes("סניור")) {
                         finalText += '<td class="rnk_font purpleCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
@@ -1359,8 +1342,6 @@ switch(option) {  // tickerTest
 
                 } else if (useCategory == "no") {
                         finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
-                } else if (cleanResults == 1) {
-                        finalText += '<td class="rnk_font">' + opt3 + '</td>\n';
                 } else {
                         finalText += '<td class="rnk_font highlight">' + opt3 + '</td>\n';
                 }
