@@ -1439,10 +1439,10 @@ switch(option) {  // tickerTest
     // short version
                 for (q = 1; q <= lapsX; q++) {
                     if (showBestLap == 1 && allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
-                        finalText += '<td class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>\n';
+                        finalText += '<td aria-label="הקפה מהירה כללית" class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>\n';
                        
                     } else if (showBestLap == 1 && allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
-                        finalText += '<td class="rnk_font BestTime">' + allArray[l]["Id_lap"+q] + '</td>\n';
+                        finalText += '<td aria-label="הקפה מהירה אישית" class="rnk_font BestTime">' + allArray[l]["Id_lap"+q] + '</td>\n';
                     } else {
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>\n';
                     }
