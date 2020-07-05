@@ -376,7 +376,7 @@
         var dsqCategory = "";
         var BestTimeForOverallDisplay = "";
 
-        var idName, id, dnsfq, fff, slim, headerText1, bestTimeDisplay, harescrambleFinished, checkeredFlag, opt3, opt4, key, bestTimeDisplay, tickerBestTimeTemp, tickerElement, tickerInnerHTML;
+        var idName, id, dnsfq, fff, slim, headerText1, bestTimeDisplay, harescrambleFinished, checkeredFlag, opt3, opt4, opt5, key, bestTimeDisplay, tickerBestTimeTemp, tickerElement, tickerInnerHTML;
         
         Text = p1.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -1310,40 +1310,44 @@ switch(option) {  // tickerTest
     //         if (key == "Id_Numero") {
                 opt3 = allArray[l]["Id_Numero"];                        
                 opt4 = allArray[l]["Id_Categorie"];
-                
+                if (useCategory == "no") {
+                    opt5 = allArray[l]["Id_Categorie"];
+                } else {
+                    opt5 = "";
+                }
                 
                   if (cleanResults == 1) {
-                        finalText += '<td class="rnk_font">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font highlight">${opt3}</td>\n`;
                 } else if (/*useCategory == "no" && (to show only in overall uncomment)*/(HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו") || HeaderName[0].includes("מוטוקרוס"))) {
                 
                     if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2")) {
-                        finalText += '<td class="rnk_font blackCat" aria-label="' + opt4 + '" >' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font blackCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("E2")) {
-                        finalText += '<td class="rnk_font redCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font redCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("סופר ג'וניור מתחילים") || opt4.toUpperCase().includes("רוקיז")) {
-                        finalText += '<td class="rnk_font yellowCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font yellowCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
-                        finalText += '<td class="rnk_font greenCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font greenCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("סופר ג'וניור מקצועי")) {
-                        finalText += '<td class="rnk_font lightblueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font lightblueCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("ג'וניור מקצועי")) {
-                        finalText += '<td class="rnk_font grayCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font grayCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("EXPERT") || opt4.toUpperCase().includes("אקספרט") || opt4.toUpperCase().includes("MX3")) {
-                        finalText += '<td class="rnk_font blueCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font blueCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("סופר סניור") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("B1") || opt4.toUpperCase().includes("B2") || opt4.toUpperCase().includes("B3") || opt4.toUpperCase().includes("MX1") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
-                        finalText += '<td class="rnk_font whiteCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font whiteCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("סניור")) {
-                        finalText += '<td class="rnk_font purpleCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font purpleCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("נשים")) {
-                        finalText += '<td class="rnk_font pinkCat" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font pinkCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else {
-                        finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font highlight" aria-label="${opt5}">${opt3}</td>\n`;
                     }
 
                 } else if (useCategory == "no") {
-                        finalText += '<td class="rnk_font highlight" aria-label="' + opt4 + '">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font highlight" aria-label="${opt5}">${opt3}</td>\n`;
                 } else {
-                        finalText += '<td class="rnk_font highlight">' + opt3 + '</td>\n';
+                        finalText += `<td class="rnk_font highlight">${opt3}</td>\n`;
                 }
 
     //          } else {
