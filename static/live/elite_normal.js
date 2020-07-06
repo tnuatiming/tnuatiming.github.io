@@ -1340,11 +1340,13 @@ switch(option) {  // tickerTest
                         finalText += `<td class="rnk_font purpleCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("נשים")) {
                         finalText += `<td class="rnk_font pinkCat" aria-label="${opt5}">${opt3}</td>\n`;
+                    } else if (opt4 == "" || opt4 == " " || opt4 == "&nbsp;") {
+                        finalText += `<td class="rnk_font highlight">${opt3}</td>\n`;
                     } else {
                         finalText += `<td class="rnk_font highlight" aria-label="${opt5}">${opt3}</td>\n`;
                     }
 
-                } else if (useCategory == "no") {
+                } else if (useCategory == "no" && opt4 != "" && opt4 != " " && opt4 != "&nbsp;") {
                         finalText += `<td class="rnk_font highlight" aria-label="${opt5}">${opt3}</td>\n`;
                 } else {
                         finalText += `<td class="rnk_font highlight">${opt3}</td>\n`;
