@@ -27,3 +27,18 @@
     ga('set', 'anonymizeIp', true);
     ga('send', 'pageview');
 </script>
+<!-- remember scroll position of page -->
+{{- if not (eq .Params.body "live") }}
+<script>
+let main_contentx = document.querySelector(".main_content");
+
+let topx = sessionStorage.getItem("main_content-scroll");
+if (topx !== null) {
+  main_contentx.scrollTop = parseInt(topx, 10);
+}
+
+window.addEventListener("visibilitychange", () => {
+  sessionStorage.setItem("main_content-scroll", main_contentx.scrollTop);
+});
+</script>
+{{ end -}}
