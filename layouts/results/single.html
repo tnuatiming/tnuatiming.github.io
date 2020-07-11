@@ -65,10 +65,197 @@
     </body>
     
 {{ with (in (string .Content) "line_color") }}
-    <script type="text/javascript">for(var tt=document.querySelectorAll(".line_color"),kk=0;kk<tt.length;kk++){var tds=tt[kk].querySelectorAll("th.rnkh_font");15<tds.length?tt[kk].classList.add("huge_table"):11<tds.length&&tt[kk].classList.add("big_table");var ddd=90/(tds.length-2);tt[kk].querySelectorAll("td.rnk_font:nth-child(n+3)").forEach(function(a){a.style.width=ddd+"%"});tt[kk].querySelectorAll("th.rnkh_font:nth-child(n+3)").forEach(function(a){a.style.width=ddd+"%"})};</script>
+    <script>    // aligning table colmuns according to number of colmuns
+        var tt = document.querySelectorAll('.line_color');
+
+        for (let kk = 0; kk < tt.length; kk++) {
+
+
+    /*
+            var numCols = 0;
+
+            for (let ii = 0; ii < tt[kk].rows.length; ii++) {//loop through HTMLTableRowElement
+
+                row = tt[kk].rows[ii];
+                
+                if (numCols < row.cells.length) { // find max number of colmuns
+                    numCols = row.cells.length;
+                }
+                row = null;
+            }
+            var ddd = 90 / (numCols - 2); // 90% divided by number of columns - first 2 column
+    */
+            var tds = tt[kk].querySelectorAll('th.rnkh_font');
+
+                if (tds.length > 15) {
+                    tt[kk].classList.add("huge_table");
+                } else if (tds.length > 11) {
+                    tt[kk].classList.add("big_table");
+                }
+
+            var ddd = 90 / (tds.length - 2); // 90% divided by number of columns - first 2 column
+
+            tt[kk].querySelectorAll('td.rnk_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                element.style.width = ddd + "%";
+            });
+
+            tt[kk].querySelectorAll('th.rnkh_font:nth-child(n+3)').forEach(function(element) { // all from column 3
+                element.style.width = ddd + "%";
+            });
+    //       console.log(kk + " " + numCols)
+        }
+    </script>
 {{ end }}      
 {{ with (in (string .Content) "no_num_color") }}
-    <script type="text/javascript">for(var btn=document.querySelectorAll(".no_num_color"),$jscomp$loop$0={$jscomp$loop$prop$k$2:0};$jscomp$loop$0.$jscomp$loop$prop$k$2<btn.length;$jscomp$loop$0={$jscomp$loop$prop$k$2:$jscomp$loop$0.$jscomp$loop$prop$k$2},$jscomp$loop$0.$jscomp$loop$prop$k$2++)btn[$jscomp$loop$0.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)").forEach(function(d){return function(c){return c.addEventListener("mouseover",function(){var e=c.innerHTML,b=btn[d.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)");for(i=0;i<b.length;++i){var a=b[i].innerHTML;e===a&&""!=a&&b[i].classList.add("matching")}})}}($jscomp$loop$0)),btn[$jscomp$loop$0.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)").forEach(function(d){return function(c){return c.addEventListener("click",function(){var e=c.innerHTML,b=btn[d.$jscomp$loop$prop$k$2].querySelectorAll("td.rnk_font:not(:first-child)");for(i=0;i<b.length;++i){var a=b[i].innerHTML;if(e===a&&""!=a){switch(Number(a)%9){case 0:a="Beige";break;case 1:a="SkyBlue";break;case 2:a="Plum";break;case 3:a="LightSalmon";break;case 4:a="PaleGreen";break;case 5:a="DarkKhaki";break;case 6:a="LightCoral";break;case 7:a="LemonChiffon";break;case 8:a="MediumAquamarine";break;case 9:a="Lavender";break;default:a="Wheat"}b[i].style.backgroundColor=b[i].style.backgroundColor===a.toLowerCase()?"":a.toLowerCase()}else b[i].style.backgroundColor=""}})}}($jscomp$loop$0));document.querySelectorAll(".no_num_color td.rnk_font:not(:first-child)").forEach(function(d){return d.addEventListener("mouseout",function(){var c=document.querySelectorAll(".no_num_color td.rnk_font:not(:first-child)");for(j=0;j<c.length;++j)c[j].classList.remove("matching")})});</script>
+    <script>// find the laps tables
+        var btn = document.querySelectorAll('.no_num_color');
+        for (let k = 0; k < btn.length; k++) {
+                // find the td in laps table and itreare them
+            btn[k].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseover", function() {
+                    // get the value of the cell we mouseover
+                var compareText = e.innerHTML;
+                    // itreate all td in this table and compare
+                var divs = btn[k].querySelectorAll('td.rnk_font:not(:first-child)');
+                for (i = 0; i < divs.length; ++i) {
+                    var text = divs[i].innerHTML;
+                    // Compare this with initial text and add matching class if it matches
+                    if (compareText === text && text != "") {
+                        divs[i].classList.add("matching");
+                        
+                    }
+                }
+            }));
+                        
+            btn[k].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("click", function() {
+                // get the value of the cell we mouseover
+                var compareText = e.innerHTML;
+                    // itreate all td in this table and compare
+                var divs = btn[k].querySelectorAll('td.rnk_font:not(:first-child)');
+                for (i = 0; i < divs.length; ++i) {
+                
+                    var text = divs[i].innerHTML;
+                    // Compare this with initial text and add matching class if it matches
+                    if (compareText === text && text != "") {
+    /*                    switch(k%3) {
+                            case 0:
+                                var lineColor = 'LightSkyBlue';
+                                break;
+                            case 1:
+                                var lineColor = 'PaleGreen';
+                                break;
+                            case 2:
+                                var lineColor = 'LightSalmon';
+                                break;
+                            default:
+                                var lineColor = 'Lavender';
+                        }
+    */                
+                    switch(Number(text)%9) {
+                        case 0:
+                            var lineColor = 'Beige';
+                            break;
+                        case 1:
+                            var lineColor = 'SkyBlue';
+                            break;
+                        case 2:
+                            var lineColor = 'Plum';
+                            break;
+                        case 3:
+                            var lineColor = 'LightSalmon';
+                            break;
+                        case 4:
+                            var lineColor = 'PaleGreen';
+                            break;
+                        case 5:
+                            var lineColor = 'DarkKhaki';
+                            break;
+                        case 6:
+                            var lineColor = 'IndianRed';
+                            break;
+                        case 7:
+                            var lineColor = 'LemonChiffon';
+                            break;
+                        case 8:
+                            var lineColor = 'MediumAquamarine';
+                            break;
+                        case 9:
+                            var lineColor = 'Lavender';
+                            break;
+                        default:
+                            var lineColor = 'Wheat';
+                    }
+
+                        divs[i].style.backgroundColor = divs[i].style.backgroundColor === lineColor.toLowerCase() ? '' : lineColor.toLowerCase();
+                    } else {
+                        divs[i].style.backgroundColor = '';
+                    }
+                }
+            }));
+
+            // on click mark number in diffrent color or delete        
+    /*           btn[k].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("click", function() {
+                // get the value of the cell we mouseover
+                var compareText = e.innerHTML;
+                    // itreate all td in this table and compare
+                var divs = btn[k].querySelectorAll('td.rnk_font:not(:first-child)');
+                for (i = 0; i < divs.length; ++i) {
+                
+                    var text = divs[i].innerHTML;
+                    // Compare this with initial text and add matching class if it matches
+                    if (compareText === text && text != "") {
+                    switch(Number((text)%9)) {
+                        case 0:
+                            var lineColor = 'Beige';
+                            break;
+                        case 1:
+                            var lineColor = 'SkyBlue';
+                            break;
+                        case 2:
+                            var lineColor = 'Plum';
+                            break;
+                        case 3:
+                            var lineColor = 'PaleGreen';
+                            break;
+                        case 4:
+                            var lineColor = 'PapayaWhip';
+                            break;
+                        case 5:
+                            var lineColor = 'DarkKhaki';
+                            break;
+                        case 6:
+                            var lineColor = 'IndianRed';
+                            break;
+                        case 7:
+                            var lineColor = 'LemonChiffon';
+                            break;
+                        case 8:
+                            var lineColor = 'MediumAquamarine';
+                            break;
+                        case 9:
+                            var lineColor = 'Lavender';
+                            break;
+                        default:
+                            var lineColor = 'Wheat';
+                    }
+
+                        divs[i].style.backgroundColor = divs[i].style.backgroundColor === lineColor.toLowerCase() ? '' : lineColor.toLowerCase();
+
+                    }
+                }
+            }));
+    */         
+
+        }
+                    // clear all matching on mouseout
+        document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("mouseout", function() {
+        
+            var divs = document.querySelectorAll('.no_num_color td.rnk_font:not(:first-child)');
+            for (j = 0; j < divs.length; ++j) {
+        
+                    divs[j].classList.remove("matching");
+            }
+        }));
+    </script>
 {{ end }}      
 
 {{/*<!--
