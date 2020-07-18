@@ -1358,9 +1358,20 @@ switch(option) {  // tickerTest
                 
 
         // NOT using aria popup for נווט 
-            finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>\n';                
+        
+            if (allArray[l]["Id_Nom"] != "???") {
+                finalText += `<td class="rnk_font">${allArray[l]["Id_Nom"]}</td>\n`;                
+            } else {
+                finalText += `<td class="rnk_font"></td>\n`;                
+            }
+        
             if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
-                finalText += '<td class="rnk_font">' + allArray[l]["Id_Licence"] + '</td>\n'; //copilot
+
+                if (allArray[l]["Id_Nom"] != "???") {
+                    finalText += `<td class="rnk_font">${allArray[l]["Id_Licence"]}</td>\n`;   //copilot              
+                } else {
+                    finalText += `<td class="rnk_font"></td>\n`;                
+                }
             }
 /*
         // using aria popup for נווט need fixing
