@@ -126,6 +126,33 @@
                 }
             }));
                         
+/*
+code for selecting color by the place of rider FIXME
+  
+var pl = 0;
+var rows = btn[k].getElementsByTagName("tr");
+  for (i = 0; i < rows.length; i++) {
+    var currentRow = btn[k].rows[i];
+    var createClickHandler = function(row) {
+      return function() {
+        var cell = row.getElementsByTagName("td")[0];
+        
+        if(!isNaN(parseInt(cell.innerHTML))) {
+            pl = parseInt(cell.innerHTML);
+        } else {
+            pl = 0;
+
+ }
+        
+        console.log("id:" + pl);
+      };
+    };
+    currentRow.onmouseover = createClickHandler(currentRow);
+  }
+*/                        
+                        
+                        
+                        
             btn[k].querySelectorAll('td.rnk_font:not(:first-child)').forEach(e => e.addEventListener("click", function() {
                 // get the value of the cell we mouseover
                 var compareText = e.innerHTML;
@@ -150,7 +177,7 @@
                                 var lineColor = 'Lavender';
                         }
     */                
-                    switch(Number(text)%9) {
+     /*               switch(Number(text)%9) {
                         case 0:
                             var lineColor = 'Beige';
                             break;
@@ -184,6 +211,9 @@
                         default:
                             var lineColor = 'Wheat';
                     }
+*/
+                            var lineColor = 'white';
+
 
                         divs[i].style.backgroundColor = divs[i].style.backgroundColor === lineColor.toLowerCase() ? '' : lineColor.toLowerCase();
                     } else {
