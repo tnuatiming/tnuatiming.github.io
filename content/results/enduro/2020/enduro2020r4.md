@@ -71,6 +71,20 @@ category: "enduro"
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">4</td>
+        <td class="rnk_font highlight">259</td>
+        <td class="rnk_font">רז עידן</td>
+        <td class="rnk_font">8:55.952</td>
+        <td class="rnk_font">8:51.018</td>
+        <td class="rnk_font">8:42.073</td>
+        <td class="rnk_font">8:38.736</td>
+        <td class="rnk_font">8:39.672</td>
+        <td class="rnk_font">8:44.714</td>
+        <td class="rnk_font">52:32.165</td>
+        <td class="rnk_font">-</td>
+        <td class="rnk_font">4:14.463</td>
+    </tr>
+    <tr class="rnk_bkcolor OddRow">
+        <td class="rnk_font">5</td>
         <td class="rnk_font highlight">21</td>
         <td class="rnk_font">יהב פייגין</td>
         <td class="rnk_font">9:00.292</td>
@@ -1824,15 +1838,15 @@ category: "enduro"
         <td colspan="99" class="subtitle_font">לא סיים - DNF</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
-        <td class="rnk_font"></td>
+        <td class="rnk_font">8</td>
         <td class="rnk_font highlight">380</td>
         <td class="rnk_font">עומר ביאלי</td>
-        <td class="rnk_font">36:15.975</td>
+        <td class="rnk_font">10:33.488</td>
+        <td class="rnk_font">10:23.033</td>
         <td class="rnk_font">-</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
-        <td class="rnk_font">3 הקפות</td>
+        <td class="rnk_font">20:56.521</td>
+        <td class="rnk_font">2 הקפות</td>
     </tr>
     <tr>
         <td colspan="99" class="comment_font">הקפה מהירה: (17) ליאם פלח - 9:02.740</td>
