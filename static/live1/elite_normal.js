@@ -1317,7 +1317,7 @@ switch(option) {  // tickerTest
                 }
                 
                   if (cleanResults == 1) {
-                        finalText += `<td class="rnk_font highlight">${opt3}</td>\n`;
+                        finalText += `<td class="rnk_font">${opt3}</td>\n`;
                 } else if (/*useCategory == "no" && (to show only in overall uncomment)*/(HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר") || HeaderName[0].includes("נדורו") || HeaderName[0].includes("מוטוקרוס"))) {
                 
                     if (opt4.toUpperCase().includes("E1") || opt4.toUpperCase().includes("MX2")) {
