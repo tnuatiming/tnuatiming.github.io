@@ -836,9 +836,9 @@ switch(option) {  // tickerTest
             }            
                             
             if (specialTest == 1 && useCategory == "yes" && lapsNum == 0) {
-                if (allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("סופר ג'וניור")) {
+                if (allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("סופר ג'וניור") || allArray[l]["Id_Categorie"].includes("נשים") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי")) {
                     lapsX = 4;
-                } else if (allArray[l]["Id_Categorie"].includes("סניור") || allArray[l]["Id_Categorie"].includes("עממית") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי")) {
+                } else if (allArray[l]["Id_Categorie"].includes("סניור") || allArray[l]["Id_Categorie"].includes("עממית")) {
                     lapsX = 5;
                 } else { // this include מקצועית
                     lapsX = 6;
@@ -1211,7 +1211,7 @@ switch(option) {  // tickerTest
         
         //          if (key != "Id_Ecart1erCategorie" && key != "Id_MeilleurTour" && key != "Id_PositionCategorie" && key != "Id_Image" && key != "Id_Arrow" && key != "Id_TpsTour1" && key != "Id_TpsTour2" && key != "Id_TpsTour3" && key != "Id_Categorie" && key != 'undefined' && key != null && key != "&nbsp;") {
             
-            if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] == laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-2) && (allArray[l]["Id_Categorie"].includes("סופר ג'וניור") || allArray[l]["Id_Categorie"].includes("מתחילים"))) || (specialTest == 1 && allArray[l]["Id_NbTour"] == (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
+            if (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (!(allArray[l]["Id_Image"].includes("_Status")) && showIndividualLaps == 1 && (allArray[l]["Id_Image"].includes("_CheckeredFlag") || (allArray[l]["Id_NbTour"] >= laps) || (specialTest == 1 && allArray[l]["Id_NbTour"] >= (laps-2) && (allArray[l]["Id_Categorie"].includes("סופר ג'וניור") || allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("ג'וניור מקצועי") || allArray[l]["Id_Categorie"].includes("נשים"))) || (specialTest == 1 && allArray[l]["Id_NbTour"] >= (laps-1) && !(allArray[l]["Id_Categorie"].toUpperCase().includes("E")))))) {
                 checkeredFlag = "finished ";
             } else if (!(allArray[l]["Id_Image"].includes("_Status")) && harescrambleFinished == 1) {
                 checkeredFlag = "finished ";
@@ -1455,12 +1455,16 @@ switch(option) {  // tickerTest
     // adding and coloring the laps and best time
     // short version
                 for (q = 1; q <= lapsX; q++) {
-                    if (showBestLap == 1 && allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
+                    if (typeof allArray[l]["Id_lap"+q] == 'undefined') {
+                        allArray[l]["Id_lap"+q] = "-"
+                    }
+                    if (showBestLap == 1 && allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp && cleanResults == 0) {
                         finalText += '<td aria-label="הקפה מהירה כללית" class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>\n';
                        
-                    } else if (showBestLap == 1 && allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"]) {
+                    } else if (showBestLap == 1 && allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && cleanResults == 0) {
                         finalText += '<td aria-label="הקפה מהירה אישית" class="rnk_font BestTime">' + allArray[l]["Id_lap"+q] + '</td>\n';
                     } else {
+
                         finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>\n';
                     }
                 }               

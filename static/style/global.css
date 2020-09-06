@@ -897,8 +897,21 @@ span#name, span#rund, span#date {
     display:none;
 }
 
-td[aria-label] {
+td.rnk_font[aria-label] {
     position: relative;
+}
+
+td.rnk_font[aria-label]:hover:after {
+    content: attr(aria-label);
+    padding: 0 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    white-space: nowrap;
+    z-index: 99;
+    color: #fff;
+    background: rgba(17, 17, 17, 1);
+    min-width: 100%;
 }
 
 td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.redCat[aria-label]:hover:after, td.yellowCat[aria-label]:hover:after, td.greenCat[aria-label]:hover:after, td.grayCat[aria-label]:hover:after, td.lightblueCat[aria-label]:hover:after, td.blueCat[aria-label]:hover:after, td.orangeCat[aria-label]:hover:after, td.whiteCat[aria-label]:hover:after, td.pinkCat[aria-label]:hover:after, td.purpleCat[aria-label]:hover:after {
@@ -911,19 +924,6 @@ td.highlight[aria-label]:hover:after, td.blackCat[aria-label]:hover:after, td.re
     z-index: 99;
     color: #fff;
     background: rgba(17, 17, 17, 1);
-}
-
-td[aria-label]:hover:after {
-    content: attr(aria-label);
-    padding: 0 4px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    white-space: nowrap;
-    z-index: 99;
-    color: #fff;
-    background: rgba(17, 17, 17, 1);
-    min-width: 100%;
 }
 
 #live #warning {
