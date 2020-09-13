@@ -229,6 +229,9 @@
 */   
     function createLiveTable() {
 
+        var showCoPilot = 0;
+        var rallyRaid = 0;
+
         var text1, text2, lines, i, a, b, id, prevCompCat, m, l, competitorLaps, leaderLaps, leaderTime, competitorTime, opt3, opt4, checkeredFlag, lapsXtemp, dnsfq, headerText1;
         competitorPosition = 0;
         competitorNumber = 0;
@@ -300,6 +303,16 @@
             cleanResults = 0;
         }
 
+        if (HeaderName[0].includes("copilot")) { // clean table for results page
+            showCoPilot = 1;
+            HeaderEventName = HeaderEventName.replace("copilot", "");
+        }
+
+        if (HeaderName[0].includes("ראלי") && HeaderName[0].includes("רייד")) { // will show SS instead of הקפה for rallyRaid
+            rallyRaid = 1;
+//            showBestLap = 0;
+        }
+
         if (eventName != HeaderEventName) {  
             positionArray = {};
         }
@@ -347,7 +360,7 @@
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
                 // convert total time to miliseconds
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
+                    lineArray[hhhPro[pp]] = timeString2ms((lineArray[hhhPro[pp]]));   
                 }
                 if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
                     lineArray[hhhPro[pp]] = "&nbsp;";   
@@ -376,7 +389,7 @@
             }
             
         }
-         // console.log(allArray2);
+    //      console.log(allArray2);
 
             
         ttt = 0;
@@ -430,7 +443,7 @@
                 lineArray[hhhPro[pp]] = lines[b].substring(lines[b].indexOf(">")+1,lines[b].lastIndexOf("<")).replace("(C) ", "");
                 // convert total time to miliseconds
                 if (hhhPro[pp] == "Id_TpsCumule" && lineArray[hhhPro[pp]] != "-" ) {
-                    lineArray[hhhPro[pp]] = timeString2ms(lineArray[hhhPro[pp]]);   
+                    lineArray[hhhPro[pp]] = timeString2ms((lineArray[hhhPro[pp]]));   
                 }
                 if (hhhPro[pp] == "Id_Categorie" && lineArray[hhhPro[pp]] == '&nbsp;' ) {
                     lineArray[hhhPro[pp]] = "&nbsp;";   
@@ -470,7 +483,7 @@
 
      //             console.log(qqq);
       //   console.log(hhhPro);
-         //                console.log(allArray);
+      //                   console.log(allArray);
 
         
 
@@ -801,11 +814,11 @@
    //     }          
 
             // set laps according to category
-            if (useCategory == "yes" && cleanResults == 0) {
+            if ((useCategory == "yes" && cleanResults == 0) || (cleanResults == 1 && rallyRaid == 1)) {
                 laps = lapsX[allArray[l]["Id_Categorie"]];
-            } else if (useCategory == "no" && cleanResults == 0) {
+            } else if ((useCategory == "no" && cleanResults == 0) || (cleanResults == 1 && rallyRaid == 1)) {
                 laps = lapsX["overAll"];
-            } else if (useCategory == "yes" && cleanResults == 1) {
+            } else if (useCategory == "yes" && cleanResults == 1 && rallyRaid == 0) {
 
                 if (allArray[l]["Id_Categorie"].includes('עממית') || allArray[l]["Id_Categorie"].includes("ג'וניור") || allArray[l]["Id_Categorie"].includes('סניורים')) {
                     laps = notProLaps;
@@ -826,12 +839,28 @@
                 headerText1 += '<th class="rnkh_font">מקום</th>\n'; //  Id_Position
             }
             headerText1 += '<th class="rnkh_font">מספר</th>';
-            headerText1 += '<th class="rnkh_font">שם</th>';
+//            headerText1 += '<th class="rnkh_font">שם</th>';
+
+    // NOT using aria popup for נווט 
+            if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
+                if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
+                    headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
+                } else {
+                    headerText1 += '<th class="rnkh_font">נהג</th>\n'; // Id_Nom
+                    headerText1 += '<th class="rnkh_font">נווט</th>\n'; // Id_Licence
+                }
+            } else {
+                headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
+            }
             
             if (beginners1sp == 0 || (beginners1sp == 1 && !allArray[l]["Id_Categorie"].includes("B"))) {
                 for (q = 1; q <= laps; q++) {
 
-                    headerText1 += '<th class="rnkh_font">הקפה ' + q + '</th>';
+                        if (rallyRaid == 1) {
+                            headerText1 += '<th class="rnkh_font">SS ' + q + '</th>\n';
+                        } else {
+                            headerText1 += '<th class="rnkh_font">הקפה ' + q + '</th>\n';
+                        }
                 }
             }
             headerText1 += '<th class="rnkh_font">זמן</th>';
@@ -1052,11 +1081,19 @@
                         } else if (opt4.toUpperCase().includes("סניור") || opt4.toUpperCase().includes("נשים")) {
                             finalText += '<td aria-label="' + opt4 + '" class="rnk_font pinkCat">' + opt3 + '</td>';
                         } else {
-                            finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
+                            if (cleanResults == 0) {
+                                finalText += '<td aria-label="' + opt4 + '" class="rnk_font highlight">' + opt3 + '</td>';
+                            } else {
+                                finalText += '<td class="rnk_font">' + opt3 + '</td>';
+                            }
                         }
 
                     } else {
+                        if (cleanResults == 0) {
                             finalText += '<td class="rnk_font highlight">' + opt3 + '</td>';
+                        } else {
+                            finalText += '<td class="rnk_font">' + opt3 + '</td>';
+                        }
                     }
 
 
@@ -1065,22 +1102,44 @@
       //          }
                  
                 finalText += '<td class="rnk_font">' + allArray[l]["Id_Nom"] + '</td>';// add the name
+
+                if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
+
+                    if (allArray[l]["Id_Nom"] != "???") {
+                        finalText += `<td class="rnk_font">${allArray[l]["Id_Licence"]}</td>\n`;   //copilot              
+                    } else {
+                        finalText += `<td class="rnk_font"></td>\n`;                
+                    }
+                }
+                
 // adding and coloring the laps and best time
 // short version
+
+
+//FIXME this is dirty fix for rally raid as we need to show all the lap times from the first sp and then all from second sp, and not like with 2sp enduro were we take one lap from first sp and then from second sp and so on...
+if (rallyRaid == 1) {
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_lap3"] + '</td>';
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_lap1"] + '</td>';
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_lap4"] + '</td>';
+                            finalText += '<td class="rnk_font">' + allArray[l]["Id_lap2"] + '</td>';
+    
+} else {
+
+
             if (beginners1sp == 0 || (beginners1sp == 1 && !allArray[l]["Id_Categorie"].includes("B"))) {
                 for (q = 1; q <= laps; q++) {
                     if (q % 2 == 0) {
-                        if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2) {
+                        if (allArray[l]["Id_lap"+q] == bestLap2 && allArray[l]["Id_Numero"] == bestLapComp2 && rallyRaid == 0) {
                             finalText += '<td class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>';
-                        } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"] && allArray[l]["Id_NbTour"] > 3) {
+                        } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour_2"] && allArray[l]["Id_NbTour"] > 3 && rallyRaid == 0) {
                             finalText += '<td class="rnk_font BestTime1">' + allArray[l]["Id_lap"+q] + '</td>';
                         } else {
                             finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
                         }
                     } else {
-                        if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp) {
+                        if (allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp && rallyRaid == 0) {
                             finalText += '<td class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>';
-                        } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && allArray[l]["Id_NbTour"] > 2) {
+                        } else if (allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && allArray[l]["Id_NbTour"] > 2 && rallyRaid == 0) {
                             finalText += '<td class="rnk_font BestTime">' + allArray[l]["Id_lap"+q] + '</td>';
                         } else {
                             finalText += '<td class="rnk_font">' + allArray[l]["Id_lap"+q] + '</td>';
@@ -1089,7 +1148,7 @@
                 }               
             }
 
-
+}
 /*
 // long version
                 if (allArray[l]["Id_lap1"] == bestTime && allArray[l]["Id_Numero"] == bestTimecomp) {
@@ -1136,12 +1195,25 @@
                 }
 */
 
+
+if (rallyRaid == 1) { //FIXME to show P for penalty for rally raid
+    if (allArray[l]["Id_penalty"] =="P" || allArray[l]["Id_penalty_2"] == "P") {
+        finalText += '<td class="rnk_font penalty">P ' + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
+    } else {
+                        
+        finalText += '<td class="rnk_font">' + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
+
+    }
+} else {
+
+
+
                 if (allArray[l]["Id_PenaliteTpsCumule"] != "-" && cleanResults == 0) {
                     finalText += '<td class="rnk_font penalty" aria-label="עונשין: ' + allArray[l]["Id_PenaliteTpsCumule"].replace('.000', '') + '">P ' + allArray[l]["Id_TpsCumule"] + '</td>';
                 } else {
                     finalText += '<td class="rnk_font">' + allArray[l]["timeP"] + allArray[l]["Id_TpsCumule"] + '</td>'; // add total time
                 }
- 
+} 
  
  
  
@@ -1212,7 +1284,7 @@
     firstPass = 0;      
     tableClass = "";
     
-    if (cleanResults == 0) {
+    if (cleanResults == 0 && rallyRaid == 0) {
 
         finalText += '<div><ul><li style="width: fit-content;padding: 0 5px;background-color: rgba(219,42,255,.6);color: #fff;    text-shadow: none;">הקפה מהירה כללית</li><li style="width: fit-content;padding: 0 5px;background-color: rgba(54,220,24,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 1</li><li style="width: fit-content;padding: 0 5px;background-color: rgba(88,201,241,.6);color: #222;text-shadow: none;">הקפה מהירה אישית ספיישל 2</li></ul></div>';
     }
@@ -1221,7 +1293,22 @@
 
     };
         
-    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
+    function timeString2ms(a) {// time(HH:MM:SS.mss) 
+         a = a.split('.');
+        var b = a[1]*1||0;
+        a = a[0].split(':');
+        return b+(a[2]?a[0]*3600+a[1]*60+a[2]*1:a[1]?a[0]*60+a[1]*1:a[0]*1)*1e3
+    }
+
+    function ms2TimeString(a) {
+        var k = a%1e3; 
+        var s = a/1e3%60|0;
+        var m = a/6e4%60|0;
+        var h = a/36e5%24|0;
+        return (h?(h<10?'0'+h:h)+':':'')+ (m<10?0:'')+m+':'+ (s<10?0:'')+s+'.'+ (k<100?k<10?'00':0:'')+k 
+      //  return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0') + '.' + String(k).padStart(3, '0') 
+    }
+/*    function timeString2ms(a,b){// time(HH:MM:SS.mss) // optimized
         return a=a.split('.'), // optimized
         b=a[1]*1||0, // optimized
         a=a[0].split(':'),
@@ -1238,7 +1325,7 @@
         (s<10?0:'')+s+'.'+ // optimized
         (k<100?k<10?'00':0:'')+k // optimized
     };
-
+*/
     function alignTable() {
         
         if (cleanResults == 0) {

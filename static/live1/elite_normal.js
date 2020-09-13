@@ -70,12 +70,12 @@
         ticker = JSON.parse(sessionStorage.getItem('ticker'));
     }      // tickerTest
     var firstPlace = "";  // tickerTest
-    var firstPass = 1;  // tickerTest
+    var firstPass = 1;
     var tickerBestTime = "-";  // tickerTest
     if (sessionStorage.getItem('tickerBestTime')) {
         tickerBestTime = sessionStorage.getItem('tickerBestTime');
     }      // tickerTest
-    var eventName = "";  // tickerTest    
+    var eventName = "";    
     if (sessionStorage.getItem('eventName')) {
         eventName = sessionStorage.getItem('eventName');
     }      // tickerTest
@@ -342,6 +342,7 @@
         var specialTest = 0;
         var hareScramble = 0;
         var rallySprint = 0;
+        var rallyRaid = 0;
         var qualifying = 0;
            
         var b, q, z, f, l, j, g, gg, i, ff, ii;
@@ -476,6 +477,11 @@
             document.body.appendChild(sheet);
 */            rallySprint = 1;
             showBestLap = 0;
+        }
+
+        if (HeaderName[0].includes("ראלי") && HeaderName[0].includes("רייד")) { // will show SS instead of הקפה for rallyRaid
+            rallyRaid = 1;
+//            showBestLap = 0;
         }
                 
 //        if (HeaderName[0].includes("laps")) { // will show individual laps 
@@ -904,7 +910,13 @@ switch(option) {  // tickerTest
                     
                     for (j = 1; j <= lapsX; j++) {
                 //      headerText1 += '<th class="rnkh_font Id_lap' + j + '">הקפה ' + j + '</th>\n';
-                        headerText1 += '<th class="rnkh_font">הקפה ' + j + '</th>\n';
+                        
+                        if (rallyRaid == 1) {
+                            headerText1 += '<th class="rnkh_font">SS ' + j + '</th>\n';
+                        } else {
+                            headerText1 += '<th class="rnkh_font">הקפה ' + j + '</th>\n';
+                        }
+                        
                     }
     /*                
                     headerText1 += '<th class="rnkh_font Id_lap1">הקפה 1</th>\n';
@@ -1137,7 +1149,7 @@ switch(option) {  // tickerTest
             if (allArray[l]["Id_PositionCategorie"] == "1" && useCategory == "yes") {
 
                 if (category != "&nbsp;") {
-                    if (typeof categoryBestTime[category][1] != 'undefined' && showBestLap == 1 && category != "&nbsp;" && category != "קטגוריה כללית" && categoryBestTime[category][1] != "-") {
+                    if (typeof categoryBestTime[category][1] != 'undefined' && showBestLap == 1 && category != "&nbsp;" && category != "קטגוריה כללית" && categoryBestTime[category][1] != "-" && rallyRaid == 0) {
                         bestTimeDisplay = ms2TimeString(Number(categoryBestTime[category][0]));
                         
                         if (bestTimeDisplay.toString().substring(0, 3) == "00:") {
@@ -1443,7 +1455,7 @@ switch(option) {  // tickerTest
 
             // for overall display
     
-            if (showBestLap == 1 && bestLapCompOverallDisplay != "0" && allArray[l]["Id_Numero"] == bestLapCompOverallDisplay && allArray[l]["Id_MeilleurTour"] != "-" && BestTimeTemp != 99999999999) {
+            if (showBestLap == 1 && rallyRaid == 0 && bestLapCompOverallDisplay != "0" && allArray[l]["Id_Numero"] == bestLapCompOverallDisplay && allArray[l]["Id_MeilleurTour"] != "-" && BestTimeTemp != 99999999999) {
                 
                 BestTimeForOverallDisplay = '<tr><td colspan="99" class="comment_font">הקפה מהירה כללית: (' + allArray[l]["Id_Numero"] + ') ' + allArray[l]["Id_Nom"] + ' - ' + allArray[l]["Id_MeilleurTour"] + '</td></tr>\n'; 
 
@@ -1458,10 +1470,10 @@ switch(option) {  // tickerTest
                     if (typeof allArray[l]["Id_lap"+q] == 'undefined') {
                         allArray[l]["Id_lap"+q] = "-"
                     }
-                    if (showBestLap == 1 && allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp && cleanResults == 0) {
+                    if (showBestLap == 1 && allArray[l]["Id_lap"+q] == bestLap && allArray[l]["Id_Numero"] == bestLapComp && rallyRaid == 0 && cleanResults == 0) {
                         finalText += '<td aria-label="הקפה מהירה כללית" class="rnk_font BestTimeOverall">' + allArray[l]["Id_lap"+q] + '</td>\n';
                        
-                    } else if (showBestLap == 1 && allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && cleanResults == 0) {
+                    } else if (showBestLap == 1 && allArray[l]["Id_lap"+q] != "-" && allArray[l]["Id_lap"+q] == allArray[l]["Id_MeilleurTour"] && rallyRaid == 0 && cleanResults == 0) {
                         finalText += '<td aria-label="הקפה מהירה אישית" class="rnk_font BestTime">' + allArray[l]["Id_lap"+q] + '</td>\n';
                     } else {
 
@@ -1502,7 +1514,7 @@ switch(option) {  // tickerTest
                     tickerBestTimeTemp = tickerBestTimeTemp.substr(1);
                 }
                 
-                if (firstPass == 0) {
+                if (firstPass == 0 && rallyRaid == 0) {
                     ticker.push(time + ' - ' + allArray[l]["Id_Nom"] + ' (' + allArray[l]["Id_Numero"] + ') הקפה מהירה כללית - ' + tickerBestTimeTemp);  // tickerTest
                     
                 }
@@ -1596,7 +1608,7 @@ switch(option) {  // tickerTest
             
         if (category != "&nbsp;") {
             
-            if (useCategory == "yes" && showBestLap == 1 && categoryBestTime[category][1] != "-" && category != "קטגוריה כללית" && category != "&nbsp;") {
+            if (useCategory == "yes" && showBestLap == 1 && categoryBestTime[category][1] != "-" && category != "קטגוריה כללית" && category != "&nbsp;" && rallyRaid == 0) {
 
                     bestTimeDisplay = ms2TimeString(Number(categoryBestTime[category][0]));
                     
@@ -1653,7 +1665,7 @@ switch(option) {  // tickerTest
 
         if (Object.keys(categoryBestTimePrevious).length > 1 && Object.keys(categoryBestTime).length > 1) {
             for (key in categoryBestTime) { 
-                if (categoryBestTime[key][0] != categoryBestTimePrevious[key][0] && key != "&nbsp;" && categoryBestTime[key][2] != "???") {  // tickerTest show best time in category in race progress
+                if (categoryBestTime[key][0] != categoryBestTimePrevious[key][0] && key != "&nbsp;" && categoryBestTime[key][2] != "???" && rallyRaid == 0) {  // tickerTest show best time in category in race progress
 
                         bestTimeDisplay = ms2TimeString(Number(categoryBestTime[key][0]));
                         
