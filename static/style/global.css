@@ -66,7 +66,7 @@ a {
     text-shadow: 1px 1px 2px #fff;
 }
 
-a:active,a:hover,a:focus {
+a:active,a:hover {
     outline: 0;
     color: #58585a;
     border-bottom: 1px dotted;
@@ -1848,6 +1848,24 @@ body#race.epic td.rnk_font.bold {
     padding: 0 5px;
 }
         
+/* Focusing with a keyboard will show a dashed black line. */
+:focus-visible {
+    outline: 4px dashed black;
+}
+.hdn:focus-visible {
+    outline: 0;
+}
+   
+/* Focusing with a mouse, touch, or stylus will show a subtle drop shadow. */
+:focus:not(:focus-visible) {
+    outline: 0;
+    color: #58585a;
+    border-bottom: 1px dotted;
+}
+.hdn:focus:not(:focus-visible) {
+    outline: 0;
+    border-bottom: none;
+}
 
 @media (max-width:767px) {
     .epic td.rnk_font.bigFont {
