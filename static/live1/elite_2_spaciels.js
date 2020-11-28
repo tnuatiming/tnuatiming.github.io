@@ -227,6 +227,34 @@
         xhr1.send(null);
     }
 */   
+
+    
+    function publishBox(){
+        var useCategoryTemp = useCategory;
+        
+        var publishText = '';
+        
+        useCategory = "yes";
+        cleanResults = 1;
+        publishText += createLiveTable(P1);
+        
+//        publishText = publishText.replace(/<td colspan="2"/gi, '<td></td><td ');
+        publishText = publishText.replace(/^.*id="Title".*$/mg, "");
+        publishText = publishText.replace(/^.*liveTable.*$/mg, "");
+        publishText = publishText.replace(/^.*id="DayTime".*$/mg, "");        
+        publishText = publishText.replace("</div>", '');
+        publishText = publishText.replace(/<tr/gi, '    <tr');
+        publishText = publishText.replace(/<\/tr/gi, '    </tr');
+        publishText = publishText.replace(/<th/gi, '        <th');
+        publishText = publishText.replace(/<td/gi, '        <td');
+        publishText = publishText.replace(/^\s*[\r\n]/gm, ''); // remove empty lines
+               
+        download(publishText, (eventName + '.txt').replace("+++",""), 'text/plain');        
+        
+        useCategory = useCategoryTemp;
+    }
+
+
     function createLiveTable() {
 
         var showCoPilot = 0;
@@ -299,8 +327,12 @@
         if (HeaderName[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             HeaderEventName = HeaderEventName.replace("+++", "");
+            document.getElementById("dResults").style.display = "block"; // download button
+            document.getElementById("center1").style.display = "none"; // download button
         } else {
             cleanResults = 0;
+            document.getElementById("dResults").style.display = "none"; // download button
+            document.getElementById("center1").style.display = "block"; // download button
         }
 
         if (HeaderName[0].includes("copilot")) { // clean table for results page
@@ -956,13 +988,13 @@
                     finalText += '</table>\n';
                 }
 
-                finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
+                finalText += '<table class="' + tableClass + 'line_color">\n<tr>\n<td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td>\n</tr>\n' + headerText1 + '\n';                
                                 
                 category = allArray[l]["Id_Categorie"];
 
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                                 
-                finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
+                finalText += '<tr>\n<td colspan="99" class="title_font">כללי</td>\n</tr>\n' + headerText1 + '\n';
             }
             
             catFirst = 0;
@@ -972,17 +1004,17 @@
             
                 if (allArray[l]["Id_Image"] == "_Status11" && dnfCategory != category) {
                     
-                    finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
+                    finalText += '<tr>\n<td colspan="99" class="subtitle_font">לא סיים - DNF</td>\n</tr>\n';
                     dnfCategory = category;
                     
                 } else if (allArray[l]["Id_Image"] == "_Status10" && dsqCategory != category) {
                     
-                    finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>\n';
+                    finalText += '<tr>\n<td colspan="99" class="subtitle_font">נפסל - DSQ</td>\n</tr>\n';
                     dsqCategory = category;
                     
                 } else if (allArray[l]["Id_Image"] == "_Status12" && dnsCategory != category) {
                     
-                    finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>\n';
+                    finalText += '<tr>\n<td colspan="99" class="subtitle_font">לא התחיל - DNS</td>\n</tr>\n';
                     dnsCategory = category;
                 }
 
@@ -1292,6 +1324,17 @@ if (rallyRaid == 1) { //FIXME to show P for penalty for rally raid
     return finalText
 
     };
+    
+        
+    function download(content, fileName, contentType) {
+        var a = document.createElement("a");
+        a.setAttribute("id", "download");
+        var file = new Blob([content], {type: contentType});
+        a.href = URL.createObjectURL(file);
+        a.download = fileName;
+        a.click();
+    };
+
         
     function timeString2ms(a) {// time(HH:MM:SS.mss) 
          a = a.split('.');

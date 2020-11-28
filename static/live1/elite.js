@@ -329,7 +329,33 @@
         xhr1.send();
     }
 
-
+    
+    function publishBox(){
+        var useCategoryTemp = useCategory;
+        
+        var publishText = '';
+        
+        useCategory = "yes";
+        cleanResults = 1;
+        publishText += createLiveTable(P1);
+        
+//        publishText = publishText.replace(/<td colspan="2"/gi, '<td></td><td ');
+        publishText = publishText.replace(/^.*id="Title".*$/mg, "");
+        publishText = publishText.replace(/^.*liveTable.*$/mg, "");
+        publishText = publishText.replace(/^.*id="DayTime".*$/mg, "");        
+        publishText = publishText.replace("</div>", '');
+        publishText = publishText.replace(/<tr/gi, '    <tr');
+        publishText = publishText.replace(/<\/tr/gi, '    </tr');
+        publishText = publishText.replace(/<th/gi, '        <th');
+        publishText = publishText.replace(/<td/gi, '        <td');
+        publishText = publishText.replace(/^\s*[\r\n]/gm, ''); // remove empty lines
+               
+        download(publishText, (eventName + '.txt').replace("+++",""), 'text/plain');        
+        
+        useCategory = useCategoryTemp;
+    }
+    
+    
     function createLiveTable(p1) {
          
         var showIndividualLaps = 0;
@@ -511,8 +537,13 @@
         if (HeaderName[0].includes("+++")) { // clean table for results page
             cleanResults = 1;
             HeaderEventName = HeaderEventName.replace("+++", "");
+            document.getElementById("dResults").style.display = "block"; // download button
+            document.getElementById("center1").style.display = "none"; // download button
+
         } else {
             cleanResults = 0;
+            document.getElementById("dResults").style.display = "none"; // download button
+            document.getElementById("center1").style.display = "block"; // download button
         }
 
         if (HeaderName[0].includes("copilot")) { // clean table for results page
@@ -1159,17 +1190,17 @@ switch(option) {  // tickerTest
                             bestTimeDisplay = bestTimeDisplay.substr(1);
                         }
 
-                        finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: (' + categoryBestTime[category][1] + ') ' + categoryBestTime[category][2] + ' - ' + bestTimeDisplay + '</td></tr>\n';
+                        finalText += '<tr>\n<td colspan="99" class="comment_font">הקפה מהירה: (' + categoryBestTime[category][1] + ') ' + categoryBestTime[category][2] + ' - ' + bestTimeDisplay + '</td>\n</tr>\n</table>\n';
                     }
                 }
 
                 category = allArray[l]["Id_Categorie"];
 
-                    finalText += '<table class="' + tableClass + 'line_color">\n<tr><td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td></tr>' + headerText1 + '\n';                
+                    finalText += '<table class="' + tableClass + 'line_color">\n<tr>\n<td colspan="99" class="title_font">'+allArray[l]["Id_Categorie"]+'</td>\n</tr>\n' + headerText1 + '\n';                
                 
             } else if (allArray[l]["Id_Position"] == 1 && useCategory == "no") {
                                 
-                    finalText += '<tr><td colspan="99" class="title_font">כללי</td></tr>' + headerText1 + '\n';
+                    finalText += '<tr>\n<td colspan="99" class="title_font">כללי</td>\n</tr>\n' + headerText1 + '\n';
            }
 
             // DNF/DSQ
@@ -1177,17 +1208,17 @@ switch(option) {  // tickerTest
                                                                     // auto finish V
                 if ((allArray[l]["Id_Image"].includes("_Status11") || allArray[l]["Id_Image"] == '_Status1') && dnfCategory != category) {
                     
-                    finalText += '<tr><td colspan="99" class="subtitle_font">לא סיים - DNF</td></tr>\n';
+                    finalText += '<tr>\n<td colspan="99" class="subtitle_font">לא סיים - DNF</td>\n</tr>\n';
                     dnfCategory = category;
                     
                 } else if (allArray[l]["Id_Image"].includes("_Status10") && dsqCategory != category) {
                     
-                    finalText += '<tr><td colspan="99" class="subtitle_font">נפסל - DSQ</td></tr>\n';
+                    finalText += '<tr>\n<td colspan="99" class="subtitle_font">נפסל - DSQ</td>\n</tr>\n';
                     dsqCategory = category;
                     
                 } else if (allArray[l]["Id_Image"].includes("_Status12") && dnsCategory != category) {
                     
-                    finalText += '<tr><td colspan="99" class="subtitle_font">לא התחיל - DNS</td></tr>\n';
+                    finalText += '<tr>\n<td colspan="99" class="subtitle_font">לא התחיל - DNS</td>\n</tr>\n';
                     dnsCategory = category;
                 }
             }
@@ -1457,7 +1488,7 @@ switch(option) {  // tickerTest
     
             if (showBestLap == 1 && rallyRaid == 0 && bestLapCompOverallDisplay != "0" && allArray[l]["Id_Numero"] == bestLapCompOverallDisplay && allArray[l]["Id_MeilleurTour"] != "-" && BestTimeTemp != 99999999999) {
                 
-                BestTimeForOverallDisplay = '<tr><td colspan="99" class="comment_font">הקפה מהירה כללית: (' + allArray[l]["Id_Numero"] + ') ' + allArray[l]["Id_Nom"] + ' - ' + allArray[l]["Id_MeilleurTour"] + '</td></tr>\n'; 
+                BestTimeForOverallDisplay = '<tr>\n<td colspan="99" class="comment_font">הקפה מהירה כללית: (' + allArray[l]["Id_Numero"] + ') ' + allArray[l]["Id_Nom"] + ' - ' + allArray[l]["Id_MeilleurTour"] + '</td>\n</tr>\n'; 
 
             }            
             
@@ -1619,7 +1650,7 @@ switch(option) {  // tickerTest
                         bestTimeDisplay = bestTimeDisplay.substr(1);
                     }
 
-                finalText += '<tr><td colspan="99" class="comment_font">הקפה מהירה: (' + categoryBestTime[category][1] + ') ' + categoryBestTime[category][2] + ' - ' + bestTimeDisplay + '</td></tr>\n</table>\n';
+                finalText += '<tr>\n<td colspan="99" class="comment_font">הקפה מהירה: (' + categoryBestTime[category][1] + ') ' + categoryBestTime[category][2] + ' - ' + bestTimeDisplay + '</td>\n</tr>\n</table>\n';
             } else {
                 finalText += '</table>\n';
             }
@@ -1780,6 +1811,16 @@ switch(option) {  // tickerTest
 
     return finalText
     }
+
+    
+    function download(content, fileName, contentType) {
+        var a = document.createElement("a");
+        a.setAttribute("id", "download");
+        var file = new Blob([content], {type: contentType});
+        a.href = URL.createObjectURL(file);
+        a.download = fileName;
+        a.click();
+    };
     
 /*
     function sortObjKeysAlphabetically(obj) {
