@@ -340,10 +340,10 @@
         publishText += createLiveTable(P1);
         
 //        publishText = publishText.replace(/<td colspan="2"/gi, '<td></td><td ');
-        publishText = publishText.replace(/^.*id="Title".*$/mg, "");
-        publishText = publishText.replace(/^.*liveTable.*$/mg, "");
-        publishText = publishText.replace(/^.*id="DayTime".*$/mg, "");        
-        publishText = publishText.replace("</div>", '');
+        publishText = publishText.replace(/^.*id="Title".*$/mg, ""); // delete first line
+        publishText = publishText.replace(/^.*id="DayTime".*$/mg, ""); // delete second line        
+        publishText = publishText.replace(/^.*id="liveTable".*$/mg, ""); // delete third line
+        publishText = publishText.replace("</div>", ''); // delete end div
         publishText = publishText.replace(/<tr/gi, '    <tr');
         publishText = publishText.replace(/<\/tr/gi, '    </tr');
         publishText = publishText.replace(/<th/gi, '        <th');
