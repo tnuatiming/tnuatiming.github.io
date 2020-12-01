@@ -332,11 +332,13 @@
     
     function publishBox(){
         var useCategoryTemp = useCategory;
-        
-        var publishText = '';
+        var cleanResultsTemp = cleanResults;
         
         useCategory = "yes";
         cleanResults = 1;
+
+        var publishText = '';
+        
         publishText += createLiveTable(P1);
         
 //        publishText = publishText.replace(/<td colspan="2"/gi, '<td></td><td ');
@@ -353,6 +355,7 @@
         download(publishText, (eventName.replace("+++","").replace(/ |-/g, '_') + '.txt').replace(/_+/g, '_'), 'text/plain');        
         
         useCategory = useCategoryTemp;
+        cleanResults = cleanResultsTemp;
     }
     
     

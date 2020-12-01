@@ -332,6 +332,7 @@
     
     function publishBox(){
         var useCategoryTemp = useCategory;
+        var cleanResultsTemp = cleanResults;
         
         var publishText = '';
         
@@ -353,6 +354,7 @@
         download(publishText, (eventName.replace("+++","").replace(/ |-/g, '_') + '.txt').replace(/_+/g, '_'), 'text/plain');        
         
         useCategory = useCategoryTemp;
+        cleanResults = cleanResultsTemp;
     }
     
     
