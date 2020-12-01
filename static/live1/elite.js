@@ -334,10 +334,11 @@
         var useCategoryTemp = useCategory;
         var cleanResultsTemp = cleanResults;
         
-        var publishText = '';
-        
         useCategory = "yes";
         cleanResults = 1;
+
+        var publishText = '';
+        
         publishText += createLiveTable(P1);
         
 //        publishText = publishText.replace(/<td colspan="2"/gi, '<td></td><td ');
