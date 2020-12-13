@@ -352,7 +352,7 @@
         publishText = publishText.replace(/<td/gi, '        <td');
         publishText = publishText.replace(/^\s*[\r\n]/gm, ''); // remove empty lines
                
-        download(publishText, (eventName.replace("+++","").replace(/ |-/g, '_') + '.txt').replace(/_+/g, '_'), 'text/plain');        
+        download(publishText, (eventName.trim().replace("+++","").replace(/ |-/g, '_') + '.txt').replace(/_+/g, '_'), 'text/plain');        
         
         useCategory = useCategoryTemp;
         cleanResults = cleanResultsTemp;
