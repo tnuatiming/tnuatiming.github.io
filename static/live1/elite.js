@@ -406,7 +406,7 @@
         var dsqCategory = "";
         var BestTimeForOverallDisplay = "";
 
-        var idName, id, dnsfq, fff, slim, headerText1, bestTimeDisplay, harescrambleFinished, checkeredFlag, opt3, opt4, opt5, key, bestTimeDisplay, tickerBestTimeTemp, tickerElement, tickerInnerHTML;
+        var idName, id, dnsfq, fff, slim, headerText1, bestTimeDisplay, PenaliteTimeDisplay, harescrambleFinished, checkeredFlag, opt3, opt4, opt5, key, bestTimeDisplay, tickerBestTimeTemp, tickerElement, tickerInnerHTML;
         
         Text = p1.split('<table'); // split the text to title/time and the table
         Text[1] = Text[1].substring(Text[1].indexOf("<tr"),Text[1].lastIndexOf("</tr>")+5); // clean the table text
@@ -1578,7 +1578,17 @@ switch(option) {  // tickerTest
                     }                
 
                     if (typeof allArray[l]["Id_PenaliteTpsCumule"] != 'undefined' && allArray[l]["Id_PenaliteTpsCumule"] != '-' && allArray[l]["Id_PenaliteTpsCumule"] != '0'){
-                            finalText += '<td class="rnk_font">' + allArray[l]["Id_PenaliteTpsCumule"] + '</td>\n'; //FIXME penalty in seconds? or as time? need to run ms2TimeString(timeString2ms())?
+                                                
+                        PenaliteTimeDisplay = ms2TimeString(timeString2ms(allArray[l]["Id_PenaliteTpsCumule"]));
+                        
+                        if (PenaliteTimeDisplay.toString().substring(0, 3) == "00:") {
+                            PenaliteTimeDisplay = PenaliteTimeDisplay.substr(3);
+                        }
+                        if (PenaliteTimeDisplay.toString().substring(0, 1) == "0" && PenaliteTimeDisplay.includes(":")) {
+                            PenaliteTimeDisplay = PenaliteTimeDisplay.substr(1);
+                        }
+
+                        finalText += '<td class="rnk_font">' + PenaliteTimeDisplay + '</td>\n'; //FIXME penalty in seconds? or as time? need to run ms2TimeString(timeString2ms())?
                     } else {
                         finalText += '<td class="rnk_font">-</td>\n';
                     }

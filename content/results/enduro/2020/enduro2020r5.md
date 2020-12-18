@@ -40,7 +40,7 @@ category: "enduro"
         <td class="rnk_font">6</td>
         <td class="rnk_font">21:34.266</td>
         <td class="rnk_font penalty">P 2:17:37.367</td>
-        <td class="rnk_font">30</td>
+        <td class="rnk_font">30.000</td>
         <td class="rnk_font">15:01.354</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -194,7 +194,7 @@ category: "enduro"
         <td class="rnk_font">5</td>
         <td class="rnk_font">23:03.002</td>
         <td class="rnk_font penalty">P 2:03:18.878</td>
-        <td class="rnk_font">30</td>
+        <td class="rnk_font">30.000</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -242,7 +242,7 @@ category: "enduro"
         <td class="rnk_font">6</td>
         <td class="rnk_font">22:11.605</td>
         <td class="rnk_font penalty">P 2:15:46.929</td>
-        <td class="rnk_font">30</td>
+        <td class="rnk_font">30.000</td>
         <td class="rnk_font">2:52.338</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -644,7 +644,7 @@ category: "enduro"
         <td class="rnk_font">4</td>
         <td class="rnk_font">25:37.530</td>
         <td class="rnk_font penalty">P 1:48:02.543</td>
-        <td class="rnk_font">60</td>
+        <td class="rnk_font">60.000</td>
         <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -674,7 +674,7 @@ category: "enduro"
         <td class="rnk_font">4</td>
         <td class="rnk_font">28:22.486</td>
         <td class="rnk_font penalty">P 1:57:55.923</td>
-        <td class="rnk_font">60</td>
+        <td class="rnk_font">60.000</td>
         <td class="rnk_font">9:53.380</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -704,7 +704,7 @@ category: "enduro"
         <td class="rnk_font">2</td>
         <td class="rnk_font">32:55.614</td>
         <td class="rnk_font penalty">P 1:36:57.723</td>
-        <td class="rnk_font">60</td>
+        <td class="rnk_font">60.000</td>
         <td class="rnk_font">2 הקפות</td>
     </tr>
     <tr>
@@ -1171,7 +1171,7 @@ category: "enduro"
         <td class="rnk_font">18</td>
         <td class="rnk_font">3:17.161</td>
         <td class="rnk_font penalty">P 1:03:15.009</td>
-        <td class="rnk_font">60</td>
+        <td class="rnk_font">60.000</td>
         <td class="rnk_font">2:19.600</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">

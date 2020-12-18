@@ -44,8 +44,8 @@
     }
 
     var tableClass = "fadeIn ";
-    var url1 = "https://tnuatiming.com/live1/sp1/p1.html";    
-    var url2 = "https://tnuatiming.com/live1/sp2/p1.html";    
+    var url1 = "https://tnuatiming.com/live/sp1/p1.html";    
+    var url2 = "https://tnuatiming.com/live/sp2/p1.html";    
     var Text1;
     var Text2;
     
