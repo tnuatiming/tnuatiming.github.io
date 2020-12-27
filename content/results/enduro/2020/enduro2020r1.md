@@ -626,7 +626,6 @@ category: "enduro"
         <th class="rnkh_font">הקפות</th>
         <th class="rnkh_font">הקפה מהירה</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -637,7 +636,6 @@ category: "enduro"
         <td class="rnk_font">12:10.247</td>
         <td class="rnk_font">1:40:06.412</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
@@ -646,7 +644,6 @@ category: "enduro"
         <td class="rnk_font">8</td>
         <td class="rnk_font">12:05.528</td>
         <td class="rnk_font">1:40:19.540</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">13.128</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -656,7 +653,6 @@ category: "enduro"
         <td class="rnk_font">8</td>
         <td class="rnk_font">12:06.751</td>
         <td class="rnk_font">1:40:56.827</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">50.415</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -666,7 +662,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:26.148</td>
         <td class="rnk_font">1:30:14.461</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -676,7 +671,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:59.715</td>
         <td class="rnk_font">1:34:14.192</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -686,7 +680,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:44.177</td>
         <td class="rnk_font">1:36:13.620</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -696,7 +689,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:18.761</td>
         <td class="rnk_font penalty">P 1:38:45.039</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -706,7 +698,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">14:33.260</td>
         <td class="rnk_font penalty">P 1:41:59.699</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -716,7 +707,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">14:23.239</td>
         <td class="rnk_font">1:42:39.702</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -726,7 +716,6 @@ category: "enduro"
         <td class="rnk_font">5</td>
         <td class="rnk_font">15:44.535</td>
         <td class="rnk_font">1:30:15.159</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3 הקפות</td>
     </tr>
     <tr>
@@ -739,7 +728,6 @@ category: "enduro"
         <td class="rnk_font">5</td>
         <td class="rnk_font">13:48.075</td>
         <td class="rnk_font">1:21:28.530</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3 הקפות</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -749,7 +737,6 @@ category: "enduro"
         <td class="rnk_font">3</td>
         <td class="rnk_font">13:14.685</td>
         <td class="rnk_font">41:26.750</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">5 הקפות</td>
     </tr>
     <tr>
@@ -767,7 +754,6 @@ category: "enduro"
         <th class="rnkh_font">הקפות</th>
         <th class="rnkh_font">הקפה מהירה</th>
         <th class="rnkh_font">זמן</th>
-        <th class="rnkh_font">עונשין</th>
         <th class="rnkh_font">פער</th>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -778,7 +764,6 @@ category: "enduro"
         <td class="rnk_font">12:34.953</td>
         <td class="rnk_font">1:32:27.658</td>
         <td class="rnk_font">-</td>
-        <td class="rnk_font">-</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
         <td class="rnk_font">2</td>
@@ -787,7 +772,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:38.997</td>
         <td class="rnk_font penalty">P 1:33:14.706</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">47.048</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -797,7 +781,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:30.751</td>
         <td class="rnk_font">1:36:01.242</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">3:33.584</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -807,7 +790,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">12:56.290</td>
         <td class="rnk_font">1:37:24.095</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">4:56.437</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -817,7 +799,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:29.863</td>
         <td class="rnk_font penalty">P 1:37:48.444</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">5:20.786</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -827,7 +808,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:48.792</td>
         <td class="rnk_font">1:39:56.769</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">7:29.111</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -837,7 +817,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:52.163</td>
         <td class="rnk_font">1:43:42.027</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">11:14.369</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -847,7 +826,6 @@ category: "enduro"
         <td class="rnk_font">7</td>
         <td class="rnk_font">13:53.776</td>
         <td class="rnk_font">1:45:07.505</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">12:39.847</td>
     </tr>
     <tr class="rnk_bkcolor OddRow">
@@ -857,7 +835,6 @@ category: "enduro"
         <td class="rnk_font">6</td>
         <td class="rnk_font">14:40.653</td>
         <td class="rnk_font">1:32:11.309</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr class="rnk_bkcolor EvenRow">
@@ -867,7 +844,6 @@ category: "enduro"
         <td class="rnk_font">6</td>
         <td class="rnk_font">16:24.840</td>
         <td class="rnk_font">1:43:45.086</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr>
@@ -880,7 +856,6 @@ category: "enduro"
         <td class="rnk_font">6</td>
         <td class="rnk_font">13:34.730</td>
         <td class="rnk_font">1:23:03.655</td>
-        <td class="rnk_font">-</td>
         <td class="rnk_font">1 הקפה</td>
     </tr>
     <tr>

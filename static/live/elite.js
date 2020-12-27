@@ -462,12 +462,12 @@
         
             if (Text[0].includes("_GreenFlag")) {   // tickerTest
                 if (firstPass == 0 && flag != "green") {
-                    ticker.push(time + ' - ' + 'זינוק/דגל ירוק ' + HeaderRaceName);  // tickerTest
+                    ticker.push(time + ' - ' + 'זינוק/דגל ירוק');  // tickerTest
                 }
                 flag = "green";
             } else if (Text[0].includes("_CheckeredFlag")) {
                 if (firstPass == 0 && flag != "checkered") {
-                    ticker.push(time + ' - ' + 'סיום ' + HeaderRaceName);  // tickerTest
+                    ticker.push(time + ' - ' + 'סיום');  // tickerTest
                 }
                 flag = "checkered";
             } else if (Text[0].includes("_Stop")) {
@@ -913,7 +913,7 @@ switch(option) {  // tickerTest
                 
         // NOT using aria popup for נווט 
                 if (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined') {
-                    if (allArray[l]["Id_Categorie"].includes('אופנועים') && useCategory == "yes") {
+                    if ((allArray[l]["Id_Categorie"].includes('אופנוע') || allArray[l]["Id_Categorie"].includes('טרקטרו')) && useCategory == "yes") {
                         headerText1 += '<th class="rnkh_font">שם</th>\n'; // Id_Nom
                     } else {
                         headerText1 += '<th class="rnkh_font">נהג</th>\n'; // Id_Nom
@@ -1411,7 +1411,7 @@ switch(option) {  // tickerTest
                 finalText += `<td class="rnk_font"></td>\n`;                
             }
         
-            if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנועים')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
+            if ((showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && !(allArray[l]["Id_Categorie"].includes('אופנוע') || allArray[l]["Id_Categorie"].includes('טרקטרו')) && useCategory == "yes") || (showCoPilot == 1 && typeof allArray[l]["Id_Licence"] != 'undefined' && useCategory == "no")) {
 
                 if (allArray[l]["Id_Nom"] != "???") {
                     finalText += `<td class="rnk_font">${allArray[l]["Id_Licence"]}</td>\n`;   //copilot              
