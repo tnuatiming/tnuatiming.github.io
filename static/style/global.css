@@ -290,6 +290,7 @@ tr.rnkh_bkcolor {
 
 #race .erlier_races {
     align-self:flex-start;
+    margin-top: 20px;
 }
 
 #race .erlier_races p {
