@@ -722,7 +722,7 @@ switch(option) {  // tickerTest
            
            // MAGIC sort the array after the merge to get new results
         if (useCategory == "yes" && (HeaderName[0].includes("נדורו") || HeaderName[0].includes("טסט") || HeaderName[0].includes("הייר"))) { // this sort discreminate aginst empty category so it shown last
-            allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || (b.Id_Categorie.includes("מקצועית"))-(a.Id_Categorie.includes("מקצועית")) || (b.Id_Categorie.toUpperCase().includes("EXPERT"))-(a.Id_Categorie.toUpperCase().includes("EXPERT")) || (b.Id_Categorie.includes("עממית"))-(a.Id_Categorie.includes("עממית")) || (b.Id_Categorie.includes("סניור"))-(a.Id_Categorie.includes("סניור")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
+            allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || (b.Id_Categorie.includes("מקצועית"))-(a.Id_Categorie.includes("מקצועית")) || (b.Id_Categorie.toUpperCase().includes("EJ"))-(a.Id_Categorie.toUpperCase().includes("EJ")) || (b.Id_Categorie.toUpperCase().includes("EXPERT"))-(a.Id_Categorie.toUpperCase().includes("EXPERT")) || (b.Id_Categorie.includes("עממית"))-(a.Id_Categorie.includes("עממית")) || (b.Id_Categorie.includes("סניור"))-(a.Id_Categorie.includes("סניור")) || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         } else if (useCategory == "yes") { // this sort discreminate aginst empty category so it shown last
             allArray.sort(function(a, b){return (a.Id_Categorie == "&nbsp;")-(b.Id_Categorie == "&nbsp;") || a.Id_Categorie.localeCompare(b.Id_Categorie) || a.Id_PositionCategorie - b.Id_PositionCategorie});
         } 
@@ -1242,7 +1242,7 @@ switch(option) {  // tickerTest
             harescrambleFinished = 0;
             if (hareScramble == 1) {
                 
-                if ((allArray[l]["Id_Categorie"].toUpperCase().includes("E") || allArray[l]["Id_Categorie"].toUpperCase().includes("EXPERT")) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) { // 2 hours
+                if ((allArray[l]["Id_Categorie"].toUpperCase().includes("E") || allArray[l]["Id_Categorie"].toUpperCase().includes("EXPERT") || allArray[l]["Id_Categorie"].toUpperCase().includes("אקספרט")) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) { // 2 hours
                     harescrambleFinished = 1;
                 } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("סופר ג'וניור") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleSuperJuniors) { // 40 minutes
                     harescrambleFinished = 1;
@@ -1378,7 +1378,7 @@ switch(option) {  // tickerTest
                         finalText += `<td class="rnk_font lightblueCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("ג'וניור מקצועי")) {
                         finalText += `<td class="rnk_font grayCat" aria-label="${opt5}">${opt3}</td>\n`;
-                    } else if (opt4.toUpperCase().includes("EXPERT") || opt4.toUpperCase().includes("אקספרט") || opt4.toUpperCase().includes("MX3")) {
+                    } else if (opt4.toUpperCase().includes("EXPERT") || opt4.toUpperCase().includes("אקספרט") || opt4.toUpperCase().includes("EJ") || opt4.toUpperCase().includes("MX3")) {
                         finalText += `<td class="rnk_font blueCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("סופר סניור") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("B1") || opt4.toUpperCase().includes("B2") || opt4.toUpperCase().includes("B3") || opt4.toUpperCase().includes("MX1") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
                         finalText += `<td class="rnk_font whiteCat" aria-label="${opt5}">${opt3}</td>\n`;
