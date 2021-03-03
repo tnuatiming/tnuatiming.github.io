@@ -13,9 +13,26 @@
 * best time #3EB650 
 * green flag #00843d
 
-* @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);*/
-@import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);
+* @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanshebrew.css);*/
+/* 
+ * Noto Sans Hebrew (Hebrew) http://www.google.com/fonts/earlyaccess
+ */
+@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/ea/notosanshebrew/v4/NotoSansHebrew-Regular.woff2) format('woff2');
+  font-display: swap;
 
+}
+@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/ea/notosanshebrew/v4/NotoSansHebrew-Bold.woff2) format('woff2');
+  font-display: swap;
+}
 * {
     box-sizing: border-box;
     margin: 0;

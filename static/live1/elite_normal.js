@@ -571,7 +571,7 @@
 //        console.log(flagText[0]); // Images/_Stop.png
 //        console.log(flagText[1]); // _Stop
 
-        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + '</h2><img class="TitleFlag2" src="' + flagText[0] + '"></div>'; // clear the finalText variable and add the title and time lines
+        var finalText = '<div id="Title"><img class="TitleFlag1" src="' + flagText[0] + '" alt="Flag"><h2 id="TitleH1">'+HeaderEventName.replace(" - ", "<br>") + '</h2><img class="TitleFlag2" src="' + flagText[0] + '" alt="Flag"></div>'; // clear the finalText variable and add the title and time lines
         
         finalText += HeaderName[1];
         
@@ -1242,13 +1242,13 @@ switch(option) {  // tickerTest
             harescrambleFinished = 0;
             if (hareScramble == 1) {
                 
-                if ((allArray[l]["Id_Categorie"].toUpperCase().includes("E") || allArray[l]["Id_Categorie"].toUpperCase().includes("EXPERT") || allArray[l]["Id_Categorie"].toUpperCase().includes("אקספרט")) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) { // 2 hours
+                if ((allArray[l]["Id_Categorie"].toUpperCase().includes("E") || allArray[l]["Id_Categorie"].includes("אקספרט")) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishE) { // 2 hours
                     harescrambleFinished = 1;
-                } else if (allArray[l]["Id_Categorie"].toUpperCase().includes("סופר ג'וניור") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleSuperJuniors) { // 40 minutes
+                } else if (allArray[l]["Id_Categorie"].includes("סופר ג'וניור") && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleSuperJuniors) { // 40 minutes
                     harescrambleFinished = 1;
-                } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("מתחילים") || allArray[l]["Id_Categorie"].toUpperCase().includes("נשים") || (allArray[l]["Id_Categorie"].toUpperCase().includes("ג'וניור"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishBeginers) { // 1 hour
+                } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("B") || allArray[l]["Id_Categorie"].includes("מתחילים") || allArray[l]["Id_Categorie"].includes("נשים") || (allArray[l]["Id_Categorie"].includes("ג'וניור"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishBeginers) { // 1 hour
                     harescrambleFinished = 1;
-                } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("עממית") || (allArray[l]["Id_Categorie"].toUpperCase().includes("סניור"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishC) { // 1.5 hours
+                } else if ((allArray[l]["Id_Categorie"].toUpperCase().includes("C") || allArray[l]["Id_Categorie"].includes("עממית") || (allArray[l]["Id_Categorie"].includes("סניור"))) && timeString2ms(allArray[l]["Id_TpsCumule"]) >= harescrambleFinishC) { // 1.5 hours
                     harescrambleFinished = 1;
                 } else {
                     harescrambleFinished = 0;
@@ -1370,17 +1370,17 @@ switch(option) {  // tickerTest
                         finalText += `<td class="rnk_font blackCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("E2")) {
                         finalText += `<td class="rnk_font redCat" aria-label="${opt5}">${opt3}</td>\n`;
-                    } else if (opt4.toUpperCase().includes("E3") || opt4.toUpperCase().includes("סופר ג'וניור מתחילים") || opt4.toUpperCase().includes("רוקיז")) {
+                    } else if (opt4.toUpperCase().includes("E3") || opt4.includes("סופר ג'וניור מתחילים") || opt4.includes("רוקיז")) {
                         finalText += `<td class="rnk_font yellowCat" aria-label="${opt5}">${opt3}</td>\n`;
-                    } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.toUpperCase().includes("עממית")) {
+                    } else if (opt4.toUpperCase().includes("C1") || opt4.toUpperCase().includes("C2") || opt4.toUpperCase().includes("C3") || opt4.includes("עממית")) {
                         finalText += `<td class="rnk_font greenCat" aria-label="${opt5}">${opt3}</td>\n`;
-                    } else if (opt4.toUpperCase().includes("סופר ג'וניור מקצועי")) {
+                    } else if (opt4.includes("סופר ג'וניור מקצועי")) {
                         finalText += `<td class="rnk_font lightblueCat" aria-label="${opt5}">${opt3}</td>\n`;
-                    } else if (opt4.toUpperCase().includes("ג'וניור מקצועי")) {
+                    } else if (opt4.includes("ג'וניור מקצועי")) {
                         finalText += `<td class="rnk_font grayCat" aria-label="${opt5}">${opt3}</td>\n`;
-                    } else if (opt4.toUpperCase().includes("EXPERT") || opt4.toUpperCase().includes("אקספרט") || opt4.toUpperCase().includes("EJ") || opt4.toUpperCase().includes("MX3")) {
+                    } else if (opt4.toUpperCase().includes("EXPERT") || opt4.includes("אקספרט") || opt4.toUpperCase().includes("EJ") || opt4.toUpperCase().includes("MX3")) {
                         finalText += `<td class="rnk_font blueCat" aria-label="${opt5}">${opt3}</td>\n`;
-                    } else if (opt4.toUpperCase().includes("סופר סניור") || opt4.toUpperCase().includes("מתחילים") || opt4.toUpperCase().includes("B1") || opt4.toUpperCase().includes("B2") || opt4.toUpperCase().includes("B3") || opt4.toUpperCase().includes("MX1") || opt4.toUpperCase().includes("ג'וניור מתחילים")) {
+                    } else if (opt4.includes("סופר סניור") || opt4.includes("מתחילים") || opt4.toUpperCase().includes("B1") || opt4.toUpperCase().includes("B2") || opt4.toUpperCase().includes("B3") || opt4.toUpperCase().includes("MX1") || opt4.includes("ג'וניור מתחילים")) {
                         finalText += `<td class="rnk_font whiteCat" aria-label="${opt5}">${opt3}</td>\n`;
                     } else if (opt4.toUpperCase().includes("סניור")) {
                         finalText += `<td class="rnk_font purpleCat" aria-label="${opt5}">${opt3}</td>\n`;
