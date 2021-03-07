@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="no-js" lang="he" xml:lang="he" dir="ltr">
+
+<head>
+
+    <title>תנועה מדידת זמנים  &ndash; live timing</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="fksQzLHsNNdUr7KUw53_2thUPno2gvM0oe_MRxWvjSo">
+    <meta name="description" content="תנועה מדידת זמנים עוסקת במדידת זמנים בארועי ספורט">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffcc33">
+    <meta name="apple-mobile-web-app-title" content="תנועה מדדית זמנים">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="תנועה מדדית זמנים">
+    <meta name="msapplication-TileColor" content="#ffcc33">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffcc33">
+    
+    <link rel="stylesheet" media="all" type="text/css" href="/style/global.css">
+
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:site_name" content="tnua timing - תנועה מדידת זמנים">
+    <meta property="og:title" content="תנועה מדידת זמנים  &ndash; live timing">
+    <meta property="og:description" content="live timing">
+    
+    
+    <meta property="og:url" content="https://tnuatiming.com/">
+    <meta property="og:image" content="http://tnuatiming.com/images/logo2_og.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+
+    <style>
+        html {
+            background: #f0f0f0;
+            height: 100%;
+            width: 100%;
+            font-size: 16px;
+            direction: ltr;
+        }
+        
+        body {background-image: none;}
+
+        div#gr.btn {
+            display: block;
+            margin: 0;
+            background: gray;
+        }
+        
+        #buttonInfo, #ok {
+            font-size: 2em;
+            flex-direction: column;
+            direction: ltr;
+            color: white;
+        }
+
+        button#cc {
+            font-size: 2em;
+            vertical-align: middle;
+            margin: 25px 25px;
+            padding: 25px;
+            color: white;
+            background-color: gray;
+        }
+
+        div#result {
+            text-align: left;
+            margin: 40px 20%;
+        }
+
+    </style>
+
+    
+<script>
+
+    
+    var log = "";    
+    if (localStorage.getItem('log')) {
+        log = localStorage.getItem('log');
+    }      
+
+    var TimerLoad;
+    var Rafraichir = 10000;
+
+    var url = '/live/p1.html';
+    var target = 'result';
+    var P1;
+    var old_live = "";
+    if (sessionStorage.getItem('old_live')) {
+        old_live = sessionStorage.getItem('old_live');
+    }      
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("cc").addEventListener("click", clear);
+    });
+
+    
+    async function Load(url, target) {
+        
+            var loop;
+            if (TimerLoad) clearTimeout(TimerLoad);
+
+/*            var rightNow = new Date();
+            var da = rightNow.toJSON().slice(0,10).replace(/-/g,"");
+            var tm = rightNow.toJSON().slice(11,19).replace(/:/g,"");
+        console.log(da)
+        console.log(tm)*/
+            var ma = new Date();
+            var dateString = ma.getUTCFullYear() + ("0" + (ma.getUTCMonth()+1)).slice(-2) + ("0" + ma.getUTCDate()).slice(-2) + "_" + ("0" + (ma.getUTCHours()+2)).slice(-2) + ("0" + ma.getUTCMinutes()).slice(-2) + ("0" + ma.getUTCSeconds()).slice(-2);
+//        console.log(dateString)
+
+        if (self.fetch) {
+
+            try {
+                const response = await fetch(url, {cache: "no-store"});
+                if (response.ok) {
+                    document.getElementById("gr").style.backgroundColor = "green"; 
+                    P1 = await response.text();
+ //                   document.getElementById(target).innerHTML = 'p1_' + dateString + '.html';
+
+ 
+                    if (old_live != P1) {
+                        var Text = P1.split('.png">', 2); 
+                        Text = Text[1].split('<img', 2); 
+                        var rt = P1.split('RemainingTime">', 2); 
+                        rt = rt[1].split('</span>', 2); 
+                        
+                        download(P1, dateString + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
+                        
+                        log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + '</div>\n';
+                    
+                        old_live = P1;
+                        sessionStorage.setItem('old_live', old_live);  
+                    
+                    } else {
+ 
+                        log += '<div>' + dateString + ' no new data</div>\n';
+                    }
+                    
+                } else {
+                    console.log(response.status);
+                    document.getElementById("gr").style.backgroundColor = "yellow"; 
+                    log += '<div>' + dateString + ' server returned status: ' + response.status + '</div>\n';
+                }
+            }
+            catch (err) {
+                console.log('results fetch failed', err);
+                document.getElementById("gr").style.backgroundColor = "red"; 
+                log += '<div>' + dateString + ' something when wrong</div>\n';
+            }
+
+        } 
+                
+        document.getElementById(target).innerHTML = log;
+        localStorage.setItem('log', log);  
+//        console.log(log);
+
+        loop = function() {
+            Load(url, target);
+        };
+
+        TimerLoad = setTimeout(loop, Rafraichir);
+        Rafraichir = 60000;
+
+    }
+
+    function download(content, fileName, contentType) {
+        var a = document.createElement("a");
+        a.setAttribute("id", "download");
+        var file = new Blob([content], {type: contentType});
+        a.href = URL.createObjectURL(file);
+        a.download = fileName.replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_");
+        a.click();
+    };
+
+    function clear() {
+        log = "";
+        document.getElementById(target).innerHTML = "";
+        localStorage.removeItem('log');  
+        sessionStorage.removeItem('old_live');  
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        Load(url, target);
+        
+    });
+
+</script>
+
+
+</head>
+
+<body id="backup">
+
+    <div id="ok">
+        <div id="gr" class="btn">&nbsp;</div>
+    <!--        <button id="clear" class="btn" onclick="clear()">clear all</button>-->
+    </div>
+
+    <div id="result"></div>
+
+    <div id="bt">
+        <button id="cc">clear log</button>
+    </div>
+
+</body>
+</html>
+ 
