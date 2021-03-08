@@ -71,7 +71,7 @@
             color: white;
         }
 
-        button#cc {
+        button#cc, button#dd {
             font-size: 2em;
             vertical-align: middle;
             margin: 25px 25px;
@@ -83,6 +83,17 @@
         div#result {
             text-align: left;
             margin: 40px 20%;
+        }
+
+        #resultx, #options {
+            display: flex;
+            flex-direction: column;
+        }
+        #resultz {
+            margin-top: 20px;
+        }
+        #bt1 {
+            display: none;
         }
 
     </style>
@@ -110,9 +121,37 @@
         log = localStorage.getItem('log');
     }      
 
+// test web                    
+var files = {};    
+if (localStorage.getItem('files')) {
+    files = JSON.parse(localStorage.getItem('files'));
+}
+var no_web = 0;
+var old_resultx = "";
+if (localStorage.getItem('old_resultx')) {
+    old_resultx = localStorage.getItem('old_resultx');
+}      
+
     document.addEventListener("DOMContentLoaded", function() {
     
         document.getElementById("cc").addEventListener("click", clear);
+// test web                    
+document.getElementById("dd").addEventListener("click", clearWeb);
+document.getElementById('no_web').addEventListener('change', event => {
+    if (event.target.checked) {
+        no_web = 1;
+document.getElementById("bt1").style.display = "block";        
+document.getElementById("resultx").innerHTML = old_resultx;
+//        Load(url, target);
+    } else {
+        no_web = 0;
+document.getElementById("bt1").style.display = "none";        
+//        Load(url, target);
+    }
+});
+
+
+
 
         document.getElementById('no_header').addEventListener('change', event => {
             if (event.target.checked) {
@@ -175,7 +214,26 @@
                         download(P1, dateString.replace(/:/g,"") + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
                         
                         log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + nh + '</div>\n';
-                    
+                        
+// test web
+if (no_web == 1) {
+
+files[dateString] = P1;
+localStorage.setItem('files', JSON.stringify(files));
+
+var nn = dateString + ' ' + Text[0]  + ' ' + rt[0] + nh;
+
+var btn = document.createElement("button");
+btn.innerHTML = nn;
+btn.setAttribute("onclick", "publish('" + dateString + "')");
+document.getElementById("resultx").append(btn);                        
+old_resultx = document.getElementById("resultx").innerHTML;
+localStorage.setItem('old_resultx', old_resultx);  
+
+} else {
+
+}
+
                         old_live = tmp;
                         sessionStorage.setItem('old_live', old_live);  
                     
@@ -228,10 +286,17 @@
         sessionStorage.removeItem('old_live');  
     };
 
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        
-    });
+// test web                    
+function clearWeb() {
+    document.getElementById("resultx").innerHTML = "";
+    document.getElementById("resultz").innerHTML = "";
+    localStorage.removeItem('files');  
+    localStorage.removeItem('old_resultx');  
+};
+
+function publish(x) {
+    document.getElementById("resultz").innerHTML = files[x];
+};
 
 </script>
 
@@ -246,13 +311,20 @@
     </div>
     <div id="options">
         <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header (reduce saved files) *</label>
+        <label for="no_web"><input type="checkbox" id="no_web" name="no_web" value="no_web">&nbsp;save on web</label>
     </div>
 
     <div id="result"></div>
 
-    <div id="bt">
-        <button id="cc">clear log</button>
-    </div>
+<!-- test web   -->                 
+<div id="bt">
+<button id="cc">clear log</button>
+</div>
+<div id="resultx"></div>
+<div id="resultz"></div>
+<div id="bt1">
+<button id="dd">clear web</button>
+</div>
 
 </body>
 </html>
