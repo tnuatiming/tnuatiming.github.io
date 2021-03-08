@@ -90,21 +90,21 @@
     
 <script>
 
-    
-    var log = "";    
-    if (localStorage.getItem('log')) {
-        log = localStorage.getItem('log');
-    }      
-
     var TimerLoad;
     var Rafraichir = 10000;
 
     var url = '/live/p1.html';
     var target = 'result';
     var P1;
+
     var old_live = "";
     if (sessionStorage.getItem('old_live')) {
         old_live = sessionStorage.getItem('old_live');
+    }      
+
+    var log = "";    
+    if (localStorage.getItem('log')) {
+        log = localStorage.getItem('log');
     }      
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -123,7 +123,7 @@
         console.log(da)
         console.log(tm)*/
             var ma = new Date();
-            var dateString = ma.getUTCFullYear() + ("0" + (ma.getUTCMonth()+1)).slice(-2) + ("0" + ma.getUTCDate()).slice(-2) + "_" + ("0" + (ma.getUTCHours()+2)).slice(-2) + ("0" + ma.getUTCMinutes()).slice(-2) + ("0" + ma.getUTCSeconds()).slice(-2);
+            var dateString = ma.getUTCFullYear() + ("0" + (ma.getUTCMonth()+1)).slice(-2) + ("0" + ma.getUTCDate()).slice(-2) + "_" + ("0" + (ma.getUTCHours()+2)).slice(-2) + ":" + ("0" + ma.getUTCMinutes()).slice(-2) + ":" + ("0" + ma.getUTCSeconds()).slice(-2);
 //        console.log(dateString)
 
         if (self.fetch) {
@@ -142,7 +142,7 @@
                         var rt = P1.split('RemainingTime">', 2); 
                         rt = rt[1].split('</span>', 2); 
                         
-                        download(P1, dateString + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
+                        download(P1, dateString.replace(/:/g,"") + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
                         
                         log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + '</div>\n';
                     
@@ -151,7 +151,7 @@
                     
                     } else {
  
-                        log += '<div>' + dateString + ' no new data</div>\n';
+                        log += '<div>' + dateString + ' no update</div>\n';
                     }
                     
                 } else {
@@ -163,7 +163,7 @@
             catch (err) {
                 console.log('results fetch failed', err);
                 document.getElementById("gr").style.backgroundColor = "red"; 
-                log += '<div>' + dateString + ' something when wrong</div>\n';
+                log += '<div>' + dateString + ' something wrong :(</div>\n';
             }
 
         } 
@@ -192,6 +192,8 @@
 
     function clear() {
         log = "";
+        old_live = "";
+        Rafraichir = 10000;
         document.getElementById(target).innerHTML = "";
         localStorage.removeItem('log');  
         sessionStorage.removeItem('old_live');  
