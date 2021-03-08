@@ -98,6 +98,7 @@
     var P1;
     var tmp;
     var no_header = 0;
+    var nh = "  ";
     
     var old_live = "";
     if (sessionStorage.getItem('old_live')) {
@@ -116,8 +117,12 @@
         document.getElementById('no_header').addEventListener('change', event => {
             if (event.target.checked) {
                 no_header = 1;
+                nh = " *";
+                Load(url, target);
             } else {
                 no_header = 0;
+                nh = "  ";
+                Load(url, target);
             }
         });
                 
@@ -151,7 +156,8 @@
                     tmp = P1;
 
                     if (no_header == 1) {
-                        tmp = tmp.split('<table', 2); // split the text to title/time and the table
+//                        tmp = tmp.split('<table', 2); // split the text to title/time and the table
+                        tmp = tmp.split('\r\n\r\n', 2); // split the text to title/time and the table
                         tmp = tmp[1];
 
                     } else {
@@ -168,7 +174,7 @@
                         
                         download(P1, dateString.replace(/:/g,"") + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
                         
-                        log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + '</div>\n';
+                        log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + nh + '</div>\n';
                     
                         old_live = tmp;
                         sessionStorage.setItem('old_live', old_live);  
@@ -239,7 +245,7 @@
     <!--        <button id="clear" class="btn" onclick="clear()">clear all</button>-->
     </div>
     <div id="options">
-        <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;no header check (reduce saved files)</label>
+        <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header (reduce saved files) *</label>
     </div>
 
     <div id="result"></div>
