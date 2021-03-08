@@ -96,7 +96,9 @@
     var url = '/live/p1.html';
     var target = 'result';
     var P1;
-
+    var tmp;
+    var no_header = 0;
+    
     var old_live = "";
     if (sessionStorage.getItem('old_live')) {
         old_live = sessionStorage.getItem('old_live');
@@ -108,9 +110,20 @@
     }      
 
     document.addEventListener("DOMContentLoaded", function() {
+    
         document.getElementById("cc").addEventListener("click", clear);
-    });
 
+        document.getElementById('no_header').addEventListener('change', event => {
+            if (event.target.checked) {
+                no_header = 1;
+            } else {
+                no_header = 0;
+            }
+        });
+                
+        Load(url, target);
+
+    });
     
     async function Load(url, target) {
         
@@ -135,8 +148,19 @@
                     P1 = await response.text();
  //                   document.getElementById(target).innerHTML = 'p1_' + dateString + '.html';
 
+                    tmp = P1;
+
+                    if (no_header == 1) {
+                        tmp = tmp.split('<table', 2); // split the text to title/time and the table
+                        tmp = tmp[1];
+
+                    } else {
+                    
+                    }
+                    
+//         console.log(tmp)
  
-                    if (old_live != P1) {
+                    if (old_live != tmp) {
                         var Text = P1.split('.png">', 2); 
                         Text = Text[1].split('<img', 2); 
                         var rt = P1.split('RemainingTime">', 2); 
@@ -146,7 +170,7 @@
                         
                         log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + '</div>\n';
                     
-                        old_live = P1;
+                        old_live = tmp;
                         sessionStorage.setItem('old_live', old_live);  
                     
                     } else {
@@ -193,7 +217,6 @@
     function clear() {
         log = "";
         old_live = "";
-        Rafraichir = 10000;
         document.getElementById(target).innerHTML = "";
         localStorage.removeItem('log');  
         sessionStorage.removeItem('old_live');  
@@ -201,7 +224,6 @@
 
     document.addEventListener("DOMContentLoaded", function() {
         
-        Load(url, target);
         
     });
 
@@ -215,6 +237,9 @@
     <div id="ok">
         <div id="gr" class="btn">&nbsp;</div>
     <!--        <button id="clear" class="btn" onclick="clear()">clear all</button>-->
+    </div>
+    <div id="options">
+        <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;no header check (reduce saved files)</label>
     </div>
 
     <div id="result"></div>
