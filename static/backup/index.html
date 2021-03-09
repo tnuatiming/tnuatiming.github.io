@@ -74,20 +74,28 @@
         button#cc, button#dd {
             font-size: 2em;
             vertical-align: middle;
-            margin: 25px 25px;
-            padding: 25px;
+            margin: 25px;
+            padding: 10px;
             color: white;
             background-color: gray;
+            border: none;
         }
 
         div#result {
             text-align: left;
             margin: 40px 20%;
         }
+        #sec {
+            text-align: right;
+        }
 
         #resultx, #options {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            margin-left: 20%;
+}
         }
         #resultz {
             margin-top: 20px;
@@ -95,10 +103,50 @@
         #bt1 {
             display: none;
         }
+        div#resultx button {
+            margin-top: 6px;
+            background: #ccc;
+            padding: 5px 0;
+            border: none;
+            display: block;
+            width: 60%;
+        }
 
     </style>
 
     
+
+
+</head>
+
+<body id="backup">
+
+    <div id="ok">
+        <div id="gr" class="btn">&nbsp;</div>
+    <!--        <button id="clear" class="btn" onclick="clear()">clear all</button>-->
+    </div>    
+    <div id="sec">0</div>
+    
+    <div id="options">
+        <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header (reduce saved files) *</label>
+        <label for="no_download"><input type="checkbox" id="no_download" name="no_download" value="no_download">&nbsp;do not download files</label>
+        <label for="no_web"><input type="checkbox" id="no_web" name="no_web" value="no_web">&nbsp;save on web</label>
+    </div>
+
+    <div id="result"></div>
+
+<!-- test web   -->                 
+<div id="bt">
+<button id="cc">clear log</button>
+</div>
+<div id="resultx"></div>
+<div id="resultz"></div>
+<div id="bt1">
+<button id="dd">clear web</button>
+</div>
+
+</body>
+
 <script>
 
     var TimerLoad;
@@ -109,6 +157,7 @@
     var P1;
     var tmp;
     var no_header = 0;
+    var no_download = 0;
     var nh = "  ";
     
     var old_live = "";
@@ -151,8 +200,6 @@ document.getElementById("bt1").style.display = "none";
 });
 
 
-
-
         document.getElementById('no_header').addEventListener('change', event => {
             if (event.target.checked) {
                 no_header = 1;
@@ -162,6 +209,15 @@ document.getElementById("bt1").style.display = "none";
                 no_header = 0;
                 nh = "  ";
                 Load(url, target);
+            }
+        });
+
+
+        document.getElementById('no_download').addEventListener('change', event => {
+            if (event.target.checked) {
+                no_download = 1;
+            } else {
+                no_download = 0;
             }
         });
                 
@@ -210,9 +266,9 @@ document.getElementById("bt1").style.display = "none";
                         Text = Text[1].split('<img', 2); 
                         var rt = P1.split('RemainingTime">', 2); 
                         rt = rt[1].split('</span>', 2); 
-                        
-                        download(P1, dateString.replace(/:/g,"") + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
-                        
+                        if (no_download == 0) {
+                            download(P1, dateString.replace(/:/g,"") + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
+                        }
                         log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + nh + '</div>\n';
                         
 // test web
@@ -264,8 +320,12 @@ localStorage.setItem('old_resultx', old_resultx);
             Load(url, target);
         };
 
+// countdown
+document.getElementById("gr").innerHTML = Rafraichir/1000;
+
         TimerLoad = setTimeout(loop, Rafraichir);
         Rafraichir = 60000;
+
 
     }
 
@@ -298,34 +358,25 @@ function publish(x) {
     document.getElementById("resultz").innerHTML = files[x];
 };
 
+// countdown
+const timer = () =>{
+var x = document.getElementById("gr").innerHTML;
+if (x > 0) {
+    x -= 1;
+} else {
+    x = 0;
+}
+document.getElementById("gr").innerHTML = x;
+}
+// countdown
+timer();
+// Calling the function every 1000 milliseconds.
+setInterval(timer,1000);
+
+
 </script>
 
 
-</head>
 
-<body id="backup">
-
-    <div id="ok">
-        <div id="gr" class="btn">&nbsp;</div>
-    <!--        <button id="clear" class="btn" onclick="clear()">clear all</button>-->
-    </div>
-    <div id="options">
-        <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header (reduce saved files) *</label>
-        <label for="no_web"><input type="checkbox" id="no_web" name="no_web" value="no_web">&nbsp;save on web</label>
-    </div>
-
-    <div id="result"></div>
-
-<!-- test web   -->                 
-<div id="bt">
-<button id="cc">clear log</button>
-</div>
-<div id="resultx"></div>
-<div id="resultz"></div>
-<div id="bt1">
-<button id="dd">clear web</button>
-</div>
-
-</body>
 </html>
  
