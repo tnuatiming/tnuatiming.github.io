@@ -125,6 +125,7 @@
         <div id="gr" class="btn">&nbsp;</div>
     <!--        <button id="clear" class="btn" onclick="clear()">clear all</button>-->
     </div>    
+    <div id="sec">0</div>
     
     <div id="options">
         <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header (reduce saved files) *</label>
@@ -151,97 +152,81 @@
     var TimerLoad;
     var Rafraichir = 10000;
 
-    var url = "/live/p1.html";
-    var target = "result";
+    var url = '/live/p1.html';
+    var target = 'result';
     var P1;
     var tmp;
     var no_header = 0;
-    if (localStorage.getItem("no_header")) {
-        no_header = localStorage.getItem("no_header");
-    }
     var no_download = 0;
-    if (localStorage.getItem("no_download")) {
-        no_download = localStorage.getItem("no_download");
-    }
     var nh = "  ";
-
+    
     var old_live = "";
-    if (sessionStorage.getItem("old_live")) {
-        old_live = sessionStorage.getItem("old_live");
-    }
+    if (sessionStorage.getItem('old_live')) {
+        old_live = sessionStorage.getItem('old_live');
+    }      
 
-    var log = "";
-    if (localStorage.getItem("log")) {
-        log = localStorage.getItem("log");
-    }
+    var log = "";    
+    if (localStorage.getItem('log')) {
+        log = localStorage.getItem('log');
+    }      
 
-// test web
-var files = {};
-if (localStorage.getItem("files")) {
-    files = JSON.parse(localStorage.getItem("files"));
+// test web                    
+var files = {};    
+if (localStorage.getItem('files')) {
+    files = JSON.parse(localStorage.getItem('files'));
 }
 var no_web = 0;
-if (localStorage.getItem("no_web")) {
-    no_web = localStorage.getItem("no_web");
-}
-
 var old_resultx = "";
-if (localStorage.getItem("old_resultx")) {
-    old_resultx = localStorage.getItem("old_resultx");
-}
+if (localStorage.getItem('old_resultx')) {
+    old_resultx = localStorage.getItem('old_resultx');
+}      
 
     document.addEventListener("DOMContentLoaded", function() {
-
+    
         document.getElementById("cc").addEventListener("click", clear);
-// test web
+// test web                    
 document.getElementById("dd").addEventListener("click", clearWeb);
-document.getElementById("no_web").addEventListener("change", event => {
+document.getElementById('no_web').addEventListener('change', event => {
     if (event.target.checked) {
         no_web = 1;
-        localStorage.setItem("no_web", no_web);
-document.getElementById("bt1").style.display = "block";
+document.getElementById("bt1").style.display = "block";        
 document.getElementById("resultx").innerHTML = old_resultx;
 //        Load(url, target);
     } else {
         no_web = 0;
-        localStorage.setItem("no_web", no_web);
-document.getElementById("bt1").style.display = "none";
+document.getElementById("bt1").style.display = "none";        
 //        Load(url, target);
     }
 });
 
 
-        document.getElementById("no_header").addEventListener("change", event => {
+        document.getElementById('no_header').addEventListener('change', event => {
             if (event.target.checked) {
                 no_header = 1;
                 nh = " *";
-                localStorage.setItem("no_header", no_header);
                 Load(url, target);
             } else {
                 no_header = 0;
                 nh = "  ";
-                localStorage.setItem("no_header", no_header);
                 Load(url, target);
             }
         });
 
 
-        document.getElementById("no_download").addEventListener("change", event => {
+        document.getElementById('no_download').addEventListener('change', event => {
             if (event.target.checked) {
                 no_download = 1;
-                localStorage.setItem("no_download", no_download);
             } else {
                 no_download = 0;
-                localStorage.setItem("no_download", no_download);
             }
         });
-
+                
         Load(url, target);
 
     });
     
     async function Load(url, target) {
-
+        
             var loop;
             if (TimerLoad) clearTimeout(TimerLoad);
 
@@ -267,68 +252,68 @@ document.getElementById("bt1").style.display = "none";
 
                     if (no_header == 1) {
 //                        tmp = tmp.split('<table', 2); // split the text to title/time and the table
-                        tmp = tmp.split("\r\n\r\n", 2); // split the text to title/time and the table
+                        tmp = tmp.split('\r\n\r\n', 2); // split the text to title/time and the table
                         tmp = tmp[1];
 
                     } else {
-
+                    
                     }
-
+                    
 //         console.log(tmp)
  
                     if (old_live != tmp) {
-                        var Text = P1.split('.png">', 2);
-                        Text = Text[1].split("<img", 2);
-                        var rt = P1.split('RemainingTime">', 2);
-                        rt = rt[1].split("</span>", 2);
+                        var Text = P1.split('.png">', 2); 
+                        Text = Text[1].split('<img', 2); 
+                        var rt = P1.split('RemainingTime">', 2); 
+                        rt = rt[1].split('</span>', 2); 
                         if (no_download == 0) {
-                            download(P1, dateString.replace(/:/g,"") + "_p1_" + Text[0] + "_" + rt[0] + ".html", "text/plain");        
+                            download(P1, dateString.replace(/:/g,"") + '_p1_' + Text[0] + '_' + rt[0] + '.html', 'text/plain');        
                         }
-                        log += "<div>" + dateString + " " + Text[0]  + " " + rt[0] + nh + "</div>\n";
-
+                        log += '<div>' + dateString + ' ' + Text[0]  + ' ' + rt[0] + nh + '</div>\n';
+                        
 // test web
 if (no_web == 1) {
 
 files[dateString] = P1;
-localStorage.setItem("files", JSON.stringify(files));
+localStorage.setItem('files', JSON.stringify(files));
 
-var nn = dateString + " " + Text[0]  + " " + rt[0] + nh;
+var nn = dateString + ' ' + Text[0]  + ' ' + rt[0] + nh;
 
 var btn = document.createElement("button");
 btn.innerHTML = nn;
 btn.setAttribute("onclick", "publish('" + dateString + "')");
 document.getElementById("resultx").append(btn);                        
 old_resultx = document.getElementById("resultx").innerHTML;
-localStorage.setItem("old_resultx", old_resultx);  
+localStorage.setItem('old_resultx', old_resultx);  
 
 } else {
 
 }
 
                         old_live = tmp;
-                        sessionStorage.setItem("old_live", old_live);  
+                        sessionStorage.setItem('old_live', old_live);  
                     
                     } else {
  
-                        log += "<div>" + dateString + " no update</div>\n";
+                        log += '<div>' + dateString + ' no update</div>\n';
                     }
                     
                 } else {
                     console.log(response.status);
                     document.getElementById("gr").style.backgroundColor = "yellow"; 
-                    log += "<div>" + dateString + " server returned status: " + response.status + "</div>\n";
+                    log += '<div>' + dateString + ' server returned status: ' + response.status + '</div>\n';
                 }
             }
             catch (err) {
-                console.log("results fetch failed", err);
+                console.log('results fetch failed', err);
                 document.getElementById("gr").style.backgroundColor = "red"; 
-                log += "<div>" + dateString + " something wrong :(</div>\n";
+                log += '<div>' + dateString + ' something wrong :(</div>\n';
             }
 
         } 
                 
         document.getElementById(target).innerHTML = log;
-        localStorage.setItem("log", log);  
+        localStorage.setItem('log', log);  
 //        console.log(log);
 
         loop = function() {
@@ -351,34 +336,27 @@ document.getElementById("gr").innerHTML = Rafraichir/1000;
         a.href = URL.createObjectURL(file);
         a.download = fileName.replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_");
         a.click();
-    }
+    };
 
     function clear() {
-        if (confirm("you about to delete the log!, are you sure?")) {
-
-            log = "";
-            old_live = "";
-            document.getElementById(target).innerHTML = "";
-            localStorage.removeItem("log");  
-            sessionStorage.removeItem("old_live");
-        }
-    }
+        log = "";
+        old_live = "";
+        document.getElementById(target).innerHTML = "";
+        localStorage.removeItem('log');  
+        sessionStorage.removeItem('old_live');  
+    };
 
 // test web                    
 function clearWeb() {
-  if (confirm("you about to delete the saved live data!, are you sure?")) {
     document.getElementById("resultx").innerHTML = "";
     document.getElementById("resultz").innerHTML = "";
-    localStorage.removeItem("files");  
-    localStorage.removeItem("old_resultx");  
-  }
-
-
-}
+    localStorage.removeItem('files');  
+    localStorage.removeItem('old_resultx');  
+};
 
 function publish(x) {
     document.getElementById("resultz").innerHTML = files[x];
-}
+};
 
 // countdown
 const timer = () =>{
@@ -389,7 +367,7 @@ if (x > 0) {
     x = 0;
 }
 document.getElementById("gr").innerHTML = x;
-};
+}
 // countdown
 timer();
 // Calling the function every 1000 milliseconds.
