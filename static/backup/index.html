@@ -39,13 +39,11 @@
     <meta property="og:title" content="תנועה מדידת זמנים  &ndash; live timing">
     <meta property="og:description" content="live timing">
     
-    
     <meta property="og:url" content="https://tnuatiming.com/">
     <meta property="og:image" content="http://tnuatiming.com/images/logo2_og.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
 
     <style>
         html {
@@ -55,22 +53,20 @@
             font-size: 16px;
             direction: ltr;
         }
-        
-        body {background-image: none;}
-
+        body {
+        background-image: none;
+        }
         div#gr.btn {
             display: block;
             margin: 0;
             background: gray;
         }
-        
         #buttonInfo, #ok {
             font-size: 2em;
             flex-direction: column;
             direction: ltr;
             color: white;
         }
-
         button#cc, button#dd {
             font-size: 2em;
             vertical-align: middle;
@@ -80,22 +76,16 @@
             background-color: gray;
             border: none;
         }
-
         div#result {
             text-align: left;
             margin: 40px 20%;
         }
-        #sec {
-            text-align: right;
-        }
-
         #resultx, #options {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
             margin-left: 20%;
-}
         }
         #resultz {
             margin-top: 20px;
@@ -159,9 +149,19 @@
     if (localStorage.getItem("no_header")) {
         no_header = localStorage.getItem("no_header");
     }
+    if (no_header == 1) {
+        document.getElementById("no_header").checked = true;
+    } else {
+        document.getElementById("no_header").checked = false;
+    }
     var no_download = 0;
     if (localStorage.getItem("no_download")) {
         no_download = localStorage.getItem("no_download");
+    }
+    if (no_download == 1) {
+        document.getElementById("no_download").checked = true;
+    } else {
+        document.getElementById("no_download").checked = false;
     }
     var nh = "  ";
 
@@ -184,6 +184,13 @@ var no_web = 0;
 if (localStorage.getItem("no_web")) {
     no_web = localStorage.getItem("no_web");
 }
+if (no_web == 1) {
+    document.getElementById("no_web").checked = true;
+    document.getElementById("bt1").style.display = "block";
+    document.getElementById("resultx").innerHTML = old_resultx;
+} else {
+    document.getElementById("no_web").checked = false;
+}
 
 var old_resultx = "";
 if (localStorage.getItem("old_resultx")) {
@@ -199,13 +206,13 @@ document.getElementById("no_web").addEventListener("change", event => {
     if (event.target.checked) {
         no_web = 1;
         localStorage.setItem("no_web", no_web);
-document.getElementById("bt1").style.display = "block";
-document.getElementById("resultx").innerHTML = old_resultx;
+        document.getElementById("bt1").style.display = "block";
+        document.getElementById("resultx").innerHTML = old_resultx;
 //        Load(url, target);
     } else {
         no_web = 0;
         localStorage.setItem("no_web", no_web);
-document.getElementById("bt1").style.display = "none";
+        document.getElementById("bt1").style.display = "none";
 //        Load(url, target);
     }
 });
@@ -369,7 +376,8 @@ function clearWeb() {
   if (confirm("you about to delete the saved live data!, are you sure?")) {
     document.getElementById("resultx").innerHTML = "";
     document.getElementById("resultz").innerHTML = "";
-    localStorage.removeItem("files");  
+    localStorage.removeItem("files"); 
+    files = {};
     localStorage.removeItem("old_resultx");  
   }
 
