@@ -101,6 +101,13 @@
             display: block;
             width: 60%;
         }
+        h1#Title img {
+            border: 0;
+            max-width: 32px;
+            height: auto;
+            margin: 0 10px;
+        }
+
 
     </style>
 
@@ -176,6 +183,12 @@
     }
 
 // test web
+
+var old_resultx = "";
+if (localStorage.getItem("old_resultx")) {
+    old_resultx = localStorage.getItem("old_resultx");
+}
+
 var files = {};
 if (localStorage.getItem("files")) {
     files = JSON.parse(localStorage.getItem("files"));
@@ -192,10 +205,6 @@ if (no_web == 1) {
     document.getElementById("no_web").checked = false;
 }
 
-var old_resultx = "";
-if (localStorage.getItem("old_resultx")) {
-    old_resultx = localStorage.getItem("old_resultx");
-}
 
     document.addEventListener("DOMContentLoaded", function() {
 

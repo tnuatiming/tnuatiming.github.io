@@ -288,27 +288,27 @@ php_value session.cookie_httponly true
 <IfModule mod_expires.c>
 
     ExpiresActive on
-    ExpiresDefault                                    "access plus 1 day"
+    ExpiresDefault                                    "access plus 1 seconds"
     
     # DATA
-    ExpiresByType text/xml                            "access plus 0 seconds"
-    ExpiresByType text/html                           "access plus 1 day"
-    ExpiresByType text/plain                          "access plus 1 day"
-    ExpiresByType application/xml                     "access plus 0 seconds"
-    ExpiresByType application/json                    "access plus 0 seconds"
+    ExpiresByType text/xml                            "access plus 1 seconds"
+    ExpiresByType text/html                           "access plus 1 seconds"
+    ExpiresByType text/plain                          "access plus 1 seconds"
+    ExpiresByType application/xml                     "access plus 1 seconds"
+    ExpiresByType application/json                    "access plus 1 seconds"
     ExpiresByType application/rss+xml                 "access plus 1 hour"
     ExpiresByType application/atom+xml                "access plus 1 hour"
     ExpiresByType text/x-component                    "access plus 1 hour"
     
     # MANIFEST
-    ExpiresByType application/x-web-app-manifest+json "access plus 0 seconds"
-    ExpiresByType text/cache-manifest                 "access plus 0 seconds"
+    ExpiresByType application/x-web-app-manifest+json "access plus 1 hour"
+    ExpiresByType text/cache-manifest                 "access plus 1 hour"
     
     # SCRIPTS
-    ExpiresByType text/css                            "now plus 1 week" 
-    ExpiresByType text/javascript                     "access plus 1 day" 
-    ExpiresByType application/javascript              "access plus 1 day" 
-    ExpiresByType application/x-javascript            "access plus 1 day" 
+    ExpiresByType text/css                            "access plus 1 hour" 
+    ExpiresByType text/javascript                     "access plus 1 hour" 
+    ExpiresByType application/javascript              "access plus 1 hour" 
+    ExpiresByType application/x-javascript            "access plus 1 hour" 
     
     # IMAGES
     ExpiresByType image/gif                           "access plus 1 month"
@@ -400,6 +400,12 @@ AuthName "please, log in"
 AuthType Basic
 AuthUserFile /home/raz/public_html/.htpasswd
 Require valid-user
+</Files>
+
+# hide .htaccess
+<Files .htaccess>
+order allow,deny
+deny from all
 </Files>
 
 Redirect permanent /races/enduro/enduro2012r5.html /results/enduro/2013/enduro2013r5.html
