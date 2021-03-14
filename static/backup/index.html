@@ -141,10 +141,10 @@
 <div id="resultx"></div>
 <div id="resultz"></div>
 <div id="bt2">
-<button id="ee">download shown live</button>
+<button id="ee">download live</button>
 </div>
 <div id="bt1">
-<button id="dd">clear web</button>
+<button id="dd">clear all saved web</button>
 </div>
 </body>
 
@@ -229,12 +229,15 @@ document.getElementById("no_web").addEventListener("change", event => {
         localStorage.setItem("no_web", no_web);
         document.getElementById("bt1").style.display = "block";
         document.getElementById("resultx").innerHTML = old_resultx;
+        document.getElementById("resultx").style.display = "block";
 //        Load(url, target);
     } else {
         no_web = 0;
         localStorage.setItem("no_web", no_web);
         document.getElementById("bt1").style.display = "none";
         document.getElementById("bt2").style.display = "none";
+        document.getElementById("resultx").style.display = "none";
+        document.getElementById("resultz").style.display = "none";
 //        Load(url, target);
     }
 });
