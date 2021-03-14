@@ -76,7 +76,7 @@
             background-color: gray;
             border: none;
         }
-        div#result {
+        div#result, div#logx {
             text-align: left;
             margin: 40px 20%;
         }
@@ -107,7 +107,9 @@
             height: auto;
             margin: 0 10px;
         }
-
+        li {
+            text-align: left;
+            }
 
     </style>
 
@@ -130,6 +132,7 @@
     </div>
 
     <div id="result"></div>
+<div id="logx"></div>
 
 <!-- test web   -->                 
 <div id="bt">
@@ -181,6 +184,11 @@
     if (localStorage.getItem("log")) {
         log = localStorage.getItem("log");
     }
+// log as array
+var logx = [];
+if (localStorage.getItem("logx")) {
+    logx = JSON.parse(localStorage.getItem("logx"));
+}
 
 // test web
 
@@ -276,6 +284,7 @@ document.getElementById("no_web").addEventListener("change", event => {
                 const response = await fetch(url, {cache: "no-store"});
                 if (response.ok) {
                     document.getElementById("gr").style.backgroundColor = "green"; 
+                    document.getElementById("gr").style.color = "white"; 
                     P1 = await response.text();
  //                   document.getElementById(target).innerHTML = 'p1_' + dateString + '.html';
 
@@ -301,6 +310,9 @@ document.getElementById("no_web").addEventListener("change", event => {
                             download(P1, dateString.replace(/:/g,"") + "_p1_" + Text[0] + "_" + rt[0] + ".html", "text/plain");        
                         }
                         log += "<div>" + dateString + " " + Text[0]  + " " + rt[0] + nh + "</div>\n";
+// log as array
+logx.push("<div>" + dateString + " " + Text[0]  + " " + rt[0] + nh + "</div>\n");
+        console.log(logx);
 
 // test web
 if (no_web == 1) {
@@ -327,25 +339,121 @@ localStorage.setItem("old_resultx", old_resultx);
                     } else {
  
                         log += "<div>" + dateString + " no update</div>\n";
+                        
+                        
+// log as array
+if (!logx.length) { // logx empty
+logx.push("<div>" + dateString + " no update</div>\n");
+        console.log(logx);
+        
+} else {
+
+const lastItem = logx[logx.length - 1]
+
+if (lastItem.includes("no update")) { // replace with current time
+logx.pop();
+logx.push("<div>" + dateString + " no update</div>\n");
+
+} else {
+logx.push("<div>" + dateString + " no update</div>\n");
+
+}
+}                        
+                        
+                        
+                        
+                        
+                        
                     }
                     
                 } else {
                     console.log(response.status);
                     document.getElementById("gr").style.backgroundColor = "yellow"; 
+                    document.getElementById("gr").style.color = "#222"; 
                     log += "<div>" + dateString + " server returned status: " + response.status + "</div>\n";
-                }
+// log as array
+if (!logx.length) { // logx empty
+logx.push("<div>" + dateString + " server returned status: " + response.status + "</div>\n");
+        console.log(logx);
+        
+} else {
+
+const lastItem = logx[logx.length - 1]
+
+if (lastItem.includes("server returned status") && lastItem.includes(response.status)) { // replace with current time
+logx.pop();
+logx.push("<div>" + dateString + " server returned status: " + response.status + "</div>\n");
+
+} else {
+logx.push("<div>" + dateString + " server returned status: " + response.status + "</div>\n");
+
+}
+}
+
+                    }
             }
             catch (err) {
                 console.log("results fetch failed", err);
                 document.getElementById("gr").style.backgroundColor = "red"; 
+                document.getElementById("gr").style.color = "white"; 
                 log += "<div>" + dateString + " something wrong :(</div>\n";
+
+// log as array
+if (!logx.length) { // logx empty
+logx.push("<div>" + dateString + " something wrong :(</div>\n");
+        console.log(logx);
+    
+} else {
+
+const lastItem = logx[logx.length - 1]
+
+if (lastItem.includes("something wrong")) { // replace with current time
+logx.pop();
+logx.push("<div>" + dateString + " something wrong :(</div>\n");
+
+} else {
+logx.push("<div>" + dateString + " something wrong :(</div>\n");
+
+}
+}
+
+        console.log(logx);
             }
 
         } 
                 
         document.getElementById(target).innerHTML = log;
+        document.getElementById(target).style.display = "none"; // hiding log as we are showing logx
+
         localStorage.setItem("log", log);  
-//        console.log(log);
+// log as array
+
+var logxInnerHTML = "";
+            if (logx.length > 0) {
+                logxInnerHTML += "<ul>";
+                for (ii = 0; ii < logx.length; ii++) {
+                    logxInnerHTML += '<li>' + logx[ii] + '</li>';
+                }
+                logxInnerHTML += "</ul>";
+
+                document.getElementById("logx").innerHTML = logxInnerHTML;
+            } else {
+                document.getElementById("logx").innerHTML = "&nbsp;";
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+localStorage.setItem("logx", JSON.stringify(logx));
+        console.log(logx);
 
         loop = function() {
             Load(url, target);
@@ -373,9 +481,12 @@ document.getElementById("gr").innerHTML = Rafraichir/1000;
         if (confirm("you about to delete the log!, are you sure?")) {
 
             log = "";
+            logx = [];
             old_live = "";
             document.getElementById(target).innerHTML = "";
+            document.getElementById("logx").innerHTML = "";
             localStorage.removeItem("log");  
+            localStorage.removeItem("logx");  
             sessionStorage.removeItem("old_live");
         }
     }
