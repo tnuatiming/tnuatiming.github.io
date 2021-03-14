@@ -67,7 +67,7 @@
             direction: ltr;
             color: white;
         }
-        button#cc, button#dd {
+        button#cc, button#dd, button#ee {
             font-size: 2em;
             vertical-align: middle;
             margin: 25px;
@@ -90,7 +90,7 @@
         #resultz {
             margin-top: 20px;
         }
-        #bt1 {
+        #bt1, #bt2 {
             display: none;
         }
         div#resultx button {
@@ -140,21 +140,24 @@
 </div>
 <div id="resultx"></div>
 <div id="resultz"></div>
+<div id="bt2">
+<button id="ee">download shown live</button>
+</div>
 <div id="bt1">
 <button id="dd">clear web</button>
 </div>
-
 </body>
 
 <script>
 
     var TimerLoad;
-    var Rafraichir = 10000;
+    var Rafraichir = 10000;// 10 sec
 
     var url = "/live/p1.html";
     var target = "result";
     var P1;
     var tmp;
+    var nameforshownlive;
     var no_header = 0;
     if (localStorage.getItem("no_header")) {
         no_header = localStorage.getItem("no_header");
@@ -219,6 +222,7 @@ if (no_web == 1) {
         document.getElementById("cc").addEventListener("click", clear);
 // test web
 document.getElementById("dd").addEventListener("click", clearWeb);
+document.getElementById("ee").addEventListener("click", downloadlive);
 document.getElementById("no_web").addEventListener("change", event => {
     if (event.target.checked) {
         no_web = 1;
@@ -230,6 +234,7 @@ document.getElementById("no_web").addEventListener("change", event => {
         no_web = 0;
         localStorage.setItem("no_web", no_web);
         document.getElementById("bt1").style.display = "none";
+        document.getElementById("bt2").style.display = "none";
 //        Load(url, target);
     }
 });
@@ -311,8 +316,8 @@ document.getElementById("no_web").addEventListener("change", event => {
                         }
                         log += "<div>" + dateString + " " + Text[0]  + " " + rt[0] + nh + "</div>\n";
 // log as array
-logx.push("<div>" + dateString + " " + Text[0]  + " " + rt[0] + nh + "</div>\n");
-        console.log(logx);
+logx.push(dateString + " " + Text[0]  + " " + rt[0] + nh);
+//        console.log(logx);
 
 // test web
 if (no_web == 1) {
@@ -340,11 +345,10 @@ localStorage.setItem("old_resultx", old_resultx);
  
                         log += "<div>" + dateString + " no update</div>\n";
                         
-                        
 // log as array
 if (!logx.length) { // logx empty
-logx.push("<div>" + dateString + " no update</div>\n");
-        console.log(logx);
+logx.push(dateString + " no update");
+//        console.log(logx);
         
 } else {
 
@@ -352,17 +356,13 @@ const lastItem = logx[logx.length - 1]
 
 if (lastItem.includes("no update")) { // replace with current time
 logx.pop();
-logx.push("<div>" + dateString + " no update</div>\n");
+logx.push(dateString + " no update");
 
 } else {
-logx.push("<div>" + dateString + " no update</div>\n");
+logx.push(dateString + " no update");
 
 }
 }                        
-                        
-                        
-                        
-                        
                         
                     }
                     
@@ -373,8 +373,8 @@ logx.push("<div>" + dateString + " no update</div>\n");
                     log += "<div>" + dateString + " server returned status: " + response.status + "</div>\n";
 // log as array
 if (!logx.length) { // logx empty
-logx.push("<div>" + dateString + " server returned status: " + response.status + "</div>\n");
-        console.log(logx);
+logx.push(dateString + " server returned status: " + response.status);
+//        console.log(logx);
         
 } else {
 
@@ -382,10 +382,10 @@ const lastItem = logx[logx.length - 1]
 
 if (lastItem.includes("server returned status") && lastItem.includes(response.status)) { // replace with current time
 logx.pop();
-logx.push("<div>" + dateString + " server returned status: " + response.status + "</div>\n");
+logx.push(dateString + " server returned status: " + response.status);
 
 } else {
-logx.push("<div>" + dateString + " server returned status: " + response.status + "</div>\n");
+logx.push(dateString + " server returned status: " + response.status);
 
 }
 }
@@ -400,8 +400,8 @@ logx.push("<div>" + dateString + " server returned status: " + response.status +
 
 // log as array
 if (!logx.length) { // logx empty
-logx.push("<div>" + dateString + " something wrong :(</div>\n");
-        console.log(logx);
+logx.push(dateString + " something wrong :(");
+//        console.log(logx);
     
 } else {
 
@@ -409,51 +409,40 @@ const lastItem = logx[logx.length - 1]
 
 if (lastItem.includes("something wrong")) { // replace with current time
 logx.pop();
-logx.push("<div>" + dateString + " something wrong :(</div>\n");
+logx.push(dateString + " something wrong :(");
 
 } else {
-logx.push("<div>" + dateString + " something wrong :(</div>\n");
+logx.push(dateString + " something wrong :(");
 
 }
 }
 
-        console.log(logx);
+//        console.log(logx);
             }
 
         } 
                 
         document.getElementById(target).innerHTML = log;
-        document.getElementById(target).style.display = "none"; // hiding log as we are showing logx
+document.getElementById(target).style.display = "none"; // hiding log as we are showing logx
 
         localStorage.setItem("log", log);  
+
 // log as array
-
 var logxInnerHTML = "";
-            if (logx.length > 0) {
-                logxInnerHTML += "<ul>";
-                for (ii = 0; ii < logx.length; ii++) {
-                    logxInnerHTML += '<li>' + logx[ii] + '</li>';
-                }
-                logxInnerHTML += "</ul>";
+if (logx.length > 0) {
+    logxInnerHTML += "<ul>";
+    for (var ii = 0; ii < logx.length; ii++) {
+        logxInnerHTML += '<li>' + logx[ii] + '</li>';
+    }
+    logxInnerHTML += "</ul>";
 
-                document.getElementById("logx").innerHTML = logxInnerHTML;
-            } else {
-                document.getElementById("logx").innerHTML = "&nbsp;";
-            }
-
-
-
-
-
-
-
-
-
-
-
+    document.getElementById("logx").innerHTML = logxInnerHTML;
+} else {
+    document.getElementById("logx").innerHTML = "&nbsp;";
+}
 
 localStorage.setItem("logx", JSON.stringify(logx));
-        console.log(logx);
+//        console.log(logx);
 
         loop = function() {
             Load(url, target);
@@ -465,7 +454,6 @@ document.getElementById("gr").innerHTML = Rafraichir/1000;
         TimerLoad = setTimeout(loop, Rafraichir);
         Rafraichir = 60000;
 
-
     }
 
     function download(content, fileName, contentType) {
@@ -474,6 +462,14 @@ document.getElementById("gr").innerHTML = Rafraichir/1000;
         var file = new Blob([content], {type: contentType});
         a.href = URL.createObjectURL(file);
         a.download = fileName.replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_");
+        a.click();
+    }
+    function downloadlive() {
+        var a = document.createElement("a");
+        a.setAttribute("id", "download");
+        var file = new Blob([document.getElementById("resultz").innerHTML], {type: "text/plain"});
+        a.href = URL.createObjectURL(file);
+        a.download = nameforshownlive;
         a.click();
     }
 
@@ -499,13 +495,14 @@ function clearWeb() {
     localStorage.removeItem("files"); 
     files = {};
     localStorage.removeItem("old_resultx");  
+        document.getElementById("bt2").style.display = "none";
   }
-
-
 }
 
 function publish(x) {
     document.getElementById("resultz").innerHTML = files[x];
+    document.getElementById("bt2").style.display = "block";
+    nameforshownlive = x;
 }
 
 // countdown
@@ -525,8 +522,6 @@ setInterval(timer,1000);
 
 
 </script>
-
-
 
 </html>
  
