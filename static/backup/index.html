@@ -135,7 +135,7 @@
     <div id="options">
         <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header for time and name change (reduce saved files) *</label>
         <label for="no_download"><input type="checkbox" id="no_download" name="no_download" value="no_download">&nbsp;do not download live files</label>
-        <label for="no_web"><input type="checkbox" id="no_web" name="no_web" value="no_web">&nbsp;save in browser</label>
+        <label for="inBrowser"><input type="checkbox" id="inBrowser" name="inBrowser" value="inBrowser">&nbsp;save in browser</label>
     </div>
 
     <div id="result"></div>
@@ -148,7 +148,7 @@
 <div id="resultx"></div>
 <div id="resultz"></div>
 <div id="bt2">
-<button id="ee">download live as file</button>
+<button id="ee" title="">download live as file</button>
 </div>
 <div id="bt1">
 <button id="dd">clear all saved in browser</button>
@@ -174,7 +174,7 @@
     } else {
         document.getElementById("no_header").checked = false;
     }
-    var no_download = 0;
+    var no_download = 1; // do not auto download the p1 files
     if (localStorage.getItem("no_download")) {
         no_download = localStorage.getItem("no_download");
     }
@@ -211,16 +211,16 @@ var files = {};
 if (localStorage.getItem("files")) {
     files = JSON.parse(localStorage.getItem("files"));
 }
-var no_web = 0;
-if (localStorage.getItem("no_web")) {
-    no_web = localStorage.getItem("no_web");
+var inBrowser = 1; // save p1 in the browser
+if (localStorage.getItem("inBrowser")) {
+    inBrowser = localStorage.getItem("inBrowser");
 }
-if (no_web == 1) {
-    document.getElementById("no_web").checked = true;
+if (inBrowser == 1) {
+    document.getElementById("inBrowser").checked = true;
     document.getElementById("bt1").style.display = "block";
     document.getElementById("resultx").innerHTML = old_resultx;
 } else {
-    document.getElementById("no_web").checked = false;
+    document.getElementById("inBrowser").checked = false;
 }
 
 
@@ -230,19 +230,20 @@ if (no_web == 1) {
 // test web
 document.getElementById("dd").addEventListener("click", clearWeb);
 document.getElementById("ee").addEventListener("click", downloadlive);
-document.getElementById("no_web").addEventListener("change", event => {
+document.getElementById("inBrowser").addEventListener("change", event => {
     if (event.target.checked) {
-        no_web = 1;
-        localStorage.setItem("no_web", no_web);
+        inBrowser = 1;
+        localStorage.setItem("inBrowser", inBrowser);
         document.getElementById("bt1").style.display = "block";
         document.getElementById("resultx").innerHTML = old_resultx;
         document.getElementById("resultx").style.display = "block";
 //        Load(url, target);
     } else {
-        no_web = 0;
-        localStorage.setItem("no_web", no_web);
+        inBrowser = 0;
+        localStorage.setItem("inBrowser", inBrowser);
         document.getElementById("bt1").style.display = "none";
         document.getElementById("bt2").style.display = "none";
+        document.getElementById('ee').setAttribute('title', "");
         document.getElementById("resultx").style.display = "none";
         document.getElementById("resultz").style.display = "none";
 //        Load(url, target);
@@ -330,7 +331,7 @@ logx.push(dateString + " " + Text[0]  + " " + rt[0] + nh);
 //        console.log(logx);
 
 // test web
-if (no_web == 1) {
+if (inBrowser == 1) {
 
 files[dateString] = P1;
 localStorage.setItem("files", JSON.stringify(files));
@@ -471,7 +472,7 @@ document.getElementById("gr").innerHTML = Rafraichir/1000;
         a.setAttribute("id", "download");
         var file = new Blob([content], {type: contentType});
         a.href = URL.createObjectURL(file);
-        a.download = fileName.replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_");
+        a.download = fileName.replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_").replace(/_+/g,"_");
         a.click();
     }
     function downloadlive() {
@@ -479,7 +480,7 @@ document.getElementById("gr").innerHTML = Rafraichir/1000;
         a.setAttribute("id", "download");
         var file = new Blob([document.getElementById("resultz").innerHTML], {type: "text/plain"});
         a.href = URL.createObjectURL(file);
-        a.download = nameforshownlive;
+        a.download = nameforshownlive.replace(/_+/g,"_");
         a.click();
     }
 
@@ -505,14 +506,16 @@ function clearWeb() {
     localStorage.removeItem("files"); 
     files = {};
     localStorage.removeItem("old_resultx");  
-        document.getElementById("bt2").style.display = "none";
+    document.getElementById("bt2").style.display = "none";
+    document.getElementById('ee').setAttribute('title', "");
   }
 }
 
 function publish(x, y) {
     document.getElementById("resultz").innerHTML = files[x];
     document.getElementById("bt2").style.display = "block";
-    nameforshownlive = (x + "_" + y).replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_");
+    nameforshownlive = (x + "_" + y).replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_").replace(/_+/g,"_");
+    document.getElementById('ee').setAttribute('title', nameforshownlive + ".txt");
 }
 
 // countdown
