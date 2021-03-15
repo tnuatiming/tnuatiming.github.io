@@ -83,6 +83,23 @@
         button {
             cursor: pointer;
         }
+        button#x {
+            color: red;
+            font-size: 1.5em;
+            flex-shrink: 12;
+            padding: 0 10px;
+
+        }
+        .liveItem {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+        }
+        button.liveLine {
+            width: 80%;
+            text-align: left;
+            padding: 10px;
+        }
         div#result, div#logx {
             text-align: left;
             margin: 40px 20%;
@@ -97,16 +114,17 @@
         #resultz {
             margin-top: 20px;
         }
+        div#resultx div {
+            width: 100%;
+        }
         #bt1, #bt2 {
             display: none;
         }
         div#resultx button {
             margin-top: 6px;
             background: #ccc;
-            padding: 5px 0;
             border: none;
             display: block;
-            width: 60%;
         }
         h1#Title img {
             border: 0;
@@ -338,10 +356,26 @@ localStorage.setItem("files", JSON.stringify(files));
 
 var nn = dateString + " " + Text[0]  + " " + rt[0] + nh;
 
+
+var vvv = document.createElement("div");
+vvv.setAttribute("id", dateString);
+vvv.setAttribute("class", "liveItem");
+document.getElementById("resultx").append(vvv);                        
+
+
 var btn = document.createElement("button");
 btn.innerHTML = nn;
 btn.setAttribute("onclick", "publish('" + dateString + "', '" + Text[0]  + " " + rt[0] + "')");
-document.getElementById("resultx").append(btn);                        
+//btn.setAttribute("id", dateString);
+btn.setAttribute("class", "liveLine");
+document.getElementById(dateString).append(btn);                        
+
+var btnx = document.createElement("button");
+btnx.innerHTML = "X";
+btnx.setAttribute("onclick", "delLine('" + dateString + "')");
+btnx.setAttribute("id", "x");
+document.getElementById(dateString).append(btnx);                        
+
 old_resultx = document.getElementById("resultx").innerHTML;
 localStorage.setItem("old_resultx", old_resultx);  
 
@@ -517,6 +551,13 @@ function publish(x, y) {
     nameforshownlive = (x + "_" + y).replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_").replace(/_+/g,"_");
     document.getElementById('ee').setAttribute('title', nameforshownlive + ".txt");
 }
+
+function delLine(z) {
+    delete files[z];
+    localStorage.setItem("files", JSON.stringify(files));
+    document.getElementById(z).remove();
+}
+
 
 // countdown
 const timer = () =>{
