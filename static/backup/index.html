@@ -68,13 +68,20 @@
             color: white;
         }
         button#cc, button#dd, button#ee {
-            font-size: 2em;
+            font-size: 1.5em;
             vertical-align: middle;
             margin: 25px;
             padding: 10px;
             color: white;
-            background-color: gray;
+            background-color: red;
             border: none;
+            cursor: pointer;
+        }
+        button#ee {
+            background-color: gray;
+        }
+        button {
+            cursor: pointer;
         }
         div#result, div#logx {
             text-align: left;
@@ -126,9 +133,9 @@
     </div>    
     
     <div id="options">
-        <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header (reduce saved files) *</label>
-        <label for="no_download"><input type="checkbox" id="no_download" name="no_download" value="no_download">&nbsp;do not download files</label>
-        <label for="no_web"><input type="checkbox" id="no_web" name="no_web" value="no_web">&nbsp;save on web</label>
+        <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header for time and name change (reduce saved files) *</label>
+        <label for="no_download"><input type="checkbox" id="no_download" name="no_download" value="no_download">&nbsp;do not download live files</label>
+        <label for="no_web"><input type="checkbox" id="no_web" name="no_web" value="no_web">&nbsp;save in browser</label>
     </div>
 
     <div id="result"></div>
@@ -141,10 +148,10 @@
 <div id="resultx"></div>
 <div id="resultz"></div>
 <div id="bt2">
-<button id="ee">download live</button>
+<button id="ee">download live as file</button>
 </div>
 <div id="bt1">
-<button id="dd">clear all saved web</button>
+<button id="dd">clear all saved in browser</button>
 </div>
 </body>
 
@@ -332,7 +339,7 @@ var nn = dateString + " " + Text[0]  + " " + rt[0] + nh;
 
 var btn = document.createElement("button");
 btn.innerHTML = nn;
-btn.setAttribute("onclick", "publish('" + dateString + "')");
+btn.setAttribute("onclick", "publish('" + dateString + "', '" + Text[0]  + " " + rt[0] + "')");
 document.getElementById("resultx").append(btn);                        
 old_resultx = document.getElementById("resultx").innerHTML;
 localStorage.setItem("old_resultx", old_resultx);  
@@ -502,10 +509,10 @@ function clearWeb() {
   }
 }
 
-function publish(x) {
+function publish(x, y) {
     document.getElementById("resultz").innerHTML = files[x];
     document.getElementById("bt2").style.display = "block";
-    nameforshownlive = x;
+    nameforshownlive = (x + "_" + y).replace(/:/g,"_").replace(/-/g,"_").replace(/ /g,"_");
 }
 
 // countdown
