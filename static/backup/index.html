@@ -160,7 +160,7 @@
     <div id="result"></div>
 <div id="logx"></div>
 
-<!-- test web   -->                 
+<!-- save in browser   -->                 
 <div id="bt">
 <button id="cc">delete log</button>
 </div>
@@ -213,13 +213,13 @@
     if (localStorage.getItem("log")) {
         log = localStorage.getItem("log");
     }
-// log as array
+// log as array to show only changes and not complete log
 var logx = [];
 if (localStorage.getItem("logx")) {
     logx = JSON.parse(localStorage.getItem("logx"));
 }
 
-// test web
+// save in browser
 var old_resultx = "";
 if (localStorage.getItem("old_resultx")) {
     old_resultx = localStorage.getItem("old_resultx");
@@ -247,7 +247,7 @@ document.getElementById(target).style.display = "none"; // hiding log as we are 
     document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("cc").addEventListener("click", clear);
-// test web
+// save in browser
 document.getElementById("dd").addEventListener("click", clearWeb);
 document.getElementById("ee").addEventListener("click", downloadlive);
 document.getElementById("inBrowser").addEventListener("change", event => {
@@ -361,7 +361,7 @@ document.getElementById("fullLog").addEventListener("change", event => {
 logx.push(dateString + " " + Text[0]  + " " + rt[0] + nh);
 //        console.log(logx);
 
-// test web
+// save in browser
 if (inBrowser == 1) {
 
 files[dateString] = P1;
@@ -427,8 +427,13 @@ logx.push(dateString + " no update");
                     
                 } else {
                     console.log(response.status);
-                    document.getElementById("gr").style.backgroundColor = "yellow"; 
-                    document.getElementById("gr").style.color = "#222"; 
+                    if (response.status == "404") { // no file on server, its ok
+                        document.getElementById("gr").style.backgroundColor = "green"; 
+                        document.getElementById("gr").style.color = "white";                     
+                    } else {
+                        document.getElementById("gr").style.backgroundColor = "yellow"; 
+                        document.getElementById("gr").style.color = "#222";                     
+                    }
                     log += "<div>" + dateString + " server returned status: " + response.status + "</div>\n";
 // log as array
 if (!logx.length) { // logx empty
@@ -546,7 +551,7 @@ document.getElementById("gr").innerHTML = Rafraichir/1000;
         }
     }
 
-// test web                    
+// save in browser                    
 function clearWeb() {
   if (confirm("you about to delete the saved live data!, are you sure?")) {
     document.getElementById("resultx").innerHTML = "";
