@@ -154,6 +154,7 @@
         <label for="no_header"><input type="checkbox" id="no_header" name="no_header" value="no_header">&nbsp;do not check header for time and name change (reduce saved files) *</label>
         <label for="no_download"><input type="checkbox" id="no_download" name="no_download" value="no_download">&nbsp;do not download live files</label>
         <label for="inBrowser"><input type="checkbox" id="inBrowser" name="inBrowser" value="inBrowser">&nbsp;save in browser</label>
+        <label for="fullLog"><input type="checkbox" id="fullLog" name="fullLog" value="fullLog">&nbsp;show full log</label>
     </div>
 
     <div id="result"></div>
@@ -161,7 +162,7 @@
 
 <!-- test web   -->                 
 <div id="bt">
-<button id="cc">clear log</button>
+<button id="cc">delete log</button>
 </div>
 <div id="resultx"></div>
 <div id="resultz"></div>
@@ -169,7 +170,7 @@
 <button id="ee" title="">download live as file</button>
 </div>
 <div id="bt1">
-<button id="dd">clear all saved in browser</button>
+<button id="dd" title="delete all entries saved in the browser">delete in browser</button>
 </div>
 </body>
 
@@ -183,7 +184,7 @@
     var P1;
     var tmp;
     var nameforshownlive;
-    var no_header = 0;
+    var no_header = 1;
     if (localStorage.getItem("no_header")) {
         no_header = localStorage.getItem("no_header");
     }
@@ -219,7 +220,6 @@ if (localStorage.getItem("logx")) {
 }
 
 // test web
-
 var old_resultx = "";
 if (localStorage.getItem("old_resultx")) {
     old_resultx = localStorage.getItem("old_resultx");
@@ -241,6 +241,8 @@ if (inBrowser == 1) {
     document.getElementById("inBrowser").checked = false;
 }
 
+// full log
+document.getElementById(target).style.display = "none"; // hiding log as we are showing logx
 
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -294,6 +296,17 @@ document.getElementById("inBrowser").addEventListener("change", event => {
             }
         });
 
+// full log
+document.getElementById("fullLog").addEventListener("change", event => {
+    if (event.target.checked) {
+        document.getElementById("logx").style.display = "none";
+        document.getElementById("result").style.display = "block";
+    } else {
+        document.getElementById("logx").style.display = "block";
+        document.getElementById("result").style.display = "none";
+    }
+});        
+        
         Load(url, target);
 
     });
@@ -370,10 +383,11 @@ btn.setAttribute("onclick", "publish('" + dateString + "', '" + Text[0]  + " " +
 btn.setAttribute("class", "liveLine");
 document.getElementById(dateString).append(btn);                        
 
-var btnx = document.createElement("button");
+var btnx = document.createElement("button");// delete entery button
 btnx.innerHTML = "X";
 btnx.setAttribute("onclick", "delLine('" + dateString + "')");
 btnx.setAttribute("id", "x");
+btnx.setAttribute('title', "permanently delete the entery");
 document.getElementById(dateString).append(btnx);                        
 
 old_resultx = document.getElementById("resultx").innerHTML;
@@ -468,7 +482,7 @@ logx.push(dateString + " something wrong :(");
         } 
                 
         document.getElementById(target).innerHTML = log;
-document.getElementById(target).style.display = "none"; // hiding log as we are showing logx
+//document.getElementById(target).style.display = "none"; // hiding log as we are showing logx
 
         localStorage.setItem("log", log);  
 
